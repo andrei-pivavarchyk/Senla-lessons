@@ -10,7 +10,6 @@ public class Program {
         al.AddLineStep(new BlockLineStep());
         al.AddLineStep(new ScreenLineStep());
         al.AddLineStep(new MotherBoardLineStep());
-
         al.AssembleProduct(new Notebook());
         System.out.println("Done...");
     }

@@ -3,7 +3,6 @@ package Implementation;
 import Contracts.IAssemblyLine;
 import Contracts.ILineStep;
 import Contracts.IProduct;
-
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -20,7 +19,7 @@ public class AssemblyLine implements IAssemblyLine {
 
     public IProduct AssembleProduct(IProduct product) {
         if (_lineSteps.size() != 3){
-            throw new UnsupportedOperationException("Cannot have more than 3 line steps!");
+            throw new UnsupportedOperationException("Must be 3 line steps!");
         }
 
         for (int i=0; i< 3; i++){
