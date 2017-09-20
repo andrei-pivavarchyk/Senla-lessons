@@ -1,16 +1,17 @@
 public class Main {
 public static void main(String[] args){
 
-    RandomNumber firstNumber=new RandomNumber();
-    RandomNumber secondNumber=new RandomNumber();
-    RandomNumber thirdNumber=new RandomNumber();
+    int firstNumber=RandomNumbersService.getRandomNumber();
+    int secondNumber=RandomNumbersService.getRandomNumber();
+    int thirdNumber=RandomNumbersService.getRandomNumber();
 
-
+    //Glue Numbers
     int glueFirstAndSecondNumbers= RandomNumbersService.glueTwoNumbers(firstNumber,secondNumber);
-    int forthNumber=glueFirstAndSecondNumbers-thirdNumber.getRandomNumber();
+
+    int forthNumber=glueFirstAndSecondNumbers-thirdNumber;
 
 
-    System.out.println(firstNumber.getRandomNumber()+" "+secondNumber.getRandomNumber()+" "+thirdNumber.getRandomNumber()+" "+forthNumber);
+    System.out.println(firstNumber+" "+secondNumber+" "+thirdNumber+" "+forthNumber);
 
 }
 }
