@@ -1,3 +1,5 @@
-public class Manager {
+import Abstract.Employee;
+
+public class Manager extends Employee {
 
 }
