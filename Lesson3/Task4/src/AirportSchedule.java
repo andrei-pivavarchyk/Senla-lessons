@@ -32,7 +32,7 @@ public class AirportSchedule {
 
     public void printInfo() {
         for (int i = 0; i < countFlights; i++) {
-            System.out.println(this.allFlights[i]);
+            System.out.println("Flight Info: "+"\n"+"- "+this.allFlights[i]+" Free Spaces: "+this.allFlights[i].getFreeSpaces());
         }
 
 

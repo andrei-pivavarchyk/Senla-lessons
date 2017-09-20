@@ -9,8 +9,11 @@ public class Flight {
         this.id = id;
         this.maxCapacity = maxCapacity;
         allPassengers = new Passenger[maxCapacity];
+        this.type=FlightType.normal;
     }
-
+public int getFreeSpaces(){
+        return this.maxCapacity-this.countPassengers;
+}
     public void setStatusLate() {
         this.type = FlightType.late;
         System.out.println("Status Late for Flight with id " + getId());
