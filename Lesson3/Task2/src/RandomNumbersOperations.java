@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class RandomNumbersService {
+public class RandomNumbersOperations {
 
     public static int getRandomNumber(){
         return (new Random()).nextInt(999);
