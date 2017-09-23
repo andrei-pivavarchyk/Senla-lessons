@@ -1,12 +1,12 @@
 public class Main {
 public static void main(String[] args){
 
-    int firstNumber=RandomNumbersOperations.getRandomNumber();
-    int secondNumber=RandomNumbersOperations.getRandomNumber();
-    int thirdNumber=RandomNumbersOperations.getRandomNumber();
+    int firstNumber=RandomNumber.getRandomNumber();
+    int secondNumber=RandomNumber.getRandomNumber();
+    int thirdNumber=RandomNumber.getRandomNumber();
 
     //Glue Numbers
-    int glueFirstAndSecondNumbers= RandomNumbersOperations.glueTwoNumbers(firstNumber,secondNumber);
+    int glueFirstAndSecondNumbers= GlueTwoNumbers.glueTwoNumbers(firstNumber,secondNumber);
 
     int forthNumber=glueFirstAndSecondNumbers-thirdNumber;
 
