@@ -1,13 +1,8 @@
 public class PushTextIntoArray {
 
-    private String text;
-
-    public PushTextIntoArray(String text) {
-        this.text = text;
-    }
 
 
-    public String[] pushTextIntoArray() {
+    public static String[] pushTextIntoArray(String text) {
 
 
         String[] wordArray = text.split(" ");
