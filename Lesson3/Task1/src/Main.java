@@ -5,7 +5,7 @@ public class Main {
                 "\n" +
                 "Авторами сериала являются Марк Гэтисс и Стивен Моффат, известные работой над телесериалами «Доктор Кто» и «Джекилл», а главные роли Шерлока Холмса и доктора Джона Ватсона исполняют Бенедикт Камбербэтч и Мартин Фримен соответственно. Съёмки проходят преимущественно в Лондоне и Кардиффе. Проект получил положительные отзывы в течение трех сезонов и был номинирован на несколько наград. В 2011 году «Шерлок» стал обладателем телевизионной премии BAFTA в категории «Лучший драматический сериал»[4].");
 
-        String[] WordArray = new TextService().separateTextAndPushIntoArrayAllWords(someText);
+        String[] WordArray = new TextOperations().separateTextAndPushIntoArrayAllWords(someText);
 
         for (int i = 0; i < WordArray.length; i++) {
             System.out.println(WordArray[i]);

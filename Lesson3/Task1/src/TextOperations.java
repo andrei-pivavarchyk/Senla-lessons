@@ -1,4 +1,4 @@
-public class TextService {
+public class TextOperations {
 
     public String[] separateTextAndPushIntoArrayAllWords(String text){
        text= this.deleteAllSimbolsAndNumbers(text);
@@ -6,14 +6,13 @@ public class TextService {
         String[] WordArray=text.split(" " );
         return WordArray;
 
-
     }
 
-    public  String deleteAllSimbolsAndNumbers(String text){
+    private  String deleteAllSimbolsAndNumbers(String text){
         text=text.replaceAll("[^a-zA-Zа-яА-Я- ]", "");
         return text;
     }
-    public  String deleteExtraSpaces(String text){
+    private String deleteExtraSpaces(String text){
         text= text.replaceAll("  ", " ");
         return text;
     }

@@ -15,7 +15,7 @@
       <file leaf-file-name="FlightType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FlightType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="75">
               <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
@@ -25,8 +25,13 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="391">
               <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+=======
+            <state relative-caret-position="250">
+              <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
               <folding />
             </state>
           </provider>
@@ -35,7 +40,7 @@
       <file leaf-file-name="Flight.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Flight.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="275">
               <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
               <folding>
                 <element signature="e#405#406#0" expanded="true" />
@@ -50,7 +55,7 @@
       <file leaf-file-name="Passenger.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Passenger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="350">
               <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="e#214#215#0" expanded="true" />
@@ -67,7 +72,7 @@
       <file leaf-file-name="AirportSchedule.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AirportSchedule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="325">
               <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
               <folding />
             </state>
@@ -121,7 +126,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="PackagesPane" />
+=======
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,9 +150,12 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="AndroidView" />
+=======
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,7 +335,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/FlightType.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="51">
+=======
+        <state relative-caret-position="75">
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
@@ -328,7 +347,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Flight.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="187">
+=======
+        <state relative-caret-position="275">
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
           <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding>
             <element signature="e#405#406#0" expanded="true" />
@@ -341,7 +364,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Passenger.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="238">
+=======
+        <state relative-caret-position="350">
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#214#215#0" expanded="true" />
@@ -356,7 +383,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AirportSchedule.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="221">
+=======
+        <state relative-caret-position="325">
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
           <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding />
         </state>
@@ -364,7 +395,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="391">
+=======
+        <state relative-caret-position="575">
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
           <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
           <folding />
         </state>
@@ -580,7 +615,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Passenger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="350">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#214#215#0" expanded="true" />
@@ -595,7 +630,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AirportSchedule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="325">
           <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding />
         </state>
@@ -603,7 +638,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Flight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="275">
           <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding>
             <element signature="e#405#406#0" expanded="true" />
@@ -616,7 +651,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FlightType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
+        <state relative-caret-position="75">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
@@ -624,8 +659,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="391">
           <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+=======
+        <state relative-caret-position="250">
+          <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+>>>>>>> 96781bf10a10333a5f56164a4cbe50dd81d3cde2
           <folding />
         </state>
       </provider>
