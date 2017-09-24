@@ -3,15 +3,22 @@ import Entity.Hotel;
 import Entity.Room;
 import Entity.Service;
 import Services.PrintIOperations;
+import Services.RoomService;
 import Sorting.GuestSorting;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class Main {
 
 
     public  static void main(String[] args){
-
+/*
         Hotel bestHotel=new Hotel("BestHotel");
         Guest guest1=new Guest("Bob", "White");
         Guest guest2=new Guest("Jak", "White");
@@ -19,7 +26,7 @@ public class Main {
 
         Room room1=new Room(1,7,2,5);
         Room room2=new Room(2,5,1,4);
-        Room room3=new Room(3,16,15,3);
+        Room room3=new Room(3,8,5,3);
 
         bestHotel.addRoom(room1);
         bestHotel.addRoom(room2);
@@ -37,24 +44,16 @@ public class Main {
         System.out.println(bestHotel.getFreeRoomsCount());
         room1.printLastThreeGuests();
 
+*/
 
 
+       Hotel bestHotel=new Hotel("bestHotel");
+        ArrayList<Room> newRooms= RoomService.readRoomsFromFile();
+       for(Room r:newRooms){
+           bestHotel.addRoom(r);
+       }
+       bestHotel.printAllRooms();
 
-        //print free rooms
-       /* Services.PrintIOperations.printAllRooms(bestHotel.getFreeRooms());
-        //print all guests
-        Services.PrintIOperations.printAllGuests(bestHotel.getAllGuests());
-
-        //SORTING GUESTS
-        Services.PrintIOperations.printAllGuests( GuestSorting.guestNameSorting(bestHotel.getAllGuests()));
-        Services.PrintIOperations.printAllGuests( GuestSorting.guestDepartureDateSorting(bestHotel.getAllGuests()));
-        System.out.println(guest1.getPay()+"$ need pay");
-        //Last Three Guests
-
-        room1.outGuest(guest1);
-
-        Services.PrintIOperations.printGuestsWithDate(room1.getlastThreeGuests());
-        */
 
 
 
