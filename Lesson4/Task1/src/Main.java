@@ -2,6 +2,7 @@ import Entity.Guest;
 import Entity.Hotel;
 import Entity.Room;
 import Entity.Service;
+import Services.PrintIOperations;
 import Sorting.GuestSorting;
 
 import java.util.GregorianCalendar;
@@ -31,9 +32,16 @@ public class Main {
 
 
         //print all rooms
-        Services.PrintIOperations.printAllRooms(bestHotel.getAllRooms());
+        bestHotel.printAllRooms();
+        bestHotel.printFreeRooms();
+        System.out.println(bestHotel.getFreeRoomsCount());
+        room1.printLastThreeGuests();
+
+
+
+
         //print free rooms
-        Services.PrintIOperations.printAllRooms(bestHotel.getFreeRooms());
+       /* Services.PrintIOperations.printAllRooms(bestHotel.getFreeRooms());
         //print all guests
         Services.PrintIOperations.printAllGuests(bestHotel.getAllGuests());
 
@@ -46,6 +54,7 @@ public class Main {
         room1.outGuest(guest1);
 
         Services.PrintIOperations.printGuestsWithDate(room1.getlastThreeGuests());
+        */
 
 
 

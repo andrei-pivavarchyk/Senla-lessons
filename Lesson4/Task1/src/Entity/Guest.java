@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 public class Guest {
     private String name;
-    private String surName;
+    private String surname;
     private Room guestRoom;
     private GuestInfo guestInfo;
 
@@ -18,14 +18,14 @@ public class Guest {
 
     public Guest(String name, String surName) {
         this.name = name;
-        this.surName = surName;
+        this.surname = surName;
     }
 
     public String getName() {
         return this.name;
     }
     public String getSurName(){
-        return this.surName;
+        return this.surname;
     }
 
     public Date getDepartureDate() {
@@ -57,9 +57,6 @@ public class Guest {
                 secondDate.setTime(this.guestRoom.getCurrenGuestInfo().get(i).getArrivalDate());
 
                 allDaysLeaving = (int) (firstCalendar.getTimeInMillis() - secondDate.getTimeInMillis());
-
-
-
             }
         }
 
@@ -75,5 +72,9 @@ public class Guest {
     }
     public void setGuestRoom(Room room){
         this.guestRoom=room;
+    }
+
+    public String toString(){
+        return String.format("Guest Name: %s surname: %s guest room number: %s ",this.name,this.surname,this.guestRoom.getNumber());
     }
 }

@@ -1,11 +1,12 @@
 package Entity;
 
 import Services.Literals;
+import Services.PrintIOperations;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Hotel {
+public class Hotel extends ArrayList<Room> {
     private String name;
 
     private int freeRoomsCount;
@@ -44,7 +45,8 @@ public class Hotel {
     public ArrayList<Room> getAllRooms() {
         return this.allRooms;
     }
-    public ArrayList<Room> getFreeRooms() {
+
+    private ArrayList<Room> getFreeRooms() {
         ArrayList<Room> freeRooms = new ArrayList<Room>();
         for (int i = 0; i < allRooms.size(); i++) {
             if (allRooms.get(i).getStatus().equals(RoomStatus.free)) {
@@ -56,7 +58,19 @@ public class Hotel {
     }
 
 
-    
+    public void printAllRooms(){
+        PrintIOperations.printAllRooms(this.allRooms);
+    }
+    public void printFreeRooms(){
+        PrintIOperations.printAllRooms( this.getFreeRooms());
+    }
+
+public int getFreeRoomsCount(){
+        return this.getFreeRooms().size();
+}
+
+
+
 
     public int getAllGuestsCount() {
         return this.allGuests.size();

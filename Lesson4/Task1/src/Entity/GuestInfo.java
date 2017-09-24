@@ -8,6 +8,7 @@ public class GuestInfo {
     private Date arrivalDate;
     private Date departureDate;
     private Guest guest;
+    private Boolean isStillLiving;
 
     public GuestInfo(Date arrivalDate,Date departureDate,Guest guest){
         if(departureDate.compareTo(arrivalDate)==-1){
@@ -16,6 +17,7 @@ public class GuestInfo {
         this.arrivalDate=arrivalDate;
         this.departureDate=departureDate;
         this.guest=guest;
+        this.isStillLiving=true;
     }
 
     public Guest getGuest(){
@@ -25,16 +27,19 @@ public class GuestInfo {
         return this.departureDate;
     }
 
-    public boolean roomFreeByDate(Date date){
-        if(this.departureDate.compareTo(date)==1){
-            return true;
-        }
-        else{return false;}
-    }
+
     public Date getArrivalDate(){
         return arrivalDate;
     }
     public void setDepartureDate(Date date){
         this.departureDate=date;
+    }
+
+    public void setIsStillLiving(Boolean b){
+        this.isStillLiving=b;
+    }
+
+    public Boolean getStillLiving() {
+        return isStillLiving;
     }
 }

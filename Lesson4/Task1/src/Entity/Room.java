@@ -2,8 +2,8 @@ package Entity;
 
 import java.util.ArrayList;
 import java.util.Date;
-import Services.Literals;
 
+import Services.Literals;
 
 
 public class Room {
@@ -12,8 +12,8 @@ public class Room {
     private RoomStatus status = RoomStatus.free;
     private int stars;
     private int cost;
-    private ArrayList<GuestInfo> currentGuestsInfo;
-    private ArrayList<GuestInfo> oldGuestInfo;
+    private ArrayList<GuestInfo> guestsInfo;
+
     private Hotel hotel;
 
 
@@ -22,10 +22,7 @@ public class Room {
         this.cost = cost;
         this.capacity = capacity;
         this.stars = stars;
-        this.currentGuestsInfo = new ArrayList<GuestInfo>(capacity);
-        this.oldGuestInfo = new ArrayList<GuestInfo>();
-
-
+        this.guestsInfo = new ArrayList<GuestInfo>(capacity);
     }
 
     public void setStatus(RoomStatus status) {
@@ -36,19 +33,29 @@ public class Room {
         return this.status;
     }
 
+    private int getCurrenGuestCount() {
+        int count = 0;
+        for (GuestInfo gi : guestsInfo) {
+            if (gi.getStillLiving()) {
+                count++;
+            }
+
+        }
+        return count;
+
+    }
+
 
     public void addGuest(Guest guest, Date departureDate) {
 
-
-        if (this.capacity > this.currentGuestsInfo.size()) {
+        if (this.capacity > this.getCurrenGuestCount()) {
             GuestInfo gi = new GuestInfo(new Date(), departureDate, guest);
-            this.currentGuestsInfo.add(gi);
-            this.hotel.getAllGuests().add(guest);
+            this.guestsInfo.add(gi);
             guest.setGuestRoom(this);
             guest.setGuestInfo(gi);
 
 
-            if (this.capacity == this.currentGuestsInfo.size()) {
+            if (this.capacity == this.getCurrenGuestCount()) {
                 this.status = RoomStatus.reserved;
             }
 
@@ -60,12 +67,10 @@ public class Room {
     }
 
     public void outGuest(Guest guest) {
-        for (int i = 0; i < currentGuestsInfo.size(); i++) {
-            if (this.currentGuestsInfo.get(i).getGuest().equals(guest)) {
-                guest.getGuestInfo().setDepartureDate(new Date());
-                this.oldGuestInfo.add(currentGuestsInfo.get(i));
-                this.currentGuestsInfo.remove(i);
-                this.hotel.getAllGuests().remove(guest);
+        for (int i = 0; i < guestsInfo.size(); i++) {
+
+            if (this.guestsInfo.get(i).getGuest().equals(guest)) {
+                guestsInfo.get(i).setIsStillLiving(false);
             }
 
         }
@@ -94,20 +99,27 @@ public class Room {
     }
 
     public ArrayList<GuestInfo> getCurrenGuestInfo() {
-        return this.currentGuestsInfo;
+        return this.guestsInfo;
 
     }
 
     public int getFutureCountFreePlacesByDate(Date date) {
         int count = 0;
-        for (int i = 0; i < currentGuestsInfo.size(); i++) {
 
-            if (this.currentGuestsInfo.get(i).roomFreeByDate(date) == true) {
-                count = count + 1;
+
+        for (GuestInfo gi:guestsInfo) {
+            if(gi.getStillLiving()){
+
+                if(gi.getDepartureDate().compareTo(date)==-1){
+                    count++;
+                }
+
             }
 
         }
-        return count;
+
+
+        return count+(this.capacity-getCurrenGuestCount());
     }
 
     public void setHotel(Hotel hotel) {
@@ -115,21 +127,24 @@ public class Room {
     }
 
 
-    public ArrayList<Guest> getlastThreeGuests() {
-
+    public ArrayList<Guest> printLastThreeGuests() {
         ArrayList<Guest> lastThreeGuests = new ArrayList<Guest>();
-
-
-        for(int i=0;i<this.oldGuestInfo.size()&&i<3;i++){
-            lastThreeGuests.add(this.oldGuestInfo.get(i).getGuest());
+        for (int i = this.guestsInfo.size(),k=0; i >0 && k < 3; i--,k++) {
+            Guest guest=this.guestsInfo.get(i-1).getGuest();
+            System.out.println(guest +this.guestsInfo.get(i-1).getDepartureDate().toString());
+           // lastThreeGuests.add(this.guestsInfo.get(i-1).getGuest());
         }
-
-
         return lastThreeGuests;
 
 
-
     }
+
+    public String toString() {
+        return String.format("Room number: %s cost: %s capacity: %s", this.number, this.cost, this.capacity);
+    }
+
+
+
 
 
 }
