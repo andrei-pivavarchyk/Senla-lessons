@@ -1,5 +1,9 @@
-import java.util.Date;
-import java.util.Calendar;
+import Entity.Guest;
+import Entity.Hotel;
+import Entity.Room;
+import Entity.Service;
+import Sorting.GuestSorting;
+
 import java.util.GregorianCalendar;
 
 public class Main {
@@ -27,21 +31,21 @@ public class Main {
 
 
         //print all rooms
-        PrintIOperations.printAllRooms(bestHotel.getAllRooms());
+        Services.PrintIOperations.printAllRooms(bestHotel.getAllRooms());
         //print free rooms
-        PrintIOperations.printAllRooms(bestHotel.getFreeRooms());
+        Services.PrintIOperations.printAllRooms(bestHotel.getFreeRooms());
         //print all guests
-        PrintIOperations.printAllGuests(bestHotel.getAllGuests());
+        Services.PrintIOperations.printAllGuests(bestHotel.getAllGuests());
 
         //SORTING GUESTS
-        PrintIOperations.printAllGuests( GuestSorting.guestNameSorting(bestHotel.getAllGuests()));
-        PrintIOperations.printAllGuests( GuestSorting.guestDepartureDateSorting(bestHotel.getAllGuests()));
+        Services.PrintIOperations.printAllGuests( GuestSorting.guestNameSorting(bestHotel.getAllGuests()));
+        Services.PrintIOperations.printAllGuests( GuestSorting.guestDepartureDateSorting(bestHotel.getAllGuests()));
         System.out.println(guest1.getPay()+"$ need pay");
         //Last Three Guests
 
         room1.outGuest(guest1);
 
-        PrintIOperations.printGuestsWithDate(room1.getlastThreeGuests());
+        Services.PrintIOperations.printGuestsWithDate(room1.getlastThreeGuests());
 
 
 

@@ -1,3 +1,7 @@
+package Comparator;
+
+import Entity.Guest;
+
 import java.util.Comparator;
 
 public class GuestNameComporator implements Comparator<Guest> {

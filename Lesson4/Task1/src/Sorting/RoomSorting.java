@@ -1,3 +1,10 @@
+package Sorting;
+
+import Comparator.RoomCapacityCorporator;
+import Comparator.RoomCostComparator;
+import Comparator.RoomStarsComparator;
+import Entity.Room;
+
 import java.util.ArrayList;
 
 public class RoomSorting {

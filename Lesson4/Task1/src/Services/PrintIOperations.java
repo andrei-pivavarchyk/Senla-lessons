@@ -1,4 +1,8 @@
-import java.lang.reflect.Array;
+package Services;
+
+import Entity.Guest;
+import Entity.Room;
+
 import java.util.ArrayList;
 
 public class PrintIOperations {
@@ -8,7 +12,7 @@ public class PrintIOperations {
         for (int i = 0; i < allRooms.size(); i++) {
             StringBuilder text=new StringBuilder();
 
-          text.append("Room  number:");
+          text.append("Entity.Room  number:");
           text.append(allRooms.get(i).getNumber());
           text.append(" cost: ");
           text.append(allRooms.get(i).getCost());
@@ -29,7 +33,7 @@ public class PrintIOperations {
             StringBuilder text=new StringBuilder();
             text.append(allGuests.get(i).getName()+" ");
             text.append(allGuests.get(i).getSurName()+" ");
-            text.append("Room number ");
+            text.append("Entity.Room number ");
             text.append(allGuests.get(i).getGuestRoom().getNumber());
             System.out.println(text);
 

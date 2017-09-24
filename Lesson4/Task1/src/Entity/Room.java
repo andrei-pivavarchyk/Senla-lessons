@@ -1,9 +1,10 @@
+package Entity;
 
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import Services.Literals;
+
+
 
 public class Room {
     private int number;
@@ -53,7 +54,7 @@ public class Room {
 
 
         } else {
-            System.out.println(new StringBuilder(Literals.roomNoFreePlaces).append("in Room"));
+            System.out.println(new StringBuilder(Literals.roomNoFreePlaces).append("in Entity.Room"));
         }
 
     }

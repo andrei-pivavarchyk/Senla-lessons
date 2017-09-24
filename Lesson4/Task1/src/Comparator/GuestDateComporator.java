@@ -1,3 +1,7 @@
+package Comparator;
+
+import Entity.Guest;
+
 import java.util.Comparator;
 import java.util.Date;
 

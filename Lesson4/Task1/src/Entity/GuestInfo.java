@@ -1,3 +1,7 @@
+package Entity;
+
+import Entity.Guest;
+
 import java.util.Date;
 
 public class GuestInfo {

@@ -1,3 +1,9 @@
+package Sorting;
+
+import Comparator.GuestDateComporator;
+import Comparator.GuestNameComporator;
+import Entity.Guest;
+
 import java.util.ArrayList;
 
 public class GuestSorting {

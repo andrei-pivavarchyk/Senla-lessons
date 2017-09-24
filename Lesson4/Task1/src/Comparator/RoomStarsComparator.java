@@ -1,3 +1,7 @@
+package Comparator;
+
+import Entity.Room;
+
 import java.util.Comparator;
 
 public class RoomStarsComparator implements Comparator<Room> {
