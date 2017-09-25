@@ -49,7 +49,7 @@ public class Main {
 
        Hotel bestHotel=new Hotel("bestHotel");
         ArrayList<Room> newRooms= RoomService.readRoomsFromFile();
-       for(Room r:newRooms){
+       for(Room r: newRooms){
            bestHotel.addRoom(r);
        }
        bestHotel.printAllRooms();
