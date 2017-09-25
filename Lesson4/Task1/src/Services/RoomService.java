@@ -14,7 +14,8 @@ public class RoomService {
 
         try {
 
-            File f = new File("src/Rooms.txt");
+
+            File f = new File("D:\\дизайнерские штуки\\Senla\\reposit-lessons\\Lesson4\\Task1\\src\\Rooms.txt");
 
             BufferedReader b = new BufferedReader(new FileReader(f));
 
@@ -39,10 +40,19 @@ public class RoomService {
             return rooms;
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+        } catch (IOException ex) {
+           return null;
         }
+
+
+
+
+
+
+
+
+
+
 
 
     }
