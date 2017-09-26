@@ -15,7 +15,7 @@ public class RoomService {
         try {
 
 
-            File f = new File("D:\\Rooms.txt");
+            File f = new File("J:\\Rooms.txt");
 
             BufferedReader b = new BufferedReader(new FileReader(f));
 

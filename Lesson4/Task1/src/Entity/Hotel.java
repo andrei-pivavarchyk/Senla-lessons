@@ -15,16 +15,12 @@ public class Hotel extends ArrayList<Room> {
 
     public Hotel(String name) {
         this.name = name;
-        this.allGuests = new ArrayList<Guest>();
-        this.allRooms = new ArrayList<Room>();
-
-
+        this.allGuests = new ArrayList<>();
+        this.allRooms = new ArrayList<>();
     }
-
 
     public void addRoom(Room room) {
         this.allRooms.add(room);
-        room.setHotel(this);
     }
 
     public void removeRoom(Room room) {
@@ -33,22 +29,20 @@ public class Hotel extends ArrayList<Room> {
         } else {
             System.out.println(Literals.guestNotFoundInRoom);
         }
-
     }
-
 
     public ArrayList<Room> getAllRooms() {
         return this.allRooms;
     }
 
     public ArrayList<Room> getFreeRooms() {
-        ArrayList<Room> freeRooms = new ArrayList<Room>();
+        ArrayList<Room> freeRooms = new ArrayList<>();
         for (int i = 0; i < allRooms.size(); i++) {
             if (allRooms.get(i).getStatus().equals(RoomStatus.free)) {
                 freeRooms.add(this.allRooms.get(i));
             }
-
         }
+
         return freeRooms;
     }
 
@@ -89,7 +83,7 @@ public class Hotel extends ArrayList<Room> {
         return allGuests;
     }
 
-    public void addGuestToRoom(int roomNumber,Guest guest,int year,int month,int day){
+    public void addGuestToRoom(int roomNumber, Guest guest, int year, int month, int day) {
 
 
     }

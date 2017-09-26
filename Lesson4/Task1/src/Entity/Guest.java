@@ -21,8 +21,41 @@ public class Guest {
     public String getName() {
         return this.name;
     }
-    public String getSurName(){
+
+    public String getSurName() {
         return this.surname;
+    }
+
+    public GuestInfo getGuestInfo() {
+        return this.guestInfo;
+    }
+
+    public void setGuestInfo(GuestInfo guestInfo) {
+        this.guestInfo = guestInfo;
+    }
+
+    public Room getGuestRoom() {
+        return this.guestRoom;
+    }
+
+    public void setGuestRoom(Room room) {
+        this.guestRoom = room;
+    }
+
+    public long calculatePayForRoom() {
+        GregorianCalendar firstCalendar = new GregorianCalendar();
+        GregorianCalendar secondDate = new GregorianCalendar();
+        long allDaysLeaving = 0;
+
+        for (int i = 0; i < this.guestRoom.getCurrenGuestInfo().size(); i++) {
+            if (this.guestRoom.getCurrenGuestInfo().get(i).getGuest().equals(this)) {
+                firstCalendar.setTime(this.guestRoom.getCurrenGuestInfo().get(i).getDepartureDate());
+                secondDate.setTime(this.guestRoom.getCurrenGuestInfo().get(i).getArrivalDate());
+                allDaysLeaving = (int) (firstCalendar.getTimeInMillis() - secondDate.getTimeInMillis());
+            }
+        }
+
+        return allDaysLeaving / 86400000 * this.guestRoom.getCost();
     }
 
     public Date getDepartureDate() {
@@ -32,39 +65,11 @@ public class Guest {
                 departureDate = this.guestRoom.getCurrenGuestInfo().get(i).getDepartureDate();
             }
         }
+
         return departureDate;
-
-
     }
-    public void setGuestInfo(GuestInfo guestInfo){
-        this.guestInfo=guestInfo;
-    }
-    public GuestInfo getGuestInfo(){return this.guestInfo;}
-    public long getPay() {
-        GregorianCalendar firstCalendar = new GregorianCalendar();
-        GregorianCalendar secondDate = new GregorianCalendar();
-        long allDaysLeaving = 0;
 
-
-        for (int i = 0; i < this.guestRoom.getCurrenGuestInfo().size(); i++) {
-            if (this.guestRoom.getCurrenGuestInfo().get(i).getGuest().equals(this)) {
-
-                firstCalendar.setTime(this.guestRoom.getCurrenGuestInfo().get(i).getDepartureDate());
-                secondDate.setTime(this.guestRoom.getCurrenGuestInfo().get(i).getArrivalDate());
-
-                allDaysLeaving = (int) (firstCalendar.getTimeInMillis() - secondDate.getTimeInMillis());
-            }
-        }
-
-        return allDaysLeaving / 86400000 * this.guestRoom.getCost();
-    }
-    public Room getGuestRoom(){
-        return this.guestRoom;
-    }
-    public void setGuestRoom(Room room){
-        this.guestRoom=room;
-    }
-    public String toString(){
-        return String.format("Guest Name: %s surname: %s guest room number: %s ",this.name,this.surname,this.guestRoom.getNumber());
+    public String toString() {
+        return String.format("Guest Name: %s surname: %s guest room number: %s ", this.name, this.surname, this.guestRoom.getNumber());
     }
 }
