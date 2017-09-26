@@ -5,6 +5,7 @@ import Entity.Service;
 import Services.PrintIOperations;
 import Services.RoomService;
 import Sorting.GuestSorting;
+import com.danco.training.TextFileWorker;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -48,11 +49,13 @@ public class Main {
 
 
        Hotel bestHotel=new Hotel("bestHotel");
-        ArrayList<Room> newRooms= RoomService.readRoomsFromFile();
-       for(Room r: newRooms){
-           bestHotel.addRoom(r);
-       }
+       
+
+
        bestHotel.printAllRooms();
+       System.out.print( bestHotel.getFreeRooms());
+
+
 
 
 

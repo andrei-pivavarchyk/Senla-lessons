@@ -8,15 +8,10 @@ import java.util.Date;
 
 public class Hotel extends ArrayList<Room> {
     private String name;
-
     private int freeRoomsCount;
     private int allGuestsCount;
-
     private ArrayList<Room> allRooms;
-
-
     private ArrayList<Guest> allGuests;
-
 
     public Hotel(String name) {
         this.name = name;
@@ -46,7 +41,7 @@ public class Hotel extends ArrayList<Room> {
         return this.allRooms;
     }
 
-    private ArrayList<Room> getFreeRooms() {
+    public ArrayList<Room> getFreeRooms() {
         ArrayList<Room> freeRooms = new ArrayList<Room>();
         for (int i = 0; i < allRooms.size(); i++) {
             if (allRooms.get(i).getStatus().equals(RoomStatus.free)) {
@@ -58,18 +53,17 @@ public class Hotel extends ArrayList<Room> {
     }
 
 
-    public void printAllRooms(){
+    public void printAllRooms() {
         PrintIOperations.printAllRooms(this.allRooms);
     }
-    public void printFreeRooms(){
-        PrintIOperations.printAllRooms( this.getFreeRooms());
+
+    public void printFreeRooms() {
+        PrintIOperations.printAllRooms(this.getFreeRooms());
     }
 
-public int getFreeRoomsCount(){
+    public int getFreeRoomsCount() {
         return this.getFreeRooms().size();
-}
-
-
+    }
 
 
     public int getAllGuestsCount() {
@@ -94,4 +88,10 @@ public int getFreeRoomsCount(){
     public ArrayList<Guest> getAllGuests() {
         return allGuests;
     }
+
+    public void addGuestToRoom(int roomNumber,Guest guest,int year,int month,int day){
+
+
+    }
+
 }

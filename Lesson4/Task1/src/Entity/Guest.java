@@ -10,11 +10,8 @@ public class Guest {
     private String surname;
     private Room guestRoom;
     private GuestInfo guestInfo;
-
-
     private int pay;
     private Service allGuestService;
-
 
     public Guest(String name, String surName) {
         this.name = name;
@@ -43,7 +40,6 @@ public class Guest {
         this.guestInfo=guestInfo;
     }
     public GuestInfo getGuestInfo(){return this.guestInfo;}
-
     public long getPay() {
         GregorianCalendar firstCalendar = new GregorianCalendar();
         GregorianCalendar secondDate = new GregorianCalendar();
@@ -62,18 +58,12 @@ public class Guest {
 
         return allDaysLeaving / 86400000 * this.guestRoom.getCost();
     }
-
-
-
-
-
     public Room getGuestRoom(){
         return this.guestRoom;
     }
     public void setGuestRoom(Room room){
         this.guestRoom=room;
     }
-
     public String toString(){
         return String.format("Guest Name: %s surname: %s guest room number: %s ",this.name,this.surname,this.guestRoom.getNumber());
     }

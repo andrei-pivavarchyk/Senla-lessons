@@ -7,14 +7,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/Libs/textFileWorker.jar!/" />
+          <root url="jar://$MODULE_DIR$/Program/textFileWorker.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/src/Libs/textFileWorker.jar!/" />
+          <root url="jar://$MODULE_DIR$/Program/textFileWorker.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

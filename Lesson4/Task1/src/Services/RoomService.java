@@ -15,7 +15,7 @@ public class RoomService {
         try {
 
 
-            File f = new File("D:\\дизайнерские штуки\\Senla\\reposit-lessons\\Lesson4\\Task1\\src\\Rooms.txt");
+            File f = new File("D:\\Rooms.txt");
 
             BufferedReader b = new BufferedReader(new FileReader(f));
 

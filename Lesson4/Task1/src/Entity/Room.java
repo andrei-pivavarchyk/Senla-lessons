@@ -107,19 +107,16 @@ public class Room {
         int count = 0;
 
 
-        for (GuestInfo gi:guestsInfo) {
-            if(gi.getStillLiving()){
+        for (GuestInfo gi : guestsInfo) {
+            if (gi.getStillLiving()) {
 
-                if(gi.getDepartureDate().compareTo(date)==-1){
+                if (gi.getDepartureDate().compareTo(date) == -1) {
                     count++;
                 }
-
             }
-
         }
 
-
-        return count+(this.capacity-getCurrenGuestCount());
+        return count + (this.capacity - getCurrenGuestCount());
     }
 
     public void setHotel(Hotel hotel) {
@@ -129,22 +126,18 @@ public class Room {
 
     public ArrayList<Guest> printLastThreeGuests() {
         ArrayList<Guest> lastThreeGuests = new ArrayList<Guest>();
-        for (int i = this.guestsInfo.size(),k=0; i >0 && k < 3; i--,k++) {
-            Guest guest=this.guestsInfo.get(i-1).getGuest();
-            System.out.println(guest +this.guestsInfo.get(i-1).getDepartureDate().toString());
-           // lastThreeGuests.add(this.guestsInfo.get(i-1).getGuest());
+        for (int i = this.guestsInfo.size(), k = 0; i > 0 && k < 3; i--, k++) {
+            Guest guest = this.guestsInfo.get(i - 1).getGuest();
+            System.out.println(guest + this.guestsInfo.get(i - 1).getDepartureDate().toString());
+            // lastThreeGuests.add(this.guestsInfo.get(i-1).getGuest());
         }
         return lastThreeGuests;
-
 
     }
 
     public String toString() {
-        return String.format("Room number: %s cost: %s capacity: %s", this.number, this.cost, this.capacity);
+        return String.format("Room number: %s cost: %s capacity: %s stars: %s", this.number, this.cost, this.capacity, this.stars);
     }
-
-
-
 
 
 }
