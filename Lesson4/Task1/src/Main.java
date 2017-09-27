@@ -1,7 +1,5 @@
-import Entity.Guest;
-import Entity.Hotel;
-import Entity.Room;
-import Entity.Service;
+import Entity.*;
+import Services.HotelService;
 import Services.PrintIOperations;
 import Services.RoomService;
 import Sorting.GuestSorting;
@@ -18,12 +16,16 @@ import java.util.GregorianCalendar;
 public class Main {
     public static void main(String[] args) {
         Hotel bestHotel = new Hotel("bestHotel");
-        ArrayList<Room> newRooms= RoomService.readRoomsFromFile();
-        for(Room r: newRooms){
-            bestHotel.addRoom(r);
+        HotelService hs = new HotelService(bestHotel);
+        ArrayList<Room> newRooms = RoomService.readRoomsFromFile();
+        for (Room r : newRooms) {
+            hs.addRoom(r);
         }
 
-        bestHotel.printAllRooms();
-        bestHotel.printFreeRooms();
+        hs.PrintFreeRoomsSortedBy(RoomSortType.Capacity);
+        hs.PrintFreeRoomsSortedBy(RoomSortType.Cost);
+        hs.PrintFreeRoomsSortedBy(RoomSortType.Stars);
+        System.out.println("Number of free rooms:" + hs.getFreeRoomsCount());
+        System.out.println("Number of guests:" + hs.getGuestsCount());
     }
 }
