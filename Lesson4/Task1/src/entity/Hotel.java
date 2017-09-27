@@ -1,5 +1,6 @@
 package entity;
 
+import guestService.Service;
 import services.Literals;
 import services.PrintOperations;
 
@@ -12,11 +13,13 @@ public class Hotel extends ArrayList<Room> {
     private String name;
     private ArrayList<Room> allRooms;
     private ArrayList<Guest> allGuests;
+    private ArrayList<Service> allServices;
 
     public Hotel(String name) {
         this.name = name;
         this.allGuests = new ArrayList<Guest>();
         this.allRooms = new ArrayList<Room>();
+        this.allServices = new ArrayList<Service>();
 
 
     }
@@ -112,6 +115,11 @@ public class Hotel extends ArrayList<Room> {
         return allGuests;
     }
 
+    public void addService(Service service){
+        this.allServices.add(service);
+    }
 
-
+    public ArrayList<Service> getAllServices(){
+        return this.allServices;
+    }
 }

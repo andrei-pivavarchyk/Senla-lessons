@@ -1,6 +1,7 @@
 package entity;
 
-import java.time.Period;
+import guestService.Service;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -62,8 +63,10 @@ public class Guest {
         service.setDate(calendar.getTime());
         service.setGuest(this);
         this.allGuestService.add(service);
+
     }
      public ArrayList<Service> getAllGuestService(){
         return this.allGuestService;
      }
+
 }

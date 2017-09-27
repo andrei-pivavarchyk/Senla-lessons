@@ -2,7 +2,7 @@ package services;
 
 import entity.Guest;
 import entity.Room;
-import entity.Service;
+import guestService.Service;
 
 import java.util.ArrayList;
 

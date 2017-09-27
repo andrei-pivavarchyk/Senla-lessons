@@ -2,15 +2,19 @@ import com.danco.training.TextFileWorker;
 import entity.Guest;
 import entity.Hotel;
 import entity.Room;
-import entity.Service;
+import guestService.Service;
+import guestService.ServiceType;
 import services.PrintOperations;
-import services.RoomService;
 import sorting.GuestSorting;
 import sorting.RoomSorting;
+import sorting.ServiceSorting;
 
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+
+import static guestService.ServiceType.eat;
+import static guestService.ServiceType.spa;
+
 
 public class Main {
 
@@ -88,9 +92,23 @@ public class Main {
        bestHotel.getAllRooms().get(0).printLastThreeGuests();
 
         System.out.println("Create service, adding to guest");
-       Service service1 = new Service("Vodka",55);
+        Service service1 = new Service("Vodka",55, eat);
+        Service service2 = new Service("Cola",55,eat);
+        Service service3 = new Service("SomeSpa",55,spa);
+
+        bestHotel.addService(service1);
+        bestHotel.addService(service2);
+        bestHotel.addService(service3);
+
+
        guest1.addService(service1,2018,10,11);
+       guest1.addService(service2,2018 ,9,11);
+        guest1.addService(service3,2018 ,8,11);
+
        PrintOperations.printServices(guest1.getAllGuestService());
+       PrintOperations.printServices(ServiceSorting.serviceCostSorting(bestHotel.getAllServices()) );
+        PrintOperations.printServices(ServiceSorting.serviceDateSorting(bestHotel.getAllServices()) );
+
 
 
 
