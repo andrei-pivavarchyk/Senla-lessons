@@ -13,7 +13,6 @@ public class Guest {
     private Room guestRoom;
     private GuestInfo guestInfo;
     private ArrayList<Service> allGuestService;
-
     public Guest(String name, String surName) {
         this.name = name;
         this.surname = surName;
@@ -75,7 +74,6 @@ public class Guest {
         service.setGuest(this);
         this.allGuestService.add(service);
     }
-
     public ArrayList<Service> getAllGuestService() {
         return this.allGuestService;
     }
