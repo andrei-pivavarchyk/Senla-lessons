@@ -2,6 +2,7 @@ package services;
 
 import entity.Guest;
 import entity.Room;
+import entity.Service;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,15 @@ public class PrintOperations {
 
     }
 
+    public static void printServices(ArrayList<Service> allServices){
+
+        for (int i = 0; i < allServices.size(); i++) {
+
+            System.out.println(allServices.get(i));
+        }
+        System.out.println("Guest Services was printed");
+
+    }
 
     public static void printAllGuests(ArrayList<Guest> allGuests){
 

@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -10,12 +11,12 @@ public class Guest {
     private String surname;
     private Room guestRoom;
     private GuestInfo guestInfo;
-    private int pay;
-    private Service allGuestService;
+    private ArrayList<Service> allGuestService;
 
     public Guest(String name, String surName) {
         this.name = name;
         this.surname = surName;
+        this.allGuestService=new ArrayList<Service>();
         System.out.println(new StringBuilder("Guest ").append(this.name).append(" ").append(this.surname).append(" was created"));
     }
 
@@ -55,4 +56,14 @@ public class Guest {
     public String toString(){
         return String.format("Guest  %s %s guest room number: %s ",this.name,this.surname,this.guestRoom.getNumber());
     }
+    public void addService(Service service,int year,int month,int day){
+        Calendar calendar= Calendar.getInstance();
+        calendar.set(year,month,day);
+        service.setDate(calendar.getTime());
+        service.setGuest(this);
+        this.allGuestService.add(service);
+    }
+     public ArrayList<Service> getAllGuestService(){
+        return this.allGuestService;
+     }
 }

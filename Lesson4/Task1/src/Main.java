@@ -84,8 +84,14 @@ public class Main {
 
         //Print pay guest
         System.out.println( guest1.getPay()+" $");
-
+       //Print last three guests in room
        bestHotel.getAllRooms().get(0).printLastThreeGuests();
+
+        System.out.println("Create service, adding to guest");
+       Service service1 = new Service("Vodka",55);
+       guest1.addService(service1,2018,10,11);
+       PrintOperations.printServices(guest1.getAllGuestService());
+
 
 
 

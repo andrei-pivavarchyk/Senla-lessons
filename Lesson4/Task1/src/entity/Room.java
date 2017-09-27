@@ -118,7 +118,6 @@ public class Room {
             text.append("Arribal date: ").append( this.guestsInfo.get(i - 1).getArrivalDate().toString());
 
             System.out.println(text );
-            // lastThreeGuests.add(this.guestsInfo.get(i-1).getGuest());
 
         }
         return lastThreeGuests;
