@@ -11,15 +11,16 @@ public class Room {
     private int capacity;
     private int stars;
     private int cost;
-    private RoomStatus status = RoomStatus.free;
-    private ArrayList<GuestInfo> guestsInfo;
+    private RoomStatus status;
+    private ArrayList<Guest> guests;
 
     public Room(int number, int cost, int capacity, int stars) {
         this.number = number;
         this.cost = cost;
         this.capacity = capacity;
         this.stars = stars;
-        this.guestsInfo = new ArrayList<>(capacity);
+        this.status = RoomStatus.free;
+        guests = new ArrayList<>();
     }
 
     public int getCost() {
@@ -42,6 +43,10 @@ public class Room {
         return this.stars;
     }
 
+    public int getCurrentGuestCount() {
+        return guests.size();
+    }
+
     public RoomStatus getStatus() {
         return this.status;
     }
@@ -50,67 +55,23 @@ public class Room {
         this.status = status;
     }
 
-    private int getCurrenGuestCount() {
-        int count = 0;
-        for (GuestInfo gi : guestsInfo) {
-            if (gi.getStillLiving()) {
-                count++;
-            }
+    public void addGuest(Guest guest) {
+        if (guests.size() == capacity) {
+            throw new IllegalArgumentException("Room is full.");
         }
 
-        return count;
+        guests.add(guest);
+        System.out.println("Guest was added.");
     }
 
-
-    public void addGuest(Guest guest, Date departureDate) {
-        if (this.capacity > this.getCurrenGuestCount()) {
-            GuestInfo gi = new GuestInfo(new Date(), departureDate, guest);
-            this.guestsInfo.add(gi);
-            guest.setGuestRoom(this);
-            guest.setGuestInfo(gi);
-
-            if (this.capacity == this.getCurrenGuestCount()) {
-                this.status = RoomStatus.reserved;
-            }
-        } else {
-            System.out.println(new StringBuilder(Literals.roomNoFreePlaces).append("in Entity.Room"));
-        }
-    }
-
-    public void outGuest(Guest guest) {
-        for (int i = 0; i < guestsInfo.size(); i++) {
-            if (this.guestsInfo.get(i).getGuest().equals(guest)) {
-                guestsInfo.get(i).setIsStillLiving(false);
-            }
-        }
-    }
-
-    public ArrayList<GuestInfo> getCurrenGuestInfo() {
-        return this.guestsInfo;
-    }
-
-    public int getFutureCountFreePlacesByDate(Date date) {
-        int count = 0;
-
-        for (GuestInfo gi : guestsInfo) {
-            if (gi.getStillLiving()) {
-                if (gi.getDepartureDate().compareTo(date) == -1) {
-                    count++;
-                }
-            }
+    public void removeGuest(Guest guest) {
+        if (!guests.contains(guest)) {
+            System.out.println("Guest wasn't found");
+            return;
         }
 
-        return count + (this.capacity - getCurrenGuestCount());
-    }
-
-    public ArrayList<Guest> printLastThreeGuests() {
-        ArrayList<Guest> lastThreeGuests = new ArrayList<Guest>();
-        for (int i = this.guestsInfo.size(), k = 0; i > 0 && k < 3; i--, k++) {
-            Guest guest = this.guestsInfo.get(i - 1).getGuest();
-            System.out.println(guest + this.guestsInfo.get(i - 1).getDepartureDate().toString());
-        }
-
-        return lastThreeGuests;
+        guests.remove(guest);
+        System.out.println("Guest was removed.");
     }
 
     public String toString() {

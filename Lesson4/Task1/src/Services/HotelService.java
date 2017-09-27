@@ -10,9 +10,11 @@ import java.util.Date;
 
 public class HotelService {
     private Hotel hotel;
+    private RoomService roomService;
 
-    public HotelService(Hotel hotel) {
+    public HotelService(Hotel hotel, RoomService roomService) {
         this.hotel = hotel;
+        this.roomService = roomService;
     }
 
     public void PrintRoomsSortedBy(RoomSortType roomSortType) {
@@ -50,7 +52,7 @@ public class HotelService {
     }
 
     public void printFreeRoomsByDate(Date date) {
-        PrintRooms(getFreeRoomsByDate(date), "Rooms free by date:");
+        PrintRooms(roomService.getRoomsCountFreedByDate(date), "Rooms free by date:");
     }
 
     public void addGuestToRoom(int roomNumber, Guest guest, int year, int month, int day) {
@@ -66,17 +68,6 @@ public class HotelService {
         }
 
         return freeRooms;
-    }
-
-    private ArrayList<Room> getFreeRoomsByDate(Date date) {
-        ArrayList<Room> freeRoomsByDate = new ArrayList<>();
-        for (Room r : hotel.getRooms()) {
-            if (r.getFutureCountFreePlacesByDate(date) != 0) {
-                freeRoomsByDate.add(r);
-            }
-        }
-
-        return freeRoomsByDate;
     }
 
     private ArrayList<Room> SortRoomsBy(ArrayList<Room> rooms, RoomSortType roomSortType) {

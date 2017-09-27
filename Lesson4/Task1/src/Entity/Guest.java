@@ -8,10 +8,6 @@ import java.util.GregorianCalendar;
 public class Guest {
     private String name;
     private String surname;
-    private Room guestRoom;
-    private GuestInfo guestInfo;
-    private int pay;
-    private Service allGuestService;
 
     public Guest(String name, String surName) {
         this.name = name;
@@ -21,28 +17,11 @@ public class Guest {
     public String getName() {
         return this.name;
     }
-
     public String getSurName() {
         return this.surname;
     }
 
-    public GuestInfo getGuestInfo() {
-        return this.guestInfo;
-    }
-
-    public void setGuestInfo(GuestInfo guestInfo) {
-        this.guestInfo = guestInfo;
-    }
-
-    public Room getGuestRoom() {
-        return this.guestRoom;
-    }
-
-    public void setGuestRoom(Room room) {
-        this.guestRoom = room;
-    }
-
-    public long calculatePayForRoom() {
+/*    public long calculatePayForRoom() {
         GregorianCalendar firstCalendar = new GregorianCalendar();
         GregorianCalendar secondDate = new GregorianCalendar();
         long allDaysLeaving = 0;
@@ -67,9 +46,9 @@ public class Guest {
         }
 
         return departureDate;
-    }
+    }*/
 
     public String toString() {
-        return String.format("Guest Name: %s surname: %s guest room number: %s ", this.name, this.surname, this.guestRoom.getNumber());
+        return String.format("Guest Name: %s surname: %s", this.name, this.surname);
     }
 }

@@ -8,9 +8,10 @@ public class GuestInfo {
     private Date arrivalDate;
     private Date departureDate;
     private Guest guest;
+    private Room room;
     private Boolean isStillLiving;
 
-    public GuestInfo(Date arrivalDate, Date departureDate, Guest guest) {
+    public GuestInfo(Date arrivalDate, Date departureDate, Guest guest, Room room) {
         if (departureDate.compareTo(arrivalDate) == -1) {
             throw new IllegalArgumentException("Departure date cannot be less than arrival date");
         }
@@ -18,11 +19,15 @@ public class GuestInfo {
         this.arrivalDate = arrivalDate;
         this.departureDate = departureDate;
         this.guest = guest;
+        this.room = room;
         this.isStillLiving = true;
     }
 
     public Guest getGuest() {
         return this.guest;
+    }
+    public Room getRoom() {
+        return this.room;
     }
 
     public Date getDepartureDate() {

@@ -10,10 +10,8 @@ public class GuestDateComporator implements Comparator<Guest> {
 
     @Override
     public int compare(Guest guest1, Guest guest2) {
-        Date guest1Date = guest1.getDepartureDate();
-        Date guest2Date = guest2.getDepartureDate();
-        return guest1Date.compareTo(guest2Date);
-
-
+/*      Date guest1Date = guest1.getDepartureDate();
+        Date guest2Date = guest2.getDepartureDate();*/
+        return 1;
     }
 }

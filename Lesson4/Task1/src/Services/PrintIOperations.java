@@ -22,7 +22,7 @@ public class PrintIOperations {
         System.out.println("Guests was printed");
     }
 
-    public static void printGuestsWithDate(ArrayList<Guest> allGuests) {
+/*    public static void printGuestsWithDate(ArrayList<Guest> allGuests) {
         for (int i = 0; i < allGuests.size(); i++) {
             StringBuilder text = new StringBuilder();
             text.append("Name " + allGuests.get(i).getName());
@@ -33,5 +33,5 @@ public class PrintIOperations {
         }
 
         System.out.println("Guests with Date was printed");
-    }
+    }*/
 }
