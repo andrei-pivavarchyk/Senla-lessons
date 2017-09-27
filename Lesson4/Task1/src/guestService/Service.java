@@ -20,9 +20,8 @@ public class Service {
 
     public String toString(){
       return  String.format("Service:  %s cost: %s %s ",this.name,this.cost,this.guest);
-
     }
-public void setDate(Date date){
+    public void setDate(Date date){
         this.date=date;
 }
 public Date getDate(){

@@ -27,7 +27,6 @@ public class GuestInfo {
         return this.departureDate;
     }
 
-
     public Date getArrivalDate(){
         return arrivalDate;
     }

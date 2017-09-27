@@ -2,12 +2,8 @@ package entity;
 
 import guestService.Service;
 import services.Literals;
-import services.PrintOperations;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class Hotel extends ArrayList<Room> {
     private String name;
@@ -55,71 +51,41 @@ public class Hotel extends ArrayList<Room> {
         return freeRooms;
     }
 
-    private Room findRoomByNumber(int roomNumber){
+    private Room findRoomByNumber(int roomNumber) {
         Room currentRoom;
-        for(Room room:this.allRooms){
-            if(room.getNumber()==roomNumber){
-                currentRoom=room;
+        for (Room room : this.allRooms) {
+            if (room.getNumber() == roomNumber) {
+                currentRoom = room;
                 return room;
             }
         }
         return null;
     }
 
-    public void addGuestToRoom(int roomNumber,Guest guest,int year,int month,int day){
-     Room currentRoom=this.findRoomByNumber(roomNumber);
-     if(currentRoom!=null){
-         Calendar calendar= Calendar.getInstance();
-         calendar.set(year,month,day);
-         currentRoom.addGuest(guest,calendar.getTime());
-     }
-     else{
-         System.out.print("There is no room with this number");
-     }
-    }
-
-    public void printFreeRooms() {
-        PrintOperations.printAllRooms(this.getFreeRooms());
+    public void addGuestToRoom(int roomNumber, Guest guest, int year, int month, int day) {
+        Room currentRoom = this.findRoomByNumber(roomNumber);
+        if (currentRoom != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month, day);
+            currentRoom.addGuest(guest, calendar.getTime());
+        } else {
+            System.out.print("There is no room with this number");
+        }
     }
 
     public int getFreeRoomsCount() {
         return this.getFreeRooms().size();
     }
 
-    public int getAllGuestsCount() {
-        return this.allGuests.size();
-    }
-
-    public int getAllRoomsCount() {
-        return this.allRooms.size();
-    }
-
-    public ArrayList<Room> getFreeRoomsByDate(int year,int month,int day) {
-
-        Date date=new GregorianCalendar(year,month+1,day).getTime();
-        ArrayList<Room> freeRoomsByDate = new ArrayList<Room>();
-        for(Room room:this.allRooms){
-            if(room.getDateDeparture()!=null){
-                if(room.getDateDeparture().compareTo(date)==-1){
-                    freeRoomsByDate.add(room);
-                }
-            }
-        }
-        freeRoomsByDate.addAll(this.getFreeRooms());
-        return freeRoomsByDate;
-
-
-    }
-
     public ArrayList<Guest> getAllGuests() {
         return allGuests;
     }
 
-    public void addService(Service service){
+    public void addService(Service service) {
         this.allServices.add(service);
     }
 
-    public ArrayList<Service> getAllServices(){
+    public ArrayList<Service> getAllServices() {
         return this.allServices;
     }
 }

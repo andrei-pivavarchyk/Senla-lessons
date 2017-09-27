@@ -97,10 +97,9 @@ public class Room {
     }
 
     public Date getDateDeparture() {
-        if(this.status.equals(RoomStatus.free)){
+        if (this.status.equals(RoomStatus.free)) {
             return null;
-        }
-        else{
+        } else {
             return this.guestsInfo.get(0).getDepartureDate();
         }
     }
@@ -113,11 +112,11 @@ public class Room {
         ArrayList<Guest> lastThreeGuests = new ArrayList<Guest>();
         for (int i = this.guestsInfo.size(), k = 0; i > 0 && k < 3; i--, k++) {
             Guest guest = this.guestsInfo.get(i - 1).getGuest();
-            StringBuilder text=new StringBuilder(guest.toString());
-            text.append("Departure date: ").append( this.guestsInfo.get(i - 1).getDepartureDate().toString());
-            text.append("Arribal date: ").append( this.guestsInfo.get(i - 1).getArrivalDate().toString());
+            StringBuilder text = new StringBuilder(guest.toString());
+            text.append("Departure date: ").append(this.guestsInfo.get(i - 1).getDepartureDate().toString());
+            text.append("Arribal date: ").append(this.guestsInfo.get(i - 1).getArrivalDate().toString());
 
-            System.out.println(text );
+            System.out.println(text);
 
         }
         return lastThreeGuests;
@@ -127,7 +126,6 @@ public class Room {
     public String toString() {
         return String.format("Room number: %s cost: %s capacity: %s stars: %s", this.number, this.cost, this.capacity, this.stars);
     }
-
 
 
 }
