@@ -9,7 +9,6 @@ import sorting.GuestSorting;
 import sorting.RoomSorting;
 
 
-
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
