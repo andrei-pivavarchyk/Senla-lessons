@@ -4,12 +4,12 @@ import services.Literals;
 import services.PrintOperations;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Hotel extends ArrayList<Room> {
     private String name;
-    private int freeRoomsCount;
-    private int allGuestsCount;
     private ArrayList<Room> allRooms;
     private ArrayList<Guest> allGuests;
 
@@ -25,6 +25,7 @@ public class Hotel extends ArrayList<Room> {
     public void addRoom(Room room) {
         this.allRooms.add(room);
         room.setHotel(this);
+        System.out.println(new StringBuilder("Room number: ").append(room.getNumber()).append(" was added"));
     }
 
     public void removeRoom(Room room) {
@@ -35,7 +36,6 @@ public class Hotel extends ArrayList<Room> {
         }
 
     }
-
 
     public ArrayList<Room> getAllRooms() {
         return this.allRooms;
@@ -52,9 +52,27 @@ public class Hotel extends ArrayList<Room> {
         return freeRooms;
     }
 
+    private Room findRoomByNumber(int roomNumber){
+        Room currentRoom;
+        for(Room room:this.allRooms){
+            if(room.getNumber()==roomNumber){
+                currentRoom=room;
+                return room;
+            }
+        }
+        return null;
+    }
 
-    public void printAllRooms() {
-        PrintOperations.printAllRooms(this.allRooms);
+    public void addGuestToRoom(int roomNumber,Guest guest,int year,int month,int day){
+     Room currentRoom=this.findRoomByNumber(roomNumber);
+     if(currentRoom!=null){
+         Calendar calendar= Calendar.getInstance();
+         calendar.set(year,month,day);
+         currentRoom.addGuest(guest,calendar.getTime());
+     }
+     else{
+         System.out.print("There is no room with this number");
+     }
     }
 
     public void printFreeRooms() {
@@ -65,7 +83,6 @@ public class Hotel extends ArrayList<Room> {
         return this.getFreeRooms().size();
     }
 
-
     public int getAllGuestsCount() {
         return this.allGuests.size();
     }
@@ -74,24 +91,27 @@ public class Hotel extends ArrayList<Room> {
         return this.allRooms.size();
     }
 
+    public ArrayList<Room> getFreeRoomsByDate(int year,int month,int day) {
 
-    public ArrayList<Room> getFreeRoomsByDate(Date date) {
+        Date date=new GregorianCalendar(year,month+1,day).getTime();
         ArrayList<Room> freeRoomsByDate = new ArrayList<Room>();
-        for (int i = 0; i < allRooms.size(); i++) {
-            if (this.allRooms.get(i).getFutureCountFreePlacesByDate(date) != 0) {
-                freeRoomsByDate.add(this.allRooms.get(i));
+        for(Room room:this.allRooms){
+            if(room.getDateDeparture()!=null){
+                if(room.getDateDeparture().compareTo(date)==-1){
+                    freeRoomsByDate.add(room);
+                }
             }
         }
+        freeRoomsByDate.addAll(this.getFreeRooms());
         return freeRoomsByDate;
+
+
     }
 
     public ArrayList<Guest> getAllGuests() {
         return allGuests;
     }
 
-    public void addGuestToRoom(int roomNumber,Guest guest,int year,int month,int day){
 
-
-    }
 
 }

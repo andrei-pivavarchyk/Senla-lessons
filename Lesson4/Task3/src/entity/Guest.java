@@ -16,6 +16,7 @@ public class Guest {
     public Guest(String name, String surName) {
         this.name = name;
         this.surname = surName;
+        System.out.println(new StringBuilder("Guest ").append(this.name).append(" ").append(this.surname).append(" was created"));
     }
 
     public String getName() {
@@ -24,7 +25,6 @@ public class Guest {
     public String getSurName(){
         return this.surname;
     }
-
     public Date getDepartureDate() {
         Date departureDate = new Date();
         for (int i = 0; i < this.guestRoom.getCurrenGuestInfo().size(); i++) {
@@ -41,22 +41,10 @@ public class Guest {
     }
     public GuestInfo getGuestInfo(){return this.guestInfo;}
     public long getPay() {
-        GregorianCalendar firstCalendar = new GregorianCalendar();
-        GregorianCalendar secondDate = new GregorianCalendar();
-        long allDaysLeaving = 0;
-
-
-        for (int i = 0; i < this.guestRoom.getCurrenGuestInfo().size(); i++) {
-            if (this.guestRoom.getCurrenGuestInfo().get(i).getGuest().equals(this)) {
-
-                firstCalendar.setTime(this.guestRoom.getCurrenGuestInfo().get(i).getDepartureDate());
-                secondDate.setTime(this.guestRoom.getCurrenGuestInfo().get(i).getArrivalDate());
-
-                allDaysLeaving = (int) (firstCalendar.getTimeInMillis() - secondDate.getTimeInMillis());
-            }
-        }
-
-        return allDaysLeaving / 86400000 * this.guestRoom.getCost();
+        long firstDate = new GregorianCalendar().getTime().getTime();
+        long secondDate = this.getGuestInfo().getDepartureDate().getTime();
+        long allDaysLeaving = (secondDate-firstDate)/86400000;
+        return (secondDate-firstDate)/86400000;
     }
     public Room getGuestRoom(){
         return this.guestRoom;
@@ -65,6 +53,6 @@ public class Guest {
         this.guestRoom=room;
     }
     public String toString(){
-        return String.format("Guest Name: %s surname: %s guest room number: %s ",this.name,this.surname,this.guestRoom.getNumber());
+        return String.format("Guest  %s %s guest room number: %s ",this.name,this.surname,this.guestRoom.getNumber());
     }
 }

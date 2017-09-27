@@ -1,10 +1,10 @@
 package entity;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import services.Literals;
-
 
 public class Room {
     private int number;
@@ -13,7 +13,6 @@ public class Room {
     private int stars;
     private int cost;
     private ArrayList<GuestInfo> guestsInfo;
-
     private Hotel hotel;
 
 
@@ -45,7 +44,6 @@ public class Room {
 
     }
 
-
     public void addGuest(Guest guest, Date departureDate) {
 
         if (this.capacity > this.getCurrenGuestCount()) {
@@ -53,15 +51,13 @@ public class Room {
             this.guestsInfo.add(gi);
             guest.setGuestRoom(this);
             guest.setGuestInfo(gi);
+            this.hotel.getAllGuests().add(guest);
+            this.status = RoomStatus.reserved;
 
-
-            if (this.capacity == this.getCurrenGuestCount()) {
-                this.status = RoomStatus.reserved;
-            }
-
+            System.out.println(new StringBuilder("Guest ").append(guest.getName()).append(" ").append(guest.getSurName()).append(" was added"));
 
         } else {
-            System.out.println(new StringBuilder(Literals.roomNoFreePlaces).append("in Entity.Room"));
+            System.out.println(Literals.roomNoFreePlaces);
         }
 
     }
@@ -72,10 +68,7 @@ public class Room {
             if (this.guestsInfo.get(i).getGuest().equals(guest)) {
                 guestsInfo.get(i).setIsStillLiving(false);
             }
-
         }
-
-
     }
 
     public void setCost(int cost) {
@@ -103,33 +96,30 @@ public class Room {
 
     }
 
-    public int getFutureCountFreePlacesByDate(Date date) {
-        int count = 0;
-
-
-        for (GuestInfo gi : guestsInfo) {
-            if (gi.getStillLiving()) {
-
-                if (gi.getDepartureDate().compareTo(date) == -1) {
-                    count++;
-                }
-            }
+    public Date getDateDeparture() {
+        if(this.status.equals(RoomStatus.free)){
+            return null;
         }
-
-        return count + (this.capacity - getCurrenGuestCount());
+        else{
+            return this.guestsInfo.get(0).getDepartureDate();
+        }
     }
 
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
 
-
     public ArrayList<Guest> printLastThreeGuests() {
         ArrayList<Guest> lastThreeGuests = new ArrayList<Guest>();
         for (int i = this.guestsInfo.size(), k = 0; i > 0 && k < 3; i--, k++) {
             Guest guest = this.guestsInfo.get(i - 1).getGuest();
-            System.out.println(guest + this.guestsInfo.get(i - 1).getDepartureDate().toString());
+            StringBuilder text=new StringBuilder(guest.toString());
+            text.append("Departure date: ").append( this.guestsInfo.get(i - 1).getDepartureDate().toString());
+            text.append("Arribal date: ").append( this.guestsInfo.get(i - 1).getArrivalDate().toString());
+
+            System.out.println(text );
             // lastThreeGuests.add(this.guestsInfo.get(i-1).getGuest());
+
         }
         return lastThreeGuests;
 
@@ -138,6 +128,7 @@ public class Room {
     public String toString() {
         return String.format("Room number: %s cost: %s capacity: %s stars: %s", this.number, this.cost, this.capacity, this.stars);
     }
+
 
 
 }
