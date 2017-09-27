@@ -10,92 +10,118 @@ import sorting.GuestSorting;
 import sorting.RoomSorting;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class HotelService {
 
-    public static void printAllRooms(Hotel hotel) {
-        ArrayList<Room> allRooms = hotel.getAllRooms();
-        for (int i = 0; i < allRooms.size(); i++) {
-
-            System.out.println(allRooms.get(i));
-        }
-        System.out.println("Rooms was printed");
+    public Hotel hotel;
+    public HotelService(Hotel hotel){
+        this.hotel=hotel;
     }
 
-
-    public static void printFreeRooms(Hotel hotel) {
-        ArrayList<Room> freeRooms = hotel.getFreeRooms();
-        for (int i = 0; i < freeRooms.size(); i++) {
-
-            System.out.println(freeRooms.get(i));
-        }
+    public  void printAllRooms() {
+        ArrayList<Room> allRooms = hotel.getAllRooms();
+        printRooms(allRooms);
+        System.out.println("Rooms was printed");
+    }
+    public void printFreeRooms() {
+        ArrayList<Room> freeRooms = this.getFreeRooms();
+        printRooms(freeRooms);
         System.out.println("Rooms was printed");
 
     }
 
-    public static void printRoomsByParametr(Hotel hotel, String parametr) {
-        ArrayList<Room> allRooms = hotel.getAllRooms();
-        if (parametr.equals("cost")) {
 
-            ArrayList<Room> roomSortingCostList = RoomSorting.roomCostSorting(allRooms);
-            for (int i = 0; i < roomSortingCostList.size(); i++) {
+    public void addRoom(Room room) {
+        this.hotel.getAllRooms().add(room);
+        room.setHotel(this.hotel);
+        System.out.println(new StringBuilder("Room number: ").append(room.getNumber()).append(" was added"));
+    }
 
-                System.out.println(roomSortingCostList.get(i));
-            }
-            System.out.println("Rooms was printed");
-        } else if (parametr.equals("capacity")) {
-
-            ArrayList<Room> roomSortingCapacityList = RoomSorting.roomCapacitySorting(allRooms);
-            for (int i = 0; i < roomSortingCapacityList.size(); i++) {
-
-                System.out.println(roomSortingCapacityList.get(i));
-            }
-            System.out.println("Rooms was printed");
-        } else if (parametr.equals("stars")) {
-            ArrayList<Room> roomSortingStarsList = RoomSorting.roomStarsSorting(allRooms);
-            for (int i = 0; i < roomSortingStarsList.size(); i++) {
-
-                System.out.println(roomSortingStarsList.get(i));
-            }
-            System.out.println("Rooms was printed");
-
+    public void removeRoom(Room room) {
+        if (this.hotel.getAllRooms().contains(room)) {
+            this.hotel.getAllRooms().remove(room);
+        } else {
+            System.out.println(Literals.guestNotFoundInRoom);
         }
 
     }
 
 
-    public static void printFreeRoomsByParametr(Hotel hotel, String parametr) {
-        ArrayList<Room> freeRooms =hotel.getFreeRooms();
-        if (parametr.equals("cost")) {
-            ArrayList<Room> roomSortingCostList = RoomSorting.roomCostSorting(freeRooms);
-            for (int i = 0; i < roomSortingCostList.size(); i++) {
 
-                System.out.println(roomSortingCostList.get(i));
+    public ArrayList<Room> getFreeRooms() {
+        ArrayList<Room> freeRooms = new ArrayList<Room>();
+        for (int i = 0; i <this.hotel.getAllRooms().size(); i++) {
+            if (this.hotel.getAllRooms().get(i).getStatus().equals(RoomStatus.free)) {
+                freeRooms.add(this.hotel.getAllRooms().get(i));
             }
-            System.out.println("Rooms was printed");
-        } else if (parametr.equals("capacity")) {
-
-            ArrayList<Room> roomSortingCapacityList = RoomSorting.roomCapacitySorting(freeRooms);
-            for (int i = 0; i < roomSortingCapacityList.size(); i++) {
-
-                System.out.println(roomSortingCapacityList.get(i));
-            }
-            System.out.println("Rooms was printed");
-        } else if (parametr.equals("stars")) {
-            ArrayList<Room> roomSortingStarsList = RoomSorting.roomStarsSorting(freeRooms);
-            for (int i = 0; i < roomSortingStarsList.size(); i++) {
-
-                System.out.println(roomSortingStarsList.get(i));
-            }
-            System.out.println("Rooms was printed");
 
         }
+        return freeRooms;
+    }
+
+    private void printRooms(ArrayList<Room> rooms) {
+        for (Room r : rooms) {
+            System.out.println(r);
+        }
+    }
+
+    public  void printRoomsByParametr( String parametr) {
+        ArrayList<Room> allRooms = this.hotel.getAllRooms();
+        printRooms(sortRoomsBy(allRooms,parametr));
+
+    }
+    public void printFreeRoomsByParametr( String parametr) {
+        ArrayList<Room> freeRooms =this.getFreeRooms();
+      printRooms(sortRoomsBy(freeRooms,parametr));
+
 
     }
 
-    public static void printAllGuests(Hotel hotel) {
+    private ArrayList<Room> sortRoomsBy(ArrayList<Room> rooms, String parametr){
+        ArrayList<Room> roomSortingList=new ArrayList<Room>();
+        if (parametr.equals("cost")) {
+             roomSortingList = RoomSorting.roomCostSorting(rooms);
+
+        } else if (parametr.equals("capacity")) {
+
+            roomSortingList = RoomSorting.roomCapacitySorting(rooms);
+
+        } else if (parametr.equals("stars")) {
+            roomSortingList = RoomSorting.roomStarsSorting(rooms);
+
+
+        }
+return roomSortingList;
+    }
+
+
+    public  void printFreeRoomsByDate( int year, int month, int day) {
+
+        Date date = new GregorianCalendar(year, month + 1, day).getTime();
+        ArrayList<Room> freeRoomsByDate = new ArrayList<Room>();
+        for (Room room : this.getFreeRooms()) {
+            if (room.getDateDeparture() != null) {
+                if (room.getDateDeparture().compareTo(date) == -1) {
+                    freeRoomsByDate.add(room);
+                }
+            }
+        }
+        freeRoomsByDate.addAll(this.getFreeRooms());
+
+        for (int i = 0; i < freeRoomsByDate.size(); i++) {
+
+            System.out.println(freeRoomsByDate.get(i));
+        }
+        System.out.println("Rooms was printed");
+
+
+
+    }
+
+    public  void printAllGuests() {
         ArrayList<Guest> allGuests = hotel.getAllGuests();
         for (int i = 0; i < allGuests.size(); i++) {
 
@@ -105,7 +131,7 @@ public class HotelService {
 
     }
 
-    public static void printAllGuestsByParametr(Hotel hotel, String parametr) {
+    public  void printAllGuestsByParametr( String parametr) {
 
         if (parametr.equals("name")) {
 
@@ -126,47 +152,46 @@ public class HotelService {
         }
 
     }
-
-    public static void printFreeRoomsCount(Hotel hotel) {
-        System.out.println(new StringBuilder("Free rooms count ").append(hotel.getFreeRoomsCount()));
-    }
-
-    public static void printAllGuestsCount(Hotel hotel) {
-        System.out.println(new StringBuilder("All guests count ").append(hotel.getAllGuests().size()));
-    }
-
-    public static void printFreeRoomsByDate(Hotel hotel, int year, int month, int day) {
-
-        Date date = new GregorianCalendar(year, month + 1, day).getTime();
-        ArrayList<Room> freeRoomsByDate = new ArrayList<Room>();
-        for (Room room : hotel.getFreeRooms()) {
-            if (room.getDateDeparture() != null) {
-                if (room.getDateDeparture().compareTo(date) == -1) {
-                    freeRoomsByDate.add(room);
-                }
+    private Room findRoomByNumber(int roomNumber) {
+        Room currentRoom;
+        for (Room room : this.hotel.getAllRooms()) {
+            if (room.getNumber() == roomNumber) {
+                currentRoom = room;
+                return currentRoom;
             }
         }
-        freeRoomsByDate.addAll(hotel.getFreeRooms());
-
-        for (int i = 0; i < freeRoomsByDate.size(); i++) {
-
-            System.out.println(freeRoomsByDate.get(i));
-        }
-        System.out.println("Rooms was printed");
-
-
-
+        return null;
     }
-    public static void printAllHotelServices(Hotel hotel){
 
-
-        for (int i = 0; i < hotel.getAllServices().size(); i++) {
-
-            System.out.println(hotel.getAllServices().get(i));
-        }
-        System.out.println("Guest Services was printed");
-
+    public void addService(Service service) {
+        this.hotel.getAllServices().add(service);
     }
+
+    public void addGuestToRoom(int roomNumber, Guest guest, int year, int month, int day) {
+        Room currentRoom = this.findRoomByNumber(roomNumber);
+        if (currentRoom != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month, day);
+            currentRoom.addGuest(guest, calendar.getTime());
+        } else {
+            System.out.print("There is no room with this number");
+        }
+    }
+
+    public int getFreeRoomsCount() {
+        return this.getFreeRooms().size();
+    }
+
+    public void printFreeRoomsCount() {
+        System.out.println(new StringBuilder("Free rooms count ").append(this.getFreeRoomsCount()));
+    }
+
+    public  void printAllGuestsCount() {
+        System.out.println(new StringBuilder("All guests count ").append(this.hotel.getAllGuests().size()));
+    }
+
+
+
     public static void printServices(ArrayList<Service> listService){
         for (int i = 0; i < listService.size(); i++) {
 

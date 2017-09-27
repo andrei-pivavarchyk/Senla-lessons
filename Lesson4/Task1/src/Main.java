@@ -18,8 +18,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         Hotel bestHotel = new Hotel("bestHotel");
+        HotelService hotelService=new HotelService(bestHotel);
+
 
         //Adding rooms from file
         String[] allRooms = new TextFileWorker("D:\\Rooms.txt").readFromFile();
@@ -31,7 +32,7 @@ public class Main {
             int roomStars = Integer.parseInt(roomParametrs[3]);
 
             Room room = new Room(roomNumber, roomCost, roomCapacity, roomStars);
-            bestHotel.addRoom(room);
+            hotelService.addRoom(room);
         }
 
         //Creating Guests
@@ -41,44 +42,44 @@ public class Main {
 
         //Printing and sorting rooms by cost, capacity and stars
         System.out.println("Printing all rooms and sorting rooms by cost, capacity and stars");
-        HotelService.printAllRooms(bestHotel);
-        HotelService.printRoomsByParametr(bestHotel, "cost");
-        HotelService.printRoomsByParametr(bestHotel, "capacity");
-        HotelService.printRoomsByParametr(bestHotel, "stars");
+        hotelService.printAllRooms();
+        hotelService.printRoomsByParametr( "cost");
+        hotelService.printRoomsByParametr( "capacity");
+        hotelService.printRoomsByParametr( "stars");
 
 
         //Adding guests
-        bestHotel.addGuestToRoom(1, guest1, 2018, 8, 11);
-        bestHotel.addGuestToRoom(1, guest2, 2018, 7, 11);
-        bestHotel.addGuestToRoom(1, guest3, 2018, 8, 11);
+        hotelService.addGuestToRoom(1, guest1, 2018, 8, 11);
+        hotelService.addGuestToRoom(1, guest2, 2018, 7, 11);
+        hotelService.addGuestToRoom(1, guest3, 2018, 8, 11);
 
 
         //Printing free rooms and sorting by cost, capacity and stars
         System.out.println("Printing all free rooms and sorting rooms by cost, capacity and stars");
 
-        HotelService.printFreeRooms(bestHotel);
-        HotelService.printFreeRoomsByParametr(bestHotel, "cost");
-        HotelService.printFreeRoomsByParametr(bestHotel, "stars");
-        HotelService.printFreeRoomsByParametr(bestHotel, "capacity");
+        hotelService.printFreeRooms();
+        hotelService.printFreeRoomsByParametr( "cost");
+        hotelService.printFreeRoomsByParametr( "stars");
+        hotelService.printFreeRoomsByParametr( "capacity");
 
 
         //Printing Guests and sorting by name and departure date
         System.out.println("Printing Guests and sorting by name and departure date");
 
-        HotelService.printAllGuests(bestHotel);
-        HotelService.printAllGuestsByParametr(bestHotel, "name");
-        HotelService.printAllGuestsByParametr(bestHotel, "departureDate");
+        hotelService.printAllGuests();
+        hotelService.printAllGuestsByParametr( "name");
+        hotelService.printAllGuestsByParametr( "departureDate");
 
         //Free rooms count
-        HotelService.printFreeRoomsCount(bestHotel);
-        HotelService.printAllGuestsCount(bestHotel);
+        hotelService.printFreeRoomsCount();
+        hotelService.printAllGuestsCount();
 
 
         //Free rooms By Date
         System.out.println("Free rooms by Date 2018.07.12");
 
 
-       HotelService.printFreeRoomsByDate(bestHotel, 2018, 8, 10);
+        hotelService.printFreeRoomsByDate( 2018, 8, 10);
 
 
         //Print pay guest
@@ -91,16 +92,16 @@ public class Main {
         Service service2 = new Service("Cola", 55, eat);
         Service service3 = new Service("SomeSpa", 55, spa);
 
-        bestHotel.addService(service1);
-        bestHotel.addService(service2);
-        bestHotel.addService(service3);
+        hotelService.addService(service1);
+        hotelService.addService(service2);
+        hotelService.addService(service3);
 
 
         guest1.addService(service1, 2018, 10, 11);
         guest1.addService(service2, 2018, 9, 11);
         guest1.addService(service3, 2018, 8, 11);
 
-       HotelService.printServices(guest1.getAllGuestService());
+        HotelService.printServices(guest1.getAllGuestService());
         HotelService.printServices(ServiceSorting.serviceCostSorting(bestHotel.getAllServices()));
         HotelService.printServices(ServiceSorting.serviceDateSorting(bestHotel.getAllServices()));
 
