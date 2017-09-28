@@ -23,7 +23,7 @@ public class Main {
 
 
         //Adding rooms from file
-        String[] allRooms = new TextFileWorker("D:\\Rooms.txt").readFromFile();
+        String[] allRooms = new TextFileWorker(args[0]).readFromFile();
         for (String roomFromFile : allRooms) {
             String[] roomParametrs = roomFromFile.split("\\|");
             int roomNumber = Integer.parseInt(roomParametrs[0]);
