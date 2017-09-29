@@ -1,9 +1,7 @@
 package Services;
 
-import Entity.Guest;
-import Entity.GuestInfo;
-import Entity.Room;
-import Entity.RoomStatus;
+import Comparator.GuestInfoNameComporator;
+import Entity.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,21 +24,29 @@ public class RoomService {
         return count;
     }
 
-    public void checkInGuest(Room room, Guest guest, Date departureDate) {
+    public void checkInGuest(Room room, Guest guest,Date arrivalDate, Date departureDate) {
         if (!(room.getCurrentGuestCount() < room.getCapacity())) {
             System.out.println(new StringBuilder(Literals.roomNoFreePlaces).append("in Entity.Room"));
         }
 
-        GuestInfo gi = new GuestInfo(new Date(), departureDate, guest, room);
+        GuestInfo gi = new GuestInfo(arrivalDate, departureDate, guest, room);
+        room.setStatus(RoomStatus.reserved);
         guestsInfo.add(gi);
-
-        if (room.getCurrentGuestCount() == room.getCapacity()) {
-            room.setStatus(RoomStatus.reserved);
-        }
     }
 
-    public void checkOutGuest(Room room, Guest guest){
+    public void checkOutGuest(Room room, Guest guest) {
         room.removeGuest(guest);
+    }
+
+    public void PrintGuestsSortedBy(GuestInfoSortType guestsSortType) {
+        ArrayList<GuestInfo> guests = new ArrayList<>();
+        for (GuestInfo gi : guestsInfo) {
+            if (gi.getStillLiving()) {
+                guests.add(gi);
+            }
+        }
+
+        PrintGuests(SortGuestsBy(guests, guestsSortType), "Guests sorted by " + guestsSortType.toString() + ":");
     }
 
     public ArrayList<Room> getRoomsCountFreedByDate(Date date) {
@@ -58,19 +64,41 @@ public class RoomService {
         return freeRoomsByDate;
     }
 
+    public void getPaymentForGuest() {
+        int price = BillingService.calculateGuestStaying(guestsInfo.get(0));
+        System.out.println("Price: " + price);
+    }
+
     public ArrayList<Guest> getLastThreeGuests() {
         ArrayList<Guest> lastThreeGuests = new ArrayList<Guest>();
         for (int i = guestsInfo.size(), k = 0; i > 0 && k < 3; i--, k++) {
-            Guest guest = guestsInfo.get(i-1).getGuest();
+            Guest guest = guestsInfo.get(i - 1).getGuest();
             System.out.println(guest + guestsInfo.get(i - 1).getDepartureDate().toString());
         }
 
         return lastThreeGuests;
     }
 
+    private ArrayList<GuestInfo> SortGuestsBy(ArrayList<GuestInfo> guests, GuestInfoSortType guestSortType) {
+        switch (guestSortType) {
+            case Name:
+                guests.sort(new GuestInfoNameComporator());
+                return guests;
+            default:
+                return null;
+        }
+    }
+
+    private void PrintGuests(ArrayList<GuestInfo> guests, String message) {
+        System.out.println(message);
+        for (GuestInfo gi : guests) {
+            System.out.println(gi);
+        }
+    }
+
     public static ArrayList<Room> readRoomsFromFile() {
         try {
-            File f = new File("J:\\Rooms.txt");
+            File f = new File("D:\\Rooms.txt");
             BufferedReader b = new BufferedReader(new FileReader(f));
             String readLine = "";
             System.out.println("Reading file using Buffered Reader");
@@ -84,7 +112,6 @@ public class RoomService {
                 int stars = Integer.parseInt(str[3]);
                 Room room = new Room(number, cost, capacity, stars);
                 rooms.add(room);
-                System.out.println(readLine);
             }
 
             return rooms;

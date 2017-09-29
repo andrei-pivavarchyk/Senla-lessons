@@ -49,4 +49,8 @@ public class GuestInfo {
     public void setIsStillLiving(Boolean b) {
         this.isStillLiving = b;
     }
+
+    public String toString() {
+        return String.format("Guest: %s. Room number: %s.", guest.getSurName(),room.getNumber() );
+    }
 }

@@ -55,6 +55,7 @@ public class Room {
         this.status = status;
     }
 
+    //TODO: consider the possibility to move this logic up to the service
     public void addGuest(Guest guest) {
         if (guests.size() == capacity) {
             throw new IllegalArgumentException("Room is full.");

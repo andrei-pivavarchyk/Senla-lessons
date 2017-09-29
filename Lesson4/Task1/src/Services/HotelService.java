@@ -52,11 +52,18 @@ public class HotelService {
     }
 
     public void printFreeRoomsByDate(Date date) {
-        PrintRooms(roomService.getRoomsCountFreedByDate(date), "Rooms free by date:");
+        ArrayList<Room> freeRoomsByDate = new ArrayList<>();
+        freeRoomsByDate.addAll(getFreeRooms());
+        freeRoomsByDate.addAll(roomService.getRoomsCountFreedByDate(date));
+        PrintRooms(SortRoomsBy(freeRoomsByDate,RoomSortType.Capacity), "Rooms free by date:");
     }
 
     public void addGuestToRoom(int roomNumber, Guest guest, int year, int month, int day) {
         //NOT IMPLEMENTED YET
+    }
+
+    public void getRoomDetails(Room room) {
+        System.out.println(room);
     }
 
     private ArrayList<Room> getFreeRooms() {
