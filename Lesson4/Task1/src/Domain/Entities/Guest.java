@@ -1,10 +1,11 @@
-package Entity;
+package Domain.Entities;
 
-public class Guest {
+public class Guest extends Entity{
     private String name;
     private String surname;
 
-    public Guest(String name, String surName) {
+    public Guest(String name, String surName, int id) {
+        super(id);
         this.name = name;
         this.surname = surName;
     }

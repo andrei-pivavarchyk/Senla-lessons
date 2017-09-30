@@ -1,45 +1,23 @@
-package Services;
+package Domain.Services;
 
-import Comparator.GuestInfoNameComporator;
-import Entity.*;
+import Comparator.GuestInfoNameComparator;
+import DataLayer.RoomRepository;
+import Domain.Contracts.IRoomRepository;
+import Domain.Entities.*;
+import Services.BillingService;
+import Services.Literals;
+import Sorting.GuestInfoSortType;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class RoomService {
-    private ArrayList<GuestInfo> guestsInfo = new ArrayList<>();
-
-    public static ArrayList<Room> readRoomsFromFile() {
-        try {
-            File f = new File("J:\\Rooms.txt");
-            BufferedReader b = new BufferedReader(new FileReader(f));
-            String readLine = "";
-            System.out.println("Reading file using Buffered Reader");
-
-            ArrayList<Room> rooms = new ArrayList<>();
-            while ((readLine = b.readLine()) != null) {
-                String[] str = readLine.split("\\|");
-                int number = Integer.parseInt(str[0]);
-                int cost = Integer.parseInt(str[1]);
-                int capacity = Integer.parseInt(str[2]);
-                int stars = Integer.parseInt(str[3]);
-                Room room = new Room(number, cost, capacity, stars);
-                rooms.add(room);
-            }
-
-            return rooms;
-        } catch (IOException ex) {
-            return null;
-        }
-    }
+public class RoomService implements IRoomService {
+    private ArrayList<RoomGuestInfo> guestsInfo = new ArrayList<>();
+    private IRoomRepository roomRepository;
 
     private int getCurrenGuestCount(Room room) {
         int count = 0;
-        for (GuestInfo gi : guestsInfo) {
+        for (RoomGuestInfo gi : guestsInfo) {
             if (gi.getRoom().equals(room) && gi.getStillLiving()) {
                 count++;
             }
@@ -53,7 +31,8 @@ public class RoomService {
             System.out.println(new StringBuilder(Literals.roomNoFreePlaces).append("in Entity.Room"));
         }
 
-        GuestInfo gi = new GuestInfo(arrivalDate, departureDate, guest, room);
+
+        RoomGuestInfo gi = new RoomGuestInfo(arrivalDate, departureDate, guest, room);
         room.setStatus(RoomStatus.reserved);
         guestsInfo.add(gi);
     }
@@ -63,8 +42,8 @@ public class RoomService {
     }
 
     public void PrintGuestsSortedBy(GuestInfoSortType guestsSortType) {
-        ArrayList<GuestInfo> guests = new ArrayList<>();
-        for (GuestInfo gi : guestsInfo) {
+        ArrayList<RoomGuestInfo> guests = new ArrayList<>();
+        for (RoomGuestInfo gi : guestsInfo) {
             if (gi.getStillLiving()) {
                 guests.add(gi);
             }
@@ -76,7 +55,7 @@ public class RoomService {
     public ArrayList<Room> getRoomsCountFreedByDate(Date date) {
         ArrayList<Room> freeRoomsByDate = new ArrayList<>();
 
-        for (GuestInfo gi : guestsInfo) {
+        for (RoomGuestInfo gi : guestsInfo) {
             if (gi.getStillLiving()) {
                 if (gi.getDepartureDate().compareTo(date) == -1) {
                     freeRoomsByDate.add(gi.getRoom());
@@ -94,7 +73,7 @@ public class RoomService {
     }
 
     public ArrayList<Guest> getLastThreeGuests() {
-        ArrayList<Guest> lastThreeGuests = new ArrayList<Guest>();
+        ArrayList<Guest> lastThreeGuests = new ArrayList<>();
         for (int i = guestsInfo.size(), k = 0; i > 0 && k < 3; i--, k++) {
             Guest guest = guestsInfo.get(i - 1).getGuest();
             System.out.println(guest + guestsInfo.get(i - 1).getDepartureDate().toString());
@@ -103,19 +82,19 @@ public class RoomService {
         return lastThreeGuests;
     }
 
-    private ArrayList<GuestInfo> SortGuestsBy(ArrayList<GuestInfo> guests, GuestInfoSortType guestSortType) {
+    private ArrayList<RoomGuestInfo> SortGuestsBy(ArrayList<RoomGuestInfo> guests, GuestInfoSortType guestSortType) {
         switch (guestSortType) {
             case Name:
-                guests.sort(new GuestInfoNameComporator());
+                guests.sort(new GuestInfoNameComparator());
                 return guests;
             default:
                 return null;
         }
     }
 
-    private void PrintGuests(ArrayList<GuestInfo> guests, String message) {
+    private void PrintGuests(ArrayList<RoomGuestInfo> guests, String message) {
         System.out.println(message);
-        for (GuestInfo gi : guests) {
+        for (RoomGuestInfo gi : guests) {
             System.out.println(gi);
         }
     }

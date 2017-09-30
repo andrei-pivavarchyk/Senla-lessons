@@ -1,9 +1,8 @@
 package Comparator;
 
-import Entity.Guest;
+import Domain.Entities.Guest;
 
 import java.util.Comparator;
-import java.util.Date;
 
 public class GuestDateComporator implements Comparator<Guest> {
 

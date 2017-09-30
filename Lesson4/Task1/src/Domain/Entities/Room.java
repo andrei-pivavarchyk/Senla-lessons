@@ -1,4 +1,4 @@
-package Entity;
+package Domain.Entities;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,8 @@ public class Room extends Entity {
     private RoomStatus status;
     private ArrayList<Guest> guests;
 
-    public Room(int number, int cost, int capacity, int stars) {
+    public Room(int number, int cost, int capacity, int stars, int id) {
+        super(id);
         this.number = number;
         this.cost = cost;
         this.capacity = capacity;

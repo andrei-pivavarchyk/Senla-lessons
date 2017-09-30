@@ -1,6 +1,6 @@
 package Comparator;
 
-import Entity.Room;
+import Domain.Entities.Room;
 
 import java.util.Comparator;
 

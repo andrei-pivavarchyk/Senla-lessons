@@ -1,4 +1,4 @@
-package Entity;
+package Sorting;
 
 public enum GuestInfoSortType {
     Name, DepartureDate

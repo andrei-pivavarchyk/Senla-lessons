@@ -1,4 +1,4 @@
-package Entity;
+package Domain.Entities;
 
 public class Service {
     public String getTitle() {

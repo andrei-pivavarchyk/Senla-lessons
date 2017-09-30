@@ -1,17 +1,15 @@
-package Entity;
-
-import Entity.Guest;
+package Domain.Entities;
 
 import java.util.Date;
 
-public class GuestInfo {
+public class RoomGuestInfo {
     private Date arrivalDate;
     private Date departureDate;
     private Guest guest;
     private Room room;
     private Boolean isStillLiving;
 
-    public GuestInfo(Date arrivalDate, Date departureDate, Guest guest, Room room) {
+    public RoomGuestInfo(Date arrivalDate, Date departureDate, Guest guest, Room room) {
         if (departureDate.compareTo(arrivalDate) == -1) {
             throw new IllegalArgumentException("Departure date cannot be less than arrival date");
         }

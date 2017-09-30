@@ -1,9 +1,14 @@
-import Entity.Guest;
-import Entity.Hotel;
-import Entity.Room;
-import Entity.Service;
-import Services.HotelService;
-import Services.RoomService;
+import DataLayer.HotelRepository;
+import DataLayer.RoomRepository;
+import Domain.Contracts.IHotelRepository;
+import Domain.Contracts.IRoomRepository;
+import Domain.Entities.Guest;
+import Domain.Entities.Hotel;
+import Domain.Entities.Room;
+import Domain.Entities.Service;
+import Domain.Services.HotelService;
+import Domain.Services.IHotelService;
+import Domain.Services.IRoomService;
 import Services.ServiceService;
 
 import java.util.ArrayList;
@@ -11,11 +16,23 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        Hotel bestHotel = new Hotel("bestHotel");
-        RoomService rs = new RoomService();
+        IHotelRepository hr = new HotelRepository();
+        IRoomRepository rr = new RoomRepository();
+
+        Hotel h = new Hotel("Renessence", 1);
+        hr.Create(h);
+        System.out.println(hr.Read(1));
+        h.setName("Hotel 2");
+        hr.Update(h);
+        System.out.println(hr.Read(1));
+    }
+
+    private static void Perform() {
+        Hotel bestHotel = new Hotel("bestHotel", 2);
+        HotelService.RoomService rs = new HotelService.RoomService();
         ServiceService ss = new ServiceService();
-        HotelService hs = new HotelService(bestHotel, rs, ss);
-        ArrayList<Room> newRooms = RoomService.readRoomsFromFile();
+        IHotelService hs = new HotelService(bestHotel, rs, ss, new HotelRepository());
+        ArrayList<Room> newRooms = IRoomService.readRoomsFromFile();
         Room r1 = newRooms.get(2);
         for (Room r : newRooms) {
             hs.addRoom(r);
@@ -32,7 +49,7 @@ public class Main {
         hs.PrintRoomsSortedBy(RoomSortType.Stars);*/
 
         //3:
-        /*rs.PrintGuestsSortedBy(GuestInfoSortType.Name);*/
+        /*rs.PrintGuestsSortedBy(RoomGuestInfoSortType.Name);*/
 
         //4
         /*System.out.println("Number of free rooms:" + hs.getFreeRoomsCount());*/
@@ -44,9 +61,9 @@ public class Main {
         /*hs.printFreeRoomsByDate(new Date(2019,1,2));*/
 
         //7
-        Guest g1 = new Guest("Jack", "Daniels");
-        Guest g2 = new Guest("Mack", "Janiels");
-        Guest g3 = new Guest("Back", "Raniels");
+        Guest g1 = new Guest("Jack", "Daniels", 1);
+        Guest g2 = new Guest("Mack", "Janiels", 2);
+        Guest g3 = new Guest("Back", "Raniels", 3);
         rs.checkInGuest(r1, g1, new Date(2017, 1, 2), new Date(2017, 1, 3));
         rs.checkInGuest(r1, g2, new Date(2017, 1, 2), new Date(2017, 1, 3));
         rs.checkInGuest(r1, g3, new Date(2017, 1, 2), new Date(2017, 1, 3));
