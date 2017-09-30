@@ -5,7 +5,7 @@ import Domain.Entities.Entity;
 
 import java.util.ArrayList;
 
-public class BaseRepository<T extends  Entity> implements IRepository<T> {
+public class BaseRepository<T extends Entity> implements IRepository<T> {
     ArrayList<T> collection = new ArrayList<>();
 
     @Override
@@ -16,8 +16,8 @@ public class BaseRepository<T extends  Entity> implements IRepository<T> {
     @Override
     public T Read(int id) {
         for (T ent : collection) {
-            if(ent.id == id){
-                return  ent;
+            if (ent.id == id) {
+                return ent;
             }
         }
 
@@ -27,7 +27,7 @@ public class BaseRepository<T extends  Entity> implements IRepository<T> {
     @Override
     public void Update(T entity) {
         for (T ent : collection) {
-            if(ent.id == entity.id){
+            if (ent.id == entity.id) {
                 ent = entity;
                 break;
             }
@@ -37,7 +37,7 @@ public class BaseRepository<T extends  Entity> implements IRepository<T> {
     @Override
     public void Delete(int id) {
         for (T ent : collection) {
-            if(ent.id == id){
+            if (ent.id == id) {
                 collection.remove(ent);
                 break;
             }

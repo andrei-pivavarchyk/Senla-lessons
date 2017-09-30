@@ -3,10 +3,6 @@ package Domain.Entities;
 import java.util.ArrayList;
 
 public class Hotel extends Entity {
-    public void setName(String name) {
-        this.name = name;
-    }
-
     private String name;
     private ArrayList<Room> rooms;
     private ArrayList<Guest> guests;
@@ -30,6 +26,10 @@ public class Hotel extends Entity {
 
     public ArrayList<Service> getServices() {
         return services;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

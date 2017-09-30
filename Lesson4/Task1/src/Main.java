@@ -9,6 +9,7 @@ import Domain.Entities.Service;
 import Domain.Services.HotelService;
 import Domain.Services.IHotelService;
 import Domain.Services.IRoomService;
+import Domain.Services.RoomService;
 import Services.ServiceService;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class Main {
         Hotel bestHotel = new Hotel("bestHotel", 2);
         HotelService.RoomService rs = new HotelService.RoomService();
         ServiceService ss = new ServiceService();
-        IHotelService hs = new HotelService(bestHotel, rs, ss, new HotelRepository());
+        IHotelService hs = new HotelService(new HotelRepository(), new RoomService());
         ArrayList<Room> newRooms = IRoomService.readRoomsFromFile();
         Room r1 = newRooms.get(2);
         for (Room r : newRooms) {

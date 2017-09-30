@@ -5,11 +5,9 @@ import Comparator.RoomCapacityCorporator;
 import Comparator.RoomCostComparator;
 import Comparator.RoomStarsComparator;
 import Domain.Contracts.IHotelRepository;
-import Domain.Contracts.IRoomRepository;
 import Domain.Entities.*;
 import Services.BillingService;
 import Services.Literals;
-import Services.ServiceService;
 import Sorting.GuestInfoSortType;
 import Sorting.RoomSortType;
 
@@ -18,15 +16,11 @@ import java.util.Date;
 
 public class HotelService implements IHotelService {
     private Hotel hotel;
-    private RoomService roomService;
-    private ServiceService serviceService;
-    private IRoomRepository roomRepository;
-    private IHotelRepository hotelRepository;
+    private IRoomService roomService;
 
-    public HotelService(Hotel hotel, RoomService roomService, ServiceService serviceService, IHotelRepository hotelRepository) {
-        this.hotel = (Hotel) hotelRepository.Read(1);
+    public HotelService(IHotelRepository hotelRepository, IRoomService roomService) {
+        this.hotel = hotelRepository.Read(1);
         this.roomService = roomService;
-        this.serviceService = serviceService;
     }
 
     @Override
