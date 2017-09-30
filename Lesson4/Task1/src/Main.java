@@ -1,26 +1,22 @@
-import Entity.*;
+import Entity.Guest;
+import Entity.Hotel;
+import Entity.Room;
+import Entity.Service;
 import Services.HotelService;
-import Services.PrintIOperations;
 import Services.RoomService;
-import Sorting.GuestSorting;
-import com.danco.training.TextFileWorker;
+import Services.ServiceService;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class Main {
     public static void main(String[] args) {
         Hotel bestHotel = new Hotel("bestHotel");
         RoomService rs = new RoomService();
-        HotelService hs = new HotelService(bestHotel, rs);
+        ServiceService ss = new ServiceService();
+        HotelService hs = new HotelService(bestHotel, rs, ss);
         ArrayList<Room> newRooms = RoomService.readRoomsFromFile();
-        Room r1= newRooms.get(2);
+        Room r1 = newRooms.get(2);
         for (Room r : newRooms) {
             hs.addRoom(r);
         }
@@ -48,15 +44,19 @@ public class Main {
         /*hs.printFreeRoomsByDate(new Date(2019,1,2));*/
 
         //7
-        Guest g1 = new Guest("Jack","Daniels");
-        Guest g2 = new Guest("Mack","Janiels");
-        Guest g3 = new Guest("Back","Raniels");
-        rs.checkInGuest(r1,g1,new Date(2017,1,2),new Date(2017,1,3));
-        rs.checkInGuest(r1,g2,new Date(2017,1,2),new Date(2017,1,3));
-        rs.checkInGuest(r1,g3,new Date(2017,1,2),new Date(2017,1,3));
+        Guest g1 = new Guest("Jack", "Daniels");
+        Guest g2 = new Guest("Mack", "Janiels");
+        Guest g3 = new Guest("Back", "Raniels");
+        rs.checkInGuest(r1, g1, new Date(2017, 1, 2), new Date(2017, 1, 3));
+        rs.checkInGuest(r1, g2, new Date(2017, 1, 2), new Date(2017, 1, 3));
+        rs.checkInGuest(r1, g3, new Date(2017, 1, 2), new Date(2017, 1, 3));
         rs.getPaymentForGuest();
 
         //8 - move logic to hotel service
         rs.getLastThreeGuests();
+
+        //
+        ss.addServiceToGuest(g1, new Service("Spa", 2000));
+        ss.printServiceInfoForGuest(g1);
     }
 }

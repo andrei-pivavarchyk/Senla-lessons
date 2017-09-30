@@ -13,6 +13,30 @@ import java.util.Date;
 public class RoomService {
     private ArrayList<GuestInfo> guestsInfo = new ArrayList<>();
 
+    public static ArrayList<Room> readRoomsFromFile() {
+        try {
+            File f = new File("J:\\Rooms.txt");
+            BufferedReader b = new BufferedReader(new FileReader(f));
+            String readLine = "";
+            System.out.println("Reading file using Buffered Reader");
+
+            ArrayList<Room> rooms = new ArrayList<>();
+            while ((readLine = b.readLine()) != null) {
+                String[] str = readLine.split("\\|");
+                int number = Integer.parseInt(str[0]);
+                int cost = Integer.parseInt(str[1]);
+                int capacity = Integer.parseInt(str[2]);
+                int stars = Integer.parseInt(str[3]);
+                Room room = new Room(number, cost, capacity, stars);
+                rooms.add(room);
+            }
+
+            return rooms;
+        } catch (IOException ex) {
+            return null;
+        }
+    }
+
     private int getCurrenGuestCount(Room room) {
         int count = 0;
         for (GuestInfo gi : guestsInfo) {
@@ -24,7 +48,7 @@ public class RoomService {
         return count;
     }
 
-    public void checkInGuest(Room room, Guest guest,Date arrivalDate, Date departureDate) {
+    public void checkInGuest(Room room, Guest guest, Date arrivalDate, Date departureDate) {
         if (!(room.getCurrentGuestCount() < room.getCapacity())) {
             System.out.println(new StringBuilder(Literals.roomNoFreePlaces).append("in Entity.Room"));
         }
@@ -93,30 +117,6 @@ public class RoomService {
         System.out.println(message);
         for (GuestInfo gi : guests) {
             System.out.println(gi);
-        }
-    }
-
-    public static ArrayList<Room> readRoomsFromFile() {
-        try {
-            File f = new File("D:\\Rooms.txt");
-            BufferedReader b = new BufferedReader(new FileReader(f));
-            String readLine = "";
-            System.out.println("Reading file using Buffered Reader");
-
-            ArrayList<Room> rooms = new ArrayList<>();
-            while ((readLine = b.readLine()) != null) {
-                String[] str = readLine.split("\\|");
-                int number = Integer.parseInt(str[0]);
-                int cost = Integer.parseInt(str[1]);
-                int capacity = Integer.parseInt(str[2]);
-                int stars = Integer.parseInt(str[3]);
-                Room room = new Room(number, cost, capacity, stars);
-                rooms.add(room);
-            }
-
-            return rooms;
-        } catch (IOException ex) {
-            return null;
         }
     }
 }

@@ -11,10 +11,12 @@ import java.util.Date;
 public class HotelService {
     private Hotel hotel;
     private RoomService roomService;
+    private ServiceService serviceService;
 
-    public HotelService(Hotel hotel, RoomService roomService) {
+    public HotelService(Hotel hotel, RoomService roomService, ServiceService serviceService) {
         this.hotel = hotel;
         this.roomService = roomService;
+        this.serviceService = serviceService;
     }
 
     public void PrintRoomsSortedBy(RoomSortType roomSortType) {

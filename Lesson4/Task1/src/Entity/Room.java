@@ -1,12 +1,8 @@
 package Entity;
 
 import java.util.ArrayList;
-import java.util.Date;
 
-import Services.Literals;
-
-
-public class Room {
+public class Room extends Entity {
     private int number;
     private int capacity;
     private int stars;
