@@ -4,8 +4,8 @@ public class Service extends Entity {
     private String title;
     private int price;
 
-    public Service(String title, int price) {
-        super(1);
+    public Service(String title, int price, int id) {
+        super(id);
         this.title = title;
         this.price = price;
     }

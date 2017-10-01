@@ -1,4 +1,4 @@
-package Domain.Services;
+package Domain.Services.Contracts;
 
 import Domain.Entities.Room;
 import Sorting.RoomSortType;

@@ -2,7 +2,7 @@ package Domain.Entities;
 
 import java.util.Date;
 
-public class GuestRoomInfo extends Entity{
+public class GuestRoomInfo extends Entity {
     private Date arrivalDate;
     private Date departureDate;
     private Guest guest;
@@ -25,6 +25,7 @@ public class GuestRoomInfo extends Entity{
     public Guest getGuest() {
         return this.guest;
     }
+
     public Room getRoom() {
         return this.room;
     }
@@ -50,6 +51,6 @@ public class GuestRoomInfo extends Entity{
     }
 
     public String toString() {
-        return String.format("Guest: %s. Room number: %s.", guest.getSurName(),room.getNumber() );
+        return String.format("Guest: %s. Room number: %s.", guest.getSurName(), room.getNumber());
     }
 }

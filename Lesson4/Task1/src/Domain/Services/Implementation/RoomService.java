@@ -1,9 +1,10 @@
-package Domain.Services;
+package Domain.Services.Implementation;
 
 import Domain.Contracts.IGuestRoomInfoRepository;
 import Domain.Contracts.IRoomRepository;
 import Domain.Entities.Room;
 import Domain.Entities.RoomStatus;
+import Domain.Services.Contracts.IRoomService;
 import Sorting.RoomSortType;
 import Utility.Literals;
 import Utility.PrintOperationsService;

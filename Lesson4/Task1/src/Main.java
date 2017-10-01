@@ -1,24 +1,24 @@
 import DataLayer.GuestRoomInfoRepository;
 import DataLayer.GuestServiceInfoRepository;
-import DataLayer.HotelRepository;
 import DataLayer.RoomRepository;
-import Domain.Contracts.IHotelRepository;
+import DataLayer.ServiceRepository;
 import Domain.Contracts.IRoomRepository;
 import Domain.Entities.Guest;
-import Domain.Entities.Hotel;
 import Domain.Entities.Room;
 import Domain.Entities.Service;
-import Domain.Services.*;
+import Domain.Services.Contracts.IHotelService;
+import Domain.Services.Contracts.IRoomService;
+import Domain.Services.Contracts.IServiceService;
+import Domain.Services.Implementation.HotelService;
+import Domain.Services.Implementation.RoomService;
+import Domain.Services.Implementation.ServiceService;
 import Sorting.GuestInfoSortType;
 import Sorting.RoomSortType;
-import Utility.EntityReader;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        //service:
         IRoomRepository irr = new RoomRepository();
         IRoomService roomService = new RoomService(new GuestRoomInfoRepository(), irr);
         Room r1 = new Room(215, 350, 5, 4, 1);
@@ -35,7 +35,7 @@ public class Main {
         System.out.println(roomService.getFreeRoomsCount());
 
         IHotelService ihs = new HotelService(new RoomService(new GuestRoomInfoRepository(),
-                irr), new GuestRoomInfoRepository());
+                irr), new GuestRoomInfoRepository(), new GuestServiceInfoRepository());
         Guest g1 = new Guest("Jack", "Daniels", 1);
         Guest g2 = new Guest("Stack", "Overflow", 2);
         Guest g3 = new Guest("George", "Harrison", 3);
@@ -55,73 +55,17 @@ public class Main {
         roomService.getRoomDetailsById(r1.id);
         ihs.printLastThreeGuests();
         roomService.printRoomsSortedBy(RoomSortType.Stars);
-    }
 
-    private static void BuildObjects() {
-        IHotelRepository hr = new HotelRepository();
-        IRoomRepository rr = new RoomRepository();
+        //services
+        IServiceService serviceService = new ServiceService(new ServiceRepository());
+        Service s1 = new Service("Prepare coffee", 1, 1);
+        Service s2 = new Service("Prepare bacon and eggs", 4, 2);
+        serviceService.addService(s1);
+        serviceService.addService(s2);
 
-        Hotel h = new Hotel("Renessence", 1, new RoomService(new GuestRoomInfoRepository(), new RoomRepository()));
-        hr.Create(h);
-        System.out.println(hr.Read(1));
-        h.setName("Hotel 2");
-        hr.Update(h);
-        System.out.println(hr.Read(1));
+        ihs.addServiceToGuest(g1, s1);
+        ihs.addServiceToGuest(g1, s2);
 
-        ServiceService ss = new ServiceService(new GuestServiceInfoRepository());
-        Guest g = new Guest("Jade", "Stamm", 2);
-        ss.addServiceToGuest(g, new Service("Jakuzi", 232));
-        ss.printServiceInfoForGuest(g);
-    }
-
-    private static void Perform() {
-        Hotel bestHotel = new Hotel("bestHotel", 2, new RoomService(new GuestRoomInfoRepository(), new RoomRepository()));
-        RoomService rs = new RoomService(new GuestRoomInfoRepository(), new RoomRepository());
-        ServiceService ss = new ServiceService(new GuestServiceInfoRepository());
-        IHotelService hs = new HotelService(new RoomService(new GuestRoomInfoRepository(),
-                new RoomRepository()), new GuestRoomInfoRepository());
-        ArrayList<Room> newRooms = EntityReader.readRoomsFromFile();
-        Room r1 = newRooms.get(2);
-/*        for (Room r : newRooms) {
-            hs.addRoom(r);
-        }*/
-
-        //1:
-/*      hs.PrintFreeRoomsSortedBy(RoomSortType.Cost);
-        hs.PrintFreeRoomsSortedBy(RoomSortType.Capacity);
-        hs.PrintFreeRoomsSortedBy(RoomSortType.Stars);*/
-
-        //2:
-/*      hs.PrintRoomsSortedBy(RoomSortType.Cost);
-        hs.PrintRoomsSortedBy(RoomSortType.Capacity);
-        hs.PrintRoomsSortedBy(RoomSortType.Stars);*/
-
-        //3:
-        /*rs.PrintGuestsSortedBy(RoomGuestInfoSortType.Name);*/
-
-        //4
-        /*System.out.println("Number of free rooms:" + hs.getFreeRoomsCount());*/
-
-        //5
-        /*System.out.println("Number of guests:" + hs.getGuestsCount());*/
-
-        //6
-        /*hs.printFreeRoomsByDate(new Date(2019,1,2));*/
-
-        //7
-/*        Guest g1 = new Guest("Jack", "Daniels", 1);
-        Guest g2 = new Guest("Mack", "Janiels", 2);
-        Guest g3 = new Guest("Back", "Raniels", 3);
-        rs.checkInGuest(r1, g1, new Date(2017, 1, 2), new Date(2017, 1, 3));
-        rs.checkInGuest(r1, g2, new Date(2017, 1, 2), new Date(2017, 1, 3));
-        rs.checkInGuest(r1, g3, new Date(2017, 1, 2), new Date(2017, 1, 3));
-        rs.getPaymentForGuest(g1.id);
-
-        //8 - move logic to hotel service
-        rs.getLastThreeGuests();
-
-        //
-        ss.addServiceToGuest(g1, new Service("Spa", 2000));
-        ss.printServiceInfoForGuest(g1);*/
+        ihs.printServiceInfoForGuest(g1);
     }
 }

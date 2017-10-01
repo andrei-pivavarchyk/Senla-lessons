@@ -1,4 +1,4 @@
-package Domain.Services;
+package Domain.Services.Implementation;
 
 import Domain.Contracts.IGuestRepository;
 

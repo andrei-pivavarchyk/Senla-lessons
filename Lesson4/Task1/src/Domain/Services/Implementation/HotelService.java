@@ -1,8 +1,10 @@
-package Domain.Services;
+package Domain.Services.Implementation;
 
-import DataLayer.HotelRepository;
 import Domain.Contracts.IGuestRoomInfoRepository;
+import Domain.Contracts.IGuestServiceInfoRepository;
 import Domain.Entities.*;
+import Domain.Services.Contracts.IHotelService;
+import Domain.Services.Contracts.IRoomService;
 import Sorting.GuestInfoSortType;
 import Sorting.RoomSortType;
 import Utility.BillingService;
@@ -13,18 +15,22 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class HotelService implements IHotelService {
-    private Hotel hotel = new HotelRepository().Read(1);
     private IRoomService roomService;
     private IGuestRoomInfoRepository guestRoomInfoRepository;
+    private IGuestServiceInfoRepository guestServiceInfoRepository;
 
-    public HotelService(IRoomService roomService, IGuestRoomInfoRepository guestRoomInfoRepository) {
+    public HotelService(
+            IRoomService roomService,
+            IGuestRoomInfoRepository guestRoomInfoRepository,
+            IGuestServiceInfoRepository guestServiceInfoRepository) {
         this.roomService = roomService;
         this.guestRoomInfoRepository = guestRoomInfoRepository;
+        this.guestServiceInfoRepository = guestServiceInfoRepository;
     }
 
     @Override
     public void checkInGuest(Room room, Guest guest, Date arrivalDate, Date departureDate) {
-        //TODO think about possibility to add a guest to a room where he's currently living
+        //TODO think about possibility to limit adding a guest to a room where he's currently living
         if (!(room.getCurrentNumberOfGuests() < room.getCapacity())) {
             System.out.println(Literals.roomNoFreePlaces);
         }
@@ -79,7 +85,7 @@ public class HotelService implements IHotelService {
         for (GuestRoomInfo gi : guestRoomInfoRepository.Fetch()) {
             if (gi.getStillLiving()) {
                 if (gi.getDepartureDate().compareTo(date) == -1) {
-                    if(!freeRoomsByDate.contains(gi)){
+                    if (!freeRoomsByDate.contains(gi)) {
                         freeRoomsByDate.add(gi.getRoom());
                     }
                 }
@@ -103,6 +109,7 @@ public class HotelService implements IHotelService {
         }
     }
 
+    @Override
     public void printLastThreeGuests() {
         ArrayList<GuestRoomInfo> lastThreeGuests = new ArrayList<>();
         for (int i = guestRoomInfoRepository.Fetch().size(), k = 0; i > 0 && k < 3; i--, k++) {
@@ -110,5 +117,20 @@ public class HotelService implements IHotelService {
         }
 
         PrintOperationsService.PrintGuestsDepartureDates(lastThreeGuests, "Last three guests: ");
+    }
+
+    @Override
+    public void addServiceToGuest(Guest guest, Service service) {
+        guestServiceInfoRepository.Create(new GuestServiceInfo(guest, service, new Date(), false));
+    }
+
+    @Override
+    public void printServiceInfoForGuest(Guest guest) {
+        System.out.println("Services for guests:");
+        for (GuestServiceInfo sgi : guestServiceInfoRepository.Fetch()) {
+            if (sgi.getGuest().equals(guest)) {
+                System.out.println(sgi);
+            }
+        }
     }
 }
