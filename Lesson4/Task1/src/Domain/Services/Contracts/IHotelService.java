@@ -8,7 +8,6 @@ import Sorting.GuestInfoSortType;
 import java.util.Date;
 
 public interface IHotelService {
-
     void checkInGuest(Room room, Guest guest, Date arrivalDate, Date departureDate);
 
     void checkOutGuest(Room room, Guest guest);
