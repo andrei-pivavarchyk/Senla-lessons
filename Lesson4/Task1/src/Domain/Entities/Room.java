@@ -7,6 +7,7 @@ public class Room extends Entity {
     private int capacity;
     private int stars;
     private int cost;
+    private int currentNumberOfGuests;
     private RoomStatus status;
     private ArrayList<Guest> guests;
 
@@ -18,6 +19,14 @@ public class Room extends Entity {
         this.stars = stars;
         this.status = RoomStatus.free;
         guests = new ArrayList<>();
+    }
+
+    public int getCurrentNumberOfGuests() {
+        return currentNumberOfGuests;
+    }
+
+    public void setCurrentNumberOfGuests(int currentNumberOfGuests) {
+        this.currentNumberOfGuests = currentNumberOfGuests;
     }
 
     public int getCost() {

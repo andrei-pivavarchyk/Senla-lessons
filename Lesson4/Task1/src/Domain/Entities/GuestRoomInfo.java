@@ -2,14 +2,15 @@ package Domain.Entities;
 
 import java.util.Date;
 
-public class RoomGuestInfo {
+public class GuestRoomInfo extends Entity{
     private Date arrivalDate;
     private Date departureDate;
     private Guest guest;
     private Room room;
     private Boolean isStillLiving;
 
-    public RoomGuestInfo(Date arrivalDate, Date departureDate, Guest guest, Room room) {
+    public GuestRoomInfo(Date arrivalDate, Date departureDate, Guest guest, Room room) {
+        super(1);
         if (departureDate.compareTo(arrivalDate) == -1) {
             throw new IllegalArgumentException("Departure date cannot be less than arrival date");
         }

@@ -1,5 +1,7 @@
 package Domain.Entities;
 
+import Domain.Services.IRoomService;
+
 import java.util.ArrayList;
 
 public class Hotel extends Entity {
@@ -8,12 +10,15 @@ public class Hotel extends Entity {
     private ArrayList<Guest> guests;
     private ArrayList<Service> services;
 
-    public Hotel(String name, int id) {
+    private IRoomService roomService;
+
+    public Hotel(String name, int id, IRoomService roomService) {
         super(id);
         this.name = name;
         this.rooms = new ArrayList<>();
         this.guests = new ArrayList<>();
         this.services = new ArrayList<>();
+        this.roomService = roomService;
     }
 
     public ArrayList<Room> getRooms() {
@@ -32,8 +37,13 @@ public class Hotel extends Entity {
         this.name = name;
     }
 
+    //IMPLEMENTATION:
+    public void printListOfRooms(){
+
+    }
+
     @Override
     public String toString() {
-        return String.format("Hotel: %s.",  name);
+        return String.format("Hotel: %s.", name);
     }
 }

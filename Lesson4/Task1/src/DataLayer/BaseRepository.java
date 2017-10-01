@@ -4,9 +4,20 @@ import Domain.Contracts.IRepository;
 import Domain.Entities.Entity;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class BaseRepository<T extends Entity> implements IRepository<T> {
     ArrayList<T> collection = new ArrayList<>();
+
+    @Override
+    public ArrayList<T> Fetch() {
+        return collection;
+    }
+
+    @Override
+    public void BulkCreate(ArrayList<T> entity) {
+        collection.addAll(entity);
+    }
 
     @Override
     public void Create(T entity) {

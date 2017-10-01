@@ -2,28 +2,23 @@ package Domain.Services;
 
 import Domain.Entities.Guest;
 import Domain.Entities.Room;
-import Sorting.RoomSortType;
+import Sorting.GuestInfoSortType;
 
 import java.util.Date;
 
 public interface IHotelService {
-    void PrintRoomsSortedBy(RoomSortType roomSortType);
 
-    void PrintFreeRoomsSortedBy(RoomSortType roomSortType);
+    void checkInGuest(Room room, Guest guest, Date arrivalDate, Date departureDate);
 
-    int getRoomsCount();
+    void checkOutGuest(Room room, Guest guest);
 
-    int getFreeRoomsCount();
+    void printCurrentLivingGuestsSortedBy(GuestInfoSortType guestsSortType);
 
-    int getGuestsCount();
-
-    void addRoom(Room room);
-
-    void removeRoom(Room room);
+    int getCurrentLivingGuestsCount();
 
     void printFreeRoomsByDate(Date date);
 
-    void addGuestToRoom(int roomNumber, Guest guest, int year, int month, int day);
+    void getPaymentForGuest(int guestId);
 
-    void getRoomDetails(Room room);
+    void printLastThreeGuests();
 }

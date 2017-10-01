@@ -2,8 +2,9 @@ package Domain.Entities;
 
 import java.util.Date;
 
-public class ServiceGuestInfo {
-    public ServiceGuestInfo(Guest guest, Service service, Date dateOfOrder, boolean isPaid) {
+public class GuestServiceInfo extends Entity {
+    public GuestServiceInfo(Guest guest, Service service, Date dateOfOrder, boolean isPaid) {
+        super(1);
         this.guest = guest;
         this.service = service;
         this.dateOfOrder = dateOfOrder;
@@ -48,6 +49,6 @@ public class ServiceGuestInfo {
     private boolean isPaid;
 
     public String toString() {
-        return String.format("Guest: %s. Service: %s. Date: %s", guest.getSurName(), service, dateOfOrder);
+        return String.format("Guest: %s. Service: %s. Date: %s", guest.getSurName(), service.getTitle(), dateOfOrder);
     }
 }

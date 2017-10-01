@@ -1,6 +1,6 @@
 package Domain.Entities;
 
-public class Guest extends Entity{
+public class Guest extends Entity {
     private String name;
     private String surname;
 
