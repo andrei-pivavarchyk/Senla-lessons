@@ -128,5 +128,13 @@ public class Hotel {
 
      }
 
+     public void setRoomCost(int roomNumber,int cost,String path){
+
+         this.roomService.setRoomCost(roomNumber,cost);
+         ReadFromFileService readFromFileService=new ReadFromFileService(this.roomService);
+         readFromFileService.writeToFileService(this.roomService.getAllRooms(),path);
+
+     }
+
 
 }

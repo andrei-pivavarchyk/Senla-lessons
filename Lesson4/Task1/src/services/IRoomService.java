@@ -25,5 +25,6 @@ public interface IRoomService {
    void printFreeRoomsCount();
    ArrayList<Room> getFreeRoomsByDate(int year,int month,int day);
    ArrayList<GuestRoomInfo> getThreeLastGuests(int roomNumber);
+   void setRoomCost(int roomNumber,int cost);
 
 }

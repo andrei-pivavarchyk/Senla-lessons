@@ -156,6 +156,11 @@ return freeRoomsByDate;
 
        return guestRoomInfoList;
     }
+
+    public void setRoomCost(int roomNumber,int cost){
+        Room room=this.getRoomByNumber(roomNumber);
+        room.setCost(cost);
+    }
 }
 
 

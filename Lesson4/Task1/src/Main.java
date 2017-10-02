@@ -15,7 +15,7 @@ public class Main {
         ServiceStorage serviceStorage=new ServiceStorage();
         GuestServiceStorage guestServiceStorage=new GuestServiceStorage();
         GuestService guestService=new GuestService(guestRoomInfoStorage);
-        ServiceService serviceService=new ServiceService(guestServiceStorage);
+        ServiceService serviceService=new ServiceService(guestServiceStorage,serviceStorage);
         PrinterService printerService=new PrinterService();
 
         Guest guest1 = new Guest(1,"Bob", "White");
@@ -58,6 +58,8 @@ public class Main {
         bestHotel.printGuestServicesByDate(guest1);
         bestHotel.printGuestServicesByCost(guest1);
         bestHotel.printLastThreeGuestsInRoom(1);
+        bestHotel.setRoomCost(1,12,"D:\\Rooms.txt");
+        bestHotel.printAllRooms();
 
 
 

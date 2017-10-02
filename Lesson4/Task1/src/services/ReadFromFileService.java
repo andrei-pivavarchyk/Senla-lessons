@@ -37,4 +37,24 @@ public class ReadFromFileService {
 
         }
     }
+
+    public void writeToFileService(List<Room> allRooms, String path){
+
+        String[] roomArray=new String[allRooms.size()];
+        int i=0;
+        for(Room room: allRooms){
+
+            StringBuilder roomStringBuilder=new StringBuilder().append(room.getNumber()) .append("|").append(room.getCost()).append("|").
+                    append(room.getCapacity()).append("|").append(room.getStars());
+
+            String string=roomStringBuilder.toString();
+            roomArray[i]=string;
+            System.out.println(allRooms.get(i));
+            i++;
+
+        }
+        new TextFileWorker(path).writeToFile(roomArray);
+
+
+    }
 }
