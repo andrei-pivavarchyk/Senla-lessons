@@ -11,6 +11,6 @@ public class ShowAllRoomsSortedByStarsItem extends MenuItem {
     }
 
     public void click() {
-        this.menuController.roomMenu();
+        this.menuController.showAllRoomsSortedByStars();
     }
 }

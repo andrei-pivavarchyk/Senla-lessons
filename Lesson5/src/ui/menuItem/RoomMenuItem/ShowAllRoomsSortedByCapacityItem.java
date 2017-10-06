@@ -10,6 +10,6 @@ public class ShowAllRoomsSortedByCapacityItem extends MenuItem{
     }
 
     public void click() {
-        this.menuController.roomMenu();
+        this.menuController.showAllRoomsSortedByCapacity();
     }
 }

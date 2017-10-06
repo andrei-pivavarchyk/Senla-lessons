@@ -8,6 +8,7 @@ import entity.Service;
 import services.*;
 import ui.View.MainMenuView;
 import ui.View.RoomView.RoomView;
+import ui.View.RoomView.ShowAllRoomsSortedByCostView;
 import ui.View.RoomView.ShowAllRoomsView;
 import ui.View.ServiceView.ServiceMenuView;
 import ui.View.ServiceView.ShowAllServicesSortedByCostView;
@@ -217,8 +218,62 @@ public void showAllRoomsMenu(){
     view.act();
 }
 
+public void showAllRoomsSortedByCost(){
+
+    MainMenuItem item1 = new  MainMenuItem(4, "Show mainMenu ", this);
+    ShowAllRoomsSortedByCapacityItem item2=new ShowAllRoomsSortedByCapacityItem(1, "Show rooms sorted by capacity", this);
+    ShowAllRoomsSortedByStarsItem item3=new ShowAllRoomsSortedByStarsItem(1, "Show rooms sorted by stars", this);
+    ViewModel model = new ViewModel("Show All rooms menu");
+    model.menuItems.add(item1);
+    model.menuItems.add(item2);
+    model.menuItems.add(item3);
+
+    List<Room> allRooms=this.roomService.getRoomCostSorting(this.roomService.getAllRooms());
+    ShowAllRoomsSortedByCostView view=new ShowAllRoomsSortedByCostView(allRooms,model);
+    view.showInformation();
+    view.act();
+
+}
+    public void showAllRoomsSortedByCapacity(){
+
+        MainMenuItem item1 = new  MainMenuItem(4, "Show mainMenu ", this);
+        ShowAllRoomsSortedByCostItem item2=new ShowAllRoomsSortedByCostItem(1, "Show rooms sorted by cost", this);
+        ShowAllRoomsSortedByStarsItem item3=new ShowAllRoomsSortedByStarsItem(1, "Show rooms sorted by stars", this);
+        ViewModel model = new ViewModel("Show All rooms menu");
+        model.menuItems.add(item1);
+        model.menuItems.add(item2);
+        model.menuItems.add(item3);
+
+        List<Room> allRooms=this.roomService.getRoomCapacitySorting(this.roomService.getAllRooms());
+        ShowAllRoomsView view=new ShowAllRoomsView(allRooms,model);
+        view.showInformation();
+        view.act();
+
+    }
+
+    public void showAllRoomsSortedByStars(){
+
+        MainMenuItem item1 = new  MainMenuItem(4, "Show mainMenu ", this);
+        ShowAllRoomsSortedByCostItem item2=new ShowAllRoomsSortedByCostItem(1, "Show rooms sorted by cost", this);
+        ShowAllRoomsSortedByCapacityItem item3=new ShowAllRoomsSortedByCapacityItem(1, "Show rooms sorted by capacity", this);
+        ViewModel model = new ViewModel("Show All rooms menu");
+        model.menuItems.add(item1);
+        model.menuItems.add(item2);
+        model.menuItems.add(item3);
+
+        List<Room> allRooms=this.roomService.getRoomStarsSorting(this.roomService.getAllRooms());
+        ShowAllRoomsView view=new ShowAllRoomsView(allRooms,model);
+        view.showInformation();
+        view.act();
+
+    }
 
 
+
+
+
+
+    
 
 
 

@@ -12,7 +12,7 @@ public class ShowAllRoomsSortedByCostItem extends MainMenuItem{
         super(id, title, menuController);
     }
     public void click(){
-        this.menuController.roomMenu();
+        this.menuController.showAllRoomsSortedByCost();
     }
 
 }
