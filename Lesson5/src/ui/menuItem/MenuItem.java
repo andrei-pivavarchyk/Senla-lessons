@@ -17,9 +17,7 @@ public abstract class MenuItem {
 
     }
 
-    public void click(){
-
-    }
+    public abstract void click();
 
 
 }

@@ -149,14 +149,11 @@ public class MenuController {
         MainMenuItem menuItem1 = new  MainMenuItem(4, "Show mainMenu ", this);
         ShowAllServiceSortedByCost menuItem2 = new  ShowAllServiceSortedByCost(4, "Show services by cost ", this);
 
-
         ViewModel mainMenuViewModel = new ViewModel("Show all services menu");
         mainMenuViewModel.menuItems.add(menuItem1);
         mainMenuViewModel.menuItems.add(menuItem2);
 
         ShowAllServicesView showAllServicesView=new ShowAllServicesView(mainMenuViewModel);
-
-
 
         List<Service> allServices=new ArrayList<Service>();
         allServices=this.serviceService.getServiceStorage().getAllEntities();
