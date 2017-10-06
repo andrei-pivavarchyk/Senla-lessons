@@ -51,25 +51,25 @@ public class GuestService implements IGuestService {
         return guestList;
     }
 
-    public void printAllGuestsCount(){
-        int count=0;
-        for(GuestRoomInfo guestRoomInfo:this.guestRoomInfoStorage.getAllEntities()){
-            if(guestRoomInfo.getStillLiving().equals(true)){
+    public void printAllGuestsCount() {
+        int count = 0;
+        for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+            if (guestRoomInfo.getStillLiving().equals(true)) {
                 count++;
             }
         }
         System.out.println(new StringBuilder("All guests count: ").append(count));
     }
 
-    public int getPayAmount(Guest guest){
-        int payGuest=0;
-        for(GuestRoomInfo guestRoomInfo:this.guestRoomInfoStorage.getAllEntities()){
-            if(guestRoomInfo.getGuest().equals(guest)){
-                Date date1=guestRoomInfo.getArrivalDate();
-                Date date2=guestRoomInfo.getDepartureDate();
+    public int getPayAmount(Guest guest) {
+        int payGuest = 0;
+        for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+            if (guestRoomInfo.getGuest().equals(guest)) {
+                Date date1 = guestRoomInfo.getArrivalDate();
+                Date date2 = guestRoomInfo.getDepartureDate();
                 long diff = date2.getTime() - date1.getTime();
-                int allDaysLiving= (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-               payGuest= allDaysLiving*guestRoomInfo.getRoom().getCost();
+                int allDaysLiving = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+                payGuest = allDaysLiving * guestRoomInfo.getRoom().getCost();
 
 
             }
@@ -77,11 +77,11 @@ public class GuestService implements IGuestService {
         return payGuest;
     }
 
-    public ArrayList<GuestRoomInfo> getCurrentGuestRoomInfo(){
-        ArrayList<GuestRoomInfo> currentGuestRoomInfoList=new ArrayList<GuestRoomInfo>();
-        for(GuestRoomInfo guestRoomInfo:this.guestRoomInfoStorage.getAllEntities()){
-            if(guestRoomInfo.getStillLiving().equals(true)){
-                currentGuestRoomInfoList.add( guestRoomInfo);
+    public ArrayList<GuestRoomInfo> getCurrentGuestRoomInfo() {
+        ArrayList<GuestRoomInfo> currentGuestRoomInfoList = new ArrayList<GuestRoomInfo>();
+        for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+            if (guestRoomInfo.getStillLiving().equals(true)) {
+                currentGuestRoomInfoList.add(guestRoomInfo);
             }
 
         }

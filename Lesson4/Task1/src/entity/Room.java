@@ -3,16 +3,16 @@ package entity;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Room extends Entity{
+public class Room extends Entity {
     private int number;
     private int capacity;
     private int stars;
     private int cost;
-    private RoomStatus status = RoomStatus.free;
+    private RoomStatus status = RoomStatus.FREE;
     private ArrayList<Guest> guests;
 
 
-    public Room(int id,int number, int cost, int capacity, int stars) {
+    public Room(int id, int number, int cost, int capacity, int stars) {
         super(id);
         this.number = number;
         this.cost = cost;
@@ -22,17 +22,19 @@ public class Room extends Entity{
     }
 
 
-
-    public int getCost(){
+    public int getCost() {
         return this.cost;
     }
-    public int getCapacity(){
+
+    public int getCapacity() {
         return this.capacity;
     }
-    public int getStars(){
+
+    public int getStars() {
         return this.stars;
     }
-    public int getNumber(){
+
+    public int getNumber() {
         return this.number;
     }
 

@@ -12,8 +12,8 @@ public class ReadFromFileService {
 
     private IRoomService roomService;
 
-    public ReadFromFileService(IRoomService roomService){
-        this.roomService=roomService;
+    public ReadFromFileService(IRoomService roomService) {
+        this.roomService = roomService;
     }
 
     public void readRooms(String path) {
@@ -33,22 +33,20 @@ public class ReadFromFileService {
 
             this.roomService.addRoom(room);
 
-
-
         }
     }
 
-    public void writeToFileService(List<Room> allRooms, String path){
+    public void writeToFileService(List<Room> allRooms, String path) {
 
-        String[] roomArray=new String[allRooms.size()];
-        int i=0;
-        for(Room room: allRooms){
+        String[] roomArray = new String[allRooms.size()];
+        int i = 0;
+        for (Room room : allRooms) {
 
-            StringBuilder roomStringBuilder=new StringBuilder().append(room.getNumber()) .append("|").append(room.getCost()).append("|").
+            StringBuilder roomStringBuilder = new StringBuilder().append(room.getNumber()).append("|").append(room.getCost()).append("|").
                     append(room.getCapacity()).append("|").append(room.getStars());
 
-            String string=roomStringBuilder.toString();
-            roomArray[i]=string;
+            String string = roomStringBuilder.toString();
+            roomArray[i] = string;
             System.out.println(allRooms.get(i));
             i++;
 

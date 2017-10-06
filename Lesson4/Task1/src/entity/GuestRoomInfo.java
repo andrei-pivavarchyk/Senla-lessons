@@ -7,19 +7,19 @@ public class GuestRoomInfo extends Entity {
 
     private Date arrivalDate;
     private Date departureDate;
-    private  Guest guest;
+    private Guest guest;
     private Room room;
     private Boolean isStillLiving;
 
 
-    public GuestRoomInfo(int id,Date arrivalDate,Guest guest,Room room,int year,int month, int day){
+    public GuestRoomInfo(int id, Date arrivalDate, Guest guest, Room room, int year, int month, int day) {
         super(id);
-        this.arrivalDate=arrivalDate;
-        this.guest=guest;
-        this.room=room;
-        this.isStillLiving=true;
-        Calendar calendar=new GregorianCalendar(year,month,day);
-        this.departureDate=calendar.getTime();
+        this.arrivalDate = arrivalDate;
+        this.guest = guest;
+        this.room = room;
+        this.isStillLiving = true;
+        Calendar calendar = new GregorianCalendar(year, month, day);
+        this.departureDate = calendar.getTime();
 
     }
 
@@ -44,7 +44,6 @@ public class GuestRoomInfo extends Entity {
         return room;
     }
 
-
     public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
@@ -66,6 +65,6 @@ public class GuestRoomInfo extends Entity {
     }
 
     public String toString() {
-        return String.format("Guest: %s. Room number: %s.", guest,room.getNumber() );
+        return String.format("Guest: %s. Room number: %s.", guest, room.getNumber());
     }
 }
