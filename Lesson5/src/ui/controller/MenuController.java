@@ -3,9 +3,12 @@ package ui.controller;
 
 import Storage.*;
 import entity.Guest;
+import entity.Room;
 import entity.Service;
 import services.*;
 import ui.View.MainMenuView;
+import ui.View.RoomView.RoomView;
+import ui.View.RoomView.ShowAllRoomsView;
 import ui.View.ServiceView.ServiceMenuView;
 import ui.View.ServiceView.ShowAllServicesSortedByCostView;
 import ui.View.ServiceView.ShowAllServicesView;
@@ -17,13 +20,12 @@ import ui.menuItem.GuestMenuItem.ShowAllGuestsSortedByDepartureDateItem;
 
 import ui.menuItem.GuestMenuItem.ShowAllGuestsSortedByNameItem;
 import ui.menuItem.MainMenuItem;
+import ui.menuItem.RoomMenuItem.*;
 import ui.menuItem.ServiceMenuItem.ShowAllServiceSortedByCost;
 import ui.menuItem.ServiceMenuItem.ShowAllServicesItem;
-import ui.menuItem.ServiceMenuItem.ShowAllServicesSortedByType;
 import ui.model.ViewModel;
 import ui.menuItem.GuestMenuItem.GuestMenuItem;
 import ui.menuItem.GuestMenuItem.ShowAllGuestsItem;
-import ui.menuItem.RoomMenuItem.RoomMenuItem;
 import ui.menuItem.ServiceMenuItem.ServiceMenuItem;
 
 import java.util.ArrayList;
@@ -172,7 +174,6 @@ public class MenuController {
         mainMenuViewModel.menuItems.add(menuItem2);
         ShowAllServicesSortedByCostView showAllServiceSortedByCostView=new ShowAllServicesSortedByCostView(mainMenuViewModel);
 
-
         List<Service> allServices=new ArrayList<Service>();
         allServices=this.serviceService.getAllServicesSortedByCost();
         this.printerService.printServices(allServices);
@@ -181,8 +182,40 @@ public class MenuController {
 
     }
 
+public void roomMenu() {
+    MainMenuItem item1 = new  MainMenuItem(4, "Show mainMenu ", this);
+    AddGuestItem item2 = new AddGuestItem(1, "Add guest to room", this);
+    ShowAllRoomsItem item3 = new ShowAllRoomsItem(1, "Show All rooms", this);
+
+    ViewModel model = new ViewModel("Room menu");
+    model.menuItems.add(item1);
+    model.menuItems.add(item2);
+    model.menuItems.add(item3);
+
+    RoomView roomView = new RoomView(model);
+    roomView.act();
+}
 
 
+
+public void showAllRoomsMenu(){
+    MainMenuItem item1 = new  MainMenuItem(4, "Show mainMenu ", this);
+    ShowAllRoomsSortedByCapacityItem item2=new ShowAllRoomsSortedByCapacityItem(1, "Show rooms sorted by capacity", this);
+    ShowAllRoomsSortedByCostItem item3=new ShowAllRoomsSortedByCostItem(1, "Show rooms sorted by cost", this);
+    ShowAllRoomsSortedByStarsItem item4=new ShowAllRoomsSortedByStarsItem(1, "Show rooms sorted by stars", this);
+
+    ViewModel model = new ViewModel("Show All rooms menu");
+    model.menuItems.add(item1);
+    model.menuItems.add(item2);
+    model.menuItems.add(item3);
+    model.menuItems.add(item4);
+
+   List<Room> allRooms=this.roomService.getAllRooms();
+
+    ShowAllRoomsView view=new ShowAllRoomsView(allRooms,model);
+    view.showInformation();
+    view.act();
+}
 
 
 
