@@ -1,38 +1,12 @@
 import entity.*;
-import ui.controller.MenuController;
+
 
 
 public class Main {
 
 
     public static void main(String[] args) {
-        Guest guest1 = new Guest(1, "Bob", "White");
-        Guest guest2 = new Guest(1, "Alice", "White");
-        Guest guest3 = new Guest(1, "Nadya", "White");
-        //creating services
-        Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
-        Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
-        Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);
 
-
-        MenuController menuController=new MenuController();
-        menuController.readRoomsFromFile("D:\\Rooms.txt");;
-        menuController.addGuest(1,guest1,2018,1,1);
-
-
-        menuController.showMainMenu();
-
-
-
-
-
-
-
-       // GuestController guestController=new GuestController(bestHotel.getGuestSerice());
-       // guestController.showAllGuests();
-    }
-
-    private static void startHotel(){
 
         //creating guests
         Guest guest1 = new Guest(1, "Bob", "White");
@@ -74,8 +48,7 @@ public class Main {
         bestHotel.printLastThreeGuestsInRoom(1);
         bestHotel.setRoomCost(1, 12, "D:\\Rooms.txt");
         bestHotel.printAllRooms();
+
     }
 
 }
-
-
