@@ -10,7 +10,7 @@ public class Main {
         Guest guest2 = new Guest(1, "Alice", "White");
         Guest guest3 = new Guest(1, "Nadya", "White");
         //creating services
-        Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
+        Service service1 = new Service(1, ServiceType.EAT, "Vodka", 45);
         Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
         Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);
 
@@ -18,6 +18,11 @@ public class Main {
         MenuController menuController=new MenuController();
         menuController.readRoomsFromFile("D:\\Rooms.txt");;
         menuController.addGuest(1,guest1,2018,1,1);
+        menuController.addGuest(1,guest2,2018,1,1);
+        menuController.addGuest(1,guest3,2018,1,1);
+       menuController.addService(service1);
+       menuController.addService(service2);
+       menuController.addService(service3);
 
 
         menuController.showMainMenu();

@@ -1,8 +1,6 @@
-package ui.model.menuItem;
+package ui.menuItem;
 
 
-import ui.View.IView;
-import ui.View.guestView.MainGuestView;
 import ui.controller.MenuController;
 
 public abstract class MenuItem {

@@ -1,7 +1,7 @@
 package ui.model;
 
 
-import ui.model.menuItem.MenuItem;
+import ui.menuItem.MenuItem;
 
 import java.util.ArrayList;
 

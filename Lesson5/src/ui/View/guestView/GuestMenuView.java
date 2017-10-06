@@ -2,27 +2,29 @@ package ui.View.guestView;
 import ui.Service.ConsoleService;
 import ui.View.IView;
 import ui.model.ViewModel;
-import ui.model.menuItem.MenuItem;
+import ui.menuItem.MenuItem;
 
 
-public class MainGuestView  implements IView{
+public class GuestMenuView implements IView{
 
     private ViewModel mainMenuViewModel;
 
-    public MainGuestView(ViewModel mainMenuViewModel){
+    public GuestMenuView(ViewModel mainMenuViewModel){
 
         this.mainMenuViewModel=mainMenuViewModel;
     }
     public void act(){
         System.out.println(mainMenuViewModel.title);
+        int i=1;
         for(MenuItem menuItem:mainMenuViewModel.menuItems){
-            System.out.println(menuItem.id+" "+menuItem.title);
+            System.out.println(i+" "+menuItem.title);
+            i++;
         }
+
         ConsoleService consoleService=new ConsoleService();
-        consoleService.getNumber(mainMenuViewModel.getMenuItems().size());
+        int number=consoleService.getNumber(mainMenuViewModel.getMenuItems().size());
+        this.mainMenuViewModel.menuItems.get(number-1).click();
+
     }
 
-    public void startAnoyherView(int number){
-        System.out.print(600);
-    }
 }

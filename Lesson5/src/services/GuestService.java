@@ -42,8 +42,8 @@ public class GuestService implements IGuestService {
 
         ArrayList<GuestRoomInfo> copyArray = new ArrayList<GuestRoomInfo>(this.guestRoomInfoStorage.getAllEntities());
         ArrayList<Guest> guestList = new ArrayList<Guest>();
-
         copyArray.sort(new GuestRoomInfoDateComparator());
+
         for (GuestRoomInfo guestRoomInfo : copyArray) {
             guestList.add(guestRoomInfo.getGuest());
         }

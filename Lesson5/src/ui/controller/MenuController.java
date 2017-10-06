@@ -3,18 +3,31 @@ package ui.controller;
 
 import Storage.*;
 import entity.Guest;
+import entity.Service;
 import services.*;
 import ui.View.MainMenuView;
-import ui.View.guestView.AllGuestsView;
+import ui.View.ServiceView.ServiceMenuView;
+import ui.View.ServiceView.ShowAllServicesSortedByCostView;
+import ui.View.ServiceView.ShowAllServicesView;
+import ui.View.guestView.GuestMenuView;
+import ui.View.guestView.ShowAllGuestsSortedByDateView;
+import ui.View.guestView.ShowAllGuestsSortedByNameView;
+import ui.View.guestView.ShowAllGuestsView;
+import ui.menuItem.GuestMenuItem.ShowAllGuestsSortedByDepartureDateItem;
+
+import ui.menuItem.GuestMenuItem.ShowAllGuestsSortedByNameItem;
+import ui.menuItem.MainMenuItem;
+import ui.menuItem.ServiceMenuItem.ShowAllServiceSortedByCost;
+import ui.menuItem.ServiceMenuItem.ShowAllServicesItem;
+import ui.menuItem.ServiceMenuItem.ShowAllServicesSortedByType;
 import ui.model.ViewModel;
-import ui.model.menuItem.GuestMenuItem.GuestMenuItem;
-import ui.model.menuItem.GuestMenuItem.ShowAllGuestsItem;
-import ui.model.menuItem.RoomMenuItem.RoomMenuItem;
-import ui.model.menuItem.ServiceMenuItem.ServiceMenuItem;
+import ui.menuItem.GuestMenuItem.GuestMenuItem;
+import ui.menuItem.GuestMenuItem.ShowAllGuestsItem;
+import ui.menuItem.RoomMenuItem.RoomMenuItem;
+import ui.menuItem.ServiceMenuItem.ServiceMenuItem;
 
 import java.util.ArrayList;
-
-import static sun.font.FontUtilities.isWindows;
+import java.util.List;
 
 public class MenuController {
 
@@ -59,24 +72,121 @@ public class MenuController {
 
     public void showGuestMenu() {
 
-
-        ShowAllGuestsItem menuItem1 = new ShowAllGuestsItem(4, "Show all guests list ", this);
-        RoomMenuItem menuItem2 = new RoomMenuItem(5, "Show some guest information", this);
+        MainMenuItem menuItem1 = new MainMenuItem(4, "Show mainMenu ", this);
+        ShowAllGuestsItem menuItem2 = new ShowAllGuestsItem(4, "Show all guests list ", this);
+        RoomMenuItem menuItem3 = new RoomMenuItem(5, "Show some guest information", this);
         ViewModel mainMenuViewModel = new ViewModel("Guest Menu");
         mainMenuViewModel.menuItems.add(menuItem1);
         mainMenuViewModel.menuItems.add(menuItem2);
-        MainMenuView mainMenuView = new MainMenuView(mainMenuViewModel);
-        mainMenuView.act();
+        mainMenuViewModel.menuItems.add(menuItem3);
+        GuestMenuView view = new GuestMenuView(mainMenuViewModel);
+        view.act();
 
     }
 
-     public void showAllGuests(){
+     public void showAllGuestsMenu(){
+         MainMenuItem menuItem1 = new MainMenuItem(4, "Show mainMenu ", this);
+         ShowAllGuestsSortedByNameItem menuItem2 = new ShowAllGuestsSortedByNameItem(4, "Sort List By name ", this);
+         ShowAllGuestsSortedByDepartureDateItem menuItem3 = new ShowAllGuestsSortedByDepartureDateItem(4, "Sort List By departure date ", this);
+         ViewModel mainMenuViewModel = new ViewModel("Guest Menu");
+         mainMenuViewModel.menuItems.add(menuItem1);
+         mainMenuViewModel.menuItems.add(menuItem2);
+         mainMenuViewModel.menuItems.add(menuItem3);
+
          ArrayList<Guest> allGuests=new ArrayList<Guest>();
          allGuests=this.guestSerice.getAllGuests();
-         System.out.println(allGuests);
-         AllGuestsView allGuestsView=new AllGuestsView(allGuests);
-         allGuestsView.act();
+         this.printerService.printGuests(allGuests);
+         ShowAllGuestsView view=new ShowAllGuestsView(allGuests,mainMenuViewModel);
+         view.act();
      }
+
+     public void showAllGuestsSortedByName(){
+         MainMenuItem menuItem1 = new  MainMenuItem(4, "Show mainMenu ", this);
+         ShowAllGuestsItem menuItem2 = new ShowAllGuestsItem(4, "Show all guests ", this);
+         ShowAllGuestsSortedByDepartureDateItem menuItem3 = new ShowAllGuestsSortedByDepartureDateItem(4, "Sort List By departure date ", this);
+         ViewModel mainMenuViewModel = new ViewModel("Guest Menu");
+         mainMenuViewModel.menuItems.add(menuItem1);
+         mainMenuViewModel.menuItems.add(menuItem2);
+         mainMenuViewModel.menuItems.add(menuItem3);
+
+         ArrayList<Guest> allGuests=new ArrayList<Guest>();
+         allGuests=this.guestSerice.getAllGuestsSortedByName();
+         this.printerService.printGuests(allGuests);
+         ShowAllGuestsSortedByNameView view=new  ShowAllGuestsSortedByNameView(allGuests,mainMenuViewModel);
+         view.act();
+     }
+     public void showAllGuestsSortedByDepartureDate(){
+         MainMenuItem menuItem1 = new  MainMenuItem(4, "Show mainMenu ", this);
+         ShowAllGuestsItem menuItem2 = new ShowAllGuestsItem(4, "Show all guests ", this);
+         ShowAllGuestsSortedByNameItem menuItem3 = new ShowAllGuestsSortedByNameItem(4, "Sort List By departure date ", this);
+         ViewModel mainMenuViewModel = new ViewModel("Guest Menu");
+         mainMenuViewModel.menuItems.add(menuItem1);
+         mainMenuViewModel.menuItems.add(menuItem2);
+         mainMenuViewModel.menuItems.add(menuItem3);
+
+         ArrayList<Guest> allGuests=new ArrayList<Guest>();
+         allGuests=this.guestSerice.getAllGuestsSortedByDateDeparture();
+         this.printerService.printGuests(allGuests);
+         ShowAllGuestsSortedByDateView view=new ShowAllGuestsSortedByDateView(allGuests,mainMenuViewModel);
+         view.act();
+     }
+
+
+    public void serviceMenu(){
+
+        MainMenuItem menuItem1 = new  MainMenuItem(4, "Show mainMenu ", this);
+        ShowAllServicesItem menuItem2 = new ShowAllServicesItem(4, "Show all Services ", this);
+
+        ViewModel mainMenuViewModel = new ViewModel("Service menu");
+        mainMenuViewModel.menuItems.add(menuItem1);
+        mainMenuViewModel.menuItems.add(menuItem2);
+        ServiceMenuView serviceMenuView=new ServiceMenuView(mainMenuViewModel);
+        serviceMenuView.act();
+    }
+
+
+    public void showAllServicesMenu(){
+        MainMenuItem menuItem1 = new  MainMenuItem(4, "Show mainMenu ", this);
+        ShowAllServiceSortedByCost menuItem2 = new  ShowAllServiceSortedByCost(4, "Show services by cost ", this);
+
+
+        ViewModel mainMenuViewModel = new ViewModel("Show all services menu");
+        mainMenuViewModel.menuItems.add(menuItem1);
+        mainMenuViewModel.menuItems.add(menuItem2);
+
+        ShowAllServicesView showAllServicesView=new ShowAllServicesView(mainMenuViewModel);
+
+
+
+        List<Service> allServices=new ArrayList<Service>();
+        allServices=this.serviceService.getServiceStorage().getAllEntities();
+        this.printerService.printServices(allServices);
+        showAllServicesView.act();
+
+    }
+
+
+    public void showAllServicesMenuSortedByCost(){
+        MainMenuItem menuItem1 = new  MainMenuItem(4, "Show mainMenu ", this);
+        ShowAllServicesItem menuItem2 = new ShowAllServicesItem(4, "Show all Services ", this);
+
+        ViewModel mainMenuViewModel = new ViewModel("Show all services sorted By cost");
+        mainMenuViewModel.menuItems.add(menuItem1);
+        mainMenuViewModel.menuItems.add(menuItem2);
+        ShowAllServicesSortedByCostView showAllServiceSortedByCostView=new ShowAllServicesSortedByCostView(mainMenuViewModel);
+
+
+        List<Service> allServices=new ArrayList<Service>();
+        allServices=this.serviceService.getAllServicesSortedByCost();
+        this.printerService.printServices(allServices);
+        showAllServiceSortedByCostView.act();
+
+
+    }
+
+
+
+
 
 
 
@@ -93,4 +203,9 @@ public class MenuController {
         readFromFileService.readRooms(path);
 
     }
+    public void addService(Service service) {
+        this.serviceService.addService(service);
+    }
+
+
 }

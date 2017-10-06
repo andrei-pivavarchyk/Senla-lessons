@@ -1,18 +1,18 @@
-package ui.View;
+package ui.View.ServiceView;
 
 import ui.Service.ConsoleService;
-import ui.model.ViewModel;
 import ui.menuItem.MenuItem;
+import ui.model.ViewModel;
 
-
-public class MainMenuView implements IView{
+/**
+ * Created by андрей on 06.10.2017.
+ */
+public class ShowAllServicesSortedByCostView {
     private ViewModel mainMenuViewModel;
-
-    public MainMenuView(ViewModel mainMenuViewModel){
+    public ShowAllServicesSortedByCostView(ViewModel mainMenuViewModel){
 
         this.mainMenuViewModel=mainMenuViewModel;
     }
-
     public void act(){
         System.out.println(mainMenuViewModel.title);
         int i=1;
@@ -25,12 +25,5 @@ public class MainMenuView implements IView{
         int number=consoleService.getNumber(mainMenuViewModel.getMenuItems().size());
         this.mainMenuViewModel.menuItems.get(number-1).click();
 
-    }
-
-
-    public void startAnoyherView(int number){}
-
-    public ViewModel getMainMenuViewModel() {
-        return mainMenuViewModel;
     }
 }

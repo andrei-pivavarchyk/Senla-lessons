@@ -1,17 +1,28 @@
-package ui.View;
+package ui.View.guestView;
 
+
+import entity.Guest;
 import ui.Service.ConsoleService;
-import ui.model.ViewModel;
 import ui.menuItem.MenuItem;
+import ui.model.ViewModel;
+
+import java.util.ArrayList;
+
+public class ShowAllGuestsView {
+
+    public String title="ShowAllGuests";
+    public ArrayList<Guest> allGuests;
+    public ViewModel mainMenuViewModel;
 
 
-public class MainMenuView implements IView{
-    private ViewModel mainMenuViewModel;
-
-    public MainMenuView(ViewModel mainMenuViewModel){
-
+    public ShowAllGuestsView(ArrayList<Guest> allGuests, ViewModel mainMenuViewModel){
+        this.title=title;
+        this.allGuests=allGuests;
         this.mainMenuViewModel=mainMenuViewModel;
     }
+
+
+
 
     public void act(){
         System.out.println(mainMenuViewModel.title);
@@ -25,12 +36,5 @@ public class MainMenuView implements IView{
         int number=consoleService.getNumber(mainMenuViewModel.getMenuItems().size());
         this.mainMenuViewModel.menuItems.get(number-1).click();
 
-    }
-
-
-    public void startAnoyherView(int number){}
-
-    public ViewModel getMainMenuViewModel() {
-        return mainMenuViewModel;
     }
 }

@@ -1,8 +1,8 @@
-package ui.model.menuItem.RoomMenuItem;
+package ui.menuItem.RoomMenuItem;
 
 
 import ui.controller.MenuController;
-import ui.model.menuItem.MenuItem;
+import ui.menuItem.MenuItem;
 
 public class RoomMenuItem extends MenuItem{
 

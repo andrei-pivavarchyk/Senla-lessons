@@ -1,6 +1,7 @@
 package services;
 
 
+import Storage.IServiceStorage;
 import entity.Guest;
 import entity.GuestServiceInfo;
 import entity.Service;
@@ -13,4 +14,6 @@ public interface IServiceService {
     ArrayList<GuestServiceInfo> getAllGuestServicesInfoSortedByCost(Guest guest);
     ArrayList<GuestServiceInfo> getAllGuestServicesInfoSortedByDate(Guest guest);
     void addService(Service service);
+    public IServiceStorage getServiceStorage();
+    ArrayList<Service> getAllServicesSortedByCost();
 }

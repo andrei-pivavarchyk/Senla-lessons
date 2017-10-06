@@ -7,6 +7,7 @@ import Storage.IServiceStorage;
 import comparator.GuestServiceInfoCostComparator;
 
 import comparator.GuestServiceInfoDateComparator;
+import comparator.ServiceCostComparator;
 import entity.Guest;
 import entity.GuestServiceInfo;
 import entity.Service;
@@ -14,6 +15,7 @@ import entity.Service;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class ServiceService implements IServiceService {
 
@@ -61,9 +63,17 @@ public class ServiceService implements IServiceService {
         return copyArray;
     }
 
+    public ArrayList<Service> getAllServicesSortedByCost(){
+      ArrayList<Service> allServices=new ArrayList<Service>(this.serviceStorage.getAllEntities());
+           allServices.sort(new ServiceCostComparator());
+      return allServices;
+    }
+
     public void addService(Service service) {
         this.serviceStorage.addEntity(service);
     }
 
-
+    public IServiceStorage getServiceStorage() {
+        return serviceStorage;
+    }
 }

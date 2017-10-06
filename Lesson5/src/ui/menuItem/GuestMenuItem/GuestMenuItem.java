@@ -1,8 +1,8 @@
-package ui.model.menuItem.GuestMenuItem;
+package ui.menuItem.GuestMenuItem;
 
 
 import ui.controller.MenuController;
-import ui.model.menuItem.MenuItem;
+import ui.menuItem.MenuItem;
 
 public class GuestMenuItem extends MenuItem {
 

@@ -69,4 +69,13 @@ public class PrinterService {
 
     }
 
+    public void printServices(List<Service> allServices){
+
+        for (Service service : allServices) {
+
+            System.out.println(service);
+        }
+
+    }
+
 }
