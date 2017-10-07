@@ -1,14 +1,14 @@
 package ui.menuItem.RoomMenuItem;
 
-import ui.controller.MenuController;
+import ui.Service.MenuService;
 import ui.menuItem.MenuItem;
 
 public class ShowFreeRoomsItem extends MenuItem {
-    public ShowFreeRoomsItem(int id, String title, MenuController menuController) {
-        super(id, title, menuController);
+    public ShowFreeRoomsItem( String title, MenuService menuController) {
+        super(title,mainController);
     }
 
     public void click() {
-        this.menuController.roomMenu();
+        this.mainController.showFreeRoomsMenu();
     }
 }

@@ -1,21 +1,20 @@
 package ui.menuItem;
 
 
-import ui.controller.MenuController;
+import ui.Service.MenuService;
+import ui.controller.MainController;
 
 public abstract class MenuItem {
-    public int id;
     public String title;
-    public MenuController menuController;
+    public MainController mainController;
 
 
-
-    public MenuItem(int id, String title, MenuController menuController){
-        this.id=id;
+    public MenuItem( String title, MainController mainController){
         this.title=title;
-        this.menuController=menuController;
+        this.mainController=mainController;
 
     }
+
 
     public abstract void click();
 

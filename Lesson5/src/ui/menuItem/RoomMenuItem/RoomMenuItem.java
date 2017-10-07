@@ -1,15 +1,16 @@
 package ui.menuItem.RoomMenuItem;
 
 
-import ui.controller.MenuController;
+import ui.Service.MenuService;
+import ui.controller.MainController;
 import ui.menuItem.MenuItem;
 
 public class RoomMenuItem extends MenuItem{
 
-    public RoomMenuItem(int id, String title, MenuController menuController) {
-        super(id, title, menuController);
+    public RoomMenuItem( String title, MainController mainController) {
+        super( title, mainController);
     }
     public void click(){
-this.menuController.roomMenu();
+this.mainController.roomMenu();
     }
 }

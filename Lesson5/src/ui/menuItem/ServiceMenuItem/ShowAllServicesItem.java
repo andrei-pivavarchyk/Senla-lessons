@@ -1,22 +1,18 @@
 package ui.menuItem.ServiceMenuItem;
 
 
-import entity.Guest;
-import entity.Service;
-import ui.controller.MenuController;
+import ui.Service.MenuService;
+import ui.controller.MainController;
 import ui.menuItem.MenuItem;
-import ui.model.ViewModel;
-
-import java.util.ArrayList;
 
 public class ShowAllServicesItem extends MenuItem{
 
 
-    public ShowAllServicesItem(int id, String title, MenuController menuController) {
-        super(id, title, menuController);
+    public ShowAllServicesItem( String title, MainController mainController) {
+        super( title, mainController);
     }
     public void click(){
-        this.menuController.showAllServicesMenu();
+        this.mainController.showAllServicesMenu();
     }
 
 }

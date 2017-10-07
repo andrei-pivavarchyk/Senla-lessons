@@ -1,15 +1,16 @@
 package ui.menuItem.GuestMenuItem;
 
-import ui.controller.MenuController;
+import ui.Service.MenuService;
+import ui.controller.MainController;
 import ui.menuItem.MenuItem;
 
 
 public class ShowAllGuestsSortedByNameItem extends MenuItem {
 
-    public ShowAllGuestsSortedByNameItem(int id, String title, MenuController menuController) {
-        super(id, title, menuController);
+    public ShowAllGuestsSortedByNameItem( String title, MainController mainController) {
+        super( title, mainController);
     }
     public void click(){
-        this.menuController.showAllGuestsSortedByName();
+        this.mainController.showAllGuestsSortedByName();
     }
 }

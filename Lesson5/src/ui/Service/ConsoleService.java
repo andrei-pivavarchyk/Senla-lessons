@@ -7,7 +7,7 @@ import static java.lang.System.in;
 
 public class ConsoleService {
 
-    public static int getNumber(int maxNumber) {
+    public static int getNumberForView(int maxNumber) {
 
 
         Scanner scanner = new Scanner(System.in);
@@ -31,6 +31,13 @@ public class ConsoleService {
             }
         }
         return input;
+    }
+
+    public static String getString(){
+
+        Scanner scanner = new Scanner(System.in);
+      String string=  scanner.nextLine();
+      return string;
     }
 
 }

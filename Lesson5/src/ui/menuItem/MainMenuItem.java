@@ -1,14 +1,18 @@
 package ui.menuItem;
 
 
-import ui.controller.MenuController;
+import ui.Service.MenuService;
+import ui.controller.MainController;
 
 public class MainMenuItem extends  MenuItem {
-    public MainMenuItem(int id, String title, MenuController menuController) {
-        super(id, title, menuController);
+    public MainMenuItem( String title, MainController mainController)
+    {
+        super( title, mainController);
     }
 
+
+
     public void click(){
-        this.menuController.showMainMenu();
+        this.mainController.showMainMenu();
     }
 }

@@ -1,42 +1,12 @@
 import entity.*;
-import ui.Service.MenuService;
-import ui.controller.MainController;
+
 
 
 public class Main {
 
 
     public static void main(String[] args) {
-        Guest guest1 = new Guest(1, "Bob", "White");
-        Guest guest2 = new Guest(2, "Alice", "White");
-        Guest guest3 = new Guest(3, "Nadya", "White");
-        //creating services
-        Service service1 = new Service(1, ServiceType.EAT, "Vodka", 45);
-        Service service2 = new Service(2, ServiceType.EAT, "Pelmeni", 15);
-        Service service3 = new Service(3, ServiceType.EAT, "Spa", 20);
-
-
-        MenuService menuController=new MenuService();
-        menuController.readRoomsFromFile("D:\\Rooms.txt");;
-        menuController.addGuest(1,guest1,2018,1,1);
-        menuController.addGuest(1,guest2,2018,1,1);
-        menuController.addGuest(1,guest3,2018,1,1);
-        menuController.addService(service1);
-        menuController.addService(service2);
-        menuController.addService(service3);
-
-
-       MainController mainController=new MainController();
-
-
-
-
-
-
-
-
-       // GuestController guestController=new GuestController(bestHotel.getGuestSerice());
-       // guestController.showAllGuests();
+       startHotel();
     }
 
     private static void startHotel(){

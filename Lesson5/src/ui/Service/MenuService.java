@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.Service;
 
 
 import Storage.*;
@@ -7,6 +7,7 @@ import entity.Room;
 import entity.Service;
 import services.*;
 import ui.View.MainMenuView;
+import ui.View.RoomView.AddGuestView;
 import ui.View.RoomView.RoomView;
 import ui.View.RoomView.ShowAllRoomsSortedByCostView;
 import ui.View.RoomView.ShowAllRoomsView;
@@ -31,8 +32,9 @@ import ui.menuItem.ServiceMenuItem.ServiceMenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class MenuController {
+public class MenuService {
 
 
     private IServiceService serviceService;
@@ -40,7 +42,7 @@ public class MenuController {
     private IGuestService guestSerice;
     private PrinterService printerService;
 
-    public MenuController() {
+    public MenuService() {
 
         IRoomStorage roomStorage = new RoomStorage();
         IGuestStorage guestStorage = new GuestStorage();
@@ -187,11 +189,13 @@ public void roomMenu() {
     MainMenuItem item1 = new  MainMenuItem(4, "Show mainMenu ", this);
     AddGuestItem item2 = new AddGuestItem(1, "Add guest to room", this);
     ShowAllRoomsItem item3 = new ShowAllRoomsItem(1, "Show All rooms", this);
+    ShowFreeRoomsItem item4=new ShowFreeRoomsItem(1, "Show free rooms", this);
 
     ViewModel model = new ViewModel("Room menu");
     model.menuItems.add(item1);
     model.menuItems.add(item2);
     model.menuItems.add(item3);
+    model.menuItems.add(item4);
 
     RoomView roomView = new RoomView(model);
     roomView.act();
@@ -269,11 +273,49 @@ public void showAllRoomsSortedByCost(){
     }
 
 
+    public void showFreeRoomsMenu(){
+        MainMenuItem item1 = new  MainMenuItem(4, "Show mainMenu ", this);
+
+        ViewModel model = new ViewModel("Show All rooms menu");
+        model.menuItems.add(item1);
+
+        List<Room> allRooms=this.roomService.getFreeRooms();
+        ShowAllRoomsView view=new ShowAllRoomsView(allRooms,model);
+        view.showInformation();
+        view.act();
+    }
 
 
+        public void addGuestMenu(){
+            MainMenuItem item1 = new  MainMenuItem(4, "Show mainMenu ", this);
 
+            ViewModel model = new ViewModel("Add guest menu");
+            model.menuItems.add(item1);
 
-    
+            List<Room> allRooms=this.roomService.getFreeRooms();
+            AddGuestView view=new AddGuestView(allRooms,model);
+            view.showInformation();
+
+            Room room=view.shooseRoom();
+            Guest guest=view.createGuest();
+
+            System.out.print("Enter year departure(example:2018)");
+            Scanner scanner1 = new Scanner(System.in);
+            int year=  scanner1.nextInt();
+
+            System.out.print("Enter month departure(example:5)");
+            Scanner scanner2 = new Scanner(System.in);
+            int month=  scanner2.nextInt();
+
+            System.out.print("Enter day departure(example:7 or 31)");
+            Scanner scanner3 = new Scanner(System.in);
+            int day=  scanner3.nextInt();
+
+            this.roomService.addGuest(room.getNumber(),guest,year,month,day);
+            System.out.println("guest Was added ");
+            this.showMainMenu();
+        }
+
 
 
 
@@ -286,7 +328,6 @@ public void showAllRoomsSortedByCost(){
 
         ReadFromFileService readFromFileService = new ReadFromFileService(roomService);
         readFromFileService.readRooms(path);
-
     }
     public void addService(Service service) {
         this.serviceService.addService(service);
