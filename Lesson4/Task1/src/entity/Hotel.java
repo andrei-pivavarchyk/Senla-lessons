@@ -35,18 +35,18 @@ public class Hotel {
     }
 
     public void printRoomsSortingByCost() {
-        List<Room> roomList = this.roomService.getAllRooms();
-        this.printerService.printRooms(this.roomService.getRoomCostSorting(roomList));
+
+        this.printerService.printRooms(this.roomService.getRoomCostSorting());
     }
 
     public void printRoomsSortingByCapacity() {
-        List<Room> roomList = this.roomService.getAllRooms();
-        this.printerService.printRooms(this.roomService.getRoomCapacitySorting(roomList));
+
+        this.printerService.printRooms(this.roomService.getRoomCapacitySorting());
     }
 
     public void printRoomsSortingByStars() {
-        List<Room> roomList = this.roomService.getAllRooms();
-        this.printerService.printRooms(this.roomService.getRoomCostSorting(roomList));
+
+        this.printerService.printRooms(this.roomService.getRoomCostSorting());
     }
 
     public void printFreeRooms() {
@@ -55,18 +55,18 @@ public class Hotel {
 
     public void printFreeRoomsByCost() {
 
-        List<Room> roomList = this.roomService.getFreeRooms();
-        this.printerService.printRooms(this.roomService.getRoomCostSorting(roomList));
+
+        this.printerService.printRooms(this.roomService.getRoomCostSorting());
     }
 
     public void printFreeRoomsByCapacity() {
-        List<Room> roomList = this.roomService.getFreeRooms();
-        this.printerService.printRooms(this.roomService.getRoomCapacitySorting(roomList));
+
+        this.printerService.printRooms(this.roomService.getRoomCapacitySorting());
     }
 
     public void printFreeRoomsByStars() {
-        List<Room> roomList = this.roomService.getFreeRooms();
-        this.printerService.printRooms(this.roomService.getRoomStarsSorting(roomList));
+
+        this.printerService.printRooms(this.roomService.getRoomStarsSorting());
     }
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
@@ -144,5 +144,9 @@ public class Hotel {
 
     public IGuestService getGuestSerice() {
         return guestSerice;
+    }
+
+    public IRoomService getRoomService() {
+        return roomService;
     }
 }

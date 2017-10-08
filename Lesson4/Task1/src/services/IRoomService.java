@@ -16,9 +16,9 @@ public interface IRoomService {
    List<Room> getAllRooms();
 
 
-   ArrayList<Room> getRoomCostSorting(List<Room> roomList);
-   ArrayList<Room>getRoomCapacitySorting(List<Room> roomList);
-   ArrayList<Room> getRoomStarsSorting(List<Room> roomList);
+   ArrayList<Room> getRoomCostSorting();
+   ArrayList<Room>getRoomCapacitySorting();
+   ArrayList<Room> getRoomStarsSorting();
    void addGuest(int roomNumber, Guest guest,int year,int month,int day);
    void departureGuest ( Guest guest);
     ArrayList<Room> getFreeRooms();
@@ -29,5 +29,4 @@ public interface IRoomService {
    ArrayList<Room> getArrayRoomCostSorting();
    ArrayList<Room> getArrayRoomCapacitySorting();
    ArrayList<Room> getArrayRoomStarsSorting();
-
 }

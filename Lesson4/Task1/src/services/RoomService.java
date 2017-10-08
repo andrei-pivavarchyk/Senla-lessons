@@ -45,21 +45,18 @@ public class RoomService implements IRoomService {
 
     }
 
-    public ArrayList<Room> getRoomCostSorting(List<Room> roomList) {
-        ArrayList<Room> copyArray = new ArrayList<Room>(roomList);
-        copyArray.sort(COST_COMPARATOR);
+    public ArrayList<Room> getRoomCostSorting() {
+        ArrayList<Room> copyArray = this.getArrayRoomCostSorting();
         return copyArray;
     }
 
-    public ArrayList<Room> getRoomCapacitySorting(List<Room> roomList) {
-        ArrayList<Room> copyArray = new ArrayList<Room>(roomList);
-        copyArray.sort( CAPACITY_COMPARATOR);
+    public ArrayList<Room> getRoomCapacitySorting() {
+        ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting();
         return copyArray;
     }
 
-    public ArrayList<Room> getRoomStarsSorting(List<Room> roomList) {
-        ArrayList<Room> copyArray = new ArrayList<Room>(roomList);
-        copyArray.sort(STARS_COMPARATOR);
+    public ArrayList<Room> getRoomStarsSorting() {
+        ArrayList<Room> copyArray =this.getArrayRoomStarsSorting();
         return copyArray;
     }
 
