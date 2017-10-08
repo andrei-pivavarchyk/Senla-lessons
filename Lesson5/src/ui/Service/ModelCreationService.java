@@ -2,6 +2,7 @@ package ui.Service;
 
 import ui.controller.MainController;
 import ui.menuItem.GuestMenuItem.GuestMenuItem;
+import ui.menuItem.Item;
 import ui.menuItem.MainMenuItem;
 import ui.menuItem.MenuItem;
 import ui.menuItem.RoomMenuItem.RoomMenuItem;
@@ -25,10 +26,10 @@ public class ModelCreationService {
         Method method4=ReflectionService.getReflectionService().getMethod(mainController,"showMainMenu");
 
 
-        MenuItem item1=new MainMenuItem("Show Main Menu", mainController);
-        MenuItem item2=new GuestMenuItem("showMainMenu",mainController);
-        MenuItem item3=new RoomMenuItem("Show room menu", mainController);
-        MenuItem item4=new ServiceMenuItem("ShowService menu",mainController);
+        Item item1=new Item("Show Main Menu", mainController,method1);
+        Item item2=new Item("showMainMenu",mainController,method1);
+        Item item3=new Item("Show room menu", mainController,method1);
+        Item item4=new Item("ShowService menu",mainController,method1);
 
         ViewModel viewModel= ViewModel.getModel("mainMenu");
 
