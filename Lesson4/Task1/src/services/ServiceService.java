@@ -53,8 +53,6 @@ public class ServiceService implements IServiceService {
         ArrayList<GuestServiceInfo> copyArray = new ArrayList<GuestServiceInfo>(this.getAllGuestServicesInfo(guest));
         copyArray.sort(COST_COMPARATOR);
         return copyArray;
-
-
     }
 
     public ArrayList<GuestServiceInfo> getAllGuestServicesInfoSortedByDate(Guest guest) {

@@ -46,17 +46,17 @@ public class RoomService implements IRoomService {
     }
 
     public ArrayList<Room> getRoomCostSorting() {
-        ArrayList<Room> copyArray = this.getArrayRoomCostSorting();
+        ArrayList<Room> copyArray = this.getArrayRoomCostSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
         return copyArray;
     }
 
     public ArrayList<Room> getRoomCapacitySorting() {
-        ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting();
+        ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting((ArrayList<Room>) this.roomStorage.getAllEntities());
         return copyArray;
     }
 
     public ArrayList<Room> getRoomStarsSorting() {
-        ArrayList<Room> copyArray =this.getArrayRoomStarsSorting();
+        ArrayList<Room> copyArray =this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
         return copyArray;
     }
 
@@ -158,22 +158,22 @@ public class RoomService implements IRoomService {
         room.setCost(cost);
     }
 
-    public ArrayList<Room> getArrayRoomCostSorting() {
-        ArrayList<Room> copyArray = new ArrayList<Room>(this.roomStorage.getAllEntities());
-        copyArray.sort(COST_COMPARATOR);
-        return copyArray;
+    public ArrayList<Room> getArrayRoomCostSorting(ArrayList<Room> allRooms) {
+
+       allRooms.sort(COST_COMPARATOR);
+        return allRooms;
     }
 
-    public ArrayList<Room> getArrayRoomCapacitySorting() {
-        ArrayList<Room> copyArray = new ArrayList<Room>(this.roomStorage.getAllEntities());
-        copyArray.sort(CAPACITY_COMPARATOR);
-        return copyArray;
+    public ArrayList<Room> getArrayRoomCapacitySorting(ArrayList<Room> allRooms) {
+
+       allRooms.sort(CAPACITY_COMPARATOR);
+        return allRooms;
     }
 
-    public ArrayList<Room> getArrayRoomStarsSorting() {
-        ArrayList<Room> copyArray = new ArrayList<Room>(this.roomStorage.getAllEntities());
-        copyArray.sort(STARS_COMPARATOR);
-        return copyArray;
+    public ArrayList<Room> getArrayRoomStarsSorting(ArrayList<Room> allRooms) {
+
+        allRooms.sort(STARS_COMPARATOR);
+        return allRooms;
     }
 
 }
