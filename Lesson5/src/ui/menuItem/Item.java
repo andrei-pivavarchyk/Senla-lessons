@@ -7,21 +7,27 @@ import java.lang.reflect.Method;
 /**
  * Created by андрей on 08.10.2017.
  */
-public class Item extends  MenuItem {
-    public Item(String title, MainController mainController, Method method) {
-        super(title, mainController, method);
+public class Item  {
+
+    private String title;
+    private MainController mainController;
+    private String methodName;
+    public Item(String title, MainController mainController, String methodName) {
+        this.title=title;
+        this.mainController=mainController;
+        this.methodName=methodName;
     }
 
-    @Override
+
     public void click() {
 
         try {
 
-            Class c = getMainController().getClass();
-            Class[] paramTypes = new Class[]{String.class, int.class};
-            Method method = c.getMethod("ShowMainMenu", paramTypes);
+            Class c = mainController.getClass();
+            Class[] paramTypes = new Class[]{String.class};
+            Method method = c.getMethod(methodName);
             Object[] args = new Object[]{new String("ShowMainMenu")};
-            Double d = (Double) method.invoke(getMainController(), args);
+             method.invoke(mainController);
 
         }
         catch(Exception e){
@@ -29,5 +35,9 @@ public class Item extends  MenuItem {
         }
 
 
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

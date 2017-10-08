@@ -1,6 +1,7 @@
 package ui.model;
 
 
+import ui.menuItem.Item;
 import ui.menuItem.MenuItem;
 
 import java.util.ArrayList;
@@ -9,33 +10,14 @@ import java.util.ArrayList;
 public class ViewModel {
 
     private String title;
-    private ArrayList<MenuItem> menuItems=new ArrayList<MenuItem>();
-    private static volatile ViewModel instance;
+    private ArrayList<Item> menuItems=new ArrayList<Item>();
 
 
+public ViewModel(String title){
+    this.title=title;
+}
 
-    public static ViewModel getModel(String title) {
-        ViewModel localInstance = instance;
-        if (localInstance == null) {
-            synchronized (ViewModel.class) {
-                localInstance = instance;
-                if (localInstance == null) {
-                    instance = localInstance = new ViewModel();
-                    localInstance.setTitle(title);
 
-                }
-            }
-            return localInstance;
-        }
-
-        else{
-            instance.setTitle(title);
-
-        }
-
-        return instance;
-
-    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -45,11 +27,11 @@ public class ViewModel {
         return title;
     }
 
-    public void addItem(MenuItem item){
+    public void addItem(Item item){
         this.menuItems.add(item);
     }
 
-    public ArrayList<MenuItem> getMenuItems() {
+    public ArrayList<Item> getMenuItems() {
         return menuItems;
     }
 }

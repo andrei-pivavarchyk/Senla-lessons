@@ -5,10 +5,10 @@ import ui.model.ViewModel;
 import ui.menuItem.MenuItem;
 
 
-public class MainMenuView extends AbstractView{
+public class ViewItems extends AbstractView{
     private ViewModel mainMenuViewModel;
 
-    public MainMenuView(ViewModel mainMenuViewModel){
+    public ViewItems(ViewModel mainMenuViewModel){
         super(mainMenuViewModel);
     }
 

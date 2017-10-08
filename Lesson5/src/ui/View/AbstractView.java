@@ -2,6 +2,7 @@ package ui.View;
 
 
 import ui.Service.ConsoleService;
+import ui.menuItem.Item;
 import ui.menuItem.MenuItem;
 import ui.model.ViewModel;
 
@@ -18,8 +19,8 @@ public class AbstractView {
     public void act()  {
         System.out.println(this.viewModel.getTitle());
         int i=1;
-        for(MenuItem menuItem:viewModel.getMenuItems()){
-            System.out.println(i+" "+menuItem.title);
+        for(Item item:viewModel.getMenuItems()){
+            System.out.println(i+" "+item.getTitle());
             i++;
         }
 

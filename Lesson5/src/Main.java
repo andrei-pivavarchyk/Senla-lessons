@@ -11,7 +11,8 @@ public class Main {
 
 
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
-      /*  Guest guest1 = new Guest(1, "Bob", "White");
+
+        Guest guest1 = new Guest(1, "Bob", "White");
         Guest guest2 = new Guest(2, "Alice", "White");
         Guest guest3 = new Guest(3, "Nadya", "White");
         //creating services
@@ -19,20 +20,18 @@ public class Main {
         Service service2 = new Service(2, ServiceType.EAT, "Pelmeni", 15);
         Service service3 = new Service(3, ServiceType.EAT, "Spa", 20);
 
+        MainController mainController=new MainController();
 
-        MenuService menuController=new MenuService();
-        menuController.readRoomsFromFile("D:\\Rooms.txt");;
-        menuController.addGuest(1,guest1,2018,1,1);
-        menuController.addGuest(1,guest2,2018,1,1);
-        menuController.addGuest(1,guest3,2018,1,1);
-        menuController.addService(service1);
-        menuController.addService(service2);
-        menuController.addService(service3);
+        mainController.readRoomsFromFile("D:\\Rooms.txt");;
+        mainController.addGuest(1,guest1,2018,1,1);
+        mainController.addGuest(1,guest2,2018,1,1);
+        mainController.addGuest(1,guest3,2018,1,1);
+        mainController.addService(service1);
+        mainController.addService(service2);
+        mainController.addService(service3);
 
-*/
-       MainController mainController=new MainController();
-       mainController.showMainMenu();
 
+        mainController.showMainMenu();
 
 
 
@@ -41,11 +40,34 @@ public class Main {
 
 
 
-       // GuestController guestController=new GuestController(bestHotel.getGuestSerice());
-       // guestController.showAllGuests();
+
+
+
     }
 
-    private static void startHotel(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*private static void startHotel(){
 
         //creating guests
         Guest guest1 = new Guest(1, "Bob", "White");
@@ -87,7 +109,7 @@ public class Main {
         bestHotel.printLastThreeGuestsInRoom(1);
         bestHotel.setRoomCost(1, 12, "D:\\Rooms.txt");
         bestHotel.printAllRooms();
-    }
+    }*/
 
 }
 

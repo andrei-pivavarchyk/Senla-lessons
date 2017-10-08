@@ -7,10 +7,10 @@ import ui.model.ViewModel;
 
 import java.util.List;
 
-public class ShowAllRoomsSortedByCostView extends AbstractView{
+public class ShowRoomsView extends AbstractView{
     private List<Room> allRooms;
 
-    public ShowAllRoomsSortedByCostView(List<Room> allRooms, ViewModel mainMenuViewModel){
+    public ShowRoomsView(List<Room> allRooms, ViewModel mainMenuViewModel){
         super(mainMenuViewModel);
         this.allRooms=allRooms;
 
