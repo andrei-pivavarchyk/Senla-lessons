@@ -13,10 +13,7 @@ import entity.GuestServiceInfo;
 import entity.Room;
 import entity.Service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Date;
+import java.util.*;
 
 public class ServiceService implements IServiceService {
 
@@ -70,5 +67,8 @@ public class ServiceService implements IServiceService {
         this.serviceStorage.addEntity(service);
     }
 
+    public List<Service> getAllHotelServices(){
+        return this.serviceStorage.getAllEntities();
 
+    }
 }
