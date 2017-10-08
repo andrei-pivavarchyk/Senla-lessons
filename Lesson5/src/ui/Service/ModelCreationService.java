@@ -220,7 +220,24 @@ public class ModelCreationService {
         return viewModel;
     }
 
-    public ViewModel createModelForshowAllServicesMenu(){
+
+
+
+    public ViewModel createModelForShowServicesMenu(){
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all services",mainController,"showAllServicesMenu");
+        Item item3=new Item("show all services sorted by cost",mainController,"showAllServicesSortedByCost");
+
+        ViewModel viewModel=new ViewModel("SERVICE MENU**************_-_");
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        viewModel.addItem(item3);
+        return viewModel;
+    }
+
+
+
+    public ViewModel createModelForShowAllServicesMenu(){
         Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
         Item item2=new Item("show all services sorted by cost",mainController,"showAllServicesSortedByCost");
 
@@ -230,9 +247,9 @@ public class ModelCreationService {
         return viewModel;
     }
 
-    public ViewModel createModelForshowAllServicesSortedByCost(){
+    public ViewModel createModelForShowAllServicesSortedByCost(){
         Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
-        Item item2=new Item("show all services sorted by cost",mainController,"showAllServicesMenu");
+        Item item2=new Item("show all services",mainController,"showAllServicesMenu");
 
 
         ViewModel viewModel=new ViewModel("SERVICE SORTED BY COST MENU**************_-_");

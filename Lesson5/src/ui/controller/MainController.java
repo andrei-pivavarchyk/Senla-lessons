@@ -8,6 +8,7 @@ import entity.Service;
 import services.*;
 import ui.Service.ModelCreationService;
 import ui.View.RoomView.ShowRoomsView;
+import ui.View.ServiceView.ServiceMenuView;
 import ui.View.ServiceView.ShowAllServicesView;
 import ui.View.ViewItems;
 import ui.View.guestView.ShowAllGuestsView;
@@ -69,7 +70,7 @@ public class MainController extends AController {
 
     public void showAllRoomsSortedByCostMenu(){
 
-        ArrayList<Room> allRooms=this.roomService.getArrayRoomCostSorting();
+        ArrayList<Room> allRooms=this.roomService.getRoomCostSorting();
         ViewModel model=this.modelService.createModelForShowAllRoomsSortedByCostMenu();
         ShowRoomsView view=new ShowRoomsView( allRooms,model);
         view.showInformation();
@@ -78,7 +79,7 @@ public class MainController extends AController {
     }
 
     public void showAllRoomsSortedByCapacityMenu(){
-        ArrayList<Room> allRooms=this.roomService.getArrayRoomCapacitySorting();
+        ArrayList<Room> allRooms=this.roomService.getRoomCapacitySorting();
         ViewModel model=this.modelService.createModelForShowAllRoomsSortedByCapacityMenu();
         ShowRoomsView view=new ShowRoomsView( allRooms,model);
         view.showInformation();
@@ -87,7 +88,7 @@ public class MainController extends AController {
 
     public void showAllRoomsSortedByStarsMenu(){
 
-        ArrayList<Room> allRooms=this.roomService.getArrayRoomStarsSorting();
+        ArrayList<Room> allRooms=this.roomService.getRoomStarsSorting();
         ViewModel model=this.modelService.createModelForShowAllRoomsSortedByStarsMenu();
         ShowRoomsView view=new ShowRoomsView( allRooms,model);
         view.showInformation();
@@ -117,7 +118,7 @@ public class MainController extends AController {
     public void showAllFreeRoomsSortedByCapacityMenu(){
 
         ArrayList<Room> allRooms=this.roomService.getFreeRooms();
-        allRooms= this.roomService.getRoomCapacitySorting(allRooms);
+        allRooms= this.roomService.getArrayRoomCapacitySorting(allRooms);
 
         ViewModel model=this.modelService.createModelForShowAllFreeRoomsSortedByCapacityMenu();
         ShowRoomsView view=new ShowRoomsView( allRooms,model);
@@ -127,7 +128,7 @@ public class MainController extends AController {
     public void showAllFreeRoomsSortedByStarsMenu(){
 
         ArrayList<Room> allRooms=this.roomService.getFreeRooms();
-        allRooms= this.roomService.getRoomStarsSorting(allRooms);
+        allRooms= this.roomService.getArrayRoomStarsSorting(allRooms);
 
         ViewModel model=this.modelService.createModelForShowAllFreeRoomsSortedByStarsMenu();
         ShowRoomsView view=new ShowRoomsView( allRooms,model);
@@ -170,15 +171,31 @@ public class MainController extends AController {
         view.act();
 
     }
+    public void showServiceMenu(){
+
+        ViewModel model=this.modelService. createModelForShowServicesMenu();
+        ServiceMenuView view=new ServiceMenuView(model);
+        view.act();
+
+    }
+
+
+
 
     public void showAllServicesMenu(){
         ArrayList<Service> allServices=new ArrayList<Service>(this.serviceService.getAllHotelServices());
-        ViewModel model=this.modelService.createModelForshowAllServicesMenu();
+        ViewModel model=this.modelService.createModelForShowAllServicesMenu();
         ShowAllServicesView view=new ShowAllServicesView(allServices,model);
+        view.showInformation();
+        view.act();
     }
 
     public void showAllServicesSortedByCost(){
-        ViewModel model=this.modelService.createModelForshowAllServicesSortedByCost();
+        ArrayList<Service> allServices=new ArrayList<Service>(this.serviceService.getAllHotelServices());
+        ViewModel model=this.modelService.createModelForShowAllServicesSortedByCost();
+        ShowAllServicesView view=new ShowAllServicesView(allServices,model);
+        view.showInformation();
+        view.act();
     }
 
 
@@ -210,7 +227,7 @@ public class MainController extends AController {
 
 
 
-    public void showServiceMenu(){}
+
 
 
 
