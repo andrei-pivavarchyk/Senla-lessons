@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class MainController {
 
     private IServiceService serviceService;
-    private IRoomService roomService;
+    private RoomService roomService;
     private IGuestService guestSerice;
     private PrinterService printerService;
 
@@ -63,7 +63,7 @@ public class MainController {
 
     public void showAllRoomsSortedByCostMenu(){
 
-        this.roomService.getRoomCostSorting()
+
         ViewModel model=this.modelService.createModelForShowAllRoomsSortedByCostMenu();
         ShowRoomsView view=new ShowRoomsView( this.roomService.getRoomCostSorting(allRooms),model);
         view.showInformation();
