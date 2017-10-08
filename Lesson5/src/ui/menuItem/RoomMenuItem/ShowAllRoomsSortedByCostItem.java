@@ -1,12 +1,10 @@
+/*
 package ui.menuItem.RoomMenuItem;
 
 import ui.Service.MenuService;
 import ui.controller.MainController;
 import ui.menuItem.MainMenuItem;
 
-/**
- * Created by андрей on 06.10.2017.
- */
 public class ShowAllRoomsSortedByCostItem extends MainMenuItem{
 
     public ShowAllRoomsSortedByCostItem( String title, MainController mainController) {
@@ -17,3 +15,4 @@ public class ShowAllRoomsSortedByCostItem extends MainMenuItem{
     }
 
 }
+*/

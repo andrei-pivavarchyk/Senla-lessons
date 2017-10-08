@@ -7,13 +7,29 @@ import static java.lang.System.in;
 
 public class ConsoleService {
 
-    public static int getNumberForView(int maxNumber) {
+    private static ConsoleService consoleService;
+    private LoggerService loggerService=LoggerService.getLoggerService();
+
+    private ConsoleService(){
+
+    }
+
+    public static ConsoleService getConsoleService(){
+        if(consoleService==null){
+            consoleService=new ConsoleService();
+        }
+        return consoleService;
+    }
+
+
+    public int getNumberForView(int maxNumber) {
+
+
 
 
         Scanner scanner = new Scanner(System.in);
         Boolean NumberIsNotGiven = true;
         int input = 0;
-
 
         while (NumberIsNotGiven) {
             try {
@@ -26,6 +42,8 @@ public class ConsoleService {
                     NumberIsNotGiven = false;
                 }
             } catch (Exception e) {
+                //LOGGER SERVICE
+                loggerService.logDanger(e.toString());
                 System.out.println("Try again");
                 scanner.next();
             }
@@ -33,7 +51,7 @@ public class ConsoleService {
         return input;
     }
 
-    public static String getString(){
+    public String getString(){
 
         Scanner scanner = new Scanner(System.in);
       String string=  scanner.nextLine();

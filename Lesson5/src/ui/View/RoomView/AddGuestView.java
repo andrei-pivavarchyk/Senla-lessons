@@ -41,9 +41,9 @@ System.out.println("Enter room Number");
 
     public Guest createGuest(){
         System.out.print("Enter name");
-        String name= ConsoleService.getString();
+        String name= ConsoleService.getConsoleService().getString();
         System.out.print("Enter surname");
-        String surname= ConsoleService.getString();
+        String surname= ConsoleService.getConsoleService().getString();
         Guest guest=new Guest(1,name,surname);
         return guest;
 

@@ -1,4 +1,6 @@
+/*
 package ui.menuItem.RoomMenuItem;
+
 
 
 import ui.Service.MenuService;
@@ -16,3 +18,4 @@ public class ShowAllRoomsItem extends MenuItem{
 
 
 }
+*/

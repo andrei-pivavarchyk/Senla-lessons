@@ -1,3 +1,5 @@
+
+/*
 package ui.menuItem.GuestMenuItem;
 
 import ui.Service.MenuService;
@@ -14,3 +16,4 @@ public class ShowAllGuestsSortedByNameItem extends MenuItem {
         this.mainController.showAllGuestsSortedByName();
     }
 }
+*/

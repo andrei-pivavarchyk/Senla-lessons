@@ -1,3 +1,5 @@
+/*
+
 package ui.menuItem.ServiceMenuItem;
 
 
@@ -16,3 +18,4 @@ public class ShowAllServicesItem extends MenuItem{
     }
 
 }
+*/

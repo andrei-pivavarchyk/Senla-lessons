@@ -1,13 +1,17 @@
 import entity.*;
-import ui.Service.MenuService;
+import ui.Service.ConsoleService;
+import ui.Service.LoggerService;
+
 import ui.controller.MainController;
+
+import java.lang.reflect.InvocationTargetException;
 
 
 public class Main {
 
 
-    public static void main(String[] args) {
-        Guest guest1 = new Guest(1, "Bob", "White");
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
+      /*  Guest guest1 = new Guest(1, "Bob", "White");
         Guest guest2 = new Guest(2, "Alice", "White");
         Guest guest3 = new Guest(3, "Nadya", "White");
         //creating services
@@ -25,8 +29,10 @@ public class Main {
         menuController.addService(service2);
         menuController.addService(service3);
 
-
+*/
        MainController mainController=new MainController();
+       mainController.showMainMenu();
+
 
 
 

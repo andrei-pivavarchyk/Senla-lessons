@@ -1,4 +1,6 @@
+/*
 package ui.menuItem.RoomMenuItem;
+
 
 
 import ui.Service.MenuService;
@@ -14,3 +16,4 @@ public class ShowAllRoomsSortedByCapacityItem extends MenuItem{
         this.mainController.showAllRoomsSortedByCapacity();
     }
 }
+*/

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ViewModel {
 
     private String title;
-    private ArrayList<MenuItem> menuItems;
+    private ArrayList<MenuItem> menuItems=new ArrayList<MenuItem>();
     private static volatile ViewModel instance;
 
 

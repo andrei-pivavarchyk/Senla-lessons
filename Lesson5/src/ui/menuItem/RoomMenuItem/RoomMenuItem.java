@@ -1,7 +1,6 @@
 package ui.menuItem.RoomMenuItem;
 
 
-import ui.Service.MenuService;
 import ui.controller.MainController;
 import ui.menuItem.MenuItem;
 
@@ -11,6 +10,6 @@ public class RoomMenuItem extends MenuItem{
         super( title, mainController);
     }
     public void click(){
-this.mainController.roomMenu();
+this.mainController.showRoomMenu();
     }
 }

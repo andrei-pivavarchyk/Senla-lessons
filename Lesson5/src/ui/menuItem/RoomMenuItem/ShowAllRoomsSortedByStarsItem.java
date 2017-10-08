@@ -1,4 +1,4 @@
-package ui.menuItem.RoomMenuItem;
+/*package ui.menuItem.RoomMenuItem;
 
 
 import ui.Service.MenuService;
@@ -15,3 +15,4 @@ public class ShowAllRoomsSortedByStarsItem extends MenuItem {
         this.mainController.showAllRoomsSortedByStars();
     }
 }
+*/

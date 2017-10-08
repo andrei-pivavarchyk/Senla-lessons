@@ -1,4 +1,4 @@
-package ui.menuItem.RoomMenuItem;
+/*package ui.menuItem.RoomMenuItem;
 
 import ui.Service.MenuService;
 import ui.menuItem.MenuItem;
@@ -12,3 +12,4 @@ public class ShowFreeRoomsItem extends MenuItem {
         this.mainController.showFreeRoomsMenu();
     }
 }
+*/
