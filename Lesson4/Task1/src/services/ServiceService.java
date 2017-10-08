@@ -7,12 +7,15 @@ import Storage.IServiceStorage;
 import comparator.GuestServiceInfoCostComparator;
 
 import comparator.GuestServiceInfoDateComparator;
+import comparator.RoomCostComparator;
 import entity.Guest;
 import entity.GuestServiceInfo;
+import entity.Room;
 import entity.Service;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 
 public class ServiceService implements IServiceService {
@@ -20,6 +23,8 @@ public class ServiceService implements IServiceService {
     private IGuestServiceStorage guestServiceStorage;
     private IServiceStorage serviceStorage;
     private int guestServiceInfoCount = 0;
+    private final Comparator<GuestServiceInfo> COST_COMPARATOR= new GuestServiceInfoCostComparator();
+    private final Comparator<GuestServiceInfo> DATE_COMPARATOR= new GuestServiceInfoDateComparator();
 
     public ServiceService(IGuestServiceStorage guestServiceStorage, IServiceStorage serviceStorage) {
 
@@ -49,7 +54,7 @@ public class ServiceService implements IServiceService {
 
     public ArrayList<GuestServiceInfo> getAllGuestServicesInfoSortedByCost(Guest guest) {
         ArrayList<GuestServiceInfo> copyArray = new ArrayList<GuestServiceInfo>(this.getAllGuestServicesInfo(guest));
-        copyArray.sort(new GuestServiceInfoCostComparator());
+        copyArray.sort(COST_COMPARATOR);
         return copyArray;
 
 
@@ -57,7 +62,7 @@ public class ServiceService implements IServiceService {
 
     public ArrayList<GuestServiceInfo> getAllGuestServicesInfoSortedByDate(Guest guest) {
         ArrayList<GuestServiceInfo> copyArray = new ArrayList<GuestServiceInfo>(this.getAllGuestServicesInfo(guest));
-        copyArray.sort(new GuestServiceInfoDateComparator());
+        copyArray.sort(DATE_COMPARATOR);
         return copyArray;
     }
 

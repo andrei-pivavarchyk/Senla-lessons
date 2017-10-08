@@ -6,18 +6,13 @@ import Storage.IGuestStorage;
 import Storage.IRoomStorage;
 import Storage.RoomStorage;
 import com.sun.corba.se.impl.orbutil.closure.Constant;
-import comparator.RoomCapacityComparator;
-import comparator.RoomCostComparator;
-import comparator.RoomStarsComparator;
+import comparator.*;
 import entity.Guest;
 import entity.GuestRoomInfo;
 import entity.Room;
 import entity.RoomStatus;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 public class RoomService implements IRoomService {
@@ -27,6 +22,11 @@ public class RoomService implements IRoomService {
     private IGuestRoomInfoStorage guestRoomInfoStorage;
     private IGuestStorage guestStorage;
     private int guestRoomInfoCount = 0;
+
+    private final Comparator<Room> COST_COMPARATOR=new RoomCostComparator();
+    private final Comparator<Room> CAPACITY_COMPARATOR=new RoomCapacityComparator();
+    private final Comparator<Room> STARS_COMPARATOR=new RoomStarsComparator();
+
 
     public RoomService(IRoomStorage roomStorage, IGuestRoomInfoStorage guestRoomInfoStorage, IGuestStorage guestStorage) {
         this.roomStorage = roomStorage;
@@ -47,19 +47,19 @@ public class RoomService implements IRoomService {
 
     public ArrayList<Room> getRoomCostSorting(List<Room> roomList) {
         ArrayList<Room> copyArray = new ArrayList<Room>(roomList);
-        copyArray.sort(new RoomCostComparator());
+        copyArray.sort(COST_COMPARATOR);
         return copyArray;
     }
 
     public ArrayList<Room> getRoomCapacitySorting(List<Room> roomList) {
         ArrayList<Room> copyArray = new ArrayList<Room>(roomList);
-        copyArray.sort( new RoomCapacityComparator());
+        copyArray.sort( CAPACITY_COMPARATOR);
         return copyArray;
     }
 
     public ArrayList<Room> getRoomStarsSorting(List<Room> roomList) {
         ArrayList<Room> copyArray = new ArrayList<Room>(roomList);
-        copyArray.sort(new RoomStarsComparator());
+        copyArray.sort(STARS_COMPARATOR);
         return copyArray;
     }
 
@@ -160,6 +160,25 @@ public class RoomService implements IRoomService {
         Room room = this.getRoomByNumber(roomNumber);
         room.setCost(cost);
     }
+
+    public ArrayList<Room> getArrayRoomCostSorting() {
+        ArrayList<Room> copyArray = new ArrayList<Room>(this.roomStorage.getAllEntities());
+        copyArray.sort(COST_COMPARATOR);
+        return copyArray;
+    }
+
+    public ArrayList<Room> getArrayRoomCapacitySorting() {
+        ArrayList<Room> copyArray = new ArrayList<Room>(this.roomStorage.getAllEntities());
+        copyArray.sort(CAPACITY_COMPARATOR);
+        return copyArray;
+    }
+
+    public ArrayList<Room> getArrayRoomStarsSorting() {
+        ArrayList<Room> copyArray = new ArrayList<Room>(this.roomStorage.getAllEntities());
+        copyArray.sort(STARS_COMPARATOR);
+        return copyArray;
+    }
+
 }
 
 

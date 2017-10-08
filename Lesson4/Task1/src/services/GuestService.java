@@ -9,6 +9,7 @@ import entity.GuestRoomInfo;
 import entity.GuestServiceInfo;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 public class GuestService implements IGuestService {
 
     private IGuestRoomInfoStorage guestRoomInfoStorage;
+    private final Comparator<Guest>NAME_COMPARATOR=new GuestNameComparator();
+    private final Comparator<GuestRoomInfo> DATE_COMPARATOR=new GuestRoomInfoDateComparator();
 
     public GuestService(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
@@ -34,7 +37,7 @@ public class GuestService implements IGuestService {
 
     public ArrayList<Guest> getAllGuestsSortedByName() {
         ArrayList<Guest> copyArray = new ArrayList<Guest>(this.getAllGuests());
-        copyArray.sort(new GuestNameComparator());
+        copyArray.sort(NAME_COMPARATOR);
         return copyArray;
     }
 
@@ -43,7 +46,7 @@ public class GuestService implements IGuestService {
         ArrayList<GuestRoomInfo> copyArray = new ArrayList<GuestRoomInfo>(this.guestRoomInfoStorage.getAllEntities());
         ArrayList<Guest> guestList = new ArrayList<Guest>();
 
-        copyArray.sort(new GuestRoomInfoDateComparator());
+        copyArray.sort(DATE_COMPARATOR);
         for (GuestRoomInfo guestRoomInfo : copyArray) {
             guestList.add(guestRoomInfo.getGuest());
         }
