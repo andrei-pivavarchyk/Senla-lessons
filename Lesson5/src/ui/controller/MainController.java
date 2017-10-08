@@ -8,6 +8,7 @@ import entity.Service;
 import services.*;
 import ui.Service.ModelCreationService;
 import ui.View.RoomView.ShowRoomsView;
+import ui.View.ServiceView.ShowAllServicesView;
 import ui.View.ViewItems;
 import ui.View.guestView.ShowAllGuestsView;
 import ui.model.ViewModel;
@@ -171,10 +172,9 @@ public class MainController extends AController {
     }
 
     public void showAllServicesMenu(){
-
-        ArrayList<Service> allServices=new ArrayList<Service>(this.serviceService.get);
+        List<Service> allServices=new ArrayList<Service>(this.serviceService.getAllHotelServices());
         ViewModel model=this.modelService.createModelForshowAllServicesMenu();
-
+        ShowAllServicesView view=new ShowAllServicesView(allServices,model);
     }
 
     public void showAllServicesSortedByCost(){
