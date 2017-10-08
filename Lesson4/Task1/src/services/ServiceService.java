@@ -8,6 +8,7 @@ import comparator.GuestServiceInfoCostComparator;
 
 import comparator.GuestServiceInfoDateComparator;
 import comparator.RoomCostComparator;
+import comparator.ServiceCostComparator;
 import entity.Guest;
 import entity.GuestServiceInfo;
 import entity.Room;
@@ -22,6 +23,7 @@ public class ServiceService implements IServiceService {
     private int guestServiceInfoCount = 0;
     private final Comparator<GuestServiceInfo> COST_COMPARATOR= new GuestServiceInfoCostComparator();
     private final Comparator<GuestServiceInfo> DATE_COMPARATOR= new GuestServiceInfoDateComparator();
+    private final Comparator<Service> SERVICE_COST_COMPARATOR=new ServiceCostComparator();
 
     public ServiceService(IGuestServiceStorage guestServiceStorage, IServiceStorage serviceStorage) {
 
@@ -69,4 +71,11 @@ public class ServiceService implements IServiceService {
         return this.serviceStorage.getAllEntities();
 
     }
+
+    public ArrayList<Service> getAllHotelServicesSortedByCost(){
+        ArrayList<Service> allServices=new ArrayList<Service>(this.getAllHotelServices());
+        allServices.sort(SERVICE_COST_COMPARATOR);
+        return allServices;
+    }
+
 }

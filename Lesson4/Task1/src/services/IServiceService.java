@@ -15,4 +15,5 @@ public interface IServiceService {
     ArrayList<GuestServiceInfo> getAllGuestServicesInfoSortedByDate(Guest guest);
     void addService(Service service);
     List<Service> getAllHotelServices();
+    ArrayList<Service> getAllHotelServicesSortedByCost();
 }
