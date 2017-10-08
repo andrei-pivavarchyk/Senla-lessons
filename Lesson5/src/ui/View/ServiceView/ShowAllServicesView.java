@@ -1,12 +1,13 @@
 package ui.View.ServiceView;
 
 import entity.Guest;
+import entity.Service;
 import ui.Service.ConsoleService;
 import ui.View.AbstractView;
 import ui.menuItem.MenuItem;
 import ui.model.ViewModel;
 
-import javax.xml.ws.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 

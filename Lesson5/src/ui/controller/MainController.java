@@ -106,7 +106,7 @@ public class MainController extends AController {
     public void showAllFreeRoomsSortedByCostMenu(){
 
        ArrayList<Room> allRooms=this.roomService.getFreeRooms();
-       allRooms= this.roomService.getRoomCostSorting(allRooms);
+       allRooms= this.roomService.getArrayRoomCostSorting(allRooms);
 
         ViewModel model=this.modelService.createModelForshowAllFreeRoomsSortedByCostMenu();
         ShowRoomsView view=new ShowRoomsView( allRooms,model);
@@ -172,7 +172,7 @@ public class MainController extends AController {
     }
 
     public void showAllServicesMenu(){
-        List<Service> allServices=new ArrayList<Service>(this.serviceService.getAllHotelServices());
+        ArrayList<Service> allServices=new ArrayList<Service>(this.serviceService.getAllHotelServices());
         ViewModel model=this.modelService.createModelForshowAllServicesMenu();
         ShowAllServicesView view=new ShowAllServicesView(allServices,model);
     }
