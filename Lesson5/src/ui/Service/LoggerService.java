@@ -14,7 +14,7 @@ public class LoggerService {
 
     }
 
-    public static LoggerService getLoggerService(){
+    public static synchronized LoggerService getLoggerService(){
         if(loggerService==null){
             loggerService=new LoggerService();
         }

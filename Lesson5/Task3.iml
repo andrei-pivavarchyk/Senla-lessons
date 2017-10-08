@@ -21,7 +21,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/Program/program1.jar!/" />
+          <root url="jar://$MODULE_DIR$/Program/program.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

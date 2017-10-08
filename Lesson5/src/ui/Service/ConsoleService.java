@@ -7,14 +7,14 @@ import static java.lang.System.in;
 
 public class ConsoleService {
 
-    private static ConsoleService consoleService;
-    private LoggerService loggerService=LoggerService.getLoggerService();
+    private static  ConsoleService consoleService;
+    private LoggerService  loggerService=LoggerService.getLoggerService();
 
     private ConsoleService(){
 
     }
 
-    public static ConsoleService getConsoleService(){
+    public static synchronized ConsoleService getConsoleService(){
         if(consoleService==null){
             consoleService=new ConsoleService();
         }

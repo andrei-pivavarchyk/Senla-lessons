@@ -10,10 +10,14 @@ import ui.Service.ModelCreationService;
 import ui.View.RoomView.ShowRoomsView;
 import ui.View.ViewItems;
 import ui.model.ViewModel;
+import ui.storeFactory.GuestStoreFactory;
+import ui.storeFactory.RoomStoreFactory;
+import ui.storeFactory.ServiceStoreFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainController {
+public class MainController extends AController {
 
     private IServiceService serviceService;
     private RoomService roomService;
@@ -26,16 +30,17 @@ public class MainController {
 
         this.modelService=new ModelCreationService(this);
 
-        IRoomStorage roomStorage = new RoomStorage();
-        IGuestStorage guestStorage = new GuestStorage();
-        IServiceStorage serviceStorage = new ServiceStorage();
+        IRoomStorage roomStorage = new RoomStoreFactory().createRoomStorage();
+        IGuestStorage guestStorage = new GuestStoreFactory().createGuestStorage();
+        IServiceStorage serviceStorage = new ServiceStoreFactory().createServiceStorage();
+
         IGuestServiceStorage guestServiceStorage = new GuestServiceStorage();
         IGuestRoomInfoStorage guestRoomInfoStorage = new GuestRoomInfoStorage();
-
         this.roomService = new RoomService(roomStorage, guestRoomInfoStorage, guestStorage);
         this.guestSerice = new GuestService(guestRoomInfoStorage);
         this.serviceService = new ServiceService(guestServiceStorage, serviceStorage);
         this.printerService = new PrinterService();
+
     }
 
 
@@ -57,36 +62,78 @@ public class MainController {
         ViewModel model=this.modelService.createModelForShowAllRoomsMenu();
         ShowRoomsView view=new ShowRoomsView( this.roomService.getAllRooms(),model);
         view.showInformation();
-
         view.act();
     }
 
     public void showAllRoomsSortedByCostMenu(){
 
-
+        ArrayList<Room> allRooms=this.roomService.getArrayRoomCostSorting();
         ViewModel model=this.modelService.createModelForShowAllRoomsSortedByCostMenu();
-        ShowRoomsView view=new ShowRoomsView( this.roomService.getRoomCostSorting(allRooms),model);
+        ShowRoomsView view=new ShowRoomsView( allRooms,model);
         view.showInformation();
 
         view.act();
     }
 
     public void showAllRoomsSortedByCapacityMenu(){
-        ArrayList<Room> allRooms=new ArrayList<Room>();
+        ArrayList<Room> allRooms=this.roomService.getArrayRoomCapacitySorting();
         ViewModel model=this.modelService.createModelForShowAllRoomsSortedByCapacityMenu();
-        ShowRoomsView  view=new ShowRoomsView ( this.roomService.getRoomCapacitySorting(allRooms),model);
+        ShowRoomsView view=new ShowRoomsView( allRooms,model);
         view.showInformation();
         view.act();
     }
 
     public void showAllRoomsSortedByStarsMenu(){
 
-        ArrayList<Room> allRooms=new ArrayList<Room>();
+        ArrayList<Room> allRooms=this.roomService.getArrayRoomStarsSorting();
         ViewModel model=this.modelService.createModelForShowAllRoomsSortedByStarsMenu();
-        ShowRoomsView  view=new ShowRoomsView ( this.roomService.getRoomStarsSorting(allRooms),model);
+        ShowRoomsView view=new ShowRoomsView( allRooms,model);
         view.showInformation();
         view.act();
     }
+
+    //Free rooms
+    public void showAllFreeRooms(){
+
+        ViewModel model=this.modelService.createModelForShowAllRoomsMenu();
+        ShowRoomsView view=new ShowRoomsView( this.roomService.getFreeRooms(),model);
+        view.showInformation();
+        view.act();
+    }
+
+    public void showAllFreeRoomsSortedByCost(){
+
+       List<Room> allRooms=this.roomService.getFreeRooms();
+        this.roomService.getRoomCostSorting(allRooms);
+
+        ArrayList<Room> allRooms=this.roomService.getArrayRoomStarsSorting();
+        ViewModel model=this.modelService.createModelForShowAllRoomsSortedByStarsMenu();
+        ShowRoomsView view=new ShowRoomsView( allRooms,model);
+        view.showInformation();
+        view.act();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -131,5 +178,6 @@ public class MainController {
         ReadFromFileService readFromFileService = new ReadFromFileService(roomService);
         readFromFileService.readRooms(path);
     }
+
 
 }

@@ -1,6 +1,5 @@
 import entity.*;
-import ui.Service.ConsoleService;
-import ui.Service.LoggerService;
+
 
 import ui.controller.MainController;
 
@@ -32,14 +31,6 @@ public class Main {
 
 
         mainController.showMainMenu();
-
-
-
-
-
-
-
-
 
 
 
