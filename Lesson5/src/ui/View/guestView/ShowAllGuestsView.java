@@ -2,6 +2,7 @@ package ui.View.guestView;
 
 
 import entity.Guest;
+import entity.Room;
 import sun.security.x509.AVA;
 import ui.Service.ConsoleService;
 import ui.View.AbstractView;
@@ -22,6 +23,13 @@ public class ShowAllGuestsView extends AbstractView{
 
     }
 
+public void showInformation(){
 
-
+    System.out.println("INFORMATION***INFORMATION***INFORMATION***INFORMATION");
+    for(Guest guest:allGuests){
+        System.out.println(guest);
+    }
 }
+}
+
+

@@ -35,7 +35,7 @@ public class ModelCreationService {
     public ViewModel createModelForRoomMenu(){
         Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
         Item item2=new Item("show all rooms",mainController,"showAllRoomsMenu");
-        Item item3=new Item("show free rooms",mainController,"showFreeRoomsMenu");
+        Item item3=new Item("show free rooms",mainController,"showAllFreeRoomsMenu");
 
 
         ViewModel viewModel=new ViewModel("ROOM MENU_**************_-_");
@@ -108,6 +108,138 @@ public class ModelCreationService {
     }
 
 
+
+    public ViewModel createModelForShowAllFreeRoomsMenu(){
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all free rooms sorted by Cost", mainController,"showAllFreeRoomsSortedByCostMenu");
+        Item item3=new Item("show all free rooms sorted by Stars",mainController,"showAllFreeRoomsSortedByCapacityMenu");
+        Item item4=new Item("show all free rooms sorted by capacity",mainController,"showAllFreeRoomsSortedByStarsMenu");
+
+        ViewModel viewModel=new ViewModel("ALL FREE ROOMS MENU_**************_-_");
+
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        viewModel.addItem(item3);
+        viewModel.addItem(item4);
+
+        return viewModel;
+    }
+
+    public ViewModel createModelForshowAllFreeRoomsSortedByCostMenu(){
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all free rooms sorted by Stars",mainController,"showAllFreeRoomsSortedByCapacityMenu");
+        Item item3=new Item("show all free rooms sorted by capacity",mainController,"showAllFreeRoomsSortedByStarsMenu");
+
+        ViewModel viewModel=new ViewModel("ALL FREE ROOMS  SORTED BY COST MENU_**************_-_");
+
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        viewModel.addItem(item3);
+
+        return viewModel;
+    }
+
+
+    public ViewModel createModelForShowAllFreeRoomsSortedByStarsMenu(){
+
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all rooms sorted by Cost", mainController,"showAllFreeRoomsSortedByCostMenu");
+        Item item3=new Item("show all rooms sorted by capacity",mainController,"showAllFreeRoomsSortedByCapacityMenu");
+
+        ViewModel viewModel=new ViewModel("ALL FREE ROOMS SORTED BY STARS MENU_**************_-_");
+
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        viewModel.addItem(item3);
+
+        return viewModel;
+    }
+    public ViewModel createModelForShowAllFreeRoomsSortedByCapacityMenu(){
+
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all rooms sorted by Stars",mainController,"showAllFreeRoomsSortedByStarsMenu");
+        Item item3=new Item("show all rooms sorted by Cost", mainController,"showAllFreeRoomsSortedByCostMenu");
+
+        ViewModel viewModel=new ViewModel("ALL ROOMS SORTED BY CAPACITY MENU_**************_-_");
+
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        viewModel.addItem(item3);
+
+        return viewModel;
+    }
+
+    public ViewModel createModelForShowGuestMenu(){
+
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all guests",mainController,"showAllGuestsMenu");
+        ViewModel view=new ViewModel("GUEST MENU**************_-_");
+        view.addItem(item1);
+        view.addItem(item2);
+        return view;
+    }
+
+
+    public ViewModel createModelForShowAllGuestsMenu(){
+
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+
+        Item item2=new Item("show all guests sorted by departure date",mainController,"showAllGuestsSortedByDepartureDate");
+        Item item3=new Item("show all guests sorted by name ",mainController,"showAllGuestsSortedByNameMenu");
+
+        ViewModel view=new ViewModel("GUEST MENU**************_-_");
+
+        view.addItem(item1);
+        view.addItem(item2);
+        view.addItem(item3);
+
+        return view;
+    }
+
+
+
+    public ViewModel createModelForShowAllGuestsSortedByName(){
+
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all guests sorted by departure date",mainController,"showAllGuestsSortedByDepartureDate");
+
+        ViewModel viewModel=new ViewModel("GUEST MENU**************_-_");
+
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        return viewModel;
+    }
+
+    public ViewModel createModelForShowAllGuestsSortedByDepartureDate(){
+
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all guests sorted by name date",mainController,"showAllGuestsSortedByNameMenu");
+        ViewModel viewModel=new ViewModel("GUEST MENU**************_-_");
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        return viewModel;
+    }
+
+    public ViewModel createModelForshowAllServicesMenu(){
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all services sorted by cost",mainController,"showAllServicesSortedByCost");
+
+        ViewModel viewModel=new ViewModel("SERVICE MENU**************_-_");
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        return viewModel;
+    }
+
+    public ViewModel createModelForshowAllServicesSortedByCost(){
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+        Item item2=new Item("show all services sorted by cost",mainController,"showAllServicesMenu");
+
+
+        ViewModel viewModel=new ViewModel("SERVICE SORTED BY COST MENU**************_-_");
+        viewModel.addItem(item1);
+        viewModel.addItem(item2);
+        return viewModel;
+    }
 
 
 
