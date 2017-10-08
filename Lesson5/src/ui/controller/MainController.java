@@ -38,10 +38,7 @@ public class MainController {
         this.printerService = new PrinterService();
     }
 
-public void ss(){
-        System.out.println(this.roomService.getAllRooms());
 
-}
 
     public void showMainMenu()  {
         ViewModel model=this.modelService.createModelForMainMenu();
@@ -60,14 +57,17 @@ public void ss(){
         ViewModel model=this.modelService.createModelForShowAllRoomsMenu();
         ShowRoomsView view=new ShowRoomsView( this.roomService.getAllRooms(),model);
         view.showInformation();
+
         view.act();
     }
 
     public void showAllRoomsSortedByCostMenu(){
-        ArrayList<Room> allRooms=new ArrayList<Room>();
+
+        this.roomService.getRoomCostSorting()
         ViewModel model=this.modelService.createModelForShowAllRoomsSortedByCostMenu();
         ShowRoomsView view=new ShowRoomsView( this.roomService.getRoomCostSorting(allRooms),model);
         view.showInformation();
+
         view.act();
     }
 

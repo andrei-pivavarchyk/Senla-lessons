@@ -16,6 +16,7 @@ public class ShowRoomsView extends AbstractView{
 
     }
     public void showInformation(){
+        System.out.println("INFORMATION***INFORMATION***INFORMATION***INFORMATION");
         for(Room room:allRooms){
             System.out.println(room);
         }
