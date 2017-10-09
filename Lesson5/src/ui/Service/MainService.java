@@ -36,7 +36,6 @@ public class MainService {
 
     }
 
-
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
         this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
     }
