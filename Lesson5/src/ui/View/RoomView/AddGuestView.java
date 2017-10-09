@@ -5,17 +5,16 @@ import entity.Guest;
 import entity.Room;
 import ui.Service.ConsoleService;
 import ui.View.AbstractView;
-import ui.Service.MenuService;
-import ui.controller.MainController;
+import ui.Service.MainService;
 import ui.model.ViewModel;
 
 import java.util.List;
 
 public class AddGuestView extends AbstractView {
     private List<Room> allRooms;
-    private MainController controller;
+    private MainService controller;
 
-    public AddGuestView(List<Room> allRooms, ViewModel model, MainController controller) {
+    public AddGuestView(List<Room> allRooms, ViewModel model, MainService controller) {
         super(model);
         this.allRooms = allRooms;
         this.controller = controller;

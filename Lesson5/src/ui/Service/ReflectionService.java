@@ -1,7 +1,7 @@
 package ui.Service;
 
 
-import ui.controller.MainController;
+import ui.controller.MenuController;
 
 import java.lang.reflect.Method;
 
@@ -22,7 +22,7 @@ public class ReflectionService {
     }
 
 
-    public Method getMethod(MenuService mainController, String methodName)  {
+    public Method getMethod(MenuController mainController, String methodName)  {
 
         try {
             Class c = mainController.getClass();

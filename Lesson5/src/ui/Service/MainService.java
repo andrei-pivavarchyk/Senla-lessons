@@ -1,10 +1,9 @@
-package ui.controller;
+package ui.Service;
 
 import Storage.*;
 import entity.Guest;
 import entity.Service;
 import services.*;
-import ui.Service.MenuService;
 import ui.storeFactory.GuestStoreFactory;
 import ui.storeFactory.RoomStoreFactory;
 import ui.storeFactory.ServiceStoreFactory;
@@ -12,16 +11,16 @@ import ui.storeFactory.ServiceStoreFactory;
 /**
  * Created by андрей on 09.10.2017.
  */
-public class MainController {
+public class MainService {
 
     private IServiceService serviceService;
     private IRoomService roomService;
     private IGuestService guestSerice;
     private PrinterService printerService;
-    private MenuService menuService;
 
 
-    public MainController() {
+
+    public MainService() {
 
         IRoomStorage roomStorage = new RoomStoreFactory().createRoomStorage();
         IGuestStorage guestStorage = new GuestStoreFactory().createGuestStorage();
@@ -34,13 +33,7 @@ public class MainController {
         this.serviceService = new ServiceService(guestServiceStorage, serviceStorage);
         this.printerService = new PrinterService();
 
-        this.menuService = new MenuService(serviceService, roomService, guestSerice, printerService, this);
-    }
 
-
-    public void showMainMenu() {
-
-        menuService.showMainMenu();
     }
 
 
@@ -56,5 +49,22 @@ public class MainController {
 
         ReadFromFileService readFromFileService = new ReadFromFileService(roomService);
         readFromFileService.readRooms(path);
+    }
+
+
+    public IRoomService getRoomService() {
+        return roomService;
+    }
+
+    public IGuestService getGuestSerice() {
+        return guestSerice;
+    }
+
+    public IServiceService getServiceService() {
+        return serviceService;
+    }
+
+    public PrinterService getPrinterService() {
+        return printerService;
     }
 }

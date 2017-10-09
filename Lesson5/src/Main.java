@@ -1,8 +1,8 @@
 import entity.*;
 
 
-import ui.Service.MenuService;
-import ui.controller.MainController;
+import ui.Service.MainService;
+import ui.controller.MenuController;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -21,18 +21,19 @@ public class Main {
         Service service3 = new Service(3, ServiceType.EAT, "Spa", 20);
 
 
-        MainController mainController = new MainController();
-        mainController.readRoomsFromFile(args[0]);
-        mainController.addGuest(1, guest1, 2018, 1, 1);
-        mainController.addGuest(1, guest2, 2018, 1, 1);
-        mainController.addGuest(1, guest3, 2018, 1, 1);
-        mainController.addService(service1);
-        mainController.addService(service2);
-        mainController.addService(service3);
+        MenuController controller=new MenuController();
+        MainService mainService=controller.getMainService();
+
+        mainService.readRoomsFromFile(args[0]);
+        mainService.addGuest(1, guest1, 2018, 1, 1);
+        mainService.addGuest(1, guest2, 2018, 1, 1);
+        mainService.addGuest(1, guest3, 2018, 1, 1);
+        mainService.addService(service1);
+        mainService.addService(service2);
+        mainService.addService(service3);
 
 
-        mainController.showMainMenu();
-
+      controller.showMainMenu();
 
     }
 

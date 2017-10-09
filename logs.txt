@@ -1,1 +1,1 @@
-logI nfoProgram start
+logI danger!!!!!!java.util.InputMismatchException

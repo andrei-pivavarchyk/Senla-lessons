@@ -1,6 +1,6 @@
 package ui.menuItem;
 
-import ui.Service.MenuService;
+import ui.controller.MenuController;
 import ui.Service.ReflectionService;
 
 import java.lang.reflect.Method;
@@ -11,9 +11,9 @@ import java.lang.reflect.Method;
 public class Item  {
 
     private String title;
-    private MenuService menuService;
+    private MenuController menuService;
     private String methodName;
-    public Item(String title, MenuService mainController, String methodName) {
+    public Item(String title, MenuController mainController, String methodName) {
         this.title=title;
         this.menuService=mainController;
         this.methodName=methodName;

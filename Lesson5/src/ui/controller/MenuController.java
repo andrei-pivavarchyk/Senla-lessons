@@ -1,44 +1,39 @@
-package ui.Service;
+package ui.controller;
 
 
-import Storage.*;
 import entity.Guest;
 import entity.Room;
 import entity.Service;
 import services.*;
 import ui.Service.LoggerService;
 
+import ui.Service.MainService;
 import ui.View.RoomView.AddGuestView;
 import ui.View.RoomView.ShowRoomsView;
 import ui.View.ServiceView.ServiceMenuView;
 import ui.View.ServiceView.ShowAllServicesView;
 import ui.View.ViewItems;
 import ui.View.guestView.ShowAllGuestsView;
-import ui.controller.MainController;
 import ui.menuItem.Item;
 import ui.model.ViewModel;
-import ui.storeFactory.GuestStoreFactory;
-import ui.storeFactory.RoomStoreFactory;
-import ui.storeFactory.ServiceStoreFactory;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MenuService {
+public class MenuController {
 
     private IServiceService serviceService;
     private IRoomService roomService;
     private IGuestService guestService;
     private PrinterService printerService;
-    private MainController controller;
+    private MainService mainService;
 
-    public MenuService(IServiceService serviceService, IRoomService roomService, IGuestService guestService, PrinterService printerService, MainController controller) {
-        this.serviceService = serviceService;
-        this.roomService = roomService;
-        this.guestService = guestService;
-        this.printerService = printerService;
-        this.controller = controller;
+    public MenuController() {
 
+        this.mainService = new MainService();
+        this.serviceService=mainService.getServiceService();
+        this.roomService=mainService.getRoomService();
+        this.guestService=mainService.getGuestSerice();
+        this.printerService=mainService.getPrinterService();
 
     }
 
@@ -84,7 +79,7 @@ public class MenuService {
         Item item1 = new Item("Show Main Menu", this, "showMainMenu");
         ViewModel viewModel = new ViewModel("ADD GUEST MENU**************_-_");
         viewModel.addItem(item1);
-        AddGuestView view = new AddGuestView(this.roomService.getFreeRooms(), viewModel, controller);
+        AddGuestView view = new AddGuestView(this.roomService.getFreeRooms(), viewModel, mainService);
         view.showInformation();
         view.addGuest();
         view.act();
@@ -334,5 +329,8 @@ public class MenuService {
         view.act();
     }
 
+    public MainService getMainService() {
+        return mainService;
+    }
 
 }
