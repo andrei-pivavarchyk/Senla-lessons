@@ -10,11 +10,9 @@ public class ServiceCostComparator implements Comparator<Service> {
             Integer service1Cost = service1.getCost();
             Integer service2Cost = service2.getCost();
             return service1Cost.compareTo(service2Cost);
-        }
-        catch (Exception e) {
-            System.out.println(e);
+        } catch (Exception e) {
+            System.out.print(e);
         }
         return 0;
-
     }
 }
