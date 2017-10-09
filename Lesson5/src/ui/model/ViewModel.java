@@ -2,7 +2,6 @@ package ui.model;
 
 
 import ui.menuItem.Item;
-import ui.menuItem.MenuItem;
 
 import java.util.ArrayList;
 
@@ -10,13 +9,12 @@ import java.util.ArrayList;
 public class ViewModel {
 
     private String title;
-    private ArrayList<Item> menuItems=new ArrayList<Item>();
+    private ArrayList<Item> menuItems = new ArrayList<Item>();
 
 
-public ViewModel(String title){
-    this.title=title;
-}
-
+    public ViewModel(String title) {
+        this.title = title;
+    }
 
 
     public void setTitle(String title) {
@@ -27,7 +25,7 @@ public ViewModel(String title){
         return title;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         this.menuItems.add(item);
     }
 

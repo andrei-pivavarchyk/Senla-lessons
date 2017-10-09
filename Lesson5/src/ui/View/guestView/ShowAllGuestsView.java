@@ -2,11 +2,7 @@ package ui.View.guestView;
 
 
 import entity.Guest;
-import entity.Room;
-import sun.security.x509.AVA;
-import ui.Service.ConsoleService;
 import ui.View.AbstractView;
-import ui.menuItem.MenuItem;
 import ui.model.ViewModel;
 
 import java.util.ArrayList;

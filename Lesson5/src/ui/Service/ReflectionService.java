@@ -22,7 +22,7 @@ public class ReflectionService {
     }
 
 
-    public Method getMethod(MainController mainController,String methodName)  {
+    public Method getMethod(MenuService mainController, String methodName)  {
 
         try {
             Class c = mainController.getClass();

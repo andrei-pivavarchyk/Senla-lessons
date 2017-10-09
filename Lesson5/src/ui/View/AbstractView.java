@@ -3,10 +3,7 @@ package ui.View;
 
 import ui.Service.ConsoleService;
 import ui.menuItem.Item;
-import ui.menuItem.MenuItem;
 import ui.model.ViewModel;
-
-import java.lang.reflect.InvocationTargetException;
 
 public class AbstractView {
     private ViewModel viewModel;

@@ -1,6 +1,7 @@
 package ui.menuItem;
 
-import ui.controller.MainController;
+import ui.Service.MenuService;
+import ui.Service.ReflectionService;
 
 import java.lang.reflect.Method;
 
@@ -10,11 +11,11 @@ import java.lang.reflect.Method;
 public class Item  {
 
     private String title;
-    private MainController mainController;
+    private MenuService menuService;
     private String methodName;
-    public Item(String title, MainController mainController, String methodName) {
+    public Item(String title, MenuService mainController, String methodName) {
         this.title=title;
-        this.mainController=mainController;
+        this.menuService=mainController;
         this.methodName=methodName;
     }
 
@@ -23,12 +24,8 @@ public class Item  {
 
         try {
 
-            Class c = mainController.getClass();
-            Class[] paramTypes = new Class[]{String.class};
-            Method method = c.getMethod(methodName);
-            Object[] args = new Object[]{new String("ShowMainMenu")};
-             method.invoke(mainController);
-
+          Method method= ReflectionService.getReflectionService().getMethod(menuService,methodName);
+            method.invoke(menuService);
         }
         catch(Exception e){
             System.out.println(e.toString());
