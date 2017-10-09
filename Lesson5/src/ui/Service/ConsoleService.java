@@ -7,24 +7,22 @@ import static java.lang.System.in;
 
 public class ConsoleService {
 
-    private static  ConsoleService consoleService;
-    private LoggerService  loggerService=LoggerService.getLoggerService();
+    private static ConsoleService consoleService;
+    private LoggerService loggerService = LoggerService.getLoggerService();
 
-    private ConsoleService(){
+    private ConsoleService() {
 
     }
 
-    public static synchronized ConsoleService getConsoleService(){
-        if(consoleService==null){
-            consoleService=new ConsoleService();
+    public static synchronized ConsoleService getConsoleService() {
+        if (consoleService == null) {
+            consoleService = new ConsoleService();
         }
         return consoleService;
     }
 
 
     public int getNumberForView(int maxNumber) {
-
-
 
 
         Scanner scanner = new Scanner(System.in);
@@ -35,9 +33,9 @@ public class ConsoleService {
             try {
 
                 input = scanner.nextInt();
-                if (input == 0||input>maxNumber) {
+                if (input == 0 || input > maxNumber) {
                     System.out.println("Bad number");
-                    scanner.next();
+
                 } else {
                     NumberIsNotGiven = false;
                 }
@@ -45,17 +43,35 @@ public class ConsoleService {
                 //LOGGER SERVICE
                 loggerService.logDanger(e.toString());
                 System.out.println("Try again");
-                scanner.next();
+
             }
         }
         return input;
     }
 
-    public String getString(){
+    public String getString() {
 
         Scanner scanner = new Scanner(System.in);
-      String string=  scanner.nextLine();
-      return string;
+        String string = scanner.nextLine();
+        return string;
+    }
+
+    public int getNumber() {
+        int input = 0;
+        try {
+            Scanner scanner = new Scanner(System.in);
+            input = scanner.nextInt();
+
+        } catch (Exception e) {
+            //LOGGER SERVICE
+            loggerService.logDanger(e.toString());
+            System.out.println("Try again");
+            Scanner scanner = new Scanner(System.in);
+            input = scanner.nextInt();
+
+        }
+        return input;
+
     }
 
 }

@@ -31,7 +31,7 @@ public class LoggerService {
     }
 
     private void writeInFile(String header,String message){
-        String pathToFile="D:\\"+"logs.txt";
+        String pathToFile="..\\logs.txt";
         File file=new File(pathToFile);
 
 

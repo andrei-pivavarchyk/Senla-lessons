@@ -21,13 +21,16 @@ public class Main {
 
         MainController mainController=new MainController();
 
-        mainController.readRoomsFromFile("D:\\Rooms.txt");;
+        mainController.readRoomsFromFile(args[0]);
         mainController.addGuest(1,guest1,2018,1,1);
         mainController.addGuest(1,guest2,2018,1,1);
         mainController.addGuest(1,guest3,2018,1,1);
         mainController.addService(service1);
         mainController.addService(service2);
         mainController.addService(service3);
+
+
+
 
 
         mainController.showMainMenu();

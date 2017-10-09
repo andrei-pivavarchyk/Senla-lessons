@@ -5,46 +5,71 @@ import entity.Guest;
 import entity.Room;
 import ui.Service.ConsoleService;
 import ui.View.AbstractView;
+import ui.controller.MainController;
 import ui.menuItem.MenuItem;
 import ui.model.ViewModel;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class AddGuestView extends AbstractView{
+public class AddGuestView extends AbstractView {
     private List<Room> allRooms;
+    private MainController controller;
 
-    public AddGuestView(List<Room> allRooms, ViewModel model){
+    public AddGuestView(List<Room> allRooms, ViewModel model, MainController controller) {
         super(model);
-        this.allRooms=allRooms;
+        this.allRooms = allRooms;
+        this.controller=controller;
+    }
+
+    public void addGuest(){
+
+        int roomNumber=this.chooseRoom();
+        if(roomNumber!=0){
+            Guest guest=this.createGuest();
+            System.out.print("Enter year departure(example 2018)");
+          int year= ConsoleService.getConsoleService().getNumber();
+            System.out.print("Enter month departure(example 7)");
+          int month=ConsoleService.getConsoleService().getNumber();
+            System.out.print("Enter day departure(example 2)");
+          int day=ConsoleService.getConsoleService().getNumber();
+          this.controller.addGuest(roomNumber,guest,year,month,day);
+          System.out.println("Guest Was Added");
+        }
+        else{
+            this.showInformation();
+            System.out.println("Enter correct room number");
+            this.addGuest();
+        }
 
     }
-    public void showInformation(){
-        int i=1;
-        for(Room room:allRooms){
-            System.out.println(i+" "+room);
+
+    public void showInformation() {
+        int i = 1;
+        for (Room room : allRooms) {
+            System.out.println(i + " " + room);
         }
     }
 
-    public Room shooseRoom(){
-System.out.println("Enter room Number");
-        Scanner scanner1 = new Scanner(System.in);
-        int roomNumber= scanner1.nextInt();
-        for(Room room:allRooms){
-            if(room.getNumber()==roomNumber){
-                return room;
+
+    public int chooseRoom() {
+        System.out.println("Enter room Number");
+        int roomNumber = ConsoleService.getConsoleService().getNumberForView(allRooms.size());
+        for (Room room : allRooms) {
+            if (room.getNumber() == roomNumber) {
+                return roomNumber;
             }
-
         }
-        return null;
+        return 0;
     }
 
-    public Guest createGuest(){
+
+    public Guest createGuest() {
         System.out.print("Enter name");
-        String name= ConsoleService.getConsoleService().getString();
+        String name = ConsoleService.getConsoleService().getString();
         System.out.print("Enter surname");
-        String surname= ConsoleService.getConsoleService().getString();
-        Guest guest=new Guest(1,name,surname);
+        String surname = ConsoleService.getConsoleService().getString();
+        Guest guest = new Guest(1, name, surname);
         return guest;
 
     }

@@ -33,16 +33,19 @@ public class ModelCreationService {
     }
 
     public ViewModel createModelForRoomMenu(){
-        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
-        Item item2=new Item("show all rooms",mainController,"showAllRoomsMenu");
-        Item item3=new Item("show free rooms",mainController,"showAllFreeRoomsMenu");
 
+        Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+
+        Item item2=new Item("add guest",mainController,"addGuestMenu");
+        Item item3=new Item("show all rooms",mainController,"showAllRoomsMenu");
+        Item item4=new Item("show free rooms",mainController,"showAllFreeRoomsMenu");
 
         ViewModel viewModel=new ViewModel("ROOM MENU_**************_-_");
 
         viewModel.addItem(item1);
         viewModel.addItem(item2);
         viewModel.addItem(item3);
+        viewModel.addItem(item4);
 
 
         return viewModel;
@@ -259,6 +262,12 @@ public class ModelCreationService {
     }
 
 
+     public ViewModel createModelForAddGuestMenu(){
+         Item item1=new Item("Show Main Menu", mainController,"showMainMenu");
+         ViewModel viewModel=new ViewModel("ADD GUEST MENU**************_-_");
+         viewModel.addItem(item1);
+         return viewModel;
+     }
 
 
 

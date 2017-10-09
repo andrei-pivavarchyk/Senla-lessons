@@ -6,7 +6,9 @@ import entity.Guest;
 import entity.Room;
 import entity.Service;
 import services.*;
+import ui.Service.LoggerService;
 import ui.Service.ModelCreationService;
+import ui.View.RoomView.AddGuestView;
 import ui.View.RoomView.ShowRoomsView;
 import ui.View.ServiceView.ServiceMenuView;
 import ui.View.ServiceView.ShowAllServicesView;
@@ -49,14 +51,27 @@ public class MainController extends AController {
 
 
     public void showMainMenu()  {
+        LoggerService.getLoggerService().logInfo("Program start");
+
         ViewModel model=this.modelService.createModelForMainMenu();
         ViewItems view=new ViewItems(model);
         view.act();
     }
 
+    //Room menu
+
     public void showRoomMenu(){
         ViewModel model=this.modelService.createModelForRoomMenu();
         ViewItems view=new ViewItems(model);
+        view.act();
+    }
+
+
+    public void addGuestMenu(){
+        ViewModel model=this.modelService.createModelForAddGuestMenu();
+       AddGuestView view=new AddGuestView( this.roomService.getFreeRooms(),model,this);
+        view.showInformation();
+        view.addGuest();
         view.act();
     }
 
@@ -137,14 +152,12 @@ public class MainController extends AController {
     }
 
 
-
     public void showGuestMenu(){
 
         ViewModel model=this.modelService.createModelForShowGuestMenu();
         ViewItems view=new ViewItems(model);
         view.act();
     }
-
 
     public void showAllGuestsMenu(){
         ViewModel model=this.modelService.createModelForShowAllGuestsMenu();
@@ -179,9 +192,6 @@ public class MainController extends AController {
 
     }
 
-
-
-
     public void showAllServicesMenu(){
         ArrayList<Service> allServices=new ArrayList<Service>(this.serviceService.getAllHotelServices());
         ViewModel model=this.modelService.createModelForShowAllServicesMenu();
@@ -191,7 +201,7 @@ public class MainController extends AController {
     }
 
     public void showAllServicesSortedByCost(){
-        ArrayList<Service> allServices=new ArrayList<Service>(this.serviceService.getAllHotelServices());
+        ArrayList<Service> allServices=new ArrayList<Service>(this.serviceService.getAllHotelServicesSortedByCost());
         ViewModel model=this.modelService.createModelForShowAllServicesSortedByCost();
         ShowAllServicesView view=new ShowAllServicesView(allServices,model);
         view.showInformation();
