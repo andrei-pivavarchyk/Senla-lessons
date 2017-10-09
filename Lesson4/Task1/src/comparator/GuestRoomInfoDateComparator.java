@@ -11,11 +11,13 @@ public class GuestRoomInfoDateComparator implements Comparator<GuestRoomInfo> {
 
     @Override
     public int compare(GuestRoomInfo guest1, GuestRoomInfo guest2) {
-
-        Date guest1Date = guest1.getDepartureDate();
-        Date guest2Date = guest2.getDepartureDate();
-        return guest1Date.compareTo(guest2Date);
-
-
+        try {
+            Date guest1Date = guest1.getDepartureDate();
+            Date guest2Date = guest2.getDepartureDate();
+            return guest1Date.compareTo(guest2Date);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
     }
 }

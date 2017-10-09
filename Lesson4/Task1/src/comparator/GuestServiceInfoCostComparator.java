@@ -10,10 +10,15 @@ public class GuestServiceInfoCostComparator implements Comparator<GuestServiceIn
 
     @Override
     public int compare(GuestServiceInfo service1, GuestServiceInfo service2) {
-        Integer service1Cost = service1.getService().getCost();
-        Integer service2Cost = service2.getService().getCost();
-        return service1Cost.compareTo(service2Cost);
-
+        try {
+            Integer service1Cost = service1.getService().getCost();
+            Integer service2Cost = service2.getService().getCost();
+            return service1Cost.compareTo(service2Cost);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
     }
 }
+
 
