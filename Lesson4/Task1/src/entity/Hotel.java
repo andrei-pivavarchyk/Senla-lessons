@@ -1,9 +1,8 @@
 package entity;
 
-import Storage.*;
+import storage.*;
 import services.*;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -127,14 +126,14 @@ public class Hotel {
 
     public void readRoomsFromFile(String path) {
 
-        ReadFromFileService readFromFileService = new ReadFromFileService(roomService);
-        readFromFileService.readRooms(path);
+        ReadFromFileService readFromFileService = new ReadFromFileService();
+        readFromFileService.readRooms(path,this.roomService);
 
     }
 
     public void setRoomCost(int roomNumber, int cost, String path) {
         this.roomService.setRoomCost(roomNumber, cost);
-        ReadFromFileService readFromFileService = new ReadFromFileService(this.roomService);
+        ReadFromFileService readFromFileService = new ReadFromFileService();
         readFromFileService.writeToFileService(this.roomService.getAllRooms(), path);
     }
 

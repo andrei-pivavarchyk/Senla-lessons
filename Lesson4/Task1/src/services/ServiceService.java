@@ -1,17 +1,14 @@
 package services;
 
 
-import Storage.GuestServiceStorage;
-import Storage.IGuestServiceStorage;
-import Storage.IServiceStorage;
+import storage.IGuestServiceStorage;
+import storage.IServiceStorage;
 import comparator.GuestServiceInfoCostComparator;
 
 import comparator.GuestServiceInfoDateComparator;
-import comparator.RoomCostComparator;
 import comparator.ServiceCostComparator;
 import entity.Guest;
 import entity.GuestServiceInfo;
-import entity.Room;
 import entity.Service;
 
 import java.util.*;
@@ -30,6 +27,7 @@ public class ServiceService implements IServiceService {
         this.guestServiceStorage = guestServiceStorage;
         this.serviceStorage = serviceStorage;
     }
+
 
 
     public void addGuestService(Guest guest, Service service, int year, int month, int day) {

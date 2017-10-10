@@ -1,17 +1,15 @@
 package services;
 
 
-import Storage.IGuestRoomInfoStorage;
+import storage.IGuestRoomInfoStorage;
 import comparator.GuestNameComparator;
 import comparator.GuestRoomInfoDateComparator;
 import entity.Guest;
 import entity.GuestRoomInfo;
-import entity.GuestServiceInfo;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class GuestService implements IGuestService {

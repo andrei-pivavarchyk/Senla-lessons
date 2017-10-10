@@ -1,11 +1,9 @@
 package services;
 
 
-import Storage.IGuestRoomInfoStorage;
-import Storage.IGuestStorage;
-import Storage.IRoomStorage;
-import Storage.RoomStorage;
-import com.sun.corba.se.impl.orbutil.closure.Constant;
+import storage.IGuestRoomInfoStorage;
+import storage.IGuestStorage;
+import storage.IRoomStorage;
 import comparator.*;
 import entity.Guest;
 import entity.GuestRoomInfo;

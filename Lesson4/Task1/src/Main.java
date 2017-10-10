@@ -28,11 +28,12 @@ public class Main {
         bestHotel.printRoomsSortingByCost();
         bestHotel.printRoomsSortingByStars();
         bestHotel.addGuest(1, guest1, 2018, 5, 12);
+        bestHotel.addGuest(1, guest2, 2018, 5, 12);
+        bestHotel.addGuest(1, guest3, 2018, 5, 12);
         bestHotel.printFreeRooms();
         bestHotel.printFreeRoomsByStars();
         bestHotel.printFreeRoomsByCost();
         bestHotel.printFreeRoomsByCapacity();
-        bestHotel.printAllGuests();
         bestHotel.printAllGuests();
         bestHotel.printGuestsSortedByName();
         bestHotel.printGuestsSortedByDepartureDate();
@@ -48,6 +49,7 @@ public class Main {
         bestHotel.printLastThreeGuestsInRoom(1);
         bestHotel.setRoomCost(1, 12, "D:\\Rooms.txt");
         bestHotel.printAllRooms();
+        bestHotel.printGuestsSortedByName();
 
 
     }

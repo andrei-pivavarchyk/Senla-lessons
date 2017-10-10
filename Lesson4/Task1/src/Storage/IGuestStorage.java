@@ -1,8 +1,7 @@
-package Storage;
+package storage;
 
 
 import entity.Guest;
-import entity.Room;
 
 public interface IGuestStorage  extends IBaseStorage<Guest> {
 }

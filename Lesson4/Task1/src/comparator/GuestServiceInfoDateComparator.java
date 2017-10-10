@@ -11,15 +11,21 @@ public class GuestServiceInfoDateComparator implements Comparator<GuestServiceIn
 
     @Override
     public int compare(GuestServiceInfo service1, GuestServiceInfo service2) {
-        try {
-            Date service1Date = service1.getDate();
-            Date service2Date = service2.getDate();
-            return service1Date.compareTo(service2Date);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return 0;
 
+        if (service1.getDate()==null &&service2.getDate()==null) {
+            return 0;
+        }
+
+        if (service1.getDate()==null) {
+            return -1;
+        }
+
+        if (service2.getDate()==null) {
+
+            return 1;
+        }
+        Date service1Date = service1.getDate();
+        Date service2Date = service2.getDate();
+        return service1Date.compareTo(service2Date);
     }
 }
-

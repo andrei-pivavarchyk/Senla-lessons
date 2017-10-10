@@ -1,22 +1,15 @@
 package services;
 
 
-import Storage.RoomStorage;
 import com.danco.training.TextFileWorker;
 import entity.Room;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFromFileService {
 
-    private IRoomService roomService;
 
-    public ReadFromFileService(IRoomService roomService) {
-        this.roomService = roomService;
-    }
-
-    public void readRooms(String path) {
+    public void readRooms(String path,IRoomService roomService) {
 
         String[] allRooms = new TextFileWorker(path).readFromFile();
 
@@ -31,7 +24,7 @@ public class ReadFromFileService {
             Room room = new Room(id, roomNumber, roomCost, roomCapacity, roomStars);
             id++;
 
-            this.roomService.addRoom(room);
+            roomService.addRoom(room);
 
         }
     }

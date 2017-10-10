@@ -17,6 +17,7 @@ public class GuestServiceInfo extends Entity {
         this.date = date;
     }
 
+
     public Date getDate() {
         return date;
     }
