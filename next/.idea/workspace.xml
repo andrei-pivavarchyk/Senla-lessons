@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="Task3:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0c3e09-53f0-49ac-9ae4-b07caedb07b0" name="Default" comment="" />
+    <list default="true" id="6e72da9f-235a-415a-8098-bd98b06306a7" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,115 +16,95 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/menuItem/Item.java">
+      <file leaf-file-name="IAction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/action/IAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#802#803#0" expanded="false" />
-                <element signature="e#830#831#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AGuestStoreFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/AGuestStoreFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ARoomStoreFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/ARoomStoreFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="51">
+              <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AServiceStoreFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/AServiceStoreFactory.java">
+      <file leaf-file-name="MenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/MenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuestStoreFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/GuestStoreFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoomStoreFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/RoomStoreFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoggerService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/Service/LoggerService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+            <state relative-caret-position="170">
+              <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConsoleService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/Service/ConsoleService.java">
+      <file leaf-file-name="Builder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/entity/Builder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReflectionService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ui/Service/ReflectionService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceStoreFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/ServiceStoreFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="370">
+              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1428#1429#0" expanded="true" />
+                <element signature="e#1459#1460#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/entity/Menu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="40" column="8" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#657#658#0" expanded="true" />
+                <element signature="e#697#698#0" expanded="true" />
+                <element signature="e#730#731#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/entity/MenuItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#601#602#0" expanded="true" />
+                <element signature="e#629#630#0" expanded="true" />
+                <element signature="e#675#676#0" expanded="true" />
+                <element signature="e#715#716#0" expanded="true" />
+                <element signature="e#748#749#0" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Navigator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/entity/Navigator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1522#1523#0" expanded="true" />
+                <element signature="e#1556#1557#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionShowAllRooms.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRooms.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,26 +116,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="package-info" />
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>roomCostSorting</find>
-      <find>free</find>
-      <find>readRoom</find>
-      <find>read</find>
-      <find>add</find>
-      <find>addG</find>
-      <find>show</find>
-      <find>showAll</find>
-      <find>howAllGuestsSorte</find>
-      <find>howAllGuestsSortedByDepartureD</find>
-      <find>howServiceM</find>
-    </findStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -170,57 +128,34 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ui/menuItem/ServiceMenuItem/ShowAllServiceSortedByCost.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/ServiceMenuItem/ShowAllServicesItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowFreeRoomsItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowAllRoomsSortedByStarsItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowAllRoomsSortedByCapacityItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowAllRoomsSortedByCostItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowAllRoomsItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/AddGuestItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/GuestMenuItem/ShowAllGuestsSortedByNameItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/ServiceMenuItem/ServiceMenuItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/ServiceMenuItem/ShowAllServicesSortedByType.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/RoomMenuItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/GuestMenuItem/ShowAllGuestsSortedByDepartureDateItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/GuestMenuItem/ShowAllGuestsItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/GuestMenuItem/GuestMenuItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/MenuItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/MainMenuItem.java" />
-        <option value="$PROJECT_DIR$/src/ui/View/AbstractView.java" />
-        <option value="$PROJECT_DIR$/src/ui/View/RoomView/ShowRoomsView.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/AbstractFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/ControllerAbstractFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/ControllerFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/controller/AController.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/ControllerAbstractFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/StoreAbstractFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/RoomStoreFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/ARoomStoreFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/AGuestStoreFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/ControllerFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/AServiceStoreFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/ServiceStoreFactory.java" />
-        <option value="$PROJECT_DIR$/src/ui/View/guestView/ShowAllGuestsView.java" />
-        <option value="$PROJECT_DIR$/src/ui/View/ServiceView/ShowAllServicesView.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/LoggerService.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/ConsoleService.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/SuperModelCreaterService.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/ModelCreationService.java" />
-        <option value="$PROJECT_DIR$/src/ui/controller/MenuService.java" />
-        <option value="$PROJECT_DIR$/src/ui/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/ui/View/RoomView/AddGuestView.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/MenuService.java" />
-        <option value="$PROJECT_DIR$/src/ui/View/ViewItems.java" />
-        <option value="$PROJECT_DIR$/src/ui/model/ViewModel.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/ReflectionService.java" />
-        <option value="$PROJECT_DIR$/src/ui/menuItem/Item.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/ui/controller/MainService.java" />
-        <option value="$PROJECT_DIR$/src/ui/controller/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/IAction.java" />
+        <option value="$PROJECT_DIR$/src/action/ActionPrintAllRooms.java" />
+        <option value="$PROJECT_DIR$/src/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/action/AAction.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/MainService.java" />
-        <option value="$PROJECT_DIR$/src/ui/storeFactory/GuestStoreFactory.java" />
+        <option value="$PROJECT_DIR$/src/service/MainService.java" />
+        <option value="$PROJECT_DIR$/src/action/roomMenuActions/AtionShowFreeRooms.java" />
+        <option value="$PROJECT_DIR$/src/action/roomMenuActions/ActionEnum.java" />
+        <option value="$PROJECT_DIR$/src/action/roomMenuActions/ActionEnumResult.java" />
+        <option value="$PROJECT_DIR$/src/action/IAction.java" />
+        <option value="$PROJECT_DIR$/src/action/ActionShowGuestMenu.java" />
+        <option value="$PROJECT_DIR$/src/action/ActionShowServiceMenu.java" />
+        <option value="$PROJECT_DIR$/src/action/ActionShowRoomMenu.java" />
+        <option value="$PROJECT_DIR$/src/action/ActionEnumResult.java" />
+        <option value="$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRooms.java" />
+        <option value="$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRoomsSortedByCapacity.java" />
+        <option value="$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRoomsSortedByStars.java" />
+        <option value="$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRoomsSortedByCost.java" />
+        <option value="$PROJECT_DIR$/src/action/roomMenuActions/ActionShowFreeRooms.java" />
+        <option value="$PROJECT_DIR$/src/action/ActionPreviosMenu.java" />
+        <option value="$PROJECT_DIR$/src/service/ConsoleService.java" />
+        <option value="$PROJECT_DIR$/src/service/ReflectionService.java" />
+        <option value="$PROJECT_DIR$/src/entity/RootMenu.java" />
+        <option value="$PROJECT_DIR$/src/controller/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/entity/MenuItem.java" />
+        <option value="$PROJECT_DIR$/src/entity/Menu.java" />
+        <option value="$PROJECT_DIR$/src/entity/Builder.java" />
+        <option value="$PROJECT_DIR$/src/entity/Navigator.java" />
       </list>
     </option>
   </component>
@@ -231,10 +166,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="58" />
-    <option name="y" value="444" />
-    <option name="width" value="1254" />
-    <option name="height" value="876" />
+    <option name="x" value="62" />
+    <option name="y" value="92" />
+    <option name="width" value="1189" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -251,26 +186,28 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -280,11 +217,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -292,21 +229,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -314,25 +247,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ServiceView" />
+              <option name="myItemId" value="entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -340,25 +265,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RoomView" />
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -366,25 +283,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guestView" />
+              <option name="myItemId" value="action" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
+              <option name="myItemId" value="next" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -392,114 +301,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
+              <option name="myItemId" value="action" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storeFactory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menuItem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lesson5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
+              <option name="myItemId" value="roomMenuActions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path" value="$PROJECT_DIR$/../../../ANGULAR/NODE/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Task1 для редактирования" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="nodejs_interpreter_path" value="D:/ANGULAR/NODE/node" />
-    <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="D:\дизайнерские штуки\ANGULAR\NODE\node.exe" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="controller" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -513,7 +341,7 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Task3" />
+      <module name="next" />
       <envs />
       <method />
     </configuration>
@@ -817,7 +645,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Task3" />
+      <module name="next" />
       <envs />
       <method />
     </configuration>
@@ -911,82 +739,86 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bc0c3e09-53f0-49ac-9ae4-b07caedb07b0" name="Default" comment="" />
-      <created>1506461095147</created>
+      <changelist id="6e72da9f-235a-415a-8098-bd98b06306a7" name="Default" comment="" />
+      <created>1507651349989</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1506461095147</updated>
-      <workItem from="1506461098792" duration="2073000" />
-      <workItem from="1506498359737" duration="12642000" />
-      <workItem from="1506511068370" duration="2689000" />
-      <workItem from="1506514591050" duration="3577000" />
-      <workItem from="1506521954150" duration="8029000" />
-      <workItem from="1506537945942" duration="5919000" />
-      <workItem from="1506588274310" duration="85000" />
-      <workItem from="1506781723545" duration="3406000" />
-      <workItem from="1506790450749" duration="37700000" />
-      <workItem from="1506871608190" duration="10699000" />
-      <workItem from="1506893851389" duration="194000" />
-      <workItem from="1506927415112" duration="3386000" />
-      <workItem from="1507123066593" duration="7276000" />
-      <workItem from="1507193599630" duration="19734000" />
-      <workItem from="1507278205633" duration="7197000" />
-      <workItem from="1507285857654" duration="12460000" />
-      <workItem from="1507310813146" duration="8936000" />
-      <workItem from="1507368673000" duration="30304000" />
-      <workItem from="1507459591506" duration="221000" />
-      <workItem from="1507461129679" duration="835000" />
-      <workItem from="1507462477151" duration="6274000" />
-      <workItem from="1507473760251" duration="62000" />
-      <workItem from="1507473854193" duration="4876000" />
-      <workItem from="1507479290105" duration="912000" />
-      <workItem from="1507480508698" duration="484000" />
-      <workItem from="1507481775860" duration="985000" />
-      <workItem from="1507483554983" duration="5620000" />
-      <workItem from="1507542982585" duration="8152000" />
-      <workItem from="1507650854910" duration="3472000" />
-      <workItem from="1507707113879" duration="121000" />
-      <workItem from="1507720439841" duration="1593000" />
+      <updated>1507651349989</updated>
+      <workItem from="1507651355274" duration="4308000" />
+      <workItem from="1507659457368" duration="2235000" />
+      <workItem from="1507661706201" duration="529000" />
+      <workItem from="1507707239394" duration="32639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209913000" />
+    <option name="totallyTimeSpent" value="39711000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="58" y="444" width="1254" height="876" extended-state="0" />
+    <frame x="62" y="92" width="1189" height="877" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32724902" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18644068" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29166666" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32148626" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28900257" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985657" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21642764" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19556715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25814864" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19687092" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19556715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32724902" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29986963" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.211875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -996,7 +828,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1005,256 +837,413 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ui/View/ServiceView/ServiceMenuView.java">
+    <entry file="file://$PROJECT_DIR$/src/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/ServiceMenuItem/ShowAllServiceSortedByCost.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/ServiceMenuItem/ShowAllServicesItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowFreeRoomsItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowAllRoomsSortedByStarsItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowAllRoomsSortedByCostItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowAllRoomsSortedByCapacityItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/ShowAllRoomsItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/AddGuestItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/GuestMenuItem/ShowAllGuestsSortedByNameItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/ServiceMenuItem/ServiceMenuItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/ServiceMenuItem/ShowAllServicesSortedByType.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/GuestMenuItem/ShowAllGuestsSortedByDepartureDateItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/RoomMenuItem/RoomMenuItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/View/guestView/ShowAllGuestsSortedByDateView.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/GuestMenuItem/GuestMenuItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/GuestMenuItem/ShowAllGuestsItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/MainMenuItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/View/RoomView/ShowAllRoomsSortedByCapacityView.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/View/RoomView/ShowAllRoomsSortedByStarsView.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/controller/MenuController.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/View/RoomView/ShowAllRoomsView.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/View/ServiceView/ShowAllServicesSortedByCostView.java">
+    <entry file="file://$PROJECT_DIR$/src/action/IAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="65" lean-forward="false" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/RoomService.class" />
-    <entry file="file://$PROJECT_DIR$/src/ui/View/RoomView/ShowRoomsView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/View/guestView/ShowAllGuestsView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/View/ServiceView/ShowAllServicesView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/MenuItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/controller/AController.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/Service/SuperModelCreaterService.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/Service/ModelCreationService.java" />
-    <entry file="file://$PROJECT_DIR$/src/ui/View/RoomView/AddGuestView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/View/ViewItems.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/View/RoomView/RoomView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/View/AbstractView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/model/ViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/controller/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="334" column="0" lean-forward="false" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#12634#12643#0" expanded="false" />
-            <element signature="e#13198#13199#0" expanded="false" />
-            <element signature="e#13232#13233#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Service/MainService.java">
+    <entry file="file://$PROJECT_DIR$/src/action/ActionPrintAllRooms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="4" lean-forward="false" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        <state relative-caret-position="51">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/MenuItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/MainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/View/guestView/GuestMenuView.java">
+    <entry file="file://$PROJECT_DIR$/src/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/IAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/ActionPrintAllRooms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/MenuItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/MainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/IAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/ActionPrintAllRooms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/next.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/ActionPrintAllRooms.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/ui">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>ui</OriginalElement>
-          <nodes>
-            <node x="-148.0" y="78.0">ui.menuItem</node>
-            <node x="0.0" y="148.0">ui.controller</node>
-            <node x="0.0" y="222.0">ui.model</node>
-            <node x="0.0" y="0.0">ui.storeFactory</node>
-            <node x="158.0" y="222.0">ui.View</node>
-            <node x="175.0" y="148.0">ui.Service</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="-215.0" y="10.0" />
-          <SelectedNodes>
-            <node>ui.menuItem</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/menuItem/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#802#803#0" expanded="false" />
-            <element signature="e#830#831#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/AGuestStoreFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/ARoomStoreFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/AServiceStoreFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/ServiceStoreFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/GuestStoreFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/storeFactory/RoomStoreFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Service/LoggerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Service/ConsoleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Service/ReflectionService.java">
+    <entry file="file://$PROJECT_DIR$/src/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/AAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/MainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/ActionEnumResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/ActionShowGuestMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRoomsSortedByCost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="50" lean-forward="false" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRoomsSortedByCapacity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRoomsSortedByStars.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="79" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/roomMenuActions/ActionShowFreeRooms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/IAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/ActionPreviosMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/ConsoleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/ReflectionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="31" column="43" lean-forward="false" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/ActionShowServiceMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="e#311#312#0" expanded="false" />
+            <element signature="e#338#339#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/ActionShowRoomMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+          <folding>
+            <element signature="e#308#309#0" expanded="false" />
+            <element signature="e#352#353#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/RootMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/MenuItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="40" column="8" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1428#1429#0" expanded="true" />
+            <element signature="e#1459#1460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/action/roomMenuActions/ActionShowAllRooms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/Navigator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1522#1523#0" expanded="true" />
+            <element signature="e#1556#1557#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1264,12 +1253,10 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>Task3:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1312,7 +1299,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Task3</last-edited>
+          <last-edited>next</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
