@@ -3,6 +3,7 @@ package entity;
 import storage.*;
 import services.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -127,7 +128,8 @@ public class Hotel {
     public void readRoomsFromFile(String path) {
 
         ReadFromFileService readFromFileService = new ReadFromFileService();
-        readFromFileService.readRooms(path,this.roomService);
+       ArrayList<Room> roomList=readFromFileService.readRooms(path);
+       this.roomService.getAllRooms().addAll(roomList);
 
     }
 

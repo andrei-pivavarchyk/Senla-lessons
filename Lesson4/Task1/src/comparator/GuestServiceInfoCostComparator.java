@@ -13,7 +13,7 @@ public class GuestServiceInfoCostComparator implements Comparator<GuestServiceIn
 
         Integer service1Cost = service1.getService().getCost();
         Integer service2Cost = service2.getService().getCost();
-            return service1Cost.compareTo(service2Cost);
+        return service1Cost.compareTo(service2Cost);
 
     }
 }

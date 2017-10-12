@@ -10,17 +10,11 @@ public class GuestNameComparator implements Comparator<Guest> {
     @Override
     public int compare(Guest guest1, Guest guest2) {
 
-
-        if (guest1.getName()==null &&  guest2.getName()==null) {
+        if (guest1.getName().equals(null) && guest2.getName().equals(null)) {
             return 0;
-        }
-
-        if (guest1.getName()==null) {
+        } else if (guest1.getName().equals(null)) {
             return -1;
-        }
-
-        if (guest2.getName()==null) {
-
+        } else if (guest2.getName().equals(null)) {
             return 1;
         }
 

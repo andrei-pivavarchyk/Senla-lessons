@@ -50,8 +50,6 @@ public class PrinterService {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
 
-            // String string=String.format("% Arrival date: % Departure date: %",guest,dateFormat.format( arrivalDate ),dateFormat.format( departureDate) );
-
             System.out.println(guest + " Arrival date: " + dateFormat.format(arrivalDate) + "Departure date: " + dateFormat.format(departureDate));
         }
 

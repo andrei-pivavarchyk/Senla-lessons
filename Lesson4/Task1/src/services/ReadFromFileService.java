@@ -4,15 +4,16 @@ package services;
 import com.danco.training.TextFileWorker;
 import entity.Room;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFromFileService {
 
 
-    public void readRooms(String path,IRoomService roomService) {
+    public ArrayList<Room> readRooms(String path) {
 
         String[] allRooms = new TextFileWorker(path).readFromFile();
-
+        ArrayList<Room> roomList=new ArrayList<Room>();
         for (String roomFromFile : allRooms) {
             int id = 0;
             String[] roomParametrs = roomFromFile.split("\\|");
@@ -24,9 +25,10 @@ public class ReadFromFileService {
             Room room = new Room(id, roomNumber, roomCost, roomCapacity, roomStars);
             id++;
 
-            roomService.addRoom(room);
+            roomList.add(room);
 
         }
+        return roomList;
     }
 
     public void writeToFileService(List<Room> allRooms, String path) {

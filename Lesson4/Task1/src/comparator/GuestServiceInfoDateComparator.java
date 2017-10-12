@@ -12,15 +12,11 @@ public class GuestServiceInfoDateComparator implements Comparator<GuestServiceIn
     @Override
     public int compare(GuestServiceInfo service1, GuestServiceInfo service2) {
 
-        if (service1.getDate()==null &&service2.getDate()==null) {
+        if (service1.getDate().equals(null) && service2.getDate() .equals(null)) {
             return 0;
-        }
-
-        if (service1.getDate()==null) {
+        } else if (service1.getDate().equals(null)) {
             return -1;
-        }
-
-        if (service2.getDate()==null) {
+        } else if (service2.getDate().equals(null)) {
 
             return 1;
         }
