@@ -29,7 +29,7 @@ public class ConsoleService {
             try {
 
                 input = scanner.nextInt();
-                if (input < 0 || input > maxNumber) {
+                if (input <= 0 || input > maxNumber) {
                     System.out.println("Bad number");
 
                 } else {

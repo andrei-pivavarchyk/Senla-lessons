@@ -6,13 +6,10 @@ public class MenuItem {
     String title;
     IAction action;
     Menu nextMenu;
-    Menu rootMenu;
-
 
     public MenuItem(String title, IAction action) {
         this.title = title;
         this.action = action;
-
     }
 
     public MenuItem(String title, IAction action, Menu nextMenu) {

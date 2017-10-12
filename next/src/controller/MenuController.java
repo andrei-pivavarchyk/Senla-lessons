@@ -18,9 +18,9 @@ public class MenuController {
 
     public void run() {
 
-            Menu menu = this.builder.buildMainMenu();
-            this.navigator = new Navigator();
-            navigator.printMenu(menu);
+        Menu menu = this.builder.buildMainMenu();
+        this.navigator = new Navigator();
+        navigator.printMenu(menu);
 
     }
 }

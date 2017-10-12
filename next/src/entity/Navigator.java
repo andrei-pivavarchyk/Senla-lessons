@@ -4,6 +4,7 @@ import service.ConsoleService;
 
 public class Navigator {
     Menu currentMenu;
+    Boolean programRun = true;
 
 
     public void printMenu(Menu menu) {
@@ -15,18 +16,16 @@ public class Navigator {
         }
         int numberOfItems = menu.getMenuItemList().size();
         int number = ConsoleService.getConsoleService().getNumberForMenu(numberOfItems);
+
+        this.programRun = false;
         this.currentMenu = menu;
-
-
-
         navigate(number, menu);
+
     }
 
     public void navigate(int number, Menu parentMenu) {
 
         ActionEnumResult result = this.currentMenu.getMenuItemList().get(number - 1).doAction();
-
-      
 
         if (result.equals(ActionEnumResult.NEXT)) {
             Menu nextMenu = this.currentMenu.getMenuItemList().get(number - 1).getNextMenu();
@@ -44,12 +43,6 @@ public class Navigator {
 
         }
 
-
-
-    }
-
-    public Menu getCurrentMenu() {
-        return currentMenu;
     }
 
 }
