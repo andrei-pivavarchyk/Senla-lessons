@@ -10,14 +10,13 @@ public class Menu {
     private Menu rootMenu;
 
 
-
-    public Menu(String name){
-        this.name=name;
-        this.menuItemList=new ArrayList<MenuItem>();
+    public Menu(String name) {
+        this.name = name;
+        this.menuItemList = new ArrayList<MenuItem>();
     }
 
 
-    public void addMenuItem(MenuItem menuItem){
+    public void addMenuItem(MenuItem menuItem) {
         this.menuItemList.add(menuItem);
     }
 

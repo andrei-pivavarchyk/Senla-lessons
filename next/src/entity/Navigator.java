@@ -1,56 +1,50 @@
 package entity;
 
-import action.ActionEnumResult;
 import service.ConsoleService;
 
 public class Navigator {
     Menu currentMenu;
 
-    public Navigator(Menu currentMenu) {
 
-        this.currentMenu = currentMenu;
-    }
-
-
-    public void printMenu(){
+    public void printMenu(Menu menu) {
         int i = 1;
-        System.out.println(currentMenu.getName());
-        for (MenuItem menuItem : this.currentMenu.getMenuItemList()) {
+        System.out.println(menu.getName());
+        for (MenuItem menuItem : menu.getMenuItemList()) {
             System.out.println(new StringBuilder().append(i).append(" ").append(menuItem.getTitle()));
             i++;
         }
-        int numberOfItems = currentMenu.getMenuItemList().size();
+        int numberOfItems = menu.getMenuItemList().size();
         int number = ConsoleService.getConsoleService().getNumberForMenu(numberOfItems);
-        navigate(number);
+        this.currentMenu = menu;
+
+
+
+        navigate(number, menu);
     }
 
+    public void navigate(int number, Menu parentMenu) {
 
-    public void navigate(int number) {
+        ActionEnumResult result = this.currentMenu.getMenuItemList().get(number - 1).doAction();
 
-            ActionEnumResult result = this.currentMenu.getMenuItemList().get(number - 1).doAction();
+      
 
-            if (result.equals(ActionEnumResult.NEXT)) {
-                Menu nextMenu = this.currentMenu.getMenuItemList().get(number - 1).getNextMenu();
-                nextMenu.setRootMenu(this.currentMenu);
-                this.currentMenu = nextMenu;
-                printMenu();
+        if (result.equals(ActionEnumResult.NEXT)) {
+            Menu nextMenu = this.currentMenu.getMenuItemList().get(number - 1).getNextMenu();
+            nextMenu.setRootMenu(parentMenu);
 
-            }
+            printMenu(nextMenu);
+        } else if (result.equals(ActionEnumResult.PREVIOUS)) {
+            Menu rootMenu = this.currentMenu.getRootMenu();
+            printMenu(rootMenu);
 
-           else if (result.equals(ActionEnumResult.PREVIOUS)) {
-                Menu parentMenu = this.currentMenu.getRootMenu();
-
-                this.currentMenu = parentMenu;
-                printMenu();
-
-            }
-
-          else if(result.equals(ActionEnumResult.TRUE)){
+        } else if (result.equals(ActionEnumResult.TRUE)) {
 
 
-                printMenu();
+            printMenu(this.currentMenu);
 
-            }
+        }
+
+
 
     }
 

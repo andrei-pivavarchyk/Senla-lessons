@@ -1,6 +1,6 @@
 package action.roomMenuActions;
 
-import action.ActionEnumResult;
+import entity.ActionEnumResult;
 import action.IAction;
 import controller.HotelController;
 import service.MainService;
@@ -13,6 +13,6 @@ public class ActionShowFreeRooms implements IAction {
     @Override
     public ActionEnumResult execute() {
        hotelController.printFreeRooms();
-       return ActionEnumResult.TRUE;
+       return ActionEnumResult.NEXT;
     }
 }

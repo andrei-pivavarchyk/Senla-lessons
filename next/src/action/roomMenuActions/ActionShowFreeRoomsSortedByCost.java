@@ -6,13 +6,13 @@ import controller.HotelController;
 import service.MainService;
 
 /**
- * Created by андрей on 11.10.2017.
+ * Created by андрей on 12.10.2017.
  */
-public class ActionShowAllRoomsSortedByStars implements IAction {
+public class ActionShowFreeRoomsSortedByCost implements IAction{
     private HotelController hotelController = MainService.getHotelController();
     @Override
     public ActionEnumResult execute() {
-        hotelController.printRoomsSortingByStars();
+        hotelController.printFreeRoomsByCost();
         return ActionEnumResult.TRUE;
     }
 }

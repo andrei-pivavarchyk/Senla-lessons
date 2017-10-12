@@ -1,6 +1,6 @@
 package action.roomMenuActions;
 
-import action.ActionEnumResult;
+import entity.ActionEnumResult;
 import action.IAction;
 import controller.HotelController;
 import service.MainService;

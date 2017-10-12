@@ -12,13 +12,15 @@ public class MenuController {
     Navigator navigator;
 
     public MenuController() {
-        this.builder =new Builder();
+        this.builder = new Builder();
 
     }
 
     public void run() {
-            Menu menu= this.builder.buildMainMenu();
-             this.navigator = new Navigator(menu);
-             navigator.printMenu();
+
+            Menu menu = this.builder.buildMainMenu();
+            this.navigator = new Navigator();
+            navigator.printMenu(menu);
+
     }
 }

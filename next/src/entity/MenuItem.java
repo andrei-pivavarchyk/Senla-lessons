@@ -1,7 +1,6 @@
 package entity;
 
 import action.IAction;
-import action.ActionEnumResult;
 
 public class MenuItem {
     String title;
@@ -10,20 +9,21 @@ public class MenuItem {
     Menu rootMenu;
 
 
-    public MenuItem (String title,IAction action){
-        this.title=title;
-        this.action=action;
+    public MenuItem(String title, IAction action) {
+        this.title = title;
+        this.action = action;
 
     }
-    public MenuItem (String title,IAction action,Menu nextMenu){
-        this.title=title;
-        this.action=action;
-        this.nextMenu=nextMenu;
+
+    public MenuItem(String title, IAction action, Menu nextMenu) {
+        this.title = title;
+        this.action = action;
+        this.nextMenu = nextMenu;
     }
 
-    public ActionEnumResult doAction(){
+    public ActionEnumResult doAction() {
 
-        ActionEnumResult result= this.action.execute();
+        ActionEnumResult result = this.action.execute();
         return result;
     }
 
