@@ -106,9 +106,11 @@
       <file leaf-file-name="ConsoleService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/Service/ConsoleService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="663">
+              <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +118,8 @@
       <file leaf-file-name="ReflectionService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/Service/ReflectionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -213,7 +215,6 @@
         <option value="$PROJECT_DIR$/src/ui/Service/MenuService.java" />
         <option value="$PROJECT_DIR$/src/ui/View/ViewItems.java" />
         <option value="$PROJECT_DIR$/src/ui/model/ViewModel.java" />
-        <option value="$PROJECT_DIR$/src/ui/Service/ReflectionService.java" />
         <option value="$PROJECT_DIR$/src/ui/menuItem/Item.java" />
         <option value="$PROJECT_DIR$/src/ui/Service/MenuController.java" />
         <option value="$PROJECT_DIR$/src/ui/controller/MainService.java" />
@@ -221,6 +222,7 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/ui/Service/MainService.java" />
         <option value="$PROJECT_DIR$/src/ui/storeFactory/GuestStoreFactory.java" />
+        <option value="$PROJECT_DIR$/src/ui/Service/ReflectionService.java" />
       </list>
     </option>
   </component>
@@ -231,8 +233,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="58" />
-    <option name="y" value="444" />
+    <option name="x" value="-438" />
     <option name="width" value="1254" />
     <option name="height" value="876" />
   </component>
@@ -251,7 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -486,8 +486,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -499,7 +500,7 @@
     <property name="nodejs_interpreter_path" value="D:/ANGULAR/NODE/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="D:\дизайнерские штуки\ANGULAR\NODE\node.exe" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../next" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -947,14 +948,15 @@
       <workItem from="1507650854910" duration="3472000" />
       <workItem from="1507707113879" duration="121000" />
       <workItem from="1507720439841" duration="1593000" />
+      <workItem from="1507794986636" duration="631000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209913000" />
+    <option name="totallyTimeSpent" value="210544000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="58" y="444" width="1254" height="876" extended-state="0" />
+    <frame x="-438" y="0" width="1254" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1105,12 +1107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="334" column="0" lean-forward="false" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#12634#12643#0" expanded="false" />
-            <element signature="e#13198#13199#0" expanded="false" />
-            <element signature="e#13232#13233#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1244,16 +1240,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Service/ConsoleService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="663">
+          <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Service/ReflectionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>

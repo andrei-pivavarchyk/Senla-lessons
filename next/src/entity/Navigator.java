@@ -48,14 +48,9 @@ public class Navigator {
           else if(result.equals(ActionEnumResult.TRUE)){
 
 
-
                 printMenu();
 
             }
-
-
-
-
 
     }
 

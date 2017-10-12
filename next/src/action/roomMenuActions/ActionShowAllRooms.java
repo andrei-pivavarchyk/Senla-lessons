@@ -12,6 +12,6 @@ public class ActionShowAllRooms implements IAction {
     @Override
     public ActionEnumResult execute() {
         hotelController.printAllRooms();
-        return ActionEnumResult.TRUE;
+        return ActionEnumResult.NEXT;
     }
 }

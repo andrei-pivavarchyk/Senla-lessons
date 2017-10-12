@@ -1,8 +1,7 @@
 package entity;
 
 import action.*;
-import action.roomMenuActions.ActionShowAllRooms;
-import action.roomMenuActions.ActionShowFreeRooms;
+import action.roomMenuActions.*;
 
 public class Builder {
 
@@ -34,7 +33,7 @@ public class Builder {
 
         Menu menu = new Menu("Room menu");
 
-        MenuItem menuItem1 = new MenuItem("Show all Rooms", action1);
+        MenuItem menuItem1 = new MenuItem("Show all Rooms", action1,this.buildAllRoomsSorted());
         MenuItem menuItem2 = new MenuItem("Show Free Rooms", action2);
         MenuItem menuItem3 = new MenuItem("PreviousMenu", action3);
 
@@ -45,6 +44,29 @@ public class Builder {
         return menu;
 
     }
+
+
+public Menu buildAllRoomsSorted(){
+
+    IAction action1 = new ActionShowAllRoomsSortedByCapacity();
+    IAction action2 = new ActionShowAllRoomsSortedByCost();
+    IAction action3 = new ActionShowAllRoomsSortedByStars();
+    IAction action4 = new ActionPreviosMenu();
+
+    Menu menu = new Menu("All room sorting menu");
+
+    MenuItem menuItem1 = new MenuItem("Show all Rooms sorted by capacity", action1);
+    MenuItem menuItem2 = new MenuItem("Show all Rooms sorted by cost", action2);
+    MenuItem menuItem3 = new MenuItem("Show all Rooms sorted by stars", action2);
+    MenuItem menuItem4 = new MenuItem("PreviousMenu", action3);
+
+    menu.addMenuItem(menuItem1);
+    menu.addMenuItem(menuItem2);
+    menu.addMenuItem(menuItem3);
+    menu.addMenuItem(menuItem4);
+
+    return menu;
+}
 
 
 
