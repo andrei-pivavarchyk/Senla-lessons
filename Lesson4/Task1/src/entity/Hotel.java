@@ -11,7 +11,7 @@ public class Hotel {
 
     private IServiceService serviceService;
     private IRoomService roomService;
-    private IGuestService guestSerice;
+    private IGuestService guestService;
     private PrinterService printerService;
 
     public Hotel() {
@@ -23,7 +23,7 @@ public class Hotel {
         IGuestRoomInfoStorage guestRoomInfoStorage = new GuestRoomInfoStorage();
 
         this.roomService = new RoomService(roomStorage, guestRoomInfoStorage, guestStorage);
-        this.guestSerice = new GuestService(guestRoomInfoStorage);
+        this.guestService = new GuestService(guestRoomInfoStorage);
         this.serviceService = new ServiceService(guestServiceStorage, serviceStorage);
         this.printerService = new PrinterService();
 
@@ -74,16 +74,16 @@ public class Hotel {
     }
 
     public void printAllGuests() {
-     this.printerService.printGuestsWithRoomNumbers(this.guestSerice.getCurrentGuestRoomInfo());
+     this.printerService.printGuestsWithRoomNumbers(this.guestService.getCurrentGuestRoomInfo());
 
     }
 
     public void printGuestsSortedByName() {
-        this.printerService.printGuests(this.guestSerice.getAllGuestsSortedByName());
+        this.printerService.printGuests(this.guestService.getAllGuestsSortedByName());
     }
 
     public void printGuestsSortedByDepartureDate() {
-        this.printerService.printGuests(this.guestSerice.getAllGuestsSortedByDateDeparture());
+        this.printerService.printGuests(this.guestService.getAllGuestsSortedByDateDeparture());
     }
 
     public void printFreeRoomsCount() {
@@ -91,7 +91,7 @@ public class Hotel {
     }
 
     public void printAllGuestsCount() {
-        this.guestSerice.printAllGuestsCount();
+        this.guestService.printAllGuestsCount();
     }
 
     public void printFreeRoomsByDate(int year, int month, int day) {
@@ -99,7 +99,7 @@ public class Hotel {
     }
 
     public void printGuestPayAmount(Guest guest) {
-        int payAmount = this.guestSerice.getPayAmount(guest);
+        int payAmount = this.guestService.getPayAmount(guest);
         System.out.println(new StringBuilder("Result pay:").append(payAmount).append("$"));
     }
 
@@ -144,7 +144,7 @@ public class Hotel {
     }
 
     public IGuestService getGuestSerice() {
-        return guestSerice;
+        return guestService;
     }
 
     public IRoomService getRoomService() {
