@@ -1,13 +1,11 @@
 package storeFactory;
 
-
 import storage.GuestStorage;
-import storage.IBaseStorage;
 import storage.IGuestStorage;
 
-public class GuestStoreFactory extends AGuestStoreFactory{
+public class GuestStoreFactory extends AFactory<IGuestStorage>{
     @Override
-    public IGuestStorage createGuestStorage() {
+    public IGuestStorage createStorage() {
         IGuestStorage guestStorage=new GuestStorage();
         return guestStorage;
     }

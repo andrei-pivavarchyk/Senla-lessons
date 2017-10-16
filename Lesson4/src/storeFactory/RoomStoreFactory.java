@@ -5,9 +5,9 @@ import storage.IBaseStorage;
 import storage.IRoomStorage;
 import storage.RoomStorage;
 
-public class RoomStoreFactory extends ARoomStoreFactory{
+public class RoomStoreFactory extends AFactory<IRoomStorage>{
     @Override
-    public IRoomStorage createRoomStorage() {
+    public IRoomStorage createStorage() {
         IRoomStorage roomStorage=new RoomStorage();
         return roomStorage;
     }

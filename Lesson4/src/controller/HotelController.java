@@ -22,9 +22,9 @@ public class HotelController {
 
     public HotelController() {
 
-        IRoomStorage roomStorage = new RoomStoreFactory().createRoomStorage();
-        IGuestStorage guestStorage = new GuestStoreFactory().createGuestStorage();
-        IServiceStorage serviceStorage = new ServiceStoreFactory().createServiceStorage();
+        IRoomStorage roomStorage = new RoomStoreFactory().createStorage();
+        IGuestStorage guestStorage = new GuestStoreFactory().createStorage();
+        IServiceStorage serviceStorage = new ServiceStoreFactory().createStorage();
         IGuestServiceStorage guestServiceStorage = new GuestServiceStorage();
         IGuestRoomInfoStorage guestRoomInfoStorage = new GuestRoomInfoStorage();
 
@@ -32,7 +32,6 @@ public class HotelController {
         this.guestService = new GuestService(guestRoomInfoStorage);
         this.serviceService = new ServiceService(guestServiceStorage, serviceStorage);
         this.printerService = new PrinterService();
-
     }
 
     public void printAllRooms() {

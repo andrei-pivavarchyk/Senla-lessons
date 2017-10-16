@@ -1,2 +1,2 @@
-jgghkgkglog information 
+log information 
 Run SERVICE SERVICE
