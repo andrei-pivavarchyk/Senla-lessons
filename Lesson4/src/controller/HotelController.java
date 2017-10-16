@@ -5,6 +5,9 @@ import entity.Room;
 import entity.Service;
 import storage.*;
 import services.*;
+import storeFactory.GuestStoreFactory;
+import storeFactory.RoomStoreFactory;
+import storeFactory.ServiceStoreFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +22,9 @@ public class HotelController {
 
     public HotelController() {
 
-        IRoomStorage roomStorage = new RoomStorage();
-        IGuestStorage guestStorage = new GuestStorage();
-        IServiceStorage serviceStorage = new ServiceStorage();
+        IRoomStorage roomStorage = new RoomStoreFactory().createRoomStorage();
+        IGuestStorage guestStorage = new GuestStoreFactory().createGuestStorage();
+        IServiceStorage serviceStorage = new ServiceStoreFactory().createServiceStorage();
         IGuestServiceStorage guestServiceStorage = new GuestServiceStorage();
         IGuestRoomInfoStorage guestRoomInfoStorage = new GuestRoomInfoStorage();
 
