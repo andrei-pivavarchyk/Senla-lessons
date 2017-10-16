@@ -12,13 +12,13 @@ public class Navigator {
             System.out.println(new StringBuilder().append(i).append(" ").append(menuItem.getTitle()));
             i++;
         }
-
         this.currentMenu = menu;
     }
 
     public Menu navigate(int number) {
 
         ActionEnumResult result = this.currentMenu.getMenuItemList().get(number - 1).doAction();
+
 
         if (result.equals(ActionEnumResult.NEXT)) {
             Menu nextMenu = this.currentMenu.getMenuItemList().get(number - 1).getNextMenu();

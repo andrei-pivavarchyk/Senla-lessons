@@ -26,6 +26,7 @@ public class ServiceService implements IServiceService {
 
         this.guestServiceStorage = guestServiceStorage;
         this.serviceStorage = serviceStorage;
+        LoggerService.getLoggerService().logInfo("Run SERVICE SERVICE");
     }
 
 

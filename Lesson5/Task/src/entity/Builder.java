@@ -3,6 +3,8 @@ package entity;
 import action.*;
 import action.guestMenuAction.ActionShowAllGuests;
 import action.roomMenuAction.*;
+import action.serviceMenuAction.ActionShowAllServices;
+import action.serviceMenuAction.ActionShowGuestServices;
 
 public class Builder {
 
@@ -17,7 +19,7 @@ public class Builder {
 
         MenuItem menuItem1 = new MenuItem("Show Guest Menu", action1,this.buildGuestMenu());
         MenuItem menuItem2 = new MenuItem("Show RoomMenu", action2, this.buildRoomMenu());
-        MenuItem menuItem3 = new MenuItem("Show Service menu", action3);
+        MenuItem menuItem3 = new MenuItem("Show Service menu", action3,this.buildServiceMenu());
 
         menu.addMenuItem(menuItem1);
         menu.addMenuItem(menuItem2);
@@ -27,7 +29,7 @@ public class Builder {
 
     }
 
-    public Menu buildRoomMenu() {
+    private Menu buildRoomMenu() {
         IAction action1=new ActionAddGuestToRoom();
         IAction action2 = new ActionShowAllRooms();
         IAction action3 = new ActionShowFreeRooms();
@@ -36,7 +38,7 @@ public class Builder {
         Menu menu = new Menu("Room menu");
 
         MenuItem menuItem1 = new MenuItem("Add guest to room", action1);
-        MenuItem menuItem2 = new MenuItem("Show All Rooms", action2, this.buildFreeRoomsSorted());
+        MenuItem menuItem2 = new MenuItem("Show All Rooms", action2, this.buildAllRoomsSorted());
         MenuItem menuItem3 = new MenuItem("Show Free Rooms", action3, this.buildFreeRoomsSorted());
         MenuItem menuItem4 = new MenuItem("PreviousMenu", action4);
 
@@ -50,7 +52,7 @@ public class Builder {
     }
 
 
-    public Menu buildAllRoomsSorted() {
+    private Menu buildAllRoomsSorted() {
 
         IAction action1 = new ActionShowAllRoomsSortedByCapacity();
         IAction action2 = new ActionShowAllRoomsSortedByCost();
@@ -73,7 +75,7 @@ public class Builder {
     }
 
 
-    public Menu buildFreeRoomsSorted() {
+    private Menu buildFreeRoomsSorted() {
         IAction action1 = new ActionShowFreeRoomsSortedByCapacity();
         IAction action2 = new ActionShowFreeRoomsSortedByStars();
         IAction action3 = new ActionShowFreeRoomsSortedByCost();
@@ -95,7 +97,7 @@ public class Builder {
 
     }
 
-    public Menu buildGuestMenu(){
+    private Menu buildGuestMenu(){
         IAction action1 = new ActionShowAllGuests();
         IAction action2 = new ActionPreviosMenu();
 
@@ -110,4 +112,20 @@ public class Builder {
         return menu;
     }
 
+    private Menu buildServiceMenu(){
+        IAction action1 = new ActionShowAllServices();
+        IAction action2 = new ActionShowGuestServices();
+        IAction action3 = new ActionPreviosMenu();
+
+        Menu menu = new Menu("Guest menu");
+
+        MenuItem menuItem1 = new MenuItem("Show all hotel services", action1);
+        MenuItem menuItem2 = new MenuItem("Show some guest services", action2);
+        MenuItem menuItem3 = new MenuItem("PreviousMenu", action3);
+
+        menu.addMenuItem(menuItem1);
+        menu.addMenuItem(menuItem2);
+
+        return menu;
+    }
 }

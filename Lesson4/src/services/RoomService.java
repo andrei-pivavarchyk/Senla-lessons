@@ -1,6 +1,5 @@
 package services;
 
-
 import storage.IGuestRoomInfoStorage;
 import storage.IGuestStorage;
 import storage.IRoomStorage;
@@ -30,6 +29,7 @@ public class RoomService implements IRoomService {
         this.roomStorage = roomStorage;
         this.guestRoomInfoStorage = guestRoomInfoStorage;
         this.guestStorage = guestStorage;
+        LoggerService.getLoggerService().logInfo("Run ROOM SERVICE");
 
     }
 

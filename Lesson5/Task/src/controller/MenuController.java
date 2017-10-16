@@ -18,8 +18,6 @@ public class MenuController {
 
     public void run() {
 
-
-
         Menu mainMenu = this.builder.buildMainMenu();
         this.navigator = new Navigator();
         navigator.printMenu(mainMenu);
@@ -29,7 +27,7 @@ public class MenuController {
 
             int numberOfItems = navigator.getCurrentMenu().getMenuItemList().size();
             int number = ConsoleService.getConsoleService().getNumberForMenu(numberOfItems);
-            if (number != 0) {
+            if (number != 666) {
 
                 Menu menu = navigator.navigate(number);
                 navigator.printMenu(menu);
