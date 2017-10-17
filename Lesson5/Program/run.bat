@@ -1,3 +1,3 @@
-java -cp "next.jar;Task3.jar;textFileWorker.jar"  Main "D:\\Rooms.txt"
+java -cp "next.jar;hotel.jar;textFileWorker.jar,Property.jar"  Main "D:\\Rooms.txt"
 
 Pause

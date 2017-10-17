@@ -3,6 +3,8 @@ package controller;
 import entity.Guest;
 import entity.Room;
 import entity.Service;
+import property.EnumProperty;
+import property.Proops;
 import storage.*;
 import services.*;
 import storeFactory.GuestStoreFactory;
@@ -75,11 +77,18 @@ public class HotelController {
     }
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
-        this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
+
+        String chooseRoomStatus = Proops.getProperty(EnumProperty.CHOOSE_ROOM_STATUS);
+
+        if (chooseRoomStatus.equals("TRUE")) {
+            this.roomService.addGuest(roomNumber, guest, year, month + 1, day, true);
+        } else {
+            this.roomService.addGuest(roomNumber, guest, year, month + 1, day, false);
+        }
     }
 
     public void printAllGuests() {
-     this.printerService.printGuestsWithRoomNumbers(this.guestService.getCurrentGuestRoomInfo());
+        this.printerService.printGuestsWithRoomNumbers(this.guestService.getCurrentGuestRoomInfo());
 
     }
 
@@ -133,8 +142,8 @@ public class HotelController {
     public void readRoomsFromFile(String path) {
 
         ReadFromFileService readFromFileService = new ReadFromFileService();
-       ArrayList<Room> roomList=readFromFileService.readRooms(path);
-       this.roomService.getAllRooms().addAll(roomList);
+        ArrayList<Room> roomList = readFromFileService.readRooms(path);
+        this.roomService.getAllRooms().addAll(roomList);
 
     }
 

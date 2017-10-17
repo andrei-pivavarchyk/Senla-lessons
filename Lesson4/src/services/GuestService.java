@@ -21,6 +21,7 @@ public class GuestService implements IGuestService {
     public GuestService(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
         LoggerService.getLoggerService().logInfo("Run GUEST SERVICE");
+
     }
 
 

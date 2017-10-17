@@ -32,7 +32,7 @@ public class MainService {
 
     public void startHotel(String roomPath) {
 
-        LoggerService.getLoggerService().logInfo("Run hotel");
+
 
         Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
         Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);

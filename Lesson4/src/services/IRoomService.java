@@ -19,7 +19,7 @@ public interface IRoomService {
    ArrayList<Room> getRoomCostSorting();
    ArrayList<Room>getRoomCapacitySorting();
    ArrayList<Room> getRoomStarsSorting();
-   void addGuest(int roomNumber, Guest guest,int year,int month,int day);
+   void addGuest(int roomNumber, Guest guest,int year,int month,int day,Boolean chooseRoomStatus);
    void departureGuest ( Guest guest);
     ArrayList<Room> getFreeRooms();
    void printFreeRoomsCount();

@@ -1,5 +1,7 @@
 package services;
 
+import property.EnumProperty;
+import property.Proops;
 import storage.IGuestRoomInfoStorage;
 import storage.IGuestStorage;
 import storage.IRoomStorage;
@@ -14,21 +16,21 @@ import java.util.*;
 
 public class RoomService implements IRoomService {
 
-
     private IRoomStorage roomStorage;
     private IGuestRoomInfoStorage guestRoomInfoStorage;
     private IGuestStorage guestStorage;
     private int guestRoomInfoCount = 0;
-
-    private final Comparator<Room> COST_COMPARATOR=new RoomCostComparator();
-    private final Comparator<Room> CAPACITY_COMPARATOR=new RoomCapacityComparator();
-    private final Comparator<Room> STARS_COMPARATOR=new RoomStarsComparator();
+    private final Comparator<Room> COST_COMPARATOR = new RoomCostComparator();
+    private final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
+    private final Comparator<Room> STARS_COMPARATOR = new RoomStarsComparator();
+    private Integer maxCountOldGuests;
 
 
     public RoomService(IRoomStorage roomStorage, IGuestRoomInfoStorage guestRoomInfoStorage, IGuestStorage guestStorage) {
         this.roomStorage = roomStorage;
         this.guestRoomInfoStorage = guestRoomInfoStorage;
         this.guestStorage = guestStorage;
+        this.maxCountOldGuests=Integer.valueOf(Proops.getProperty(EnumProperty.MAX_NUMBER_OF_LAST_ROOM_GUESTS));
         LoggerService.getLoggerService().logInfo("Run ROOM SERVICE");
 
     }
@@ -54,7 +56,7 @@ public class RoomService implements IRoomService {
     }
 
     public ArrayList<Room> getRoomStarsSorting() {
-        ArrayList<Room> copyArray =this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
+        ArrayList<Room> copyArray = this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
         return copyArray;
     }
 
@@ -67,24 +69,44 @@ public class RoomService implements IRoomService {
         return null;
     }
 
-    public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
+    public void addGuest(int roomNumber, Guest guest, int year, int month, int day, Boolean chooseRoomStatus) {
 
         Room room = this.getRoomByNumber(roomNumber);
         if (room != null) {
-            room.setStatus(RoomStatus.RESERVED);
+            if (chooseRoomStatus.equals(true)) {
+                room.setStatus(RoomStatus.RESERVED);
+            }
+
             room.getGuests().add(guest);
             Calendar calendar = Calendar.getInstance();
             Date arrivalDate = calendar.getTime();
             GuestRoomInfo guestRoomInfo = new GuestRoomInfo(this.guestRoomInfoCount, arrivalDate, guest, room, year, month, day);
 
             this.guestRoomInfoCount++;
+
+            if(this.getCountOldGuests(room)==this.maxCountOldGuests){
+                this.guestRoomInfoStorage.getAllEntities().remove(0);
+            }
             this.guestRoomInfoStorage.addEntity(guestRoomInfo);
+
             this.guestStorage.addEntity(guest);
 
         } else {
             System.out.println("There is no room with this number");
         }
 
+    }
+
+
+    private int getCountOldGuests(Room room){
+
+        int count=0;
+        for(GuestRoomInfo info:this.guestRoomInfoStorage.getAllEntities()){
+            if(info.getRoom().equals(room)){
+                count++;
+            }
+        }
+        return count;
     }
 
     public void departureGuest(Guest guest) {
@@ -158,13 +180,13 @@ public class RoomService implements IRoomService {
 
     public ArrayList<Room> getArrayRoomCostSorting(ArrayList<Room> allRooms) {
 
-       allRooms.sort(COST_COMPARATOR);
+        allRooms.sort(COST_COMPARATOR);
         return allRooms;
     }
 
     public ArrayList<Room> getArrayRoomCapacitySorting(ArrayList<Room> allRooms) {
 
-       allRooms.sort(CAPACITY_COMPARATOR);
+        allRooms.sort(CAPACITY_COMPARATOR);
         return allRooms;
     }
 

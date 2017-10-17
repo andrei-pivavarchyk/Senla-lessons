@@ -1,5 +1,9 @@
 package entity;
 
+import javafx.print.Printer;
+import property.EnumProperty;
+import property.Proops;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,6 +16,7 @@ public class Room extends Entity {
     private ArrayList<Guest> guests;
 
 
+
     public Room(int id, int number, int cost, int capacity, int stars) {
         super(id);
         this.number = number;
@@ -19,11 +24,13 @@ public class Room extends Entity {
         this.capacity = capacity;
         this.stars = stars;
         this.guests = new ArrayList<Guest>(capacity);
+
     }
 
 
     public int getCost() {
         return this.cost;
+
     }
 
     public int getCapacity() {
@@ -32,6 +39,7 @@ public class Room extends Entity {
 
     public int getStars() {
         return this.stars;
+
     }
 
     public int getNumber() {
@@ -40,10 +48,11 @@ public class Room extends Entity {
 
     public RoomStatus getStatus() {
         return status;
+
     }
 
     public void setStatus(RoomStatus status) {
-        this.status = status;
+            this.status = status;
     }
 
     public ArrayList<Guest> getGuests() {
