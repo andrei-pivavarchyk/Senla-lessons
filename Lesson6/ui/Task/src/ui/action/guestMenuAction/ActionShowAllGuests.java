@@ -1,5 +1,6 @@
 package ui.action.guestMenuAction;
 
+import ui.action.AAction;
 import ui.action.IAction;
 
 import ui.entity.ActionEnumResult;
@@ -12,7 +13,7 @@ import ui.service.MainService;
 
 import java.util.ArrayList;
 
-public class ActionShowAllGuests implements IAction{
+public class ActionShowAllGuests extends AAction implements IAction{
     private HotelController hotelController = MainService.getMainService().getHotelController();
     private PrinterService printer = MainService.getMainService().getPrinterService();
 

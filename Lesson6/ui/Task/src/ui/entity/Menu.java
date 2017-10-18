@@ -1,10 +1,11 @@
 package ui.entity;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu {
+public class Menu implements Serializable{
     private String name;
     private ArrayList<MenuItem> menuItemList;
     private Menu rootMenu;

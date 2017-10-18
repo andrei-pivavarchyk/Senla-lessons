@@ -1,6 +1,7 @@
 package ui.action.roomMenuAction;
 
 import hotel.controller.HotelController;
+import ui.action.AAction;
 import ui.entity.ActionEnumResult;
 import ui.action.IAction;
 import hotel.entity.Room;
@@ -9,14 +10,14 @@ import hotel.services.PrinterService;
 
 import java.util.ArrayList;
 
-public class ActionShowFreeRooms implements IAction {
+public class ActionShowFreeRooms extends AAction implements IAction {
     private HotelController hotelController = MainService.getMainService().getHotelController();
-    private PrinterService printer=MainService.getMainService().getPrinterService();
+    private PrinterService printer = MainService.getMainService().getPrinterService();
 
     @Override
     public ActionEnumResult execute() {
 
-        ArrayList<Room> roomList=hotelController.getRoomService().getFreeRooms();
+        ArrayList<Room> roomList = hotelController.getRoomService().getFreeRooms();
         printer.printRooms(roomList);
         return ActionEnumResult.NEXT;
     }

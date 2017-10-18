@@ -120,7 +120,7 @@ public class Builder {
         IAction action2 = new ActionShowGuestServices();
         IAction action3 = new ActionPreviosMenu();
 
-        Menu menu = new Menu("Guest menu");
+        Menu menu = new Menu("Service menu");
 
         MenuItem menuItem1 = new MenuItem("Show all hotel services", action1);
         MenuItem menuItem2 = new MenuItem("Show some guest services", action2);
@@ -128,6 +128,7 @@ public class Builder {
 
         menu.addMenuItem(menuItem1);
         menu.addMenuItem(menuItem2);
+        menu.addMenuItem(menuItem3);
 
         return menu;
     }

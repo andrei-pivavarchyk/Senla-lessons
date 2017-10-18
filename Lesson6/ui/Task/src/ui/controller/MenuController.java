@@ -5,6 +5,7 @@ import ui.entity.Menu;
 import ui.entity.Navigator;
 import ui.service.ConsoleService;
 import ui.service.MainService;
+import ui.service.Serializable;
 
 public class MenuController {
 
@@ -20,8 +21,17 @@ public class MenuController {
 
         Menu mainMenu = this.builder.buildMainMenu();
         this.navigator = new Navigator();
-        navigator.printMenu(mainMenu);
         Boolean running = true;
+
+
+       if(Serializable.deSerializable().equals(null)){
+           navigator.printMenu(mainMenu);
+       }
+       else{
+           Menu lastMenu=Serializable.deSerializable();
+           navigator.printMenu(lastMenu);
+       }
+
 
         while (running.equals(true)) {
 
@@ -30,8 +40,10 @@ public class MenuController {
             if (number != 666) {
 
                 Menu menu = navigator.navigate(number);
+                Serializable.serializableMenu(menu);
                 navigator.printMenu(menu);
             } else {
+
                 running = false;
             }
         }

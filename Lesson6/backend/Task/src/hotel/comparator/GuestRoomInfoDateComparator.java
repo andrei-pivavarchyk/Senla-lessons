@@ -4,10 +4,11 @@ package hotel.comparator;
 import hotel.entity.GuestRoomInfo;
 import hotel.services.NullCheck;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
 
-public class GuestRoomInfoDateComparator implements Comparator<GuestRoomInfo> {
+public class GuestRoomInfoDateComparator implements Comparator<GuestRoomInfo>,Serializable {
 
     @Override
     public int compare(GuestRoomInfo guest1, GuestRoomInfo guest2) {

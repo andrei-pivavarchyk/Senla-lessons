@@ -2,7 +2,9 @@ package ui.entity;
 
 import ui.action.IAction;
 
-public class MenuItem {
+import java.io.Serializable;
+
+public class MenuItem implements Serializable {
     String title;
     IAction action;
     Menu nextMenu;

@@ -7,12 +7,13 @@ import hotel.comparator.GuestRoomInfoDateComparator;
 import hotel.entity.Guest;
 import hotel.entity.GuestRoomInfo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class GuestService implements IGuestService {
+public class GuestService implements IGuestService,Serializable {
 
     private IGuestRoomInfoStorage guestRoomInfoStorage;
     private final Comparator<Guest>NAME_COMPARATOR=new GuestNameComparator();
@@ -20,7 +21,6 @@ public class GuestService implements IGuestService {
 
     public GuestService(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
-        LoggerService.getLoggerService().logInfo("Run GUEST SERVICE");
 
     }
 
@@ -64,7 +64,7 @@ public class GuestService implements IGuestService {
         System.out.println(new StringBuilder("All guests count: ").append(count));
     }
 
-    public int getPayAmount(Guest guest) {
+    public int getPayAmount(Guest guest)  {
         int payGuest = 0;
         for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
             if (guestRoomInfo.getGuest().equals(guest)) {

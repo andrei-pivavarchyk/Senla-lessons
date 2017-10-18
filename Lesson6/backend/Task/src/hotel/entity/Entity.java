@@ -1,6 +1,8 @@
 package hotel.entity;
 
-public abstract class Entity {
+import java.io.Serializable;
+
+public abstract class Entity implements Serializable {
     public int id;
 
     public Entity(int id){

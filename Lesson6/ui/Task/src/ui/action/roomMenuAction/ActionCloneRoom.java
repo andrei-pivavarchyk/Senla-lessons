@@ -4,22 +4,21 @@ package ui.action.roomMenuAction;
 import hotel.controller.HotelController;
 import hotel.entity.Room;
 import hotel.services.PrinterService;
+import ui.action.AAction;
 import ui.action.IAction;
 import ui.entity.ActionEnumResult;
 import ui.service.ConsoleService;
 import ui.service.MainService;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ActionCloneRoom implements IAction {
+public class ActionCloneRoom extends AAction implements IAction {
     private HotelController hotelController = MainService.getMainService().getHotelController();
     private PrinterService printer = MainService.getMainService().getPrinterService();
     private ConsoleService consoleService = ConsoleService.getConsoleService();
 
     @Override
     public ActionEnumResult execute() {
-
 
         List<Room> roomList = hotelController.getRoomService().getAllRooms();
         printer.printRooms(roomList);
@@ -71,6 +70,4 @@ public class ActionCloneRoom implements IAction {
         }
         return room;
     }
-
-
 }

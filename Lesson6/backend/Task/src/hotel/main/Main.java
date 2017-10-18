@@ -27,7 +27,7 @@ public class Main {
         bestHotel.addService(service1);
         bestHotel.addService(service2);
         bestHotel.addService(service3);
-        bestHotel.readRoomsFromFile("D:\\Rooms.txt");
+        bestHotel.readRoomsFromFile();
         bestHotel.printAllRooms();
         bestHotel.printRoomsSortingByCapacity();
         bestHotel.printRoomsSortingByCost();

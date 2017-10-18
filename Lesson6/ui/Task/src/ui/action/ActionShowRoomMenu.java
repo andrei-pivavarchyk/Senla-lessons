@@ -5,7 +5,7 @@ import ui.entity.ActionEnumResult;
 
 import ui.service.MainService;
 
-public class ActionShowRoomMenu implements IAction {
+public class ActionShowRoomMenu extends AAction implements IAction {
     private HotelController hotelController = MainService.getMainService().getHotelController();
 
     @Override

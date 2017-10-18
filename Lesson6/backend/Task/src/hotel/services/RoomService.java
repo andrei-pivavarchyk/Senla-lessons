@@ -11,10 +11,11 @@ import hotel.entity.GuestRoomInfo;
 import hotel.entity.Room;
 import hotel.entity.RoomStatus;
 
+import java.io.Serializable;
 import java.util.*;
 
 
-public class RoomService implements IRoomService {
+public class RoomService implements IRoomService,Serializable {
 
     private IRoomStorage roomStorage;
     private IGuestRoomInfoStorage guestRoomInfoStorage;
@@ -31,7 +32,6 @@ public class RoomService implements IRoomService {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
         this.guestStorage = guestStorage;
         this.maxCountOldGuests = Integer.valueOf(Proops.getProperty(EnumProperty.MAX_NUMBER_OF_LAST_ROOM_GUESTS));
-        LoggerService.getLoggerService().logInfo("Run ROOM SERVICE");
 
 
     }
@@ -203,6 +203,7 @@ public class RoomService implements IRoomService {
           return clone;
 
     }
+
 
 }
 

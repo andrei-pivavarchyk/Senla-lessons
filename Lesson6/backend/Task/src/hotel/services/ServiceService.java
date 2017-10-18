@@ -11,9 +11,10 @@ import hotel.entity.Guest;
 import hotel.entity.GuestServiceInfo;
 import hotel.entity.Service;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class ServiceService implements IServiceService {
+public class ServiceService implements IServiceService,Serializable {
 
     private IGuestServiceStorage guestServiceStorage;
     private IServiceStorage serviceStorage;
@@ -26,10 +27,7 @@ public class ServiceService implements IServiceService {
 
         this.guestServiceStorage = guestServiceStorage;
         this.serviceStorage = serviceStorage;
-        LoggerService.getLoggerService().logInfo("Run SERVICE SERVICE");
     }
-
-
 
     public void addGuestService(Guest guest, Service service, int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();

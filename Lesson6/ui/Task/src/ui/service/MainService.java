@@ -34,7 +34,7 @@ public class MainService {
         Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
         Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);
 
-        this.hotelController.readRoomsFromFile(roomPath);
+        this.hotelController.readRoomsFromFile();
         this.hotelController.addService(service1);
         this.hotelController.addService(service2);
         this.hotelController.addService(service3);

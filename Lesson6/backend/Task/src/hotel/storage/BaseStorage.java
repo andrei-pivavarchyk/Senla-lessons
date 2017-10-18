@@ -3,10 +3,11 @@ package hotel.storage;
 
 import hotel.entity.Entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseStorage<T extends Entity> implements IBaseStorage<T> {
+public class BaseStorage<T extends Entity> implements IBaseStorage<T>,Serializable {
     private List<T> entityList = new ArrayList<T>();
 
 

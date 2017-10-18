@@ -4,10 +4,11 @@ package hotel.services;
 import com.danco.training.TextFileWorker;
 import hotel.entity.Room;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadFromFileService {
+public class ReadFromFileService  implements Serializable {
 
 
     public ArrayList<Room> readRooms(String path) {

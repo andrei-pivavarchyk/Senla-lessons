@@ -1,6 +1,7 @@
 package ui.action.serviceMenuAction;
 
 
+import ui.action.AAction;
 import ui.action.IAction;
 import hotel.controller.HotelController;
 import ui.entity.ActionEnumResult;
@@ -10,7 +11,7 @@ import hotel.services.PrinterService;
 
 import java.util.List;
 
-public class ActionShowAllServices implements IAction{
+public class ActionShowAllServices extends AAction implements IAction{
     private HotelController hotelController = MainService.getMainService().getHotelController();
     private PrinterService printer=MainService.getMainService().getPrinterService();
 

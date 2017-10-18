@@ -1,11 +1,8 @@
 package hotel.services;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
-public class LoggerService {
+public class LoggerService implements Serializable {
 
     private static LoggerService loggerService;
 

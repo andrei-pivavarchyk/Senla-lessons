@@ -1,11 +1,12 @@
 package ui.service;
 
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class ConsoleService {
+public class ConsoleService implements Serializable{
 
-    private static ConsoleService consoleService;
+    private static ConsoleService consoleService ;
 
     private ConsoleService() {
 

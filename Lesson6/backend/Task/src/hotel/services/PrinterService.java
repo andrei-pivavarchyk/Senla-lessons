@@ -3,12 +3,13 @@ package hotel.services;
 
 import hotel.entity.*;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PrinterService {
+public class PrinterService implements Serializable {
 
     public void printRooms(List<Room> roomList) {
 

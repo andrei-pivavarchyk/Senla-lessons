@@ -12,11 +12,12 @@ import property.EnumProperty;
 import property.Proops;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class HotelController {
+public class HotelController implements Serializable{
 
     private IServiceService serviceService;
     private IRoomService roomService;
@@ -62,7 +63,6 @@ public class HotelController {
     }
 
     public void printFreeRoomsByCost() {
-
 
         this.printerService.printRooms(this.roomService.getRoomCostSorting());
     }
@@ -140,12 +140,11 @@ public class HotelController {
         this.printerService.printGuestServices(this.serviceService.getAllGuestServicesInfoSortedByCost(guest));
     }
 
-    public void readRoomsFromFile(String path) {
-
+    public void readRoomsFromFile() {
+        String path = Proops.getProperty(EnumProperty.ROOM_PATH_FILE);
         ReadFromFileService readFromFileService = new ReadFromFileService();
         ArrayList<Room> roomList = readFromFileService.readRooms(path);
         this.roomService.getAllRooms().addAll(roomList);
-
     }
 
     public void setRoomCost(int roomNumber, int cost, String path) {
