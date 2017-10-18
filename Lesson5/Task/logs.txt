@@ -1,1 +1,2 @@
-log information Run hotel
+log information 
+Run SERVICE SERVICE
