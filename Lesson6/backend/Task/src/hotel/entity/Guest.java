@@ -1,5 +1,7 @@
 package hotel.entity;
 
+import org.apache.log4j.Logger;
+
 public class Guest extends Entity {
     private String name;
     private String surname;
@@ -22,6 +24,7 @@ public class Guest extends Entity {
 
     public String toString() {
         return String.format("Guest  %s %s ", this.name, this.surname);
+
     }
 
 }

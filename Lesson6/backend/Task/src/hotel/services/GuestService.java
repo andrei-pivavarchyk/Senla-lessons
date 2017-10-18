@@ -1,6 +1,7 @@
 package hotel.services;
 
 
+import com.sun.istack.internal.logging.Logger;
 import hotel.storage.IGuestRoomInfoStorage;
 import hotel.comparator.GuestNameComparator;
 import hotel.comparator.GuestRoomInfoDateComparator;
@@ -18,9 +19,11 @@ public class GuestService implements IGuestService,Serializable {
     private IGuestRoomInfoStorage guestRoomInfoStorage;
     private final Comparator<Guest>NAME_COMPARATOR=new GuestNameComparator();
     private final Comparator<GuestRoomInfo> DATE_COMPARATOR=new GuestRoomInfoDateComparator();
+    public static final Logger log= Logger.getLogger(GuestService.class);
 
     public GuestService(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
+        log.info("Hgfhgfh");
 
     }
 
