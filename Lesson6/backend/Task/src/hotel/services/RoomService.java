@@ -1,6 +1,6 @@
 package hotel.services;
 
-import com.sun.istack.internal.logging.Logger;
+import org.apache.log4j.Logger;
 import property.EnumProperty;
 import property.IProperty;
 import property.Proops;

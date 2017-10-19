@@ -1,7 +1,5 @@
 package hotel.services;
 
-
-import com.sun.istack.internal.logging.Logger;
 import hotel.storage.IGuestServiceStorage;
 import hotel.storage.IServiceStorage;
 import hotel.comparator.GuestServiceInfoCostComparator;
@@ -11,6 +9,7 @@ import hotel.comparator.ServiceCostComparator;
 import hotel.entity.Guest;
 import hotel.entity.GuestServiceInfo;
 import hotel.entity.Service;
+import org.apache.log4j.Logger;
 
 import java.io.Serializable;
 import java.util.*;

@@ -1,12 +1,11 @@
 package hotel.services;
 
-
-import com.sun.istack.internal.logging.Logger;
 import hotel.storage.IGuestRoomInfoStorage;
 import hotel.comparator.GuestNameComparator;
 import hotel.comparator.GuestRoomInfoDateComparator;
 import hotel.entity.Guest;
 import hotel.entity.GuestRoomInfo;
+import org.apache.log4j.Logger;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,19 +13,18 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class GuestService implements IGuestService,Serializable {
+public class GuestService implements IGuestService, Serializable {
 
     private IGuestRoomInfoStorage guestRoomInfoStorage;
-    private final Comparator<Guest>NAME_COMPARATOR=new GuestNameComparator();
-    private final Comparator<GuestRoomInfo> DATE_COMPARATOR=new GuestRoomInfoDateComparator();
-    public static final Logger log= Logger.getLogger(GuestService.class);
+    private final Comparator<Guest> NAME_COMPARATOR = new GuestNameComparator();
+    private final Comparator<GuestRoomInfo> DATE_COMPARATOR = new GuestRoomInfoDateComparator();
+    public static final Logger log = Logger.getLogger(GuestService.class);
 
     public GuestService(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
         log.info("Guest Service started");
 
     }
-
 
     public ArrayList<Guest> getAllGuests() {
         ArrayList<Guest> allGuests = new ArrayList<Guest>();
@@ -67,7 +65,7 @@ public class GuestService implements IGuestService,Serializable {
         System.out.println(new StringBuilder("All guests count: ").append(count));
     }
 
-    public int getPayAmount(Guest guest)  {
+    public int getPayAmount(Guest guest) {
         int payGuest = 0;
         for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
             if (guestRoomInfo.getGuest().equals(guest)) {
