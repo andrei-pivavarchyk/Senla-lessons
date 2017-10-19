@@ -23,7 +23,6 @@ public class MenuController {
         this.navigator = new Navigator();
         Boolean running = true;
 
-
        if(Serializable.deSerializable().equals(null)){
            navigator.printMenu(mainMenu);
        }

@@ -2,19 +2,20 @@ package hotel.services;
 
 
 import com.danco.training.TextFileWorker;
+import com.sun.istack.internal.logging.Logger;
 import hotel.entity.Room;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadFromFileService  implements Serializable {
+public class ReadFromFileService implements Serializable {
 
 
     public ArrayList<Room> readRooms(String path) {
 
         String[] allRooms = new TextFileWorker(path).readFromFile();
-        ArrayList<Room> roomList=new ArrayList<Room>();
+        ArrayList<Room> roomList = new ArrayList<Room>();
         for (String roomFromFile : allRooms) {
             int id = 0;
             String[] roomParametrs = roomFromFile.split("\\|");

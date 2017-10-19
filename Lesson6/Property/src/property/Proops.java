@@ -4,12 +4,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Proops {
+public class Proops implements IProperty{
 
     //path to file
-    public static String PATH_TO_PROPERTIES = "../resources/config.properties";
+    private String PATH_TO_PROPERTIES = "../resources/config.properties";
 
-    public static String getProperty(EnumProperty nameProperty) {
+    public String getProperty(EnumProperty nameProperty) {
 
         FileInputStream fileInputStream;
         Properties prop = new Properties();

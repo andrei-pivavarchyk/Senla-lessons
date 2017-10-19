@@ -1,6 +1,7 @@
 package hotel.services;
 
 
+import com.sun.istack.internal.logging.Logger;
 import hotel.storage.IGuestServiceStorage;
 import hotel.storage.IServiceStorage;
 import hotel.comparator.GuestServiceInfoCostComparator;
@@ -22,11 +23,13 @@ public class ServiceService implements IServiceService,Serializable {
     private final Comparator<GuestServiceInfo> COST_COMPARATOR= new GuestServiceInfoCostComparator();
     private final Comparator<GuestServiceInfo> DATE_COMPARATOR= new GuestServiceInfoDateComparator();
     private final Comparator<Service> SERVICE_COST_COMPARATOR=new ServiceCostComparator();
+    public static final Logger log= Logger.getLogger(GuestService.class);
 
     public ServiceService(IGuestServiceStorage guestServiceStorage, IServiceStorage serviceStorage) {
 
         this.guestServiceStorage = guestServiceStorage;
         this.serviceStorage = serviceStorage;
+        log.info("Service Service started");
     }
 
     public void addGuestService(Guest guest, Service service, int year, int month, int day) {

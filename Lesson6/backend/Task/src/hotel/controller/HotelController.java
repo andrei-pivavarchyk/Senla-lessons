@@ -9,6 +9,7 @@ import hotel.storeFactory.GuestStoreFactory;
 import hotel.storeFactory.RoomStoreFactory;
 import hotel.storeFactory.ServiceStoreFactory;
 import property.EnumProperty;
+import property.IProperty;
 import property.Proops;
 
 
@@ -17,12 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HotelController implements Serializable{
+public class HotelController implements Serializable {
 
     private IServiceService serviceService;
     private IRoomService roomService;
     private IGuestService guestService;
     private PrinterService printerService;
+    private IProperty property;
 
     public HotelController() {
 
@@ -31,11 +33,13 @@ public class HotelController implements Serializable{
         IServiceStorage serviceStorage = new ServiceStoreFactory().createStorage();
         IGuestServiceStorage guestServiceStorage = new GuestServiceStorage();
         IGuestRoomInfoStorage guestRoomInfoStorage = new GuestRoomInfoStorage();
+        IProperty property = new Proops();
 
-        this.roomService = new RoomService(roomStorage, guestRoomInfoStorage, guestStorage);
+        this.roomService = new RoomService(roomStorage, guestRoomInfoStorage, guestStorage, property);
         this.guestService = new GuestService(guestRoomInfoStorage);
         this.serviceService = new ServiceService(guestServiceStorage, serviceStorage);
         this.printerService = new PrinterService();
+        this.property = property;
     }
 
     public void printAllRooms() {
@@ -79,7 +83,7 @@ public class HotelController implements Serializable{
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
 
-        String chooseRoomStatus = Proops.getProperty(EnumProperty.CHOOSE_ROOM_STATUS);
+        String chooseRoomStatus = property.getProperty(EnumProperty.CHOOSE_ROOM_STATUS);
 
         if (chooseRoomStatus.equals("TRUE")) {
             this.roomService.addGuest(roomNumber, guest, year, month + 1, day, true);
@@ -141,7 +145,7 @@ public class HotelController implements Serializable{
     }
 
     public void readRoomsFromFile() {
-        String path = Proops.getProperty(EnumProperty.ROOM_PATH_FILE);
+        String path = property.getProperty(EnumProperty.ROOM_PATH_FILE);
         ReadFromFileService readFromFileService = new ReadFromFileService();
         ArrayList<Room> roomList = readFromFileService.readRooms(path);
         this.roomService.getAllRooms().addAll(roomList);
@@ -178,10 +182,8 @@ public class HotelController implements Serializable{
         }
 
         return null;
-
     }
-
-    public void addRoom(Room room){
+    public void addRoom(Room room) {
         this.getRoomService().getAllRooms().add(room);
     }
 }

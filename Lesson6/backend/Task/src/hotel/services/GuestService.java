@@ -23,7 +23,7 @@ public class GuestService implements IGuestService,Serializable {
 
     public GuestService(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
-        log.info("Hgfhgfh");
+        log.info("Guest Service started");
 
     }
 
