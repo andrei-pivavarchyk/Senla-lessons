@@ -9,8 +9,8 @@ import ui.service.Serializable;
 
 public class MenuController {
 
-    Builder builder;
-    Navigator navigator;
+    private Builder builder;
+    private Navigator navigator;
 
     public MenuController() {
         this.builder = new Builder();
@@ -23,13 +23,12 @@ public class MenuController {
         this.navigator = new Navigator();
         Boolean running = true;
 
-       if(Serializable.deSerializable().equals(null)){
-           navigator.printMenu(mainMenu);
-       }
-       else{
-           Menu lastMenu=Serializable.deSerializable();
-           navigator.printMenu(lastMenu);
-       }
+        if (Serializable.deSerializable().equals(null)) {
+            navigator.printMenu(mainMenu);
+        } else {
+            Menu lastMenu = Serializable.deSerializable();
+            navigator.printMenu(lastMenu);
+        }
 
 
         while (running.equals(true)) {

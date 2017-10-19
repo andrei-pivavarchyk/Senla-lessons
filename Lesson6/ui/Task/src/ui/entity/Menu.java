@@ -10,7 +10,6 @@ public class Menu implements Serializable{
     private ArrayList<MenuItem> menuItemList;
     private Menu rootMenu;
 
-
     public Menu(String name) {
         this.name = name;
         this.menuItemList = new ArrayList<MenuItem>();
