@@ -13,41 +13,39 @@ import ui.service.MainService;
 import java.util.List;
 
 public class ActionCloneRoom extends AAction implements IAction {
-    private HotelController hotelController = MainService.getMainService().getHotelController();
-    private PrinterService printer = MainService.getMainService().getPrinterService();
-    private ConsoleService consoleService = ConsoleService.getConsoleService();
 
     @Override
     public ActionEnumResult execute() {
 
-        List<Room> roomList = hotelController.getRoomService().getAllRooms();
-        printer.printRooms(roomList);
+        List<Room> roomList = getHotelController().getRoomService().getAllRooms();
+        getPrinter().printRooms(roomList);
 
-        printer.printString("Enter room number");
+        getPrinter().printString("Enter room number");
 
-        Room cloneRoom = hotelController.cloneRoom(getRoomByNumber());
+        Room cloneRoom = getHotelController().cloneRoom(getRoomByNumber());
 
-        printer.printString("Do u want to change clone room? Press Y or N");
-        String string = this.consoleService.getString();
+        getPrinter().printString("Do u want to change clone room? Press Y or N");
+        String string = this.getConsoleService().getString();
         if (string.equals("Y")) {
 
-            printer.printString("Enter room number");
-            int number = consoleService.getNumber();
-            printer.printString("Enter room cost");
-            int cost = consoleService.getNumber();
-            printer.printString("Enter room capacity");
-            int capacity = consoleService.getNumber();
-            printer.printString("Enter room stars");
-            int stars = consoleService.getNumber();
+            getPrinter().printString("Enter room number");
+            int number = getConsoleService().getNumber();
+            getPrinter().printString("Enter room cost");
+            int cost = getConsoleService().getNumber();
+            getPrinter().printString("Enter room capacity");
+            int capacity = getConsoleService().getNumber();
+            getPrinter().printString("Enter room stars");
+            int stars = getConsoleService().getNumber();
             cloneRoom.setCost(cost);
             cloneRoom.setCapacity(capacity);
             cloneRoom.setNumber(number);
             cloneRoom.setStars(stars);
-            hotelController.getRoomService().addRoom(cloneRoom);
-        } else if (string.equals("N")) {
+            getHotelController().getRoomService().addRoom(cloneRoom);
+        } else if (string.equals("N")||string.equals("n")) {
+            getHotelController().getRoomService().addRoom(cloneRoom);
 
         } else {
-            printer.printString("Try again");
+            getPrinter().printString("Try again");
         }
 
         return ActionEnumResult.TRUE;
@@ -55,17 +53,17 @@ public class ActionCloneRoom extends AAction implements IAction {
 
     public Room getRoomByNumber() {
 
-        int allRoomsCount = hotelController.getRoomService().getAllRooms().size();
+        int allRoomsCount = getHotelController().getRoomService().getAllRooms().size();
         Room room = null;
         int roomNumber = 0;
         Boolean getRoom = false;
         while (getRoom.equals(false)) {
-            roomNumber = consoleService.getNumber();
+            roomNumber = getConsoleService().getNumber();
             if (roomNumber <= allRoomsCount && roomNumber > 0) {
-                room = hotelController.getRoomService().getRoomByNumber(roomNumber);
+                room = getHotelController().getRoomService().getRoomByNumber(roomNumber);
                 getRoom = true;
             } else {
-                printer.printString("Try again!!!");
+                getPrinter().printString("Try again!!!");
             }
         }
         return room;

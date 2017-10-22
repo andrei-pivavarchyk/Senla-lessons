@@ -1,9 +1,6 @@
 package hotel.services;
 
 import org.apache.log4j.Logger;
-import property.EnumProperty;
-import property.IProperty;
-import property.Proops;
 import hotel.storage.IGuestRoomInfoStorage;
 import hotel.storage.IGuestStorage;
 import hotel.storage.IRoomStorage;
@@ -27,16 +24,14 @@ public class RoomService implements IRoomService,Serializable {
     private final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
     private final Comparator<Room> STARS_COMPARATOR = new RoomStarsComparator();
     private Integer maxCountOldGuests;
-    private IProperty property;
     public static final Logger log= Logger.getLogger(GuestService.class);
 
 
-    public RoomService(IRoomStorage roomStorage, IGuestRoomInfoStorage guestRoomInfoStorage, IGuestStorage guestStorage, IProperty property) {
+    public RoomService(IRoomStorage roomStorage, IGuestRoomInfoStorage guestRoomInfoStorage, IGuestStorage guestStorage, Integer maxCountOldGuests) {
         this.roomStorage = roomStorage;
         this.guestRoomInfoStorage = guestRoomInfoStorage;
         this.guestStorage = guestStorage;
-        this.property=property;
-        this.maxCountOldGuests = Integer.valueOf(property.getProperty(EnumProperty.MAX_NUMBER_OF_LAST_ROOM_GUESTS));
+        this.maxCountOldGuests =maxCountOldGuests;
         log.info("Room service started");
 
     }
@@ -204,6 +199,8 @@ public class RoomService implements IRoomService,Serializable {
 
     public Room cloneRoom(Room room) throws CloneNotSupportedException {
           Room clone = room.clone();
+          int roomId=this.roomStorage.getAllEntities().size();
+          clone.setId(roomId);
           return clone;
     }
 }

@@ -15,48 +15,44 @@ import ui.service.MainService;
 import java.util.ArrayList;
 
 public class ActionAddGuestToRoom extends AAction implements IAction {
-    private HotelController hotelController = MainService.getMainService().getHotelController();
-    private PrinterService printer = MainService.getMainService().getPrinterService();
-    private ConsoleService consoleService = ConsoleService.getConsoleService();
-
 
     @Override
     public ActionEnumResult execute() {
 
-        ArrayList<Room> roomList=hotelController.getRoomService().getFreeRooms();
-        printer.printRooms(roomList);
+        ArrayList<Room> roomList=getHotelController().getRoomService().getFreeRooms();
+        getPrinter().printRooms(roomList);
 
-        printer.printString("Enter room number");
-        int freeRoomsCount = hotelController.getRoomService().getFreeRooms().size();
+        getPrinter().printString("Enter room number");
+        int freeRoomsCount = getHotelController().getRoomService().getFreeRooms().size();
         Room room;
         int roomNumber = 0;
         Boolean getRoom = false;
         while (getRoom.equals(false)) {
-            roomNumber = consoleService.getNumber();
+            roomNumber = getConsoleService().getNumber();
             if (roomNumber <= freeRoomsCount && roomNumber > 0) {
-                room = hotelController.getRoomService().getRoomByNumber(roomNumber);
+                room = getHotelController().getRoomService().getRoomByNumber(roomNumber);
                 getRoom = true;
             } else {
-                printer.printString("Try again");
+                getPrinter().printString("Try again");
             }
         }
 
 
-        printer.printString("Enter guest name");
-        String name = consoleService.getString();
-        printer.printString("Enter guest surname");
-        String surname = consoleService.getString();
-        printer.printString("Enter guest id");
-        int id = consoleService.getNumber();
+        getPrinter().printString("Enter guest name");
+        String name = getConsoleService().getString();
+        getPrinter().printString("Enter guest surname");
+        String surname = getConsoleService().getString();
+        getPrinter().printString("Enter guest id");
+        int id = getConsoleService().getNumber();
         Guest guest = new Guest(id, name, surname);
-        printer.printString("Enter guest departure year");
-        int year = consoleService.getNumber();
-        printer.printString("Enter guest departure month");
-        int month = consoleService.getNumber();
-        printer.printString("Enter guest departure day");
-        int day = consoleService.getNumber();
+        getPrinter().printString("Enter guest departure year");
+        int year = getConsoleService().getNumber();
+        getPrinter().printString("Enter guest departure month");
+        int month = getConsoleService().getNumber();
+        getPrinter().printString("Enter guest departure day");
+        int day = getConsoleService().getNumber();
 
-        hotelController.addGuest(roomNumber, guest, year, month, day);
+        getHotelController().addGuest(roomNumber, guest, year, month, day);
         return ActionEnumResult.TRUE;
 
     }

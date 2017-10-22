@@ -11,14 +11,12 @@ import hotel.services.PrinterService;
 import java.util.ArrayList;
 
 public class ActionShowFreeRoomsSortedByCost extends AAction implements IAction {
-    private HotelController hotelController = MainService.getMainService().getHotelController();
-    private PrinterService printer = MainService.getMainService().getPrinterService();
 
     @Override
     public ActionEnumResult execute() {
-        ArrayList<Room> roomList = hotelController.getRoomService().getFreeRooms();
-        roomList = hotelController.getRoomService().getArrayRoomCostSorting(roomList);
-        printer.printRooms(roomList);
+        ArrayList<Room> roomList = getHotelController().getRoomService().getFreeRooms();
+        roomList = getHotelController().getRoomService().getArrayRoomCostSorting(roomList);
+        getPrinter().printRooms(roomList);
         return ActionEnumResult.TRUE;
     }
 }

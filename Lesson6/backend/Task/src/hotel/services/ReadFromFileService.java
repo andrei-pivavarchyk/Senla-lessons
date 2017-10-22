@@ -16,8 +16,8 @@ public class ReadFromFileService implements Serializable {
 
         String[] allRooms = new TextFileWorker(path).readFromFile();
         ArrayList<Room> roomList = new ArrayList<Room>();
+        int id = 0;
         for (String roomFromFile : allRooms) {
-            int id = 0;
             String[] roomParametrs = roomFromFile.split("\\|");
             int roomNumber = Integer.parseInt(roomParametrs[0]);
             int roomCost = Integer.parseInt(roomParametrs[1]);
@@ -28,7 +28,6 @@ public class ReadFromFileService implements Serializable {
             id++;
 
             roomList.add(room);
-
         }
         return roomList;
     }

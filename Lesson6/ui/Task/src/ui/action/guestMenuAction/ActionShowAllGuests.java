@@ -14,12 +14,9 @@ import ui.service.MainService;
 import java.util.ArrayList;
 
 public class ActionShowAllGuests extends AAction implements IAction{
-    private HotelController hotelController = MainService.getMainService().getHotelController();
-    private PrinterService printer = MainService.getMainService().getPrinterService();
-
     public  ActionEnumResult execute(){
-       ArrayList<Guest> guestList= hotelController.getGuestSerice().getAllGuests();
-       printer.printGuests(guestList);
+       ArrayList<Guest> guestList=  getHotelController().getGuestSerice().getAllGuests();
+       getPrinter().printGuests(guestList);
         return ActionEnumResult.TRUE;
     }
 }

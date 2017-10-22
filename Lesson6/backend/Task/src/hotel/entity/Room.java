@@ -55,7 +55,7 @@ public class Room extends Entity implements Cloneable{
     }
 
     public String toString() {
-        return String.format("Room number: %s cost: %s capacity: %s stars: %s", this.number, this.cost, this.capacity, this.stars);
+        return String.format("Room number: id: %s number %s cost: %s capacity: %s stars: %s",this.id, this.number, this.cost, this.capacity, this.stars);
     }
 
     public void setCapacity(int capacity) {
@@ -81,5 +81,6 @@ public class Room extends Entity implements Cloneable{
     public Room clone() throws CloneNotSupportedException {
         return (Room)super.clone();
     }
+
 
 }
