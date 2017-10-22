@@ -1,9 +1,8 @@
 package ui.service;
 
-import hotel.storage.GuestStorage;
 import property.EnumProperty;
 import property.PropertyService;
-import ui.entity.Menu;
+import ui.entity.ProgramState;
 
 import java.io.*;
 import java.util.Properties;
@@ -15,13 +14,12 @@ public class SerializableService {
         this.properties = properties;
     }
 
-    public void serializableMenu(Menu menu) {
+    public void serializable(ProgramState hotelStorages) {
+        PropertyService propertyService = new PropertyService();
+        try (OutputStream fos = new FileOutputStream(propertyService.getStringProperty(EnumProperty.SERIALIZABLE_PATH_FILE, this.properties))) {
 
-        try {
-            PropertyService propertyService = new PropertyService();
-            FileOutputStream fos = new FileOutputStream(propertyService.getStringProperty(EnumProperty.SERIALIZABLE_PATH_FILE, this.properties));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(menu);
+            oos.writeObject(hotelStorages);
             oos.flush();
             oos.close();
         } catch (IOException e) {
@@ -29,24 +27,19 @@ public class SerializableService {
         }
     }
 
-    public Menu deSerializable() {
-
-        try {
-            System.out.println(1);
-            PropertyService propertyService = new PropertyService();
-            FileInputStream fis = new FileInputStream(propertyService.getStringProperty(EnumProperty.SERIALIZABLE_PATH_FILE, this.properties));
-            System.out.println(2);
+    public ProgramState deSerializable() {
+        PropertyService propertyService = new PropertyService();
+        try (FileInputStream fis = new FileInputStream(propertyService.getStringProperty(EnumProperty.SERIALIZABLE_PATH_FILE, this.properties))) {
             ObjectInputStream oin = new ObjectInputStream(fis);
-            System.out.println(3);
-            Menu menu = (Menu) oin.readObject();
-            return menu;
+            ProgramState programState = (ProgramState) oin.readObject();
+            return programState;
+
         } catch (IOException e) {
-            System.out.println(e);
+            return null;
+
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
+
     }
-
-
 }

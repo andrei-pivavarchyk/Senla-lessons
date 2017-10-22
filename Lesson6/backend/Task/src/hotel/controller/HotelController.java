@@ -150,7 +150,7 @@ public class HotelController implements Serializable {
     public void readRoomsFromFile() {
         String path = this.propertyService.getStringProperty(EnumProperty.ROOM_PATH_FILE,properties);
         ReadFromFileService readFromFileService = new ReadFromFileService();
-        ArrayList<Room> roomList = readFromFileService.readRooms(path);
+        List<Room> roomList = readFromFileService.readRooms(path);
         this.roomService.getAllRooms().addAll(roomList);
     }
 
@@ -189,5 +189,17 @@ public class HotelController implements Serializable {
 
     public void addRoom(Room room) {
         this.getRoomService().getAllRooms().add(room);
+    }
+
+    public void setGuestService(IGuestService guestService) {
+        this.guestService = guestService;
+    }
+
+    public void setRoomService(IRoomService roomService) {
+        this.roomService = roomService;
+    }
+
+    public void setServiceService(IServiceService serviceService) {
+        this.serviceService = serviceService;
     }
 }
