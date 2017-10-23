@@ -4,9 +4,9 @@ package com.hotelInterface.service;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class ConsoleService implements Serializable{
+public class ConsoleService implements Serializable {
 
-    private static ConsoleService consoleService ;
+    private static ConsoleService consoleService;
 
     private ConsoleService() {
 
@@ -20,7 +20,6 @@ public class ConsoleService implements Serializable{
     }
 
     public int getNumberForMenu(int maxNumber) {
-
 
         Scanner scanner = new Scanner(System.in);
         Boolean NumberIsNotGiven = true;
@@ -42,7 +41,6 @@ public class ConsoleService implements Serializable{
             } catch (Exception e) {
 
                 System.out.println("Try again");
-
             }
         }
         return input;

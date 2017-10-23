@@ -45,8 +45,11 @@ public class MainService {
         Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
         Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);
 
-        SerializableService serializableService = MainService.getMainService().getSerializableService();
+        this.hotelController.addService(service1);
+        this.hotelController.addService(service2);
+        this.hotelController.addService(service3);
 
+        SerializableService serializableService = MainService.getMainService().getSerializableService();
         ProgramState programState = (ProgramState)serializableService.deSerializable();
 
         if (programState == null) {
@@ -54,11 +57,6 @@ public class MainService {
         } else {
             this.hotelController.getRoomService().getAllRooms().addAll(programState.getRoomList());
         }
-
-        this.hotelController.addService(service1);
-        this.hotelController.addService(service2);
-        this.hotelController.addService(service3);
-
     }
 
     public PrinterService getPrinterService() {

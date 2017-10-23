@@ -176,17 +176,6 @@ public class HotelController implements Serializable {
         return serviceService;
     }
 
-    public Room cloneRoom(Room room) {
-        try {
-            Room cloneRoom = this.roomService.cloneRoom(room);
-            return cloneRoom;
-        } catch (CloneNotSupportedException e) {
-            this.printerService.printString("Cannot cloe object");
-        }
-
-        return null;
-    }
-
     public void addRoom(Room room) {
         this.getRoomService().getAllRooms().add(room);
     }
@@ -208,10 +197,19 @@ public class HotelController implements Serializable {
         this.roomService.glueTwoArrays(importRoomList);
     }
 
-
     public void exportRoom(String path)throws IllegalArgumentException {
         List<Room> roomList = this.roomService.getAllRooms();
         this.fileService.writeRoomsToFile(roomList, path);
+    }
+
+    public Room cloneRoom(Room room) {
+        try {
+            Room cloneRoom = this.roomService.cloneRoom(room);
+            return cloneRoom;
+        } catch (CloneNotSupportedException e) {
+            this.printerService.printString("Cannot cloe object");
+        }
+        return null;
     }
 
 }
