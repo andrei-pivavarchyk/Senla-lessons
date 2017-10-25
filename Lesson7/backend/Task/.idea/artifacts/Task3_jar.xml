@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Task3:jar">
+    <output-path>$PROJECT_DIR$/Program</output-path>
+    <root id="archive" name="Task3.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Task3" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Program/textFileWorker.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Program/Property.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

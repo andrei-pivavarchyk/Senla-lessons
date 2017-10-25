@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="next:jar">
+    <output-path>$PROJECT_DIR$/../Program</output-path>
+    <root id="archive" name="next.jar">
+      <element id="module-output" name="next" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Program/textFileWorker.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Program/Task3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
