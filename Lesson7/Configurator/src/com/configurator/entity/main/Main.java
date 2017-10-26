@@ -6,10 +6,10 @@ import com.configurator.entity.Test1;
 import com.configurator.entity.Test2;
 import com.propertyService.PropertyService;
 
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
         try {
             PropertyService propertyService = new PropertyService("../resources/config.properties");
 
@@ -23,8 +23,12 @@ public class Main {
         catch (IOException e){System.out.print(e);} catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
-            e.printStackTrace();
+
         }
+
+
+
+
 
     }
 }
