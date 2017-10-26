@@ -6,16 +6,13 @@ import com.propertyService.PropertyService;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class Configurator {
 
-
-
-
-    public Object configure(Object object, PropertyService propertyService) throws IllegalAccessException {
+    public Object configure(Object object, PropertyService propertyService) throws IllegalAccessException, InstantiationException {
         Class cl = object.getClass();
         Field[] fields = cl.getDeclaredFields();
+        List<Object> configureObjects = new ArrayList<Object>();
 
         for (Field field : fields) {
 
@@ -38,30 +35,18 @@ public class Configurator {
                 }
 
             }
+
+            if (field.isAnnotationPresent(Configurable.class)) {
+                configureObjects.add(field.get(object));
+            }
         }
 
+        for (Object object2 : configureObjects) {
+            configure(object2, propertyService);
+        }
         return object;
-
     }
 
-
-    public List<Field> getAllFields(Field[] fields){
-        List<Field> allFields=new ArrayList<Field>();
-        Boolean getAllFields=false;
-
-   while(getAllFields.equals(false)){
-
-
-       for(Field field:fields){
-           if(field.isAnnotationPresent(ConfigProperty.class)){fieldsWithAnnotations.add(field);}
-
-
-
-       }
-
-}
-
-    }
 
     public Field getBooleanProperty(Object object, Field field, PropertyName propertyName, PropertyService propertyService) throws IllegalAccessException {
 

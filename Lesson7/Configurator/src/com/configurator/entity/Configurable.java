@@ -1,4 +1,4 @@
-package com.configurator.entity.main;
+package com.configurator.entity;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
