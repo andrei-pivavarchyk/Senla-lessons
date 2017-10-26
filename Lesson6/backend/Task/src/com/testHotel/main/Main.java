@@ -4,7 +4,7 @@ import com.testHotel.entity.Guest;
 import com.testHotel.controller.HotelController;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
-import property.PropertyService;
+
 
 import java.util.Properties;
 
@@ -17,7 +17,7 @@ public class Main {
     }
 
     public void startHotelController() {
-
+/*
         PropertyService propertyService = new PropertyService();
         Properties properties = propertyService.readProperties("../resources/config.properties");
 
@@ -63,7 +63,7 @@ public class Main {
         bestHotel.setRoomCost(1, 12, "D:\\Rooms.txt");
         bestHotel.printAllRooms();
         bestHotel.printGuestsSortedByName();
-
+*/
     }
 
 }

@@ -1,33 +1,29 @@
 package com.hotelInterface.service;
 
 
+import com.propertyService.IPropertyService;
 import com.testHotel.controller.HotelController;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
 import com.testHotel.services.PrinterService;
 import com.hotelInterface.entity.ProgramState;
-import property.PropertyService;
 import services.SerializableService;
 
+import com.propertyService.PropertyService;
 
-import java.util.Properties;
+import java.io.IOException;
 
 public class MainService {
 
     private HotelController hotelController;
     private PrinterService printerService;
-    private  SerializableService serializableService;
+    private SerializableService serializableService;
     private ProgramState programState;
     private static MainService mainService;
-
+    private IPropertyService propertyService;
 
     private MainService() {
-
-        PropertyService propertyService = new PropertyService();
-        Properties properties = propertyService.readProperties("../resources/config.properties");
-
-        this.hotelController = new HotelController(properties);
-        this.serializableService = new SerializableService(properties);
+        this.serializableService = new SerializableService();
         this.printerService = new PrinterService();
         this.programState = new ProgramState();
     }
@@ -41,6 +37,15 @@ public class MainService {
 
     public void startHotel(String roomPath) {
 
+        try {
+            IPropertyService propService = new PropertyService("../resources/config.properties");
+            this.propertyService = propService;
+        } catch (IOException e) {
+            printerService.printString(e.toString());
+        }
+
+        this.hotelController = new HotelController(this.propertyService);
+
         Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
         Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
         Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);
@@ -49,14 +54,19 @@ public class MainService {
         this.hotelController.addService(service2);
         this.hotelController.addService(service3);
 
-        SerializableService serializableService = MainService.getMainService().getSerializableService();
-        ProgramState programState = (ProgramState)serializableService.deSerializable();
+        ProgramState programState = (ProgramState) this.serializableService.deSerializable("D:\\ser.out");
 
         if (programState == null) {
             this.hotelController.readRoomsFromFile();
         } else {
             this.hotelController.getRoomService().getAllRooms().addAll(programState.getRoomList());
         }
+    }
+
+    public void saveProgramState() {
+        ProgramState programState = new ProgramState();
+        programState.setRoomList(this.hotelController.getRoomService().getAllRooms());
+        this.serializableService.serializable(programState, "D:\\Rooms.txt");
     }
 
     public PrinterService getPrinterService() {

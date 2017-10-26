@@ -1,7 +1,8 @@
-import property.EnumProperty;
-import property.PropertyService;
+package com.serializingService.main;
 
 public class Main {
     public static void main(String[] args){
+
     }
+
 }

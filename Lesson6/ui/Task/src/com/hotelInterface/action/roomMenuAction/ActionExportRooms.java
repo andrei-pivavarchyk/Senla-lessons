@@ -12,9 +12,7 @@ public class ActionExportRooms extends AAction implements IAction {
     public ActionEnumResult execute() {
 
         try {
-            getPrinter().printString("Enter path to file with rooms");
-            String path = getConsoleService().getString();
-            getHotelController().exportRoom(path);
+            getHotelController().exportRoom();
             getPrinter().printString("All rooms was added");
             return ActionEnumResult.TRUE;
         } catch (IllegalArgumentException e) {

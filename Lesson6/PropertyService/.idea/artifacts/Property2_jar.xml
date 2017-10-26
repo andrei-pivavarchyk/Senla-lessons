@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="Property2:jar">
-    <output-path>$PROJECT_DIR$/../backend/Program</output-path>
+    <output-path>$PROJECT_DIR$/../ui/Program</output-path>
     <root id="archive" name="Property2.jar">
       <element id="module-output" name="Property2" />
     </root>

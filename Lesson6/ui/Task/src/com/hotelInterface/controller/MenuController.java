@@ -37,18 +37,11 @@ public class MenuController {
                 Menu menu = navigator.navigate(number);
                 navigator.printMenu(menu);
             } else {
-                saveProgramState();
+              MainService.getMainService().saveProgramState();
                 running = false;
             }
         }
 
     }
 
-    public void saveProgramState() {
-        HotelController hotel = MainService.getMainService().getHotelController();
-        ProgramState programState = new ProgramState();
-        programState.setRoomList(hotel.getRoomService().getAllRooms());
-
-        MainService.getMainService().getSerializableService().serializable(programState);
-    }
 }
