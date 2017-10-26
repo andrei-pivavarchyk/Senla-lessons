@@ -42,8 +42,6 @@ public class FileService implements Serializable {
 
             String string = roomStringBuilder.toString();
             roomArray[i] = string;
-            System.out.println(allRooms.get(i));
-
             i++;
         }
         new TextFileWorker(path).writeToFile(roomArray);
