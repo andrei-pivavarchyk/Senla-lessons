@@ -1,5 +1,12 @@
 package com.testHotel.controller;
 
+import com.configurator.entity.ConfigProperty;
+import com.configurator.entity.PropertyFileName;
+import com.configurator.entity.PropertyName;
+import com.configurator.entity.PropertyType;
+import com.configurator.entity.main.Configurable;
+import com.propertyService.IPropertyService;
+import com.propertyService.PropertyService;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
@@ -8,9 +15,7 @@ import com.testHotel.storeFactory.RoomStoreFactory;
 import com.testHotel.storeFactory.ServiceStoreFactory;
 import com.testHotel.services.*;
 import com.testHotel.storage.*;
-import property.EnumProperty;
-import property.IPropertyService;
-import property.PropertyService;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,25 +25,27 @@ import java.util.Properties;
 public class HotelController implements Serializable {
 
     private IServiceService serviceService;
+    @Configurable
     private IRoomService roomService;
     private IGuestService guestService;
     private PrinterService printerService;
     private IPropertyService propertyService;
     private Properties properties;
     private FileService fileService;
+    @ConfigProperty(configName = PropertyFileName.CONFIG,propertyName = PropertyName.ROOM_PATH_FILE,type = PropertyType.STRING)
+    private String roomFilePath;
 
-    public HotelController(Properties properties) {
+    public HotelController(PropertyService propertyService) {
         IRoomStorage roomStorage = new RoomStoreFactory().createStorage();
         IGuestStorage guestStorage = new GuestStoreFactory().createStorage();
         IServiceStorage serviceStorage = new ServiceStoreFactory().createStorage();
         IGuestServiceStorage guestServiceStorage = new GuestServiceStorage();
         IGuestRoomInfoStorage guestRoomInfoStorage = new GuestRoomInfoStorage();
-        this.propertyService = new PropertyService();
+        this.propertyService =propertyService;
 
-        Integer roomServiceParameter = propertyService.getIntegerProperty(EnumProperty.MAX_NUMBER_OF_LAST_ROOM_GUESTS, properties);
 
         this.properties = properties;
-        this.roomService = new RoomService(roomStorage, guestRoomInfoStorage, guestStorage, roomServiceParameter);
+        this.roomService = new RoomService(roomStorage, guestRoomInfoStorage, guestStorage);
         this.guestService = new GuestService(guestRoomInfoStorage);
         this.serviceService = new ServiceService(guestServiceStorage, serviceStorage);
         this.printerService = new PrinterService();
@@ -86,13 +93,8 @@ public class HotelController implements Serializable {
     }
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
-        Boolean chooseRoomStatus = this.propertyService.getBooleanProperty(EnumProperty.CHOOSE_ROOM_STATUS, this.properties);
 
-        if (chooseRoomStatus) {
-            this.roomService.addGuest(roomNumber, guest, year, month + 1, day, true);
-        } else {
-            this.roomService.addGuest(roomNumber, guest, year, month + 1, day, false);
-        }
+            this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
     }
 
     public void printAllGuests() {
@@ -148,9 +150,7 @@ public class HotelController implements Serializable {
     }
 
     public void readRoomsFromFile() {
-
-            String path = this.propertyService.getStringProperty(EnumProperty.ROOM_PATH_FILE, properties);
-            List<Room> roomList = this.fileService.readRooms(path);
+            List<Room> roomList = this.fileService.readRooms(this.roomFilePath);
             this.roomService.getAllRooms().addAll(roomList);
     }
 

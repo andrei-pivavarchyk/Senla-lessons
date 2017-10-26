@@ -1,5 +1,9 @@
 package com.testHotel.services;
 
+import com.configurator.entity.ConfigProperty;
+import com.configurator.entity.PropertyFileName;
+import com.configurator.entity.PropertyName;
+import com.configurator.entity.PropertyType;
 import com.testHotel.comparator.RoomCapacityComparator;
 import com.testHotel.comparator.RoomCostComparator;
 import com.testHotel.comparator.RoomIdComparator;
@@ -27,11 +31,14 @@ public class RoomService implements IRoomService, Serializable {
     private final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
     private final Comparator<Room> STARS_COMPARATOR = new RoomStarsComparator();
     private final Comparator<Room> ID_COMPARATOR = new RoomIdComparator();
+    @ConfigProperty(configName = PropertyFileName.CONFIG, propertyName = PropertyName.MAX_NUMBER_OF_LAST_ROOM_GUESTS, type = PropertyType.INTEGER)
     private Integer maxCountOldGuests;
+    @ConfigProperty(configName = PropertyFileName.CONFIG, propertyName = PropertyName.CHOOSE_ROOM_STATUS, type = PropertyType.BOOLEAN)
+    private Boolean chooseRoomStatus;
     public static final Logger log = Logger.getLogger(GuestService.class);
 
 
-    public RoomService(IRoomStorage roomStorage, IGuestRoomInfoStorage guestRoomInfoStorage, IGuestStorage guestStorage, Integer maxCountOldGuests) {
+    public RoomService(IRoomStorage roomStorage, IGuestRoomInfoStorage guestRoomInfoStorage, IGuestStorage guestStorages) {
         this.roomStorage = roomStorage;
         this.guestRoomInfoStorage = guestRoomInfoStorage;
         this.guestStorage = guestStorage;
@@ -83,14 +90,13 @@ public class RoomService implements IRoomService, Serializable {
         return null;
     }
 
-    public void addGuest(int roomNumber, Guest guest, int year, int month, int day, Boolean chooseRoomStatus) {
+    public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
 
         Room room = this.getRoomByNumber(roomNumber);
         if (room != null) {
-            if (chooseRoomStatus.equals(true)) {
+            if (this.chooseRoomStatus.equals(true)) {
                 room.setStatus(RoomStatus.RESERVED);
             }
-
             room.getGuests().add(guest);
             Calendar calendar = Calendar.getInstance();
             Date arrivalDate = calendar.getTime();
