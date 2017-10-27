@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 
-public class HotelController implements Serializable {
+public class HotelController {
 
     private IServiceService serviceService;
     private IRoomService roomService;

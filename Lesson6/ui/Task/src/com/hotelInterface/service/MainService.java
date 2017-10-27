@@ -2,12 +2,14 @@ package com.hotelInterface.service;
 
 
 import com.propertyService.IPropertyService;
+import com.propertyService.PropService;
+import com.serializingService.SerializableService;
 import com.testHotel.controller.HotelController;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
 import com.testHotel.services.PrinterService;
 import com.hotelInterface.entity.ProgramState;
-import services.SerializableService;
+
 
 import com.propertyService.PropertyService;
 
@@ -38,7 +40,9 @@ public class MainService {
     public void startHotel(String roomPath) {
 
         try {
-            IPropertyService propService = new PropertyService("../resources/config.properties");
+            PropService propService = new PropService();
+            propService.setProperties("../resources/config.properties");
+
             this.propertyService = propService;
         } catch (IOException e) {
             printerService.printString(e.toString());

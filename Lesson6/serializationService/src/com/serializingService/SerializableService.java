@@ -1,28 +1,20 @@
 package com.serializingService;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class SerializableService {
 
-    public void serializable(Object object,String path) {
+    public void serializable(Object object, String path) throws IOException {
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
             oos.writeObject(object);
-        } catch (Exception e) {
         }
     }
 
-    public Object deSerializable(String path) {
-
+    public Object deSerializable(String path) throws IOException, ClassNotFoundException {
         try (ObjectInputStream oin = new ObjectInputStream(new FileInputStream(path))) {
-            Object object = (Object) oin.readObject();
+            Object object = oin.readObject();
             return object;
-
-        } catch (Exception e) {
-            return null;
         }
     }
 }

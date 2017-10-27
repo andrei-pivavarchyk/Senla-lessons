@@ -1,7 +1,6 @@
 package com.hotelInterface;
 
 import com.hotelInterface.controller.MenuController;
-import property.PropertyService;
 import com.hotelInterface.service.MainService;
 
 import java.util.Properties;
