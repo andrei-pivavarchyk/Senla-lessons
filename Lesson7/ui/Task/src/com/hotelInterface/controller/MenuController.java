@@ -50,6 +50,6 @@ public class MenuController {
         ProgramState programState = new ProgramState();
         programState.setRoomList(hotel.getRoomService().getAllRooms());
 
-        MainService.getMainService().getSerializableService().serializable(programState,"D:\\ser.out");
+        MainService.getMainService().getSerializableService().serializable(programState);
     }
 }

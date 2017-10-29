@@ -1,5 +1,10 @@
 package com.serializingService;
 
+import com.configurator.entity.ConfigProperty;
+import com.configurator.entity.PropertyFilePath;
+import com.configurator.entity.PropertyName;
+import com.configurator.entity.PropertyType;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -7,17 +12,19 @@ import java.io.ObjectOutputStream;
 
 public class SerializableService implements ISerializableService{
 
-    public void serializable(Object object,String path) {
+    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.SERIALIZABLE_PATH_FILE, type = PropertyType.STRING)
+    private String path;
+    public void serializable(Object object) {
 
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.path))) {
             oos.writeObject(object);
         } catch (Exception e) {
         }
     }
 
-    public Object deSerializable(String path) {
+    public Object deSerializable() {
 
-        try (ObjectInputStream oin = new ObjectInputStream(new FileInputStream(path))) {
+        try (ObjectInputStream oin = new ObjectInputStream(new FileInputStream(this.path))) {
             Object object = (Object) oin.readObject();
             return object;
 

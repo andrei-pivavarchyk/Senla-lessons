@@ -10,11 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-       PropertyService propertyService=new PropertyService();
-        Properties properties=propertyService.readProperties("../resources/config.properties");
-
         try {
-            MainService.getMainService().startHotel( "D:\\Rooms.txt");
+            MainService.getMainService().startHotel();
         } catch (Exception e) {
             e.printStackTrace();
         }

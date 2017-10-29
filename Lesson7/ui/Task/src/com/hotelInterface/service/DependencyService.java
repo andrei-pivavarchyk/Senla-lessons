@@ -13,21 +13,18 @@ import com.testHotel.services.*;
 import com.testHotel.storage.*;
 
 
-
-
 public class DependencyService {
-
 
     private IGuestStorage guestStorage = new GuestStorage();
     private IRoomStorage roomStorage = new RoomStorage();
     private IServiceStorage serviceStorage = new ServiceStorage();
     private IGuestRoomInfoStorage guestRoomInfoStorage = new GuestRoomInfoStorage();
     private IGuestServiceStorage guestServiceStorage = new GuestServiceStorage();
-    private ISerializableService serializableService=new SerializableService();
-    private IPropertyService propertyService=new PropertyService();
-    private IFileService fileService=new FileService();
-    private IPrinterService printerService=new PrinterService();
-    private Configurator configurator=new Configurator();
+    private ISerializableService serializableService = new SerializableService();
+    private IPropertyService propertyService = new PropertyService();
+    private IFileService fileService = new FileService();
+    private IPrinterService printerService = new PrinterService();
+    private Configurator configurator = new Configurator();
 
     private IGuestService guestService;
     private IRoomService roomService;
@@ -104,8 +101,6 @@ public class DependencyService {
             return this.hotelController;
         }
     }
-
-
 
 
 }

@@ -4,6 +4,9 @@ package com.testHotel.services;
 import com.danco.training.TextFileWorker;
 import com.testHotel.entity.Room;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,7 @@ public class FileService implements IFileService {
         return roomList;
     }
 
-    public void writeRoomsToFile(List<Room> allRooms, String path) throws IllegalArgumentException{
+    public void exportRoomsToFile(List<Room> allRooms, String path) throws IllegalArgumentException{
 
         String[] roomArray = new String[allRooms.size()];
         int i = 0;
@@ -42,12 +45,30 @@ public class FileService implements IFileService {
 
             String string = roomStringBuilder.toString();
             roomArray[i] = string;
-            System.out.println(allRooms.get(i));
+
 
             i++;
         }
         new TextFileWorker(path).writeToFile(roomArray);
 
+    }
+
+    public void writeRoomToFile(Room room,String path) throws FileNotFoundException {
+
+        StringBuilder roomStringBuilder = new StringBuilder().append(room.getId()).append("|").append(room.getNumber()).append("|").append(room.getCost()).append("|").
+                append(room.getCapacity()).append("|").append(room.getStars());
+
+        String string = roomStringBuilder.toString();
+        String[] roomArray=new String[1];
+        roomArray[0]=string;
+
+        new TextFileWorker(path).writeToFile(roomArray);
 
     }
+
+
+
+
+
+
 }

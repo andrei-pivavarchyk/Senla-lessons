@@ -47,103 +47,13 @@ public class HotelController implements IHotelController {
         this.serviceService = serviceService;
     }
 
-
-    //end dependency injection
-
-    public void printAllRooms() {
-        List<Room> roomList = this.roomService.getAllRooms();
-        this.printerService.printRooms(roomList);
-    }
-
-    public void printRoomsSortingByCost() {
-
-        this.printerService.printRooms(this.roomService.getRoomCostSorting());
-    }
-
-    public void printRoomsSortingByCapacity() {
-
-        this.printerService.printRooms(this.roomService.getRoomCapacitySorting());
-    }
-
-    public void printRoomsSortingByStars() {
-
-        this.printerService.printRooms(this.roomService.getRoomCostSorting());
-    }
-
-    public void printFreeRooms() {
-        this.printerService.printRooms(this.roomService.getFreeRooms());
-    }
-
-    public void printFreeRoomsByCost() {
-
-        this.printerService.printRooms(this.roomService.getRoomCostSorting());
-    }
-
-    public void printFreeRoomsByCapacity() {
-
-        this.printerService.printRooms(this.roomService.getRoomCapacitySorting());
-    }
-
-    public void printFreeRoomsByStars() {
-
-        this.printerService.printRooms(this.roomService.getRoomStarsSorting());
-    }
-
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
 
         this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
     }
 
-    public void printAllGuests() {
-        this.printerService.printGuestsWithRoomNumbers(this.guestService.getCurrentGuestRoomInfo());
-
-    }
-
-    public void printGuestsSortedByName() {
-        this.printerService.printGuests(this.guestService.getAllGuestsSortedByName());
-    }
-
-    public void printGuestsSortedByDepartureDate() {
-        this.printerService.printGuests(this.guestService.getAllGuestsSortedByDateDeparture());
-    }
-
-    public void printFreeRoomsCount() {
-        this.roomService.printFreeRoomsCount();
-    }
-
-    public void printAllGuestsCount() {
-        this.guestService.printAllGuestsCount();
-    }
-
-    public void printFreeRoomsByDate(int year, int month, int day) {
-        printerService.printRooms(this.roomService.getFreeRoomsByDate(year, month, day));
-    }
-
-    public void printGuestPayAmount(Guest guest) {
-        int payAmount = this.guestService.getPayAmount(guest);
-        System.out.println(new StringBuilder("Result pay:").append(payAmount).append("$"));
-    }
-
-    public void printLastThreeGuestsInRoom(int roomNumber) {
-        this.printerService.printGuestsWithDates(this.roomService.getThreeLastGuests(roomNumber));
-    }
-
     public void addGuestService(Guest guest, Service service, int year, int month, int day) {
         this.serviceService.addGuestService(guest, service, year, day, month);
-    }
-
-    public void printGuestServices(Guest guest) {
-        this.printerService.printGuestServices(this.serviceService.getAllGuestServicesInfo(guest));
-    }
-
-    public void printGuestServicesByDate(Guest guest) {
-
-        this.printerService.printGuestServices(this.serviceService.getAllGuestServicesInfoSortedByDate(guest));
-    }
-
-    public void printGuestServicesByCost(Guest guest) {
-
-        this.printerService.printGuestServices(this.serviceService.getAllGuestServicesInfoSortedByCost(guest));
     }
 
     public void readRoomsFromFile() throws Exception {
@@ -154,7 +64,7 @@ public class HotelController implements IHotelController {
     public void setRoomCost(int roomNumber, int cost, String path) {
         this.roomService.setRoomCost(roomNumber, cost);
         FileService readFromFileService = new FileService();
-        readFromFileService.writeRoomsToFile(this.roomService.getAllRooms(), path);
+        readFromFileService.exportRoomsToFile(this.roomService.getAllRooms(), path);
     }
 
     public String getRoomFilePath() {
@@ -199,7 +109,7 @@ public class HotelController implements IHotelController {
 
     public void exportRoom(String path) throws Exception {
         List<Room> roomList = this.roomService.getAllRooms();
-        this.fileService.writeRoomsToFile(roomList, path);
+        this.fileService.exportRoomsToFile(roomList, path);
     }
 
 }
