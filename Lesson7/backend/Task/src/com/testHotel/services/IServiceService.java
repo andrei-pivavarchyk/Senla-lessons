@@ -4,6 +4,8 @@ package com.testHotel.services;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.GuestServiceInfo;
+import com.testHotel.storage.IGuestServiceStorage;
+import com.testHotel.storage.IServiceStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,4 +18,6 @@ public interface IServiceService {
     void addService(Service service);
     List<Service> getAllHotelServices();
     ArrayList<Service> getAllHotelServicesSortedByCost();
+    void setServiceStorage(IServiceStorage serviceStorage);
+    void setGuestServiceStorage(IGuestServiceStorage guestServiceStorage);
 }

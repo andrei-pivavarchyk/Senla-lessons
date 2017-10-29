@@ -1,7 +1,7 @@
 package com.testHotel.services;
 
 
-public class NullCheck {
+public class NullCheck implements INullCheck{
     public static int check(Object object1, Object object2) {
 
         if (object1.equals(null) && object2.equals(null)) {

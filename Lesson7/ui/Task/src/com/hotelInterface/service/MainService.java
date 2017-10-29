@@ -1,35 +1,35 @@
 package com.hotelInterface.service;
 
 
+import com.serializingService.ISerializableService;
+import com.serializingService.SerializableService;
 import com.testHotel.controller.HotelController;
+import com.testHotel.controller.IHotelController;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
+import com.testHotel.services.IPrinterService;
 import com.testHotel.services.PrinterService;
 import com.hotelInterface.entity.ProgramState;
 import property.PropertyService;
-import services.SerializableService;
+
 
 
 import java.util.Properties;
 
 public class MainService {
 
-    private HotelController hotelController;
-    private PrinterService printerService;
-    private  SerializableService serializableService;
+    private IHotelController hotelController;
+    private ISerializableService serializableService;
     private ProgramState programState;
     private static MainService mainService;
+    private DependencyService dependencyService;
+
 
 
     private MainService() {
 
-        PropertyService propertyService = new PropertyService();
-        Properties properties = propertyService.readProperties("../resources/config.properties");
+        this.dependencyService=new DependencyService();
 
-        this.hotelController = new HotelController(properties);
-        this.serializableService = new SerializableService(properties);
-        this.printerService = new PrinterService();
-        this.programState = new ProgramState();
     }
 
     public static synchronized MainService getMainService() {
@@ -39,38 +39,43 @@ public class MainService {
         return mainService;
     }
 
-    public void startHotel(String roomPath) {
+        public void startHotel(String roomPath) throws Exception {
 
-        Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
-        Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
-        Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);
+        this.hotelController=this.dependencyService.getHotelController();
+        this.dependencyService.getConfigurator().configure(this.hotelController,this.dependencyService.getPropertyService());
+        this.hotelController.readRoomsFromFile();
 
-        SerializableService serializableService = MainService.getMainService().getSerializableService();
 
-        ProgramState programState = (ProgramState)serializableService.deSerializable();
+            Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
+            Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
+            Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);
 
-        if (programState == null) {
-            this.hotelController.readRoomsFromFile();
-        } else {
-            this.hotelController.getRoomService().getAllRooms().addAll(programState.getRoomList());
+            ISerializableService serializableService = MainService.getMainService().getDependencyService().getSerializableService();
+
+            ProgramState programState = (ProgramState)serializableService.deSerializable("D:\\ser.out");
+
+            if (programState == null) {
+                this.hotelController.readRoomsFromFile();
+            } else {
+                this.hotelController.getRoomService().getAllRooms().addAll(programState.getRoomList());
+            }
+
+            this.hotelController.addService(service1);
+            this.hotelController.addService(service2);
+            this.hotelController.addService(service3);
+
         }
 
-        this.hotelController.addService(service1);
-        this.hotelController.addService(service2);
-        this.hotelController.addService(service3);
-
+    public IPrinterService getPrinterService() {
+        return this.dependencyService.getPrinterService();
     }
 
-    public PrinterService getPrinterService() {
-        return printerService;
-    }
-
-    public HotelController getHotelController() {
+    public IHotelController getHotelController() {
         return this.hotelController;
     }
 
-    public SerializableService getSerializableService() {
-        return serializableService;
+    public ISerializableService getSerializableService() {
+        return this.dependencyService.getSerializableService();
     }
 
     public ProgramState getProgramState() {
@@ -80,5 +85,10 @@ public class MainService {
     public void setProgramState(ProgramState programState) {
         this.programState = programState;
     }
+
+    public DependencyService getDependencyService() {
+        return dependencyService;
+    }
 }
+
 

@@ -14,8 +14,8 @@ public class ActionImportRooms extends AAction implements IAction {
             getHotelController().importRoom(path);
             getPrinter().printString("All rooms was imported to file");
             return ActionEnumResult.TRUE;
-        } catch (IllegalArgumentException e) {
-            getPrinter().printString("File with that name wasn't found");
+        } catch (Exception e) {
+            getPrinter().printString(e.toString());
             return ActionEnumResult.TRUE;
         }
     }

@@ -17,8 +17,8 @@ public class ActionExportRooms extends AAction implements IAction {
             getHotelController().exportRoom(path);
             getPrinter().printString("All rooms was added");
             return ActionEnumResult.TRUE;
-        } catch (IllegalArgumentException e) {
-            getPrinter().printString("File with that name wasn't found");
+        } catch (Exception e) {
+            getPrinter().printString(e.toString());
             return ActionEnumResult.TRUE;
         }
     }

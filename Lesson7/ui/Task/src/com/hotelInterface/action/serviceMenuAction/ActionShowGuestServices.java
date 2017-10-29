@@ -4,17 +4,19 @@ import com.hotelInterface.action.AAction;
 import com.hotelInterface.action.IAction;
 import com.testHotel.controller.HotelController;
 import com.hotelInterface.entity.ActionEnumResult;
+import com.testHotel.controller.IHotelController;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestServiceInfo;
 import com.hotelInterface.service.ConsoleService;
 import com.hotelInterface.service.MainService;
+import com.testHotel.services.IPrinterService;
 import com.testHotel.services.PrinterService;
 
 import java.util.ArrayList;
 
 public class ActionShowGuestServices extends AAction implements IAction {
-    private HotelController hotelController = MainService.getMainService().getHotelController();
-    private PrinterService printer = MainService.getMainService().getPrinterService();
+    private IHotelController hotelController = MainService.getMainService().getHotelController();
+    private IPrinterService printer = MainService.getMainService().getPrinterService();
 
 
     @Override

@@ -4,6 +4,9 @@ package com.testHotel.services;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
 import com.testHotel.entity.Room;
+import com.testHotel.storage.IGuestRoomInfoStorage;
+import com.testHotel.storage.IGuestStorage;
+import com.testHotel.storage.IRoomStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,4 +34,7 @@ public interface IRoomService {
    Room getRoomByNumber(int roomNumber);
    Room cloneRoom(Room room) throws CloneNotSupportedException;
    void glueTwoArrays(List<Room> importList );
+   void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage);
+   void setGuestStorage(IGuestStorage guestStorage);
+   void setRoomStorage(IRoomStorage roomStorage);
 }

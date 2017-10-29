@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileService implements Serializable {
+public class FileService implements IFileService {
 
 
     public ArrayList<Room> readRooms(String path)throws IllegalArgumentException {

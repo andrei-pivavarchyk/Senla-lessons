@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class SerializableService {
+public class SerializableService implements ISerializableService{
 
     public void serializable(Object object,String path) {
 

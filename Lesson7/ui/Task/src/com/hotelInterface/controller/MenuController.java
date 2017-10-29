@@ -7,6 +7,7 @@ import com.hotelInterface.entity.Navigator;
 import com.hotelInterface.entity.ProgramState;
 import com.hotelInterface.service.ConsoleService;
 import com.hotelInterface.service.MainService;
+import com.testHotel.controller.IHotelController;
 
 public class MenuController {
 
@@ -45,10 +46,10 @@ public class MenuController {
     }
 
     public void saveProgramState() {
-        HotelController hotel = MainService.getMainService().getHotelController();
+        IHotelController hotel = MainService.getMainService().getHotelController();
         ProgramState programState = new ProgramState();
         programState.setRoomList(hotel.getRoomService().getAllRooms());
 
-        MainService.getMainService().getSerializableService().serializable(programState);
+        MainService.getMainService().getSerializableService().serializable(programState,"D:\\ser.out");
     }
 }

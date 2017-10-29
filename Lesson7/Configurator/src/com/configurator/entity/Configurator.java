@@ -1,6 +1,7 @@
 package com.configurator.entity;
 
 
+import com.propertyService.IPropertyService;
 import com.propertyService.PropertyService;
 
 import java.io.IOException;
@@ -11,7 +12,7 @@ import java.util.Properties;
 
 public class Configurator {
 
-    public Object configure(Object object, PropertyService propertyService) throws IllegalAccessException, InstantiationException, IOException {
+    public Object configure(Object object, IPropertyService propertyService) throws Exception {
         Class cl = object.getClass();
         Field[] fields = cl.getDeclaredFields();
         List<Object> configureObjects = new ArrayList<Object>();
@@ -40,7 +41,7 @@ public class Configurator {
             if (field.isAnnotationPresent(Configurable.class)) {
                 configureObjects.add(field.get(object));
             }
-            field.setAccessible(false);
+
         }
 
         for (Object object2 : configureObjects) {
@@ -49,23 +50,26 @@ public class Configurator {
         return object;
     }
 
-    public Field getBooleanProperty(Object object, Field field, PropertyService propertyService, String configPath,PropertyName propertyName) throws IllegalAccessException, IOException {
+    public Field getBooleanProperty(Object object, Field field, IPropertyService propertyService, String configPath,PropertyName propertyName) throws Exception {
 
 
         Boolean booleanProperty = Boolean.valueOf(propertyService.getProperties(configPath).getProperty(propertyName.toString()));
-        field.setBoolean(object, booleanProperty);
+        field.set(object, booleanProperty);
+        field.setAccessible(false);
         return field;
     }
 
-    public Field getIntegerProperty(Object object, Field field, PropertyService propertyService, String configPath,PropertyName propertyName) throws IllegalAccessException, IOException {
+    public Field getIntegerProperty(Object object, Field field, IPropertyService propertyService, String configPath,PropertyName propertyName) throws Exception {
         Integer integerProperty = Integer.valueOf(propertyService.getProperties(configPath).getProperty(propertyName.toString()));
-        field.setInt(object, integerProperty);
+        field.set(object, integerProperty);
+        field.setAccessible(false);
         return field;
     }
 
-    public Field getStringProperty(Object object, Field field, PropertyService propertyService, String configPath,PropertyName propertyName) throws IllegalAccessException, IOException {
+    public Field getStringProperty(Object object, Field field, IPropertyService propertyService, String configPath,PropertyName propertyName) throws Exception {
         String stringProperties = String.valueOf(propertyService.getProperties(configPath).getProperty(propertyName.toString()));
         field.set(object, stringProperties);
+        field.setAccessible(false);
         return field;
     }
 }

@@ -24,12 +24,16 @@ public class ServiceService implements IServiceService,Serializable {
     private final Comparator<Service> SERVICE_COST_COMPARATOR=new ServiceCostComparator();
     public static final Logger log= Logger.getLogger(GuestService.class);
 
-    public ServiceService(IGuestServiceStorage guestServiceStorage, IServiceStorage serviceStorage) {
+    //start dependency injection
 
+    public void setGuestServiceStorage(IGuestServiceStorage guestServiceStorage) {
         this.guestServiceStorage = guestServiceStorage;
-        this.serviceStorage = serviceStorage;
-        log.info("Service Service started");
     }
+
+    public void setServiceStorage(IServiceStorage serviceStorage) {
+        this.serviceStorage = serviceStorage;
+    }
+    //end dependency injection
 
     public void addGuestService(Guest guest, Service service, int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();

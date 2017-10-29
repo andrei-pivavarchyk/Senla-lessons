@@ -1,7 +1,7 @@
 package com.testHotel.services;
 
 import com.configurator.entity.ConfigProperty;
-import com.configurator.entity.PropertyFileName;
+import com.configurator.entity.PropertyFilePath;
 import com.configurator.entity.PropertyName;
 import com.configurator.entity.PropertyType;
 import com.testHotel.comparator.RoomCapacityComparator;
@@ -21,7 +21,7 @@ import java.io.Serializable;
 import java.util.*;
 
 
-public class RoomService implements IRoomService, Serializable {
+public class RoomService implements IRoomService{
 
     private IRoomStorage roomStorage;
     private IGuestRoomInfoStorage guestRoomInfoStorage;
@@ -31,21 +31,31 @@ public class RoomService implements IRoomService, Serializable {
     private final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
     private final Comparator<Room> STARS_COMPARATOR = new RoomStarsComparator();
     private final Comparator<Room> ID_COMPARATOR = new RoomIdComparator();
-    @ConfigProperty(configName = PropertyFileName.CONFIG, propertyName = PropertyName.MAX_NUMBER_OF_LAST_ROOM_GUESTS, type = PropertyType.INTEGER)
+    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.MAX_NUMBER_OF_LAST_ROOM_GUESTS, type = PropertyType.INTEGER)
     private Integer maxCountOldGuests;
-    @ConfigProperty(configName = PropertyFileName.CONFIG, propertyName = PropertyName.CHOOSE_ROOM_STATUS, type = PropertyType.BOOLEAN)
+    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS, type = PropertyType.BOOLEAN)
     private Boolean chooseRoomStatus;
     public static final Logger log = Logger.getLogger(GuestService.class);
 
 
-    public RoomService(IRoomStorage roomStorage, IGuestRoomInfoStorage guestRoomInfoStorage, IGuestStorage guestStorages) {
-        this.roomStorage = roomStorage;
-        this.guestRoomInfoStorage = guestRoomInfoStorage;
-        this.guestStorage = guestStorage;
-        this.maxCountOldGuests = maxCountOldGuests;
-        log.info("Room service started");
 
+    //start dependency injection
+
+    public void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage) {
+        this.guestRoomInfoStorage = guestRoomInfoStorage;
     }
+
+    public void setGuestStorage(IGuestStorage guestStorage) {
+        this.guestStorage = guestStorage;
+    }
+
+    public void setRoomStorage(IRoomStorage roomStorage) {
+        this.roomStorage = roomStorage;
+    }
+
+    //end dependency injection
+
+
 
     public void addRoom(Room room) {
         this.roomStorage.addEntity(room);

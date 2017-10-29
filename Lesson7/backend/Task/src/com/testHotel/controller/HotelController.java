@@ -1,57 +1,54 @@
 package com.testHotel.controller;
 
-import com.configurator.entity.ConfigProperty;
-import com.configurator.entity.PropertyFileName;
-import com.configurator.entity.PropertyName;
-import com.configurator.entity.PropertyType;
-import com.configurator.entity.main.Configurable;
+import com.configurator.entity.*;
+
 import com.propertyService.IPropertyService;
-import com.propertyService.PropertyService;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
-import com.testHotel.storeFactory.GuestStoreFactory;
-import com.testHotel.storeFactory.RoomStoreFactory;
-import com.testHotel.storeFactory.ServiceStoreFactory;
 import com.testHotel.services.*;
 import com.testHotel.storage.*;
 
-
 import java.io.Serializable;
 import java.util.List;
-import java.util.Properties;
 
 
-public class HotelController implements Serializable {
+public class HotelController implements IHotelController {
 
     private IServiceService serviceService;
     @Configurable
     private IRoomService roomService;
     private IGuestService guestService;
-    private PrinterService printerService;
-    private IPropertyService propertyService;
-    private Properties properties;
-    private FileService fileService;
-    @ConfigProperty(configName = PropertyFileName.CONFIG,propertyName = PropertyName.ROOM_PATH_FILE,type = PropertyType.STRING)
+    private IPrinterService printerService;
+    private IFileService fileService;
+    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE, type = PropertyType.STRING)
     private String roomFilePath;
 
-    public HotelController(PropertyService propertyService) {
-        IRoomStorage roomStorage = new RoomStoreFactory().createStorage();
-        IGuestStorage guestStorage = new GuestStoreFactory().createStorage();
-        IServiceStorage serviceStorage = new ServiceStoreFactory().createStorage();
-        IGuestServiceStorage guestServiceStorage = new GuestServiceStorage();
-        IGuestRoomInfoStorage guestRoomInfoStorage = new GuestRoomInfoStorage();
-        this.propertyService =propertyService;
 
+    //start dependency injection
 
-        this.properties = properties;
-        this.roomService = new RoomService(roomStorage, guestRoomInfoStorage, guestStorage);
-        this.guestService = new GuestService(guestRoomInfoStorage);
-        this.serviceService = new ServiceService(guestServiceStorage, serviceStorage);
-        this.printerService = new PrinterService();
-        this.fileService = new FileService();
-
+    public void setFileService(IFileService fileService) {
+        this.fileService = fileService;
     }
+
+    public void setPrinterService(IPrinterService printerService) {
+        this.printerService = printerService;
+    }
+
+    public void setGuestService(IGuestService guestService) {
+        this.guestService = guestService;
+    }
+
+    public void setRoomService(IRoomService roomService) {
+        this.roomService = roomService;
+    }
+
+    public void setServiceService(IServiceService serviceService) {
+        this.serviceService = serviceService;
+    }
+
+
+    //end dependency injection
 
     public void printAllRooms() {
         List<Room> roomList = this.roomService.getAllRooms();
@@ -94,7 +91,7 @@ public class HotelController implements Serializable {
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
 
-            this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
+        this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
     }
 
     public void printAllGuests() {
@@ -149,15 +146,19 @@ public class HotelController implements Serializable {
         this.printerService.printGuestServices(this.serviceService.getAllGuestServicesInfoSortedByCost(guest));
     }
 
-    public void readRoomsFromFile() {
-            List<Room> roomList = this.fileService.readRooms(this.roomFilePath);
-            this.roomService.getAllRooms().addAll(roomList);
+    public void readRoomsFromFile() throws Exception {
+        List<Room> roomList = this.fileService.readRooms(this.roomFilePath);
+        this.roomService.getAllRooms().addAll(roomList);
     }
 
     public void setRoomCost(int roomNumber, int cost, String path) {
         this.roomService.setRoomCost(roomNumber, cost);
         FileService readFromFileService = new FileService();
         readFromFileService.writeRoomsToFile(this.roomService.getAllRooms(), path);
+    }
+
+    public String getRoomFilePath() {
+        return roomFilePath;
     }
 
     public void addService(Service service) {
@@ -191,25 +192,12 @@ public class HotelController implements Serializable {
         this.getRoomService().getAllRooms().add(room);
     }
 
-    public void setGuestService(IGuestService guestService) {
-        this.guestService = guestService;
-    }
-
-    public void setRoomService(IRoomService roomService) {
-        this.roomService = roomService;
-    }
-
-    public void setServiceService(IServiceService serviceService) {
-        this.serviceService = serviceService;
-    }
-
-    public void importRoom( String path) throws IllegalArgumentException{
-        List<Room> importRoomList=this.fileService.readRooms(path);
+    public void importRoom(String path) throws Exception {
+        List<Room> importRoomList = this.fileService.readRooms(path);
         this.roomService.glueTwoArrays(importRoomList);
     }
 
-
-    public void exportRoom(String path)throws IllegalArgumentException {
+    public void exportRoom(String path) throws Exception {
         List<Room> roomList = this.roomService.getAllRooms();
         this.fileService.writeRoomsToFile(roomList, path);
     }

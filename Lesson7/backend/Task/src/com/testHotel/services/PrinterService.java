@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PrinterService implements Serializable {
+public class PrinterService implements IPrinterService {
 
     public void printRooms(List<Room> roomList) {
 

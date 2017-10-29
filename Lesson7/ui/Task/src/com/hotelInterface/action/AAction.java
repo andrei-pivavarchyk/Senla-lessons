@@ -1,6 +1,8 @@
 package com.hotelInterface.action;
 
 import com.testHotel.controller.HotelController;
+import com.testHotel.controller.IHotelController;
+import com.testHotel.services.IPrinterService;
 import com.testHotel.services.PrinterService;
 import com.hotelInterface.service.ConsoleService;
 import com.hotelInterface.service.MainService;
@@ -8,11 +10,11 @@ import com.hotelInterface.service.MainService;
 import java.io.Serializable;
 
 public class AAction implements Serializable{
-    private HotelController hotelController = MainService.getMainService().getHotelController();
-    private PrinterService printer = MainService.getMainService().getPrinterService();
+    private IHotelController hotelController = MainService.getMainService().getHotelController();
+    private IPrinterService printer = MainService.getMainService().getPrinterService();
     private ConsoleService consoleService = ConsoleService.getConsoleService();
 
-    public HotelController getHotelController() {
+    public IHotelController getHotelController() {
         return hotelController;
     }
 
@@ -20,7 +22,7 @@ public class AAction implements Serializable{
         return consoleService;
     }
 
-    public PrinterService getPrinter() {
+    public IPrinterService getPrinter() {
         return printer;
     }
 }

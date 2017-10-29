@@ -18,12 +18,17 @@ public class GuestService implements IGuestService, Serializable {
     private IGuestRoomInfoStorage guestRoomInfoStorage;
     private final Comparator<Guest> NAME_COMPARATOR = new GuestNameComparator();
     private final Comparator<GuestRoomInfo> DATE_COMPARATOR = new GuestRoomInfoDateComparator();
-    public static final Logger log = Logger.getLogger(GuestService.class);
+    public Logger log = Logger.getLogger(GuestService.class);
 
-    public GuestService(IGuestRoomInfoStorage guestRoomInfoStorage) {
+    //start dependency injection
+    public void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
-        log.info("Guest Service started");
+    }
 
+    //end start dependency injection
+
+    public IGuestRoomInfoStorage getGuestRoomInfoStorage() {
+        return guestRoomInfoStorage;
     }
 
     public ArrayList<Guest> getAllGuests() {
