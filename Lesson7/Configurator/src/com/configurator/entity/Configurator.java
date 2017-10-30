@@ -36,7 +36,6 @@ public class Configurator implements IConfigurator{
             if (field.isAnnotationPresent(Configurable.class)) {
                 configureObjects.add(field.get(object));
             }
-
         }
 
         for (Object object2 : configureObjects) {
@@ -46,7 +45,6 @@ public class Configurator implements IConfigurator{
     }
 
     public Field getBooleanProperty(Object object, Field field, IPropertyService propertyService, String configPath,PropertyName propertyName) throws Exception {
-
 
         Boolean booleanProperty = Boolean.valueOf(propertyService.getProperties(configPath).getProperty(propertyName.toString()));
         field.set(object, booleanProperty);

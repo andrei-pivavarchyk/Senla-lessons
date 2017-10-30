@@ -13,26 +13,25 @@ import com.testHotel.service.IPrinterService;
 import com.hotelInterface.entity.ProgramState;
 
 
-public class MainService {
-
+public class StartHotelService {
+    private static StartHotelService startHotelService;
     private IHotelController hotelController;
     private ISerializableService serializableService;
-    private static MainService mainService;
     private DependencyService dependencyService;
     private IConfigurator configurator;
     private IPropertyService propertyService;
 
-    private MainService() {
+    private StartHotelService() {
         this.dependencyService = new DependencyService();
         this.configurator=new Configurator();
         this.propertyService=new PropertyService();
     }
 
-    public static synchronized MainService getMainService() {
-        if (mainService == null) {
-            mainService = new MainService();
+    public static synchronized StartHotelService getStartHotelService() {
+        if (startHotelService == null) {
+            startHotelService = new StartHotelService();
         }
-        return mainService;
+        return startHotelService;
     }
 
     public void startHotel() throws Exception {

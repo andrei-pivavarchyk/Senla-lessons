@@ -1,17 +1,14 @@
 package com.hotelInterface;
 
 import com.hotelInterface.controller.MenuController;
-import property.PropertyService;
-import com.hotelInterface.service.MainService;
-
-import java.util.Properties;
+import com.hotelInterface.service.StartHotelService;
 
 public class Main {
 
     public static void main(String[] args) {
 
         try {
-            MainService.getMainService().startHotel();
+            StartHotelService.getStartHotelService().startHotel();
         } catch (Exception e) {
             e.printStackTrace();
         }

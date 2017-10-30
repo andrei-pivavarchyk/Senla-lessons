@@ -1,12 +1,11 @@
 package com.hotelInterface.controller;
 
-import com.testHotel.controller.HotelController;
+import com.hotelInterface.service.StartHotelService;
 import com.hotelInterface.entity.Builder;
 import com.hotelInterface.entity.Menu;
 import com.hotelInterface.entity.Navigator;
 import com.hotelInterface.entity.ProgramState;
 import com.hotelInterface.service.ConsoleService;
-import com.hotelInterface.service.MainService;
 import com.testHotel.controller.IHotelController;
 
 public class MenuController {
@@ -20,7 +19,7 @@ public class MenuController {
     }
 
     public void run() {
-        //  MainService.getMainService().setHotelController(lastHotel);
+        //  StartHotelService.getMainService().setHotelController(lastHotel);
 
         Menu mainMenu = this.builder.buildMainMenu();
         this.navigator = new Navigator();
@@ -46,10 +45,10 @@ public class MenuController {
     }
 
     public void saveProgramState() {
-        IHotelController hotel = MainService.getMainService().getHotelController();
+        IHotelController hotel = StartHotelService.getStartHotelService().getHotelController();
         ProgramState programState = new ProgramState();
         programState.setRoomList(hotel.getRoomService().getAllRooms());
 
-        MainService.getMainService().getSerializableService().serializable(programState);
+        StartHotelService.getStartHotelService().getSerializableService().serializable(programState);
     }
 }
