@@ -2,7 +2,7 @@
 package com.testHotel.comparator;
 
 import com.testHotel.entity.Room;
-import com.testHotel.services.NullCheck;
+import com.testHotel.service.NullCheck;
 
 import java.io.Serializable;
 import java.util.Comparator;

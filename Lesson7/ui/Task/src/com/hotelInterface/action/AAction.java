@@ -2,8 +2,8 @@ package com.hotelInterface.action;
 
 import com.testHotel.controller.HotelController;
 import com.testHotel.controller.IHotelController;
-import com.testHotel.services.IPrinterService;
-import com.testHotel.services.PrinterService;
+import com.testHotel.service.IPrinterService;
+import com.testHotel.service.PrinterService;
 import com.hotelInterface.service.ConsoleService;
 import com.hotelInterface.service.MainService;
 

@@ -1,13 +1,10 @@
-package com.testHotel.services;
+package com.testHotel.service;
 
 
 import com.danco.training.TextFileWorker;
 import com.testHotel.entity.Room;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

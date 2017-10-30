@@ -8,8 +8,8 @@ import com.hotelInterface.entity.ActionEnumResult;
 import com.testHotel.controller.IHotelController;
 import com.testHotel.entity.Service;
 import com.hotelInterface.service.MainService;
-import com.testHotel.services.IPrinterService;
-import com.testHotel.services.PrinterService;
+import com.testHotel.service.IPrinterService;
+import com.testHotel.service.PrinterService;
 
 import java.util.List;
 

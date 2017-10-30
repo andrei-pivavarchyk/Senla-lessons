@@ -1,4 +1,4 @@
-package com.testHotel.services;
+package com.testHotel.service;
 
 import com.configurator.entity.ConfigProperty;
 import com.configurator.entity.PropertyFilePath;
@@ -17,7 +17,6 @@ import com.testHotel.entity.GuestRoomInfo;
 import com.testHotel.entity.RoomStatus;
 import org.apache.log4j.Logger;
 
-import java.io.Serializable;
 import java.util.*;
 
 
@@ -126,6 +125,8 @@ public class RoomService implements IRoomService{
         }
 
     }
+
+
 
 
     private int getCountOldGuests(Room room) {

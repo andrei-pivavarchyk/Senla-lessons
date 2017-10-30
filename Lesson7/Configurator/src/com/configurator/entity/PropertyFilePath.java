@@ -3,7 +3,8 @@ package com.configurator.entity;
 
 public enum PropertyFilePath {
 
-    CONFIG_HOTEL_PROPERTIES("../resources/config.properties");
+    CONFIG_HOTEL_PROPERTIES("../resources/config.properties"),
+    CONFIG_DEPENDENCY("../resources/dependency.properties");
 
     private String path;
 

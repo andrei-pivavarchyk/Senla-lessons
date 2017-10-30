@@ -9,8 +9,8 @@ import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestServiceInfo;
 import com.hotelInterface.service.ConsoleService;
 import com.hotelInterface.service.MainService;
-import com.testHotel.services.IPrinterService;
-import com.testHotel.services.PrinterService;
+import com.testHotel.service.IPrinterService;
+import com.testHotel.service.PrinterService;
 
 import java.util.ArrayList;
 

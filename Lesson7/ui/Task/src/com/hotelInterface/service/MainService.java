@@ -1,12 +1,15 @@
 package com.hotelInterface.service;
 
 
+import com.configurator.entity.Configurator;
+import com.configurator.entity.IConfigurator;
 import com.propertyService.IPropertyService;
+import com.propertyService.PropertyService;
 import com.serializingService.ISerializableService;
 import com.testHotel.controller.IHotelController;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
-import com.testHotel.services.IPrinterService;
+import com.testHotel.service.IPrinterService;
 import com.hotelInterface.entity.ProgramState;
 
 
@@ -14,12 +17,15 @@ public class MainService {
 
     private IHotelController hotelController;
     private ISerializableService serializableService;
-    private ProgramState programState;
     private static MainService mainService;
     private DependencyService dependencyService;
+    private IConfigurator configurator;
+    private IPropertyService propertyService;
 
     private MainService() {
         this.dependencyService = new DependencyService();
+        this.configurator=new Configurator();
+        this.propertyService=new PropertyService();
     }
 
     public static synchronized MainService getMainService() {
@@ -31,12 +37,16 @@ public class MainService {
 
     public void startHotel() throws Exception {
 
-        this.hotelController = this.dependencyService.getHotelController();
+        this.configurator.configure(this.dependencyService, propertyService);
         this.serializableService = this.dependencyService.getSerializableService();
+        this.configurator.configure(this.serializableService, propertyService);
+
+
+
         ProgramState programState = (ProgramState) serializableService.deSerializable();
         IPropertyService propertyService = this.dependencyService.getPropertyService();
-        this.dependencyService.getConfigurator().configure(this.hotelController, propertyService);
-        this.dependencyService.getConfigurator().configure(this.serializableService, propertyService);
+       this.hotelController=this.dependencyService.getHotelController();
+        this.configurator.configure(this.serializableService, propertyService);
 
 
         Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
@@ -56,7 +66,7 @@ public class MainService {
     }
 
     public IPrinterService getPrinterService() {
-        return this.dependencyService.getPrinterService();
+        return this.hotelController.getPrinterService();
     }
 
     public IHotelController getHotelController() {

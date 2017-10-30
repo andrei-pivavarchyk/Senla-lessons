@@ -2,30 +2,28 @@ package com.testHotel.controller;
 
 import com.configurator.entity.*;
 
-import com.propertyService.IPropertyService;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
-import com.testHotel.services.*;
-import com.testHotel.storage.*;
+import com.testHotel.service.*;
 
-import java.io.Serializable;
 import java.util.List;
 
 
 public class HotelController implements IHotelController {
 
     private IServiceService serviceService;
+
     @Configurable
     private IRoomService roomService;
     private IGuestService guestService;
     private IPrinterService printerService;
     private IFileService fileService;
+
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE, type = PropertyType.STRING)
     private String roomFilePath;
 
 
-    //start dependency injection
 
     public void setFileService(IFileService fileService) {
         this.fileService = fileService;
@@ -45,6 +43,10 @@ public class HotelController implements IHotelController {
 
     public void setServiceService(IServiceService serviceService) {
         this.serviceService = serviceService;
+    }
+
+    public IPrinterService getPrinterService() {
+        return printerService;
     }
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {

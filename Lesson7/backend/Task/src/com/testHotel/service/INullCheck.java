@@ -1,4 +1,4 @@
-package com.testHotel.services;
+package com.testHotel.service;
 
 
 public interface INullCheck {

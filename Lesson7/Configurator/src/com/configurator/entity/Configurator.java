@@ -1,16 +1,11 @@
 package com.configurator.entity;
 
-
 import com.propertyService.IPropertyService;
-import com.propertyService.PropertyService;
-
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-public class Configurator {
+public class Configurator implements IConfigurator{
 
     public Object configure(Object object, IPropertyService propertyService) throws Exception {
         Class cl = object.getClass();

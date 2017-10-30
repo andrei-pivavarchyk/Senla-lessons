@@ -25,7 +25,7 @@ public class Main {
         Guest guest1 = new Guest(1, "Bob", "White");
         Guest guest2 = new Guest(1, "Alice", "White");
         Guest guest3 = new Guest(1, "Nadya", "White");
-        //creating hotel.services
+        //creating hotel.service
         Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
         Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
         Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);

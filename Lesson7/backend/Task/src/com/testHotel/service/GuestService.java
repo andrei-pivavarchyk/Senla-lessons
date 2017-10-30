@@ -1,4 +1,4 @@
-package com.testHotel.services;
+package com.testHotel.service;
 
 import com.testHotel.comparator.GuestNameComparator;
 import com.testHotel.comparator.GuestRoomInfoDateComparator;

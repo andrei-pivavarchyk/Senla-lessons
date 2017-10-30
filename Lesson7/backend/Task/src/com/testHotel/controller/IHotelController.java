@@ -4,7 +4,7 @@ package com.testHotel.controller;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
-import com.testHotel.services.*;
+import com.testHotel.service.*;
 
 public interface IHotelController {
     void setFileService(IFileService fileService);
@@ -25,5 +25,6 @@ public interface IHotelController {
     void importRoom(String path)throws Exception;
     void exportRoom(String path)throws Exception;
     String getRoomFilePath();
+    IPrinterService getPrinterService();
 
 }
