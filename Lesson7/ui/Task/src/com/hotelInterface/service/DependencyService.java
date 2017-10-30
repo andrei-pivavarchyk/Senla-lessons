@@ -3,13 +3,12 @@ package com.hotelInterface.service;
 
 import com.configurator.entity.*;
 import com.propertyService.IPropertyService;
+import com.propertyService.PropertyService;
 import com.serializingService.ISerializableService;
 import com.testHotel.controller.IHotelController;
 import com.testHotel.service.*;
 import com.testHotel.storage.*;
 import org.apache.log4j.Logger;
-
-import java.util.HashMap;
 
 public class DependencyService {
     IFileService fileServicde = new FileService();
@@ -25,14 +24,10 @@ public class DependencyService {
     private String guestServiceStorage;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_DEPENDENCY, propertyName = PropertyName.ISERIALIZABLE, type = PropertyType.STRING)
     private String serializableService;
-    @ConfigProperty(configPath = PropertyFilePath.CONFIG_DEPENDENCY, propertyName = PropertyName.IPROPERTYSERVICE, type = PropertyType.STRING)
-    private String propertyService;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_DEPENDENCY, propertyName = PropertyName.IFILESERVICE, type = PropertyType.STRING)
     private String fileService;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_DEPENDENCY, propertyName = PropertyName.IPRINTERSERVICE, type = PropertyType.STRING)
     private String printerService;
-    @ConfigProperty(configPath = PropertyFilePath.CONFIG_DEPENDENCY, propertyName = PropertyName.ICONFIGURATOR, type = PropertyType.STRING)
-    private String configurator;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_DEPENDENCY, propertyName = PropertyName.IGUESTSERVICE, type = PropertyType.STRING)
     private String guestService;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_DEPENDENCY, propertyName = PropertyName.IROOMSERVICE, type = PropertyType.STRING)
@@ -41,8 +36,14 @@ public class DependencyService {
     private String serviceService;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_DEPENDENCY, propertyName = PropertyName.IHOTELCONTROLLER, type = PropertyType.STRING)
     private String hotelController;
-    private HashMap<String,Object> allStorages;
+    private IConfigurator configurator;
+    private IPropertyService propertyService;
     public Logger log = Logger.getLogger(DependencyService.class);
+
+    public DependencyService() {
+        this.configurator = new Configurator();
+        this.propertyService = new PropertyService();
+    }
 
     private IGuestStorage getGuestStorage() {
         try {
@@ -166,22 +167,13 @@ public class DependencyService {
 
     }
 
-
     public ISerializableService getSerializableService() {
 
         try {
-            Class serializableService = Class.forName(this.serializableService);
-            return (ISerializableService) serializableService.newInstance();
-        } catch (Exception e) {
-            log.error(e);
-            return null;
-        }
-    }
-
-    public IPropertyService getPropertyService() {
-        try {
-            Class propertyService = Class.forName(this.propertyService);
-            return (IPropertyService) propertyService.newInstance();
+            Class serializableServiceClass = Class.forName(this.serializableService);
+            ISerializableService serializableService = (ISerializableService) serializableServiceClass.newInstance();
+            this.configurator.configure(serializableService, this.propertyService);
+            return serializableService;
         } catch (Exception e) {
             log.error(e);
             return null;
@@ -198,10 +190,13 @@ public class DependencyService {
             return null;
         }
     }
-    //End creating all services
+
+    public void configureDependencyService() throws Exception {
+        this.configurator.configure(this, this.propertyService);
+    }
+
 
     public IHotelController getHotelController() {
-
         IHotelController hotelControllerWithDependencies = this.createHotelController();
         hotelControllerWithDependencies.setFileService(this.getFileService());
         hotelControllerWithDependencies.setGuestService(this.getGuestService());
