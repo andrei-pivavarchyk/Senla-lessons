@@ -222,7 +222,6 @@ public class RoomService implements IRoomService, Serializable {
         for (Room importRoom : importList) {
             int importRoomID = importRoom.getId();
             Room checkingRoom = this.getRoomById(importRoomID);
-
             if (checkingRoom == null) {
                 currentRoomList.add(importRoom);
             } else {

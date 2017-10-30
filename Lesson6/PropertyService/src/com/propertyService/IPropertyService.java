@@ -10,6 +10,5 @@ public interface IPropertyService {
     Integer getMaxNumberOfLastRoomGuests();
     String getRoomPathFile();
     String getSerializablePathFile();
-    String getExportPath();
 
 }

@@ -20,7 +20,7 @@ public class PropService implements IPropertyService {
 
     public Boolean getChooseRoomStatus() {
         if (this.properties != null) {
-            return Boolean.valueOf(this.properties.getProperty(String.valueOf("CHOOSE_ROOM_STATUS")));
+            return Boolean.valueOf(this.properties.getProperty("CHOOSE_ROOM_STATUS"));
         } else {
             return null;
         }
@@ -28,7 +28,7 @@ public class PropService implements IPropertyService {
 
     public Integer getMaxNumberOfLastRoomGuests() {
         if (this.properties != null) {
-            return Integer.valueOf(this.properties.getProperty(String.valueOf("MAX_NUMBER_OF_LAST_ROOM_GUESTS")));
+            return Integer.valueOf(this.properties.getProperty("MAX_NUMBER_OF_LAST_ROOM_GUESTS"));
         } else {
             return null;
         }
@@ -36,7 +36,7 @@ public class PropService implements IPropertyService {
 
     public String getRoomPathFile() {
         if (this.properties != null) {
-            return this.properties.getProperty(String.valueOf("ROOM_PATH_FILE"));
+            return this.properties.getProperty("ROOM_PATH_FILE");
         } else {
             return null;
         }
@@ -44,17 +44,10 @@ public class PropService implements IPropertyService {
 
     public String getSerializablePathFile() {
         if (this.properties != null) {
-            return this.properties.getProperty(String.valueOf("SERIALIZABLE_PATH_FILE"));
+            return this.properties.getProperty("SERIALIZABLE_PATH_FILE");
         } else {
             return null;
         }
     }
 
-    public String getExportPath() {
-        if (this.properties != null) {
-            return this.properties.getProperty(String.valueOf("EXPORT_PATH"));
-        } else {
-            return null;
-        }
-    }
 }

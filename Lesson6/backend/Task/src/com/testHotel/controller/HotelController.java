@@ -9,6 +9,8 @@ import com.testHotel.storeFactory.RoomStoreFactory;
 import com.testHotel.storeFactory.ServiceStoreFactory;
 import com.testHotel.services.*;
 import com.testHotel.storage.*;
+import org.apache.log4j.Logger;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
@@ -22,6 +24,7 @@ public class HotelController {
     private PrinterService printerService;
     private IPropertyService propertyService;
     private FileService fileService;
+    public static final Logger log= Logger.getLogger(GuestService.class);
 
     public HotelController(IPropertyService propertyService) {
         IRoomStorage roomStorage = new RoomStoreFactory().createStorage();
@@ -203,7 +206,7 @@ public class HotelController {
             Room cloneRoom = this.roomService.cloneRoom(room);
             return cloneRoom;
         } catch (CloneNotSupportedException e) {
-            this.printerService.printString("Cannot cloe object");
+           log.info("Cannot clone object");
         }
         return null;
     }
