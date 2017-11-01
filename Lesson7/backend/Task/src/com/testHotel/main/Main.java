@@ -4,6 +4,7 @@ import com.testHotel.entity.Guest;
 import com.testHotel.controller.HotelController;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
+import com.testHotel.service.IPrinterService;
 
 
 import java.util.Properties;
@@ -12,7 +13,6 @@ import java.util.Properties;
 public class Main {
 
     public static void main(String[] args) {
-
 
     }
 

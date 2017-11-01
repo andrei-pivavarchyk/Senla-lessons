@@ -1,4 +1,4 @@
-package com.configurator.entity;
+package com.configurator;
 
 public enum PropertyType {
     BOOLEAN,

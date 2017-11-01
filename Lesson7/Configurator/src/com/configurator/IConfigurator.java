@@ -1,9 +1,7 @@
-package com.configurator.entity;
+package com.configurator;
 
 import com.propertyService.IPropertyService;
-import com.propertyService.PropertyService;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 
 public interface IConfigurator {

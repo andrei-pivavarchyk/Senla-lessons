@@ -1,5 +1,7 @@
 package com.hotelInterface.service;
 
+import com.configurator.IConfigurator;
+import com.dependencyService.DependencyService;
 import com.serializingService.ISerializableService;
 import com.testHotel.controller.IHotelController;
 import com.testHotel.entity.Service;
@@ -9,28 +11,14 @@ import com.hotelInterface.entity.ProgramState;
 
 
 public class StartHotelService {
-    private static StartHotelService startHotelService;
-    private DependencyService dependencyService;
-    private IHotelController hotelController;
-    private ISerializableService serializableService;
-
-    private StartHotelService() {
-        this.dependencyService = new DependencyService();
-    }
-
-    public static synchronized StartHotelService getStartHotelService() {
-        if (startHotelService == null) {
-            startHotelService = new StartHotelService();
-        }
-        return startHotelService;
-    }
-
+    private IHotelController hotelController=(IHotelController) DependencyService.getDI().getInstance(IHotelController.class) ;
+    private ISerializableService serializableService=(ISerializableService) DependencyService.getDI().getInstance(ISerializableService.class);
+    private IConfigurator configurator=(IConfigurator) DependencyService.getDI().getInstance(IConfigurator.class);
     public void startHotel() throws Exception {
 
-        this.dependencyService.configureDependencyService();
-        this.hotelController = this.dependencyService.getHotelController();
 
-        this.serializableService = this.dependencyService.getSerializableService();
+       this.configurator.configure( this.hotelController,DependencyService.getDI().getPropertyService());
+
         ProgramState programState = (ProgramState) this.serializableService.deSerializable();
 
         Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
@@ -40,7 +28,6 @@ public class StartHotelService {
         this.hotelController.addService(service1);
         this.hotelController.addService(service2);
         this.hotelController.addService(service3);
-
 
         if (programState == null) {
             this.hotelController.readRoomsFromFile();
@@ -58,11 +45,7 @@ public class StartHotelService {
     }
 
     public ISerializableService getSerializableService() {
-        if (this.serializableService != null) {
-            return this.serializableService;
-        } else {
-            return this.dependencyService.getSerializableService();
-        }
+        return serializableService;
     }
 }
 

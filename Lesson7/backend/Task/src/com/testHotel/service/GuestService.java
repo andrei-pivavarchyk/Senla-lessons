@@ -1,5 +1,6 @@
 package com.testHotel.service;
 
+import com.dependencyService.DependencyService;
 import com.testHotel.comparator.GuestNameComparator;
 import com.testHotel.comparator.GuestRoomInfoDateComparator;
 import com.testHotel.entity.Guest;
@@ -15,9 +16,9 @@ import java.util.concurrent.TimeUnit;
 
 public class GuestService implements IGuestService, Serializable {
 
-    private IGuestRoomInfoStorage guestRoomInfoStorage;
-    private final Comparator<Guest> NAME_COMPARATOR = new GuestNameComparator();
-    private final Comparator<GuestRoomInfo> DATE_COMPARATOR = new GuestRoomInfoDateComparator();
+    private IGuestRoomInfoStorage guestRoomInfoStorage=(IGuestRoomInfoStorage) DependencyService.getDI().getInstance(IGuestRoomInfoStorage.class);
+    private static final Comparator<Guest> NAME_COMPARATOR = new GuestNameComparator();
+    private static final Comparator<GuestRoomInfo> DATE_COMPARATOR = new GuestRoomInfoDateComparator();
     public Logger log = Logger.getLogger(GuestService.class);
 
     //start dependency injection

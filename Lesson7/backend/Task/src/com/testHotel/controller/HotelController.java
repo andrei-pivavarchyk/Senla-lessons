@@ -1,7 +1,8 @@
 package com.testHotel.controller;
 
-import com.configurator.entity.*;
+import com.configurator.*;
 
+import com.dependencyService.DependencyService;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
@@ -12,13 +13,13 @@ import java.util.List;
 
 public class HotelController implements IHotelController {
 
-    private IServiceService serviceService;
+    private IServiceService serviceService= (IServiceService) DependencyService.getDI().getInstance(IServiceService.class);
 
     @Configurable
-    private IRoomService roomService;
-    private IGuestService guestService;
-    private IPrinterService printerService;
-    private IFileService fileService;
+    private IRoomService roomService=(IRoomService)DependencyService.getDI().getInstance(IRoomService.class);
+    private IGuestService guestService=(IGuestService)DependencyService.getDI().getInstance(IGuestService.class);
+    private IPrinterService printerService=(IPrinterService)DependencyService.getDI().getInstance(IPrinterService.class);
+    private IFileService fileService=(IFileService)DependencyService.getDI().getInstance(IFileService.class);
 
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE, type = PropertyType.STRING)
     private String roomFilePath;

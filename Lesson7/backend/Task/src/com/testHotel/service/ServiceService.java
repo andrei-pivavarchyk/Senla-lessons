@@ -1,5 +1,6 @@
 package com.testHotel.service;
 
+import com.dependencyService.DependencyService;
 import com.testHotel.comparator.GuestServiceInfoCostComparator;
 import com.testHotel.comparator.GuestServiceInfoDateComparator;
 import com.testHotel.comparator.ServiceCostComparator;
@@ -7,6 +8,7 @@ import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestServiceInfo;
 import com.testHotel.entity.Service;
 import com.testHotel.storage.IGuestServiceStorage;
+import com.testHotel.storage.IGuestStorage;
 import com.testHotel.storage.IServiceStorage;
 
 import org.apache.log4j.Logger;
@@ -16,12 +18,12 @@ import java.util.*;
 
 public class ServiceService implements IServiceService,Serializable {
 
-    private IGuestServiceStorage guestServiceStorage;
-    private IServiceStorage serviceStorage;
+    private IGuestServiceStorage guestServiceStorage=(IGuestServiceStorage) DependencyService.getDI().getInstance(IGuestServiceStorage.class);
+    private IServiceStorage serviceStorage=(IServiceStorage) DependencyService.getDI().getInstance(IServiceStorage.class);
     private int guestServiceInfoCount = 0;
-    private final Comparator<GuestServiceInfo> COST_COMPARATOR= new GuestServiceInfoCostComparator();
-    private final Comparator<GuestServiceInfo> DATE_COMPARATOR= new GuestServiceInfoDateComparator();
-    private final Comparator<Service> SERVICE_COST_COMPARATOR=new ServiceCostComparator();
+    private static final Comparator<GuestServiceInfo> COST_COMPARATOR= new GuestServiceInfoCostComparator();
+    private static final Comparator<GuestServiceInfo> DATE_COMPARATOR= new GuestServiceInfoDateComparator();
+    private static final Comparator<Service> SERVICE_COST_COMPARATOR=new ServiceCostComparator();
     public static final Logger log= Logger.getLogger(GuestService.class);
 
     //start dependency injection

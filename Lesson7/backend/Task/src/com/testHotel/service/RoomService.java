@@ -4,6 +4,7 @@ import com.configurator.entity.ConfigProperty;
 import com.configurator.entity.PropertyFilePath;
 import com.configurator.entity.PropertyName;
 import com.configurator.entity.PropertyType;
+import com.dependencyService.DependencyService;
 import com.testHotel.comparator.RoomCapacityComparator;
 import com.testHotel.comparator.RoomCostComparator;
 import com.testHotel.comparator.RoomIdComparator;
@@ -22,19 +23,19 @@ import java.util.*;
 
 public class RoomService implements IRoomService{
 
-    private IRoomStorage roomStorage;
-    private IGuestRoomInfoStorage guestRoomInfoStorage;
-    private IGuestStorage guestStorage;
+    private IRoomStorage roomStorage=(IRoomStorage) DependencyService.getDI().getInstance(IRoomStorage.class);
+    private IGuestRoomInfoStorage guestRoomInfoStorage=(IGuestRoomInfoStorage) DependencyService.getDI().getInstance(IGuestRoomInfoStorage.class);;
+    private IGuestStorage guestStorage=(IGuestStorage) DependencyService.getDI().getInstance(IGuestStorage.class);
     private int guestRoomInfoCount = 0;
-    private final Comparator<Room> COST_COMPARATOR = new RoomCostComparator();
-    private final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
-    private final Comparator<Room> STARS_COMPARATOR = new RoomStarsComparator();
-    private final Comparator<Room> ID_COMPARATOR = new RoomIdComparator();
+    private static final Comparator<Room> COST_COMPARATOR = new RoomCostComparator();
+    private static final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
+    private static final Comparator<Room> STARS_COMPARATOR = new RoomStarsComparator();
+    private static final Comparator<Room> ID_COMPARATOR = new RoomIdComparator();
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.MAX_NUMBER_OF_LAST_ROOM_GUESTS, type = PropertyType.INTEGER)
     private Integer maxCountOldGuests;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS, type = PropertyType.BOOLEAN)
     private Boolean chooseRoomStatus;
-    public static final Logger log = Logger.getLogger(GuestService.class);
+    public static final Logger log = Logger.getLogger(RoomService.class);
 
 
 
@@ -121,7 +122,7 @@ public class RoomService implements IRoomService{
             this.guestStorage.addEntity(guest);
 
         } else {
-            System.out.println("There is no room with this number");
+            log.error("No room with that number");
         }
 
     }

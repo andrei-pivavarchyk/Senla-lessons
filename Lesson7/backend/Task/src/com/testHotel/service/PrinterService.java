@@ -2,6 +2,7 @@ package com.testHotel.service;
 
 
 import com.testHotel.entity.*;
+import org.apache.log4j.Logger;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class PrinterService implements IPrinterService {
 
+
     public void printRooms(List<Room> roomList) {
 
         for (Room room : roomList) {
@@ -17,7 +19,7 @@ public class PrinterService implements IPrinterService {
             System.out.println(room);
 
         }
-        System.out.println("Rooms was printed");
+
     }
 
     public void printGuestsWithRoomNumbers(List<GuestRoomInfo> guestRoomInfoList) {
@@ -28,7 +30,7 @@ public class PrinterService implements IPrinterService {
             System.out.println(new StringBuilder("Room number: ").append(guestRoomInfo.getRoom().getNumber()));
 
         }
-        System.out.println("Guests was printed");
+
 
     }
 
@@ -37,7 +39,7 @@ public class PrinterService implements IPrinterService {
             System.out.println(guest);
         }
 
-        System.out.println("Guests was printed");
+
     }
 
     public void printGuestsWithDates(List<GuestRoomInfo> guestRoomInfoList) {

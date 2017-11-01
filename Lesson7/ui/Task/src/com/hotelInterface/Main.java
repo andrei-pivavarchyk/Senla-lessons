@@ -8,7 +8,8 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            StartHotelService.getStartHotelService().startHotel();
+            StartHotelService startHotelService=new StartHotelService();
+            startHotelService.startHotel();
         } catch (Exception e) {
             e.printStackTrace();
         }

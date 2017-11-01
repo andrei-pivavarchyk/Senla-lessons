@@ -13,19 +13,16 @@ import com.testHotel.service.IPrinterService;
 import java.util.ArrayList;
 
 public class ActionShowGuestServices extends AAction implements IAction {
-    private IHotelController hotelController = StartHotelService.getStartHotelService().getHotelController();
-    private IPrinterService printer = StartHotelService.getStartHotelService().getPrinterService();
-
 
     @Override
     public ActionEnumResult execute() {
-        ArrayList<Guest> guestList = this.hotelController.getGuestSerice().getAllGuests();
-        printer.printGuests(guestList);
-        printer.printString("Choose guest/Enter number");
+        ArrayList<Guest> guestList = getHotelController().getGuestSerice().getAllGuests();
+        getPrinter().printGuests(guestList);
+        getPrinter().printString("Choose guest/Enter number");
         int guestNumber = ConsoleService.getConsoleService().getNumberForMenu(guestList.size());
             Guest guest = guestList.get(guestNumber - 1);
-            ArrayList<GuestServiceInfo> guestServiceList = this.hotelController.getServiceService().getAllGuestServicesInfo(guest);
-            printer.printGuestServices(guestServiceList);
+            ArrayList<GuestServiceInfo> guestServiceList = getHotelController().getServiceService().getAllGuestServicesInfo(guest);
+            getPrinter().printGuestServices(guestServiceList);
             return ActionEnumResult.TRUE;
     }
 }

@@ -10,6 +10,15 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/../ui/Program/configurator.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://$MODULE_DIR$/../ui/Program/Property.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -19,7 +28,18 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../ui/Task/lib/log4j-1.2.17.jar!/" />
+          <root url="jar://$MODULE_DIR$/../ui/Program/hotel.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../ui/Program/hotel.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/log4j-1.2.17.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

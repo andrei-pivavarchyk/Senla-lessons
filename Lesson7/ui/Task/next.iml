@@ -57,7 +57,16 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../Program/Configurator.jar!/" />
+          <root url="jar://$MODULE_DIR$/../Program/configurator.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../Program/DependencyService.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

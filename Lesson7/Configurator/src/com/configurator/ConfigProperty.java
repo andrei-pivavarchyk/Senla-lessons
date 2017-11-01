@@ -1,6 +1,5 @@
-package com.configurator.entity;
+package com.configurator;
 
-import sun.reflect.annotation.TypeAnnotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

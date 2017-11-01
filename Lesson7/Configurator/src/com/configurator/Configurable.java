@@ -1,4 +1,4 @@
-package com.configurator.entity;
+package com.configurator;
 
 import com.propertyService.PropertyService;
 

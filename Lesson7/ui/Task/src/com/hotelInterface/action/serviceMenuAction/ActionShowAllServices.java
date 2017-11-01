@@ -12,12 +12,11 @@ import com.testHotel.service.IPrinterService;
 import java.util.List;
 
 public class ActionShowAllServices extends AAction implements IAction {
-    private IHotelController hotelController = StartHotelService.getStartHotelService().getHotelController();
-    private IPrinterService printer= StartHotelService.getStartHotelService().getPrinterService();
+
 
     public  ActionEnumResult execute(){
-       List<Service> serviceList= hotelController.getServiceService().getAllHotelServices();
-        printer.printServices(serviceList);
+       List<Service> serviceList= getHotelController().getServiceService().getAllHotelServices();
+        getPrinter().printServices(serviceList);
         return ActionEnumResult.TRUE;
     }
 }
