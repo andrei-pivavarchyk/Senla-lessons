@@ -21,9 +21,8 @@ public class HotelController implements IHotelController {
     private IPrinterService printerService=(IPrinterService)DependencyService.getDI().getInstance(IPrinterService.class);
     private IFileService fileService=(IFileService)DependencyService.getDI().getInstance(IFileService.class);
 
-    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE, type = PropertyType.STRING)
+    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE)
     private String roomFilePath;
-
 
 
     public void setFileService(IFileService fileService) {

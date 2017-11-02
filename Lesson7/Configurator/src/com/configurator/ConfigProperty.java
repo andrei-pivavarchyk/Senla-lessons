@@ -10,5 +10,4 @@ import java.lang.annotation.Target;
 public @interface ConfigProperty {
     PropertyFilePath configPath();
     PropertyName propertyName();
-    PropertyType type();
 }

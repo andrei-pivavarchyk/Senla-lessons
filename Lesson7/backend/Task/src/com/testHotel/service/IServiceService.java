@@ -20,4 +20,5 @@ public interface IServiceService {
     ArrayList<Service> getAllHotelServicesSortedByCost();
     void setServiceStorage(IServiceStorage serviceStorage);
     void setGuestServiceStorage(IGuestServiceStorage guestServiceStorage);
+    IServiceStorage getServiceStorage();
 }

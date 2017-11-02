@@ -1,9 +1,9 @@
 package com.testHotel.service;
 
-import com.configurator.entity.ConfigProperty;
-import com.configurator.entity.PropertyFilePath;
-import com.configurator.entity.PropertyName;
-import com.configurator.entity.PropertyType;
+
+import com.configurator.ConfigProperty;
+import com.configurator.PropertyFilePath;
+import com.configurator.PropertyName;
 import com.dependencyService.DependencyService;
 import com.testHotel.comparator.RoomCapacityComparator;
 import com.testHotel.comparator.RoomCostComparator;
@@ -31,9 +31,9 @@ public class RoomService implements IRoomService{
     private static final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
     private static final Comparator<Room> STARS_COMPARATOR = new RoomStarsComparator();
     private static final Comparator<Room> ID_COMPARATOR = new RoomIdComparator();
-    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.MAX_NUMBER_OF_LAST_ROOM_GUESTS, type = PropertyType.INTEGER)
+    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.MAX_NUMBER_OF_LAST_ROOM_GUESTS)
     private Integer maxCountOldGuests;
-    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS, type = PropertyType.BOOLEAN)
+    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS)
     private Boolean chooseRoomStatus;
     public static final Logger log = Logger.getLogger(RoomService.class);
 
@@ -124,10 +124,7 @@ public class RoomService implements IRoomService{
         } else {
             log.error("No room with that number");
         }
-
     }
-
-
 
 
     private int getCountOldGuests(Room room) {

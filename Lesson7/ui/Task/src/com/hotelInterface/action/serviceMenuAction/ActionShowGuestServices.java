@@ -20,9 +20,14 @@ public class ActionShowGuestServices extends AAction implements IAction {
         getPrinter().printGuests(guestList);
         getPrinter().printString("Choose guest/Enter number");
         int guestNumber = ConsoleService.getConsoleService().getNumberForMenu(guestList.size());
+        try {
             Guest guest = guestList.get(guestNumber - 1);
             ArrayList<GuestServiceInfo> guestServiceList = getHotelController().getServiceService().getAllGuestServicesInfo(guest);
             getPrinter().printGuestServices(guestServiceList);
             return ActionEnumResult.TRUE;
+        } catch (IndexOutOfBoundsException e) {
+            getLog().error(e.toString());
+        }
+        return ActionEnumResult.TRUE;
     }
 }

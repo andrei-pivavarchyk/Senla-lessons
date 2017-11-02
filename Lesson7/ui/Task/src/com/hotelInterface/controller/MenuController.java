@@ -50,6 +50,7 @@ public class MenuController {
         IHotelController hotel =(IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
         ProgramState programState = new ProgramState();
         programState.setRoomList(hotel.getRoomService().getAllRooms());
+        programState.setServiceList(hotel.getServiceService().getAllHotelServices());
 
 
       this.serializableService.serializable(programState);

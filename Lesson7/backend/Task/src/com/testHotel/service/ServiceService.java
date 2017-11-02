@@ -46,6 +46,7 @@ public class ServiceService implements IServiceService,Serializable {
         guestServiceInfoCount++;
     }
 
+
     public ArrayList<GuestServiceInfo> getAllGuestServicesInfo(Guest guest) {
         ArrayList<GuestServiceInfo> allGuestServicesInfo = new ArrayList<GuestServiceInfo>();
         for (GuestServiceInfo guestServiceInfo : this.guestServiceStorage.getAllEntities()) {
@@ -83,4 +84,7 @@ public class ServiceService implements IServiceService,Serializable {
         return allServices;
     }
 
+    public IServiceStorage getServiceStorage() {
+        return serviceStorage;
+    }
 }

@@ -2,6 +2,7 @@ package com.hotelInterface.entity;
 
 import com.hotelInterface.action.*;
 import com.hotelInterface.action.guestMenuAction.ActionShowAllGuests;
+import com.hotelInterface.action.serviceMenuAction.ActionAddHotelService;
 import com.hotelInterface.action.serviceMenuAction.ActionShowAllServices;
 import com.hotelInterface.action.serviceMenuAction.ActionShowGuestServices;
 import com.hotelInterface.action.roomMenuAction.*;
@@ -124,17 +125,20 @@ public class Builder {
     private Menu buildServiceMenu(){
         IAction action1 = new ActionShowAllServices();
         IAction action2 = new ActionShowGuestServices();
-        IAction action3 = new ActionPreviousMenu();
+        IAction action3 = new ActionAddHotelService();
+        IAction action4 = new ActionPreviousMenu();
 
         Menu menu = new Menu("Service menu");
 
         MenuItem menuItem1 = new MenuItem("Show all hotel services", action1);
         MenuItem menuItem2 = new MenuItem("Show some guest services", action2);
-        MenuItem menuItem3 = new MenuItem("PreviousMenu", action3);
+        MenuItem menuItem3 = new MenuItem("Add new hotel service", action3);
+        MenuItem menuItem4 = new MenuItem("PreviousMenu", action4);
 
         menu.addMenuItem(menuItem1);
         menu.addMenuItem(menuItem2);
         menu.addMenuItem(menuItem3);
+        menu.addMenuItem(menuItem4);
 
         return menu;
     }

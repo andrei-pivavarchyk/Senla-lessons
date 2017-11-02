@@ -17,22 +17,17 @@ public class StartHotelService {
     public void startHotel() throws Exception {
 
 
-       this.configurator.configure( this.hotelController,DependencyService.getDI().getPropertyService());
-
+       this.configurator.configure(this.hotelController);
+this.configurator.configure(this.serializableService);
         ProgramState programState = (ProgramState) this.serializableService.deSerializable();
 
-        Service service1 = new Service(1, ServiceType.EAT, "Vodka", 10);
-        Service service2 = new Service(1, ServiceType.EAT, "Pelmeni", 15);
-        Service service3 = new Service(1, ServiceType.EAT, "Spa", 20);
-
-        this.hotelController.addService(service1);
-        this.hotelController.addService(service2);
-        this.hotelController.addService(service3);
 
         if (programState == null) {
             this.hotelController.readRoomsFromFile();
         } else {
             this.hotelController.getRoomService().getAllRooms().addAll(programState.getRoomList());
+            this.hotelController.getServiceService().getAllHotelServices().addAll(programState.getServiceList());
+
         }
     }
 

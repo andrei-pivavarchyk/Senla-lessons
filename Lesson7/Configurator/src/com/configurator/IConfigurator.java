@@ -5,8 +5,8 @@ import com.propertyService.IPropertyService;
 import java.lang.reflect.Field;
 
 public interface IConfigurator {
-    Object configure(Object object, IPropertyService propertyService) throws Exception;
-    Field getBooleanProperty(Object object, Field field, IPropertyService propertyService, String configPath,PropertyName propertyName) throws Exception;
-    Field getIntegerProperty(Object object, Field field, IPropertyService propertyService, String configPath,PropertyName propertyName) throws Exception;
-    Field getStringProperty(Object object, Field field, IPropertyService propertyService, String configPath,PropertyName propertyName) throws Exception;
+    Object configure(Object object);
+    void setBooleanProperty(Object object, Field field, String configPath,PropertyName propertyName) throws Exception;
+    void setIntegerProperty(Object object, Field field,  String configPath,PropertyName propertyName) throws Exception;
+    void setStringProperty(Object object, Field field, String configPath,PropertyName propertyName) throws Exception;
     }
