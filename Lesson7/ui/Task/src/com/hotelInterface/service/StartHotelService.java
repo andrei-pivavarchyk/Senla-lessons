@@ -30,6 +30,7 @@ public class StartHotelService {
             this.hotelController.getServiceService().getAllHotelServices().addAll(programState.getServiceList());
         }
     }
+
     public IHotelController getHotelController() {
         return this.hotelController;
     }

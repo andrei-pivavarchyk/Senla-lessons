@@ -3,7 +3,6 @@ package com.dependencyService;
 import com.configurator.PropertyFilePath;
 import com.propertyService.PropertyService;
 import org.apache.log4j.Logger;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -26,7 +25,6 @@ public class DependencyService {
                 }
             }
         }
-
         return localInstance;
     }
 
@@ -35,7 +33,6 @@ public class DependencyService {
         if (this.listObjects.get(classObject) != null) {
             return this.listObjects.get(classObject);
         } else {
-
             try {
                 Properties properties = this.propertyService.getProperties(this.propertyFilePath);
                 String currentProperty = properties.getProperty(classObject.getName());
@@ -43,12 +40,10 @@ public class DependencyService {
                 Object someObject = someClass.newInstance();
                 this.listObjects.put(classObject, someObject);
                 return someObject;
-
             } catch (Exception e) {
                 log.error(e.toString());
             }
         }
         return null;
     }
-
 }

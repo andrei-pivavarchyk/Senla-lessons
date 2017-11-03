@@ -37,6 +37,7 @@ public class Configurator implements IConfigurator {
                     } else if (field.getType().equals(String.class)) {
                         this.setStringProperty(object, field, propertyFilePath, propertyName);
                     } else {
+
                         return null;
                     }
                     field.setAccessible(accField);
