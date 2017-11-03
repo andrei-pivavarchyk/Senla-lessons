@@ -7,7 +7,7 @@
       </element>
       <element id="module-output" name="DependencyService" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../ui/Program/Property.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../ui/Program/configurator.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../ui/Program/Configurator.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

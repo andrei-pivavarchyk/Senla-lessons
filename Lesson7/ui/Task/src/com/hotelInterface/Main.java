@@ -2,23 +2,18 @@ package com.hotelInterface;
 
 import com.hotelInterface.controller.MenuController;
 import com.hotelInterface.service.StartHotelService;
+import com.propertyService.PropertyService;
+
 
 public class Main {
 
     public static void main(String[] args) {
 
-        try {
-            StartHotelService startHotelService=new StartHotelService();
-            startHotelService.startHotel();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        StartHotelService startHotelService = new StartHotelService();
+        startHotelService.startHotel();
 
-
-        MenuController menuController=new MenuController();
+        MenuController menuController = new MenuController();
         menuController.run();
 
-
     }
-
 }

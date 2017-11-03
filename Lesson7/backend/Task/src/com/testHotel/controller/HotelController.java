@@ -3,27 +3,29 @@ package com.testHotel.controller;
 import com.configurator.*;
 
 import com.dependencyService.DependencyService;
+import com.propertyService.PropertyService;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
 import com.testHotel.service.*;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
 
 public class HotelController implements IHotelController {
 
-    private IServiceService serviceService= (IServiceService) DependencyService.getDI().getInstance(IServiceService.class);
+    private IServiceService serviceService = (IServiceService) DependencyService.getDI().getInstance(IServiceService.class);
 
     @Configurable
-    private IRoomService roomService=(IRoomService)DependencyService.getDI().getInstance(IRoomService.class);
-    private IGuestService guestService=(IGuestService)DependencyService.getDI().getInstance(IGuestService.class);
-    private IPrinterService printerService=(IPrinterService)DependencyService.getDI().getInstance(IPrinterService.class);
-    private IFileService fileService=(IFileService)DependencyService.getDI().getInstance(IFileService.class);
+    private IRoomService roomService = (IRoomService) DependencyService.getDI().getInstance(IRoomService.class);
+    private IGuestService guestService = (IGuestService) DependencyService.getDI().getInstance(IGuestService.class);
+    private IPrinterService printerService = (IPrinterService) DependencyService.getDI().getInstance(IPrinterService.class);
+    private IFileService fileService = (IFileService) DependencyService.getDI().getInstance(IFileService.class);
+    public Logger log = Logger.getLogger(GuestService.class);
 
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE)
     private String roomFilePath;
-
 
     public void setFileService(IFileService fileService) {
         this.fileService = fileService;
@@ -58,9 +60,14 @@ public class HotelController implements IHotelController {
         this.serviceService.addGuestService(guest, service, year, day, month);
     }
 
-    public void readRoomsFromFile() throws Exception {
-        List<Room> roomList = this.fileService.readRooms(this.roomFilePath);
-        this.roomService.getAllRooms().addAll(roomList);
+    public void readRoomsFromFile() {
+       List<Room> roomList = null;
+        try {
+            roomList = this.fileService.readRooms(this.roomFilePath);
+            this.roomService.getAllRooms().addAll(roomList);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
     }
 
     public void setRoomCost(int roomNumber, int cost, String path) {

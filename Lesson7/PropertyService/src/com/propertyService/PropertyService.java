@@ -6,10 +6,24 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class PropertyService implements IPropertyService {
+public class PropertyService  {
 
     private Map<String, Properties> propsMap = new HashMap<>();
+    private static volatile PropertyService instance;
     private static Logger log = Logger.getLogger(PropertyService.class);
+
+    public static PropertyService getPropertyService() {
+        PropertyService localInstance = instance;
+        if (localInstance == null) {
+            synchronized (PropertyService.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new PropertyService();
+                }
+            }
+        }
+        return localInstance;
+    }
 
     public Properties getProperties(String propertyPath)  {
         if (propsMap.containsKey(propertyPath)) {

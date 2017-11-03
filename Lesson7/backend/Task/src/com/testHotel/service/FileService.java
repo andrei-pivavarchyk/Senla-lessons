@@ -3,13 +3,14 @@ package com.testHotel.service;
 
 import com.danco.training.TextFileWorker;
 import com.testHotel.entity.Room;
+import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileService implements IFileService {
-
+    public Logger log = Logger.getLogger(GuestService.class);
 
     public ArrayList<Room> readRooms(String path)throws IllegalArgumentException {
 
@@ -25,7 +26,6 @@ public class FileService implements IFileService {
             int roomStars = Integer.parseInt(roomParametrs[4]);
 
             Room room = new Room(roomId, roomNumber, roomCost, roomCapacity, roomStars);
-
             roomList.add(room);
         }
         return roomList;
@@ -42,8 +42,6 @@ public class FileService implements IFileService {
 
             String string = roomStringBuilder.toString();
             roomArray[i] = string;
-
-
             i++;
         }
         new TextFileWorker(path).writeToFile(roomArray);

@@ -1,9 +1,5 @@
 package com.configurator;
-
-import com.dependencyService.DependencyService;
-import com.propertyService.IPropertyService;
-import com.sun.glass.ui.Accessible;
-import com.testHotel.controller.IHotelController;
+import com.propertyService.PropertyService;
 import org.apache.log4j.Logger;
 
 import java.lang.reflect.Field;
@@ -11,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Configurator implements IConfigurator {
-    private IPropertyService propertyService = (IPropertyService) DependencyService.getDI().getInstance(IPropertyService.class);
+    private PropertyService propertyService = PropertyService.getPropertyService();
     private static Logger log = Logger.getLogger(Configurator.class);
 
     public Object configure(Object object) {
@@ -22,16 +18,20 @@ public class Configurator implements IConfigurator {
 
         try {
             for (Field field : fields) {
-                Boolean accField = field.isAccessible();
-                field.setAccessible(true);
+                Boolean accField = true;
+
+                if (field.isAccessible() == false) {
+                    field.setAccessible(true);
+                    accField = false;
+                }
+
                 if (field.isAnnotationPresent(ConfigProperty.class)) {
                     ConfigProperty annotation = field.getAnnotation(ConfigProperty.class);
                     String propertyFilePath = annotation.configPath().getPath();
                     PropertyName propertyName = annotation.propertyName();
 
                     if (field.getType().equals(Boolean.class)) {
-                       this.setBooleanProperty(object, field, propertyFilePath, propertyName);
-
+                        this.setBooleanProperty(object, field, propertyFilePath, propertyName);
                     } else if (field.getType().equals(Integer.class)) {
                         this.setIntegerProperty(object, field, propertyFilePath, propertyName);
                     } else if (field.getType().equals(String.class)) {
@@ -53,8 +53,8 @@ public class Configurator implements IConfigurator {
             e.printStackTrace();
         }
 
-        for (Object object2 : configureObjects) {
-            configure(object2);
+        for (Object configureObject : configureObjects) {
+            this.configure(configureObject);
         }
         return object;
     }
@@ -73,4 +73,5 @@ public class Configurator implements IConfigurator {
         String stringProperties = String.valueOf(this.propertyService.getProperties(configPath).getProperty(propertyName.toString()));
         field.set(object, stringProperties);
     }
+
 }

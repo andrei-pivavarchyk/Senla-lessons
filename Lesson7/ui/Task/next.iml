@@ -10,17 +10,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../Program/textFileWorker.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/../Program/textFileWorker.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$MODULE_DIR$/../Program/hotel.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -30,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../backend/Program/Property.jar!/" />
+          <root url="jar://$MODULE_DIR$/../Program/Property.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -70,6 +59,17 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../Program/textFileWorker.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../Program/textFileWorker.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

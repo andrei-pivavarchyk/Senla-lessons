@@ -1,7 +1,6 @@
 package com.dependencyService;
 
 import com.configurator.PropertyFilePath;
-import com.propertyService.IPropertyService;
 import com.propertyService.PropertyService;
 import org.apache.log4j.Logger;
 
@@ -13,7 +12,7 @@ public class DependencyService {
 
     private Map<Class, Object> listObjects = new HashMap<>();
     private String propertyFilePath = PropertyFilePath.CONFIG_DEPENDENCY.getPath();
-    private IPropertyService propertyService = new PropertyService();
+    private PropertyService propertyService = PropertyService.getPropertyService();
     private static Logger log = Logger.getLogger(DependencyService.class);
     private static volatile DependencyService instance;
 
@@ -27,6 +26,7 @@ public class DependencyService {
                 }
             }
         }
+
         return localInstance;
     }
 
@@ -38,7 +38,7 @@ public class DependencyService {
 
             try {
                 Properties properties = this.propertyService.getProperties(this.propertyFilePath);
-                String currentProperty=properties.getProperty(classObject.getName());
+                String currentProperty = properties.getProperty(classObject.getName());
                 Class someClass = Class.forName(currentProperty);
                 Object someObject = someClass.newInstance();
                 this.listObjects.put(classObject, someObject);
@@ -51,7 +51,4 @@ public class DependencyService {
         return null;
     }
 
-    public IPropertyService getPropertyService() {
-        return propertyService;
-    }
 }

@@ -14,21 +14,20 @@ public class MenuController {
 
     private Builder builder;
     private Navigator navigator;
-    private ISerializableService serializableService=(ISerializableService) DependencyService.getDI().getInstance(ISerializableService.class);
+    private ISerializableService serializableService = (ISerializableService) DependencyService.getDI().getInstance(ISerializableService.class);
+
     public MenuController() {
         this.builder = new Builder();
 
     }
 
     public void run() {
-        //  StartHotelService.getMainService().setHotelController(lastHotel);
 
         Menu mainMenu = this.builder.buildMainMenu();
         this.navigator = new Navigator();
         Boolean running = true;
 
         navigator.printMenu(mainMenu);
-
 
         while (running.equals(true)) {
 
@@ -47,12 +46,12 @@ public class MenuController {
     }
 
     public void saveProgramState() {
-        IHotelController hotel =(IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
+        IHotelController hotel = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
         ProgramState programState = new ProgramState();
         programState.setRoomList(hotel.getRoomService().getAllRooms());
         programState.setServiceList(hotel.getServiceService().getAllHotelServices());
 
 
-      this.serializableService.serializable(programState);
+        this.serializableService.serializable(programState);
     }
 }
