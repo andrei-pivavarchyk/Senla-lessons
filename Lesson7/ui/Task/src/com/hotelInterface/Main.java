@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         StartHotelService startHotelService=new StartHotelService();
+        startHotelService.startHotel();
         MenuController menuController = new MenuController();
         menuController.run();
     }
