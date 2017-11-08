@@ -27,6 +27,10 @@ public class HotelController implements IHotelController {
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE)
     private String roomFilePath;
 
+    public List<Room> getFreeRooms() {
+        return this.roomService.getFreeRooms();
+    }
+
     public void setFileService(IFileService fileService) {
         this.fileService = fileService;
     }
@@ -61,7 +65,7 @@ public class HotelController implements IHotelController {
     }
 
     public void readRoomsFromFile() {
-       List<Room> roomList = null;
+        List<Room> roomList = null;
         try {
             roomList = this.fileService.readRooms(this.roomFilePath);
             this.roomService.getAllRooms().addAll(roomList);
@@ -106,11 +110,13 @@ public class HotelController implements IHotelController {
 
         return null;
     }
-    public List<Room> getAllRooms(){
+
+    public List<Room> getAllRooms() {
         return this.roomService.getAllRooms();
     }
-    public List<Guest> getAllGuests(){
-      return  this.guestService.getAllGuests();
+
+    public List<Guest> getAllGuests() {
+        return this.guestService.getAllGuests();
 
     }
 
@@ -126,6 +132,10 @@ public class HotelController implements IHotelController {
     public void exportRoom(String path) throws Exception {
         List<Room> roomList = this.roomService.getAllRooms();
         this.fileService.exportRoomsToFile(roomList, path);
+    }
+
+    public Room getRoomByNumber(Integer number) {
+        return this.roomService.getRoomByNumber(number);
     }
 
 }

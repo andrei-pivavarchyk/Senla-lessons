@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="_QueryUI:jar">
+    <output-path>$PROJECT_DIR$/Jar</output-path>
+    <root id="archive" name="_QueryUI.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="_QueryUI" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-annotations-2.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-core-2.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-databind-2.0.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

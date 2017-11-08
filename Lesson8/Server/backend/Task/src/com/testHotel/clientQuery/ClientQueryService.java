@@ -1,7 +1,6 @@
 package com.testHotel.clientQuery;
 
 
-import com.QueryData.QueryData.QueryData;
 import com.dependencyService.DependencyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -26,7 +25,8 @@ public class ClientQueryService {
             List<Class> allParameterClassList = queryData.getParameterClassList();
             List<Object> allParametersList = queryData.getAllParamList();
             String someMethodName = queryData.getSomeMethod();
-            Class someClass = queryData.getSomeClass();
+            String someClassName = queryData.getSomeClass();
+            Class someClass=Class.forName(someClassName);
 
             Class c = DependencyService.getDI().getInstance(someClass).getClass();
 
@@ -70,6 +70,8 @@ public class ClientQueryService {
         }
         }
         catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

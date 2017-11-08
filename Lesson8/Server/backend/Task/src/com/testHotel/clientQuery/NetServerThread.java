@@ -43,9 +43,8 @@ class ServerThread extends Thread {
             while ((str = is.readLine()) != null) {
 
                     Object someObject=ClientQueryService.postClientQuery(str);
-                    ObjectMapper objectMapper=new ObjectMapper();
-                   String someString= objectMapper.writeValueAsString(someObject);
-                    os.println(new String(someString));
+                   String requestString=  ObjectConverter.convertObject(someObject);
+                    os.println(requestString);
 
             }
         } catch (IOException e) {

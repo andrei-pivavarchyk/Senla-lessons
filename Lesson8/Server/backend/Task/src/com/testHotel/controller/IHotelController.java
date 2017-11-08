@@ -9,6 +9,8 @@ import com.testHotel.service.*;
 import java.util.List;
 
 public interface IHotelController {
+    Room getRoomByNumber(Integer number);
+    List<Room> getFreeRooms();
     void setFileService(IFileService fileService);
     void setPrinterService(IPrinterService printerService);
     void  setGuestService(IGuestService guestService);
