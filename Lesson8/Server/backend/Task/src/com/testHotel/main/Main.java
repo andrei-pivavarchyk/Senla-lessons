@@ -25,8 +25,8 @@ public class Main {
     public static void main(String[] args) {
        StartHotelService startHotelService=new StartHotelService();
        startHotelService.startHotel();
-      //  NetServerThread.start();
-
+       NetServerThread.start();
+/*
 IHotelController hotelController=(IHotelController)DependencyService.getDI().getInstance(IHotelController.class);
         List<Room> rooms=hotelController.getAllRooms();
 
@@ -40,7 +40,7 @@ IHotelController hotelController=(IHotelController)DependencyService.getDI().get
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
 
     }
 

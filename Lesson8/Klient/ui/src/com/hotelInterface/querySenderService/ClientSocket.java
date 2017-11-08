@@ -1,30 +1,29 @@
 package com.hotelInterface.querySenderService;
 
 import com.QueryData.QueryData.QueryData;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 import java.net.*;
-public class ClientSocket  {
-    public static Object start(QueryData message){
+
+public class ClientSocket {
+    public static String start(QueryData message) {
+
         try {
 // установка соединения с сервером
             Socket s = new Socket(InetAddress.getLocalHost(), 8071);
 //или Socket s = new Socket("ИМЯ_СЕРВЕРА", 8071);
-            ObjectOutputStream ps = new ObjectOutputStream(s.getOutputStream());
-            ObjectInputStream ois=new ObjectInputStream(s.getInputStream());
+            PrintStream ps = new PrintStream(s.getOutputStream());
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(s.getInputStream()));
 
-
-                ps.writeObject(message);
-            Object serverMessage= null;
-            try {
-                serverMessage = ois.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+            ObjectMapper mapper = new ObjectMapper();
+           String someString= mapper.writeValueAsString(message);
+            ps.println(someString);
+            String someString2=br.readLine();
             Thread.sleep(1000);
-
             s.close();
-            return serverMessage;
+            return someString2;
         } catch (UnknownHostException e) {
 // если не удалось соединиться с сервером
             System.out.println("адрес недоступен");
@@ -40,3 +39,6 @@ public class ClientSocket  {
         return null;
     }
 }
+
+
+

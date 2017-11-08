@@ -1,5 +1,6 @@
 package com.testHotel.clientQuery;
 import com.QueryData.QueryData.QueryData;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 import java.net.*;
@@ -25,35 +26,31 @@ public class NetServerThread {
     }
 }
 class ServerThread extends Thread {
-    private ObjectOutputStream os;//передача
-    private ObjectInputStream is;//чтение
+    private PrintStream os;//передача
+    private BufferedReader is;//чтение
     private InetAddress addr;//адрес клиента
     public ServerThread(Socket s) throws IOException {
-        os = new ObjectOutputStream(s.getOutputStream());
-        is = new ObjectInputStream(s.getInputStream());
+        os = new PrintStream(s.getOutputStream());
+        is = new BufferedReader(
+                new InputStreamReader(
+                        s.getInputStream()));
         addr = s.getInetAddress();
     }
     public void run() {
-
-        QueryData obj;
-
+        int i = 0;
+        String str;
         try {
-            while ((obj = (QueryData)is.readObject()) != null) {
+            while ((str = is.readLine()) != null) {
 
-                ClientQueryService clientQueryService=new ClientQueryService();
-
-                //ответ клиенту
-            Object object= clientQueryService.postClientQuery(obj);
-                   os.writeObject(object);
-
-                System.out.println("Отпрален ответ клиенту" + addr.getHostName());
+                    Object someObject=ClientQueryService.postClientQuery(str);
+                    ObjectMapper objectMapper=new ObjectMapper();
+                   String someString= objectMapper.writeValueAsString(someObject);
+                    os.println(new String(someString));
 
             }
         } catch (IOException e) {
 //если клиент не отвечает, соединение с ним разрывается
             System.out.println("Disconnect");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } finally {
             disconnect();//уничтожение потока
         }
@@ -70,9 +67,9 @@ class ServerThread extends Thread {
             this.interrupt();
         }
 
-
+    }
 
 
 
     }
-}
+

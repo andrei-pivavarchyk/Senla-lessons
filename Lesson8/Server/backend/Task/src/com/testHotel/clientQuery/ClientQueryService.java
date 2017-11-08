@@ -3,30 +3,41 @@ package com.testHotel.clientQuery;
 
 import com.QueryData.QueryData.QueryData;
 import com.dependencyService.DependencyService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClientQueryService {
 
-    public Object postClientQuery(QueryData message) {
+    public static Object postClientQuery(String message) {
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(message);
 
-        List<Class> allParameterClassList = message.getParameterClassList();
-        List<Object> allParametersList = message.getAllParamList();
-        String someMethodName = message.getSomeMethod();
-        Class someClass = message.getSomeClass();
 
-        Class c = DependencyService.getDI().getInstance(someClass).getClass();
+        try {
 
-        Class[] paramClassArray = new Class[allParametersList.size()];
-        Object[] allParametersArray = new Object[allParametersList.size()];
-        int i = 0;
-        for (Object someParameter : allParametersList) {
-            paramClassArray[i] = allParameterClassList.get(i);
-            allParametersArray[i] = allParametersList.get(i);
-            i++;
-        }
+
+            QueryData queryData = mapper.readValue(message, QueryData.class);
+
+
+            List<Class> allParameterClassList = queryData.getParameterClassList();
+            List<Object> allParametersList = queryData.getAllParamList();
+            String someMethodName = queryData.getSomeMethod();
+            Class someClass = queryData.getSomeClass();
+
+            Class c = DependencyService.getDI().getInstance(someClass).getClass();
+
+            Class[] paramClassArray = new Class[allParametersList.size()];
+            Object[] allParametersArray = new Object[allParametersList.size()];
+            int i = 0;
+            for (Object someParameter : allParametersList) {
+                paramClassArray[i] = allParameterClassList.get(i);
+                allParametersArray[i] = allParametersList.get(i);
+                i++;
+            }
 
         Method method = null;
 
@@ -56,11 +67,11 @@ public class ClientQueryService {
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             }
-
-
         }
-
-
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

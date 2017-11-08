@@ -9,7 +9,6 @@ public class Guest extends Entity {
         this.name = name;
         this.surname = surName;
 
-      //  System.out.println(new StringBuilder(String.valueOf(this)).append(" was created"));
     }
 
     public String getName() {
