@@ -15,12 +15,9 @@ public class ClientQueryService {
         ObjectMapper mapper = new ObjectMapper();
         System.out.println(message);
 
-
         try {
 
-
             QueryData queryData = mapper.readValue(message, QueryData.class);
-
 
             List<Class> allParameterClassList = queryData.getParameterClassList();
             List<Object> allParametersList = queryData.getAllParamList();
@@ -44,6 +41,7 @@ public class ClientQueryService {
         if (allParameterClassList.isEmpty()) {
 
             try {
+              //  method=someClass.getDeclaredMethods();
                 method = someClass.getDeclaredMethod(someMethodName);
                 Object returnObject = method.invoke(DependencyService.getDI().getInstance(someClass));
                 return returnObject;
