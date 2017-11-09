@@ -39,65 +39,59 @@ public class RoomService implements IRoomService{
 
 
 
-    //start dependency injection
-
-    public void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage) {
-        this.guestRoomInfoStorage = guestRoomInfoStorage;
-    }
-
-    public void setGuestStorage(IGuestStorage guestStorage) {
-        this.guestStorage = guestStorage;
-    }
-
-    public void setRoomStorage(IRoomStorage roomStorage) {
-        this.roomStorage = roomStorage;
-    }
-
-    //end dependency injection
-
-
-
     public void addRoom(Room room) {
         this.roomStorage.addEntity(room);
     }
 
     public List<Room> getAllRooms() {
-
-        return this.roomStorage.getAllEntities();
-
+        synchronized (this.roomStorage) {
+            return this.roomStorage.getAllEntities();
+        }
     }
 
     public ArrayList<Room> getRoomCostSorting() {
-        ArrayList<Room> copyArray = this.getArrayRoomCostSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
-        return copyArray;
+        synchronized (this.roomStorage) {
+            ArrayList<Room> copyArray = this.getArrayRoomCostSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
+            return copyArray;
+        }
     }
 
     public ArrayList<Room> getRoomCapacitySorting() {
-        ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting((ArrayList<Room>) this.roomStorage.getAllEntities());
-        return copyArray;
+
+        synchronized (this.roomStorage) {
+            ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting((ArrayList<Room>) this.roomStorage.getAllEntities());
+            return copyArray;
+        }
+
     }
 
     public ArrayList<Room> getRoomStarsSorting() {
-        ArrayList<Room> copyArray = this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
-        return copyArray;
+        synchronized (this.roomStorage) {
+            ArrayList<Room> copyArray = this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
+            return copyArray;
+        }
     }
 
     public Room getRoomByNumber(int roomNumber) {
-        for (Room room : this.roomStorage.getAllEntities()) {
-            if (room.getNumber() == roomNumber) {
-                return room;
+        synchronized (this.roomStorage) {
+            for (Room room : this.roomStorage.getAllEntities()) {
+                if (room.getNumber() == roomNumber) {
+                    return room;
+                }
             }
+            return null;
         }
-        return null;
     }
 
     public Room getRoomById(int roomId) {
-        for (Room room : this.roomStorage.getAllEntities()) {
-            if (room.getId() == roomId) {
-                return room;
+        synchronized (this.roomStorage) {
+            for (Room room : this.roomStorage.getAllEntities()) {
+                if (room.getId() == roomId) {
+                    return room;
+                }
             }
+            return null;
         }
-        return null;
     }
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
@@ -113,70 +107,79 @@ public class RoomService implements IRoomService{
             GuestRoomInfo guestRoomInfo = new GuestRoomInfo(this.guestRoomInfoCount, arrivalDate, guest, room, year, month, day);
 
             this.guestRoomInfoCount++;
-
+            synchronized (this.guestRoomInfoStorage){
             if (this.getCountOldGuests(room) == this.maxCountOldGuests) {
                 this.guestRoomInfoStorage.getAllEntities().remove(0);
             }
             this.guestRoomInfoStorage.addEntity(guestRoomInfo);
 
             this.guestStorage.addEntity(guest);
-
+        }
         } else {
             log.error("No room with that number");
         }
+
     }
 
 
     private int getCountOldGuests(Room room) {
-
-        int count = 0;
-        for (GuestRoomInfo info : this.guestRoomInfoStorage.getAllEntities()) {
-            if (info.getRoom().equals(room)) {
-                count++;
+        synchronized (this.guestRoomInfoStorage) {
+            int count = 0;
+            for (GuestRoomInfo info : this.guestRoomInfoStorage.getAllEntities()) {
+                if (info.getRoom().equals(room)) {
+                    count++;
+                }
             }
+            return count;
         }
-        return count;
     }
 
     public void departureGuest(Guest guest) {
-
-        List<GuestRoomInfo> allGuestRoomInfo = this.guestRoomInfoStorage.getAllEntities();
-        for (GuestRoomInfo guestRoomInfo : allGuestRoomInfo) {
-            if (guestRoomInfo.getGuest().equals(guest)) {
-                guestRoomInfo.setStillLiving(false);
-                guestRoomInfo.setDepartureDate(new Date());
+        synchronized (this.guestRoomInfoStorage) {
+            List<GuestRoomInfo> allGuestRoomInfo = this.guestRoomInfoStorage.getAllEntities();
+            for (GuestRoomInfo guestRoomInfo : allGuestRoomInfo) {
+                if (guestRoomInfo.getGuest().equals(guest)) {
+                    guestRoomInfo.setStillLiving(false);
+                    guestRoomInfo.setDepartureDate(new Date());
+                }
             }
         }
-
     }
 
     public ArrayList<Room> getFreeRooms() {
-        ArrayList<Room> freeRooms = new ArrayList<Room>();
-        for (Room room : this.roomStorage.getAllEntities()) {
-            if (room.getStatus().equals(RoomStatus.FREE)) {
-                freeRooms.add(room);
+
+        synchronized (this.roomStorage) {
+            ArrayList<Room> freeRooms = new ArrayList<Room>();
+            for (Room room : this.roomStorage.getAllEntities()) {
+                if (room.getStatus().equals(RoomStatus.FREE)) {
+                    freeRooms.add(room);
+                }
             }
+            return freeRooms;
+
         }
-        return freeRooms;
     }
 
     public void printFreeRoomsCount() {
-        int count = 0;
-        for (Room room : this.roomStorage.getAllEntities()) {
-            if (room.getStatus().equals(RoomStatus.FREE)) {
-                count++;
+        synchronized (this.roomStorage) {
+            int count = 0;
+            for (Room room : this.roomStorage.getAllEntities()) {
+                if (room.getStatus().equals(RoomStatus.FREE)) {
+                    count++;
+                }
             }
         }
-        System.out.println(new StringBuilder("All free rooms count:").append(count));
     }
 
     public ArrayList<Room> getFreeRoomsByDate(int year, int month, int day) {
         ArrayList<Room> freeRoomsByDate = this.getFreeRooms();
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
-        for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
-            if (guestRoomInfo.getDepartureDate().compareTo(calendar.getTime()) == -1) {
-                freeRoomsByDate.add(guestRoomInfo.getRoom());
+        synchronized (this.guestRoomInfoStorage) {
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+                if (guestRoomInfo.getDepartureDate().compareTo(calendar.getTime()) == -1) {
+                    freeRoomsByDate.add(guestRoomInfo.getRoom());
+                }
             }
         }
 
@@ -191,10 +194,11 @@ public class RoomService implements IRoomService{
 
         for (int i = room.getGuests().size(), k = 0; i > 0 && k < 3; i--, k++) {
             Guest guest = room.getGuests().get(i - 1);
-
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
-                if (guestRoomInfo.getGuest().equals(guest)) {
-                    guestRoomInfoList.add(guestRoomInfo);
+            synchronized (this.guestRoomInfoStorage) {
+                for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+                    if (guestRoomInfo.getGuest().equals(guest)) {
+                        guestRoomInfoList.add(guestRoomInfo);
+                    }
                 }
             }
         }
@@ -227,9 +231,12 @@ public class RoomService implements IRoomService{
 
     public Room cloneRoom(Room room) throws CloneNotSupportedException {
         Room clone = room.clone();
-        int roomId = this.roomStorage.getAllEntities().size();
-        clone.setId(roomId);
-        return clone;
+
+        synchronized (this.roomStorage) {
+            int roomId = this.roomStorage.getAllEntities().size();
+            clone.setId(roomId);
+            return clone;
+        }
     }
 
     public void glueTwoArrays(List<Room> importList) {
@@ -247,6 +254,21 @@ public class RoomService implements IRoomService{
         }
         currentRoomList.sort(ID_COMPARATOR);
     }
+
+
+    public void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage) {
+        this.guestRoomInfoStorage = guestRoomInfoStorage;
+    }
+
+    public void setGuestStorage(IGuestStorage guestStorage) {
+        this.guestStorage = guestStorage;
+    }
+
+    public void setRoomStorage(IRoomStorage roomStorage) {
+        this.roomStorage = roomStorage;
+    }
+
+
 
 }
 

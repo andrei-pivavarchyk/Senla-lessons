@@ -38,7 +38,7 @@ class ServerThread extends Thread {
             os.close();
             is.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         } finally {
             this.interrupt();
         }
