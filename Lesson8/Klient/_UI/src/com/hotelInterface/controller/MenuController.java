@@ -1,21 +1,16 @@
 package com.hotelInterface.controller;
 
-import com.dependencyService.DependencyService;
 import com.hotelInterface.entity.Builder;
 import com.hotelInterface.entity.Menu;
 import com.hotelInterface.entity.Navigator;
 import com.hotelInterface.service.ConsoleService;
-import com.serializingService.ISerializableService;
 
 public class MenuController {
-
     private Builder builder;
     private Navigator navigator;
-    private ISerializableService serializableService = (ISerializableService) DependencyService.getDI().getInstance(ISerializableService.class);
 
     public MenuController() {
         this.builder = new Builder();
-
     }
 
     public void run() {

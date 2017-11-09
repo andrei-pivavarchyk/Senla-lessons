@@ -3,9 +3,6 @@ package com.hotelInterface.action.roomMenuAction;
 import com.hotelInterface.action.AAction;
 import com.hotelInterface.entity.ActionEnumResult;
 import com.hotelInterface.action.IAction;
-import com.testHotel.entity.Room;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ActionShowFreeRooms extends AAction implements IAction {

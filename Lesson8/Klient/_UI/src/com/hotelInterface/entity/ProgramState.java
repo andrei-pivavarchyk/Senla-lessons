@@ -1,7 +1,9 @@
 package com.hotelInterface.entity;
 
 
-import com.testHotel.entity.*;
+
+import com.queryService.hotelEntity.Room;
+import com.queryService.hotelEntity.Service;
 
 import java.io.Serializable;
 import java.util.List;

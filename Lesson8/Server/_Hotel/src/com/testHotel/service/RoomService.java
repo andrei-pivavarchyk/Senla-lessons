@@ -255,7 +255,6 @@ public class RoomService implements IRoomService{
         currentRoomList.sort(ID_COMPARATOR);
     }
 
-
     public void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
     }
