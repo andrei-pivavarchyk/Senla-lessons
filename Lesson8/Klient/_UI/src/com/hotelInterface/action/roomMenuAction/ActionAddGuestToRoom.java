@@ -2,18 +2,11 @@ package com.hotelInterface.action.roomMenuAction;
 
 
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.hotelInterface.action.AAction;
 import com.hotelInterface.action.IAction;
 import com.hotelInterface.entity.ActionEnumResult;
-import com.queryService.ClientSocket;
-import com.queryService.QueryData;
 import com.queryService.hotelEntity.Guest;
 import com.queryService.hotelEntity.Room;
-
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ActionAddGuestToRoom extends AAction implements IAction {

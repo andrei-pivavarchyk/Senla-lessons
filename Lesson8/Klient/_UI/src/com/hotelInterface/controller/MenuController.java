@@ -1,14 +1,11 @@
 package com.hotelInterface.controller;
 
 import com.dependencyService.DependencyService;
-import com.hotelInterface.service.StartHotelService;
 import com.hotelInterface.entity.Builder;
 import com.hotelInterface.entity.Menu;
 import com.hotelInterface.entity.Navigator;
-import com.hotelInterface.entity.ProgramState;
 import com.hotelInterface.service.ConsoleService;
 import com.serializingService.ISerializableService;
-import com.testHotel.controller.IHotelController;
 
 public class MenuController {
 
@@ -38,20 +35,10 @@ public class MenuController {
                 Menu menu = navigator.navigate(number);
                 navigator.printMenu(menu);
             } else {
-                saveProgramState();
                 running = false;
             }
         }
 
     }
 
-    public void saveProgramState() {
-        IHotelController hotel = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
-        ProgramState programState = new ProgramState();
-        programState.setRoomList(hotel.getRoomService().getAllRooms());
-        programState.setServiceList(hotel.getServiceService().getAllHotelServices());
-
-
-        this.serializableService.serializable(programState);
-    }
 }
