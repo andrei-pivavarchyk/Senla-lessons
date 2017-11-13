@@ -8,13 +8,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.queryService.socket.ClientSocket;
 import com.queryService.queryEntity.QueryData;
-
 import org.apache.log4j.Logger;
-
 import java.io.IOException;
 import java.util.List;
 
-public class ClientService {
+public class ClientService implements IClientService{
     private QueryData queryData = new QueryData();
     private ObjectMapper objectMapper = new ObjectMapper();
     private String hotelController = "com.testHotel.controller.IHotelController";
@@ -41,7 +39,7 @@ public class ClientService {
         this.queryData.getAllParamList().add(month);
         this.queryData.getAllParamList().add(day);
 
-        String serverAnswer = clientSocket.start(queryData);
+        String serverAnswer = clientSocket.send(queryData);
     }
 
     public List<Room> getAllRooms() {
@@ -50,7 +48,7 @@ public class ClientService {
         this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getAllRooms");
 
-        String serverAnswer = clientSocket.start(queryData);
+        String serverAnswer = clientSocket.send(queryData);
 
         try {
             List<Room> allRooms = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
@@ -68,7 +66,7 @@ public class ClientService {
         this.queryData.getAllParamList().clear();
         this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getAllGuests");
-        String serverAnswer = clientSocket.start(queryData);
+        String serverAnswer = clientSocket.send(queryData);
         try {
             List<Guest> allGuests = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Guest>>() {
             });
@@ -86,7 +84,7 @@ public class ClientService {
 
         this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getFreeRooms");
-        String serverAnswer = clientSocket.start(queryData);
+        String serverAnswer = clientSocket.send(queryData);
 
         try {
             List<Room> allRooms = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
@@ -105,7 +103,7 @@ public class ClientService {
         queryData.setSomeMethod("getRoomByNumber");
         queryData.getAllParamList().add(roomNumber);
 
-        String serverAnswer = clientSocket.start(queryData);
+        String serverAnswer = clientSocket.send(queryData);
         try {
             Room room = this.objectMapper.readValue(serverAnswer, Room.class);
             return room;

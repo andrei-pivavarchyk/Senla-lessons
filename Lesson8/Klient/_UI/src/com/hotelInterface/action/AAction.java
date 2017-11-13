@@ -1,9 +1,11 @@
 package com.hotelInterface.action;
 
+import com.dependencyService.DependencyService;
 import com.hotelInterface.service.IPrinterService;
 import com.hotelInterface.service.PrinterService;
 import com.queryService.service.ClientService;
 import com.hotelInterface.service.ConsoleService;
+import com.queryService.service.IClientService;
 import org.apache.log4j.Logger;
 
 import java.io.Serializable;
@@ -14,9 +16,9 @@ public class AAction implements Serializable{
     private IPrinterService printer = new PrinterService();
     private ConsoleService consoleService = ConsoleService.getConsoleService();
     private static Logger log=Logger.getLogger(AAction.class);
-    ClientService clientService= new ClientService();
+    IClientService clientService=(IClientService) DependencyService.getDI().getInstance(IClientService.class);
 
-    public ClientService getClientService() {
+    public IClientService getClientService() {
         return clientService;
     }
     public ConsoleService getConsoleService() {

@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="next:jar">
+  <artifact type="jar" name="ui:jar">
     <output-path>$PROJECT_DIR$/../Program</output-path>
     <root id="archive" name="next.jar">
       <element id="module-output" name="next" />

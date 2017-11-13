@@ -30,12 +30,12 @@ public class ClientSocket {
     }
 
 
-    public String start(QueryData message) {
+    public String send(QueryData message) {
 
         try {
 
-            PrintStream ps = new PrintStream(s.getOutputStream());
-            BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            PrintStream ps = new PrintStream(this.s.getOutputStream());
+            BufferedReader br = new BufferedReader(new InputStreamReader(this.s.getInputStream()));
             ObjectMapper mapper = new ObjectMapper();
             String someString = mapper.writeValueAsString(message);
             ps.println(someString);
@@ -55,8 +55,8 @@ public class ClientSocket {
 
     public void start() {
         try {
-            Socket s = new Socket(InetAddress.getLocalHost(), 8071);
-            this.s = s;
+            Socket newSocket = new Socket(InetAddress.getLocalHost(), 8071);
+            this.s = newSocket;
         } catch (IOException e) {
             log.error(e.toString());
         }
@@ -71,5 +71,7 @@ public class ClientSocket {
         }
     }
 
-
+    public Socket getS() {
+        return s;
+    }
 }

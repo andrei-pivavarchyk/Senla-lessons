@@ -3,7 +3,9 @@ package com.testHotel.controller;
 import com.configurator.*;
 
 import com.dependencyService.DependencyService;
+import com.serializingService.ISerializableService;
 import com.testHotel.entity.Guest;
+import com.testHotel.entity.ProgramState;
 import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
 import com.testHotel.service.*;
@@ -22,10 +24,56 @@ public class HotelController implements IHotelController {
     private IGuestService guestService = (IGuestService) DependencyService.getDI().getInstance(IGuestService.class);
     private IPrinterService printerService = (IPrinterService) DependencyService.getDI().getInstance(IPrinterService.class);
     private IFileService fileService = (IFileService) DependencyService.getDI().getInstance(IFileService.class);
+    private IConfigurator configurator = (IConfigurator) DependencyService.getDI().getInstance(IConfigurator.class);
+    private ISerializableService serializableService = (ISerializableService) DependencyService.getDI().getInstance(ISerializableService.class);
     public Logger log = Logger.getLogger(GuestService.class);
 
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE)
     private String roomFilePath;
+
+
+
+
+
+    public void startHotel() {
+
+        this.configurator.configure(this);
+        this.configurator.configure(this.serializableService);
+
+        ProgramState programState = (ProgramState) this.serializableService.deSerializable();
+
+        if (programState == null) {
+            try {
+                this.readRoomsFromFile();
+            } catch (Exception e) {
+                log.error(e.toString());
+            }
+
+        } else {
+            this.getRoomService().getAllRooms().addAll(programState.getRoomList());
+            this.getServiceService().getAllHotelServices().addAll(programState.getServiceList());
+        }
+    }
+
+
+
+    public void endHotel() {
+
+        ProgramState programState = new ProgramState();
+        programState.setRoomList(this.getRoomService().getAllRooms());
+        programState.setServiceList(this.getServiceService().getAllHotelServices());
+        this.serializableService.serializable(programState);
+    }
+
+
+
+
+
+
+
+
+
+
 
 
     public List<Room> getFreeRooms() {

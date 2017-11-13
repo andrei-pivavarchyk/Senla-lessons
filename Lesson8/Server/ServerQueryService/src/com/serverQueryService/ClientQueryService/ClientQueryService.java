@@ -14,7 +14,6 @@ public class ClientQueryService implements IClientQueryService {
     public static Object queryHandler(String message) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-
             QueryData queryData = mapper.readValue(message, QueryData.class);
             List<Object> allParametersList = queryData.getAllParamList();
             String someMethodName = queryData.getSomeMethod();

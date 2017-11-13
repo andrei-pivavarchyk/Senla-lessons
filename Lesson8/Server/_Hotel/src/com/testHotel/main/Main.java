@@ -1,16 +1,14 @@
 package com.testHotel.main;
 
 
-import com.dependencyService.DependencyService;
 import com.serverQueryService.ClientQueryService.NetServerThread;
-import com.testHotel.controller.IHotelController;
-import com.testHotel.service.HotelService;
+import com.testHotel.controller.HotelController;
 
 public class Main {
     public static void main(String[] args) {
 
-        HotelService hotelService=new HotelService();
-        hotelService.startHotel();
+        HotelController hotelController=new HotelController();
+        hotelController.startHotel();
 
         NetServerThread.start();
 
