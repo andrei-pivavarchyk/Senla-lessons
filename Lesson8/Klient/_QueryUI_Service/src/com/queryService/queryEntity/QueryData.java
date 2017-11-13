@@ -7,17 +7,9 @@ import java.util.List;
 public class QueryData implements Serializable {
     public QueryData(){}
 
-    private String someClass;
+
     private String someMethod;
     private List<Object> allParamList=new ArrayList<Object>();
-
-    public void setSomeClass(String someClass) {
-        this.someClass = someClass;
-    }
-
-    public String getSomeClass() {
-        return someClass;
-    }
 
     public void setSomeMethod(String someMethod) {
         this.someMethod = someMethod;

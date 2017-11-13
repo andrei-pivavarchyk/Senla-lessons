@@ -15,7 +15,6 @@ import java.util.List;
 public class ClientService implements IClientService{
     private QueryData queryData = new QueryData();
     private ObjectMapper objectMapper = new ObjectMapper();
-    private String hotelController = "com.testHotel.controller.IHotelController";
     private ClientSocket clientSocket = ClientSocket.getClientSocket();
     public static final Logger log = Logger.getLogger(ClientService.class);
 
@@ -31,7 +30,6 @@ public class ClientService implements IClientService{
     public void addGuest(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
 
         this.queryData.getAllParamList().clear();
-        this.queryData.setSomeClass(this.hotelController);
         this.queryData.setSomeMethod("addGuest");
         this.queryData.getAllParamList().add(roomNumber);
         this.queryData.getAllParamList().add(guest);
@@ -45,7 +43,6 @@ public class ClientService implements IClientService{
     public List<Room> getAllRooms() {
 
         this.queryData.getAllParamList().clear();
-        this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getAllRooms");
 
         String serverAnswer = clientSocket.send(queryData);
@@ -64,7 +61,6 @@ public class ClientService implements IClientService{
     public List<Guest> getAllGuests() {
 
         this.queryData.getAllParamList().clear();
-        this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getAllGuests");
         String serverAnswer = clientSocket.send(queryData);
         try {
@@ -81,8 +77,6 @@ public class ClientService implements IClientService{
     public List<Room> getFreeRooms() {
 
         this.queryData.getAllParamList().clear();
-
-        this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getFreeRooms");
         String serverAnswer = clientSocket.send(queryData);
 
@@ -99,7 +93,6 @@ public class ClientService implements IClientService{
     public Room getRoomByNumber(Integer roomNumber) {
 
         this.queryData.getAllParamList().clear();
-        this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getRoomByNumber");
         queryData.getAllParamList().add(roomNumber);
 
