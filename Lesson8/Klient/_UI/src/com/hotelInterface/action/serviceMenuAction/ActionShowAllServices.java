@@ -4,7 +4,7 @@ package com.hotelInterface.action.serviceMenuAction;
 import com.hotelInterface.action.AAction;
 import com.hotelInterface.action.IAction;
 import com.hotelInterface.entity.ActionEnumResult;
-import com.queryService.hotelEntity.Service;
+import com.entity.Service;
 
 import java.util.List;
 

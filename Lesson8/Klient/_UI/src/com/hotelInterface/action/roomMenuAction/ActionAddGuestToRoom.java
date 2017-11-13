@@ -5,8 +5,8 @@ package com.hotelInterface.action.roomMenuAction;
 import com.hotelInterface.action.AAction;
 import com.hotelInterface.action.IAction;
 import com.hotelInterface.entity.ActionEnumResult;
-import com.queryService.hotelEntity.Guest;
-import com.queryService.hotelEntity.Room;
+import com.entity.Guest;
+import com.entity.Room;
 import java.util.List;
 
 public class ActionAddGuestToRoom extends AAction implements IAction {

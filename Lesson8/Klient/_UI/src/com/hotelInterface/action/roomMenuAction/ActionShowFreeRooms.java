@@ -9,7 +9,7 @@ public class ActionShowFreeRooms extends AAction implements IAction {
     @Override
     public ActionEnumResult execute() {
 
-        List<com.queryService.hotelEntity.Room> roomList = getClientService().getFreeRooms();
+        List< com.entity.Room> roomList = getClientService().getFreeRooms();
         getPrinter().printRooms(roomList);
 
         return ActionEnumResult.NEXT;

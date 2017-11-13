@@ -3,8 +3,8 @@ package com.hotelInterface.action.serviceMenuAction;
 import com.hotelInterface.action.AAction;
 import com.hotelInterface.action.IAction;
 import com.hotelInterface.entity.ActionEnumResult;
-import com.queryService.hotelEntity.Service;
-import com.queryService.hotelEntity.ServiceType;
+import com.entity.Service;
+import com.entity.ServiceType;
 
 
 import java.io.BufferedReader;

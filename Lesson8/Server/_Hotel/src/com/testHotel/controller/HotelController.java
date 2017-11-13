@@ -27,6 +27,7 @@ public class HotelController implements IHotelController {
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE)
     private String roomFilePath;
 
+
     public List<Room> getFreeRooms() {
         return this.roomService.getFreeRooms();
     }

@@ -1,7 +1,9 @@
 package com.hotelInterface.service;
 
 
-import com.queryService.hotelEntity.*;
+
+
+import com.entity.*;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.queryService.hotelEntity;
+package com.entity;
 
 public class Service extends Entity {
 

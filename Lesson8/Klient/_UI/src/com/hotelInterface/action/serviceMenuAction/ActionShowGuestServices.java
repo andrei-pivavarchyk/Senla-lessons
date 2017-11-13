@@ -6,9 +6,9 @@ import com.hotelInterface.action.AAction;
 import com.hotelInterface.action.IAction;
 import com.hotelInterface.entity.ActionEnumResult;
 import com.hotelInterface.service.ConsoleService;
-import com.queryService.hotelEntity.Guest;
-import com.queryService.hotelEntity.GuestServiceInfo;
-import com.queryService.hotelEntity.Service;
+import com.entity.Guest;
+import com.entity.GuestServiceInfo;
+import com.entity.Service;
 
 import java.util.ArrayList;
 import java.util.List;

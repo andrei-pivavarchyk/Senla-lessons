@@ -1,13 +1,14 @@
 package com.queryService.service;
 
+import com.entity.Guest;
+import com.entity.GuestServiceInfo;
+import com.entity.Room;
+import com.entity.Service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.queryService.socket.ClientSocket;
 import com.queryService.queryEntity.QueryData;
-import com.queryService.hotelEntity.Guest;
-import com.queryService.hotelEntity.GuestServiceInfo;
-import com.queryService.hotelEntity.Room;
-import com.queryService.hotelEntity.Service;
+
 import org.apache.log4j.Logger;
 
 import java.io.IOException;

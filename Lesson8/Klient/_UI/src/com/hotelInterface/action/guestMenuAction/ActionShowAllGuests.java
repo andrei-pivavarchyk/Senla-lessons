@@ -1,8 +1,9 @@
 package com.hotelInterface.action.guestMenuAction;
+import com.entity.Guest;
 import com.hotelInterface.action.AAction;
 import com.hotelInterface.action.IAction;
 import com.hotelInterface.entity.ActionEnumResult;
-import com.queryService.hotelEntity.Guest;
+
 import java.util.List;
 
 public class ActionShowAllGuests extends AAction implements IAction {

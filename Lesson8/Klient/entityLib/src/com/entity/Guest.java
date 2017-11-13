@@ -1,4 +1,4 @@
-package com.queryService.hotelEntity;
+package com.entity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

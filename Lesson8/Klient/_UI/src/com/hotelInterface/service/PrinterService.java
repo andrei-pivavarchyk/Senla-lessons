@@ -3,7 +3,7 @@ package com.hotelInterface.service;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import com.queryService.hotelEntity.*;
+import com.entity.*;
 
 
 import java.text.SimpleDateFormat;
