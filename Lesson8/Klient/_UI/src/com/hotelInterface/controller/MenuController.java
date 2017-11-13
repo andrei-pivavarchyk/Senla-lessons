@@ -4,6 +4,7 @@ import com.hotelInterface.entity.Builder;
 import com.hotelInterface.entity.Menu;
 import com.hotelInterface.entity.Navigator;
 import com.hotelInterface.service.ConsoleService;
+import com.queryService.socket.ClientSocket;
 
 public class MenuController {
     private Builder builder;
@@ -14,7 +15,7 @@ public class MenuController {
     }
 
     public void run() {
-
+        ClientSocket.getClientSocket().start();
         Menu mainMenu = this.builder.buildMainMenu();
         this.navigator = new Navigator();
         Boolean running = true;
@@ -31,6 +32,7 @@ public class MenuController {
                 navigator.printMenu(menu);
             } else {
                 running = false;
+                ClientSocket.getClientSocket().closeSocket();
             }
         }
 

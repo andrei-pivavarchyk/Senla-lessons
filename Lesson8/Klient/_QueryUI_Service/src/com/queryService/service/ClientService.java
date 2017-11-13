@@ -17,7 +17,17 @@ public class ClientService {
     private QueryData queryData = new QueryData();
     private ObjectMapper objectMapper = new ObjectMapper();
     private String hotelController = "com.testHotel.controller.IHotelController";
+    private ClientSocket clientSocket = ClientSocket.getClientSocket();
     public static final Logger log = Logger.getLogger(ClientService.class);
+
+
+    public void startSocket() {
+        clientSocket.start();
+    }
+
+    public void closeSocket() {
+        clientSocket.closeSocket();
+    }
 
     public void addGuest(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
 
@@ -30,7 +40,7 @@ public class ClientService {
         this.queryData.getAllParamList().add(month);
         this.queryData.getAllParamList().add(day);
 
-        String serverAnswer = ClientSocket.start(queryData);
+        String serverAnswer = clientSocket.start(queryData);
     }
 
     public List<Room> getAllRooms() {
@@ -39,7 +49,7 @@ public class ClientService {
         this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getAllRooms");
 
-        String serverAnswer = ClientSocket.start(queryData);
+        String serverAnswer = clientSocket.start(queryData);
 
         try {
             List<Room> allRooms = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
@@ -57,7 +67,7 @@ public class ClientService {
         this.queryData.getAllParamList().clear();
         this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getAllGuests");
-        String serverAnswer = ClientSocket.start(queryData);
+        String serverAnswer = clientSocket.start(queryData);
         try {
             List<Guest> allGuests = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Guest>>() {
             });
@@ -75,7 +85,7 @@ public class ClientService {
 
         this.queryData.setSomeClass(this.hotelController);
         queryData.setSomeMethod("getFreeRooms");
-        String serverAnswer = ClientSocket.start(queryData);
+        String serverAnswer = clientSocket.start(queryData);
 
         try {
             List<Room> allRooms = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
@@ -94,7 +104,7 @@ public class ClientService {
         queryData.setSomeMethod("getRoomByNumber");
         queryData.getAllParamList().add(roomNumber);
 
-        String serverAnswer = ClientSocket.start(queryData);
+        String serverAnswer = clientSocket.start(queryData);
         try {
             Room room = this.objectMapper.readValue(serverAnswer, Room.class);
             return room;

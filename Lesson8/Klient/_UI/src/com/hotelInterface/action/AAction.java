@@ -11,11 +11,10 @@ import java.io.Serializable;
 
 public class AAction implements Serializable{
 
-
     private IPrinterService printer = new PrinterService();
     private ConsoleService consoleService = ConsoleService.getConsoleService();
     private static Logger log=Logger.getLogger(AAction.class);
-    ClientService clientService=new ClientService();
+    ClientService clientService= new ClientService();
 
     public ClientService getClientService() {
         return clientService;
@@ -29,5 +28,4 @@ public class AAction implements Serializable{
     public static Logger getLog() {
         return log;
     }
-
 }

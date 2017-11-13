@@ -4,6 +4,7 @@ package com.testHotel.service;
 import com.configurator.IConfigurator;
 import com.dependencyService.DependencyService;
 import com.serializingService.ISerializableService;
+import com.serializingService.SerializableService;
 import com.testHotel.controller.IHotelController;
 import com.testHotel.entity.ProgramState;
 import org.apache.log4j.Logger;
@@ -36,6 +37,10 @@ public void startHotel(){
         this.hotelController.getServiceService().getAllHotelServices().addAll(programState.getServiceList());
     }
 
+}
+
+public void endHotel(){
+  this.serializableService.serializable(ProgramState);
 }
 
 

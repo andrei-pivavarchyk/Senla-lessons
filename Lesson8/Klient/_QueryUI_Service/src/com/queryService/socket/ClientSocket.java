@@ -15,22 +15,36 @@ import java.net.UnknownHostException;
 
 public class ClientSocket {
     public static final Logger log = Logger.getLogger(ClientService.class);
-    public static String start(QueryData message) {
+
+    private Socket s;
+
+    private static ClientSocket clientSocket;
+
+    private ClientSocket(){}
+
+    public static synchronized ClientSocket getClientSocket() {
+        if (clientSocket == null) {
+            clientSocket = new ClientSocket();
+        }
+        return clientSocket;
+    }
+
+
+    public String start(QueryData message) {
 
         try {
 
-            Socket s = new Socket(InetAddress.getLocalHost(), 8071);
             PrintStream ps = new PrintStream(s.getOutputStream());
             BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
             ObjectMapper mapper = new ObjectMapper();
-            String someString= mapper.writeValueAsString(message);
+            String someString = mapper.writeValueAsString(message);
             ps.println(someString);
-            String serverAnswer=br.readLine();
+            String serverAnswer = br.readLine();
             Thread.sleep(1000);
-            s.close();
+
             return serverAnswer;
         } catch (UnknownHostException e) {
-           log.error(e.toString());
+            log.error(e.toString());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -38,4 +52,24 @@ public class ClientSocket {
         }
         return null;
     }
+
+    public void start() {
+        try {
+            Socket s = new Socket(InetAddress.getLocalHost(), 8071);
+            this.s = s;
+        } catch (IOException e) {
+            log.error(e.toString());
+        }
+
+    }
+
+    public void closeSocket() {
+        try {
+            this.s.close();
+        } catch (IOException e) {
+            log.error(e.toString());
+        }
+    }
+
+
 }
