@@ -1,5 +1,7 @@
 package com.serverQueryService.ClientQueryService;
 
+import com.dependencyService.DependencyService;
+import com.testHotel.controller.IHotelController;
 import org.apache.log4j.Logger;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +14,7 @@ class ServerThread extends Thread {
     private PrintStream os;
     private BufferedReader is;
     private InetAddress addr;
+    private static IHotelController hotelController= (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
     public static Logger log = Logger.getLogger(NetServerThread.class);
     public ServerThread(Socket s) throws IOException {
         os = new PrintStream(s.getOutputStream());
@@ -23,7 +26,7 @@ class ServerThread extends Thread {
         String str;
         try {
             while ((str = is.readLine()) != null) {
-                Object someObject=ClientQueryService.queryHandler(str);
+                Object someObject=ClientQueryService.queryHandler(str,hotelController);
                 String requestString=  ObjectConverter.convertObject(someObject);
                 os.println(requestString);
             }

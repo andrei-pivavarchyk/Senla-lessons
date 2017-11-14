@@ -4,6 +4,7 @@ package com.serverQueryService.ClientQueryService;
 import com.dependencyService.DependencyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -11,9 +12,10 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 public class ClientQueryService implements IClientQueryService {
-    private static IHotelController hotelController= (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
 
-    public static Object queryHandler(String message) {
+    public static Logger log = Logger.getLogger(NetServerThread.class);
+
+    public static Object queryHandler(String message,IHotelController hotelController) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             QueryData queryData = mapper.readValue(message, QueryData.class);
@@ -46,11 +48,11 @@ public class ClientQueryService implements IClientQueryService {
                 return returnObject;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
         return null;
     }

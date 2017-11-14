@@ -16,10 +16,88 @@ import java.util.concurrent.TimeUnit;
 
 public class GuestService implements IGuestService, Serializable {
 
-    private IGuestRoomInfoStorage guestRoomInfoStorage=(IGuestRoomInfoStorage) DependencyService.getDI().getInstance(IGuestRoomInfoStorage.class);
+    private IGuestRoomInfoStorage guestRoomInfoStorage = (IGuestRoomInfoStorage) DependencyService.getDI().getInstance(IGuestRoomInfoStorage.class);
     private static final Comparator<Guest> NAME_COMPARATOR = new GuestNameComparator();
     private static final Comparator<GuestRoomInfo> DATE_COMPARATOR = new GuestRoomInfoDateComparator();
     public Logger log = Logger.getLogger(GuestService.class);
+
+
+    public IGuestRoomInfoStorage getGuestRoomInfoStorage() {
+        synchronized (this.guestRoomInfoStorage) {
+            return guestRoomInfoStorage;
+        }
+    }
+
+    public ArrayList<Guest> getAllGuests() {
+        synchronized (this.guestRoomInfoStorage) {
+            ArrayList<Guest> allGuests = new ArrayList<Guest>();
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+                if (guestRoomInfo.getStillLiving().equals(true)) {
+                    allGuests.add(guestRoomInfo.getGuest());
+                }
+            }
+            return allGuests;
+        }
+    }
+
+    public ArrayList<Guest> getAllGuestsSortedByDateDeparture() {
+        synchronized (this.guestRoomInfoStorage) {
+            ArrayList<GuestRoomInfo> copyArray = new ArrayList<GuestRoomInfo>(this.guestRoomInfoStorage.getAllEntities());
+            ArrayList<Guest> guestList = new ArrayList<Guest>();
+            copyArray.sort(DATE_COMPARATOR);
+            for (GuestRoomInfo guestRoomInfo : copyArray) {
+                guestList.add(guestRoomInfo.getGuest());
+            }
+            return guestList;
+        }
+    }
+
+    public void printAllGuestsCount() {
+        synchronized (this.guestRoomInfoStorage) {
+            int count = 0;
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+                if (guestRoomInfo.getStillLiving().equals(true)) {
+                    count++;
+                }
+            }
+        }
+
+    }
+
+    public int getPayAmount(Guest guest) {
+        synchronized (this.guestRoomInfoStorage) {
+            int payGuest = 0;
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+                if (guestRoomInfo.getGuest().equals(guest)) {
+                    Date date1 = guestRoomInfo.getArrivalDate();
+                    Date date2 = guestRoomInfo.getDepartureDate();
+                    long diff = date2.getTime() - date1.getTime();
+                    int allDaysLiving = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+                    payGuest = allDaysLiving * guestRoomInfo.getRoom().getCost();
+
+
+                }
+            }
+            return payGuest;
+        }
+    }
+
+    public ArrayList<GuestRoomInfo> getCurrentGuestRoomInfo() {
+        synchronized (this.guestRoomInfoStorage) {
+            ArrayList<GuestRoomInfo> currentGuestRoomInfoList = new ArrayList<GuestRoomInfo>();
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+                if (guestRoomInfo.getStillLiving().equals(true)) {
+                    currentGuestRoomInfoList.add(guestRoomInfo);
+                }
+            }
+            return currentGuestRoomInfoList;
+        }
+    }
+    public ArrayList<Guest> getAllGuestsSortedByName() {
+        ArrayList<Guest> copyArray = new ArrayList<Guest>(this.getAllGuests());
+        copyArray.sort(NAME_COMPARATOR);
+        return copyArray;
+    }
 
     //start dependency injection
     public void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage) {
@@ -27,75 +105,4 @@ public class GuestService implements IGuestService, Serializable {
     }
 
     //end start dependency injection
-
-    public IGuestRoomInfoStorage getGuestRoomInfoStorage() {
-        return guestRoomInfoStorage;
-    }
-
-    public ArrayList<Guest> getAllGuests() {
-        ArrayList<Guest> allGuests = new ArrayList<Guest>();
-        for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
-            if (guestRoomInfo.getStillLiving().equals(true)) {
-                allGuests.add(guestRoomInfo.getGuest());
-            }
-        }
-        return allGuests;
-    }
-
-    public ArrayList<Guest> getAllGuestsSortedByName() {
-        ArrayList<Guest> copyArray = new ArrayList<Guest>(this.getAllGuests());
-        copyArray.sort(NAME_COMPARATOR);
-        return copyArray;
-    }
-
-    public ArrayList<Guest> getAllGuestsSortedByDateDeparture() {
-
-        ArrayList<GuestRoomInfo> copyArray = new ArrayList<GuestRoomInfo>(this.guestRoomInfoStorage.getAllEntities());
-        ArrayList<Guest> guestList = new ArrayList<Guest>();
-
-        copyArray.sort(DATE_COMPARATOR);
-        for (GuestRoomInfo guestRoomInfo : copyArray) {
-            guestList.add(guestRoomInfo.getGuest());
-        }
-
-        return guestList;
-    }
-
-    public void printAllGuestsCount() {
-        int count = 0;
-        for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
-            if (guestRoomInfo.getStillLiving().equals(true)) {
-                count++;
-            }
-        }
-        System.out.println(new StringBuilder("All guests count: ").append(count));
-    }
-
-    public int getPayAmount(Guest guest) {
-        int payGuest = 0;
-        for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
-            if (guestRoomInfo.getGuest().equals(guest)) {
-                Date date1 = guestRoomInfo.getArrivalDate();
-                Date date2 = guestRoomInfo.getDepartureDate();
-                long diff = date2.getTime() - date1.getTime();
-                int allDaysLiving = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-                payGuest = allDaysLiving * guestRoomInfo.getRoom().getCost();
-
-
-            }
-        }
-        return payGuest;
-    }
-
-    public ArrayList<GuestRoomInfo> getCurrentGuestRoomInfo() {
-        ArrayList<GuestRoomInfo> currentGuestRoomInfoList = new ArrayList<GuestRoomInfo>();
-        for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
-            if (guestRoomInfo.getStillLiving().equals(true)) {
-                currentGuestRoomInfoList.add(guestRoomInfo);
-            }
-
-        }
-        return currentGuestRoomInfoList;
-
-    }
 }

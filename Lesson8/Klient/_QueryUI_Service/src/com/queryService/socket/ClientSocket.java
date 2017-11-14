@@ -40,15 +40,12 @@ public class ClientSocket {
             String someString = mapper.writeValueAsString(message);
             ps.println(someString);
             String serverAnswer = br.readLine();
-            Thread.sleep(1000);
 
             return serverAnswer;
         } catch (UnknownHostException e) {
             log.error(e.toString());
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            log.error(e.toString());
         }
         return null;
     }
