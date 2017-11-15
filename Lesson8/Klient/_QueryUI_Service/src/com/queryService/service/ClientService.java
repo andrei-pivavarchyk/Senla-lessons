@@ -107,50 +107,178 @@ public class ClientService implements IClientService{
     }
 
     public void addRoom(Room room) {
+
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("addRoom");
+        queryData.getAllParamList().add(room);
+
+        String serverAnswer = clientSocket.send(queryData);
+
     }
 
     public Room clonerRoom(Room room) {
+
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("clonerRoom");
+        queryData.getAllParamList().add(room);
+        String serverAnswer = clientSocket.send(queryData);
+        try {
+            Room cloneRoom = this.objectMapper.readValue(serverAnswer, Room.class);
+            return room;
+        } catch (IOException e) {
+            this.queryData.getAllParamList().clear();
+        }
         return null;
     }
 
     public void exportRoom(String path) {
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("exportRoom");
+        queryData.getAllParamList().add(path);
+        String serverAnswer = clientSocket.send(queryData);
     }
 
     public void importRoom(String path) {
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("importRoom");
+        queryData.getAllParamList().add(path);
+        String serverAnswer = clientSocket.send(queryData);
     }
 
     public List<Room> getRoomCapacitySorting() {
+
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("getRoomCapacitySorting");
+
+        String serverAnswer = clientSocket.send(queryData);
+        try {
+            List<Room> listRoom = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
+            });
+            return listRoom;
+        } catch (IOException e) {
+            this.queryData.getAllParamList().clear();
+        }
         return null;
     }
 
     public List<Room> getRoomCostSorting() {
+
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("getRoomCostSorting");
+
+        String serverAnswer = clientSocket.send(queryData);
+        try {
+            List<Room> listRoom = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
+            });
+            return listRoom;
+        } catch (IOException e) {
+            this.queryData.getAllParamList().clear();
+        }
         return null;
+
     }
 
     public List<Room> getRoomStarsSorting() {
+
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("getRoomStarsSorting");
+
+        String serverAnswer = clientSocket.send(queryData);
+        try {
+            List<Room> listRoom = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
+            });
+            return listRoom;
+        } catch (IOException e) {
+            this.queryData.getAllParamList().clear();
+        }
         return null;
+
     }
 
-    public List<Room> getArrayRoomCapacitySorting(List<Room> roomList) {
+    public List<Room> getArrayRoomCapacitySorting(List<Room> roomList){
+
+    QueryData queryData=new QueryData();
+        queryData.setSomeMethod("getArrayRoomCapacitySorting");
+
+    String serverAnswer = clientSocket.send(queryData);
+        try {
+        List<Room> listRoom = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
+        });
+        return listRoom;
+    } catch (IOException e) {
+        this.queryData.getAllParamList().clear();
+    }
         return null;
+
+
     }
 
     public List<Room> getArrayRoomCostSorting(List<Room> roomList) {
+
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("getArrayRoomCostSorting");
+        String serverAnswer = clientSocket.send(queryData);
+        try {
+            List<Room> listRoom = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
+            });
+            return listRoom;
+        } catch (IOException e) {
+            this.queryData.getAllParamList().clear();
+        }
         return null;
     }
 
     public List<Room> getArrayRoomStarsSorting(List<Room> roomList) {
+
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("getArrayRoomStarsSorting");
+        String serverAnswer = clientSocket.send(queryData);
+        try {
+            List<Room> listRoom = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Room>>() {
+            });
+            return listRoom;
+        } catch (IOException e) {
+            this.queryData.getAllParamList().clear();
+        }
         return null;
+
     }
 
     public List<Service> getAllHotelServices() {
+
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("getAllHotelServices");
+        String serverAnswer = clientSocket.send(queryData);
+        try {
+            List<Service> listService = this.objectMapper.readValue(serverAnswer, new TypeReference<List<Service>>() {
+            });
+            return listService;
+        } catch (IOException e) {
+            this.queryData.getAllParamList().clear();
+        }
         return null;
+
     }
 
     public void addHotelService(Service someService) {
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("addHotelService");
+        queryData.getAllParamList().add(someService);
+        String serverAnswer = clientSocket.send(queryData);
     }
 
     public List<GuestServiceInfo> getAllGuestServicesInfo(Guest guest) {
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("getAllGuestServicesInfo");
+        queryData.getAllParamList().add(guest);
+        String serverAnswer = clientSocket.send(queryData);
+        try {
+            List<GuestServiceInfo> listService = this.objectMapper.readValue(serverAnswer, new TypeReference<List<GuestServiceInfo>>() {
+            });
+            return listService;
+        } catch (IOException e) {
+            this.queryData.getAllParamList().clear();
+        }
         return null;
     }
 
