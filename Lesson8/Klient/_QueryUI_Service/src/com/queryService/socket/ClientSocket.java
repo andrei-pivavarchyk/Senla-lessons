@@ -45,7 +45,7 @@ public class ClientSocket {
         } catch (UnknownHostException e) {
             log.error(e.toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
         return null;
     }

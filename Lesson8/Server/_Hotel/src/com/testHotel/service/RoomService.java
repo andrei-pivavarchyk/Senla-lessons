@@ -21,11 +21,12 @@ import org.apache.log4j.Logger;
 import java.util.*;
 
 
-public class RoomService implements IRoomService{
+public class RoomService implements IRoomService {
 
-    private IRoomStorage roomStorage=(IRoomStorage) DependencyService.getDI().getInstance(IRoomStorage.class);
-    private IGuestRoomInfoStorage guestRoomInfoStorage=(IGuestRoomInfoStorage) DependencyService.getDI().getInstance(IGuestRoomInfoStorage.class);;
-    private IGuestStorage guestStorage=(IGuestStorage) DependencyService.getDI().getInstance(IGuestStorage.class);
+    private IRoomStorage roomStorage = (IRoomStorage) DependencyService.getDI().getInstance(IRoomStorage.class);
+    private IGuestRoomInfoStorage guestRoomInfoStorage = (IGuestRoomInfoStorage) DependencyService.getDI().getInstance(IGuestRoomInfoStorage.class);
+    ;
+    private IGuestStorage guestStorage = (IGuestStorage) DependencyService.getDI().getInstance(IGuestStorage.class);
     private int guestRoomInfoCount = 0;
     private static final Comparator<Room> COST_COMPARATOR = new RoomCostComparator();
     private static final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
@@ -36,7 +37,6 @@ public class RoomService implements IRoomService{
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS)
     private Boolean chooseRoomStatus;
     public static final Logger log = Logger.getLogger(RoomService.class);
-
 
 
     public void addRoom(Room room) {
@@ -107,14 +107,14 @@ public class RoomService implements IRoomService{
             GuestRoomInfo guestRoomInfo = new GuestRoomInfo(this.guestRoomInfoCount, arrivalDate, guest, room, year, month, day);
 
             this.guestRoomInfoCount++;
-            synchronized (this.guestRoomInfoStorage){
-            if (this.getCountOldGuests(room) == this.maxCountOldGuests) {
-                this.guestRoomInfoStorage.getAllEntities().remove(0);
-            }
-            this.guestRoomInfoStorage.addEntity(guestRoomInfo);
+            synchronized (this.guestRoomInfoStorage) {
+                if (this.getCountOldGuests(room) == this.maxCountOldGuests) {
+                    this.guestRoomInfoStorage.getAllEntities().remove(0);
+                }
+                this.guestRoomInfoStorage.addEntity(guestRoomInfo);
 
-            this.guestStorage.addEntity(guest);
-        }
+                this.guestStorage.addEntity(guest);
+            }
         } else {
             log.error("No room with that number");
         }
@@ -266,8 +266,6 @@ public class RoomService implements IRoomService{
     public void setRoomStorage(IRoomStorage roomStorage) {
         this.roomStorage = roomStorage;
     }
-
-
 
 }
 

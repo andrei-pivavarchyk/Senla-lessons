@@ -15,7 +15,6 @@ public class NetServerThread {
                 log.info(sock.getInetAddress().getHostName()+"connect");
                 ServerThread server = new ServerThread(sock);
                 server.start();
-
             }
         } catch (IOException e) {
             log.error(e.toString());

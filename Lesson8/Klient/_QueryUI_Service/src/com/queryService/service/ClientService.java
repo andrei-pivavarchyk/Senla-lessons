@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class ClientService implements IClientService{
-    private QueryData queryData = new QueryData();
     private ObjectMapper objectMapper = new ObjectMapper();
     private ClientSocket clientSocket = ClientSocket.getClientSocket();
     public static final Logger log = Logger.getLogger(ClientService.class);
@@ -29,20 +28,20 @@ public class ClientService implements IClientService{
 
     public void addGuest(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
 
-        this.queryData.getAllParamList().clear();
-        this.queryData.setSomeMethod("addGuest");
-        this.queryData.getAllParamList().add(roomNumber);
-        this.queryData.getAllParamList().add(guest);
-        this.queryData.getAllParamList().add(year);
-        this.queryData.getAllParamList().add(month);
-        this.queryData.getAllParamList().add(day);
+        QueryData queryData=new QueryData();
+        queryData.setSomeMethod("addGuest");
+        queryData.getAllParamList().add(roomNumber);
+        queryData.getAllParamList().add(guest);
+        queryData.getAllParamList().add(year);
+        queryData.getAllParamList().add(month);
+        queryData.getAllParamList().add(day);
 
         String serverAnswer = clientSocket.send(queryData);
     }
 
     public List<Room> getAllRooms() {
 
-        this.queryData.getAllParamList().clear();
+        QueryData queryData=new QueryData();
         queryData.setSomeMethod("getAllRooms");
 
         String serverAnswer = clientSocket.send(queryData);
@@ -60,7 +59,7 @@ public class ClientService implements IClientService{
 
     public List<Guest> getAllGuests() {
 
-        this.queryData.getAllParamList().clear();
+        QueryData queryData=new QueryData();
         queryData.setSomeMethod("getAllGuests");
         String serverAnswer = clientSocket.send(queryData);
         try {
@@ -69,14 +68,14 @@ public class ClientService implements IClientService{
             return allGuests;
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
         return null;
     }
 
     public List<Room> getFreeRooms() {
 
-        this.queryData.getAllParamList().clear();
+        QueryData queryData=new QueryData();
         queryData.setSomeMethod("getFreeRooms");
         String serverAnswer = clientSocket.send(queryData);
 
@@ -92,7 +91,7 @@ public class ClientService implements IClientService{
 
     public Room getRoomByNumber(Integer roomNumber) {
 
-        this.queryData.getAllParamList().clear();
+        QueryData queryData=new QueryData();
         queryData.setSomeMethod("getRoomByNumber");
         queryData.getAllParamList().add(roomNumber);
 
@@ -101,7 +100,7 @@ public class ClientService implements IClientService{
             Room room = this.objectMapper.readValue(serverAnswer, Room.class);
             return room;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
     }
@@ -126,7 +125,7 @@ public class ClientService implements IClientService{
             Room cloneRoom = this.objectMapper.readValue(serverAnswer, Room.class);
             return room;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
     }
@@ -156,7 +155,7 @@ public class ClientService implements IClientService{
             });
             return listRoom;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
     }
@@ -172,7 +171,7 @@ public class ClientService implements IClientService{
             });
             return listRoom;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
 
@@ -189,7 +188,7 @@ public class ClientService implements IClientService{
             });
             return listRoom;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
 
@@ -206,7 +205,7 @@ public class ClientService implements IClientService{
         });
         return listRoom;
     } catch (IOException e) {
-        this.queryData.getAllParamList().clear();
+            log.error(e.toString());
     }
         return null;
 
@@ -223,7 +222,7 @@ public class ClientService implements IClientService{
             });
             return listRoom;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
     }
@@ -238,7 +237,7 @@ public class ClientService implements IClientService{
             });
             return listRoom;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
 
@@ -254,7 +253,7 @@ public class ClientService implements IClientService{
             });
             return listService;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
 
@@ -277,7 +276,7 @@ public class ClientService implements IClientService{
             });
             return listService;
         } catch (IOException e) {
-            this.queryData.getAllParamList().clear();
+            log.error(e.toString());
         }
         return null;
     }

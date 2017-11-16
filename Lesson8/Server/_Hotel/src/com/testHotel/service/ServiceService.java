@@ -90,14 +90,11 @@ public class ServiceService implements IServiceService, Serializable {
         return copyArray;
     }
 
-    //start dependency injection
-
     public void setGuestServiceStorage(IGuestServiceStorage guestServiceStorage) {
         this.guestServiceStorage = guestServiceStorage;
     }
-
     public void setServiceStorage(IServiceStorage serviceStorage) {
         this.serviceStorage = serviceStorage;
     }
-    //end dependency injection
+
 }
