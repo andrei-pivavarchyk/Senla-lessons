@@ -122,9 +122,12 @@ FROM pc, product
 WHERE pc.model = product.model AND product.maker = 'firstm'
 
 /*
-Задание 14
+Задание 14  условие не понятно
 */
 
+SELECT speed,AVG(price)
+FROM pc
+GROUP BY speed
 
 
 
