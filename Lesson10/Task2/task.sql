@@ -10,7 +10,7 @@ WHERE price>500;
 
 /*Задание 2*/
 
-SELECT maker
+SELECT DISTINCT maker
 
 FROM product
 
@@ -18,7 +18,7 @@ WHERE type='printer';
 
 /*Задание 3*/
 
-SELECT model,hd, screen
+SELECT DISTINCT model,hd, screen
 
 FROM laptop
 
@@ -32,19 +32,19 @@ WHERE color='y';
 
 /*Задание 5*/
 
-SELECT model,speed,hd
+SELECT DISTINCT model,speed,hd
 
 FROM pc
 
-WHERE cd='12x' OR cd='24x';
+WHERE (cd='12x' OR cd='24x') AND price<600
 
 
-/*Задание 6*/
-SELECT maker,type,speed
+/*Задание 6*/------------------------------
+SELECT maker,speed
 
 FROM product,laptop
 
-WHERE product.model=laptop.model AND laptop.hd>10;
+WHERE (product.model=laptop.model) AND laptop.hd>10;
 
 /*
 Задание 7
@@ -72,20 +72,22 @@ WHERE model IN (SELECT model
  WHERE maker = 'firstm' AND 
  type = 'Printer'
 )
+
 /*
 Задание 8  не работает ???
 */
+SELECT maker
+FROM product
+WHERE product.type='pc'
+EXCEPT (
+SELECT maker
+FROM product
+WHERE product.type='laptop'
+)
 
-SELECT DISTINCT maker 
-FROM product 
-WHERE type = 'pc' 
-EXCEPT 
-SELECT DISTINCT maker 
-FROM product 
-Where type = 'laptop'
 
 /*
-Задание 9 
+Задание 9 ----------------------------------
 */
 
 SELECT DISTINCT maker 
@@ -120,10 +122,12 @@ WHERE laptop.price>1000
 /*
 Задание 13
 */
-
 SELECT AVG(pc.speed) 
-FROM pc, product 
-WHERE pc.model = product.model AND product.maker = 'firstm'
+FROM pc
+INNER JOIN product
+ON pc.model=product.model
+WHERE product.maker='firstm'
+
 
 /*
 Задание 14  условие не понятно
@@ -134,7 +138,7 @@ FROM pc
 GROUP BY speed
 
 /*
-Задание 15  условие не понятно
+Задание 15 
 */
 
 SELECT hd 
@@ -146,9 +150,10 @@ HAVING COUNT(model)>=2
 
 /*Задание 16*/
 
-SELECT DISTINCT A.model, B.model, A.speed,A.ram
+select distinct a.model,b.model, a.speed,a.ram
 FROM pc AS A,pc AS B
-WHERE A.speed=B.speed AND A.ram=B.ram AND A.model>B.model
+WHERE a.ram=b.ram and a.speed=b.speed and a.model>b.model
+
 
 /*Задание 17*/
 SELECT DISTINCT product.type,laptop.model,laptop.speed
