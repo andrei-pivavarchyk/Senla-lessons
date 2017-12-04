@@ -129,6 +129,17 @@ SELECT speed,AVG(price)
 FROM pc
 GROUP BY speed
 
+/*
+Задание 15  условие не понятно
+*/
+
+SELECT hd 
+FROM pc
+
+group by hd
+
+HAVING COUNT(model)>=2
+
 
 
 
