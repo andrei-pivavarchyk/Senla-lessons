@@ -2,14 +2,14 @@ create database SomeDevices;
 
 use SomeDevices;
 
-CREATE TABLE product (
+CREATE TABLE product IF NOT EXISTS (
 `maker` varchar(10) ,
-`model` varchar(10) PRIMARY KEY,
-`type` varchar(10) 
+`model` varchar(50) PRIMARY KEY,
+`type` varchar(50) 
 );
 
 
-CREATE TABLE pc (
+CREATE TABLE pc IF NOT EXISTS (
 `code` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 `model` varchar(50) ,
 `speed` smallint,
