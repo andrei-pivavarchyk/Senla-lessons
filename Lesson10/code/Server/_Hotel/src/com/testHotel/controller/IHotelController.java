@@ -6,11 +6,12 @@ import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
 import com.testHotel.service.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IHotelController {
     void startHotel();
-    void endHotel();
+    void endHotel() throws SQLException;
     Room getRoomByNumber(Integer number);
     List<Room> getFreeRooms();
     void setFileService(IFileService fileService);
@@ -34,5 +35,6 @@ public interface IHotelController {
     IPrinterService getPrinterService();
     List<Room> getAllRooms();
     List<Guest> getAllGuests();
+    public  List<Service> getAllServices();
 
 }

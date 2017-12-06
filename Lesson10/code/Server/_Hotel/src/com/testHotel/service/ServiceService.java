@@ -4,19 +4,23 @@ import com.dependencyService.DependencyService;
 import com.testHotel.comparator.GuestServiceInfoCostComparator;
 import com.testHotel.comparator.GuestServiceInfoDateComparator;
 import com.testHotel.comparator.ServiceCostComparator;
+import com.testHotel.dao.IServiceDAO;
+import com.testHotel.dao.ServiceDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestServiceInfo;
 import com.testHotel.entity.Service;
 import com.testHotel.storage.IGuestServiceStorage;
-import com.testHotel.storage.IGuestStorage;
 import com.testHotel.storage.IServiceStorage;
 
 import org.apache.log4j.Logger;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.*;
 
-public class ServiceService implements IServiceService, Serializable {
+public class ServiceService implements IServiceService {
 
     private IGuestServiceStorage guestServiceStorage = (IGuestServiceStorage) DependencyService.getDI().getInstance(IGuestServiceStorage.class);
     private IServiceStorage serviceStorage = (IServiceStorage) DependencyService.getDI().getInstance(IServiceStorage.class);
@@ -26,6 +30,8 @@ public class ServiceService implements IServiceService, Serializable {
     private static final Comparator<Service> SERVICE_COST_COMPARATOR = new ServiceCostComparator();
     public static final Logger log = Logger.getLogger(GuestService.class);
 
+    private Connection con;
+    private IServiceDAO serviceDAO=(IServiceDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
 
     public void addGuestService(Guest guest, Service service, int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();
@@ -55,14 +61,15 @@ public class ServiceService implements IServiceService, Serializable {
 
 
     public void addService(Service service) {
-        synchronized (this.serviceStorage) {
-            this.serviceStorage.addEntity(service);
+        synchronized (this.serviceDAO) {
+           // this.serviceStorage.addEntity(service);
+            serviceDAO.add(service);
         }
     }
 
     public List<Service> getAllHotelServices() {
-        synchronized (this.serviceStorage) {
-            return this.serviceStorage.getAllEntities();
+        synchronized (this.serviceDAO) {
+            return this.serviceDAO.getAllServices();
         }
     }
 
@@ -97,4 +104,8 @@ public class ServiceService implements IServiceService, Serializable {
         this.serviceStorage = serviceStorage;
     }
 
+    public void setConnection(Connection con) {
+        this.con = con;
+        this.serviceDAO.setCon(con);
+    }
 }

@@ -7,6 +7,7 @@ import com.testHotel.entity.GuestServiceInfo;
 import com.testHotel.storage.IGuestServiceStorage;
 import com.testHotel.storage.IServiceStorage;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,4 +22,5 @@ public interface IServiceService {
     void setServiceStorage(IServiceStorage serviceStorage);
     void setGuestServiceStorage(IGuestServiceStorage guestServiceStorage);
     IServiceStorage getServiceStorage();
+    void setConnection(Connection con);
 }

@@ -1,2 +1,65 @@
-create database newdatabase;
-show databases;
+CREATE DATABASE IF NOT EXISTS hotel2;
+
+use hotel2;
+
+
+
+CREATE TABLE room (
+`number` int NOT NULL PRIMARY KEY,
+`cost` int,
+`capacity` smallint,
+`stars` smallint
+);
+
+
+CREATE TABLE guest  (
+`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`name` varchar(50),
+`surname` varchar(50)
+);
+
+
+CREATE TABLE guestroominfo (
+`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`arrivaldate` date,
+`departuredate` date,
+`guest` int,
+`room` int,
+`isstillliving` boolean,
+FOREIGN KEY(guest) REFERENCES guest(id),
+FOREIGN KEY(room) REFERENCES room(number)
+);
+
+
+CREATE TABLE service (
+`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`name` varchar(50),
+`cost` int,
+`type` varchar(50)
+);
+
+CREATE TABLE guestserviceinfo(
+`guest` int,
+`service` int,
+`date` date,
+FOREIGN KEY(guest) REFERENCES guest(id),
+FOREIGN KEY(service) REFERENCES service(id)
+);
+
+INSERT INTO room ( number,cost,capacity,stars ) VALUES
+( 1,20,3,5),
+( 2,30,2,4),
+( 3,40,1,3),
+( 4,50,4,4),
+( 5,60,5,3);
+
+
+
+INSERT INTO service ( name, cost,type ) VALUES
+( 'spa',20,'SPA'),
+( 'pelmeni',20,'EAT'),
+( 'pizza',20,'EAT'),
+( 'telek',20,'SPA'),
+( 'cola',20,'EAT');
+
+

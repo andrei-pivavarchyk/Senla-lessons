@@ -10,6 +10,9 @@ INSERT INTO room ( number,cost,capacity,stars ) VALUES
 
 
 INSERT INTO service ( name, cost,type ) VALUES
-( 'spa',20,'service'),
-( 'cola',20,'eat');
+( 'spa',20,'SPA'),
+( 'pelmeni',20,'EAT'),
+( 'pizza',20,'EAT'),
+( 'telek',20,'SPA'),
+( 'cola',20,'EAT');
 
