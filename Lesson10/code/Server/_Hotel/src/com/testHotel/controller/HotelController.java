@@ -43,8 +43,10 @@ public class HotelController implements IHotelController {
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.PASSWORD)
     private String password;
 
-    public void startHotel() {
 
+
+    public void startHotel() {
+/*
         this.configurator.configure(this);
         this.configurator.configure(this.serializableService);
 
@@ -60,7 +62,7 @@ public class HotelController implements IHotelController {
         } else {
             this.getRoomService().getAllRooms().addAll(programState.getRoomList());
             this.getServiceService().getAllHotelServices().addAll(programState.getServiceList());
-        }
+        }*/
         this.setConnection();
     }
 
@@ -78,18 +80,15 @@ public class HotelController implements IHotelController {
                 log.error(e.toString());
             }
         }
-
     }
 
 
     private Connection getConnection() {
 
-        String query = "select count(*) from books";
         if (con != null) {
             return con;
         } else {
             try {
-
                 con = DriverManager.getConnection(url, user, password);
                 return con;
 
