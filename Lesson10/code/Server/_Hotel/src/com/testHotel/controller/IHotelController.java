@@ -35,6 +35,6 @@ public interface IHotelController {
     IPrinterService getPrinterService();
     List<Room> getAllRooms();
     List<Guest> getAllGuests();
-    public  List<Service> getAllServices();
+    List<Service> getAllServices();
 
 }

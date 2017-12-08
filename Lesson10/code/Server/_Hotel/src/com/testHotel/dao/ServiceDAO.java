@@ -1,5 +1,6 @@
 package com.testHotel.dao;
 
+
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
 import com.testHotel.service.GuestService;
@@ -11,8 +12,7 @@ import java.util.List;
 
 public class ServiceDAO implements IServiceDAO {
 
-
-    private Connection con;
+private Connection con= ConnectionUtil.getConnectionUtil().getConnection();
 
 
     public Logger log = Logger.getLogger(GuestService.class);
@@ -21,7 +21,6 @@ public class ServiceDAO implements IServiceDAO {
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO service ( name, cost,type ) VALUES( ?,?,?)";
         try {
-
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, service.getName());
             preparedStatement.setInt(2, service.getCost());

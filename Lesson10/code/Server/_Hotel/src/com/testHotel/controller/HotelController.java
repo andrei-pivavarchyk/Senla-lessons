@@ -4,6 +4,7 @@ import com.configurator.*;
 
 import com.dependencyService.DependencyService;
 import com.serializingService.ISerializableService;
+import com.testHotel.dao.ConnectionUtil;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.ProgramState;
 import com.testHotel.entity.Room;
@@ -34,19 +35,8 @@ public class HotelController implements IHotelController {
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE)
     private String roomFilePath;
 
-    //for mysql
-    private Connection con;
-    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.URL)
-    private String url;
-    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.USER)
-    private String user;
-    @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.PASSWORD)
-    private String password;
-
-
-
     public void startHotel() {
-/*
+
         this.configurator.configure(this);
         this.configurator.configure(this.serializableService);
 
@@ -62,8 +52,9 @@ public class HotelController implements IHotelController {
         } else {
             this.getRoomService().getAllRooms().addAll(programState.getRoomList());
             this.getServiceService().getAllHotelServices().addAll(programState.getServiceList());
-        }*/
-        this.setConnection();
+
+
+        }
     }
 
 
@@ -73,36 +64,12 @@ public class HotelController implements IHotelController {
         programState.setRoomList(this.getRoomService().getAllRooms());
         programState.setServiceList(this.getServiceService().getAllHotelServices());
         this.serializableService.serializable(programState);
-        if (this.con != null) {
-            try {
-                this.con.close();
-            } catch (SQLException e) {
-                log.error(e.toString());
-            }
+
+        try {
+            ConnectionUtil.getConnectionUtil().getConnection().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    }
-
-
-    private Connection getConnection() {
-
-        if (con != null) {
-            return con;
-        } else {
-            try {
-                con = DriverManager.getConnection(url, user, password);
-                return con;
-
-            } catch (SQLException e) {
-                log.error(e.toString());
-                return null;
-            }
-        }
-    }
-
-
-    public void setConnection() {
-
-        this.serviceService.setConnection(this.getConnection());
     }
 
 
@@ -217,8 +184,8 @@ public class HotelController implements IHotelController {
         return this.roomService.getRoomByNumber(number);
     }
 
-    public  List<Service> getAllServices(){
-      return  this.serviceService.getAllHotelServices();
+    public List<Service> getAllServices() {
+        return this.serviceService.getAllHotelServices();
     }
 
 }
