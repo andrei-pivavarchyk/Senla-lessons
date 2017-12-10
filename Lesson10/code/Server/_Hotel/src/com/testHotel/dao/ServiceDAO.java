@@ -93,4 +93,8 @@ private Connection con= ConnectionUtil.getConnectionUtil().getConnection();
     public void setCon(Connection con) {
         this.con = con;
     }
+
+    public Connection getCon() {
+        return con;
+    }
 }
