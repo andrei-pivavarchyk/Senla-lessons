@@ -3,9 +3,9 @@ package com.testHotel.service;
 import com.dependencyService.DependencyService;
 import com.testHotel.comparator.GuestNameComparator;
 import com.testHotel.comparator.GuestRoomInfoDateComparator;
+import com.testHotel.dao.IGuestRoomInfoDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
-import com.testHotel.storage.IGuestRoomInfoStorage;
 import org.apache.log4j.Logger;
 
 import java.io.Serializable;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GuestService implements IGuestService, Serializable {
 
-    private IGuestRoomInfoStorage guestRoomInfoStorage = (IGuestRoomInfoStorage) DependencyService.getDI().getInstance(IGuestRoomInfoStorage.class);
+    private IGuestRoomInfoDAO guestRoomInfoDAO = (IGuestRoomInfoDAO) DependencyService.getDI().getInstance(IGuestRoomInfoDAO.class);
     private static final Comparator<Guest> NAME_COMPARATOR = new GuestNameComparator();
     private static final Comparator<GuestRoomInfo> DATE_COMPARATOR = new GuestRoomInfoDateComparator();
     public Logger log = Logger.getLogger(GuestService.class);
@@ -25,9 +25,9 @@ public class GuestService implements IGuestService, Serializable {
 
 
     public ArrayList<Guest> getAllGuests() {
-        synchronized (this.guestRoomInfoStorage) {
+        synchronized (this.guestRoomInfoDAO) {
             ArrayList<Guest> allGuests = new ArrayList<Guest>();
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities()) {
                 if (guestRoomInfo.getStillLiving().equals(true)) {
                     allGuests.add(guestRoomInfo.getGuest());
                 }
@@ -37,8 +37,8 @@ public class GuestService implements IGuestService, Serializable {
     }
 
     public ArrayList<Guest> getAllGuestsSortedByDateDeparture() {
-        synchronized (this.guestRoomInfoStorage) {
-            ArrayList<GuestRoomInfo> copyArray = new ArrayList<GuestRoomInfo>(this.guestRoomInfoStorage.getAllEntities());
+        synchronized (this.guestRoomInfoDAO) {
+            ArrayList<GuestRoomInfo> copyArray = new ArrayList<GuestRoomInfo>(this.guestRoomInfoDAO.getAllEntities());
             ArrayList<Guest> guestList = new ArrayList<Guest>();
             copyArray.sort(DATE_COMPARATOR);
             for (GuestRoomInfo guestRoomInfo : copyArray) {
@@ -49,9 +49,9 @@ public class GuestService implements IGuestService, Serializable {
     }
 
     public void printAllGuestsCount() {
-        synchronized (this.guestRoomInfoStorage) {
+        synchronized (this.guestRoomInfoDAO) {
             int count = 0;
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities()) {
                 if (guestRoomInfo.getStillLiving().equals(true)) {
                     count++;
                 }
@@ -61,9 +61,9 @@ public class GuestService implements IGuestService, Serializable {
     }
 
     public int getPayAmount(Guest guest) {
-        synchronized (this.guestRoomInfoStorage) {
+        synchronized (this.guestRoomInfoDAO) {
             int payGuest = 0;
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities()) {
                 if (guestRoomInfo.getGuest().equals(guest)) {
                     Date date1 = guestRoomInfo.getArrivalDate();
                     Date date2 = guestRoomInfo.getDepartureDate();
@@ -79,9 +79,9 @@ public class GuestService implements IGuestService, Serializable {
     }
 
     public ArrayList<GuestRoomInfo> getCurrentGuestRoomInfo() {
-        synchronized (this.guestRoomInfoStorage) {
+        synchronized (this.guestRoomInfoDAO) {
             ArrayList<GuestRoomInfo> currentGuestRoomInfoList = new ArrayList<GuestRoomInfo>();
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoStorage.getAllEntities()) {
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities()) {
                 if (guestRoomInfo.getStillLiving().equals(true)) {
                     currentGuestRoomInfoList.add(guestRoomInfo);
                 }
@@ -95,10 +95,4 @@ public class GuestService implements IGuestService, Serializable {
         return copyArray;
     }
 
-    //start dependency injection
-    public void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage) {
-        this.guestRoomInfoStorage = guestRoomInfoStorage;
-    }
-
-    //end start dependency injection
 }

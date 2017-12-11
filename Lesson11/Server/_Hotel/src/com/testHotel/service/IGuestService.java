@@ -15,5 +15,4 @@ public interface IGuestService {
     void printAllGuestsCount();
     int getPayAmount(Guest guest);
     ArrayList<GuestRoomInfo> getCurrentGuestRoomInfo();
-    void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage);
 }

@@ -167,7 +167,7 @@ public class HotelController implements IHotelController {
     }
 
     public void addRoom(Room room) {
-        this.getRoomService().getAllRooms().add(room);
+        this.getRoomService().addRoom(room);
     }
 
     public void importRoom(String path) throws Exception {

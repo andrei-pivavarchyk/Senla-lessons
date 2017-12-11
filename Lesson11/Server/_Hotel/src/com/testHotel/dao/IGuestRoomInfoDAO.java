@@ -1,7 +1,9 @@
 package com.testHotel.dao;
 
+import com.testHotel.entity.GuestRoomInfo;
+
 /**
  * Created by андрей on 11.12.2017.
  */
-public interface IGuestRoomInfoDAO {
+public interface IGuestRoomInfoDAO extends IBaseDAO<GuestRoomInfo> {
 }

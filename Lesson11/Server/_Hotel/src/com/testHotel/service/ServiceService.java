@@ -9,10 +9,8 @@ import com.testHotel.dao.IServiceDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestServiceInfo;
 import com.testHotel.entity.Service;
-import com.testHotel.storage.IGuestServiceStorage;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
 import java.util.*;
 
 public class ServiceService implements IServiceService {
@@ -63,7 +61,6 @@ public class ServiceService implements IServiceService {
             return this.serviceDAO.getAllEntities();
         }
     }
-
     public ArrayList<Service> getAllHotelServicesSortedByCost() {
         ArrayList<Service> allServices = new ArrayList<Service>(this.getAllHotelServices());
         allServices.sort(SERVICE_COST_COMPARATOR);
@@ -73,7 +70,6 @@ public class ServiceService implements IServiceService {
         ArrayList<GuestServiceInfo> copyArray = new ArrayList<GuestServiceInfo>(this.getAllGuestServicesInfo(guest));
         copyArray.sort(COST_COMPARATOR);
         return copyArray;
-
     }
 
     public ArrayList<GuestServiceInfo> getAllGuestServicesInfoSortedByDate(Guest guest) {
@@ -81,6 +77,4 @@ public class ServiceService implements IServiceService {
         copyArray.sort(DATE_COMPARATOR);
         return copyArray;
     }
-
-
 }

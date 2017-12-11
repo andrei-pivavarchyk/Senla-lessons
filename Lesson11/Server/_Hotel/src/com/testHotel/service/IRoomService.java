@@ -34,6 +34,4 @@ public interface IRoomService {
    Room getRoomByNumber(int roomNumber);
    Room cloneRoom(Room room) throws CloneNotSupportedException;
    void glueTwoArrays(List<Room> importList );
-   void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage);
-
 }
