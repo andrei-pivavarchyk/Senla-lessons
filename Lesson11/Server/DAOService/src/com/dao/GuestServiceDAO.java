@@ -78,15 +78,15 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
 
     @Override
     protected void prepareStatementForUpdate(PreparedStatement statement, GuestServiceInfo object) {
-      /*  try {
-            statement.setInt(1,object.getNumber());
-            statement.setInt(2,object.getCost());
-            statement.setInt(3,object.getCapacity());
-            statement.setInt(4,object.getStars());
-            statement.setInt(5,object.getNumber());
+       try {
+            Timestamp date=new Timestamp(object.getDate().getTime());
+            statement.setInt(1, object.getService().getId());
+            statement.setTimestamp(2, date);
+           statement.setInt(3, object.getGuest().getId());
+           statement.setInt(4, object.getService().getId());
         } catch (Exception e) {
             log.equals(e.toString());
         }
-     */}
+     }
 
 }

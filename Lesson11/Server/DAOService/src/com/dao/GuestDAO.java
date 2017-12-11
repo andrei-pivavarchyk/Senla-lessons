@@ -39,7 +39,6 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
-
                 Guest guest = new Guest(id,name,surname);
                 result.add(guest);
             }
@@ -47,18 +46,13 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
             log.error(e.toString());
         }
         return result;
-
-
     }
 
     @Override
     protected void prepareStatementForInsert(PreparedStatement statement, Guest object) {
-
         try {
-
             statement.setString(1, object.getName());
             statement.setString(2, object.getSurName());
-
         } catch (Exception e) {
             log.equals(e.toString());
         }

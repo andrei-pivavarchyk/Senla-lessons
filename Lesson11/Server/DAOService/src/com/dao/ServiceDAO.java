@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by андрей on 10.12.2017.
  */
-public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO{
+public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
 
 
     @Override
@@ -51,36 +51,28 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO{
         }
         return result;
 
-
     }
 
     @Override
     protected void prepareStatementForInsert(PreparedStatement statement, Service object) {
-
         try {
-
             statement.setString(1, object.getName());
             statement.setInt(2, object.getCost());
             statement.setString(3, object.getType().toString());
         } catch (Exception e) {
             log.equals(e.toString());
         }
-
     }
 
     @Override
     protected void prepareStatementForUpdate(PreparedStatement statement, Service object) {
         try {
-
             statement.setString(1, object.getName());
             statement.setInt(2, object.getCost());
             statement.setString(3, object.getType().toString());
-            statement.setInt(4,object.getId());
+            statement.setInt(4, object.getId());
         } catch (Exception e) {
             log.equals(e.toString());
         }
-
     }
-
-
 }

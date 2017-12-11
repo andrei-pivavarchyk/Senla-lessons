@@ -34,10 +34,8 @@ public class ConnectionUtil {
                 localInstance = instance;
                 if (localInstance == null) {
                     IConfigurator configurator = (IConfigurator) DependencyService.getDI().getInstance(IConfigurator.class);
-
                     instance = new ConnectionUtil();
                     configurator.configure(instance);
-
                 }
             }
         }

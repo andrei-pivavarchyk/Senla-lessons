@@ -47,14 +47,11 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
 
 
     public void addEntity(T object) {
-        T persistInstance = null;
         String sql = getCreateQuery();
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             prepareStatementForInsert(statement, object);
             statement.executeUpdate();
-
         } catch (Exception e) {
-
             log.error(e.toString());
         }
     }
@@ -68,7 +65,7 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
                 log.error(e.toString());
             }
             statement.executeUpdate();
-            statement.close();
+
         } catch (Exception e) {
             log.error(e.toString());
         }
@@ -78,13 +75,11 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
         List<T> list = new ArrayList<T>();
         String sql = getSelectQuery();
         sql += " WHERE id = ?";
-
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-
             log.error(e.toString());
         }
         return list.iterator().next();
@@ -95,7 +90,6 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             prepareStatementForUpdate(statement, object);
             int count = statement.executeUpdate();
-
         } catch (Exception e) {
             log.error(e.toString());
         }

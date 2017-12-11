@@ -60,8 +60,6 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
             statement.setInt(2, object.getCost());
             statement.setInt(3, object.getCapacity());
             statement.setInt(4, object.getStars());
-
-
         } catch (Exception e) {
             log.equals(e.toString());
         }

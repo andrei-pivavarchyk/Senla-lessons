@@ -43,68 +43,72 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 int id = rs.getInt("id");
                 long arrivalDate = rs.getLong("arrivaldate");
                 long departureDate = rs.getLong("departuredate");
-                int guest = rs.getInt("guest");
-                int room = rs.getInt("room");
+                int guestId = rs.getInt("guest");
+                int roomId = rs.getInt("room");
                 int isLivingNumber = rs.getInt("isstillliving");
                 Boolean isStillLiving = false;
                 if (isLivingNumber == 1) {
                     isStillLiving = true;
                 }
-                Date arrival= new Date(new Timestamp(arrivalDate).getTime()) ;
-                Date departure= new Date(new Timestamp(departureDate).getTime()) ;
-                GregorianCalendar gregorianCalendar=new GregorianCalendar();
+                Date arrival = new Date(new Timestamp(arrivalDate).getTime());
+                Date departure = new Date(new Timestamp(departureDate).getTime());
+                GregorianCalendar gregorianCalendar = new GregorianCalendar();
                 gregorianCalendar.setTime(departure);
-                int year =gregorianCalendar.get(Calendar.YEAR);
-                int month =gregorianCalendar.get(Calendar.MONTH);
-                int day =gregorianCalendar.get(Calendar.DAY_OF_MONTH);
-                Guest guest1=guestDAO.getEntity(guest);
-                Room room1=roomDAO.getEntity(room);
+                int year = gregorianCalendar.get(Calendar.YEAR);
+                int month = gregorianCalendar.get(Calendar.MONTH);
+                int day = gregorianCalendar.get(Calendar.DAY_OF_MONTH);
 
-                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id, arrival,guest1,room1,year,month,day);
+                Guest guest = guestDAO.getEntity(guestId);
+                Room room = roomDAO.getEntity(roomId);
+
+                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id, arrival, guest, room, year, month, day);
                 result.add(guestRoomInfo);
             }
         } catch (Exception e) {
             log.error(e.toString());
         }
         return result;
-
-
     }
 
     @Override
     protected void prepareStatementForInsert(PreparedStatement statement, GuestRoomInfo object) {
-        Timestamp arrival=new Timestamp(object.getArrivalDate().getTime());
-        Timestamp departure=new Timestamp(object.getDepartureDate().getTime());
-        int stillLiving=1;
-        if(object.getStillLiving().equals(false)){
-            stillLiving=0;
+        Timestamp arrival = new Timestamp(object.getArrivalDate().getTime());
+        Timestamp departure = new Timestamp(object.getDepartureDate().getTime());
+        int stillLiving = 1;
+        if (object.getStillLiving().equals(false)) {
+            stillLiving = 0;
         }
-
         try {
-
-            statement.setTimestamp(1,arrival );
-            statement.setTimestamp(2,departure );
+            statement.setTimestamp(1, arrival);
+            statement.setTimestamp(2, departure);
             statement.setInt(3, object.getGuest().getId());
             statement.setInt(4, object.getRoom().getId());
-            statement.setInt(5,stillLiving);
+            statement.setInt(5, stillLiving);
         } catch (Exception e) {
             log.equals(e.toString());
         }
-
     }
 
     @Override
     protected void prepareStatementForUpdate(PreparedStatement statement, GuestRoomInfo object) {
-      /*  try {
+        Timestamp arrival = new Timestamp(object.getArrivalDate().getTime());
+        Timestamp departure = new Timestamp(object.getDepartureDate().getTime());
+        int stillLiving = 1;
+        if (object.getStillLiving().equals(false)) {
+            stillLiving = 0;
+        }
+       try {
 
-            statement.setString(1, object.getName());
-            statement.setInt(2, object.getCost());
-            statement.setString(3, object.getType().toString());
-            statement.setInt(4, object.getId());
+           statement.setTimestamp(1, arrival);
+           statement.setTimestamp(2, departure);
+           statement.setInt(3, object.getGuest().getId());
+           statement.setInt(4, object.getRoom().getId());
+           statement.setInt(5, stillLiving);
+            statement.setInt(6, object.getId());
         } catch (Exception e) {
             log.equals(e.toString());
         }
-*/
+
     }
 
 }
