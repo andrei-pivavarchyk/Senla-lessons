@@ -1,50 +1,58 @@
 package com.testHotel.dao;
 
+import com.testHotel.entity.GuestRoomInfo;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
- * Created by андрей on 10.12.2017.
+ * Created by андрей on 11.12.2017.
  */
-public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO{
+public class GuestRoomInfoDAO {
+        /*extends BaseDAO<GuestRoomInfo> implements IGuestRoomInfoDAO {
 
 
     @Override
     public String getSelectQuery() {
-        return " SELECT id,name,cost,type FROM hotel4.service";
+        return " SELECT id,arrivaldate,departuredate,guest,room,issteelliving FROM hotel.guestroominfo";
     }
 
     @Override
     public String getCreateQuery() {
-        return "insert into hotel4.service(name,cost,type) values(?,?,?);";
+        return "insert into hotel.guestroominfo(arrivaldate,departuredate,guest,room,isstillliving) values(?,?,?,?,?);";
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE hotel4.service SET name= ?, cost = ?,type=? WHERE id= ?;";
+        return "UPDATE hotel.guestroominfo SET arrivaldate= ?, departuredate = ?,guest=?,room=?,isstillliving=? WHERE id= ?;";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM hotel4.service WHERE id= ?;";
+        return "DELETE FROM hotel.guestroominfo WHERE id= ?;";
     }
 
     @Override
-    protected List<Service> parseResultSet(ResultSet rs) {
-        List<Service> result = new ArrayList<Service>();
+    protected List<GuestRoomInfo> parseResultSet(ResultSet rs) {
+        List<GuestRoomInfo> result = new ArrayList<GuestRoomInfo>();
         try {
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String name = rs.getString("name");
-                int cost = rs.getInt("cost");
-                ServiceType type = ServiceType.valueOf(rs.getString("type"));
-                Service service = new Service(id, type, name, cost);
-                result.add(service);
+                String arrivalDate = rs.getString("arrivaldate");
+                String departureDate = rs.getString("departuredate");
+                int guest = rs.getInt("guest");
+                int room = rs.getInt("room");
+                int isstillliving = rs.getInt("isstillliving");
+Boolean isliving=false;
+if(isstillliving==1){isliving=true;}
+
+               // GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id, new Date(),new Date(),guest,room,isliving);
+             //   result.add(service);
             }
         } catch (Exception e) {
             log.error(e.toString());
@@ -81,6 +89,5 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO{
         }
 
     }
-
-
+*/
 }

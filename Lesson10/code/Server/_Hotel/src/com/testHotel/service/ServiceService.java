@@ -4,33 +4,26 @@ import com.dependencyService.DependencyService;
 import com.testHotel.comparator.GuestServiceInfoCostComparator;
 import com.testHotel.comparator.GuestServiceInfoDateComparator;
 import com.testHotel.comparator.ServiceCostComparator;
+import com.testHotel.dao.IGuestServiceDAO;
 import com.testHotel.dao.IServiceDAO;
-import com.testHotel.dao.ServiceDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestServiceInfo;
 import com.testHotel.entity.Service;
 import com.testHotel.storage.IGuestServiceStorage;
-import com.testHotel.storage.IServiceStorage;
-
 import org.apache.log4j.Logger;
 
-import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.*;
 
 public class ServiceService implements IServiceService {
 
-    private IGuestServiceStorage guestServiceStorage = (IGuestServiceStorage) DependencyService.getDI().getInstance(IGuestServiceStorage.class);
-    private IServiceStorage serviceStorage = (IServiceStorage) DependencyService.getDI().getInstance(IServiceStorage.class);
+    private IGuestServiceDAO guestServiceDAO=(IGuestServiceDAO) DependencyService.getDI().getInstance(IGuestServiceDAO.class);
     private int guestServiceInfoCount = 0;
     private static final Comparator<GuestServiceInfo> COST_COMPARATOR = new GuestServiceInfoCostComparator();
     private static final Comparator<GuestServiceInfo> DATE_COMPARATOR = new GuestServiceInfoDateComparator();
     private static final Comparator<Service> SERVICE_COST_COMPARATOR = new ServiceCostComparator();
     public static final Logger log = Logger.getLogger(GuestService.class);
 
-    private Connection con;
     private IServiceDAO serviceDAO=(IServiceDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
 
     public void addGuestService(Guest guest, Service service, int year, int month, int day) {
@@ -38,18 +31,17 @@ public class ServiceService implements IServiceService {
         calendar.set(year, month + 1, day);
         Date serviceDate = calendar.getTime();
         GuestServiceInfo guestServiceInfo = new GuestServiceInfo(guestServiceInfoCount, guest, service, serviceDate);
-        synchronized (this.guestServiceStorage) {
-            this.guestServiceStorage.addEntity(guestServiceInfo);
+        synchronized (this.guestServiceDAO) {
+            this.guestServiceDAO.addEntity(guestServiceInfo);
         }
         guestServiceInfoCount++;
 
     }
 
-
     public ArrayList<GuestServiceInfo> getAllGuestServicesInfo(Guest guest) {
-        synchronized (this.guestServiceStorage) {
+        synchronized (this.guestServiceDAO) {
             ArrayList<GuestServiceInfo> allGuestServicesInfo = new ArrayList<GuestServiceInfo>();
-            for (GuestServiceInfo guestServiceInfo : this.guestServiceStorage.getAllEntities()) {
+            for (GuestServiceInfo guestServiceInfo : this.guestServiceDAO.getAllEntities()) {
                 if (guestServiceInfo.getGuest().equals(guest)) {
                     allGuestServicesInfo.add(guestServiceInfo);
                 }
@@ -59,26 +51,19 @@ public class ServiceService implements IServiceService {
 
     }
 
-
     public void addService(Service service) {
         synchronized (this.serviceDAO) {
            // this.serviceStorage.addEntity(service);
-            serviceDAO.add(service);
+            serviceDAO.addEntity(service);
         }
     }
 
     public List<Service> getAllHotelServices() {
         synchronized (this.serviceDAO) {
-            return this.serviceDAO.getAllServices();
+            return this.serviceDAO.getAllEntities();
         }
     }
 
-
-    public IServiceStorage getServiceStorage() {
-        synchronized (this.serviceStorage) {
-            return this.serviceStorage;
-        }
-    }
     public ArrayList<Service> getAllHotelServicesSortedByCost() {
         ArrayList<Service> allServices = new ArrayList<Service>(this.getAllHotelServices());
         allServices.sort(SERVICE_COST_COMPARATOR);
@@ -97,15 +82,5 @@ public class ServiceService implements IServiceService {
         return copyArray;
     }
 
-    public void setGuestServiceStorage(IGuestServiceStorage guestServiceStorage) {
-        this.guestServiceStorage = guestServiceStorage;
-    }
-    public void setServiceStorage(IServiceStorage serviceStorage) {
-        this.serviceStorage = serviceStorage;
-    }
 
-    public void setConnection(Connection con) {
-        this.con = con;
-        this.serviceDAO.setCon(con);
-    }
 }

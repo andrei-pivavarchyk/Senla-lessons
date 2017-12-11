@@ -9,10 +9,10 @@ import com.testHotel.comparator.RoomCapacityComparator;
 import com.testHotel.comparator.RoomCostComparator;
 import com.testHotel.comparator.RoomIdComparator;
 import com.testHotel.comparator.RoomStarsComparator;
+import com.testHotel.dao.IGuestDAO;
+import com.testHotel.dao.IRoomDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
-import com.testHotel.storage.IGuestStorage;
-import com.testHotel.storage.IRoomStorage;
 import com.testHotel.storage.IGuestRoomInfoStorage;
 import com.testHotel.entity.GuestRoomInfo;
 import com.testHotel.entity.RoomStatus;
@@ -23,10 +23,10 @@ import java.util.*;
 
 public class RoomService implements IRoomService {
 
-    private IRoomStorage roomStorage = (IRoomStorage) DependencyService.getDI().getInstance(IRoomStorage.class);
+    private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
     private IGuestRoomInfoStorage guestRoomInfoStorage = (IGuestRoomInfoStorage) DependencyService.getDI().getInstance(IGuestRoomInfoStorage.class);
-    ;
-    private IGuestStorage guestStorage = (IGuestStorage) DependencyService.getDI().getInstance(IGuestStorage.class);
+
+    private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
     private int guestRoomInfoCount = 0;
     private static final Comparator<Room> COST_COMPARATOR = new RoomCostComparator();
     private static final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
@@ -40,41 +40,41 @@ public class RoomService implements IRoomService {
 
 
     public void addRoom(Room room) {
-        this.roomStorage.addEntity(room);
+        this.roomDAO.addEntity(room);
     }
 
     public List<Room> getAllRooms() {
-        synchronized (this.roomStorage) {
-            return this.roomStorage.getAllEntities();
+        synchronized (this.roomDAO) {
+            return this.roomDAO.getAllEntities();
         }
     }
 
     public ArrayList<Room> getRoomCostSorting() {
-        synchronized (this.roomStorage) {
-            ArrayList<Room> copyArray = this.getArrayRoomCostSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
+        synchronized (this.roomDAO) {
+            ArrayList<Room> copyArray = this.getArrayRoomCostSorting((ArrayList<Room>) this.roomDAO.getAllEntities());
             return copyArray;
         }
     }
 
     public ArrayList<Room> getRoomCapacitySorting() {
 
-        synchronized (this.roomStorage) {
-            ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting((ArrayList<Room>) this.roomStorage.getAllEntities());
+        synchronized (this.roomDAO) {
+            ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting((ArrayList<Room>) this.roomDAO.getAllEntities());
             return copyArray;
         }
 
     }
 
     public ArrayList<Room> getRoomStarsSorting() {
-        synchronized (this.roomStorage) {
-            ArrayList<Room> copyArray = this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomStorage.getAllEntities());
+        synchronized (this.roomDAO) {
+            ArrayList<Room> copyArray = this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomDAO.getAllEntities());
             return copyArray;
         }
     }
 
     public Room getRoomByNumber(int roomNumber) {
-        synchronized (this.roomStorage) {
-            for (Room room : this.roomStorage.getAllEntities()) {
+        synchronized (this.roomDAO) {
+            for (Room room : this.roomDAO.getAllEntities()) {
                 if (room.getNumber() == roomNumber) {
                     return room;
                 }
@@ -84,8 +84,8 @@ public class RoomService implements IRoomService {
     }
 
     public Room getRoomById(int roomId) {
-        synchronized (this.roomStorage) {
-            for (Room room : this.roomStorage.getAllEntities()) {
+        synchronized (this.roomDAO) {
+            for (Room room : this.roomDAO.getAllEntities()) {
                 if (room.getId() == roomId) {
                     return room;
                 }
@@ -113,7 +113,7 @@ public class RoomService implements IRoomService {
                 }
                 this.guestRoomInfoStorage.addEntity(guestRoomInfo);
 
-                this.guestStorage.addEntity(guest);
+                this.guestDAO.addEntity(guest);
             }
         } else {
             log.error("No room with that number");
@@ -148,9 +148,9 @@ public class RoomService implements IRoomService {
 
     public ArrayList<Room> getFreeRooms() {
 
-        synchronized (this.roomStorage) {
+        synchronized (this.roomDAO) {
             ArrayList<Room> freeRooms = new ArrayList<Room>();
-            for (Room room : this.roomStorage.getAllEntities()) {
+            for (Room room : this.roomDAO.getAllEntities()) {
                 if (room.getStatus().equals(RoomStatus.FREE)) {
                     freeRooms.add(room);
                 }
@@ -161,9 +161,9 @@ public class RoomService implements IRoomService {
     }
 
     public void printFreeRoomsCount() {
-        synchronized (this.roomStorage) {
+        synchronized (this.roomDAO) {
             int count = 0;
-            for (Room room : this.roomStorage.getAllEntities()) {
+            for (Room room : this.roomDAO.getAllEntities()) {
                 if (room.getStatus().equals(RoomStatus.FREE)) {
                     count++;
                 }
@@ -232,8 +232,8 @@ public class RoomService implements IRoomService {
     public Room cloneRoom(Room room) throws CloneNotSupportedException {
         Room clone = room.clone();
 
-        synchronized (this.roomStorage) {
-            int roomId = this.roomStorage.getAllEntities().size();
+        synchronized (this.roomDAO) {
+            int roomId = this.roomDAO.getAllEntities().size();
             clone.setId(roomId);
             return clone;
         }
@@ -258,15 +258,6 @@ public class RoomService implements IRoomService {
     public void setGuestRoomInfoStorage(IGuestRoomInfoStorage guestRoomInfoStorage) {
         this.guestRoomInfoStorage = guestRoomInfoStorage;
     }
-
-    public void setGuestStorage(IGuestStorage guestStorage) {
-        this.guestStorage = guestStorage;
-    }
-
-    public void setRoomStorage(IRoomStorage roomStorage) {
-        this.roomStorage = roomStorage;
-    }
-
 }
 
 

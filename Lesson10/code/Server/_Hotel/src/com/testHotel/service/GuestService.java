@@ -22,11 +22,7 @@ public class GuestService implements IGuestService, Serializable {
     public Logger log = Logger.getLogger(GuestService.class);
 
 
-    public IGuestRoomInfoStorage getGuestRoomInfoStorage() {
-        synchronized (this.guestRoomInfoStorage) {
-            return guestRoomInfoStorage;
-        }
-    }
+
 
     public ArrayList<Guest> getAllGuests() {
         synchronized (this.guestRoomInfoStorage) {

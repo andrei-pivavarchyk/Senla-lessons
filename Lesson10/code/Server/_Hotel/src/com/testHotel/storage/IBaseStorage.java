@@ -6,12 +6,10 @@ import com.testHotel.entity.Entity;
 import java.util.List;
 
 public interface IBaseStorage<T extends Entity> {
-
-
-    public void addEntity(T entity);
-    public void removeEntity(int id);
-    public T getEntity(int id);
-    public void updateEntity(T entity);
-    public List<T> getAllEntities();
+    void addEntity(T entity);
+     void removeEntity(int id);
+     T getEntity(int id);
+     void updateEntity(T entity);
+     List<T> getAllEntities();
 
 }

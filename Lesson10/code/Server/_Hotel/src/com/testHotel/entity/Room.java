@@ -18,20 +18,23 @@ public class Room extends Entity implements Cloneable{
 
     @JsonCreator
     public Room(@JsonProperty("id") Integer id, @JsonProperty("number") Integer number, @JsonProperty("cost") Integer cost, @JsonProperty("capacity") Integer capacity, @JsonProperty("stars") Integer stars) {
-        super(id);
-        this.number = number;
+        super(number);
+        this.number = id;
         this.cost = cost;
         this.capacity = capacity;
         this.stars = stars;
         this.guests = new ArrayList<Guest>(capacity);
     }
 
-
-    public int getCost() {
-        return this.cost;
-
+    @JsonCreator
+    public Room( @JsonProperty("number") Integer number, @JsonProperty("cost") Integer cost, @JsonProperty("capacity") Integer capacity, @JsonProperty("stars") Integer stars) {
+        super(number);
+        this.number = id;
+        this.cost = cost;
+        this.capacity = capacity;
+        this.stars = stars;
+        this.guests = new ArrayList<Guest>(capacity);
     }
-
     public int getCapacity() {
         return this.capacity;
     }
@@ -86,5 +89,7 @@ public class Room extends Entity implements Cloneable{
         return (Room)super.clone();
     }
 
-
+    public int getCost() {
+        return cost;
+    }
 }

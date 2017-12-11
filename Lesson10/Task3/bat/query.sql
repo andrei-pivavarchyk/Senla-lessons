@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS hotel2;
+CREATE DATABASE IF NOT EXISTS hotel4;
 
-use hotel2;
+use hotel4;
 
 
 
@@ -21,8 +21,8 @@ CREATE TABLE guest  (
 
 CREATE TABLE guestroominfo (
 `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-`arrivaldate` date,
-`departuredate` date,
+`arrivaldate` timestamp,
+`departuredate` timestamp,
 `guest` int,
 `room` int,
 `isstillliving` boolean,
@@ -39,9 +39,10 @@ CREATE TABLE service (
 );
 
 CREATE TABLE guestserviceinfo(
+`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `guest` int,
 `service` int,
-`date` date,
+`date` timestamp,
 FOREIGN KEY(guest) REFERENCES guest(id),
 FOREIGN KEY(service) REFERENCES service(id)
 );

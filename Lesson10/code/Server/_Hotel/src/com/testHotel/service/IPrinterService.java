@@ -12,7 +12,7 @@ public interface IPrinterService {
     void printGuestsWithRoomNumbers(List<GuestRoomInfo> guestRoomInfoList);
     void printGuests(List<Guest> guestList);
     void printGuestsWithDates(List<GuestRoomInfo> guestRoomInfoList);
-    void printGuestServices(ArrayList<GuestServiceInfo> guestServiceInfoList);
+    void printGuestServices(List<GuestServiceInfo> guestServiceInfoList);
     void printServices(List<Service> serviceList);
     void printString(String string);
 }

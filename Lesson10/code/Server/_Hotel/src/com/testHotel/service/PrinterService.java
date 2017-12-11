@@ -59,7 +59,7 @@ public class PrinterService implements IPrinterService {
 
     }
 
-    public void printGuestServices(ArrayList<GuestServiceInfo> guestServiceInfoList) {
+    public void printGuestServices(List<GuestServiceInfo> guestServiceInfoList) {
 
         for (GuestServiceInfo guestServiceInfo : guestServiceInfoList) {
 
