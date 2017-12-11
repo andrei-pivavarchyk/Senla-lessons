@@ -3,7 +3,7 @@ package com.testHotel.service;
 import com.dependencyService.DependencyService;
 import com.testHotel.comparator.GuestNameComparator;
 import com.testHotel.comparator.GuestRoomInfoDateComparator;
-import com.testHotel.dao.IGuestRoomInfoDAO;
+import com.dao.IGuestRoomInfoDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
 import org.apache.log4j.Logger;

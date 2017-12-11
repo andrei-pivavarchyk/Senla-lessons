@@ -4,7 +4,7 @@ import com.configurator.*;
 
 import com.dependencyService.DependencyService;
 import com.serializingService.ISerializableService;
-import com.testHotel.dao.ConnectionUtil;
+import com.dao.ConnectionUtil;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.ProgramState;
 import com.testHotel.entity.Room;

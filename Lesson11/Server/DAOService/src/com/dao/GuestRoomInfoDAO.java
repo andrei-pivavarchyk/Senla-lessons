@@ -1,18 +1,18 @@
-package com.testHotel.dao;
+package com.dao;
+
 
 import com.dependencyService.DependencyService;
-import com.testHotel.entity.*;
+import com.testHotel.entity.Guest;
+import com.testHotel.entity.GuestRoomInfo;
+import com.testHotel.entity.Room;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.*;
 
-/**
- * Created by андрей on 11.12.2017.
- */
 public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRoomInfoDAO {
-    private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
+    private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
 
     @Override
@@ -50,18 +50,18 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 if (isLivingNumber == 1) {
                     isStillLiving = true;
                 }
-Date arrival= new Date(new Timestamp(arrivalDate).getTime()) ;
-Date departure= new Date(new Timestamp(departureDate).getTime()) ;
+                Date arrival= new Date(new Timestamp(arrivalDate).getTime()) ;
+                Date departure= new Date(new Timestamp(departureDate).getTime()) ;
                 GregorianCalendar gregorianCalendar=new GregorianCalendar();
                 gregorianCalendar.setTime(departure);
-               int year =gregorianCalendar.get(Calendar.YEAR);
-               int month =gregorianCalendar.get(Calendar.MONTH);
-               int day =gregorianCalendar.get(Calendar.DAY_OF_MONTH);
-Guest guest1=guestDAO.getEntity(guest);
-Room room1=roomDAO.getEntity(room);
+                int year =gregorianCalendar.get(Calendar.YEAR);
+                int month =gregorianCalendar.get(Calendar.MONTH);
+                int day =gregorianCalendar.get(Calendar.DAY_OF_MONTH);
+                Guest guest1=guestDAO.getEntity(guest);
+                Room room1=roomDAO.getEntity(room);
 
                 GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id, arrival,guest1,room1,year,month,day);
-                   result.add(guestRoomInfo);
+                result.add(guestRoomInfo);
             }
         } catch (Exception e) {
             log.error(e.toString());

@@ -73,7 +73,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../_JarFiles/configurator.jar!/" />
+          <root url="jar://$MODULE_DIR$/../_JarFiles/Configurator.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -103,6 +103,15 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/mysql-connector-java-5.1.23-bin.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../_JarFiles/DAOService.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

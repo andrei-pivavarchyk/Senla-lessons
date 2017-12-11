@@ -1,9 +1,8 @@
-package com.testHotel.dao;
+package com.dao;
 
 import com.dependencyService.DependencyService;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestServiceInfo;
-import com.testHotel.entity.Room;
 import com.testHotel.entity.Service;
 
 import java.sql.PreparedStatement;

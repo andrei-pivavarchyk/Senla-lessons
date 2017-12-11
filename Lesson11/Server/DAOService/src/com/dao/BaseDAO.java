@@ -1,7 +1,6 @@
-package com.testHotel.dao;
+package com.dao;
 
 import com.testHotel.entity.Entity;
-import com.testHotel.entity.Service;
 import com.testHotel.service.GuestService;
 import org.apache.log4j.Logger;
 

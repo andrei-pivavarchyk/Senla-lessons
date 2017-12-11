@@ -1,4 +1,4 @@
-package com.testHotel.dao;
+package com.dao;
 
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DAOService:jar">
+    <output-path>$PROJECT_DIR$/../_JarFiles</output-path>
+    <root id="archive" name="DAOService.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="DAOService" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../_JarFiles/DependencyService.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../_JarFiles/hotel.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../_JarFiles/Property.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../_JarFiles/Configurator.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/log4j-1.2.17.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

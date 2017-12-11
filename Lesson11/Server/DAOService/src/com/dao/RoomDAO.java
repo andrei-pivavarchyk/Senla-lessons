@@ -1,6 +1,5 @@
-package com.testHotel.dao;
+package com.dao;
 
-import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
 
 import java.sql.PreparedStatement;

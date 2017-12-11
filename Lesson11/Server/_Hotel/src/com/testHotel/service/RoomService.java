@@ -9,9 +9,9 @@ import com.testHotel.comparator.RoomCapacityComparator;
 import com.testHotel.comparator.RoomCostComparator;
 import com.testHotel.comparator.RoomIdComparator;
 import com.testHotel.comparator.RoomStarsComparator;
-import com.testHotel.dao.IGuestDAO;
-import com.testHotel.dao.IGuestRoomInfoDAO;
-import com.testHotel.dao.IRoomDAO;
+import com.dao.IGuestDAO;
+import com.dao.IGuestRoomInfoDAO;
+import com.dao.IRoomDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.Room;
 import com.testHotel.entity.GuestRoomInfo;
@@ -26,6 +26,7 @@ public class RoomService implements IRoomService {
     private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
     private IGuestRoomInfoDAO guestRoomInfoDAO = (IGuestRoomInfoDAO) DependencyService.getDI().getInstance(IGuestRoomInfoDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
+
     private int guestRoomInfoCount = 0;
     private static final Comparator<Room> COST_COMPARATOR = new RoomCostComparator();
     private static final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();

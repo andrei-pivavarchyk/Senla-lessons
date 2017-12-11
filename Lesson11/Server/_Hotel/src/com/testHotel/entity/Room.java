@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room extends Entity implements Cloneable{
+public class Room extends Entity implements Cloneable {
     private int number;
     private int capacity;
     private int stars;

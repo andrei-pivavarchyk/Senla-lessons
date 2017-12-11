@@ -1,11 +1,11 @@
-package com.testHotel.dao;
+package com.dao;
 
 import com.testHotel.entity.Guest;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
