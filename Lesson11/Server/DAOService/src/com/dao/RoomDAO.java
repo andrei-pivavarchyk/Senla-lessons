@@ -34,6 +34,11 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
     }
 
     @Override
+    public String getCountQuery() {
+        return "select count(id) from hotel4.room;";
+    }
+
+    @Override
     protected List<Room> parseResultSet(ResultSet rs) {
         List<Room> result = new ArrayList<Room>();
         try {

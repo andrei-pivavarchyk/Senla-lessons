@@ -15,6 +15,8 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
     public Logger log = Logger.getLogger(GuestService.class);
     private Connection con = ConnectionUtil.getConnectionUtil().getConnection();
 
+
+
     public abstract String getSelectQuery();
 
     public abstract String getCreateQuery();
@@ -22,6 +24,7 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
     public abstract String getUpdateQuery();
 
     public abstract String getDeleteQuery();
+    public abstract String getCountQuery();
 
     protected abstract List<T> parseResultSet(ResultSet rs);
 
@@ -33,9 +36,12 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
         return con;
     }
 
-    public List<T> getAllEntities() {
+    public List<T> getAllEntities(TypeSorting sorting) {
         List<T> list = new ArrayList<T>();
         String sql = getSelectQuery();
+        if(sorting!=TypeSorting.NO_SORTING){
+            sql=sql+"ORDER BY"+sorting.toString();
+        }
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
@@ -93,6 +99,22 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
         } catch (Exception e) {
             log.error(e.toString());
         }
+    }
+
+
+    public Integer  getCountEntity(){
+        String sql = getCountQuery();
+        int count=0;
+        try (PreparedStatement statement = con.prepareStatement(sql)) {
+            ResultSet rs = statement.executeQuery();
+           if(rs.next()){
+               count=rs.getInt("count(id)");
+           }
+
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return count;
     }
 }
 

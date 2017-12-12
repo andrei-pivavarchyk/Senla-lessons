@@ -1,6 +1,8 @@
 package com.testHotel.service;
 
 
+
+import com.dao.TypeSorting;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
 import com.testHotel.storage.IGuestRoomInfoStorage;
@@ -12,7 +14,7 @@ public interface IGuestService {
     ArrayList<Guest> getAllGuests();
     ArrayList<Guest> getAllGuestsSortedByName();
     ArrayList<Guest> getAllGuestsSortedByDateDeparture();
-    void printAllGuestsCount();
+    int getAllGuestsCount();
     int getPayAmount(Guest guest);
     ArrayList<GuestRoomInfo> getCurrentGuestRoomInfo();
 }

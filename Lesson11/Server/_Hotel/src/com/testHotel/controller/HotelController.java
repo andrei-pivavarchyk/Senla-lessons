@@ -165,6 +165,10 @@ public class HotelController implements IHotelController {
         return this.guestService.getAllGuests();
 
     }
+    public void printAllGuestsCount(){
+        Integer allGuestsCount=this.guestService.getAllGuestsCount();
+        this.printerService.printString(allGuestsCount.toString());
+    }
 
     public void addRoom(Room room) {
         this.getRoomService().addRoom(room);

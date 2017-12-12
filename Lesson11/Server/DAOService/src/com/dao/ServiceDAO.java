@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
 
-
     @Override
     public String getSelectQuery() {
         return " SELECT id,name,cost,type FROM hotel4.service";
@@ -33,7 +32,10 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
     public String getDeleteQuery() {
         return "DELETE FROM hotel4.service WHERE id= ?;";
     }
-
+    @Override
+    public String getCountQuery() {
+        return "select count(id) from hotel4.service;";
+    }
     @Override
     protected List<Service> parseResultSet(ResultSet rs) {
         List<Service> result = new ArrayList<Service>();

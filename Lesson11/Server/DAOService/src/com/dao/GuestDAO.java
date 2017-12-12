@@ -30,7 +30,10 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
     public String getDeleteQuery() {
         return "DELETE FROM hotel4.guest WHERE id= ?;";
     }
-
+    @Override
+    public String getCountQuery() {
+        return "select count(id) from hotel4.guest;";
+    }
     @Override
     protected List<Guest> parseResultSet(ResultSet rs) {
         List<Guest> result = new ArrayList<Guest>();

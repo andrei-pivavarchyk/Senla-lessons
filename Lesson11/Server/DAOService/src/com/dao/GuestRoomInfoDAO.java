@@ -36,6 +36,11 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
     }
 
     @Override
+    public String getCountQuery() {
+        return "select count(id) from guest;";
+    }
+
+    @Override
     protected List<GuestRoomInfo> parseResultSet(ResultSet rs) {
         List<GuestRoomInfo> result = new ArrayList<GuestRoomInfo>();
         try {
@@ -97,18 +102,37 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         if (object.getStillLiving().equals(false)) {
             stillLiving = 0;
         }
-       try {
+        try {
 
-           statement.setTimestamp(1, arrival);
-           statement.setTimestamp(2, departure);
-           statement.setInt(3, object.getGuest().getId());
-           statement.setInt(4, object.getRoom().getId());
-           statement.setInt(5, stillLiving);
+            statement.setTimestamp(1, arrival);
+            statement.setTimestamp(2, departure);
+            statement.setInt(3, object.getGuest().getId());
+            statement.setInt(4, object.getRoom().getId());
+            statement.setInt(5, stillLiving);
             statement.setInt(6, object.getId());
         } catch (Exception e) {
             log.equals(e.toString());
         }
 
+    }
+
+
+    public List<Timestamp> getArrivalAndDepartureDate(int id) {
+
+        List<Timestamp> dateList = new ArrayList<Timestamp>();
+        String sql = getSelectQuery();
+        sql += " WHERE guest = ?";
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            Timestamp arrivaldate = rs.getTimestamp("arrivaldate");
+            Timestamp departuredate = rs.getTimestamp("departuredate");
+            dateList.add(arrivaldate);
+            dateList.add(departuredate);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return dateList;
     }
 
 }

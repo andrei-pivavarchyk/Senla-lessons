@@ -36,7 +36,10 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
         return "DELETE  FROM hotel4.guestserviceinfo WHERE id= ? ";
     }
 
-
+    @Override
+    public String getCountQuery() {
+        return "select count(id) from guest;";
+    }
     public String getAllGuestServicesQuery() {
         return " SELECT guest,service,date FROM hotel4.guestserviceinfo WHERE guest= ? ;";
     }
