@@ -77,4 +77,19 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
         }
     }
 
+    public Integer  getCountEntity(){
+        String sql = getCountQuery();
+        int count=0;
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                count=rs.getInt("count(id)");
+            }
+
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return count;
+    }
+
 }

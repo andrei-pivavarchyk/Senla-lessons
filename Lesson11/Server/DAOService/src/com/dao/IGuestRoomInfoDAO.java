@@ -10,4 +10,7 @@ import java.util.List;
  */
 public interface IGuestRoomInfoDAO extends IBaseDAO<GuestRoomInfo> {
     GuestRoomInfo getEntityByGuestId(int guestID);
+    List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving);
+    void removeEntityByGuestId(int guestID);
+
 }

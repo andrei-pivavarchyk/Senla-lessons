@@ -35,7 +35,7 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE  FROM hotel4.guestserviceinfo WHERE id= ? ";
+        return "DELETE  FROM hotel4.guestserviceinfo WHERE guest= ? ";
     }
 
     @Override
@@ -93,5 +93,23 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
             log.equals(e.toString());
         }
      }
+
+    public List<GuestServiceInfo> getAllEntitiesByGuest(Guest guest,TypeSorting sorting) {
+        List<GuestServiceInfo> list = new ArrayList<GuestServiceInfo>();
+        String sql = getSelectQuery()+"WHERE guest="+guest.getId();
+        if(sorting!=TypeSorting.NO_SORTING){
+            sql=sql+" ORDER BY " +sorting.getType();
+        }
+        else{
+            sql=sql+";";
+        }
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            ResultSet rs = statement.executeQuery();
+            list = parseResultSet(rs);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return list;
+    }
 
 }

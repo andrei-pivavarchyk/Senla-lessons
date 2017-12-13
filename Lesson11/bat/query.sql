@@ -8,7 +8,8 @@ CREATE TABLE room (
 `number` int NOT NULL PRIMARY KEY,
 `cost` int,
 `capacity` smallint,
-`stars` smallint
+`stars` smallint,
+`status` tinyint
 );
 
 
@@ -25,7 +26,7 @@ CREATE TABLE guestroominfo (
 `departuredate` timestamp,
 `guest` int,
 `room` int,
-`isstillliving` boolean,
+`isstillliving` tinyint,
 FOREIGN KEY(guest) REFERENCES guest(id),
 FOREIGN KEY(room) REFERENCES room(number)
 );
@@ -47,12 +48,12 @@ FOREIGN KEY(guest) REFERENCES guest(id),
 FOREIGN KEY(service) REFERENCES service(id)
 );
 
-INSERT INTO room ( number,cost,capacity,stars ) VALUES
-( 1,20,3,5),
-( 2,30,2,4),
-( 3,40,1,3),
-( 4,50,4,4),
-( 5,60,5,3);
+INSERT INTO room ( number,cost,capacity,stars,status ) VALUES
+( 1,20,3,5,1),
+( 2,30,2,4,1),
+( 3,40,1,3,1),
+( 4,50,4,4,1),
+( 5,60,5,3,1);
 
 
 
@@ -62,5 +63,48 @@ INSERT INTO service ( name, cost,type ) VALUES
 ( 'pizza',20,'EAT'),
 ( 'telek',20,'SPA'),
 ( 'cola',20,'EAT');
+
+
+
+INSERT INTO guest( name, surname ) VALUES
+( 'bob','white'),
+( 'jack','black'),
+( 'alice','red'),
+( 'grag','yellow');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

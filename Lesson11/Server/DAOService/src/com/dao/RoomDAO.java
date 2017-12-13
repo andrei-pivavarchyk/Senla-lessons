@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.testHotel.entity.Room;
+import com.testHotel.entity.RoomStatus;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,6 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
     public String getSelectQuery() {
         return " SELECT number,cost,capacity,stars FROM hotel4.room ";
     }
-
     @Override
     public String getCreateQuery() {
         return "insert into hotel4.room(number,cost,capacity,stars) values(?,?,?,?);";
@@ -29,7 +29,6 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
     public String getUpdateQuery() {
         return "UPDATE hotel4.room SET number= ?, cost = ?, capacity = ?, stars = ? WHERE number= ?;";
     }
-
     @Override
     public String getDeleteQuery() {
         return "DELETE FROM hotel4.room WHERE number= ?;";
@@ -84,5 +83,36 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
             log.equals(e.toString());
         }
     }
+
+
+
+    public List<Room> getAllEntitiesByStatus(RoomStatus status,TypeSorting sorting) {
+        List<Room> list = new ArrayList<Room>();
+        String sql = getSelectQuery();
+
+        if(status.equals(RoomStatus.FREE)){
+            sql=sql+"WHERE status=1 ";
+        }
+        else{
+            sql=sql+"WHERE status=0 ";
+        }
+        if(sorting!=TypeSorting.NO_SORTING){
+            sql=sql+" ORDER BY " +sorting.getType();
+        }
+        else{
+            sql=sql+";";
+        }
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            ResultSet rs = statement.executeQuery();
+            list = parseResultSet(rs);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return list;
+    }
+
+
+
+
 
 }

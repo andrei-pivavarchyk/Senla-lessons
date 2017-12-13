@@ -43,6 +43,9 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
             sql=sql+" ORDER BY " +sorting.getType();
 
         }
+        else{
+            sql=sql+";";
+        }
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
@@ -66,6 +69,7 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
     public void removeEntity(T object) {
         String sql = getDeleteQuery();
         try (PreparedStatement statement = con.prepareStatement(sql)) {
+
             try {
                 statement.setInt(1, object.getId());
             } catch (Exception e) {
@@ -78,12 +82,12 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
         }
     }
 
-    public T getEntity(int id) {
+    public T getEntity(int primaryKey) {
         List<T> list = new ArrayList<T>();
         String sql = getSelectQuery();
         sql += " WHERE "+getPrimaryKey()+" = ?";
         try (PreparedStatement statement = con.prepareStatement(sql)) {
-            statement.setInt(1, id);
+            statement.setInt(1, primaryKey);
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
@@ -103,20 +107,6 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
     }
 
 
-    public Integer  getCountEntity(){
-        String sql = getCountQuery();
-        int count=0;
-        try (PreparedStatement statement = con.prepareStatement(sql)) {
-            ResultSet rs = statement.executeQuery();
-           if(rs.next()){
-               count=rs.getInt("count(id)");
-           }
-
-        } catch (Exception e) {
-            log.error(e.toString());
-        }
-        return count;
-    }
     public  String getPrimaryKey() {
         return this.primaryKey;
     }

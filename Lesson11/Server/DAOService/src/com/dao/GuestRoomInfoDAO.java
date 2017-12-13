@@ -4,19 +4,23 @@ package com.dao;
 import com.dependencyService.DependencyService;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
+import com.testHotel.entity.GuestServiceInfo;
 import com.testHotel.entity.Room;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.*;
 
 public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRoomInfoDAO {
     private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
-    public GuestRoomInfoDAO(){
-        super.primaryKey="id";
+
+    public GuestRoomInfoDAO() {
+        super.primaryKey = "id";
     }
+
     @Override
     public String getSelectQuery() {
         return " SELECT id,arrivaldate,departuredate,guest,room,isstillliving FROM hotel4.guestroominfo";
@@ -34,14 +38,17 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM hotel4.guestroominfo WHERE id= ?;";
+        return "DELETE FROM hotel4.guestroominfo WHERE id= ?";
+    }
+
+    public String getDeleteQueryByGuestId() {
+        return "DELETE FROM hotel4.guestroominfo WHERE guest= ?";
     }
 
     @Override
     public String getCountQuery() {
         return "select count(id) from guest;";
     }
-
 
 
     @Override
@@ -66,12 +73,9 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 int year = gregorianCalendar.get(Calendar.YEAR);
                 int month = gregorianCalendar.get(Calendar.MONTH);
                 int day = gregorianCalendar.get(Calendar.DAY_OF_MONTH);
-
                 Guest guest = guestDAO.getEntity(guestId);
                 Room room = roomDAO.getEntity(roomId);
-
                 GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id, arrival, guest, room, year, month, day);
-
                 result.add(guestRoomInfo);
             }
         } catch (Exception e) {
@@ -108,7 +112,6 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
             stillLiving = 0;
         }
         try {
-
             statement.setTimestamp(1, arrival);
             statement.setTimestamp(2, departure);
             statement.setInt(3, object.getGuest().getId());
@@ -118,7 +121,6 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         } catch (Exception e) {
             log.equals(e.toString());
         }
-
     }
 
     public GuestRoomInfo getEntityByGuestId(int guestID) {
@@ -127,26 +129,40 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
             statement.setInt(1, guestID);
             ResultSet rs = statement.executeQuery();
-            GuestRoomInfo guestRoomInfo=this.parseResultSet(rs).get(0);
+            GuestRoomInfo guestRoomInfo = this.parseResultSet(rs).get(0);
             return guestRoomInfo;
         } catch (Exception e) {
             log.error(e.toString());
         }
         return null;
     }
-public List<GuestRoomInfo> getCurrentGuestRoomInfo(){
-    List<GuestRoomInfo> list = new ArrayList<GuestRoomInfo>();
-    String sql = getSelectQuery();
-    sql=sql+"WHERE isstillliving=?";
-    try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
-        statement.setInt(1, 1);
-        ResultSet rs = statement.executeQuery();
-        list = parseResultSet(rs);
-    } catch (Exception e) {
-        log.error(e.toString());
+
+    public List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving) {
+        List<GuestRoomInfo> list = new ArrayList<GuestRoomInfo>();
+        String sql = getSelectQuery();
+        sql = sql + "WHERE isstillliving=?";
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            if (isLiving.equals(true)) {
+                statement.setInt(1, 1);
+            } else {
+                statement.setInt(1, 0);
+            }
+            ResultSet rs = statement.executeQuery();
+            list = parseResultSet(rs);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return list;
     }
-    return list;
-}
 
-
+    public void removeEntityByGuestId(int guestID) {
+        String sql = getDeleteQueryByGuestId();
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            statement.setInt(1, guestID);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            log.error(e.toString());
+            System.out.println(e.toString());
+        }
+    }
 }

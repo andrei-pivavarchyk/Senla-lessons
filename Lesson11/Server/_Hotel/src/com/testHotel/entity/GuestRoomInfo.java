@@ -20,10 +20,16 @@ public class GuestRoomInfo extends Entity {
         this.isStillLiving = true;
         Calendar calendar = new GregorianCalendar(year, month, day);
         this.departureDate = calendar.getTime();
-
     }
 
-
+    public GuestRoomInfo( Date arrivalDate, Guest guest, Room room, int year, int month, int day) {
+        this.arrivalDate = arrivalDate;
+        this.guest = guest;
+        this.room = room;
+        this.isStillLiving = true;
+        Calendar calendar = new GregorianCalendar(year, month, day);
+        this.departureDate = calendar.getTime();
+    }
     public Boolean getStillLiving() {
         return isStillLiving;
     }
