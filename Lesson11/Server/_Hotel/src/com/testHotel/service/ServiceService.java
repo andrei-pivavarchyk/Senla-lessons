@@ -1,5 +1,6 @@
 package com.testHotel.service;
 
+import com.dao.TypeSorting;
 import com.dependencyService.DependencyService;
 import com.testHotel.comparator.GuestServiceInfoCostComparator;
 import com.testHotel.comparator.GuestServiceInfoDateComparator;
@@ -39,7 +40,7 @@ public class ServiceService implements IServiceService {
     public ArrayList<GuestServiceInfo> getAllGuestServicesInfo(Guest guest) {
         synchronized (this.guestServiceDAO) {
             ArrayList<GuestServiceInfo> allGuestServicesInfo = new ArrayList<GuestServiceInfo>();
-            for (GuestServiceInfo guestServiceInfo : this.guestServiceDAO.getAllEntities()) {
+            for (GuestServiceInfo guestServiceInfo : this.guestServiceDAO.getAllEntities(TypeSorting.NO_SORTING)) {
                 if (guestServiceInfo.getGuest().equals(guest)) {
                     allGuestServicesInfo.add(guestServiceInfo);
                 }
@@ -58,7 +59,7 @@ public class ServiceService implements IServiceService {
 
     public List<Service> getAllHotelServices() {
         synchronized (this.serviceDAO) {
-            return this.serviceDAO.getAllEntities();
+            return this.serviceDAO.getAllEntities(TypeSorting.NO_SORTING);
         }
     }
     public ArrayList<Service> getAllHotelServicesSortedByCost() {

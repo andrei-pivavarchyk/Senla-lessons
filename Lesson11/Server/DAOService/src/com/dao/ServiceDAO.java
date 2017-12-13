@@ -12,7 +12,9 @@ import java.util.List;
  * Created by андрей on 10.12.2017.
  */
 public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
-
+    public ServiceDAO(){
+        super.primaryKey="id";
+    }
     @Override
     public String getSelectQuery() {
         return " SELECT id,name,cost,type FROM hotel4.service";
@@ -36,6 +38,7 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
     public String getCountQuery() {
         return "select count(id) from hotel4.service;";
     }
+
     @Override
     protected List<Service> parseResultSet(ResultSet rs) {
         List<Service> result = new ArrayList<Service>();
@@ -77,4 +80,5 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
             log.equals(e.toString());
         }
     }
+
 }

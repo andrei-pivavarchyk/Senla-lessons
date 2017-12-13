@@ -10,7 +10,9 @@ import java.util.List;
 
 public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
 
-
+    public GuestDAO(){
+        super.primaryKey="id";
+    }
     @Override
     public String getSelectQuery() {
         return " SELECT id,name,surname FROM hotel4.guest";
@@ -34,16 +36,19 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
     public String getCountQuery() {
         return "select count(id) from hotel4.guest;";
     }
+
     @Override
     protected List<Guest> parseResultSet(ResultSet rs) {
         List<Guest> result = new ArrayList<Guest>();
         try {
+
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
                 Guest guest = new Guest(id,name,surname);
                 result.add(guest);
+
             }
         } catch (Exception e) {
             log.error(e.toString());
@@ -71,4 +76,5 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
             log.equals(e.toString());
         }
     }
+
 }

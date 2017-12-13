@@ -15,7 +15,7 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
     public Logger log = Logger.getLogger(GuestService.class);
     private Connection con = ConnectionUtil.getConnectionUtil().getConnection();
 
-
+    public String primaryKey;
 
     public abstract String getSelectQuery();
 
@@ -40,7 +40,8 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
         List<T> list = new ArrayList<T>();
         String sql = getSelectQuery();
         if(sorting!=TypeSorting.NO_SORTING){
-            sql=sql+"ORDER BY"+sorting.toString();
+            sql=sql+" ORDER BY " +sorting.getType();
+
         }
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
@@ -80,7 +81,7 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
     public T getEntity(int id) {
         List<T> list = new ArrayList<T>();
         String sql = getSelectQuery();
-        sql += " WHERE id = ?";
+        sql += " WHERE "+getPrimaryKey()+" = ?";
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
@@ -115,6 +116,9 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
             log.error(e.toString());
         }
         return count;
+    }
+    public  String getPrimaryKey() {
+        return this.primaryKey;
     }
 }
 

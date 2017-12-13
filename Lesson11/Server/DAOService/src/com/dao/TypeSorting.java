@@ -3,7 +3,7 @@ package com.dao;
 public enum TypeSorting {
 
     BY_ARRIVAL_DATE("arrivaldate"),
-    BY_DEPARTURE_DATE("departure"),
+    BY_DEPARTURE_DATE("departuredate"),
     BY_DATE("date"),
     BY_COST("cost"),
     BY_STARS("stars"),
@@ -19,4 +19,7 @@ public enum TypeSorting {
         this.type=type;
     }
 
+    public String getType() {
+        return type;
+    }
 }

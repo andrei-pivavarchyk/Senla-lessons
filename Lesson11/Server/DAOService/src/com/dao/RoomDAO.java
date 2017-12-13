@@ -12,10 +12,12 @@ import java.util.List;
  */
 public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
 
-
+    public RoomDAO(){
+        super.primaryKey="number";
+    }
     @Override
     public String getSelectQuery() {
-        return " SELECT number,cost,capacity,stars FROM hotel4.room";
+        return " SELECT number,cost,capacity,stars FROM hotel4.room ";
     }
 
     @Override
@@ -82,4 +84,5 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
             log.equals(e.toString());
         }
     }
+
 }

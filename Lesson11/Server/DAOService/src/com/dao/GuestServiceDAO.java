@@ -15,7 +15,9 @@ import java.util.List;
 public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuestServiceDAO  {
     private IServiceDAO serviceDAO=(IServiceDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
     private IGuestDAO guestDAO=(IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
-
+    public GuestServiceDAO(){
+        super.primaryKey="id";
+    }
     @Override
     public String getSelectQuery() {
         return " SELECT guest,service,date FROM hotel4.guestserviceinfo";

@@ -12,5 +12,6 @@ public interface IBaseDAO <T> {
     T getEntity(int id);
     void updateEntity(T object);
     Integer getCountEntity();
+    String getPrimaryKey();
 
 }

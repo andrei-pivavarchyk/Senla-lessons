@@ -14,7 +14,9 @@ import java.util.*;
 public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRoomInfoDAO {
     private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
-
+    public GuestRoomInfoDAO(){
+        super.primaryKey="id";
+    }
     @Override
     public String getSelectQuery() {
         return " SELECT id,arrivaldate,departuredate,guest,room,isstillliving FROM hotel4.guestroominfo";
@@ -40,14 +42,16 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         return "select count(id) from guest;";
     }
 
+
+
     @Override
     protected List<GuestRoomInfo> parseResultSet(ResultSet rs) {
         List<GuestRoomInfo> result = new ArrayList<GuestRoomInfo>();
         try {
             while (rs.next()) {
                 int id = rs.getInt("id");
-                long arrivalDate = rs.getLong("arrivaldate");
-                long departureDate = rs.getLong("departuredate");
+                Timestamp arrivalDate = rs.getTimestamp("arrivaldate");
+                Timestamp departureDate = rs.getTimestamp("departuredate");
                 int guestId = rs.getInt("guest");
                 int roomId = rs.getInt("room");
                 int isLivingNumber = rs.getInt("isstillliving");
@@ -55,8 +59,8 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 if (isLivingNumber == 1) {
                     isStillLiving = true;
                 }
-                Date arrival = new Date(new Timestamp(arrivalDate).getTime());
-                Date departure = new Date(new Timestamp(departureDate).getTime());
+                Date arrival = new Date(arrivalDate.getTime());
+                Date departure = new Date(departureDate.getTime());
                 GregorianCalendar gregorianCalendar = new GregorianCalendar();
                 gregorianCalendar.setTime(departure);
                 int year = gregorianCalendar.get(Calendar.YEAR);
@@ -67,6 +71,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 Room room = roomDAO.getEntity(roomId);
 
                 GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id, arrival, guest, room, year, month, day);
+
                 result.add(guestRoomInfo);
             }
         } catch (Exception e) {
@@ -116,23 +121,32 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     }
 
-
-    public List<Timestamp> getArrivalAndDepartureDate(int id) {
-
-        List<Timestamp> dateList = new ArrayList<Timestamp>();
+    public GuestRoomInfo getEntityByGuestId(int guestID) {
         String sql = getSelectQuery();
         sql += " WHERE guest = ?";
         try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
-            statement.setInt(1, id);
+            statement.setInt(1, guestID);
             ResultSet rs = statement.executeQuery();
-            Timestamp arrivaldate = rs.getTimestamp("arrivaldate");
-            Timestamp departuredate = rs.getTimestamp("departuredate");
-            dateList.add(arrivaldate);
-            dateList.add(departuredate);
+            GuestRoomInfo guestRoomInfo=this.parseResultSet(rs).get(0);
+            return guestRoomInfo;
         } catch (Exception e) {
             log.error(e.toString());
         }
-        return dateList;
+        return null;
     }
+public List<GuestRoomInfo> getCurrentGuestRoomInfo(){
+    List<GuestRoomInfo> list = new ArrayList<GuestRoomInfo>();
+    String sql = getSelectQuery();
+    sql=sql+"WHERE isstillliving=?";
+    try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+        statement.setInt(1, 1);
+        ResultSet rs = statement.executeQuery();
+        list = parseResultSet(rs);
+    } catch (Exception e) {
+        log.error(e.toString());
+    }
+    return list;
+}
+
 
 }

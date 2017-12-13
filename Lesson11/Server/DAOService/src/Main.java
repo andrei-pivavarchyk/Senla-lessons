@@ -1,7 +1,4 @@
-import com.dao.ConnectionUtil;
-import com.dao.GuestRoomInfoDAO;
-import com.dao.IGuestRoomInfoDAO;
-import com.dao.IGuestServiceDAO;
+import com.dao.*;
 import com.dependencyService.DependencyService;
 import com.testHotel.service.IRoomService;
 
@@ -12,6 +9,9 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args){
+        GuestRoomInfoDAO guestDAO=new GuestRoomInfoDAO();
+        RoomDAO roomDAO=new RoomDAO();
+        System.out.println(guestDAO.getAllEntities(TypeSorting.BY_DEPARTURE_DATE));
 
 
     }

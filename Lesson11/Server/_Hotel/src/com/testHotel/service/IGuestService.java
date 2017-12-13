@@ -8,13 +8,14 @@ import com.testHotel.entity.GuestRoomInfo;
 import com.testHotel.storage.IGuestRoomInfoStorage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IGuestService {
 
-    ArrayList<Guest> getAllGuests();
-    ArrayList<Guest> getAllGuestsSortedByName();
-    ArrayList<Guest> getAllGuestsSortedByDateDeparture();
-    int getAllGuestsCount();
-    int getPayAmount(Guest guest);
-    ArrayList<GuestRoomInfo> getCurrentGuestRoomInfo();
+    List<Guest> getAllGuests();
+    List<Guest> getAllGuestsSortedByName();
+    List<Guest> getAllGuestsSortedByDateDeparture();
+    Integer getAllGuestsCount();
+    Integer getPayAmount(Guest guest);
+    List<GuestRoomInfo> getCurrentGuestRoomInfo();
 }

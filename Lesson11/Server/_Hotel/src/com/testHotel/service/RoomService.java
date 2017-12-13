@@ -4,6 +4,7 @@ package com.testHotel.service;
 import com.configurator.ConfigProperty;
 import com.configurator.PropertyFilePath;
 import com.configurator.PropertyName;
+import com.dao.TypeSorting;
 import com.dependencyService.DependencyService;
 import com.testHotel.comparator.RoomCapacityComparator;
 import com.testHotel.comparator.RoomCostComparator;
@@ -44,7 +45,7 @@ public class RoomService implements IRoomService {
 
     public List<Room> getAllRooms() {
         synchronized (this.roomDAO) {
-            return this.roomDAO.getAllEntities();
+            return this.roomDAO.getAllEntities(TypeSorting.NO_SORTING);
         }
     }
 
@@ -53,7 +54,7 @@ public class RoomService implements IRoomService {
 
     public ArrayList<Room> getRoomCostSorting() {
         synchronized (this.roomDAO) {
-            ArrayList<Room> copyArray = this.getArrayRoomCostSorting((ArrayList<Room>) this.roomDAO.getAllEntities());
+            ArrayList<Room> copyArray = this.getArrayRoomCostSorting((ArrayList<Room>) this.roomDAO.getAllEntities(TypeSorting.NO_SORTING));
             return copyArray;
         }
     }
@@ -61,7 +62,7 @@ public class RoomService implements IRoomService {
     public ArrayList<Room> getRoomCapacitySorting() {
 
         synchronized (this.roomDAO) {
-            ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting((ArrayList<Room>) this.roomDAO.getAllEntities());
+            ArrayList<Room> copyArray = this.getArrayRoomCapacitySorting((ArrayList<Room>) this.roomDAO.getAllEntities(TypeSorting.NO_SORTING));
             return copyArray;
         }
 
@@ -69,14 +70,14 @@ public class RoomService implements IRoomService {
 
     public ArrayList<Room> getRoomStarsSorting() {
         synchronized (this.roomDAO) {
-            ArrayList<Room> copyArray = this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomDAO.getAllEntities());
+            ArrayList<Room> copyArray = this.getArrayRoomStarsSorting((ArrayList<Room>) this.roomDAO.getAllEntities(TypeSorting.NO_SORTING));
             return copyArray;
         }
     }
 
     public Room getRoomByNumber(int roomNumber) {
         synchronized (this.roomDAO) {
-            for (Room room : this.roomDAO.getAllEntities()) {
+            for (Room room : this.roomDAO.getAllEntities(TypeSorting.NO_SORTING)) {
                 if (room.getNumber() == roomNumber) {
                     return room;
                 }
@@ -87,7 +88,7 @@ public class RoomService implements IRoomService {
 
     public Room getRoomById(int roomId) {
         synchronized (this.roomDAO) {
-            for (Room room : this.roomDAO.getAllEntities()) {
+            for (Room room : this.roomDAO.getAllEntities(TypeSorting.NO_SORTING)) {
                 if (room.getId() == roomId) {
                     return room;
                 }
@@ -111,7 +112,7 @@ public class RoomService implements IRoomService {
             this.guestRoomInfoCount++;
             synchronized (this.guestRoomInfoDAO) {
                 if (this.getCountOldGuests(room) == this.maxCountOldGuests) {
-                    this.guestRoomInfoDAO.getAllEntities().remove(0);
+                    this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING).remove(0);
                 }
                 this.guestRoomInfoDAO.addEntity(guestRoomInfo);
 
@@ -127,7 +128,7 @@ public class RoomService implements IRoomService {
     private int getCountOldGuests(Room room) {
         synchronized (this.guestRoomInfoDAO) {
             int count = 0;
-            for (GuestRoomInfo info : this.guestRoomInfoDAO.getAllEntities()) {
+            for (GuestRoomInfo info : this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING)) {
                 if (info.getRoom().equals(room)) {
                     count++;
                 }
@@ -138,7 +139,7 @@ public class RoomService implements IRoomService {
 
     public void departureGuest(Guest guest) {
         synchronized (this.guestRoomInfoDAO) {
-            List<GuestRoomInfo> allGuestRoomInfo = this.guestRoomInfoDAO.getAllEntities();
+            List<GuestRoomInfo> allGuestRoomInfo = this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING);
             for (GuestRoomInfo guestRoomInfo : allGuestRoomInfo) {
                 if (guestRoomInfo.getGuest().equals(guest)) {
                     guestRoomInfo.setStillLiving(false);
@@ -152,7 +153,7 @@ public class RoomService implements IRoomService {
 
         synchronized (this.roomDAO) {
             ArrayList<Room> freeRooms = new ArrayList<Room>();
-            for (Room room : this.roomDAO.getAllEntities()) {
+            for (Room room : this.roomDAO.getAllEntities(TypeSorting.NO_SORTING)) {
                 if (room.getStatus().equals(RoomStatus.FREE)) {
                     freeRooms.add(room);
                 }
@@ -165,7 +166,7 @@ public class RoomService implements IRoomService {
     public void printFreeRoomsCount() {
         synchronized (this.roomDAO) {
             int count = 0;
-            for (Room room : this.roomDAO.getAllEntities()) {
+            for (Room room : this.roomDAO.getAllEntities(TypeSorting.NO_SORTING)) {
                 if (room.getStatus().equals(RoomStatus.FREE)) {
                     count++;
                 }
@@ -178,7 +179,7 @@ public class RoomService implements IRoomService {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
         synchronized (this.guestRoomInfoDAO) {
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities()) {
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING)) {
                 if (guestRoomInfo.getDepartureDate().compareTo(calendar.getTime()) == -1) {
                     freeRoomsByDate.add(guestRoomInfo.getRoom());
                 }
@@ -197,7 +198,7 @@ public class RoomService implements IRoomService {
         for (int i = room.getGuests().size(), k = 0; i > 0 && k < 3; i--, k++) {
             Guest guest = room.getGuests().get(i - 1);
             synchronized (this.guestRoomInfoDAO) {
-                for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities()) {
+                for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING)) {
                     if (guestRoomInfo.getGuest().equals(guest)) {
                         guestRoomInfoList.add(guestRoomInfo);
                     }
@@ -235,7 +236,7 @@ public class RoomService implements IRoomService {
         Room clone = room.clone();
 
         synchronized (this.roomDAO) {
-            int roomId = this.roomDAO.getAllEntities().size();
+            int roomId = this.roomDAO.getAllEntities(TypeSorting.NO_SORTING).size();
             clone.setId(roomId);
             return clone;
         }
