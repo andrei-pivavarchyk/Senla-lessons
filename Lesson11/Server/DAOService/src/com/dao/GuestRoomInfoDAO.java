@@ -47,10 +47,16 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         return "DELETE FROM hotel4.guestroominfo WHERE guest= ?";
     }
 
-    @Override
-    public String getCountQuery() {
-        return "select count(id) from guest;";
+
+    public String getCountGuestQuery() {
+        return "select count(guest) from guestroominfo WHERE isstillliving=?";
     }
+
+    public String getGuestsByStatus() {
+        return "SELECT guest.id , guest.name,guest.surname FROM hotel4.guest\n" +
+                "INNER JOIN hotel4.guestroominfo  ON hotel4.guest.id = hotel4.guestroominfo.guest and isstillliving=? ";
+    }
+
 
 
     @Override
@@ -184,5 +190,58 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         }
     }
 
+    public Integer  getCountGuests(Boolean isliving){
+        int isliv=1;
+        if(isliving.equals(false)){
+            isliv=0;
+        }
+        String sql = getCountGuestQuery();
+        int count=0;
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            statement.setInt(1,isliv);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                count=rs.getInt("count(guest)");
+            }
 
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return count;
+    }
+
+    public List<Guest> getGuestsByStatus(int status,int roomNumber,TypeSorting sorting) {
+        List<Guest> list = new ArrayList<Guest>();
+        String sql = getGuestsByStatus();
+
+        if(roomNumber!=0){
+            sql=sql+" and room=? ";
+        }
+        if(sorting!=TypeSorting.NO_SORTING){
+            sql=sql+" ORDER BY " +sorting.getType();
+
+        }
+
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            statement.setInt(1,status);
+
+            if(roomNumber!=0){
+                statement.setInt(2,roomNumber);
+            }
+           ResultSet rs= statement.executeQuery();
+            List<Guest> result = new ArrayList<Guest>();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String surname = rs.getString("surname");
+                Guest guest = new Guest(id,name,surname);
+                result.add(guest);
+
+            }
+
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+    return null;
+    }
 }

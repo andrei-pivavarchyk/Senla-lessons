@@ -12,7 +12,8 @@ public enum TypeSorting {
     BY_CAPACITY("capacity"),
     BY_NAME("name"),
     BY_SURNAME("surname"),
-    NO_SORTING("no_sorting");
+    NO_SORTING("no_sorting"),
+    BY_COUNT("count");
 
     private String type;
 

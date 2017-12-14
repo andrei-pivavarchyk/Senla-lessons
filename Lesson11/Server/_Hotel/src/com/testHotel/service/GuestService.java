@@ -20,8 +20,6 @@ public class GuestService implements IGuestService, Serializable {
     private IGuestRoomInfoDAO guestRoomInfoDAO = (IGuestRoomInfoDAO) DependencyService.getDI().getInstance(IGuestRoomInfoDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
     private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
-    private static final Comparator<Guest> NAME_COMPARATOR = new GuestNameComparator();
-    private static final Comparator<GuestRoomInfo> DATE_COMPARATOR = new GuestRoomInfoDateComparator();
     public Logger log = Logger.getLogger(GuestService.class);
 
     public List<Guest> getAllGuests() {

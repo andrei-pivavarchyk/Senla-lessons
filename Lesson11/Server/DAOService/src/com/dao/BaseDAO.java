@@ -24,7 +24,6 @@ public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
     public abstract String getUpdateQuery();
 
     public abstract String getDeleteQuery();
-    public abstract String getCountQuery();
 
     protected abstract List<T> parseResultSet(ResultSet rs);
 

@@ -3,6 +3,7 @@ package com.dao;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
 
+import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -14,5 +15,7 @@ public interface IGuestRoomInfoDAO extends IBaseDAO<GuestRoomInfo> {
     List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving,TypeSorting sorting);
     void removeEntityByGuestId(int guestID);
     void updateEntityStatus(Guest object, int status);
+    Integer  getCountGuests(Boolean isliving);
+    List<Guest> getGuestsByStatus(int status,int roomNumber,TypeSorting sorting);
 
 }

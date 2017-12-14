@@ -22,11 +22,6 @@ public class RoomService implements IRoomService {
     private IGuestRoomInfoDAO guestRoomInfoDAO = (IGuestRoomInfoDAO) DependencyService.getDI().getInstance(IGuestRoomInfoDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
 
-    private int guestRoomInfoCount = 0;
-    private static final Comparator<Room> COST_COMPARATOR = new RoomCostComparator();
-    private static final Comparator<Room> CAPACITY_COMPARATOR = new RoomCapacityComparator();
-    private static final Comparator<Room> STARS_COMPARATOR = new RoomStarsComparator();
-    private static final Comparator<Room> ID_COMPARATOR = new RoomIdComparator();
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.MAX_NUMBER_OF_LAST_ROOM_GUESTS)
     private Integer maxCountOldGuests;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS)
