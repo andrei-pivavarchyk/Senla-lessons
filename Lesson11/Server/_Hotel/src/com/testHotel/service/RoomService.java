@@ -74,8 +74,6 @@ public class RoomService implements IRoomService {
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
 
         synchronized (this.guestRoomInfoDAO) {
-
-
             Room room = this.getRoomByNumber(roomNumber);
             GuestRoomInfo guestRoomInfo = new GuestRoomInfo(new Date(), guest, room, year, month, day);
             try {
@@ -126,50 +124,13 @@ public class RoomService implements IRoomService {
         }
     }
 
-    public List<Room> getFreeRoomsByDate(int year, int month, int day) {
-        List<Room> roomList = new ArrayList<>();
-
-        List<GuestRoomInfo> guestRoomInfoList = this.guestRoomInfoDAO.getCurrentGuestRoomInfo(true, TypeSorting.NO_SORTING);
-        List<Room> allRoomList = this.roomDAO.getAllEntities(TypeSorting.NO_SORTING);
-
-        HashSet<Room> roomSet = new HashSet<Room>();
-
-      /*  ArrayList<Room> freeRoomsByDate = new ArrayList<>();
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
-        synchronized (this.guestRoomInfoDAO) {
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING)) {
-                if (guestRoomInfo.getDepartureDate().compareTo(calendar.getTime()) == -1) {
-                    freeRoomsByDate.add(guestRoomInfo.getRoom());
-                }
-            }
-        }
-
-        return freeRoomsByDate;*/
-        return null;
-    }
-
-    public List<GuestRoomInfo> getThreeLastGuests(int roomNumber) {
-/*
-        ArrayList<GuestRoomInfo> guestRoomInfoList = new ArrayList<GuestRoomInfo>();
-
-        Room room = this.getRoomByNumber(roomNumber);
-
-        for (int i = room.getGuests().size(), k = 0; i > 0 && k < 3; i--, k++) {
-            Guest guest = room.getGuests().get(i - 1);
-            synchronized (this.guestRoomInfoDAO) {
-                for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING)) {
-                    if (guestRoomInfo.getGuest().equals(guest)) {
-                        guestRoomInfoList.add(guestRoomInfo);
-                    }
-                }
-            }
-        }
-
-        return guestRoomInfoList;
-        */
-        return null;
+    public List<Guest> getLastGuests(int roomNumber) {
+        List<Guest> someLastGuests=new ArrayList<>(this.maxCountOldGuests);
+      List<Guest> guestList= this.guestRoomInfoDAO.getLastGuestsInRoom(roomNumber);
+      for(int i=0;i<maxCountOldGuests;i++){
+          someLastGuests.add(guestList.get(i));
+      }
+        return someLastGuests;
     }
 
     public void setRoomCost(int roomNumber, int cost) {
@@ -199,6 +160,12 @@ public class RoomService implements IRoomService {
         }
     }
 
+    public void setRoomStatus(Room room,RoomStatus roomStatus) {
+        if(this.chooseRoomStatus){
+            room.setStatus(roomStatus);
+            this.roomDAO.updateEntity(room);
+        }
+    }
 }
 
 

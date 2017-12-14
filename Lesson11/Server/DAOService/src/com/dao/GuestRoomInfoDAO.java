@@ -35,9 +35,11 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
     public String getUpdateQuery() {
         return "UPDATE hotel4.guestroominfo SET arrivaldate= ?, departuredate = ?,guest=?,room=?,isstillliving=? WHERE id= ?;";
     }
+
     public String getStatusUpdateQuery() {
         return "UPDATE hotel4.guestroominfo SET isstillliving=? WHERE guest= ?;";
     }
+
     @Override
     public String getDeleteQuery() {
         return "DELETE FROM hotel4.guestroominfo WHERE id= ?";
@@ -57,8 +59,10 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 "INNER JOIN hotel4.guestroominfo  ON hotel4.guest.id = hotel4.guestroominfo.guest and isstillliving=? ";
     }
 
-
-
+    public String getLastGuestsInCurrenRoom() {
+        return "SELECT guest.id , guest.name,guest.surname FROM hotel4.guest\n" +
+                "INNER JOIN hotel4.guestroominfo  ON hotel4.guest.id = hotel4.guestroominfo.guest and isstillliving=0 and room=? ";
+    }
     @Override
     protected List<GuestRoomInfo> parseResultSet(ResultSet rs) {
         List<GuestRoomInfo> result = new ArrayList<GuestRoomInfo>();
@@ -145,12 +149,12 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         return null;
     }
 
-    public List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving,TypeSorting sorting) {
+    public List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving, TypeSorting sorting) {
         List<GuestRoomInfo> list = new ArrayList<GuestRoomInfo>();
         String sql = getSelectQuery();
         sql = sql + "WHERE isstillliving=?";
-        if(sorting!=TypeSorting.NO_SORTING){
-            sql=sql+" ORDER BY " +sorting.getType()+";";
+        if (sorting != TypeSorting.NO_SORTING) {
+            sql = sql + " ORDER BY " + sorting.getType() + ";";
 
         }
         try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
@@ -179,29 +183,28 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
     }
 
 
-
-    public void updateEntityStatus(Guest guest,int status) {
+    public void updateEntityStatus(Guest guest, int status) {
         String sql = getStatusUpdateQuery();
         try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
-            statement.setInt(status,guest.getId());
+            statement.setInt(status, guest.getId());
             int count = statement.executeUpdate();
         } catch (Exception e) {
             log.error(e.toString());
         }
     }
 
-    public Integer  getCountGuests(Boolean isliving){
-        int isliv=1;
-        if(isliving.equals(false)){
-            isliv=0;
+    public Integer getCountGuests(Boolean isliving) {
+        int isliv = 1;
+        if (isliving.equals(false)) {
+            isliv = 0;
         }
         String sql = getCountGuestQuery();
-        int count=0;
+        int count = 0;
         try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
-            statement.setInt(1,isliv);
+            statement.setInt(1, isliv);
             ResultSet rs = statement.executeQuery();
-            if(rs.next()){
-                count=rs.getInt("count(guest)");
+            if (rs.next()) {
+                count = rs.getInt("count(guest)");
             }
 
         } catch (Exception e) {
@@ -210,37 +213,65 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         return count;
     }
 
-    public List<Guest> getGuestsByStatus(int status,int roomNumber,TypeSorting sorting) {
+    public List<Guest> getGuestsByStatus(int status, int roomNumber, TypeSorting sorting) {
         List<Guest> list = new ArrayList<Guest>();
         String sql = getGuestsByStatus();
 
-        if(roomNumber!=0){
-            sql=sql+" and room=? ";
+        if (roomNumber != 0) {
+            sql = sql + " and room=? ";
         }
-        if(sorting!=TypeSorting.NO_SORTING){
-            sql=sql+" ORDER BY " +sorting.getType();
+        if (sorting != TypeSorting.NO_SORTING) {
+            sql = sql + " ORDER BY " + sorting.getType();
 
         }
 
         try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
-            statement.setInt(1,status);
+            statement.setInt(1, status);
 
-            if(roomNumber!=0){
-                statement.setInt(2,roomNumber);
+            if (roomNumber != 0) {
+                statement.setInt(2, roomNumber);
             }
-           ResultSet rs= statement.executeQuery();
-            List<Guest> result = new ArrayList<Guest>();
+            ResultSet rs = statement.executeQuery();
+
+            return this.parseGuestResultSet(rs);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return null;
+    }
+
+    public List<Guest> getLastGuestsInRoom( int roomNumber) {
+        List<Guest> list = new ArrayList<Guest>();
+        String sql = getGuestsByStatus();
+        sql = sql + " ORDER BY " + TypeSorting.BY_DEPARTURE_DATE.getType();
+
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            statement.setInt(1, roomNumber);
+
+            ResultSet rs = statement.executeQuery();
+
+            return this.parseGuestResultSet(rs);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return null;
+    }
+    private List<Guest> parseGuestResultSet(ResultSet rs) {
+
+        List<Guest> result = new ArrayList<Guest>();
+        try {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
-                Guest guest = new Guest(id,name,surname);
+                Guest guest = new Guest(id, name, surname);
                 result.add(guest);
             }
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             log.error(e.toString());
         }
-    return null;
+        return result;
     }
+
+
 }

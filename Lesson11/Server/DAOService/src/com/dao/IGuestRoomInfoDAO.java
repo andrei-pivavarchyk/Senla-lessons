@@ -17,5 +17,5 @@ public interface IGuestRoomInfoDAO extends IBaseDAO<GuestRoomInfo> {
     void updateEntityStatus(Guest object, int status);
     Integer  getCountGuests(Boolean isliving);
     List<Guest> getGuestsByStatus(int status,int roomNumber,TypeSorting sorting);
-
+    List<Guest> getLastGuestsInRoom( int roomNumber);
 }

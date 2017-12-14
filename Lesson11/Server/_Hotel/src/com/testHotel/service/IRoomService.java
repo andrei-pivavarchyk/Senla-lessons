@@ -4,6 +4,7 @@ package com.testHotel.service;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
 import com.testHotel.entity.Room;
+import com.testHotel.entity.RoomStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,9 @@ public interface IRoomService {
    void departureGuest ( Guest guest);
     List<Room> getFreeRooms();
    Integer getFreeRoomsCount();
-   List<Room> getFreeRoomsByDate(int year,int month,int day);
-   List<GuestRoomInfo> getThreeLastGuests(int roomNumber);
+   List<Guest> getLastGuests(int roomNumber);
    void setRoomCost(int roomNumber,int cost);
    Room getRoomByNumber(int roomNumber);
    void importRooms(List<Room> importList);
+   void setRoomStatus(Room room,RoomStatus roomStatus);
 }
