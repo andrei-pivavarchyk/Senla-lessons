@@ -176,7 +176,7 @@ public class HotelController implements IHotelController {
 
     public void importRoom(String path) throws Exception {
         List<Room> importRoomList = this.fileService.readRooms(path);
-        this.roomService.glueTwoArrays(importRoomList);
+        this.roomService.importRooms(importRoomList);
     }
 
     public void exportRoom(String path) throws Exception {

@@ -35,7 +35,9 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
     public String getUpdateQuery() {
         return "UPDATE hotel4.guestroominfo SET arrivaldate= ?, departuredate = ?,guest=?,room=?,isstillliving=? WHERE id= ?;";
     }
-
+    public String getStatusUpdateQuery() {
+        return "UPDATE hotel4.guestroominfo SET isstillliving=? WHERE guest= ?;";
+    }
     @Override
     public String getDeleteQuery() {
         return "DELETE FROM hotel4.guestroominfo WHERE id= ?";
@@ -137,10 +139,14 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         return null;
     }
 
-    public List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving) {
+    public List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving,TypeSorting sorting) {
         List<GuestRoomInfo> list = new ArrayList<GuestRoomInfo>();
         String sql = getSelectQuery();
         sql = sql + "WHERE isstillliving=?";
+        if(sorting!=TypeSorting.NO_SORTING){
+            sql=sql+" ORDER BY " +sorting.getType()+";";
+
+        }
         try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
             if (isLiving.equals(true)) {
                 statement.setInt(1, 1);
@@ -165,4 +171,18 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
             System.out.println(e.toString());
         }
     }
+
+
+
+    public void updateEntityStatus(Guest guest,int status) {
+        String sql = getStatusUpdateQuery();
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            statement.setInt(status,guest.getId());
+            int count = statement.executeUpdate();
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+    }
+
+
 }

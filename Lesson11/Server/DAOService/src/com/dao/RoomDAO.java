@@ -86,16 +86,15 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
 
 
 
-    public List<Room> getAllEntitiesByStatus(RoomStatus status,TypeSorting sorting) {
-        List<Room> list = new ArrayList<Room>();
-        String sql = getSelectQuery();
 
+
+    public List<Room> getAllEntitiesByStatus(RoomStatus status,TypeSorting sorting) {
+        int statusInt=0;
         if(status.equals(RoomStatus.FREE)){
-            sql=sql+"WHERE status=1 ";
+            statusInt=1;
         }
-        else{
-            sql=sql+"WHERE status=0 ";
-        }
+        List<Room> list = new ArrayList<Room>();
+        String sql = getSelectQuery()+" WHERE status=? ";
         if(sorting!=TypeSorting.NO_SORTING){
             sql=sql+" ORDER BY " +sorting.getType();
         }
@@ -111,8 +110,17 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
         return list;
     }
 
-
-
-
-
+    public Integer  getCountEntity(){
+        String sql = getCountQuery();
+        int count=0;
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                count=rs.getInt("count(number)");
+            }
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return count;
+    }
 }

@@ -12,12 +12,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuestServiceDAO  {
-    private IServiceDAO serviceDAO=(IServiceDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
-    private IGuestDAO guestDAO=(IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
-    public GuestServiceDAO(){
-        super.primaryKey="id";
+public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuestServiceDAO {
+    private IServiceDAO serviceDAO = (IServiceDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
+    private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
+
+    public GuestServiceDAO() {
+        super.primaryKey = "id";
     }
+
     @Override
     public String getSelectQuery() {
         return " SELECT guest,service,date FROM hotel4.guestserviceinfo";
@@ -42,6 +44,11 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
     public String getCountQuery() {
         return "select count(id) from guest;";
     }
+
+    public String getDeleteQueryByGuestId() {
+        return "DELETE FROM hotel4.service WHERE guest= ?;";
+    }
+
     public String getAllGuestServicesQuery() {
         return " SELECT guest,service,date FROM hotel4.guestserviceinfo WHERE guest= ? ;";
     }
@@ -55,10 +62,10 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
                 int guestID = rs.getInt("guest");
                 int serviceID = rs.getInt("service");
                 int date = rs.getInt("date");
-                Timestamp timestamp=new Timestamp(date);
-                Guest guest=this.guestDAO.getEntity(guestID);
-                Service service=this.serviceDAO.getEntity(serviceID);
-               GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,service,new Date(timestamp.getTime()));
+                Timestamp timestamp = new Timestamp(date);
+                Guest guest = this.guestDAO.getEntity(guestID);
+                Service service = this.serviceDAO.getEntity(serviceID);
+                GuestServiceInfo guestServiceInfo = new GuestServiceInfo(1, guest, service, new Date(timestamp.getTime()));
                 result.add(guestServiceInfo);
             }
         } catch (Exception e) {
@@ -71,7 +78,7 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
     protected void prepareStatementForInsert(PreparedStatement statement, GuestServiceInfo object) {
 
         try {
-            Timestamp date=new Timestamp(object.getDate().getTime());
+            Timestamp date = new Timestamp(object.getDate().getTime());
             statement.setInt(1, object.getGuest().getId());
             statement.setInt(2, object.getService().getId());
             statement.setTimestamp(3, date);
@@ -83,25 +90,24 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
 
     @Override
     protected void prepareStatementForUpdate(PreparedStatement statement, GuestServiceInfo object) {
-       try {
-            Timestamp date=new Timestamp(object.getDate().getTime());
+        try {
+            Timestamp date = new Timestamp(object.getDate().getTime());
             statement.setInt(1, object.getService().getId());
             statement.setTimestamp(2, date);
-           statement.setInt(3, object.getGuest().getId());
-           statement.setInt(4, object.getService().getId());
+            statement.setInt(3, object.getGuest().getId());
+            statement.setInt(4, object.getService().getId());
         } catch (Exception e) {
             log.equals(e.toString());
         }
-     }
+    }
 
-    public List<GuestServiceInfo> getAllEntitiesByGuest(Guest guest,TypeSorting sorting) {
+    public List<GuestServiceInfo> getAllEntitiesByGuest(Guest guest, TypeSorting sorting) {
         List<GuestServiceInfo> list = new ArrayList<GuestServiceInfo>();
-        String sql = getSelectQuery()+"WHERE guest="+guest.getId();
-        if(sorting!=TypeSorting.NO_SORTING){
-            sql=sql+" ORDER BY " +sorting.getType();
-        }
-        else{
-            sql=sql+";";
+        String sql = getSelectQuery() + "WHERE guest=" + guest.getId();
+        if (sorting != TypeSorting.NO_SORTING) {
+            sql = sql + " ORDER BY " + sorting.getType();
+        } else {
+            sql = sql + ";";
         }
         try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
@@ -110,6 +116,20 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
             log.error(e.toString());
         }
         return list;
+    }
+
+    public void removeEntityByGuestId(Guest guest) {
+        String sql = getDeleteQueryByGuestId();
+        try (PreparedStatement statement = super.getCon().prepareStatement(sql)) {
+            try {
+                statement.setInt(1, guest.getId());
+            } catch (Exception e) {
+                log.error(e.toString());
+            }
+            statement.executeUpdate();
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
     }
 
 }

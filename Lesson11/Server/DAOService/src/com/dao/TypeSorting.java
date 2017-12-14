@@ -7,6 +7,7 @@ public enum TypeSorting {
     BY_DATE("date"),
     BY_COST("cost"),
     BY_STARS("stars"),
+    BY_STATUS("status"),
     BY_ID("id"),
     BY_CAPACITY("capacity"),
     BY_NAME("name"),

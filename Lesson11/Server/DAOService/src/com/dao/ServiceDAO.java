@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.testHotel.entity.Guest;
 import com.testHotel.entity.Service;
 import com.testHotel.entity.ServiceType;
 
@@ -34,6 +35,7 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
     public String getDeleteQuery() {
         return "DELETE FROM hotel4.service WHERE id= ?;";
     }
+
     @Override
     public String getCountQuery() {
         return "select count(id) from hotel4.service;";
@@ -80,5 +82,8 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
             log.equals(e.toString());
         }
     }
+
+
+
 
 }

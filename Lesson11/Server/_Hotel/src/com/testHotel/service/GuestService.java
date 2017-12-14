@@ -4,8 +4,6 @@ import com.dao.IGuestDAO;
 import com.dao.IRoomDAO;
 import com.dao.TypeSorting;
 import com.dependencyService.DependencyService;
-import com.testHotel.comparator.GuestNameComparator;
-import com.testHotel.comparator.GuestRoomInfoDateComparator;
 import com.dao.IGuestRoomInfoDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
@@ -26,14 +24,11 @@ public class GuestService implements IGuestService, Serializable {
     private static final Comparator<GuestRoomInfo> DATE_COMPARATOR = new GuestRoomInfoDateComparator();
     public Logger log = Logger.getLogger(GuestService.class);
 
-
     public List<Guest> getAllGuests() {
         synchronized (this.guestRoomInfoDAO) {
             List<Guest> allGuests = new ArrayList<Guest>();
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING)) {
-                if (guestRoomInfo.getStillLiving().equals(true)) {
+            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getCurrentGuestRoomInfo(true,TypeSorting.NO_SORTING)) {
                     allGuests.add(guestRoomInfo.getGuest());
-                }
             }
             return allGuests;
         }
@@ -41,10 +36,9 @@ public class GuestService implements IGuestService, Serializable {
 
     public List<Guest> getAllGuestsSortedByDateDeparture() {
         synchronized (this.guestRoomInfoDAO) {
-            ArrayList<GuestRoomInfo> copyArray = new ArrayList<GuestRoomInfo>(this.guestRoomInfoDAO.getAllEntities(TypeSorting.BY_DEPARTURE_DATE));
-            ArrayList<Guest> guestList = new ArrayList<Guest>();
-            copyArray.sort(DATE_COMPARATOR);
-            for (GuestRoomInfo guestRoomInfo : copyArray) {
+            List<GuestRoomInfo> guesInfoList = new ArrayList<GuestRoomInfo>(this.guestRoomInfoDAO.getAllEntities(TypeSorting.BY_DEPARTURE_DATE));
+           List<Guest> guestList=new ArrayList<Guest>();
+            for (GuestRoomInfo guestRoomInfo : guesInfoList) {
                 guestList.add(guestRoomInfo.getGuest());
             }
             return guestList;
@@ -59,25 +53,18 @@ public class GuestService implements IGuestService, Serializable {
 
     public Integer getPayAmount(Guest guest) {
         synchronized (this.guestRoomInfoDAO) {
-           synchronized (this.roomDAO){
-               synchronized (this.guestDAO) {
                    GuestRoomInfo guestRoomInfo=this.guestRoomInfoDAO.getEntityByGuestId(guest.getId());
                    long diff = guestRoomInfo.getDepartureDate().getTime() - guestRoomInfo.getArrivalDate().getTime();
                    int allDaysLiving = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
                    int payGuest = allDaysLiving * guestRoomInfo.getRoom().getCost();
                    return payGuest;
                }
-        }}
     }
 
     public List<GuestRoomInfo> getCurrentGuestRoomInfo() {
         synchronized (this.guestRoomInfoDAO) {
             ArrayList<GuestRoomInfo> currentGuestRoomInfoList = new ArrayList<GuestRoomInfo>();
-            for (GuestRoomInfo guestRoomInfo : this.guestRoomInfoDAO.getAllEntities(TypeSorting.NO_SORTING)) {
-                if (guestRoomInfo.getStillLiving().equals(true)) {
-                    currentGuestRoomInfoList.add(guestRoomInfo);
-                }
-            }
+            this.guestRoomInfoDAO.getCurrentGuestRoomInfo(true,TypeSorting.NO_SORTING);
             return currentGuestRoomInfoList;
         }
     }

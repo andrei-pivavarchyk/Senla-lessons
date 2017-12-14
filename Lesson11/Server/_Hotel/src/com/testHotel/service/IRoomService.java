@@ -21,14 +21,11 @@ public interface IRoomService {
    void addGuest(int roomNumber, Guest guest,int year,int month,int day);
    void departureGuest ( Guest guest);
     List<Room> getFreeRooms();
-   void printFreeRoomsCount();
+   Integer getFreeRoomsCount();
    List<Room> getFreeRoomsByDate(int year,int month,int day);
    List<GuestRoomInfo> getThreeLastGuests(int roomNumber);
    void setRoomCost(int roomNumber,int cost);
-   List<Room> getArrayRoomCostSorting(ArrayList<Room> allRooms);
-   List<Room> getArrayRoomCapacitySorting(ArrayList<Room> allRooms);
-   List<Room> getArrayRoomStarsSorting(ArrayList<Room> allRooms);
    Room getRoomByNumber(int roomNumber);
    Room cloneRoom(Room room) throws CloneNotSupportedException;
-   void glueTwoArrays(List<Room> importList );
+   void importRooms(List<Room> importList);
 }
