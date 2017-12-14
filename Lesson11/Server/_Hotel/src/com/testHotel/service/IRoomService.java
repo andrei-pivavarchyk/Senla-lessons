@@ -26,6 +26,5 @@ public interface IRoomService {
    List<GuestRoomInfo> getThreeLastGuests(int roomNumber);
    void setRoomCost(int roomNumber,int cost);
    Room getRoomByNumber(int roomNumber);
-   Room cloneRoom(Room room) throws CloneNotSupportedException;
    void importRooms(List<Room> importList);
 }

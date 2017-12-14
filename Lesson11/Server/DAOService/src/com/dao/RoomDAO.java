@@ -34,7 +34,7 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
         return "DELETE FROM hotel4.room WHERE number= ?;";
     }
 
-    @Override
+
     public String getCountQuery() {
         return "select count(id) from hotel4.room;";
     }
@@ -83,9 +83,6 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
             log.equals(e.toString());
         }
     }
-
-
-
 
 
     public List<Room> getAllEntitiesByStatus(RoomStatus status,TypeSorting sorting) {

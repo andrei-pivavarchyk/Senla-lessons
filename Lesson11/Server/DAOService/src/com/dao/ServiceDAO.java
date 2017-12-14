@@ -36,7 +36,7 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
         return "DELETE FROM hotel4.service WHERE id= ?;";
     }
 
-    @Override
+
     public String getCountQuery() {
         return "select count(id) from hotel4.service;";
     }

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class ConnectionUtil {
 
     //for mysql
-private ConnectionUtil(){}
+
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.URL)
     private String url;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.USER)
@@ -26,6 +26,9 @@ private ConnectionUtil(){}
     private Connection con;
     public Logger log = Logger.getLogger(GuestService.class);
     private static volatile ConnectionUtil instance;
+
+    private ConnectionUtil() {
+    }
 
     public static ConnectionUtil getConnectionUtil() {
         ConnectionUtil localInstance = instance;

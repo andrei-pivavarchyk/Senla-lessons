@@ -14,27 +14,22 @@ import java.util.*;
 public class ServiceService implements IServiceService {
 
     private IGuestServiceDAO guestServiceDAO = (IGuestServiceDAO) DependencyService.getDI().getInstance(IGuestServiceDAO.class);
-    private int guestServiceInfoCount = 0;
-
     public static final Logger log = Logger.getLogger(GuestService.class);
-
     private IServiceDAO serviceDAO = (IServiceDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
 
     public void addGuestService(Guest guest, Service service, int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
         Date serviceDate = calendar.getTime();
-        GuestServiceInfo guestServiceInfo = new GuestServiceInfo(guestServiceInfoCount, guest, service, serviceDate);
+        GuestServiceInfo guestServiceInfo = new GuestServiceInfo(1, guest, service, serviceDate);
         synchronized (this.guestServiceDAO) {
             this.guestServiceDAO.addEntity(guestServiceInfo);
         }
-        guestServiceInfoCount++;
-
     }
 
     public List<GuestServiceInfo> getAllGuestServicesInfo(Guest guest) {
         synchronized (this.guestServiceDAO) {
-            List<GuestServiceInfo> allGuestServicesInfo = this.guestServiceDAO.getAllEntities(TypeSorting.NO_SORTING);
+            List<GuestServiceInfo> allGuestServicesInfo = this.guestServiceDAO.getAllEntitiesByGuest(guest, TypeSorting.NO_SORTING);
             return allGuestServicesInfo;
         }
 

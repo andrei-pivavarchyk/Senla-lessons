@@ -1,15 +1,13 @@
 package com.testHotel.service;
 
-import com.dao.IGuestDAO;
-import com.dao.IRoomDAO;
-import com.dao.TypeSorting;
+import com.dao.*;
 import com.dependencyService.DependencyService;
-import com.dao.IGuestRoomInfoDAO;
 import com.testHotel.entity.Guest;
 import com.testHotel.entity.GuestRoomInfo;
 import org.apache.log4j.Logger;
 
 import java.io.Serializable;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -19,7 +17,7 @@ public class GuestService implements IGuestService, Serializable {
 
     private IGuestRoomInfoDAO guestRoomInfoDAO = (IGuestRoomInfoDAO) DependencyService.getDI().getInstance(IGuestRoomInfoDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
-    private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
+    private Connection con = ConnectionUtil.getConnectionUtil().getConnection();
     public Logger log = Logger.getLogger(GuestService.class);
 
     public List<Guest> getAllGuests() {
@@ -45,7 +43,7 @@ public class GuestService implements IGuestService, Serializable {
 
     public Integer getAllGuestsCount() {
         synchronized (this.guestDAO) {
-            return this.guestDAO.getCountEntity();
+            return this.guestRoomInfoDAO.getCountGuests(true);
         }
     }
 

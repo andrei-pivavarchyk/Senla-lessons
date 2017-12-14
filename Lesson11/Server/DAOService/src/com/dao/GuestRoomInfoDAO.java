@@ -236,7 +236,6 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 String surname = rs.getString("surname");
                 Guest guest = new Guest(id,name,surname);
                 result.add(guest);
-
             }
 
         } catch (Exception e) {
