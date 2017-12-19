@@ -20,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PropertyService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java">
+      <file leaf-file-name="PropertyService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+            <state relative-caret-position="200">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -32,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="150">
+              <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -73,6 +73,7 @@
         <option value="$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
         <option value="$PROJECT_DIR$/src/com/propertyService/IPropertyService.java" />
         <option value="$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -83,8 +84,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="32" />
-    <option name="y" value="43" />
+    <option name="x" value="412" />
+    <option name="y" value="511" />
     <option name="width" value="1616" />
     <option name="height" value="876" />
   </component>
@@ -103,9 +104,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane" />
       <pane id="Scope" />
     </panes>
@@ -114,7 +115,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DependencyService" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path" value="D:/ANGULAR/NODE/node" />
@@ -565,12 +566,11 @@
     <option name="totallyTimeSpent" value="28148000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="32" y="43" width="1616" height="876" extended-state="0" />
+    <frame x="412" y="511" width="1616" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -595,6 +595,7 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -614,20 +615,19 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/IPropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/IPropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/IPropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/IPropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/IPropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/IPropertyService.java" />
-    <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
     <entry file="file://$PROJECT_DIR$/Property2.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -635,10 +635,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/IPropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/IPropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
     <entry file="file://$PROJECT_DIR$/Property2.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -646,9 +646,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
     <entry file="file://$PROJECT_DIR$/Property2.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -656,18 +656,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
-    <entry file="file://$PROJECT_DIR$/Property2.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
     <entry file="file://$PROJECT_DIR$/Property2.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -676,18 +666,28 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/Property2.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
+    <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java" />
     <entry file="file://D:/PropertyService.class" />
     <entry file="file://$PROJECT_DIR$/../../../5/PropertyService/src/property/PropertyService.java" />
     <entry file="file://$PROJECT_DIR$/src/property/EnumProperty.java" />
@@ -698,7 +698,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/IPropertyService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/IPropertyService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="66" lean-forward="false" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
@@ -708,7 +708,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/main/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
@@ -716,13 +716,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/propertyService/PropertyService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        <state relative-caret-position="200">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
