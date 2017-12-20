@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Configurator/Configurator.iml" filepath="$PROJECT_DIR$/Configurator/Configurator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DependencyService/DependencyService.iml" filepath="$PROJECT_DIR$/DependencyService/DependencyService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PProperty/PProperty.iml" filepath="$PROJECT_DIR$/PProperty/PProperty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PropertyService/PropertyService.iml" filepath="$PROJECT_DIR$/PropertyService/PropertyService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QueryService/QueryService.iml" filepath="$PROJECT_DIR$/QueryService/QueryService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entitylib/entitylib.iml" filepath="$PROJECT_DIR$/entitylib/entitylib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/mvn.iml" filepath="$PROJECT_DIR$/.idea/mvn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ui/ui.iml" filepath="$PROJECT_DIR$/ui/ui.iml" />
+    </modules>
+  </component>
+</project>

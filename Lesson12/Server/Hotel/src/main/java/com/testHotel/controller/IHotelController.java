@@ -1,9 +1,9 @@
 package com.testHotel.controller;
 
 
-import com.testHotel.entity.Guest;
-import com.testHotel.entity.Room;
-import com.testHotel.entity.Service;
+import com.entity.Guest;
+import com.entity.Room;
+import com.entity.Service;
 import com.testHotel.service.*;
 
 import java.sql.SQLException;

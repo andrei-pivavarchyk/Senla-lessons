@@ -1,14 +1,10 @@
 package com.testHotel.service;
 
 
-import com.testHotel.entity.Guest;
-import com.testHotel.entity.Service;
-import com.testHotel.entity.GuestServiceInfo;
-import com.testHotel.storage.IGuestServiceStorage;
-import com.testHotel.storage.IServiceStorage;
+import com.entity.Guest;
+import com.entity.GuestServiceInfo;
+import com.entity.Service;
 
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IServiceService {

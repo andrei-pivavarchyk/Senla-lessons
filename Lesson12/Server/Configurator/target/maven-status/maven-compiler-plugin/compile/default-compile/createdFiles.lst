@@ -1,0 +1,7 @@
+com\configurator\IConfigurator.class
+com\configurator\ConfigProperty.class
+com\configurator\PropertyName.class
+com\configurator\Configurator.class
+com\configurator\PropertyFilePath.class
+com\configurator\Configurable.class
+com\configurator\main\Main.class

@@ -1,6 +1,7 @@
 package com.testHotel.service;
 
-import com.testHotel.entity.*;
+
+import com.entity.*;
 
 import java.util.ArrayList;
 import java.util.List;

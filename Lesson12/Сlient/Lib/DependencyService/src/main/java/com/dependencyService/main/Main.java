@@ -1,8 +1,5 @@
-package com.dependencyService.main;
+package main.java.dependencyService.main;
 
-
-
-import java.lang.reflect.Field;
 
 public class Main {
 

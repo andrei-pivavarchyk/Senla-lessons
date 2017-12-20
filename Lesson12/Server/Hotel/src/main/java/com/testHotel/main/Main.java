@@ -2,15 +2,13 @@ package com.testHotel.main;
 
 
 
-import com.dependencyService.DependencyService;
+import com.entity.Guest;
+import com.entity.Room;
 import com.testHotel.controller.HotelController;
-import com.dao.*;
-import com.testHotel.entity.*;
 import com.testHotel.service.GuestService;
-import com.testHotel.service.IGuestService;
 import com.testHotel.service.PrinterService;
 import com.testHotel.service.RoomService;
-import org.apache.log4j.Logger;
+
 
 import java.sql.Timestamp;
 

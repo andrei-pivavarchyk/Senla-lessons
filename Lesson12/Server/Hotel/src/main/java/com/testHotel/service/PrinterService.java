@@ -1,8 +1,9 @@
 package com.testHotel.service;
 
 
+import com.entity.*;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.testHotel.entity.*;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

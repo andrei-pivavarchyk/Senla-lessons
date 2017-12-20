@@ -1,8 +1,7 @@
 package com.testHotel.service;
 
 
-import com.danco.training.TextFileWorker;
-import com.testHotel.entity.Room;
+import com.entity.Room;
 import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;

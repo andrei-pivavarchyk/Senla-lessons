@@ -1,7 +1,7 @@
 package com.serverQueryService.ClientQueryService;
 
 
-import com.dependencyService.DependencyService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
 import org.apache.log4j.Logger;

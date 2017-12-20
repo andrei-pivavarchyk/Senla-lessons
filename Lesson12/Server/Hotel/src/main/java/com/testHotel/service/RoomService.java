@@ -6,10 +6,10 @@ import com.configurator.PropertyFilePath;
 import com.configurator.PropertyName;
 import com.dao.*;
 import com.dependencyService.DependencyService;
-import com.testHotel.entity.Guest;
-import com.testHotel.entity.Room;
-import com.testHotel.entity.GuestRoomInfo;
-import com.testHotel.entity.RoomStatus;
+import com.entity.Guest;
+import com.entity.GuestRoomInfo;
+import com.entity.Room;
+import com.entity.RoomStatus;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;

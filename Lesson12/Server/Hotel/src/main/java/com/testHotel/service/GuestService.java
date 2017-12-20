@@ -2,14 +2,13 @@ package com.testHotel.service;
 
 import com.dao.*;
 import com.dependencyService.DependencyService;
-import com.testHotel.entity.Guest;
-import com.testHotel.entity.GuestRoomInfo;
+import com.entity.Guest;
+import com.entity.GuestRoomInfo;
 import org.apache.log4j.Logger;
 
 import java.io.Serializable;
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

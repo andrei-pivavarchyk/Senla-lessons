@@ -1,13 +1,9 @@
 package com.testHotel.service;
 
 
+import com.entity.Guest;
+import com.entity.GuestRoomInfo;
 
-import com.dao.TypeSorting;
-import com.testHotel.entity.Guest;
-import com.testHotel.entity.GuestRoomInfo;
-import com.testHotel.storage.IGuestRoomInfoStorage;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IGuestService {

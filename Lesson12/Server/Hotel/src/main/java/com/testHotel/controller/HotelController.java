@@ -3,19 +3,13 @@ package com.testHotel.controller;
 import com.configurator.*;
 
 import com.dependencyService.DependencyService;
+import com.entity.Guest;
+import com.entity.Room;
+import com.entity.Service;
 import com.serializingService.ISerializableService;
-import com.dao.ConnectionUtil;
-import com.testHotel.entity.Guest;
-import com.testHotel.entity.ProgramState;
-import com.testHotel.entity.Room;
-import com.testHotel.entity.Service;
 import com.testHotel.service.*;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,36 +34,12 @@ public class HotelController implements IHotelController {
         this.configurator.configure(this);
         this.configurator.configure(this.serializableService);
 
-        ProgramState programState = (ProgramState) this.serializableService.deSerializable();
-
-        if (programState == null) {
-            try {
-                this.readRoomsFromFile();
-            } catch (Exception e) {
-                log.error(e.toString());
-            }
-
-        } else {
-            this.getRoomService().getAllRooms().addAll(programState.getRoomList());
-            this.getServiceService().getAllHotelServices().addAll(programState.getServiceList());
-
-
-        }
     }
 
 
     public void endHotel() {
 
-        ProgramState programState = new ProgramState();
-        programState.setRoomList(this.getRoomService().getAllRooms());
-        programState.setServiceList(this.getServiceService().getAllHotelServices());
-        this.serializableService.serializable(programState);
 
-        try {
-            ConnectionUtil.getConnectionUtil().getConnection().close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 

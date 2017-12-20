@@ -11,27 +11,17 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../_JarFiles/DependencyService.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="Maven: server:dependencyService:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:Property:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:Configurator:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:Hotel:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:serializationService:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:daoService:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:DependencyService:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:entityLib:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../_JarFiles/hotel.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
   </component>
 </module>
