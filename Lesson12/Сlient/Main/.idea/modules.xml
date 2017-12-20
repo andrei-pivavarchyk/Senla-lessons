@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Client.iml" filepath="$PROJECT_DIR$/Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dependency/Dependency.iml" filepath="$PROJECT_DIR$/Dependency/Dependency.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PropertyService/PropertyService.iml" filepath="$PROJECT_DIR$/PropertyService/PropertyService.iml" />
       <module fileurl="file://$PROJECT_DIR$/QueryService/QueryService.iml" filepath="$PROJECT_DIR$/QueryService/QueryService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UI/UI.iml" filepath="$PROJECT_DIR$/UI/UI.iml" />
       <module fileurl="file://$PROJECT_DIR$/entityLib/entityLib.iml" filepath="$PROJECT_DIR$/entityLib/entityLib.iml" />
     </modules>
   </component>

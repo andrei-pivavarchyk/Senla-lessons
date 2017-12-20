@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: Senla:QueryService:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/Senla/QueryService/unknown/QueryService-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/Senla/QueryService/unknown/QueryService-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/Senla/QueryService/unknown/QueryService-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

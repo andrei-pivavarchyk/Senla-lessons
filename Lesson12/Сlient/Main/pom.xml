@@ -12,22 +12,12 @@
          <modules>
              <module>QueryService</module>
              <module>entityLib</module>
-	     </modules>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+             <module>UI</module>
+             <module>PropertyService</module>
+             <module>Dependency</module>
 
-   
- 
+         </modules>
+
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->

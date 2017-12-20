@@ -6,14 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Dependency" />
         <module name="entityLib" />
+        <module name="PropertyService" />
         <module name="QueryService" />
+        <module name="UI" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Client" target="1.7" />
-      <module name="entityLib" target="1.7" />
-      <module name="QueryService" target="1.7" />
+      <module name="Client" target="1.5" />
+      <module name="Configurator" target="1.7" />
+      <module name="Dependency" target="1.5" />
+      <module name="entityLib" target="1.5" />
+      <module name="Property" target="1.7" />
+      <module name="PropertyService" target="1.5" />
+      <module name="QueryService" target="1.5" />
+      <module name="UI" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
