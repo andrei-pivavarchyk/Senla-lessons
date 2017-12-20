@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Configurator/Configurator.iml" filepath="$PROJECT_DIR$/Configurator/Configurator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DependencyService/DependencyService.iml" filepath="$PROJECT_DIR$/DependencyService/DependencyService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hotel/Hotel.iml" filepath="$PROJECT_DIR$/Hotel/Hotel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Property/Property.iml" filepath="$PROJECT_DIR$/Property/Property.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Server.iml" filepath="$PROJECT_DIR$/.idea/Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServerQueryService/ServerQueryService.iml" filepath="$PROJECT_DIR$/ServerQueryService/ServerQueryService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DAOService/daoService.iml" filepath="$PROJECT_DIR$/DAOService/daoService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entitylib/entitylib.iml" filepath="$PROJECT_DIR$/entitylib/entitylib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hibernate/hibernate.iml" filepath="$PROJECT_DIR$/Hibernate/hibernate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serializationService/serializationService.iml" filepath="$PROJECT_DIR$/serializationService/serializationService.iml" />
     </modules>
   </component>
 </project>

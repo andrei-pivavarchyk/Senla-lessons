@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Configurator" />
+        <module name="daoService" />
+        <module name="DependencyService" />
+        <module name="entitylib" />
+        <module name="hibernate" />
+        <module name="Hotel" />
+        <module name="Property" />
+        <module name="serializationService" />
+        <module name="ServerQueryService" />
+      </profile>
+    </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Configurator" target="1.7" />
+      <module name="daoService" target="1.7" />
+      <module name="DependencyService" target="1.7" />
+      <module name="entitylib" target="1.7" />
+      <module name="hibernate" target="1.7" />
+      <module name="Hotel" target="1.7" />
+      <module name="Property" target="1.7" />
+      <module name="serializationService" target="1.7" />
       <module name="Server" target="1.7" />
+      <module name="ServerQueryService" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

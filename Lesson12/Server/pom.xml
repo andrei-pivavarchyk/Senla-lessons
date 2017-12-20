@@ -29,6 +29,7 @@
         <module>Property</module>
         <module>serializationService</module>
         <module>ServerQueryService</module>
+        <module>Hibernate</module>
     </modules>
 
 
