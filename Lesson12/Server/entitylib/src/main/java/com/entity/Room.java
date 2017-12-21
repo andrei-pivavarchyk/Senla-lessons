@@ -1,6 +1,5 @@
 package com.entity;
 
-import com.entityOld.Guest;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

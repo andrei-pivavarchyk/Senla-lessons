@@ -5,7 +5,7 @@ import javax.persistence.*;
 @MappedSuperclass
 public class HotelEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
 public HotelEntity(int id){
