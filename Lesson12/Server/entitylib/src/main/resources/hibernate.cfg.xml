@@ -13,12 +13,12 @@
 	<property name="hbm2ddl.auto">update</property>
 
       
-
-<mapping class="com.entity.GuestEntity"/>
-<mapping class="com.entity.GuestroominfoEntity"/>
-<mapping class="com.entity.GuestserviceinfoEntity"/>
-<mapping class="com.entity.RoomEntity"/>
-<mapping class="com.entity.ServiceEntity"/>
+<mapping class="com.entity.HotelEntity"/>
+<mapping class="com.entity.Guest"/>
+<mapping class="com.entity.GuestRoomInfo"/>
+<mapping class="com.entity.GuestServiceInfo"/>
+<mapping class="com.entity.Room"/>
+<mapping class="com.entity.Service"/>
 
 
 

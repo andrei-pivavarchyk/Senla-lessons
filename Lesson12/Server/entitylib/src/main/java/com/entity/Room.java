@@ -1,30 +1,33 @@
 package com.entity;
 
+import com.entityOld.Guest;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by андрей on 21.12.2017.
  */
 @Entity
 @Table(name = "room")
-public class RoomEntity {
-    private int id;
+public class Room extends HotelEntity{
     private Integer number;
     private Integer cost;
-    private Short capacity;
-    private Short stars;
-    private Byte status;
+    private Integer capacity;
+    private Integer stars;
+    private RoomStatus status;
 
-    @Id
-    @Column(name = "id")
-    public int getId() {
-        return id;
+    @JsonCreator
+    public Room(@JsonProperty("id") Integer id, @JsonProperty("number") Integer number, @JsonProperty("cost") Integer cost, @JsonProperty("capacity") Integer capacity, @JsonProperty("stars") Integer stars) {
+        super(id);
+        this.number = number;
+        this.cost = cost;
+        this.capacity = capacity;
+        this.stars = stars;
+
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Basic
     @Column(name = "number")
     public Integer getNumber() {
@@ -47,31 +50,31 @@ public class RoomEntity {
 
     @Basic
     @Column(name = "capacity")
-    public Short getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(Short capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 
     @Basic
     @Column(name = "stars")
-    public Short getStars() {
+    public Integer getStars() {
         return stars;
     }
 
-    public void setStars(Short stars) {
+    public void setStars(Integer stars) {
         this.stars = stars;
     }
 
     @Basic
     @Column(name = "status")
-    public Byte getStatus() {
+    public RoomStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(RoomStatus status) {
         this.status = status;
     }
 
@@ -80,9 +83,9 @@ public class RoomEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RoomEntity that = (RoomEntity) o;
+        Room that = (Room) o;
 
-        if (id != that.id) return false;
+        if (getId() != that.getId()) return false;
         if (number != null ? !number.equals(that.number) : that.number != null) return false;
         if (cost != null ? !cost.equals(that.cost) : that.cost != null) return false;
         if (capacity != null ? !capacity.equals(that.capacity) : that.capacity != null) return false;
@@ -94,7 +97,7 @@ public class RoomEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = getId();
         result = 31 * result + (number != null ? number.hashCode() : 0);
         result = 31 * result + (cost != null ? cost.hashCode() : 0);
         result = 31 * result + (capacity != null ? capacity.hashCode() : 0);

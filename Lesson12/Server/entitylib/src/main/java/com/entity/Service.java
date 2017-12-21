@@ -2,26 +2,22 @@ package com.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by андрей on 21.12.2017.
- */
+
 @Entity
 @Table(name = "service")
-public class ServiceEntity {
-    private int id;
+public class Service extends HotelEntity{
+
     private String name;
     private Integer cost;
-    private String type;
+    private ServiceType type;
 
-    @Id
-    @Column(name = "id")
-    public int getId() {
-        return id;
+    public Service(int id, ServiceType type, String name, int cost) {
+        super(id);
+        this.name = name;
+        this.cost = cost;
+        this.type = type;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "name")
@@ -45,11 +41,11 @@ public class ServiceEntity {
 
     @Basic
     @Column(name = "type")
-    public String getType() {
+    public ServiceType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ServiceType type) {
         this.type = type;
     }
 
@@ -58,9 +54,9 @@ public class ServiceEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ServiceEntity that = (ServiceEntity) o;
+        Service that = (Service) o;
 
-        if (id != that.id) return false;
+        if (getId() != that.getId()) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (cost != null ? !cost.equals(that.cost) : that.cost != null) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
@@ -70,7 +66,7 @@ public class ServiceEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = getId();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (cost != null ? cost.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);

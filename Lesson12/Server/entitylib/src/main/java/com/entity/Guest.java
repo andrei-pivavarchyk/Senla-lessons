@@ -1,26 +1,23 @@
 package com.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
-/**
- * Created by андрей on 21.12.2017.
- */
+
 @Entity
 @Table(name = "guest")
-public class GuestEntity {
-    private int id;
+public class Guest extends HotelEntity{
     private String name;
     private String surname;
 
-    @Id
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    @JsonCreator
+    public Guest(@JsonProperty("id")Integer id, @JsonProperty("name") String name, @JsonProperty("surName") String surName) {
+        super(id);
+        this.name = name;
+        this.surname = surName;
     }
 
     @Basic
@@ -48,9 +45,9 @@ public class GuestEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GuestEntity that = (GuestEntity) o;
+        Guest that = (Guest) o;
 
-        if (id != that.id) return false;
+        if (getId() != that.getId()) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
 
@@ -59,7 +56,7 @@ public class GuestEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = getId();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         return result;

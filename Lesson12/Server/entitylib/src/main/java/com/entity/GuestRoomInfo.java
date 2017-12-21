@@ -1,32 +1,34 @@
 package com.entity;
 
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
-/**
- * Created by андрей on 21.12.2017.
- */
+
+
 @Entity
 @Table(name = "guestroominfo")
-public class GuestroominfoEntity {
-    private int id;
-    private Timestamp arrivaldate;
-    private Timestamp departuredate;
-    private Byte isstillliving;
+public class GuestRoomInfo extends HotelEntity{
 
-    @Id
-    @Column(name = "id")
-    public int getId() {
-        return id;
+    private Guest guest;
+    private Room room;
+    private Date arrivaldate;
+    private Date departuredate;
+    private Byte isStillLiving;
+
+    public GuestRoomInfo(int id,Guest guest,Room room,Date arrivaldate,Date departuredate,Byte isStillLiving) {
+        super(id);
+        this.guest=guest;
+        this.room=room;
+        this.departuredate=departuredate;
+        this.arrivaldate=arrivaldate;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "arrivaldate")
-    public Timestamp getArrivaldate() {
+    public Date getArrivaldate() {
         return arrivaldate;
     }
 
@@ -36,7 +38,7 @@ public class GuestroominfoEntity {
 
     @Basic
     @Column(name = "departuredate")
-    public Timestamp getDeparturedate() {
+    public Date getDeparturedate() {
         return departuredate;
     }
 
@@ -47,11 +49,28 @@ public class GuestroominfoEntity {
     @Basic
     @Column(name = "isstillliving")
     public Byte getIsstillliving() {
-        return isstillliving;
+        return isStillLiving;
     }
 
     public void setIsstillliving(Byte isstillliving) {
-        this.isstillliving = isstillliving;
+        this.isStillLiving = isstillliving;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     @Override
@@ -59,13 +78,13 @@ public class GuestroominfoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GuestroominfoEntity that = (GuestroominfoEntity) o;
+        GuestRoomInfo that = (GuestRoomInfo) o;
 
-        if (id != that.id) return false;
+        if (getId() != that.getId()) return false;
         if (arrivaldate != null ? !arrivaldate.equals(that.arrivaldate) : that.arrivaldate != null) return false;
         if (departuredate != null ? !departuredate.equals(that.departuredate) : that.departuredate != null)
             return false;
-        if (isstillliving != null ? !isstillliving.equals(that.isstillliving) : that.isstillliving != null)
+        if (isStillLiving != null ? !isStillLiving.equals(that.isStillLiving) : that.isStillLiving != null)
             return false;
 
         return true;
@@ -73,10 +92,10 @@ public class GuestroominfoEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = getId();
         result = 31 * result + (arrivaldate != null ? arrivaldate.hashCode() : 0);
         result = 31 * result + (departuredate != null ? departuredate.hashCode() : 0);
-        result = 31 * result + (isstillliving != null ? isstillliving.hashCode() : 0);
+        result = 31 * result + (isStillLiving != null ? isStillLiving.hashCode() : 0);
         return result;
     }
 }
