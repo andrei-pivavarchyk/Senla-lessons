@@ -11,13 +11,15 @@ public class Service extends HotelEntity{
     private Integer cost;
     private ServiceType type;
 
-    public Service(int id, ServiceType type, String name, int cost) {
+    public Service(Integer id, ServiceType type, String name, int cost) {
         super(id);
         this.name = name;
         this.cost = cost;
         this.type = type;
     }
+    public Service(){
 
+    }
 
     @Basic
     @Column(name = "name")
@@ -71,5 +73,11 @@ public class Service extends HotelEntity{
         result = 31 * result + (cost != null ? cost.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        String str=this.getId()+this.name;
+        return str;
     }
 }

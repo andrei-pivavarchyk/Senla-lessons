@@ -19,7 +19,7 @@ public class Guest extends HotelEntity{
         this.name = name;
         this.surname = surName;
     }
-
+public Guest(){}
     @Basic
     @Column(name = "name")
     public String getName() {

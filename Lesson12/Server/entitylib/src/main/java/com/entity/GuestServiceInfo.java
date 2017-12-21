@@ -13,13 +13,13 @@ public class GuestServiceInfo extends HotelEntity{
     private Service service;
     private Date date;
 
-    public GuestServiceInfo(int id, Guest guest, Service service, Date date) {
+    public GuestServiceInfo(Integer id, Guest guest, Service service, Date date) {
         super(id);
         this.guest=guest;
         this.service=service;
         this.date=date;
     }
-
+public GuestServiceInfo(){}
 
     @Basic
     @Column(name = "date")
@@ -63,7 +63,7 @@ public class GuestServiceInfo extends HotelEntity{
 
     @Override
     public int hashCode() {
-        int result = getId();
+        int result =(int) getId();
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
     }

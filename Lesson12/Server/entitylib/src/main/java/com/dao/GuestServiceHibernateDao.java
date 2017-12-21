@@ -22,11 +22,15 @@ public class GuestServiceHibernateDao extends BaseHibernateDao<GuestServiceInfo>
     }
 
     public Collection<Service> getAllServicesByGuest(Guest guest){
-List<Service> list= new ArrayList<Service>();
+List<GuestServiceInfo> list= new ArrayList<GuestServiceInfo>();
         list =getSession().createCriteria(GuestServiceInfo.class)
-                .add(Restrictions.like("guest", guest)).list()
-               ;
-System.out.println(list);
+                .add(Restrictions.like("guest", guest))
+
+                .list();
+
+
+
+System.out.println(list.get(0));
         return null;
     }
     public GuestServiceInfo getEntityById(Integer id)  {

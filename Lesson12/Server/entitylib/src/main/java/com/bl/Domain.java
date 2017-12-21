@@ -21,7 +21,7 @@ public class Domain {
         GuestHibernateDao guestHibernateDao=new GuestHibernateDao();
         GuestServiceHibernateDao guestServiceHibernateDao=new GuestServiceHibernateDao();
 
-        Service serviceEntity1=new Service( 68,ServiceType.EAT,"hjjjjjfc",1);
+        Service serviceEntity1=new Service( 71,ServiceType.EAT,"hjjjjjfc",1);
         Service serviceEntity2=new Service( 67,ServiceType.EAT,"hjjjjjfc",1);
         Guest guest=new Guest(6,"dfsfs","dsf");
         GuestServiceInfo guestServiceInfo=new GuestServiceInfo(66,guest,serviceEntity1,new Date());
@@ -31,9 +31,10 @@ public class Domain {
         guestHibernateDao.addEntity(guest);
         guestServiceHibernateDao.addEntity(guestServiceInfo);
 */
-//Guest guest1=guestHibernateDao.getEntityById(guest.getId());
-        serviceEntity.addEntity(serviceEntity1);
-  Service service22=serviceEntity.getEntityById(66);
+        guestServiceHibernateDao.getAllServicesByGuest(guest);
+      //  Factory.getSessionFactory().getCurrentSession().save(serviceEntity1);
+     //   serviceEntity.addEntity(serviceEntity1);
+
     }
 
 }

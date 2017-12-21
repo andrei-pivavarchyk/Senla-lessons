@@ -6,18 +6,19 @@ import javax.persistence.*;
 public class HotelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
-public HotelEntity(int id){
+public HotelEntity(Integer id){
     this.id=id;
 }
+public  HotelEntity(){}
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -17,14 +17,14 @@ public class GuestRoomInfo extends HotelEntity{
     private Date departuredate;
     private Byte isStillLiving;
 
-    public GuestRoomInfo(int id,Guest guest,Room room,Date arrivaldate,Date departuredate,Byte isStillLiving) {
+    public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Byte isStillLiving) {
         super(id);
         this.guest=guest;
         this.room=room;
         this.departuredate=departuredate;
         this.arrivaldate=arrivaldate;
     }
-
+public GuestRoomInfo(){}
 
     @Basic
     @Column(name = "arrivaldate")
