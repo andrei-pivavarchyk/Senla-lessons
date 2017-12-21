@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Configurator" />
         <module name="daoService" />
+        <module name="DAOService" />
         <module name="DependencyService" />
         <module name="entitylib" />
         <module name="hibernate" />
@@ -19,6 +20,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Configurator" target="1.7" />
+      <module name="DAOService" target="1.7" />
       <module name="daoService" target="1.7" />
       <module name="DependencyService" target="1.7" />
       <module name="entitylib" target="1.7" />

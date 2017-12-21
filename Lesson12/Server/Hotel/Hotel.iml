@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -11,11 +11,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="serializationService" />
     <orderEntry type="library" name="Maven: server:dependencyService:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="module" module-name="Property" />
     <orderEntry type="module" module-name="Configurator" />
-    <orderEntry type="module" module-name="daoService" />
-    <orderEntry type="module" module-name="DependencyService" />
+    <orderEntry type="module" module-name="Property" />
+    <orderEntry type="module" module-name="DAOService" />
     <orderEntry type="library" name="Maven: server:entityLib:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="DependencyService" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.0.1" level="project" />
