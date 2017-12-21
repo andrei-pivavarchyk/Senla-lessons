@@ -1,7 +1,7 @@
 package com.dao;
 
 
-import com.entity.Entity;
+import com.entity.HotelEntity;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseDAO<T extends Entity> implements IBaseDAO<T>{
+public abstract class BaseDAO<T extends HotelEntity> implements IBaseDAO<T>{
 
     public Logger log = Logger.getLogger(BaseDAO.class);
     private Connection con = ConnectionUtil.getConnectionUtil().getConnection();

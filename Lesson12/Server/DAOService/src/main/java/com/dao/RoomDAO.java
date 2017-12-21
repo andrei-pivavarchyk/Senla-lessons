@@ -1,7 +1,5 @@
 package com.dao;
 
-
-
 import com.entity.Room;
 import com.entity.RoomStatus;
 
@@ -10,9 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by андрей on 11.12.2017.
- */
+
 public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
 
     public RoomDAO(){

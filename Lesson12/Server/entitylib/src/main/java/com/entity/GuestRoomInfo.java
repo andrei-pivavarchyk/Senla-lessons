@@ -1,6 +1,5 @@
 package com.entity;
 
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -15,9 +14,9 @@ public class GuestRoomInfo extends HotelEntity{
     private Room room;
     private Date arrivaldate;
     private Date departuredate;
-    private Byte isStillLiving;
+    private Boolean isStillLiving;
 
-    public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Byte isStillLiving) {
+    public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
         super(id);
         this.guest=guest;
         this.room=room;
@@ -48,11 +47,11 @@ public GuestRoomInfo(){}
 
     @Basic
     @Column(name = "isstillliving")
-    public Byte getIsstillliving() {
+    public Boolean getIsstillliving() {
         return isStillLiving;
     }
 
-    public void setIsstillliving(Byte isstillliving) {
+    public void setIsstillliving(Boolean isstillliving) {
         this.isStillLiving = isstillliving;
     }
 

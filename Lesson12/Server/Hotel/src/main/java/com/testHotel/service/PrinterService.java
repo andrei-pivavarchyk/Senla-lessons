@@ -49,8 +49,8 @@ public class PrinterService implements IPrinterService {
 
         for (GuestRoomInfo guestRoomInfo : guestRoomInfoList) {
             Guest guest = guestRoomInfo.getGuest();
-            Date arrivalDate = guestRoomInfo.getArrivalDate();
-            Date departureDate = guestRoomInfo.getDepartureDate();
+            Date arrivalDate = guestRoomInfo.getArrivaldate();
+            Date departureDate = guestRoomInfo.getDeparturedate();
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
@@ -76,12 +76,10 @@ public class PrinterService implements IPrinterService {
         for (Service service : serviceList) {
             System.out.println(service);
         }
-
     }
 
     public void printString(String string) {
         System.out.println(string);
     }
-
 
 }

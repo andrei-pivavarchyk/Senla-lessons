@@ -1,9 +1,7 @@
 package com.testHotel.service;
 
-
 import com.entity.Room;
 import org.apache.log4j.Logger;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;

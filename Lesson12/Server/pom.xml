@@ -21,15 +21,14 @@
         </plugins>
     </build>
     <modules>
+ <module>entitylib</module>
         <module>Hotel</module>
         <module>Configurator</module>
         <module>daoService</module>
         <module>DependencyService</module>
-        <module>entitylib</module>
         <module>Property</module>
         <module>serializationService</module>
         <module>ServerQueryService</module>
-        <module>Hibernate</module>
     </modules>
 
 

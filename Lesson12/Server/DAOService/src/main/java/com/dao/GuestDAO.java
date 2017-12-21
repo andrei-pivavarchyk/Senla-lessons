@@ -59,7 +59,7 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
     protected void prepareStatementForInsert(PreparedStatement statement, Guest object) {
         try {
             statement.setString(1, object.getName());
-            statement.setString(2, object.getSurName());
+            statement.setString(2, object.getSurname());
         } catch (Exception e) {
             log.equals(e.toString());
         }
@@ -69,7 +69,7 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
     protected void prepareStatementForUpdate(PreparedStatement statement, Guest object) {
         try {
             statement.setString(1, object.getName());
-            statement.setString(2, object.getSurName());
+            statement.setString(2, object.getSurname());
             statement.setInt(3,object.getId());
         } catch (Exception e) {
             log.equals(e.toString());

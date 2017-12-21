@@ -9,8 +9,6 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class Factory {
     private static final SessionFactory sessionFactory= configureSessionFactory();
     private static ServiceRegistry serviceRegistry;
-
-
     private static SessionFactory configureSessionFactory()
             throws HibernateException {
 

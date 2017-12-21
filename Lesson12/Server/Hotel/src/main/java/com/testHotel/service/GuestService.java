@@ -5,7 +5,6 @@ import com.dependencyService.DependencyService;
 import com.entity.Guest;
 import com.entity.GuestRoomInfo;
 import org.apache.log4j.Logger;
-
 import java.io.Serializable;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -49,7 +48,7 @@ public class GuestService implements IGuestService, Serializable {
     public Integer getPayAmount(Guest guest) {
         synchronized (this.guestRoomInfoDAO) {
                    GuestRoomInfo guestRoomInfo=this.guestRoomInfoDAO.getEntityByGuestId(guest.getId());
-                   long diff = guestRoomInfo.getDepartureDate().getTime() - guestRoomInfo.getArrivalDate().getTime();
+                   long diff = guestRoomInfo.getDeparturedate().getTime() - guestRoomInfo.getArrivaldate().getTime();
                    int allDaysLiving = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
                    int payGuest = allDaysLiving * guestRoomInfo.getRoom().getCost();
                    return payGuest;

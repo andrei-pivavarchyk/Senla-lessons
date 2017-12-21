@@ -2,9 +2,7 @@ package com.dao;
 
 import com.bl.Factory;
 import com.entity.Service;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

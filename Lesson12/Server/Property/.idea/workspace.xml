@@ -24,8 +24,8 @@
       <file leaf-file-name="PropertyService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="32" column="46" lean-forward="false" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+            <state relative-caret-position="325">
+              <caret line="13" column="72" lean-forward="false" selection-start-line="13" selection-start-column="72" selection-end-line="13" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,14 +46,14 @@
       <file leaf-file-name="IPropertyService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/IPropertyService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="50">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
@@ -63,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="377">
@@ -104,9 +104,10 @@
         <option value="$PROJECT_DIR$/src/com/propertyService/main/Main.java" />
         <option value="$PROJECT_DIR$/src/com/propertyService/IPropertyService.java" />
         <option value="$PROJECT_DIR$/src/com/propertyService/PropertyService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/propertyService/IPropertyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java" />
       </list>
     </option>
   </component>
@@ -144,50 +145,41 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="PropertyService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PropertyService" type="462c0819:PsiDirectoryNode" />
+              <item name="Property" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Property" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PropertyService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PropertyService" type="462c0819:PsiDirectoryNode" />
+              <item name="Property" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Property" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PropertyService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PropertyService" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PropertyService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PropertyService" type="462c0819:PsiDirectoryNode" />
+              <item name="Property" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Property" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PropertyService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PropertyService" type="462c0819:PsiDirectoryNode" />
+              <item name="Property" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Property" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="propertyService" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PropertyService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PropertyService" type="462c0819:PsiDirectoryNode" />
+              <item name="Property" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Property" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="propertyService" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -790,18 +782,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/IPropertyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="50">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/propertyService/PropertyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="32" column="46" lean-forward="false" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+        <state relative-caret-position="325">
+          <caret line="13" column="72" lean-forward="false" selection-start-line="13" selection-start-column="72" selection-end-line="13" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -812,14 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
           <folding />
         </state>
       </provider>

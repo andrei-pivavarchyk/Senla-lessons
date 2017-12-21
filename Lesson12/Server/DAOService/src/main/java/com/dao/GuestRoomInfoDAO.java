@@ -87,7 +87,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 int day = gregorianCalendar.get(Calendar.DAY_OF_MONTH);
                 Guest guest = guestDAO.getEntity(guestId);
                 Room room = roomDAO.getEntity(roomId);
-                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id, arrival, guest, room, year, month, day);
+                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id,guest,room,arrival,departure,true);
                 result.add(guestRoomInfo);
             }
         } catch (Exception e) {
@@ -98,10 +98,10 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     @Override
     protected void prepareStatementForInsert(PreparedStatement statement, GuestRoomInfo object) {
-        Timestamp arrival = new Timestamp(object.getArrivalDate().getTime());
-        Timestamp departure = new Timestamp(object.getDepartureDate().getTime());
+        Timestamp arrival = new Timestamp(object.getArrivaldate().getTime());
+        Timestamp departure = new Timestamp(object.getDeparturedate().getTime());
         int stillLiving = 1;
-        if (object.getStillLiving().equals(false)) {
+        if (object.getIsstillliving().equals(false)) {
             stillLiving = 0;
         }
         try {
@@ -117,10 +117,10 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     @Override
     protected void prepareStatementForUpdate(PreparedStatement statement, GuestRoomInfo object) {
-        Timestamp arrival = new Timestamp(object.getArrivalDate().getTime());
-        Timestamp departure = new Timestamp(object.getDepartureDate().getTime());
+        Timestamp arrival = new Timestamp(object.getArrivaldate().getTime());
+        Timestamp departure = new Timestamp(object.getDeparturedate().getTime());
         int stillLiving = 1;
-        if (object.getStillLiving().equals(false)) {
+        if (object.getIsstillliving().equals(false)) {
             stillLiving = 0;
         }
         try {

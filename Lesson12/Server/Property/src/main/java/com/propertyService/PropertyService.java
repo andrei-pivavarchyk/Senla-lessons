@@ -1,8 +1,6 @@
 package com.propertyService;
 
-
 import org.apache.log4j.Logger;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +12,6 @@ public class PropertyService  {
     private Map<String, Properties> propsMap = new HashMap<>();
     private static volatile PropertyService instance;
     private static Logger log = Logger.getLogger(PropertyService.class);
-
     public static PropertyService getPropertyService() {
         PropertyService localInstance = instance;
         if (localInstance == null) {

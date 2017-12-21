@@ -1,9 +1,7 @@
 package com.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 
 

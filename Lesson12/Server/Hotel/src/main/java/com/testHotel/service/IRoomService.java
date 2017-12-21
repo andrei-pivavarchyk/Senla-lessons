@@ -1,21 +1,14 @@
 package com.testHotel.service;
 
-
-
 import com.entity.Guest;
 import com.entity.Room;
 import com.entity.RoomStatus;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IRoomService {
 
-
    void addRoom(Room room);
    List<Room> getAllRooms();
-
-
    List<Room> getRoomCostSorting();
    List<Room>getRoomCapacitySorting();
    List<Room> getRoomStarsSorting();

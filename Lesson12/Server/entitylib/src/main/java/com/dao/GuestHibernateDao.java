@@ -2,8 +2,6 @@ package com.dao;
 
 import com.entity.Guest;
 import com.entity.Service;
-import org.hibernate.Session;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

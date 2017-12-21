@@ -38,8 +38,6 @@ public class HotelController implements IHotelController {
 
 
     public void endHotel() {
-
-
     }
 
 
