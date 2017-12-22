@@ -14,16 +14,16 @@ public class Room extends HotelEntity{
     private Integer cost;
     private Integer capacity;
     private Integer stars;
+    @Enumerated(EnumType.ORDINAL)
     private RoomStatus status;
 
     @JsonCreator
-    public Room(@JsonProperty("id") Integer id, @JsonProperty("number") Integer number, @JsonProperty("cost") Integer cost, @JsonProperty("capacity") Integer capacity, @JsonProperty("stars") Integer stars) {
-        super(id);
+    public Room( @JsonProperty("number") Integer number, @JsonProperty("cost") Integer cost, @JsonProperty("capacity") Integer capacity, @JsonProperty("stars") Integer stars) {
         this.number = number;
         this.cost = cost;
         this.capacity = capacity;
         this.stars = stars;
-
+        this.status=RoomStatus.FREE;
     }
     public Room(){}
     @Basic
@@ -66,8 +66,7 @@ public class Room extends HotelEntity{
         this.stars = stars;
     }
 
-    @Basic
-    @Column(name = "status")
+
     public RoomStatus getStatus() {
         return status;
     }
@@ -95,7 +94,7 @@ public class Room extends HotelEntity{
 
     @Override
     public int hashCode() {
-        int result = getId();
+        int result = (int)getId();
         result = 31 * result + (number != null ? number.hashCode() : 0);
         result = 31 * result + (cost != null ? cost.hashCode() : 0);
         result = 31 * result + (capacity != null ? capacity.hashCode() : 0);

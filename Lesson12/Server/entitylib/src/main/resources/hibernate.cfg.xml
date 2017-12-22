@@ -6,7 +6,7 @@
     <session-factory>
 <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hotel6</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hotel7</property>
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -16,12 +16,10 @@
       
 <mapping class="com.entity.HotelEntity"/>
 <mapping class="com.entity.Guest"/>
-<mapping class="com.entity.GuestRoomInfo"/>
 <mapping class="com.entity.GuestServiceInfo"/>
+<mapping class="com.entity.GuestRoomInfo"/>
 <mapping class="com.entity.Room"/>
 <mapping class="com.entity.Service"/>
-
-
 
     </session-factory>
 </hibernate-configuration>

@@ -12,6 +12,7 @@ import java.util.List;
 public class GuestServiceHibernateDao extends BaseHibernateDao<GuestServiceInfo>{
 
 
+
     public Collection<GuestServiceInfo> getAllServices()  {
         List<GuestServiceInfo> guestServicetList = new ArrayList<GuestServiceInfo>();
         guestServicetList = getSession().createCriteria(GuestServiceInfo.class).list();

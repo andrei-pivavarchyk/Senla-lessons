@@ -7,13 +7,13 @@ import java.util.Date;
 @Entity
 @Table(name = "guestserviceinfo")
 public class GuestServiceInfo extends HotelEntity{
-
+    @ManyToOne(cascade = CascadeType.ALL)
     private Guest guest;
+    @ManyToOne(cascade = CascadeType.ALL)
     private Service service;
     private Date date;
 
-    public GuestServiceInfo(Integer id, Guest guest, Service service, Date date) {
-        super(id);
+    public GuestServiceInfo( Guest guest, Service service, Date date) {
         this.guest=guest;
         this.service=service;
         this.date=date;
@@ -25,12 +25,11 @@ public GuestServiceInfo(){}
     public Date getDate() {
         return date;
     }
-
     public void setDate(Date date) {
         this.date = date;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
     public Guest getGuest() {
         return guest;
     }
@@ -38,7 +37,7 @@ public GuestServiceInfo(){}
         this.guest = guest;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
     public Service getService() {
         return service;
     }

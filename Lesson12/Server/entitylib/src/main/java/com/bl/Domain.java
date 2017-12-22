@@ -2,11 +2,12 @@ package com.bl;
 
 import com.dao.GuestHibernateDao;
 import com.dao.GuestServiceHibernateDao;
+import com.dao.RoomHibernateDao;
 import com.dao.ServiceHibernateDao;
-import com.entity.Guest;
-import com.entity.GuestServiceInfo;
-import com.entity.Service;
-import com.entity.ServiceType;
+import com.entity.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import java.util.Date;
 import java.sql.SQLException;
 
@@ -15,24 +16,13 @@ import java.sql.SQLException;
 public class Domain {
 
     public static void main(String[] args) throws SQLException {
-        ServiceHibernateDao serviceEntity=new ServiceHibernateDao();
+        ServiceHibernateDao serviceHibernateDao=new ServiceHibernateDao();
         GuestHibernateDao guestHibernateDao=new GuestHibernateDao();
         GuestServiceHibernateDao guestServiceHibernateDao=new GuestServiceHibernateDao();
-
-        Service serviceEntity1=new Service( 71,ServiceType.EAT,"hjjjjjfc",1);
-        Service serviceEntity2=new Service( 67,ServiceType.EAT,"hjjjjjfc",1);
-        Guest guest=new Guest(6,"dfsfs","dsf");
-        GuestServiceInfo guestServiceInfo=new GuestServiceInfo(66,guest,serviceEntity1,new Date());
-/*
-        serviceEntity.addEntity(serviceEntity1);
-        serviceEntity.addEntity(serviceEntity2);
-        guestHibernateDao.addEntity(guest);
-        guestServiceHibernateDao.addEntity(guestServiceInfo);
-*/
-        guestServiceHibernateDao.getAllServicesByGuest(guest);
-      //  Factory.getSessionFactory().getCurrentSession().save(serviceEntity1);
-     //   serviceEntity.addEntity(serviceEntity1);
-
+        RoomHibernateDao roomHibernateDao=new RoomHibernateDao();
+        Service serviceEntity1=new Service( ServiceType.EAT,"hjjjjjfc",1);
+        Guest guest=new Guest("dfsfs","dsf");
+        GuestServiceInfo guestServiceInfo=new GuestServiceInfo(guest,serviceEntity1,new Date());
     }
 
 }

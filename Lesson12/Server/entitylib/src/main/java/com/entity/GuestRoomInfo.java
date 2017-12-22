@@ -10,14 +10,15 @@ import java.util.Date;
 @Table(name = "guestroominfo")
 public class GuestRoomInfo extends HotelEntity{
 
+    @ManyToOne(cascade = CascadeType.ALL)
     private Guest guest;
+    @ManyToOne(cascade = CascadeType.ALL)
     private Room room;
     private Date arrivaldate;
     private Date departuredate;
     private Boolean isStillLiving;
 
-    public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
-        super(id);
+    public GuestRoomInfo(Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
         this.guest=guest;
         this.room=room;
         this.departuredate=departuredate;
@@ -55,7 +56,7 @@ public GuestRoomInfo(){}
         this.isStillLiving = isstillliving;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
     public Guest getGuest() {
         return guest;
     }
@@ -63,7 +64,8 @@ public GuestRoomInfo(){}
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
-    @ManyToOne(cascade = CascadeType.ALL)
+
+
     public Room getRoom() {
         return room;
     }
@@ -91,7 +93,7 @@ public GuestRoomInfo(){}
 
     @Override
     public int hashCode() {
-        int result = getId();
+        int result = (int)getId();
         result = 31 * result + (arrivaldate != null ? arrivaldate.hashCode() : 0);
         result = 31 * result + (departuredate != null ? departuredate.hashCode() : 0);
         result = 31 * result + (isStillLiving != null ? isStillLiving.hashCode() : 0);

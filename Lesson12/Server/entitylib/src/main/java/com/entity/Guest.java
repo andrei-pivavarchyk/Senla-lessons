@@ -12,12 +12,12 @@ public class Guest extends HotelEntity{
     private String surname;
 
     @JsonCreator
-    public Guest(@JsonProperty("id")Integer id, @JsonProperty("name") String name, @JsonProperty("surName") String surName) {
-        super(id);
+    public Guest( @JsonProperty("name") String name, @JsonProperty("surName") String surName) {
         this.name = name;
         this.surname = surName;
     }
 public Guest(){}
+
     @Basic
     @Column(name = "name")
     public String getName() {
@@ -54,7 +54,7 @@ public Guest(){}
 
     @Override
     public int hashCode() {
-        int result = getId();
+        int result =(int) getId();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         return result;
