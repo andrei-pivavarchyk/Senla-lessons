@@ -1,9 +1,6 @@
 package com.bl;
 
-import com.dao.GuestHibernateDao;
-import com.dao.GuestServiceHibernateDao;
-import com.dao.RoomHibernateDao;
-import com.dao.ServiceHibernateDao;
+import com.dao.*;
 import com.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,6 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.sql.SQLException;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 
 public class Domain {
@@ -21,6 +19,7 @@ public class Domain {
         GuestHibernateDao guestHibernateDao=new GuestHibernateDao();
         GuestServiceHibernateDao guestServiceHibernateDao=new GuestServiceHibernateDao();
         RoomHibernateDao roomHibernateDao=new RoomHibernateDao();
+GuestRoomHibernateDao guestRoomHibernateDao=new GuestRoomHibernateDao();
 
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
       gregorianCalendar.set(2018,2,3);
@@ -32,13 +31,22 @@ public class Domain {
 
         GuestRoomInfo guestRoomInfo=new GuestRoomInfo(guest,room,new Date(),departureDate,true);
         GuestServiceInfo guestServiceInfo=new GuestServiceInfo(guest,serviceEntity1,new Date());
+
+
+      //  guestRoomHibernateDao.addEntity(guestRoomInfo);
 /*
         serviceHibernateDao.addEntity(serviceEntity1);
         roomHibernateDao.addEntity(room);
         guestHibernateDao.addEntity(guest);
         guestServiceHibernateDao.addEntity(guestServiceInfo);
 
-*/guestServiceHibernateDao.deleteServicesByGuest(guest);
+*/
+
+        Object hotelEntity=new Guest();
+       hotelEntity.
+System.out.println(hotelEntity.getClass());
+
+
 
 
     }

@@ -12,30 +12,31 @@ import java.util.Collection;
 import java.util.List;
 
 
-public class BaseHibernateDao <T extends HotelEntity> {
+public class BaseHibernateDao<T extends HotelEntity> {
 
 
-    private SessionFactory factory= Factory.getSessionFactory();
-    private Session session=factory.openSession();
+    private SessionFactory factory = Factory.getSessionFactory();
+    private Session session = factory.openSession();
     private Class<T> persistentClass;
+
 
     public BaseHibernateDao() {
         this.persistentClass = (Class<T>) ((ParameterizedType) getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
-public Class getEntityClass(){
+    public Class getEntityClass() {
         return this.persistentClass;
-}
+    }
 
 
-    public void addEntity(T entity)  {
+    public void addEntity(T entity) {
         session.beginTransaction();
         session.save(entity);
         session.getTransaction().commit();
     }
 
-    public void updateEntity(T entity)  {
+    public void updateEntity(T entity) {
         session.beginTransaction();
         session.update(entity);
         session.getTransaction().commit();
@@ -47,7 +48,7 @@ public Class getEntityClass(){
         session.getTransaction().commit();
     }
 
-    public Collection<T> getAllentities()  {
+    public Collection<T> getAllentities() {
         session.beginTransaction();
         List<T> guestList = new ArrayList<T>();
         guestList = getSession().createCriteria(getEntityClass()).list();
@@ -55,10 +56,10 @@ public Class getEntityClass(){
         return guestList;
     }
 
-    public T getEntityById(Integer id)  {
+    public T getEntityById(Integer id) {
         session.beginTransaction();
         T entity = null;
-        entity =(T) getSession().load(getEntityClass(), id);
+        entity = (T) getSession().load(getEntityClass(), id);
         session.getTransaction().commit();
         return entity;
     }
@@ -66,7 +67,9 @@ public Class getEntityClass(){
     public Session getSession() {
         return session;
     }
-    public void closeSession(){
-    this.getSession().close();
+
+    public void closeSession() {
+        this.getSession().close();
     }
+
 }

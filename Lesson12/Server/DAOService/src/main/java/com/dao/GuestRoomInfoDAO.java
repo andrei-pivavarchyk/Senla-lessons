@@ -178,6 +178,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
             statement.executeUpdate();
         } catch (Exception e) {
             log.error(e.toString());
+
             System.out.println(e.toString());
         }
     }

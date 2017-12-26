@@ -1,5 +1,6 @@
 com\bl\Domain.class
 com\dao\GuestHibernateDao.class
+com\dao\RoomHibernateDao.class
 com\dao\BaseHibernateDao.class
 com\dao\IBaseHibernateDao.class
 com\entity\HotelEntity.class
@@ -8,6 +9,7 @@ com\entity\ServiceType.class
 com\dao\IServiceHibernateDao.class
 com\entity\RoomStatus.class
 com\dao\GuestServiceHibernateDao.class
+com\dao\IRoomHibernateDao.class
 com\entity\Guest.class
 com\dao\IGuestHibernateDao.class
 com\dao\IGuestServiceHibernateDao.class

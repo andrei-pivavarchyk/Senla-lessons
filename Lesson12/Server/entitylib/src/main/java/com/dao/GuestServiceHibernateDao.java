@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.Guest;
+import com.entity.GuestRoomInfo;
 import com.entity.GuestServiceInfo;
 import com.entity.Service;
 import org.hibernate.Query;
@@ -24,15 +25,11 @@ public List<Service> getAllGuestServices(Guest guest){
 public void deleteServicesByGuest(Guest guest){
 
     super.getSession().beginTransaction();
-
-
     Query createQuery = super.getSession().createQuery(" delete GuestServiceInfo where guest =:param ");
   createQuery.setParameter("param", guest);
    createQuery.executeUpdate();
     super.getSession().getTransaction().commit();
 }
-
-
 
 
    // Query query = session.createQuery("FROM Developer D WHERE D.id = 1");

@@ -91,7 +91,7 @@ public class Room extends HotelEntity{
 
         Room that = (Room) o;
 
-        if (getId() != that.getId()) return false;
+
         if (number != null ? !number.equals(that.number) : that.number != null) return false;
         if (cost != null ? !cost.equals(that.cost) : that.cost != null) return false;
         if (capacity != null ? !capacity.equals(that.capacity) : that.capacity != null) return false;

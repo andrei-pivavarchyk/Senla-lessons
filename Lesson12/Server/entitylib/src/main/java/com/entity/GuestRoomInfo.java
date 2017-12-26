@@ -16,6 +16,8 @@ public class GuestRoomInfo extends HotelEntity{
     private Room room;
     private Date arrivaldate;
     private Date departuredate;
+    @Basic
+    @Column(name = "isstillliving")
     private Boolean isStillLiving;
 
     public GuestRoomInfo(Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
@@ -23,6 +25,7 @@ public class GuestRoomInfo extends HotelEntity{
         this.room=room;
         this.departuredate=departuredate;
         this.arrivaldate=arrivaldate;
+        this.isStillLiving=true;
     }
     public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
        super(id);
@@ -53,8 +56,7 @@ public GuestRoomInfo(){}
         this.departuredate = departuredate;
     }
 
-    @Basic
-    @Column(name = "isstillliving")
+
     public Boolean getIsstillliving() {
         return isStillLiving;
     }
