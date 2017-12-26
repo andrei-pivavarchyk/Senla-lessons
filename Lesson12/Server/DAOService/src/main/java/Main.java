@@ -12,7 +12,7 @@ public class Main {
         RoomDAO roomDAO=new RoomDAO();
         GuestDAO guestDAO1=new GuestDAO();
         GuestServiceDAO guestServiceDAO=new GuestServiceDAO();
-        Guest guest=new Guest(1,"bob","jjj");
+        Guest guest=new Guest("bob","jjj");
      //  guestServiceDAO.removeEntity();
        // System.out.println(guestDAO.getAllEntities(TypeSorting.BY_DEPARTURE_DATE));
 
@@ -32,8 +32,8 @@ public class Main {
         }
 
         HashSet<Guest> hashSet=new HashSet<Guest>();
-        Guest guest1=new Guest(1,"gfdgfd","fgdgfd");
-        Guest guest2=new Guest(2,"5464654","fgdg54658568fd");
+        Guest guest1=new Guest("gfdgfd","fgdgfd");
+        Guest guest2=new Guest("5464654","fgdg54658568fd");
 
         hashSet.add(guest1);
         hashSet.add(guest2);

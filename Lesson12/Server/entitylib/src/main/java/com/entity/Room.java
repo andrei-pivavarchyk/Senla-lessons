@@ -25,6 +25,15 @@ public class Room extends HotelEntity{
         this.stars = stars;
         this.status=RoomStatus.FREE;
     }
+    @JsonCreator
+    public Room(@JsonProperty("id") Integer id, @JsonProperty("number") Integer number, @JsonProperty("cost") Integer cost, @JsonProperty("capacity") Integer capacity, @JsonProperty("stars") Integer stars) {
+        super(id);
+        this.number = number;
+        this.cost = cost;
+        this.capacity = capacity;
+        this.stars = stars;
+        this.status=RoomStatus.FREE;
+    }
     public Room(){}
     @Basic
     @Column(name = "number")

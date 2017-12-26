@@ -28,6 +28,7 @@ public Class getEntityClass(){
         return this.persistentClass;
 }
 
+
     public void addEntity(T entity)  {
         session.beginTransaction();
         session.save(entity);
@@ -64,5 +65,8 @@ public Class getEntityClass(){
 
     public Session getSession() {
         return session;
+    }
+    public void closeSession(){
+    this.getSession().close();
     }
 }

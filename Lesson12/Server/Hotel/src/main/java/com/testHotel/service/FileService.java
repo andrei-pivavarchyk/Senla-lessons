@@ -22,7 +22,7 @@ public class FileService implements IFileService {
             int roomCapacity = Integer.parseInt(roomParametrs[3]);
             int roomStars = Integer.parseInt(roomParametrs[4]);
 
-            Room room = new Room(roomId, roomNumber, roomCost, roomCapacity, roomStars);
+            Room room = new Room(roomNumber, roomCost, roomCapacity, roomStars);
             roomList.add(room);
         }
         return roomList;

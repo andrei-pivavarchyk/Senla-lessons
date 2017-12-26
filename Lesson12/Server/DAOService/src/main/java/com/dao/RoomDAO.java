@@ -46,7 +46,7 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
                 int cost = rs.getInt("cost");
                 int capacity = rs.getInt("capacity");
                 int stars = rs.getInt("stars");
-                Room room = new Room(number,number,cost,capacity,stars);
+                Room room = new Room(number,cost,capacity,stars);
                 result.add(room);
             }
         } catch (Exception e) {

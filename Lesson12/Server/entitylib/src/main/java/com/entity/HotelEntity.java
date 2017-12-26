@@ -10,7 +10,9 @@ public class HotelEntity {
     private Integer id;
 
 public  HotelEntity(){}
-
+    public  HotelEntity(Integer id){
+    this.id=id;
+    }
 
     public void setId(Integer id) {
         this.id = id;

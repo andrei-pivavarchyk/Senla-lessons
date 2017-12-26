@@ -1,9 +1,7 @@
-com\dao\GuestDAO.class
 com\dao\TypeSorting.class
 com\dao\ServiceDAO.class
 com\dao\IServiceDAO.class
 com\dao\GuestServiceDAO.class
-com\dao\IGuestRoomInfoDAO.class
 com\dao\RoomDAO.class
 com\dao\GuestRoomInfoDAO.class
 com\dao\IRoomDAO.class

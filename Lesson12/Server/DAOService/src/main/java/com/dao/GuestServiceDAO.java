@@ -65,7 +65,7 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
                 Timestamp timestamp = new Timestamp(date);
                 Guest guest = this.guestDAO.getEntity(guestID);
                 Service service = this.serviceDAO.getEntity(serviceID);
-                GuestServiceInfo guestServiceInfo = new GuestServiceInfo(1, guest, service, new Date(timestamp.getTime()));
+                GuestServiceInfo guestServiceInfo = new GuestServiceInfo( guest, service, new Date(timestamp.getTime()));
                 result.add(guestServiceInfo);
             }
         } catch (Exception e) {

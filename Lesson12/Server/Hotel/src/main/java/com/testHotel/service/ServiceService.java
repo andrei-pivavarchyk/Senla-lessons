@@ -21,7 +21,7 @@ public class ServiceService implements IServiceService {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
         Date serviceDate = calendar.getTime();
-        GuestServiceInfo guestServiceInfo = new GuestServiceInfo(1, guest, service, serviceDate);
+        GuestServiceInfo guestServiceInfo = new GuestServiceInfo( guest, service, serviceDate);
         synchronized (this.guestServiceDAO) {
             this.guestServiceDAO.addEntity(guestServiceInfo);
         }

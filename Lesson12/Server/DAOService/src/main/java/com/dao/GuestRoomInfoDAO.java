@@ -87,7 +87,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 int day = gregorianCalendar.get(Calendar.DAY_OF_MONTH);
                 Guest guest = guestDAO.getEntity(guestId);
                 Room room = roomDAO.getEntity(roomId);
-                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(id,guest,room,arrival,departure,true);
+                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(guest,room,arrival,departure,true);
                 result.add(guestRoomInfo);
             }
         } catch (Exception e) {
@@ -264,7 +264,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
-                Guest guest = new Guest(id, name, surname);
+                Guest guest = new Guest( name, surname);
                 result.add(guest);
             }
         } catch (SQLException e) {

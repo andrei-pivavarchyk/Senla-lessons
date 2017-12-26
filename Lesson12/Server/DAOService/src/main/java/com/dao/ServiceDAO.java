@@ -50,7 +50,7 @@ public class ServiceDAO extends BaseDAO<Service> implements IServiceDAO {
                 String name = rs.getString("name");
                 int cost = rs.getInt("cost");
                 ServiceType type = ServiceType.valueOf(rs.getString("type"));
-                Service service = new Service(id, type, name, cost);
+                Service service = new Service( type, name, cost);
                 result.add(service);
             }
         } catch (Exception e) {

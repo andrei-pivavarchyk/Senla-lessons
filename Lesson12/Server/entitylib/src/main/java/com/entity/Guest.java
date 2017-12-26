@@ -16,6 +16,12 @@ public class Guest extends HotelEntity{
         this.name = name;
         this.surname = surName;
     }
+    @JsonCreator
+    public Guest(@JsonProperty("id") Integer id, @JsonProperty("name") String name, @JsonProperty("surName") String surName) {
+      super(id);
+        this.name = name;
+        this.surname = surName;
+    }
 public Guest(){}
 
     @Basic

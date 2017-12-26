@@ -5,20 +5,28 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "service")
-public class Service extends HotelEntity{
+public class Service extends HotelEntity {
 
     private String name;
     private Integer cost;
     @Enumerated(EnumType.ORDINAL)
     private ServiceType type;
 
-    public Service( ServiceType type, String name, int cost) {
+    public Service(ServiceType type, String name, int cost) {
 
         this.name = name;
         this.cost = cost;
         this.type = type;
     }
-    public Service(){
+
+    public Service(Integer id, ServiceType type, String name, int cost) {
+        super(id);
+        this.name = name;
+        this.cost = cost;
+        this.type = type;
+    }
+
+    public Service() {
 
     }
 
@@ -69,7 +77,7 @@ public class Service extends HotelEntity{
 
     @Override
     public int hashCode() {
-        int result =(int) getId();
+        int result = (int) getId();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (cost != null ? cost.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
@@ -78,7 +86,7 @@ public class Service extends HotelEntity{
 
     @Override
     public String toString() {
-        String str=this.getId()+this.name;
+        String str = this.getId() + this.name;
         return str;
     }
 }

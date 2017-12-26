@@ -24,6 +24,13 @@ public class GuestRoomInfo extends HotelEntity{
         this.departuredate=departuredate;
         this.arrivaldate=arrivaldate;
     }
+    public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
+       super(id);
+        this.guest=guest;
+        this.room=room;
+        this.departuredate=departuredate;
+        this.arrivaldate=arrivaldate;
+    }
 public GuestRoomInfo(){}
 
     @Basic

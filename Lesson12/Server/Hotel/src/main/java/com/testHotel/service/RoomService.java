@@ -76,7 +76,7 @@ public class RoomService implements IRoomService {
         synchronized (this.guestRoomInfoDAO) {
             Room room = this.getRoomByNumber(roomNumber);
             Date arrivalDate=DateUtil.getDate(year,month,day);
-            GuestRoomInfo guestRoomInfo = new GuestRoomInfo(1,guest,room,new Date(),arrivalDate,true);
+            GuestRoomInfo guestRoomInfo = new GuestRoomInfo(guest,room,new Date(),arrivalDate,true);
             try {
                 this.con.setAutoCommit(false);
                 this.guestDAO.addEntity(guest);

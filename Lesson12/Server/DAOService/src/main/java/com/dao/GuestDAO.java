@@ -45,7 +45,7 @@ public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
-                Guest guest = new Guest(id,name,surname);
+                Guest guest = new Guest(name,surname);
                 result.add(guest);
 
             }
