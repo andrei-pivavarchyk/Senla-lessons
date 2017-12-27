@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class Guest extends HotelEntity{
     private String name;
     private String surname;
-
     @JsonCreator
     public Guest( @JsonProperty("name") String name, @JsonProperty("surName") String surName) {
         this.name = name;

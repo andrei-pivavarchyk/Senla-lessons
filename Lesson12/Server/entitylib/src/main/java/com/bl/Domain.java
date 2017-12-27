@@ -42,12 +42,13 @@ GuestRoomHibernateDao guestRoomHibernateDao=new GuestRoomHibernateDao();
 
 */
 
-        Object hotelEntity=new Guest();
-       hotelEntity.
-System.out.println(hotelEntity.getClass());
 
 
+      //  guestRoomHibernateDao.addEntity(guestRoomInfo);
 
+    // guestRoomHibernateDao.updateEntityStatus(guest,RoomStatus.FREE);
+//System.out.println(guestRoomHibernateDao.getCountGuestsByStatus(RoomStatus.FREE));
 
+        System.out.println(guestRoomHibernateDao.getGuestByStatus(RoomStatus.FREE).get(0));
     }
 }

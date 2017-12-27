@@ -10,9 +10,10 @@ import java.util.Date;
 @Table(name = "guestroominfo")
 public class GuestRoomInfo extends HotelEntity{
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="id")
     private Guest guest;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private Room room;
     private Date arrivaldate;
     private Date departuredate;
