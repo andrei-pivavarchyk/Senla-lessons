@@ -64,12 +64,12 @@ public class GuestRoomHibernateDao extends BaseHibernateDao<GuestRoomInfo> {
 
     public List<Guest> getGuestByStatus(RoomStatus status) {
         super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery("select Guest from GuestRoomInfo inner join Guest where isStillLiving=:param");
-        if (status.equals(RoomStatus.FREE)) {
+        Query createQuery = super.getSession().createQuery("select Guest from GuestRoomInfo inner join GuestRoomInfo.guest ");
+       /* if (status.equals(RoomStatus.FREE)) {
             createQuery.setParameter("param", false);
         } else {
             createQuery.setParameter("param", true);
-        }
+        }*/
         createQuery.list();
      // List<Guest> guestList=createQuery.list();
         super.getSession().getTransaction().commit();

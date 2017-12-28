@@ -11,7 +11,7 @@ import java.util.Date;
 public class GuestRoomInfo extends HotelEntity{
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="id")
+
     private Guest guest;
     @ManyToMany(cascade = CascadeType.ALL)
     private Room room;

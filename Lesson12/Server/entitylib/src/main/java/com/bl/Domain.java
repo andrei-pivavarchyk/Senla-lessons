@@ -49,6 +49,6 @@ GuestRoomHibernateDao guestRoomHibernateDao=new GuestRoomHibernateDao();
     // guestRoomHibernateDao.updateEntityStatus(guest,RoomStatus.FREE);
 //System.out.println(guestRoomHibernateDao.getCountGuestsByStatus(RoomStatus.FREE));
 
-        System.out.println(guestRoomHibernateDao.getGuestByStatus(RoomStatus.FREE).get(0));
+      //  System.out.println(guestRoomHibernateDao.getGuestByStatus(RoomStatus.FREE).get(0));
     }
 }
