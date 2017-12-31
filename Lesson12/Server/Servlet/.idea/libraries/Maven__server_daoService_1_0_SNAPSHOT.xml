@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: server:daoService:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/server/daoService/1.0-SNAPSHOT/daoService-1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/server/daoService/1.0-SNAPSHOT/daoService-1.0-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/server/daoService/1.0-SNAPSHOT/daoService-1.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,71 +1,112 @@
 package com.entity;
 
-import java.util.Calendar;
+import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
-public class GuestRoomInfo extends Entity {
 
-    private Date arrivalDate;
-    private Date departureDate;
+
+@Entity
+@Table(name = "guestroominfo")
+public class GuestRoomInfo extends HotelEntity{
+
+    @ManyToMany(cascade = CascadeType.ALL)
+
     private Guest guest;
+    @ManyToMany(cascade = CascadeType.ALL)
     private Room room;
+    private Date arrivaldate;
+    private Date departuredate;
+    @Basic
+    @Column(name = "isstillliving")
     private Boolean isStillLiving;
 
+    public GuestRoomInfo(Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
+        this.guest=guest;
+        this.room=room;
+        this.departuredate=departuredate;
+        this.arrivaldate=arrivaldate;
+        this.isStillLiving=true;
+    }
+    public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
+       super(id);
+        this.guest=guest;
+        this.room=room;
+        this.departuredate=departuredate;
+        this.arrivaldate=arrivaldate;
+    }
+public GuestRoomInfo(){}
 
-    public GuestRoomInfo(int id, Date arrivalDate, Guest guest, Room room, int year, int month, int day) {
-        super(id);
-        this.arrivalDate = arrivalDate;
-        this.guest = guest;
-        this.room = room;
-        this.isStillLiving = true;
-        Calendar calendar = new GregorianCalendar(year, month, day);
-        this.departureDate = calendar.getTime();
+    @Basic
+    @Column(name = "arrivaldate")
+    public Date getArrivaldate() {
+        return arrivaldate;
+    }
 
+    public void setArrivaldate(Timestamp arrivaldate) {
+        this.arrivaldate = arrivaldate;
+    }
+
+    @Basic
+    @Column(name = "departuredate")
+    public Date getDeparturedate() {
+        return departuredate;
+    }
+
+    public void setDeparturedate(Timestamp departuredate) {
+        this.departuredate = departuredate;
     }
 
 
-    public Boolean getStillLiving() {
+    public Boolean getIsstillliving() {
         return isStillLiving;
     }
 
-    public Date getArrivalDate() {
-        return arrivalDate;
+    public void setIsstillliving(Boolean isstillliving) {
+        this.isStillLiving = isstillliving;
     }
 
-    public Date getDepartureDate() {
-        return departureDate;
-    }
 
     public Guest getGuest() {
         return guest;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setArrivalDate(Date arrivalDate) {
-        this.arrivalDate = arrivalDate;
-    }
-
-    public void setDepartureDate(Date departureDate) {
-        this.departureDate = departureDate;
     }
 
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
 
+
+    public Room getRoom() {
+        return room;
+    }
+
     public void setRoom(Room room) {
         this.room = room;
     }
 
-    public void setStillLiving(Boolean stillLiving) {
-        isStillLiving = stillLiving;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GuestRoomInfo that = (GuestRoomInfo) o;
+
+        if (getId() != that.getId()) return false;
+        if (arrivaldate != null ? !arrivaldate.equals(that.arrivaldate) : that.arrivaldate != null) return false;
+        if (departuredate != null ? !departuredate.equals(that.departuredate) : that.departuredate != null)
+            return false;
+        if (isStillLiving != null ? !isStillLiving.equals(that.isStillLiving) : that.isStillLiving != null)
+            return false;
+
+        return true;
     }
 
-    public String toString() {
-        return String.format("Guest: %s. Room number: %s.", guest, room.getNumber());
+    @Override
+    public int hashCode() {
+        int result = (int)getId();
+        result = 31 * result + (arrivaldate != null ? arrivaldate.hashCode() : 0);
+        result = 31 * result + (departuredate != null ? departuredate.hashCode() : 0);
+        result = 31 * result + (isStillLiving != null ? isStillLiving.hashCode() : 0);
+        return result;
     }
 }

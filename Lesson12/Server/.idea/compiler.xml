@@ -7,15 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Configurator" />
-        <module name="daoService" />
         <module name="DAOService" />
+        <module name="daoService" />
         <module name="DependencyService" />
         <module name="entitylib" />
         <module name="hibernate" />
         <module name="Hotel" />
         <module name="Property" />
         <module name="serializationService" />
-        <module name="ServerQueryService" />
+        <module name="servlet" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -30,6 +30,7 @@
       <module name="serializationService" target="1.7" />
       <module name="Server" target="1.7" />
       <module name="ServerQueryService" target="1.7" />
+      <module name="servlet" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

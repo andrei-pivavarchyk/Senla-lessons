@@ -1,5 +1,7 @@
 package com.DependencyService;
 
+import com.Configurator.PropertyFilePath;
+import com.PProperty.PropertyService;
 import org.apache.log4j.Logger;
 
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package com.hotelInterface.action;
 
-import com.dependencyService.DependencyService;
+import com.DependencyService.DependencyService;
 import com.hotelInterface.service.IPrinterService;
 import com.hotelInterface.service.PrinterService;
 import com.queryService.service.ClientService;
