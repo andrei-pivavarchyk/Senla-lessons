@@ -11,9 +11,6 @@ import com.entity.GuestRoomInfo;
 import com.entity.Room;
 import com.entity.RoomStatus;
 import org.apache.log4j.Logger;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.*;
 
 
@@ -22,13 +19,11 @@ public class RoomService implements IRoomService {
     private IGuestRoomInfoDAO guestRoomInfoDAO = (IGuestRoomInfoDAO) DependencyService.getDI().getInstance(IGuestRoomInfoDAO.class);
     private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
-
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.MAX_NUMBER_OF_LAST_ROOM_GUESTS)
     private Integer maxCountOldGuests;
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS)
     private Boolean chooseRoomStatus;
     public static final Logger log = Logger.getLogger(RoomService.class);
-    private Connection con = ConnectionUtil.getConnectionUtil().getConnection();
 
     public void addRoom(Room room) {
         this.roomDAO.addEntity(room);
@@ -66,48 +61,33 @@ public class RoomService implements IRoomService {
 
     public Room getRoomByNumber(int roomNumber) {
         synchronized (this.roomDAO) {
-            return this.roomDAO.getEntity(roomNumber);
+            return this.roomDAO.getEntityByNumber(roomNumber);
         }
     }
 
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
-
         synchronized (this.guestRoomInfoDAO) {
             Room room = this.getRoomByNumber(roomNumber);
-            Date arrivalDate=DateUtil.getDate(year,month,day);
-            GuestRoomInfo guestRoomInfo = new GuestRoomInfo(guest,room,new Date(),arrivalDate,true);
-            try {
-                this.con.setAutoCommit(false);
-                this.guestDAO.addEntity(guest);
+            if(room!=null){
+                Date arrivalDate=DateUtil.getDate(year,month,day);
+                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(guest,room,new Date(),arrivalDate,true);
                 this.guestRoomInfoDAO.addEntity(guestRoomInfo);
-                con.commit();
-                con.setAutoCommit(true);
-            } catch (SQLException e) {
-
-                try {
-                    con.rollback();
-                } catch (SQLException e1) {
-                    log.error(e.toString());
-                }
-                log.error(e.toString());
             }
-        }
+
+            }
     }
 
-    public int getCountOldRoomGuests(Room room) {
+    public Long getCountOldRoomGuests(Room room) {
         synchronized (this.guestRoomInfoDAO) {
-            int count = 0;
-            for (Guest info : this.guestRoomInfoDAO.getGuestsByStatus(0, room.getNumber(), TypeSorting.NO_SORTING)) {
-                count++;
-            }
-            return count;
+            return   guestRoomInfoDAO.getCountOldGuestsByRoom(room);
         }
+
     }
 
     public void departureGuest(Guest guest) {
         synchronized (this.guestRoomInfoDAO) {
-            this.guestRoomInfoDAO.updateEntityStatus(guest, 0);
+            this.guestRoomInfoDAO.departureGuest(guest);
         }
     }
 
@@ -125,31 +105,13 @@ public class RoomService implements IRoomService {
         }
     }
 
-    public List<Guest> getLastGuests(int roomNumber) {
-        List<Guest> someLastGuests=new ArrayList<>(this.maxCountOldGuests);
-      List<Guest> guestList= this.guestRoomInfoDAO.getLastGuestsInRoom(roomNumber);
-      for(int i=0;i<maxCountOldGuests;i++){
-          someLastGuests.add(guestList.get(i));
-      }
-        return someLastGuests;
-    }
+
 
     public void setRoomCost(int roomNumber, int cost) {
         synchronized (this.roomDAO) {
-            try {
-                con.setAutoCommit(false);
-                Room room = this.roomDAO.getEntity(roomNumber);
-                room.setCost(cost);
-                this.roomDAO.updateEntity(room);
-            } catch (SQLException e) {
-                try {
-                    con.rollback();
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-                log.error(e.toString());
-            }
-
+        Room room=this.roomDAO.getEntityById(roomNumber);
+        room.setCost(cost);
+        this.roomDAO.updateEntity(room);
         }
     }
 

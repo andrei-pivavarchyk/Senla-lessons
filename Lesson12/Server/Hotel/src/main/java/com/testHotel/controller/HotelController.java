@@ -134,7 +134,7 @@ public class HotelController implements IHotelController {
 
     }
     public void printAllGuestsCount(){
-        Integer allGuestsCount=this.guestService.getAllGuestsCount();
+        Long allGuestsCount=this.guestService.getAllGuestsCount();
         this.printerService.printString(allGuestsCount.toString());
     }
 

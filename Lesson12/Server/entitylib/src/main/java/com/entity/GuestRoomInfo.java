@@ -1,5 +1,7 @@
 package com.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -10,23 +12,25 @@ import java.util.Date;
 @Table(name = "guestroominfo")
 public class GuestRoomInfo extends HotelEntity{
 
-    @ManyToMany(cascade = CascadeType.ALL)
 
+    @OneToOne
+    @JoinColumn(name="guest")
     private Guest guest;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name="room")
     private Room room;
     private Date arrivaldate;
     private Date departuredate;
-    @Basic
-    @Column(name = "isstillliving")
-    private Boolean isStillLiving;
+    @Column(name = "isStillLiving", nullable = false)
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean isStillLiving=true;
 
     public GuestRoomInfo(Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
         this.guest=guest;
         this.room=room;
         this.departuredate=departuredate;
         this.arrivaldate=arrivaldate;
-        this.isStillLiving=true;
+        this.isStillLiving=isStillLiving;
     }
     public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
        super(id);
@@ -34,6 +38,7 @@ public class GuestRoomInfo extends HotelEntity{
         this.room=room;
         this.departuredate=departuredate;
         this.arrivaldate=arrivaldate;
+        this.isStillLiving=isStillLiving;
     }
 public GuestRoomInfo(){}
 

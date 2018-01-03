@@ -13,13 +13,13 @@ public class Main {
     public static void main(String[] args) {
 
         HotelController hotelController = new HotelController();
+        System.out.println(hotelController);
         hotelController.startHotel();
 
       // NetServerThread.start();
-        PrinterService printerService=new PrinterService();
-        GuestDAO guestDAO=new GuestDAO();
-      List<Guest> guestList= guestDAO.getAllEntities(TypeSorting.NO_SORTING);
-      System.out.println(guestList.get(0));
+       // PrinterService printerService=new PrinterService();
+       // GuestDAO guestDAO=new GuestDAO();
+
        // printerService.printGuests(guestList);
 
     }

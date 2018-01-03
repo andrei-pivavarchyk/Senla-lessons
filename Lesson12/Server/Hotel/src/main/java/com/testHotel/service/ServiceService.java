@@ -29,7 +29,7 @@ public class ServiceService implements IServiceService {
 
     public List<GuestServiceInfo> getAllGuestServicesInfo(Guest guest) {
         synchronized (this.guestServiceDAO) {
-            List<GuestServiceInfo> allGuestServicesInfo = this.guestServiceDAO.getAllEntitiesByGuest(guest, TypeSorting.NO_SORTING);
+            List<GuestServiceInfo> allGuestServicesInfo = this.guestServiceDAO.getAllGuestServiceInfo(guest,TypeSorting.BY_COST);
             return allGuestServicesInfo;
         }
 
@@ -55,13 +55,13 @@ public class ServiceService implements IServiceService {
 
     public List<GuestServiceInfo> getAllGuestServicesInfoSortedByCost(Guest guest) {
         synchronized (this.guestServiceDAO) {
-            return this.guestServiceDAO.getAllEntitiesByGuest(guest, TypeSorting.BY_COST);
+            return this.guestServiceDAO.getAllGuestServiceInfo(guest, TypeSorting.BY_COST);
         }
     }
 
     public List<GuestServiceInfo> getAllGuestServicesInfoSortedByDate(Guest guest) {
         synchronized (this.guestServiceDAO) {
-            return this.guestServiceDAO.getAllEntitiesByGuest(guest, TypeSorting.BY_DATE);
+            return this.guestServiceDAO.getAllGuestServiceInfo(guest, TypeSorting.BY_DATE);
         }
     }
 }

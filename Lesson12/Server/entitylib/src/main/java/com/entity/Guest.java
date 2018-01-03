@@ -8,8 +8,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "guest")
 public class Guest extends HotelEntity{
+    @Basic
+    @Column(name = "name")
     private String name;
+    @Basic
+    @Column(name = "surname")
     private String surname;
+
     @JsonCreator
     public Guest( @JsonProperty("name") String name, @JsonProperty("surName") String surName) {
         this.name = name;
@@ -23,8 +28,7 @@ public class Guest extends HotelEntity{
     }
 public Guest(){}
 
-    @Basic
-    @Column(name = "name")
+
     public String getName() {
         return name;
     }
@@ -33,8 +37,7 @@ public Guest(){}
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "surname")
+
     public String getSurname() {
         return surname;
     }

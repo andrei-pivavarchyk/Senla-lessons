@@ -12,8 +12,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: server:DependencyService:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: server:serializationService:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:DependencyService:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:serializationService:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:Configurator:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:daoService:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:entityLib:1.0-SNAPSHOT" level="project" />

@@ -16,7 +16,6 @@ public interface IRoomService {
    void departureGuest ( Guest guest);
     List<Room> getFreeRooms();
    Integer getFreeRoomsCount();
-   List<Guest> getLastGuests(int roomNumber);
    void setRoomCost(int roomNumber,int cost);
    Room getRoomByNumber(int roomNumber);
    void importRooms(List<Room> importList);

@@ -9,7 +9,7 @@ public interface IGuestService {
     List<Guest> getAllGuests();
     List<Guest> getAllGuestsSortedByName();
     List<Guest> getAllGuestsSortedByDateDeparture();
-    Integer getAllGuestsCount();
+     Long getAllGuestsCount();
     Integer getPayAmount(Guest guest);
     List<GuestRoomInfo> getCurrentGuestRoomInfo();
 }
