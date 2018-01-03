@@ -8,8 +8,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: server:Hotel:1.0-SNAPSHOT" />
-          <element id="library" level="project" name="Maven: server:serializationService:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: server:DependencyService:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: server:serializationService:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: server:Configurator:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: server:daoService:1.0-SNAPSHOT" />
           <element id="file-copy" path="$MAVEN_REPOSITORY$/server/entitylib/1.0-SNAPSHOT/entitylib-1.0-SNAPSHOT.jar" output-file-name="entityLib-1.0-SNAPSHOT.jar" />
