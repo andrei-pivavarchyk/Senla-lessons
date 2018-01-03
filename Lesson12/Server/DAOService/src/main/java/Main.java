@@ -19,13 +19,13 @@ public class Main {
 
         Service serviceEntity1=new Service(1, ServiceType.EAT,"hjjjjjfc",1);
         Guest guest=new Guest(1,"Bob","bob");
-        Room room =new Room(4,1,34,4,1);
-
+        Room room =new Room(77,34,4,1);
+        Guest guest1=new Guest("Fd","fd");
+        guestHibernateDao.addEntity(guest);
         GuestRoomInfo guestRoomInfo=new GuestRoomInfo(1,guest,room,new Date(),departureDate,true);
         GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,serviceEntity1,new Date());
 
 
-guestRoomHibernateDao.getLastGuest(room);
 
 
 /*

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IHotelController {
-    void startHotel();
+     void startHotel();
     void endHotel() throws SQLException;
     Room getRoomByNumber(Integer number);
     List<Room> getFreeRooms();
@@ -22,7 +22,7 @@ public interface IHotelController {
     void addGuest(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day);
     void addGuestService(Guest guest, Service service, Integer year, Integer month, Integer day);
     void readRoomsFromFile() throws Exception;
-    void setRoomCost(int roomNumber, int cost, String path);
+    void setRoomCost(int roomNumber, int cost);
     void addService(Service service);
     IGuestService getGuestSerice();
     IRoomService getRoomService();

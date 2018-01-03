@@ -2,6 +2,7 @@ package com.testHotel.controller;
 
 import com.configurator.*;
 
+
 import com.dependencyService.DependencyService;
 import com.entity.Guest;
 import com.entity.Room;
@@ -28,6 +29,12 @@ public class HotelController implements IHotelController {
 
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE)
     private String roomFilePath;
+
+    public HotelController(){
+        this.configurator.configure(this);
+        this.configurator.configure(this.serializableService);
+    }
+
 
     public void startHotel() {
 
@@ -88,10 +95,8 @@ public class HotelController implements IHotelController {
         }
     }
 
-    public void setRoomCost(int roomNumber, int cost, String path) {
+    public void setRoomCost(int roomNumber, int cost) {
         this.roomService.setRoomCost(roomNumber, cost);
-        FileService readFromFileService = new FileService();
-        readFromFileService.exportRoomsToFile(this.roomService.getAllRooms(), path);
     }
 
     public String getRoomFilePath() {

@@ -3,8 +3,8 @@ package com.serverQueryService.ClientQueryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import java.io.IOException;
-public class ObjectConverter {
-    public static final Logger log = Logger.getLogger(ObjectConverter.class);
+public class ObjectToJsonConverter {
+    public static final Logger log = Logger.getLogger(ObjectToJsonConverter.class);
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     public static String convertObject(Object someObject) {

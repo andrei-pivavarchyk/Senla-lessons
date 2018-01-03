@@ -5,6 +5,7 @@ import com.configurator.ConfigProperty;
 import com.configurator.PropertyFilePath;
 import com.configurator.PropertyName;
 import com.dao.*;
+
 import com.dependencyService.DependencyService;
 import com.entity.Guest;
 import com.entity.GuestRoomInfo;
@@ -13,9 +14,7 @@ import com.entity.RoomStatus;
 import org.apache.log4j.Logger;
 import java.util.*;
 
-
 public class RoomService implements IRoomService {
-
     private IGuestRoomInfoDAO guestRoomInfoDAO = (IGuestRoomInfoDAO) DependencyService.getDI().getInstance(IGuestRoomInfoDAO.class);
     private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
@@ -24,22 +23,18 @@ public class RoomService implements IRoomService {
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS)
     private Boolean chooseRoomStatus;
     public static final Logger log = Logger.getLogger(RoomService.class);
-
     public void addRoom(Room room) {
         this.roomDAO.addEntity(room);
     }
-
     public List<Room> getAllRooms() {
         synchronized (this.roomDAO) {
             return this.roomDAO.getAllEntities(TypeSorting.NO_SORTING);
         }
     }
 
-
     public List<Room> getRoomCostSorting() {
         synchronized (this.roomDAO) {
             return this.roomDAO.getAllEntities(TypeSorting.BY_COST);
-
         }
     }
 
@@ -128,6 +123,10 @@ public class RoomService implements IRoomService {
             room.setStatus(roomStatus);
             this.roomDAO.updateEntity(room);
         }
+    }
+
+    public Integer getMaxCountOldGuests() {
+        return maxCountOldGuests;
     }
 }
 

@@ -11,10 +11,16 @@ public class Factory {
     private static SessionFactory configureSessionFactory()
             throws HibernateException {
 
-        Configuration configuration = new Configuration().configure();
-        serviceRegistry = new ServiceRegistryBuilder().applySettings(
-                configuration.getProperties()).buildServiceRegistry();
-        return configuration.buildSessionFactory(serviceRegistry);
+        try {
+            Configuration configuration = new Configuration().configure();
+            serviceRegistry = new ServiceRegistryBuilder().applySettings(
+                    configuration.getProperties()).buildServiceRegistry();
+            return configuration.buildSessionFactory(serviceRegistry);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static SessionFactory getSessionFactory() {

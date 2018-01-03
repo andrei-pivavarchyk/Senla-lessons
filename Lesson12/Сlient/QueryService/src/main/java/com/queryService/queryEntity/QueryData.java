@@ -1,10 +1,13 @@
 package com.queryService.queryEntity;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class QueryData implements Serializable {
+    @JsonCreator
     public QueryData(){}
 
 

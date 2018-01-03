@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "guestroominfo")
-public class GuestRoomInfo extends HotelEntity{
+public class GuestRoomInfo extends HotelEntity {
 
 
     @OneToOne

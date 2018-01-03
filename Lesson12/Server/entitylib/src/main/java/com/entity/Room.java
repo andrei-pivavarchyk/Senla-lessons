@@ -4,12 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 @Entity
 @Table(name = "room")
-public class Room extends HotelEntity{
+public class Room extends HotelEntity implements Serializable{
     private Integer number;
     private Integer cost;
     private Integer capacity;

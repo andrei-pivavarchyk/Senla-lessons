@@ -2,6 +2,9 @@ package com.serverQueryService.ClientQueryService;
 
 
 
+import com.dependencyService.DependencyService;
+import com.entity.Room;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
 import org.apache.log4j.Logger;
@@ -13,13 +16,17 @@ import java.util.List;
 
 public class ClientQueryService implements IClientQueryService {
 
-    public static Logger log = Logger.getLogger(NetServerThread.class);
-
-    public static Object queryHandler(String message,IHotelController hotelController) {
+    public static Logger log = Logger.getLogger(ClientQueryService.class);
+    public static IHotelController hotelController=(IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
+    public static Object queryHandler(String message) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             QueryData queryData = mapper.readValue(message, QueryData.class);
             List<Object> allParametersList = queryData.getAllParamList();
+           // List<Object> myObjects = mapper.readValue(queryData.getAllParamList().toString(), new TypeReference<List<Object>>(){});
+
+           System.out.println(allParametersList.get(0).getClass().getName());
+
             String someMethodName = queryData.getSomeMethod();
 
             Class c = hotelController.getClass();
@@ -44,6 +51,8 @@ public class ClientQueryService implements IClientQueryService {
                 return returnObject;
 
             } else if (method != null) {
+
+
                 Object returnObject = method.invoke(hotelController, allParametersArray);
                 return returnObject;
             }

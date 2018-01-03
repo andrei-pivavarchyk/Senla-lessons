@@ -1,9 +1,10 @@
 package com.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @MappedSuperclass
-public class HotelEntity {
+public class HotelEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

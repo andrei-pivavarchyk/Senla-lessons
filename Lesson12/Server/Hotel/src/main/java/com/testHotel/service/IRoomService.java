@@ -20,4 +20,5 @@ public interface IRoomService {
    Room getRoomByNumber(int roomNumber);
    void importRooms(List<Room> importList);
    void setRoomStatus(Room room,RoomStatus roomStatus);
+   Integer getMaxCountOldGuests();
 }

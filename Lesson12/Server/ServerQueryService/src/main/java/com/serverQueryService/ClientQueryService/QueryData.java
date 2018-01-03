@@ -1,10 +1,13 @@
 package com.serverQueryService.ClientQueryService;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class QueryData {
+    @JsonCreator
     public QueryData() {
     }
 
@@ -12,13 +15,6 @@ public class QueryData {
     private String someMethod;
     private List<Object> allParamList = new ArrayList<Object>();
 
-    public void setSomeClass(String someClass) {
-        this.someClass = someClass;
-    }
-
-    public String getSomeClass() {
-        return someClass;
-    }
 
     public void setSomeMethod(String someMethod) {
         this.someMethod = someMethod;

@@ -15,6 +15,7 @@
         <module name="Hotel" />
         <module name="Property" />
         <module name="serializationService" />
+        <module name="Servlet" />
         <module name="servlet" />
       </profile>
     </annotationProcessing>
@@ -30,7 +31,8 @@
       <module name="serializationService" target="1.7" />
       <module name="Server" target="1.7" />
       <module name="ServerQueryService" target="1.7" />
-      <module name="servlet" target="1.5" />
+      <module name="servlet" target="1.7" />
+      <module name="Servlet" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

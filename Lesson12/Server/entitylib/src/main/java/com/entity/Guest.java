@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "guest")
-public class Guest extends HotelEntity{
+public class Guest extends HotelEntity {
     @Basic
     @Column(name = "name")
     private String name;

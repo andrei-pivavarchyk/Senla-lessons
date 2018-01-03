@@ -33,19 +33,21 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
 
 
     public void addEntity(T entity) {
-
+        getSession().beginTransaction();
         session.save(entity);
-
+        getSession().getTransaction().commit();
     }
 
     public void updateEntity(T entity) {
-
+        getSession().beginTransaction();
         session.update(entity);
-
+        getSession().getTransaction().commit();
     }
 
     public void deleteEntity(T entity) {
+        getSession().beginTransaction();
         session.delete(entity);
+        getSession().getTransaction().commit();
     }
 
     public List<T> getAllEntities( TypeSorting sorting) {
@@ -63,8 +65,10 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
 
 
     public T getEntityById(Integer id) {
+        getSession().beginTransaction();
         T entity = null;
         entity = (T) getSession().load(getEntityClass(), id);
+        getSession().getTransaction().commit();
         return entity;
     }
 

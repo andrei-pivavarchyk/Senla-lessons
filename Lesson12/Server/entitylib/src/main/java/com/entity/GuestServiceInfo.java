@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "guestserviceinfo")
-public class GuestServiceInfo extends HotelEntity{
+public class GuestServiceInfo extends HotelEntity {
     @ManyToOne
     @JoinColumn(name="guest")
     private Guest guest;
