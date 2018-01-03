@@ -6,11 +6,11 @@ import com.hotelInterface.entity.Menu;
 import com.hotelInterface.entity.Navigator;
 import com.hotelInterface.service.ConsoleService;
 import com.queryService.service.IClientService;
-import com.queryService.socket.ClientSocket;
 
 public class MenuController {
     private Builder builder;
     private Navigator navigator;
+
   private  IClientService clientService = (IClientService) DependencyService.getDI().getInstance(IClientService.class);
 
 

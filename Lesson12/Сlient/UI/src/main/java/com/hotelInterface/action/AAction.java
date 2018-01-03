@@ -1,12 +1,13 @@
 package com.hotelInterface.action;
 
-
+import com.dependencyService.DependencyService;
 import com.hotelInterface.service.IPrinterService;
 import com.hotelInterface.service.PrinterService;
-import com.queryService.service.ClientService;
+
 import com.hotelInterface.service.ConsoleService;
 import com.queryService.service.IClientService;
 import org.apache.log4j.Logger;
+
 import java.io.Serializable;
 
 

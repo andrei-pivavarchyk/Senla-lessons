@@ -51,8 +51,8 @@ public class PrinterService implements IPrinterService {
 
         for (GuestRoomInfo guestRoomInfo : guestRoomInfoList) {
             Guest guest = guestRoomInfo.getGuest();
-            Date arrivalDate = guestRoomInfo.getArrivalDate();
-            Date departureDate = guestRoomInfo.getDepartureDate();
+            Date arrivalDate = guestRoomInfo.getArrivaldate();
+            Date departureDate = guestRoomInfo.getDeparturedate();
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 

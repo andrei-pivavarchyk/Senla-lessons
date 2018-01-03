@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="_QueryUI" />
+        <module name="QueryService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="_QueryUI" target="1.7" />
+      <module name="QueryService" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
