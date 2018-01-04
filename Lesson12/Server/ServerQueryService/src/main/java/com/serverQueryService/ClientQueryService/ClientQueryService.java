@@ -24,9 +24,7 @@ public class ClientQueryService implements IClientQueryService {
         try {
             QueryData queryData = mapper.readValue(message, QueryData.class);
 
-
             List<HotelEntity> allParametersList = queryData.getAllParamList();
-           System.out.println(allParametersList);
 
             String someMethodName = queryData.getSomeMethod();
 

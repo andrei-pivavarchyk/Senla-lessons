@@ -25,7 +25,13 @@ public class GuestRoomInfo extends HotelEntity {
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isStillLiving=true;
 
-
+    public GuestRoomInfo(Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
+        this.guest=guest;
+        this.room=room;
+        this.departuredate=departuredate;
+        this.arrivaldate=arrivaldate;
+        this.isStillLiving=isStillLiving;
+    }
     public GuestRoomInfo(Integer id,Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
        super(id);
         this.guest=guest;

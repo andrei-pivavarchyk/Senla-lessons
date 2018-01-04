@@ -23,13 +23,14 @@ public class Servlet  extends HttpServlet{
                     "</html>";
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+      //response.setContentType("application/json;charset=UTF-8");
+
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
 
-        response.setContentType("application/json;charset=UTF-8");
+/*
 
-
-    /*
         PrintWriter pw = response.getWriter();
         Room room=new Room(2,2,2,2,666);
        RoomDAO roomDAO=new RoomDAO();
