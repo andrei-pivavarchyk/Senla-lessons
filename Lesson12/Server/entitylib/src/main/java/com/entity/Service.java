@@ -12,12 +12,7 @@ public class Service extends HotelEntity {
     @Enumerated(EnumType.ORDINAL)
     private ServiceType type;
 
-    public Service(ServiceType type, String name, int cost) {
 
-        this.name = name;
-        this.cost = cost;
-        this.type = type;
-    }
 
     public Service(Integer id, ServiceType type, String name, int cost) {
         super(id);

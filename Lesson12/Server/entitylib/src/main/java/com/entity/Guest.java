@@ -15,8 +15,7 @@ public class Guest extends HotelEntity {
     @Column(name = "surname")
     private String surname;
 
-    @JsonCreator
-    public Guest( @JsonProperty("name") String name, @JsonProperty("surName") String surName) {
+    public Guest( String name, String surName) {
         this.name = name;
         this.surname = surName;
     }

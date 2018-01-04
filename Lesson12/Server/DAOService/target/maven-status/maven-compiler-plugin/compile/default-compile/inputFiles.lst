@@ -1,15 +1,15 @@
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\GuestServiceDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\Main.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\IGuestRoomInfoDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\ServiceDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\GuestRoomInfoDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\IGuestDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\Factory.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\IServiceDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\TypeSorting.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\RoomDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\GuestDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\IBaseDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\IGuestServiceDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\IRoomDAO.java
-D:\web\Senla\Lesson12\Server\DAOService\src\main\java\com\dao\BaseDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\GuestDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\GuestServiceDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\TypeSorting.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\Main.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\IBaseDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\IGuestServiceDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\IServiceDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\Factory.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\GuestRoomInfoDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\ServiceDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\IGuestRoomInfoDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\IRoomDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\RoomDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\BaseDAO.java
+D:\дизайнерские штуки\Senla\Senloid\Lesson12\Server\DAOService\src\main\java\com\dao\IGuestDAO.java

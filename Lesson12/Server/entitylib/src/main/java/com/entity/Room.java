@@ -18,8 +18,9 @@ public class Room extends HotelEntity implements Serializable{
     @Enumerated(EnumType.ORDINAL)
     private RoomStatus status;
 
-    @JsonCreator
-    public Room( @JsonProperty("number") Integer number, @JsonProperty("cost") Integer cost, @JsonProperty("capacity") Integer capacity, @JsonProperty("stars") Integer stars) {
+
+    public Room (Integer number,  Integer cost, Integer capacity, Integer stars) {
+
         this.number = number;
         this.cost = cost;
         this.capacity = capacity;

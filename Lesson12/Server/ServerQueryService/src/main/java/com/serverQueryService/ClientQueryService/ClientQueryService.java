@@ -3,6 +3,7 @@ package com.serverQueryService.ClientQueryService;
 
 
 import com.dependencyService.DependencyService;
+import com.entity.HotelEntity;
 import com.entity.Room;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,10 +23,10 @@ public class ClientQueryService implements IClientQueryService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             QueryData queryData = mapper.readValue(message, QueryData.class);
-            List<Object> allParametersList = queryData.getAllParamList();
-           // List<Object> myObjects = mapper.readValue(queryData.getAllParamList().toString(), new TypeReference<List<Object>>(){});
 
-           System.out.println(allParametersList.get(0).getClass().getName());
+
+            List<HotelEntity> allParametersList = queryData.getAllParamList();
+           System.out.println(allParametersList);
 
             String someMethodName = queryData.getSomeMethod();
 
