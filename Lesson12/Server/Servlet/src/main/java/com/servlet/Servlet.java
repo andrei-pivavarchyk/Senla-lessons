@@ -4,11 +4,12 @@ import com.dao.IRoomDAO;
 import com.dao.RoomDAO;
 import com.dependencyService.DependencyService;
 import com.entity.Room;
+import com.entity.RoomStatus;
 import com.testHotel.controller.IHotelController;
+import com.testHotel.service.GuestService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,22 +28,20 @@ public class Servlet  extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
       //response.setContentType("application/json;charset=UTF-8");
 
-        IHotelController hotelController=(IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
-
-
-        Long guest = hotelController.getGuestSerice().getAllGuestsCount();
-        PrintWriter pw = response.getWriter();
-        response.getWriter().print(guest);
        // getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
 
-/*
+
 
         PrintWriter pw = response.getWriter();
-        Room room=new Room(2,2,2,2,666);
-       RoomDAO roomDAO=new RoomDAO();
-       roomDAO.addEntity(room);
-        response.getWriter().print(room.getNumber());*/
+        Room room=new Room(20,30,40,50,999);
+        IRoomDAO roomDAO=(IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
+      //  GuestService guestService=new GuestService();
+       // guestService.getAllGuestsCount();
+        //getEntityByNumber(77).getNumber()
+        response.getWriter().print(roomDAO);
+        response.getWriter().print(roomDAO.getClass().getName());
+
     }
 
 

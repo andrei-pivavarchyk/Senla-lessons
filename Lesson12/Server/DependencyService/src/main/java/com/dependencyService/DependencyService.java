@@ -12,7 +12,8 @@ import java.util.Properties;
 public class DependencyService {
 
     private Map<Class, Object> listObjects = new HashMap<>();
-    private String propertyFilePath = PropertyFilePath.CONFIG_DEPENDENCY.getPath();
+ private String propertyFilePath = PropertyFilePath.CONFIG_DEPENDENCY.getPath();
+   // private String propertyFilePath = "resources/dependency.properties";
     private PropertyService propertyService = PropertyService.getPropertyService();
     private static Logger log = Logger.getLogger(DependencyService.class);
     private static volatile DependencyService instance;

@@ -39,6 +39,7 @@
         <module>serializationService</module>
         <module>ServerQueryService</module>
         <module>Servlet</module>
+        <module>resources</module>
     </modules>
 
 
