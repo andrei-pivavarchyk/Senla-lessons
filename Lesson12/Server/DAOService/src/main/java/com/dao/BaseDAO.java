@@ -53,9 +53,10 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
     public List<T> getAllEntities( TypeSorting sorting) {
 
      getSession().beginTransaction();
-        Query createQuery = getSession().createQuery(" from "+getTableName()+" order by :sorting ");
+        Query createQuery = getSession().createQuery(" from "+getTableName() );
 
         if(sorting!=TypeSorting.NO_SORTING){
+            createQuery.getQueryString().concat(" order by :sorting");
             createQuery.setParameter("sorting",sorting.getType());
         }
         List <T> entityList=createQuery.list();

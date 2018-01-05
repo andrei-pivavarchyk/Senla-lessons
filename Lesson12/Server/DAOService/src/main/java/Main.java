@@ -26,7 +26,7 @@ public class Main {
         GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,serviceEntity1,new Date());
 
 
-
+List<Room> roomList=roomHibernateDao.getAllEntities(TypeSorting.NO_SORTING);
 
 /*
         serviceHibernateDao.addEntity(serviceEntity1);

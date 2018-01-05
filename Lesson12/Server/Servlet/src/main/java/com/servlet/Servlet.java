@@ -8,6 +8,7 @@ import com.testHotel.controller.IHotelController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,13 @@ public class Servlet  extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
       //response.setContentType("application/json;charset=UTF-8");
 
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        IHotelController hotelController=(IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
+
+
+        Long guest = hotelController.getGuestSerice().getAllGuestsCount();
+        PrintWriter pw = response.getWriter();
+        response.getWriter().print(guest);
+       // getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
 
 /*
