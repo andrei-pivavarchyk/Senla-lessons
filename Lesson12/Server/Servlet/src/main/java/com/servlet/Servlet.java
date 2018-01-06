@@ -1,12 +1,7 @@
 package com.servlet;
 
 import com.dao.IRoomDAO;
-import com.dao.RoomDAO;
 import com.dependencyService.DependencyService;
-import com.entity.Room;
-import com.entity.RoomStatus;
-import com.testHotel.controller.IHotelController;
-import com.testHotel.service.GuestService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,21 +21,21 @@ public class Servlet  extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-      //response.setContentType("application/json;charset=UTF-8");
+     response.setContentType("application/json;charset=UTF-8");
 
        // getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
 
 
-
         PrintWriter pw = response.getWriter();
-        Room room=new Room(20,30,40,50,999);
-        IRoomDAO roomDAO=(IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
+       // Room room=new Room(20,30,40,50,999);
+     IRoomDAO roomDAO=(IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
       //  GuestService guestService=new GuestService();
        // guestService.getAllGuestsCount();
         //getEntityByNumber(77).getNumber()
-        response.getWriter().print(roomDAO);
-        response.getWriter().print(roomDAO.getClass().getName());
+        response.getWriter().print("fdkkk");
+    response.getWriter().print(roomDAO);
+       response.getWriter().print(roomDAO.getClass().getName());
 
     }
 

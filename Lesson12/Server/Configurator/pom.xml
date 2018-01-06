@@ -16,9 +16,11 @@
     </parent>
     <dependencies>
         <dependency>
-            <groupId>server</groupId>
-            <artifactId>Property</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+        <groupId>server</groupId>
+        <artifactId>Property</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+
     </dependencies>
+
 </project>

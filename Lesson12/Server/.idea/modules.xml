@@ -6,11 +6,11 @@
       <module fileurl="file://$PROJECT_DIR$/DAOService/DAOService.iml" filepath="$PROJECT_DIR$/DAOService/DAOService.iml" />
       <module fileurl="file://$PROJECT_DIR$/DependencyService/DependencyService.iml" filepath="$PROJECT_DIR$/DependencyService/DependencyService.iml" />
       <module fileurl="file://$PROJECT_DIR$/Hotel/Hotel.iml" filepath="$PROJECT_DIR$/Hotel/Hotel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PProperty/PProperty.iml" filepath="$PROJECT_DIR$/PProperty/PProperty.iml" />
       <module fileurl="file://$PROJECT_DIR$/Property/Property.iml" filepath="$PROJECT_DIR$/Property/Property.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Server.iml" filepath="$PROJECT_DIR$/.idea/Server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Servlet/Servlet.iml" filepath="$PROJECT_DIR$/Servlet/Servlet.iml" />
       <module fileurl="file://$PROJECT_DIR$/entitylib/entitylib.iml" filepath="$PROJECT_DIR$/entitylib/entitylib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Hibernate/hibernate.iml" filepath="$PROJECT_DIR$/Hibernate/hibernate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resources/resources.iml" filepath="$PROJECT_DIR$/resources/resources.iml" />
       <module fileurl="file://$PROJECT_DIR$/serializationService/serializationService.iml" filepath="$PROJECT_DIR$/serializationService/serializationService.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servlet/servlet.iml" filepath="$PROJECT_DIR$/Servlet/servlet.iml" />
     </modules>

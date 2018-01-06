@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/server/Property/1.0-SNAPSHOT/Property-1.0-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Property/target/Property-1.0-SNAPSHOT.jar!/" />
     </SOURCES>
   </library>
 </component>

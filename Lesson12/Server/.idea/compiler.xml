@@ -13,7 +13,9 @@
         <module name="entitylib" />
         <module name="hibernate" />
         <module name="Hotel" />
+        <module name="PProperty" />
         <module name="Property" />
+        <module name="resources" />
         <module name="serializationService" />
         <module name="Servlet" />
         <module name="servlet" />
@@ -27,7 +29,9 @@
       <module name="entitylib" target="1.7" />
       <module name="hibernate" target="1.7" />
       <module name="Hotel" target="1.7" />
+      <module name="PProperty" target="1.7" />
       <module name="Property" target="1.7" />
+      <module name="resources" target="1.5" />
       <module name="serializationService" target="1.7" />
       <module name="Server" target="1.7" />
       <module name="ServerQueryService" target="1.7" />

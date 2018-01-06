@@ -5,6 +5,7 @@ com\dao\IServiceDAO.class
 com\dao\GuestServiceDAO.class
 com\dao\IGuestRoomInfoDAO.class
 com\dao\RoomDAO.class
+com\dao\Factory.class
 com\dao\GuestRoomInfoDAO.class
 com\dao\IRoomDAO.class
 com\dao\IGuestServiceDAO.class
