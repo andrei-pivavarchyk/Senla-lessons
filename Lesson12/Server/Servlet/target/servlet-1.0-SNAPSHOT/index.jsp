@@ -40,15 +40,41 @@
 
 <body>
 
-<h1>
+
     <%
 
-        Object response1=ClientQueryService.queryHandler("{\"someMethod\":\"addRoom\",\"allParamList\":[{\"type\":\"room\",\"id\":12,\"number\":22,\"cost\":33,\"capacity\":123,\"stars\":55,\"status\":\"FREE\"}]}");
+      //  Object response1=ClientQueryService.queryHandler("{\"someMethod\":\"addRoom\",\"allParamList\":[{\"type\":\"room\",\"id\":12,\"number\":22,\"cost\":33,\"capacity\":123,\"stars\":55,\"status\":\"FREE\"}]}");
+
     %>
     Hello, world !
 
-    <h1>Добро пожаловать!<%= response1%></h1>
-</h1>
+    <h1>Добро пожаловать!</h1>
+
+
+
+
+
+
+
+
+
+    <div>
+        <form class="auth-forms">
+            <div id="auth-info"></div>
+            <input type="text" placeholder="some Json" id="json"/>
+            <br/>
+
+            <br/>
+        </form>
+        <br/>
+        <button id="button">Piu</button>
+    </div>
+
+
+
+
+
+
 
 <div class="hidden"></div>
 

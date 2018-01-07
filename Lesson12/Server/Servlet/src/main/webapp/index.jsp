@@ -43,11 +43,12 @@
 
     <%
 
-        Object response1=ClientQueryService.queryHandler("{\"someMethod\":\"addRoom\",\"allParamList\":[{\"type\":\"room\",\"id\":12,\"number\":22,\"cost\":33,\"capacity\":123,\"stars\":55,\"status\":\"FREE\"}]}");
+      //  Object response1=ClientQueryService.queryHandler("{\"someMethod\":\"addRoom\",\"allParamList\":[{\"type\":\"room\",\"id\":12,\"number\":22,\"cost\":33,\"capacity\":123,\"stars\":55,\"status\":\"FREE\"}]}");
+
     %>
     Hello, world !
 
-    <h1>Добро пожаловать!<%= response1%></h1>
+    <h1>Добро пожаловать!</h1>
 
 
 
@@ -60,25 +61,14 @@
     <div>
         <form class="auth-forms">
             <div id="auth-info"></div>
-            <input type="text" placeholder="Логин" id="login"/>
+            <input type="text" placeholder="some Json" id="json"/>
             <br/>
-            <input type="password" placeholder="Пароль" id="password"/>
+
             <br/>
         </form>
         <br/>
-        <button id="button">Вход</button>
+        <button id="button">Piu</button>
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,6 +34,7 @@
           <element id="library" level="project" name="Maven: org.apache.openejb:javaee-api:6.0-5" />
           <element id="library" level="project" name="Maven: server:PProperty:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: server:ServerQueryService:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: org.json:json:20171018" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.3" />

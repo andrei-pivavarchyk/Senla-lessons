@@ -1,2 +1,3 @@
 com\servlet\Servlet.class
+com\servlet\Servlet$AuthServlet.class
 com\servlet\Main.class

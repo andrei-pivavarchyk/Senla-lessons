@@ -36,12 +36,39 @@ $(function() {
 	};
 
 	$("img, a").on("dragstart", function(event) { event.preventDefault(); });
-	
+
 });
 
 $(window).load(function() {
 
 	$(".loader_inner").fadeOut();
 	$(".loader").delay(400).fadeOut("slow");
+
+
+    $(document).ready(function(){
+        $("#button").click(function(){
+            var data = {};
+            data = $("#json").val();
+            //
+            $.ajax
+            ({
+                type: "POST",//Метод передачи
+                data: data,//Передаваемые данные в JSON - формате
+                url: 'simple',//Название сервлета
+                success:function(serverData)//Если запрос удачен
+                {
+                    $("#auth-info").css({"background-color":serverData.backgroundColor, "height": "50px", "color":"white"});
+                    $("#auth-info").html(serverData.serverInfo);
+                },
+                error: function(e)//Если запрос не удачен
+                {
+                    $("#auth-info").css({"background-color":"#CC6666", "height": "50px", "color":"white"});
+                    $("#auth-info").html("Запрос не удался!");
+                }
+            });
+        });
+    });
+
+
 
 });
