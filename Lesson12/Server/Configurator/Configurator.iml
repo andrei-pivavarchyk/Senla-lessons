@@ -11,9 +11,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: server:Property:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:DependencyService:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: server:Property:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:PProperty:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="PProperty" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.3" level="project" />

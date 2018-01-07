@@ -3,8 +3,6 @@ package com.propertyService;
 import com.propertyService.main.Main;
 import org.apache.log4j.Logger;
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;

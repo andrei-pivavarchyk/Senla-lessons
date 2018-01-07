@@ -19,7 +19,9 @@
           <element id="archive" name="DependencyService-1.0-SNAPSHOT.jar">
             <element id="module-output" name="DependencyService" />
           </element>
-          <element id="library" level="project" name="Maven: server:Property:1.0-SNAPSHOT" />
+          <element id="archive" name="PProperty-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="PProperty" />
+          </element>
           <element id="archive" name="daoService-1.0-SNAPSHOT.jar">
             <element id="module-output" name="DAOService" />
           </element>

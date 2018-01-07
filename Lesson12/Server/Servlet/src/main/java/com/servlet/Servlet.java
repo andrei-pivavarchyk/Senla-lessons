@@ -33,7 +33,7 @@ public class Servlet  extends HttpServlet{
       //  GuestService guestService=new GuestService();
        // guestService.getAllGuestsCount();
         //getEntityByNumber(77).getNumber()
-        response.getWriter().print("fdkkk");
+        response.getWriter().print("fd88kkk");
     response.getWriter().print(roomDAO);
        response.getWriter().print(roomDAO.getClass().getName());
 

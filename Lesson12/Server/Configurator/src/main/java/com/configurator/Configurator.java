@@ -1,5 +1,6 @@
 package com.configurator;
-import com.propertyService.PropertyService;
+
+import com.propertyService.PPropertyService;
 import org.apache.log4j.Logger;
 
 import java.lang.reflect.Field;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Configurator implements IConfigurator {
-    private PropertyService propertyService = PropertyService.getPropertyService();
+    private PPropertyService propertyService = PPropertyService.getPropertyService();
     private static Logger log = Logger.getLogger(Configurator.class);
 
     public Object configure(Object object) {

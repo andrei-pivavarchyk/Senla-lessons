@@ -30,8 +30,8 @@
     <orderEntry type="library" name="Maven: server:Hotel:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:serializationService:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:Configurator:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: server:DependencyService:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:Property:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: server:DependencyService:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:daoService:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: server:entityLib:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:4.0.1.Final" level="project" />
@@ -54,6 +54,7 @@
     <orderEntry type="library" name="Maven: javax.persistence:persistence-api:1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:3.0-alpha-1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.openejb:javaee-api:6.0-5" level="project" />
+    <orderEntry type="library" name="Maven: server:PProperty:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.3" level="project" />

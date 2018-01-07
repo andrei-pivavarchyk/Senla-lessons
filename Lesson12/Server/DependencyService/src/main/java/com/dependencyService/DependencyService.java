@@ -2,7 +2,8 @@ package com.dependencyService;
 
 
 import com.configurator.PropertyFilePath;
-import com.propertyService.PropertyService;
+
+import com.propertyService.PPropertyService;
 import org.apache.log4j.Logger;
 
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class DependencyService {
     private Map<Class, Object> listObjects = new HashMap<>();
  private String propertyFilePath = PropertyFilePath.CONFIG_DEPENDENCY.getPath();
    // private String propertyFilePath = "resources/dependency.properties";
-    private PropertyService propertyService = PropertyService.getPropertyService();
+    private PPropertyService propertyService = PPropertyService.getPropertyService();
     private static Logger log = Logger.getLogger(DependencyService.class);
     private static volatile DependencyService instance;
 
@@ -38,7 +39,9 @@ public class DependencyService {
         } else {
             try {
                 Properties properties = this.propertyService.getProperties(this.propertyFilePath);
+
                 String currentProperty = properties.getProperty(classObject.getName());
+
                 Class someClass = Class.forName(currentProperty);
                 Object someObject = someClass.newInstance();
                 this.listObjects.put(classObject, someObject);

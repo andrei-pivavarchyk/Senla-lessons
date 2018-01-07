@@ -1,6 +1,7 @@
 package com.testHotel.main;
 
 import com.propertyService.PropertyService;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.Properties;
