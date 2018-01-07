@@ -35,9 +35,7 @@ public class HotelController implements IHotelController {
         this.configurator.configure(this.serializableService);
     }
 
-
     public void startHotel() {
-
         this.configurator.configure(this);
         this.configurator.configure(this.serializableService);
 

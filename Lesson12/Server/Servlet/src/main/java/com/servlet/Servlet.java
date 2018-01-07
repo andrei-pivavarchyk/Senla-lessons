@@ -21,9 +21,9 @@ public class Servlet  extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-     response.setContentType("application/json;charset=UTF-8");
+    // response.setContentType("application/json;charset=UTF-8");
 
-       // getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+     getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
 
 

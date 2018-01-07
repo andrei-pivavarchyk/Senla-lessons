@@ -4,8 +4,6 @@ package com.serverQueryService.ClientQueryService;
 
 import com.dependencyService.DependencyService;
 import com.entity.HotelEntity;
-import com.entity.Room;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
 import org.apache.log4j.Logger;
@@ -44,7 +42,6 @@ public class ClientQueryService implements IClientQueryService {
                     method = someMethod;
                 }
             }
-
             if (allParametersList.isEmpty() && method != null) {
                 Object returnObject = method.invoke(hotelController);
                 return returnObject;

@@ -17,7 +17,7 @@ public class Main {
 
         ObjectToJsonConverter objectToJsonConverter=new ObjectToJsonConverter();
 
-        IClientQueryService clientQueryService=(IClientQueryService)DependencyService.getDI().getInstance(IClientQueryService.class);
+        IClientQueryService clientQueryService=(IClientQueryService) DependencyService.getDI().getInstance(IClientQueryService.class);
 
       String someMethod="addRoom";
         Room room=new Room(12,22,33,44,55);
@@ -27,8 +27,7 @@ public class Main {
         QueryData queryData=new QueryData(someMethod,allParameters);
 
         String query=ObjectToJsonConverter.convertObject(queryData);
-
-       ClientQueryService.queryHandler(query);
+System.out.print(query);
 /*
         ObjectMapper mapper = new ObjectMapper();
         String str=ObjectToJsonConverter.convertObject(queryData);

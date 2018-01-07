@@ -37,9 +37,9 @@ public class PPropertyService  {
 
     public Properties getProperties(String propertyPath)  {
         File f=null;
-        InputStream resource = Main.class.getClassLoader().getResourceAsStream("dependency.properties");
+        InputStream resource = Main.class.getClassLoader().getResourceAsStream(propertyPath);
 
-        if (propsMap.containsKey("dependency.properties")) {
+        if (propsMap.containsKey(propertyPath)) {
             return propsMap.get(propertyPath);
         } else {
             try (InputStream inputStream = resource) {

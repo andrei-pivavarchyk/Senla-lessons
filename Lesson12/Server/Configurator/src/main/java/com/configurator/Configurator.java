@@ -72,7 +72,18 @@ public class Configurator implements IConfigurator {
     }
 
     public void setStringProperty(Object object, Field field, String configPath, PropertyName propertyName) throws Exception {
-        String stringProperties = String.valueOf(this.propertyService.getProperties(configPath).getProperty(propertyName.toString()));
+
+       System.out.println(this.propertyService.getProperties(configPath));
+
+
+
+
+
+
+
+
+
+         String stringProperties = String.valueOf(this.propertyService.getProperties(configPath).getProperty(propertyName.toString()));
         field.set(object, stringProperties);
     }
 

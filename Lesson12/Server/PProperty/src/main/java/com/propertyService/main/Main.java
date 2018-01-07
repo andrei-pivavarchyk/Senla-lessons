@@ -14,7 +14,7 @@ public class Main {
         PPropertyService propertyService=new PPropertyService();
 
         Properties properties=propertyService.getProperties("ds");
-        System.out.print(properties.getProperty("com.testHotel.service.IPrinterService"));
+
     }
 
 }

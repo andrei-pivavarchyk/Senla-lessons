@@ -10,7 +10,6 @@
           <element id="library" level="project" name="Maven: server:Hotel:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: server:serializationService:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: server:Configurator:1.0-SNAPSHOT" />
-          <element id="library" level="project" name="Maven: server:Property:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: server:DependencyService:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: server:daoService:1.0-SNAPSHOT" />
           <element id="file-copy" path="$MAVEN_REPOSITORY$/server/entitylib/1.0-SNAPSHOT/entitylib-1.0-SNAPSHOT.jar" output-file-name="entityLib-1.0-SNAPSHOT.jar" />
@@ -34,6 +33,7 @@
           <element id="library" level="project" name="Maven: javax.persistence:persistence-api:1.0" />
           <element id="library" level="project" name="Maven: org.apache.openejb:javaee-api:6.0-5" />
           <element id="library" level="project" name="Maven: server:PProperty:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: server:ServerQueryService:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.3" />

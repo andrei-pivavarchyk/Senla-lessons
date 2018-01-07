@@ -1,7 +1,5 @@
-com\serverQueryService\ClientQueryService\HHotelEntity.class
-com\serverQueryService\ClientQueryService\ObjectToJsonConverter.class
-com\serverQueryService\main\Main.class
-com\serverQueryService\ClientQueryService\RRoom.class
-com\serverQueryService\ClientQueryService\ClientQueryService.class
 com\serverQueryService\ClientQueryService\QueryData.class
 com\serverQueryService\ClientQueryService\IClientQueryService.class
+com\serverQueryService\ClientQueryService\ObjectToJsonConverter.class
+com\serverQueryService\main\Main.class
+com\serverQueryService\ClientQueryService\ClientQueryService.class
