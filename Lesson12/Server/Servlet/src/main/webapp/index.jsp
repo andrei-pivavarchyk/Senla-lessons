@@ -51,23 +51,27 @@
     <h1>Добро пожаловать!</h1>
 
 
+<div id="wrap">
 
+    <div class="container">
+        <div> <p>{"someMethod":"addRoom","allParamList":[{"type":"room","id":1,"number":2,"cost":35,"capacity":4,"stars":5,"status":"FREE"}]}</p></div>
+        <div>
+            <form class="auth-forms">
+                <div id="auth-info"></div>
+                <input type="text" placeholder="some Json" id="json"/>
+                <br/>
 
-
-
-
-
-
-    <div>
-        <form class="auth-forms">
-            <div id="auth-info"></div>
-            <input type="text" placeholder="some Json" id="json"/>
+                <br/>
+            </form>
             <br/>
+            <button id="button">Piu</button>
+        </div>
 
-            <br/>
-        </form>
-        <br/>
-        <button id="button">Piu</button>
+        <div id="response">
+
+        </div>
+
+    </div>
     </div>
 
 

@@ -18,8 +18,10 @@ public class ClientQueryService implements IClientQueryService {
     public static Logger log = Logger.getLogger(ClientQueryService.class);
     public static IHotelController hotelController=(IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
     public static Object queryHandler(String message) {
+        System.out.println(message);
         ObjectMapper mapper = new ObjectMapper();
         try {
+
             QueryData queryData = mapper.readValue(message, QueryData.class);
 
             List<HotelEntity> allParametersList = queryData.getAllParamList();
@@ -27,6 +29,8 @@ public class ClientQueryService implements IClientQueryService {
             String someMethodName = queryData.getSomeMethod();
 
             Class c = hotelController.getClass();
+
+
 
             Object[] allParametersArray = new Object[allParametersList.size()];
             int i = 0;
@@ -42,15 +46,17 @@ public class ClientQueryService implements IClientQueryService {
                     method = someMethod;
                 }
             }
+
             if (allParametersList.isEmpty() && method != null) {
                 Object returnObject = method.invoke(hotelController);
-                return returnObject;
+
+                return ObjectToJsonConverter.convertObject(returnObject);
 
             } else if (method != null) {
 
 
                 Object returnObject = method.invoke(hotelController, allParametersArray);
-                return returnObject;
+                ObjectToJsonConverter.convertObject(returnObject);
             }
         } catch (IOException e) {
             log.error(e.toString());
@@ -59,6 +65,6 @@ public class ClientQueryService implements IClientQueryService {
         } catch (InvocationTargetException e) {
             log.error(e.toString());
         }
-        return null;
+        return    ObjectToJsonConverter.convertObject( new String("succes"));
     }
 }

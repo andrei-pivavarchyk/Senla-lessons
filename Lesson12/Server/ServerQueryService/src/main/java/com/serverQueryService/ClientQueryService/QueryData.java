@@ -17,9 +17,9 @@ public class QueryData {
     private List<HotelEntity> allParamList;
 
     @JsonCreator
-    public QueryData(@JsonProperty("someMethod") String someMethod,@JsonProperty("allParamList") List<HotelEntity> allParamList) {
+    public QueryData(@JsonProperty("someMethod") String someMethod) {
     this.someMethod=someMethod;
-    this.allParamList=allParamList;
+allParamList=new ArrayList<HotelEntity>();
     }
 
     public void setSomeMethod(String someMethod) {
@@ -32,5 +32,9 @@ public class QueryData {
 
     public List<HotelEntity> getAllParamList() {
         return allParamList;
+    }
+
+    public void setAllParamList(List<HotelEntity> allParamList) {
+        this.allParamList = allParamList;
     }
 }

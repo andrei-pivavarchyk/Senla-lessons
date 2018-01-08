@@ -47,28 +47,28 @@ $(window).load(function() {
 
     $(document).ready(function(){
         $("#button").click(function(){
-            var data = {};
-            data = $("#json").val();
+
+            dataa = $("#json").val();
+            var userJson = JSON.stringify(dataa);
             //
             $.ajax
             ({
                 type: "POST",//Метод передачи
-                data: data,//Передаваемые данные в JSON - формате
+                dataa: userJson,//Передаваемые данные в JSON - формате
                 url: 'simple',//Название сервлета
-                success:function(serverData)//Если запрос удачен
-                {
-                    $("#auth-info").css({"background-color":serverData.backgroundColor, "height": "50px", "color":"white"});
-                    $("#auth-info").html(serverData.serverInfo);
+                contentType: "application/json",
+                error: function(message) {
+                    $("#response").html(message);
+                    console.log("request="+message.responseText);
+
                 },
-                error: function(e)//Если запрос не удачен
-                {
-                    $("#auth-info").css({"background-color":"#CC6666", "height": "50px", "color":"white"});
-                    $("#auth-info").html("Запрос не удался!");
+                success: function(data) {
+                    $("#response").html(data);
+                    console.log(data);
+
                 }
             });
         });
     });
-
-
 
 });
