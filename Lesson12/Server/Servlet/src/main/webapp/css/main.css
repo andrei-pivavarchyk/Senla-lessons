@@ -71,3 +71,7 @@ html, body{
 	height: auto !important;
 	height: 100%;
 }
+
+.navbar{
+	border-radius: 0px;
+}

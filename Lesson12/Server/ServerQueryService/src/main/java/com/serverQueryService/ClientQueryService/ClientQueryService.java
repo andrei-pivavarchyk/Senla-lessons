@@ -7,7 +7,6 @@ import com.entity.HotelEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
 import org.apache.log4j.Logger;
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -17,7 +16,7 @@ public class ClientQueryService implements IClientQueryService {
 
     public static Logger log = Logger.getLogger(ClientQueryService.class);
     public static IHotelController hotelController=(IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
-    public static Object queryHandler(String message) {
+    public static  Object queryHandler(String message) {
         System.out.println(message);
         ObjectMapper mapper = new ObjectMapper();
         try {
