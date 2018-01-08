@@ -7,23 +7,7 @@ $(function() {
 		});
 	};
 
-	//E-mail Ajax Send
-	//Documentation & Example: https://github.com/agragregra/uniMail
-	$("form").submit(function() { //Change
-		var th = $(this);
-		$.ajax({
-			type: "POST",
-			url: "mail.php", //Change
-			data: th.serialize()
-		}).done(function() {
-			alert("Thank you!");
-			setTimeout(function() {
-				// Done Functions
-				th.trigger("reset");
-			}, 1000);
-		});
-		return false;
-	});
+
 
 	//Chrome Smooth Scroll
 	try {
@@ -48,18 +32,18 @@ $(window).load(function() {
     $(document).ready(function(){
         $("#button").click(function(){
 
-            dataa = $("#json").val();
-            var userJson = JSON.stringify(dataa);
+            text = $("#json").val();
+            var userJson = JSON.stringify(text);
             //
             $.ajax
             ({
                 type: "POST",//Метод передачи
-                dataa: userJson,//Передаваемые данные в JSON - формате
+                data: text,//Передаваемые данные в JSON - формате
                 url: 'simple',//Название сервлета
                 contentType: "application/json",
                 error: function(message) {
                     $("#response").html(message);
-                    console.log("request="+message.responseText);
+                    console.log(message);
 
                 },
                 success: function(data) {

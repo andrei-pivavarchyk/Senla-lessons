@@ -24,7 +24,7 @@ QueryData queryData=new QueryData("getAllRooms");
 System.out.println(ObjectToJsonConverter.convertObject(queryData));
 String str="{\"someMethod\":\"addRoom\",\"allParamList\":[{\"type\":\"room\",\"id\":1,\"number\":2,\"cost\":3,\"capacity\":4,\"stars\":5,\"status\":\"FREE\"}]}";
 
-    ClientQueryService.queryHandler(ObjectToJsonConverter.convertObject(queryData));
+   // ClientQueryService.queryHandler(ObjectToJsonConverter.convertObject(queryData));
 
     }
 }

@@ -43,10 +43,9 @@ public class Servlet extends HttpServlet {
                 sb.append(line);
 
             try {
-                JSONObject  jsonObject =  new JSONObject(sb);
-                String greetings = "Hello " + jsonObject;
+
                 String query=sb.toString();
-      Object o= ClientQueryService.queryHandler(query);
+                 Object o= ClientQueryService.queryHandler(query);
                 response.setContentType("text/plain");
                 response.getWriter().write(o.toString());
             } catch (JSONException e) {
