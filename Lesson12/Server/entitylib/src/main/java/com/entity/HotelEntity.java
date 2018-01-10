@@ -15,7 +15,7 @@ import java.io.Serializable;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Room.class, name = "room"),
 })
-@Proxy(lazy = false)
+
 @MappedSuperclass
 public class HotelEntity implements Serializable {
     @Id

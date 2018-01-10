@@ -36,33 +36,31 @@ public class GuestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("id") != null) {
-            GuestDAO guestDAO=new GuestDAO();
             Integer id = parseInt(request.getParameter("id"));
             Guest guest=hotelController.getGuestById(id);
-            String str = ObjectConverterToJson.convertObject(guest);
-           // response.setContentType("text/html;charset=utf-8");
+            String guestJson = ObjectConverterToJson.convertObject(guest);
             PrintWriter pw = response.getWriter();
-            pw.println(str);
+            pw.println(guestJson);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException { StringBuffer sb = new StringBuffer();
+            throws ServletException, IOException {
+        StringBuffer sb = new StringBuffer();
         String query=null;
         BufferedReader reader = request.getReader();
         while ((query = reader.readLine()) != null) {
             sb.append(query);
         }
-        PrintWriter pw = response.getWriter();
-        pw.println(sb);
+
         try {
-            Guest guest = (Guest)  this.objectMapper.readValue(sb.toString(),
-                    Guest.class);
+            Guest guest = (Guest)  this.objectMapper.readValue(sb.toString(),Guest.class);
             this.hotelController.updateGuest(guest);
+            PrintWriter pw = response.getWriter();
+            pw.println("succes");
         } catch (IOException e) {
             log.error(e.toString());
-
         }
     }
 
@@ -75,27 +73,24 @@ public class GuestServlet extends HttpServlet {
         while ((query = reader.readLine()) != null) {
             sb.append(query);
         }
-        PrintWriter pw = response.getWriter();
-        pw.println(sb);
+
         try {
-            Guest guest = (Guest)  this.objectMapper.readValue(sb.toString(),
-                    Guest.class);
-            this.hotelController.updateGuest(guest);
+            Guest guest = (Guest)  this.objectMapper.readValue(sb.toString(),  Guest.class);
+            this.hotelController.addGuest(guest);
+            PrintWriter pw = response.getWriter();
+            pw.println(sb);
         } catch (IOException e) {
             log.error(e.toString());
-
         }
     }
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         if (request.getParameter("id") != null) {
             GuestDAO guestDAO=new GuestDAO();
             Integer id = parseInt(request.getParameter("id"));
            hotelController.removeGuest(id);
-            // response.setContentType("text/html;charset=utf-8");
             PrintWriter pw = response.getWriter();
             pw.println("succes");
         }
@@ -104,7 +99,5 @@ public class GuestServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }//
-
-
+    }
 }

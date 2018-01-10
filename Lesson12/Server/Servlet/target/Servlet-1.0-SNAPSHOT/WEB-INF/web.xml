@@ -8,10 +8,17 @@
     <servlet>
         <servlet-name>GuestServlet</servlet-name>
         <servlet-class>com.servlet.GuestServlet</servlet-class>
-    </servlet>
+
+         <servlet-name>AllGuests</servlet-name>
+        <servlet-class>com.servlet.GuestSortingServlet</servlet-class> </servlet>
+
     <servlet-mapping>
         <servlet-name>GuestServlet</servlet-name>
         <url-pattern>/guest</url-pattern>
+
+        <servlet-name>AllGuests</servlet-name>
+        <url-pattern>/allguests</url-pattern>
+
     </servlet-mapping>
  
 </web-app>
