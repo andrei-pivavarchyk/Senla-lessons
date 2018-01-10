@@ -27,8 +27,11 @@ public class Servlet extends HttpServlet {
         @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        String pathInfo = request.getPathInfo();
+            response.setContentType("text/html;charset=utf-8");
 
+            PrintWriter pw = response.getWriter();
+            pw.println(pathInfo);
         }
 
         @Override
