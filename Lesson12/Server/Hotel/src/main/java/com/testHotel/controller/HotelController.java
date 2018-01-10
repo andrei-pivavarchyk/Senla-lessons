@@ -5,6 +5,7 @@ import com.configurator.*;
 
 import com.dependencyService.DependencyService;
 import com.entity.Guest;
+import com.entity.GuestRoomInfo;
 import com.entity.Room;
 import com.entity.Service;
 import com.serializingService.ISerializableService;
@@ -38,13 +39,54 @@ public class HotelController implements IHotelController {
     public void startHotel() {
         this.configurator.configure(this);
         this.configurator.configure(this.serializableService);
+    }
 
+    public void addGuest(Guest guest) {
+        this.guestService.addGuest(guest);
+    }
+    public List<Guest> getAllGuests() {
+        return this.guestService.getAllGuests();
+    }
+    public List<Guest> getAllGuestsSortedByDateDeparture() {
+      return  this.guestService.getAllGuestsSortedByDateDeparture();
+    }
+    public List<Guest> getAllGuestsSortedByName() {
+        return  this.guestService.getAllGuestsSortedByName();
+    }
+    public Integer getPayAmount(Guest guest) {
+      return  this.guestService.getPayAmount(guest);
+    }
+    public List<GuestRoomInfo> getCurrentGuestRoomInfo() {
+       return this.guestService.getCurrentGuestRoomInfo();
+    }
+
+    public Long  getAllGuestsCount(){
+      return  this.guestService.getAllGuestsCount();
+    }
+
+    public Guest getGuestById(Integer id){
+       return this.guestService.getGuestById(id);
+    }
+
+    public void removeGuest(Integer id){
+        Guest guest=this.guestService.getGuestById(id);
+        if(guest!=null){
+            guestService.removeGuest(guest);
+        }
+    }
+    public void updateGuest(Guest guest){
+        this.guestService.updateGuest(guest);
     }
 
 
-    public void endHotel() {
-    }
 
+
+
+
+
+    public void addGuestToRoom(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
+        this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
+    }
 
     public List<Room> getFreeRooms() {
         return this.roomService.getFreeRooms();
@@ -74,10 +116,10 @@ public class HotelController implements IHotelController {
         return printerService;
     }
 
-    public void addGuest(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
 
-        this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
-    }
+
+
+
 
     public void addGuestService(Guest guest, Service service, Integer year, Integer month, Integer day) {
         this.serviceService.addGuestService(guest, service, year, day, month);
@@ -132,14 +174,7 @@ public class HotelController implements IHotelController {
         return this.roomService.getAllRooms();
     }
 
-    public List<Guest> getAllGuests() {
-        return this.guestService.getAllGuests();
 
-    }
-    public void printAllGuestsCount(){
-        Long allGuestsCount=this.guestService.getAllGuestsCount();
-        this.printerService.printString(allGuestsCount.toString());
-    }
 
     public void addRoom(Room room) {
         this.getRoomService().addRoom(room);
@@ -162,5 +197,6 @@ public class HotelController implements IHotelController {
     public List<Service> getAllServices() {
         return this.serviceService.getAllHotelServices();
     }
-
+    public void endHotel() {
+    }
 }

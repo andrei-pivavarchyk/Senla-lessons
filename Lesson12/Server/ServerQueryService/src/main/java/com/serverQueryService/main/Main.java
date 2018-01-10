@@ -1,6 +1,7 @@
 package com.serverQueryService.main;
 
 import com.dependencyService.DependencyService;
+import com.entity.Guest;
 import com.entity.HotelEntity;
 import com.entity.Room;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,8 +21,8 @@ public class Main {
         list.add(room);
 QueryData queryData=new QueryData("getAllRooms");
 //queryData.setAllParamList(list);
-
-System.out.println(ObjectToJsonConverter.convertObject(queryData));
+Guest guest=new Guest(1,"fdsfs","dsf");
+System.out.println(ObjectToJsonConverter.convertObject(guest));
 String str="{\"someMethod\":\"addRoom\",\"allParamList\":[{\"type\":\"room\",\"id\":1,\"number\":2,\"cost\":3,\"capacity\":4,\"stars\":5,\"status\":\"FREE\"}]}";
 
    // ClientQueryService.queryHandler(ObjectToJsonConverter.convertObject(queryData));

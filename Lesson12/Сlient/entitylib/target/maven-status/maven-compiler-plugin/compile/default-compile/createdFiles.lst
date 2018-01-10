@@ -1,8 +1,0 @@
-com\entity\Guest.class
-com\entity\HotelEntity.class
-com\entity\GuestRoomInfo.class
-com\entity\Room.class
-com\entity\ServiceType.class
-com\entity\RoomStatus.class
-com\entity\Service.class
-com\entity\GuestServiceInfo.class

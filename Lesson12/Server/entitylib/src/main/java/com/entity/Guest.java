@@ -2,9 +2,11 @@ package com.entity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 
-
+@Proxy(lazy = false)
 @Entity
 @Table(name = "guest")
 public class Guest extends HotelEntity {

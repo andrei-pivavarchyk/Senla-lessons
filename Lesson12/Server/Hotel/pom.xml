@@ -16,6 +16,7 @@
 </parent>
 <dependencies>
 
+
     <dependency>
         <groupId>server</groupId>
         <artifactId>serializationService</artifactId>
@@ -34,10 +35,9 @@
     </dependency>
     <dependency>
         <groupId>server</groupId>
-        <artifactId>entityLib</artifactId>
+        <artifactId>entitylib</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
-
 
 
 </dependencies>

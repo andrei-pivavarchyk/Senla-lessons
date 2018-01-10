@@ -2,6 +2,7 @@ package com.testHotel.controller;
 
 
 import com.entity.Guest;
+import com.entity.GuestRoomInfo;
 import com.entity.Room;
 import com.entity.Service;
 import com.testHotel.service.*;
@@ -12,6 +13,23 @@ import java.util.List;
 public interface IHotelController {
      void startHotel();
     void endHotel() throws SQLException;
+
+    //GuestService
+    Long  getAllGuestsCount();
+    void addGuestToRoom(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day);
+    List<Guest> getAllGuests();
+    Guest getGuestById(Integer id);
+    List<Guest> getAllGuestsSortedByDateDeparture();
+    List<Guest> getAllGuestsSortedByName();
+    Integer getPayAmount(Guest guest);
+    List<GuestRoomInfo> getCurrentGuestRoomInfo();
+    void addGuest(Guest guest);
+    void removeGuest(Integer id);
+    void updateGuest(Guest guest);
+
+
+
+
     Room getRoomByNumber(Integer number);
     List<Room> getFreeRooms();
     void setFileService(IFileService fileService);
@@ -19,7 +37,6 @@ public interface IHotelController {
     void  setGuestService(IGuestService guestService);
     void  setRoomService(IRoomService roomService);
     void setServiceService(IServiceService serviceService);
-    void addGuest(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day);
     void addGuestService(Guest guest, Service service, Integer year, Integer month, Integer day);
     void readRoomsFromFile() throws Exception;
     void setRoomCost(int roomNumber, int cost);
@@ -34,7 +51,6 @@ public interface IHotelController {
     String getRoomFilePath();
     IPrinterService getPrinterService();
     List<Room> getAllRooms();
-    List<Guest> getAllGuests();
     List<Service> getAllServices();
 
 }

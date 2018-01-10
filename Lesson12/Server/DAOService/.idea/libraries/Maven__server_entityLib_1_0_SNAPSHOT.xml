@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Maven: server:entityLib:1.0-SNAPSHOT">
+  <library name="Maven: server:entitylib:1.0-SNAPSHOT">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/server/entitylib/1.0-SNAPSHOT/entitylib-1.0-SNAPSHOT.jar!/" />
     </CLASSES>

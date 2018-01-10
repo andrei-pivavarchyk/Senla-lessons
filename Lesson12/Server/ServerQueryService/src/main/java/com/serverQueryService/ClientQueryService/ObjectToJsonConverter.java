@@ -9,11 +9,12 @@ public class ObjectToJsonConverter {
 
     public static String convertObject(Object someObject) {
         try {
+
             String someString = objectMapper.writeValueAsString(someObject);
             return someString;
         } catch (IOException e) {
             log.error(e.toString());
+            return e.toString();
         }
-        return null;
     }
 }

@@ -1,7 +1,7 @@
 package com.dao;
 
 
-import com.entity.Guest;
+
 import com.entity.HotelEntity;
 import org.hibernate.Query;
 import org.hibernate.Session;

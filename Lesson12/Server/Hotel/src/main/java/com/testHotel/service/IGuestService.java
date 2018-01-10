@@ -12,4 +12,8 @@ public interface IGuestService {
      Long getAllGuestsCount();
     Integer getPayAmount(Guest guest);
     List<GuestRoomInfo> getCurrentGuestRoomInfo();
+    Guest getGuestById(Integer id);
+    void addGuest(Guest guest);
+    void removeGuest(Guest guest);
+    void updateGuest(Guest guest);
 }

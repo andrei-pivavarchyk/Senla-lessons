@@ -21,9 +21,9 @@ public class Main {
         Guest guest=new Guest(1,"Bob","bob");
         Room room =new Room(77,34,4,1);
         Guest guest1=new Guest("Fd","fd");
-        guestHibernateDao.addEntity(guest);
-        GuestRoomInfo guestRoomInfo=new GuestRoomInfo(1,guest,room,new Date(),departureDate,true);
-        GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,serviceEntity1,new Date());
+       // guestHibernateDao.addEntity(guest);
+      //  GuestRoomInfo guestRoomInfo=new GuestRoomInfo(1,guest,room,new Date(),departureDate,true);
+       // GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,serviceEntity1,new Date());
 
 
 List<Room> roomList=roomHibernateDao.getAllEntities(TypeSorting.NO_SORTING);
@@ -43,6 +43,10 @@ List<Room> roomList=roomHibernateDao.getAllEntities(TypeSorting.NO_SORTING);
         guestHibernateDao.deleteEntity(guest);
 
 */
+
+
+              guestRoomHibernateDao.getGuestByStatus(RoomStatus.RESERVED,TypeSorting.BY_ARRIVAL_DATE);
+    //guestServiceHibernateDao.getAllGuestServices(guest,TypeSorting.BY_COST);
     }
 
     }

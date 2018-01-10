@@ -117,9 +117,7 @@ public GuestRoomInfoDAO(){
             createQuery.setParameter("param", true);
         }
         if(sorting.getType()!=TypeSorting.NO_SORTING.getType()){
-           String query=createQuery.getQueryString();
-         query= query.concat("order by :status");
-            createQuery.setParameter("status", sorting.getType());
+            createQuery.getQueryString().concat(" order by" + sorting.getType());
         }
 
         createQuery.list();
