@@ -1,21 +1,15 @@
 package com.servlet;
 
 import com.dao.GuestDAO;
-import com.dao.IRoomDAO;
-import com.dao.RoomDAO;
 import com.dependencyService.DependencyService;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.entity.Guest;
-import com.entity.Room;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
 import org.apache.log4j.Logger;
@@ -29,7 +23,7 @@ public class GuestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
- if (request.getParameter("id") != null) {
+        if (request.getParameter("id") != null) {
             Integer id = parseInt(request.getParameter("id"));
             Guest guest=hotelController.getGuestById(id);
             String guestJson = ObjectConverterToJson.convertObject(guest);
@@ -89,7 +83,6 @@ public class GuestServlet extends HttpServlet {
             pw.println("succes");
         }
     }
-
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -2,8 +2,6 @@ package com.servlet;
 
 import com.dao.GuestDAO;
 import com.dependencyService.DependencyService;
-
-
 import com.entity.Guest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
@@ -29,12 +27,12 @@ public class GuestSortingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("sorting") == null) {
-/*
+
            // Integer id = parseInt(request.getParameter("id"));
             List<Guest> guestList=hotelController.getAllGuests();
-            String guestListJson = ObjectConverterToJson.convertObject(guestList);*/
+            String guestListJson = ObjectConverterToJson.convertObject(guestList);
             PrintWriter pw = response.getWriter();
-            pw.println("alllguests");
+            pw.println(guestListJson);
         }
     }
 

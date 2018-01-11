@@ -7,14 +7,12 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args){
-       ServiceDAO serviceHibernateDao=new ServiceDAO();
+        ServiceDAO serviceHibernateDao=new ServiceDAO();
         GuestDAO guestHibernateDao=new GuestDAO();
         GuestServiceDAO guestServiceHibernateDao=new GuestServiceDAO();
         RoomDAO roomHibernateDao=new RoomDAO();
         GuestRoomInfoDAO guestRoomHibernateDao=new GuestRoomInfoDAO();
 
-        System.out.print(guestHibernateDao.getEntityById(2));
-/*
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         gregorianCalendar.set(2018,2,3);
         Date departureDate=gregorianCalendar.getTime();
@@ -37,18 +35,19 @@ List<Room> roomList=roomHibernateDao.getAllEntities(TypeSorting.NO_SORTING);
         guestServiceHibernateDao.addEntity(guestServiceInfo);
         guestRoomHibernateDao.addEntity(guestRoomInfo);
          guestRoomHibernateDao.getCurrentGuestRoomInfo(true,TypeSorting.BY_ARRIVAL_DATE);
-        //guguestServiceHibernateDao.deleteEntity(guestServiceInfo);
+
+     //   guestServiceHibernateDao.deleteEntity(guestServiceInfo);
        // guestRoomHibernateDao.deleteEntity(guestRoomInfo);
        // serviceHibernateDao.deleteEntity(serviceEntity1);
        // roomHibernateDao.deleteEntity(room);
         //guestHibernateDao.deleteEntity(guest);
 
-*/
+
 
 
            //   guestRoomHibernateDao.getGuestByStatus(RoomStatus.RESERVED,TypeSorting.BY_ARRIVAL_DATE);
     //guestServiceHibernateDao.getAllGuestServices(guest,TypeSorting.BY_COST);
-  }
+    }
 
     }
 

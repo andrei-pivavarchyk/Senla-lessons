@@ -37,7 +37,7 @@
         </resources>
     </build>
     <modules>
-
+        <module>entitylib</module>
         <module>Hotel</module>
         <module>Configurator</module>
         <module>daoService</module>
@@ -47,7 +47,6 @@
         <module>ServerQueryService</module>
         <module>Servlet</module>
         <module>resources</module>
-        <module>entitylib</module>
     </modules>
 
 

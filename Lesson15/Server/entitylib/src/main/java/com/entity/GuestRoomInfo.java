@@ -13,7 +13,7 @@ import java.util.Date;
 public class GuestRoomInfo extends HotelEntity {
 
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="guest")
     private Guest guest;
     @ManyToOne

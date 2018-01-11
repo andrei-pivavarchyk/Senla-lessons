@@ -2,13 +2,11 @@ package com.entity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 
-
+@Proxy(lazy = false)
 @Entity
 @Table(name = "guest")
 public class Guest extends HotelEntity {
@@ -31,24 +29,23 @@ public class Guest extends HotelEntity {
     }
 public Guest(){}
 
-@Getter
+
     public String getName() {
         return name;
     }
-@Setter
+
     public void setName(String name) {
         this.name = name;
     }
 
-    @Getter
+
     public String getSurname() {
         return surname;
     }
-    @Setter
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
 
     @Override
     public boolean equals(Object o) {
