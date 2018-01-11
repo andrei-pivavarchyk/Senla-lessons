@@ -7,12 +7,13 @@ import java.util.Date;
 @Entity
 @Table(name = "guestserviceinfo")
 public class GuestServiceInfo extends HotelEntity {
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="guest")
     private Guest guest;
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="service")
     private Service service;
+
     private Date date;
 
     public GuestServiceInfo(Integer id, Guest guest, Service service, Date date) {

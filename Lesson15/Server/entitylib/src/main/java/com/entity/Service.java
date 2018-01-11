@@ -1,6 +1,7 @@
 package com.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -12,6 +13,8 @@ public class Service extends HotelEntity {
     @Enumerated(EnumType.ORDINAL)
     private ServiceType type;
 
+    @OneToMany( cascade = {CascadeType.ALL})
+    private List<GuestServiceInfo> guestServiceInfoList ;
 
 
     public Service(Integer id, ServiceType type, String name, int cost) {
@@ -53,6 +56,14 @@ public class Service extends HotelEntity {
 
     public void setType(ServiceType type) {
         this.type = type;
+    }
+
+    public List<GuestServiceInfo> getGuestServiceInfoList() {
+        return guestServiceInfoList;
+    }
+
+    public void setGuestServiceInfoList(List<GuestServiceInfo> guestServiceInfoList) {
+        this.guestServiceInfoList = guestServiceInfoList;
     }
 
     @Override

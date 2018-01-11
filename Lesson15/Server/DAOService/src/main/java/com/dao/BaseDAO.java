@@ -44,9 +44,11 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
         getSession().getTransaction().commit();
     }
 
-    public void deleteEntity(T entity) {
+    public void deleteEntity(Integer id) {
         getSession().beginTransaction();
-        session.delete(entity);
+        Query createQuery = getSession().createQuery(" delete "+getTableName()+" where id =:param ");
+        createQuery.setParameter("param", id);
+        createQuery.executeUpdate();
         getSession().getTransaction().commit();
     }
 

@@ -22,26 +22,13 @@ public class GuestService implements IGuestService, Serializable {
     public Logger log = Logger.getLogger(GuestService.class);
 
 
-    public List<Guest> getAllGuests() {
+    public List<Guest> getAllGuests(TypeSorting sorting) {
         synchronized (this.guestRoomInfoDAO) {
-            List<Guest> allGuests = guestRoomInfoDAO.getGuestByStatus(RoomStatus.RESERVED, TypeSorting.NO_SORTING);
+            List<Guest> allGuests = guestRoomInfoDAO.getGuestByStatus(RoomStatus.RESERVED,sorting);
             return allGuests;
         }
     }
 
-    public List<Guest> getAllGuestsSortedByDateDeparture() {
-        synchronized (this.guestRoomInfoDAO) {
-            List<Guest> allGuests = guestRoomInfoDAO.getGuestByStatus(RoomStatus.RESERVED, TypeSorting.BY_DEPARTURE_DATE);
-            return allGuests;
-        }
-    }
-
-    public List<Guest> getAllGuestsSortedByName() {
-        synchronized (this.guestRoomInfoDAO) {
-            List<Guest> allGuests = guestRoomInfoDAO.getGuestByStatus(RoomStatus.RESERVED, TypeSorting.BY_NAME);
-            return allGuests;
-        }
-    }
 
     public Long getAllGuestsCount() {
         synchronized (this.guestRoomInfoDAO) {
@@ -76,8 +63,8 @@ public class GuestService implements IGuestService, Serializable {
         this.guestDAO.addEntity(guest);
     }
 
-    public void removeGuest(Guest guest) {
-        this.guestDAO.deleteEntity(guest);
+    public void removeGuest(Integer id) {
+        this.guestDAO.deleteEntity(id);
     }
 
     public void updateGuest(Guest guest) {

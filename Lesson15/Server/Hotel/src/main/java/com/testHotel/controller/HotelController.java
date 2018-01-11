@@ -3,6 +3,7 @@ package com.testHotel.controller;
 import com.configurator.*;
 
 
+import com.dao.TypeSorting;
 import com.dependencyService.DependencyService;
 import com.entity.Guest;
 import com.entity.GuestRoomInfo;
@@ -44,15 +45,10 @@ public class HotelController implements IHotelController {
     public void addGuest(Guest guest) {
         this.guestService.addGuest(guest);
     }
-    public List<Guest> getAllGuests() {
-        return this.guestService.getAllGuests();
+    public List<Guest> getAllGuests(TypeSorting sorting) {
+        return this.guestService.getAllGuests(sorting);
     }
-    public List<Guest> getAllGuestsSortedByDateDeparture() {
-      return  this.guestService.getAllGuestsSortedByDateDeparture();
-    }
-    public List<Guest> getAllGuestsSortedByName() {
-        return  this.guestService.getAllGuestsSortedByName();
-    }
+
     public Integer getPayAmount(Guest guest) {
       return  this.guestService.getPayAmount(guest);
     }
@@ -70,10 +66,9 @@ public class HotelController implements IHotelController {
 
     public void removeGuest(Integer id){
         Guest guest=this.guestService.getGuestById(id);
-        if(guest!=null){
-            guestService.removeGuest(guest);
+            guestService.removeGuest(id);
         }
-    }
+
     public void updateGuest(Guest guest){
         this.guestService.updateGuest(guest);
     }

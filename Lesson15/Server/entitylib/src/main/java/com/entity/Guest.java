@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Proxy(lazy = false)
 @Entity
@@ -17,6 +18,14 @@ public class Guest extends HotelEntity {
     @Column(name = "surname")
     private String surname;
 
+
+    @OneToMany( cascade = {CascadeType.ALL})
+    private List<GuestRoomInfo> guestRoomInfoList ;
+
+    @OneToMany( cascade = {CascadeType.ALL})
+    private List<GuestServiceInfo> guestServiceInfoList ;
+
+
     public Guest( String name, String surName) {
         this.name = name;
         this.surname = surName;
@@ -27,7 +36,23 @@ public class Guest extends HotelEntity {
         this.name = name;
         this.surname = surName;
     }
-public Guest(){}
+       public Guest(){}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public String getName() {
@@ -45,6 +70,22 @@ public Guest(){}
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public List<GuestRoomInfo> getGuestRoomInfoList() {
+        return guestRoomInfoList;
+    }
+
+    public List<GuestServiceInfo> getGuestServiceInfoList() {
+        return guestServiceInfoList;
+    }
+
+    public void setGuestRoomInfoList(List<GuestRoomInfo> guestRoomInfoList) {
+        this.guestRoomInfoList = guestRoomInfoList;
+    }
+
+    public void setGuestServiceInfoList(List<GuestServiceInfo> guestServiceInfoList) {
+        this.guestServiceInfoList = guestServiceInfoList;
     }
 
     @Override

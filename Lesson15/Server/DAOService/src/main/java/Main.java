@@ -18,7 +18,7 @@ public class Main {
         Date departureDate=gregorianCalendar.getTime();
 
         Service serviceEntity1=new Service(1, ServiceType.EAT,"hjjjjjfc",1);
-        Guest guest=new Guest(1,"Bob","bob");
+        Guest guest=new Guest(2,"Bob","bob");
         Room room =new Room(77,34,4,1);
         Guest guest1=new Guest("Fd","fd");
        guestHibernateDao.addEntity(guest);
@@ -29,14 +29,15 @@ public class Main {
 List<Room> roomList=roomHibernateDao.getAllEntities(TypeSorting.NO_SORTING);
 
 
-        serviceHibernateDao.addEntity(serviceEntity1);
+       // serviceHibernateDao.addEntity(serviceEntity1);
         roomHibernateDao.addEntity(room);
         guestHibernateDao.addEntity(guest);
-        guestServiceHibernateDao.addEntity(guestServiceInfo);
+      //  guestServiceHibernateDao.addEntity(guestServiceInfo);
         guestRoomHibernateDao.addEntity(guestRoomInfo);
-         guestRoomHibernateDao.getCurrentGuestRoomInfo(true,TypeSorting.BY_ARRIVAL_DATE);
-
-     //   guestServiceHibernateDao.deleteEntity(guestServiceInfo);
+      //   guestRoomHibernateDao.getCurrentGuestRoomInfo(true,TypeSorting.BY_ARRIVAL_DATE);
+      // guestRoomHibernateDao.deleteEntity(1);
+ guestHibernateDao.deleteEntity(1);
+   //  guestServiceHibernateDao.deleteEntity(1);
        // guestRoomHibernateDao.deleteEntity(guestRoomInfo);
        // serviceHibernateDao.deleteEntity(serviceEntity1);
        // roomHibernateDao.deleteEntity(room);

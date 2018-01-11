@@ -1,6 +1,7 @@
 package com.testHotel.controller;
 
 
+import com.dao.TypeSorting;
 import com.entity.Guest;
 import com.entity.GuestRoomInfo;
 import com.entity.Room;
@@ -17,10 +18,8 @@ public interface IHotelController {
     //GuestService
     Long  getAllGuestsCount();
     void addGuestToRoom(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day);
-    List<Guest> getAllGuests();
+    List<Guest> getAllGuests(TypeSorting sorting);
     Guest getGuestById(Integer id);
-    List<Guest> getAllGuestsSortedByDateDeparture();
-    List<Guest> getAllGuestsSortedByName();
     Integer getPayAmount(Guest guest);
     List<GuestRoomInfo> getCurrentGuestRoomInfo();
     void addGuest(Guest guest);
