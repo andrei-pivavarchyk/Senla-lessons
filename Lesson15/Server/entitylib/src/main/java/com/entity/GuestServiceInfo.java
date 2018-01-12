@@ -7,10 +7,10 @@ import java.util.Date;
 @Entity
 @Table(name = "guestserviceinfo")
 public class GuestServiceInfo extends HotelEntity {
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="guest")
     private Guest guest;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="service")
     private Service service;
 

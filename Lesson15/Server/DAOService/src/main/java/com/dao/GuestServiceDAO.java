@@ -1,7 +1,7 @@
 package com.dao;
 
 import com.entity.Guest;
-import com.entity.GuestRoomInfo;
+
 import com.entity.GuestServiceInfo;
 import com.entity.Service;
 import org.hibernate.Query;

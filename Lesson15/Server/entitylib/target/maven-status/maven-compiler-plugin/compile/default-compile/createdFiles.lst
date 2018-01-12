@@ -1,6 +1,7 @@
 com\entity\Guest.class
 com\entity\HotelEntity.class
 com\entity\GuestRoomInfo.class
+com\entity\Main.class
 com\entity\Room.class
 com\entity\ServiceType.class
 com\entity\RoomStatus.class

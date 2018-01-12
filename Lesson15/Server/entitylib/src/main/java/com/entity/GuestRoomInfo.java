@@ -1,6 +1,8 @@
 package com.entity;
 
 
+
+
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -14,10 +16,10 @@ import java.util.Date;
 public class GuestRoomInfo extends HotelEntity {
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="guest")
     private Guest guest;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="room")
     private Room room;
     private Date arrivaldate;
