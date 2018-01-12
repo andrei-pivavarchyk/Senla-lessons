@@ -44,7 +44,7 @@ public class Main {
         session.getTransaction().commit();
 
 */
-   guestHibernateDao.deleteEntity(2);
+  // guestHibernateDao.deleteEntity(2);
        // guestRoomHibernateDao.deleteEntity(1);
         //guestHibernateDao.addEntity(guest);
      // guestServiceHibernateDao.addEntity(guestServiceInfo);
