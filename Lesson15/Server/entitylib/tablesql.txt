@@ -1,0 +1,14 @@
+ CREATE TABLE `guestroominfo` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+  `arrivaldate` datetime DEFAULT NULL,
+            `departuredate` datetime DEFAULT NULL,
+            `isStillLiving` int(11) NOT NULL,
+  `guest` int(11) DEFAULT NULL,
+  `room` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `FK1AD7D5E128946912` (`guest`),
+    KEY `FK1AD7D5E1E892C014` (`room`),
+    CONSTRAINT `FK1AD7D5E128946912` FOREIGN KEY (`guest`) REFERENCES `guest` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `FK1AD7D5E1E892C014` FOREIGN KEY (`room`) REFERENCES `room` (`id`) ON DELETE CASCADE
+            ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
+    

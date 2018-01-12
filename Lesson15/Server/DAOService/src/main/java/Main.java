@@ -1,10 +1,21 @@
 import com.dao.*;
 import com.entity.*;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import java.util.*;
 
 
 public class Main {
     public static void main(String[] args){
+     /*
+*/
+
+
+
+
+
         ServiceDAO serviceHibernateDao=new ServiceDAO();
         GuestDAO guestHibernateDao=new GuestDAO();
         GuestServiceDAO guestServiceHibernateDao=new GuestServiceDAO();
@@ -20,13 +31,24 @@ public class Main {
        guestHibernateDao.addEntity(guest);
         GuestRoomInfo guestRoomInfo=new GuestRoomInfo(1,guest,room,new Date(),departureDate,true);
         GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,serviceEntity1,new Date());
-
-List<Room> roomList=roomHibernateDao.getAllEntities(TypeSorting.NO_SORTING);
-       // serviceHibernateDao.addEntity(serviceEntity1);
         roomHibernateDao.addEntity(room);
-                         //guestHibernateDao.deleteEntity(1);
+      guestRoomHibernateDao.addEntity(guestRoomInfo);
+
+       // serviceHibernateDao.addEntity(serviceEntity1);
+
+/*
+        SessionFactory factory = Factory.getSessionFactory();
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.delete(guest);
+        session.getTransaction().commit();
+
+*/
+   guestHibernateDao.deleteEntity(2);
+       // guestRoomHibernateDao.deleteEntity(1);
+        //guestHibernateDao.addEntity(guest);
      // guestServiceHibernateDao.addEntity(guestServiceInfo);
-        guestRoomHibernateDao.addEntity(guestRoomInfo);
+       // guestRoomHibernateDao.addEntity(guestRoomInfo);
       //   guestRoomHibernateDao.getCurrentGuestRoomInfo(true,TypeSorting.BY_ARRIVAL_DATE);
     //guestRoomHibernateDao.deleteEntity(1);
  //guestHibernateDao.deleteEntity(1);
@@ -41,6 +63,7 @@ List<Room> roomList=roomHibernateDao.getAllEntities(TypeSorting.NO_SORTING);
 
            //   guestRoomHibernateDao.getGuestByStatus(RoomStatus.RESERVED,TypeSorting.BY_ARRIVAL_DATE);
     //guestServiceHibernateDao.getAllGuestServices(guest,TypeSorting.BY_COST);
+
     }
 
     }

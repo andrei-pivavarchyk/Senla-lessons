@@ -17,9 +17,6 @@ import java.io.Serializable;
 
 @MappedSuperclass
 public class HotelEntity implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Integer id;
 
 
@@ -35,9 +32,11 @@ public class HotelEntity implements Serializable {
         this.id = id;
     }
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
-
-
 }

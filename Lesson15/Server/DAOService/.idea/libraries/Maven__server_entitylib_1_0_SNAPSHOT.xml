@@ -4,12 +4,10 @@
       <root url="jar://$MAVEN_REPOSITORY$/server/entitylib/1.0-SNAPSHOT/entitylib-1.0-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/server/entityLib/1.0-SNAPSHOT/entityLib-1.0-SNAPSHOT-javadoc.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/server/entityLib/1.0-SNAPSHOT/entityLib-1.0-SNAPSHOT-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/server/entitylib/1.0-SNAPSHOT/entitylib-1.0-SNAPSHOT-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/server/entityLib/1.0-SNAPSHOT/entityLib-1.0-SNAPSHOT-sources.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/server/entityLib/1.0-SNAPSHOT/entityLib-1.0-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/server/entitylib/1.0-SNAPSHOT/entitylib-1.0-SNAPSHOT-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -12,10 +12,7 @@ public class Service extends HotelEntity {
     private Integer cost;
     @Enumerated(EnumType.ORDINAL)
     private ServiceType type;
-
-    @OneToMany( cascade = {CascadeType.ALL})
     private List<GuestServiceInfo> guestServiceInfoList ;
-
 
     public Service(Integer id, ServiceType type, String name, int cost) {
         super(id);
@@ -58,6 +55,7 @@ public class Service extends HotelEntity {
         this.type = type;
     }
 
+    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
     public List<GuestServiceInfo> getGuestServiceInfoList() {
         return guestServiceInfoList;
     }

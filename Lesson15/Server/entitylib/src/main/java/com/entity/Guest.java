@@ -7,54 +7,34 @@ import org.hibernate.annotations.Proxy;
 import javax.persistence.*;
 import java.util.List;
 
-@Proxy(lazy = false)
+//@Proxy(lazy = false)
 @Entity
 @Table(name = "guest")
 public class Guest extends HotelEntity {
-    @Basic
-    @Column(name = "name")
+
     private String name;
-    @Basic
-    @Column(name = "surname")
     private String surname;
+    private List<GuestRoomInfo> guestRoomInfoList;
+    private List<GuestServiceInfo> guestServiceInfoList;
 
-
-    @OneToMany( cascade = {CascadeType.ALL})
-    private List<GuestRoomInfo> guestRoomInfoList ;
-
-    @OneToMany( cascade = {CascadeType.ALL})
-    private List<GuestServiceInfo> guestServiceInfoList ;
-
-
-    public Guest( String name, String surName) {
+    public Guest(String name, String surName) {
         this.name = name;
         this.surname = surName;
     }
+
     @JsonCreator
     public Guest(@JsonProperty("id") Integer id, @JsonProperty("name") String name, @JsonProperty("surName") String surName) {
-      super(id);
+        super(id);
         this.name = name;
         this.surname = surName;
     }
-       public Guest(){}
+
+    public Guest() {
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Basic
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -63,7 +43,8 @@ public class Guest extends HotelEntity {
         this.name = name;
     }
 
-
+    @Basic
+    @Column(name = "surname")
     public String getSurname() {
         return surname;
     }
@@ -72,10 +53,14 @@ public class Guest extends HotelEntity {
         this.surname = surname;
     }
 
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL,orphanRemoval = true)
     public List<GuestRoomInfo> getGuestRoomInfoList() {
         return guestRoomInfoList;
     }
 
+
+
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL)
     public List<GuestServiceInfo> getGuestServiceInfoList() {
         return guestServiceInfoList;
     }
@@ -104,7 +89,7 @@ public class Guest extends HotelEntity {
 
     @Override
     public int hashCode() {
-        int result =(int) getId();
+        int result = (int) getId();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         return result;

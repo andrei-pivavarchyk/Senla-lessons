@@ -3,29 +3,22 @@ package com.entity;
 
 
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
-
-
 
 @Entity
 @Table(name = "guestroominfo")
 public class GuestRoomInfo extends HotelEntity {
 
-
-    @OneToOne
-    @JoinColumn(name="guest")
-    private Guest guest;
-    @OneToOne
-    @JoinColumn(name="room")
-    private Room room;
+    public Guest guest;
+    public Room room;
     private Date arrivaldate;
     private Date departuredate;
-    @Column(name = "isStillLiving", nullable = false)
-    @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isStillLiving=true;
 
     public GuestRoomInfo(Guest guest,Room room,Date arrivaldate,Date departuredate,Boolean isStillLiving) {
@@ -50,7 +43,6 @@ public GuestRoomInfo(){}
     public Date getArrivaldate() {
         return arrivaldate;
     }
-
     public void setArrivaldate(Timestamp arrivaldate) {
         this.arrivaldate = arrivaldate;
     }
@@ -61,36 +53,39 @@ public GuestRoomInfo(){}
         return departuredate;
     }
 
+    @Column(name = "isStillLiving", nullable = false)
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    public Boolean getIsstillliving() {
+        return isStillLiving;
+    }
+
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="guest")
+    public Guest getGuest() {
+        return guest;
+    }
+
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="room")
+    public Room getRoom() {
+        return room;
+    }
+
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+    public void setIsstillliving(Boolean isstillliving) {
+        this.isStillLiving = isstillliving;
+    }
     public void setDeparturedate(Timestamp departuredate) {
         this.departuredate = departuredate;
     }
 
 
-    public Boolean getIsstillliving() {
-        return isStillLiving;
-    }
-
-    public void setIsstillliving(Boolean isstillliving) {
-        this.isStillLiving = isstillliving;
-    }
-
-
-    public Guest getGuest() {
-        return guest;
-    }
-
-    public void setGuest(Guest guest) {
-        this.guest = guest;
-    }
-
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
 
     @Override
     public boolean equals(Object o) {
