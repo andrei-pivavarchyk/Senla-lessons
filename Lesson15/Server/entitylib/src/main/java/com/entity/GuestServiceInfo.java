@@ -7,13 +7,9 @@ import java.util.Date;
 @Entity
 @Table(name = "guestserviceinfo")
 public class GuestServiceInfo extends HotelEntity {
-    @ManyToOne( cascade = {CascadeType.ALL})
-    @JoinColumn(name="guest")
-    private Guest guest;
-    @OneToOne( cascade = {CascadeType.ALL})
-    @JoinColumn(name="service")
-    private Service service;
 
+    private Guest guest;
+    private Service service;
     private Date date;
 
     public GuestServiceInfo(Integer id, Guest guest, Service service, Date date) {
@@ -38,7 +34,8 @@ public GuestServiceInfo(){}
         this.date = date;
     }
 
-
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="guest")
     public Guest getGuest() {
         return guest;
     }
@@ -47,31 +44,30 @@ public GuestServiceInfo(){}
     }
 
 
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="service")
     public Service getService() {
         return service;
     }
-
     public void setService(Service service) {
         this.service = service;
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         GuestServiceInfo that = (GuestServiceInfo) o;
-
         if (getId() != that.getId()) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
-
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result =(int) getId();
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        return result;
+    int result =(int) getId();
+    result = 31 * result + (date != null ? date.hashCode() : 0);
+    return result;
     }
 }

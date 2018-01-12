@@ -67,6 +67,7 @@ public GuestRoomInfo(){}
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="room")
+
     public Room getRoom() {
         return room;
     }

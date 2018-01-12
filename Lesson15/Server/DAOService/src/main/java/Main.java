@@ -1,8 +1,5 @@
 import com.dao.*;
 import com.entity.*;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.*;
 
@@ -11,10 +8,6 @@ public class Main {
     public static void main(String[] args){
      /*
 */
-
-
-
-
 
         ServiceDAO serviceHibernateDao=new ServiceDAO();
         GuestDAO guestHibernateDao=new GuestDAO();
@@ -44,7 +37,7 @@ public class Main {
         session.getTransaction().commit();
 
 */
-  // guestHibernateDao.deleteEntity(2);
+ guestHibernateDao.deleteEntity(2);
        // guestRoomHibernateDao.deleteEntity(1);
         //guestHibernateDao.addEntity(guest);
      // guestServiceHibernateDao.addEntity(guestServiceInfo);
@@ -67,5 +60,4 @@ public class Main {
     }
 
     }
-
 

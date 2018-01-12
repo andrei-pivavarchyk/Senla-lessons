@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS hotel4;
+CREATE DATABASE IF NOT EXISTS hotel7;
 
-use hotel4;
+use hotel7;
 
 
 
@@ -22,13 +22,13 @@ CREATE TABLE guest  (
 
 CREATE TABLE guestroominfo (
 `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-`arrivaldate` timestamp,
-`departuredate` timestamp,
+`arrivaldate` datetime,
+`departuredate` datetime,
 `guest` int,
 `room` int,
 `isstillliving` tinyint,
-FOREIGN KEY(guest) REFERENCES guest(id),
-FOREIGN KEY(room) REFERENCES room(number)
+FOREIGN KEY(guest) REFERENCES guest(id) ON DELETE CASCADE,
+FOREIGN KEY(room) REFERENCES room(number) ON DELETE CASCADE
 );
 
 
@@ -43,39 +43,10 @@ CREATE TABLE guestserviceinfo(
 `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `guest` int,
 `service` int,
-`date` timestamp,
-FOREIGN KEY(guest) REFERENCES guest(id),
-FOREIGN KEY(service) REFERENCES service(id)
+`date` datetime,
+FOREIGN KEY(guest) REFERENCES guest(id) ON DELETE CASCADE,
+FOREIGN KEY(service) REFERENCES service(id) ON DELETE CASCADE
 );
-
-INSERT INTO room ( number,cost,capacity,stars,status ) VALUES
-( 1,20,3,5,1),
-( 2,30,2,4,1),
-( 3,40,1,3,1),
-( 4,50,4,4,1),
-( 5,60,5,3,1);
-
-
-
-INSERT INTO service ( name, cost,type ) VALUES
-( 'spa',20,'SPA'),
-( 'pelmeni',20,'EAT'),
-( 'pizza',20,'EAT'),
-( 'telek',20,'SPA'),
-( 'cola',20,'EAT');
-
-
-
-INSERT INTO guest( name, surname ) VALUES
-( 'bob','white'),
-( 'jack','black'),
-( 'alice','red'),
-( 'grag','yellow');
-
-
-
-
-
 
 
 
