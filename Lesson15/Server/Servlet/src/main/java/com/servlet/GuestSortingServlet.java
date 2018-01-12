@@ -30,13 +30,15 @@ public class GuestSortingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Guest> guestList = new ArrayList<Guest>();
+
         if (request.getParameter("sorting") != null) {
             TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
             if (typeSorting != null) {
                 guestList = hotelController.getAllGuests(typeSorting);
-            } else {
-                guestList = hotelController.getAllGuests(TypeSorting.NO_SORTING);
             }
+        }
+        else {
+            guestList = hotelController.getAllGuests(TypeSorting.NO_SORTING);
         }
         String guestListJson = ObjectConverterToJson.convertObject(guestList);
         PrintWriter pw = response.getWriter();
