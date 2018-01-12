@@ -1,6 +1,8 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Proxy;
 
@@ -8,14 +10,16 @@ import javax.persistence.*;
 import java.util.List;
 
 
-//@Proxy(lazy = false)
+@Proxy(lazy = false)
 @Entity
 @Table(name = "guest")
 public class Guest extends HotelEntity {
 
     private String name;
     private String surname;
+    @JsonBackReference
     private List<GuestRoomInfo> guestRoomInfoList;
+    @JsonBackReference
     private List<GuestServiceInfo> guestServiceInfoList;
 
     public Guest(String name, String surName) {
@@ -55,16 +59,17 @@ public class Guest extends HotelEntity {
     }
 
     @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL,orphanRemoval = true)
+
     public List<GuestRoomInfo> getGuestRoomInfoList() {
         return guestRoomInfoList;
     }
 
-
-
     @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL)
+
     public List<GuestServiceInfo> getGuestServiceInfoList() {
         return guestServiceInfoList;
     }
+
 
     public void setGuestRoomInfoList(List<GuestRoomInfo> guestRoomInfoList) {
         this.guestRoomInfoList = guestRoomInfoList;

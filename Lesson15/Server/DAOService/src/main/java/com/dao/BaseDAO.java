@@ -6,6 +6,7 @@ import com.entity.HotelEntity;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -32,28 +33,28 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
 
 
     public void addEntity(T entity) {
-        getSession().beginTransaction();
+        Transaction transaction = getSession().beginTransaction();
         session.save(entity);
-        getSession().getTransaction().commit();
+        transaction.commit();
     }
 
     public void updateEntity(T entity) {
-        getSession().beginTransaction();
+        Transaction transaction = getSession().beginTransaction();
         session.update(entity);
-        getSession().getTransaction().commit();
+        transaction.commit();
     }
 
     public void deleteEntity(Integer id) {
-        getSession().beginTransaction();
+        Transaction transaction = getSession().beginTransaction();
         Query createQuery = getSession().createQuery(" delete "+getTableName()+" where id =:param ");
         createQuery.setParameter("param", id);
         createQuery.executeUpdate();
-        getSession().getTransaction().commit();
+        transaction.commit();
     }
 
     public List<T> getAllEntities( TypeSorting sorting) {
 
-     getSession().beginTransaction();
+        Transaction transaction = getSession().beginTransaction();
         Query createQuery = getSession().createQuery(" from "+getTableName() );
 
         if(sorting!=TypeSorting.NO_SORTING){
@@ -61,16 +62,16 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
             createQuery.setParameter("sorting",sorting.getType());
         }
         List <T> entityList=createQuery.list();
-      getSession().getTransaction().commit();
+        transaction.commit();
         return entityList;
     }
 
 
     public T getEntityById(Integer id) {
-        getSession().beginTransaction();
+        Transaction transaction = getSession().beginTransaction();
         T entity = null;
         entity = (T) getSession().load(getEntityClass(), id);
-        getSession().getTransaction().commit();
+        transaction.commit();
         return entity;
     }
 

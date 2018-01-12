@@ -43,6 +43,7 @@ public GuestRoomInfoDAO(){
         Query createQuery = super.getSession().createQuery("from GuestRoomInfo where room=:param and isStillLiving=false and departuredate=(select max(departuredate)  from GuestRoomInfo)");
         createQuery.setParameter("param", room);
         GuestRoomInfo gr =(GuestRoomInfo) createQuery.uniqueResult();
+        super.getSession().getTransaction().commit();
         return gr;
     }
 
@@ -50,6 +51,7 @@ public GuestRoomInfoDAO(){
         Query createQuery = super.getSession().createQuery("from GuestRoomInfo where guest=:param");
         createQuery.setParameter("param", guest);
         List<GuestRoomInfo> roomList = createQuery.list();
+        super.getSession().getTransaction().commit();
         return roomList;
     }
 
@@ -57,6 +59,7 @@ public GuestRoomInfoDAO(){
         Query createQuery = super.getSession().createQuery("from GuestRoomInfo where isStillLiving=:param");
         createQuery.setParameter("param", isLiving);
         List<GuestRoomInfo> guestRoomInfoList = createQuery.list();
+        super.getSession().getTransaction().commit();
         return guestRoomInfoList;
     }
 

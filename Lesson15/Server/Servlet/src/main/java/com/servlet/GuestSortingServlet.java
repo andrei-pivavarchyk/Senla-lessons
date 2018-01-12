@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -28,16 +29,18 @@ public class GuestSortingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        List<Guest> guestList = new ArrayList<Guest>();
         if (request.getParameter("sorting") != null) {
             TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
             if (typeSorting != null) {
-                List<Guest> guestList = hotelController.getAllGuests(typeSorting);
-                String guestListJson = ObjectConverterToJson.convertObject(guestList);
-                PrintWriter pw = response.getWriter();
-                pw.println(guestListJson);
+                guestList = hotelController.getAllGuests(typeSorting);
+            } else {
+                guestList = hotelController.getAllGuests(TypeSorting.NO_SORTING);
             }
         }
+        String guestListJson = ObjectConverterToJson.convertObject(guestList);
+        PrintWriter pw = response.getWriter();
+        pw.println(guestListJson);
     }
 
     @Override

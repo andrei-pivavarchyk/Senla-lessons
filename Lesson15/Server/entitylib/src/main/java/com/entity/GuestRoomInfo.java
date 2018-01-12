@@ -3,6 +3,8 @@ package com.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -14,8 +16,9 @@ import java.util.Date;
 @Entity
 @Table(name = "guestroominfo")
 public class GuestRoomInfo extends HotelEntity {
-
+    @JsonManagedReference
     public Guest guest;
+    @JsonManagedReference
     public Room room;
     private Date arrivaldate;
     private Date departuredate;

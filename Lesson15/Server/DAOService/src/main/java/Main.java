@@ -26,7 +26,7 @@ public class Main {
         GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,serviceEntity1,new Date());
         roomHibernateDao.addEntity(room);
       guestRoomHibernateDao.addEntity(guestRoomInfo);
-
+guestHibernateDao.getEntityById(2);
        // serviceHibernateDao.addEntity(serviceEntity1);
 
 /*
@@ -35,9 +35,8 @@ public class Main {
         session.beginTransaction();
         session.delete(guest);
         session.getTransaction().commit();
-
 */
- guestHibernateDao.deleteEntity(2);
+ //guestHibernateDao.deleteEntity(4);
        // guestRoomHibernateDao.deleteEntity(1);
         //guestHibernateDao.addEntity(guest);
      // guestServiceHibernateDao.addEntity(guestServiceInfo);
