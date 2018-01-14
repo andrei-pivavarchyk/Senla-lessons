@@ -28,30 +28,26 @@
                 </configuration>
             </plugin>
         </plugins>
-
         <resources>
             <resource>
                 <directory>resources</directory>
                 <filtering>false</filtering>
-                <targetPath>resources</targetPath>
             </resource>
         </resources>
     </build>
     <modules>
+        <module>entitylib</module>
         <module>Hotel</module>
         <module>Configurator</module>
         <module>daoService</module>
         <module>DependencyService</module>
         <module>PProperty</module>
         <module>Servlet</module>
-        <module>entitylib</module>
 
     </modules>
 
 
     <dependencies>
-
-
 
 
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
@@ -60,28 +56,24 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.9.3</version>
         </dependency>
-
-
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.9.3</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.9.3</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-
     </dependencies>
+
 </project>

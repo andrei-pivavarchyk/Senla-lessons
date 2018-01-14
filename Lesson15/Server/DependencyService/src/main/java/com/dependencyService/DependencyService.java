@@ -2,7 +2,6 @@ package com.dependencyService;
 
 
 import com.configurator.PropertyFilePath;
-
 import com.propertyService.PPropertyService;
 import org.apache.log4j.Logger;
 

@@ -8,20 +8,17 @@
     <artifactId>Hotel</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-<parent>
-    <groupId>server</groupId>
-    <artifactId>server</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-</parent>
-<dependencies>
-
-    <dependency>
+    <parent>
         <groupId>server</groupId>
-        <artifactId>daoService</artifactId>
+        <artifactId>server</artifactId>
         <version>1.0-SNAPSHOT</version>
-    </dependency>
-
-</dependencies>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>server</groupId>
+            <artifactId>daoService</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -31,13 +31,7 @@
             <artifactId>DependencyService</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
-
-
-
-
-
-
+        
     </dependencies>
     <build>
         <resources>
