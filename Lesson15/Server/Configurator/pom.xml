@@ -7,12 +7,10 @@
     <groupId>server</groupId>
     <artifactId>Configurator</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <parent>
         <groupId>server</groupId>
         <artifactId>server</artifactId>
         <version>1.0-SNAPSHOT</version>
-
     </parent>
     <dependencies>
         <dependency>
@@ -20,7 +18,6 @@
         <artifactId>PProperty</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
-
     </dependencies>
     <build>
         <resources>

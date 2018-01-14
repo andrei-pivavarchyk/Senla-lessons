@@ -9,7 +9,6 @@ import com.entity.Guest;
 import com.entity.GuestRoomInfo;
 import com.entity.Room;
 import com.entity.Service;
-import com.serializingService.ISerializableService;
 import com.testHotel.service.*;
 import org.apache.log4j.Logger;
 
@@ -26,58 +25,51 @@ public class HotelController implements IHotelController {
     private IPrinterService printerService = (IPrinterService) DependencyService.getDI().getInstance(IPrinterService.class);
     private IFileService fileService = (IFileService) DependencyService.getDI().getInstance(IFileService.class);
     private IConfigurator configurator = (IConfigurator) DependencyService.getDI().getInstance(IConfigurator.class);
-    private ISerializableService serializableService = (ISerializableService) DependencyService.getDI().getInstance(ISerializableService.class);
     public Logger log = Logger.getLogger(GuestService.class);
 
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.ROOM_PATH_FILE)
     private String roomFilePath;
 
-    public HotelController(){
+    public HotelController() {
         this.configurator.configure(this);
-        this.configurator.configure(this.serializableService);
     }
 
     public void startHotel() {
         this.configurator.configure(this);
-        this.configurator.configure(this.serializableService);
     }
 
     public void addGuest(Guest guest) {
         this.guestService.addGuest(guest);
     }
+
     public List<Guest> getAllGuests(TypeSorting sorting) {
         return this.guestService.getAllGuests(sorting);
     }
 
     public Integer getPayAmount(Guest guest) {
-      return  this.guestService.getPayAmount(guest);
+        return this.guestService.getPayAmount(guest);
     }
+
     public List<GuestRoomInfo> getCurrentGuestRoomInfo() {
-       return this.guestService.getCurrentGuestRoomInfo();
+        return this.guestService.getCurrentGuestRoomInfo();
     }
 
-    public Long  getAllGuestsCount(){
-      return  this.guestService.getAllGuestsCount();
+    public Long getAllGuestsCount() {
+        return this.guestService.getAllGuestsCount();
     }
 
-    public Guest getGuestById(Integer id){
-       return this.guestService.getGuestById(id);
+    public Guest getGuestById(Integer id) {
+        return this.guestService.getGuestById(id);
     }
 
-    public void removeGuest(Integer id){
-        Guest guest=this.guestService.getGuestById(id);
-            guestService.removeGuest(id);
-        }
+    public void removeGuest(Integer id) {
+        Guest guest = this.guestService.getGuestById(id);
+        guestService.removeGuest(id);
+    }
 
-    public void updateGuest(Guest guest){
+    public void updateGuest(Guest guest) {
         this.guestService.updateGuest(guest);
     }
-
-
-
-
-
-
 
     public void addGuestToRoom(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
         this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
@@ -110,10 +102,6 @@ public class HotelController implements IHotelController {
     public IPrinterService getPrinterService() {
         return printerService;
     }
-
-
-
-
 
 
     public void addGuestService(Guest guest, Service service, Integer year, Integer month, Integer day) {
@@ -170,7 +158,6 @@ public class HotelController implements IHotelController {
     }
 
 
-
     public void addRoom(Room room) {
         this.getRoomService().addRoom(room);
     }
@@ -192,6 +179,7 @@ public class HotelController implements IHotelController {
     public List<Service> getAllServices() {
         return this.serviceService.getAllHotelServices();
     }
+
     public void endHotel() {
     }
 }
