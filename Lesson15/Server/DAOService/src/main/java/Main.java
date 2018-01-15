@@ -7,28 +7,58 @@ import java.util.*;
 
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        ServiceDAO serviceHibernateDao=new ServiceDAO();
-        GuestDAO guestHibernateDao=new GuestDAO();
-        GuestServiceDAO guestServiceHibernateDao=new GuestServiceDAO();
-        RoomDAO roomHibernateDao=new RoomDAO();
-        GuestRoomInfoDAO guestRoomHibernateDao=new GuestRoomInfoDAO();
+        ServiceDAO serviceHibernateDao = new ServiceDAO();
+        GuestDAO guestHibernateDao = new GuestDAO();
+        GuestServiceDAO guestServiceHibernateDao = new GuestServiceDAO();
+        RoomDAO roomHibernateDao = new RoomDAO();
+        GuestRoomInfoDAO guestRoomHibernateDao = new GuestRoomInfoDAO();
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
-        gregorianCalendar.set(2018,2,3);
-        Date departureDate=gregorianCalendar.getTime();
-        Service serviceEntity1=new Service(1, ServiceType.EAT,"hjjjjjfc",1);
-        Guest guest=new Guest(2,"Bob","bob");
-        Room room =new Room(77,34,4,1);
-        Guest guest1=new Guest("Fd","fd");
-        GuestRoomInfo guestRoomInfo=new GuestRoomInfo(1,guest,room,new Date(),departureDate,true);
-        GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,serviceEntity1,new Date());
-        guestHibernateDao.addEntity(guest);
-        roomHibernateDao.addEntity(room);
-      guestRoomHibernateDao.addEntity(guestRoomInfo);
-guestHibernateDao.getEntityById(2);
-       // serviceHibernateDao.addEntity(serviceEntity1);
+        gregorianCalendar.set(2018, 2, 3);
+        Date departureDate = gregorianCalendar.getTime();
+        Service serviceEntity1 = new Service(1, ServiceType.EAT, "hjjjjjfc", 1);
+        Guest guest = new Guest(24, "Bob", "bob");
+        Room room = new Room(85,77, 34, 4, 1);
+        Guest guest1 = new Guest(3, "Fd", "fd");
+        GuestRoomInfo guestRoomInfo = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
+        GuestRoomInfo guestRoomInfo1 = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
+        GuestServiceInfo guestServiceInfo = new GuestServiceInfo(6, guest, serviceEntity1, new Date());
 
+        roomHibernateDao.addEntity(room);
+
+        guestHibernateDao.addEntity(guest);
+        guestHibernateDao.addEntity(guest);
+        guestHibernateDao.addEntity(guest);
+        guestHibernateDao.addEntity(guest);
+        guestRoomHibernateDao.addEntity(guestRoomInfo);
+        guestRoomHibernateDao.addEntity(guestRoomInfo);
+        guestRoomHibernateDao.addEntity(guestRoomInfo);
+/**
+ Guest Hibernate test
+ */
+
+        // guestHibernateDao.addEntity(guest);
+        //  guestHibernateDao.updateEntity(guest1);
+        //  guestHibernateDao.deleteEntity(4);
+        //  guestHibernateDao.getEntityById(3);
+
+/**
+ GuestRoomInfo
+ */
+
+        // guestRoomHibernateDao.addEntity(guestRoomInfo);
+        // guestRoomHibernateDao.deleteEntity(6);
+        // guestRoomHibernateDao.updateEntity(guestRoomInfo1);
+        //  guestRoomHibernateDao.getEntityById(7);
+       // guestRoomHibernateDao.departureGuest(guest);
+      guestRoomHibernateDao.getLastGuest(room);
+        guestRoomHibernateDao.getGuestRoomInfoByGuest(guest);
+
+
+         System.out.print(guestRoomHibernateDao.getCountOldGuestsByRoom(room));
+
+        // serviceHibernateDao.addEntity(serviceEntity1);
 /*
         SessionFactory factory = Factory.getSessionFactory();
         Session session = factory.openSession();
@@ -36,27 +66,25 @@ guestHibernateDao.getEntityById(2);
         session.delete(guest);
         session.getTransaction().commit();
 */
- //guestHibernateDao.deleteEntity(4);
-       // guestRoomHibernateDao.deleteEntity(1);
+        //guestHibernateDao.deleteEntity(4);
+        // guestRoomHibernateDao.deleteEntity(1);
         //guestHibernateDao.addEntity(guest);
-     // guestServiceHibernateDao.addEntity(guestServiceInfo);
-       // guestRoomHibernateDao.addEntity(guestRoomInfo);
-      //   guestRoomHibernateDao.getCurrentGuestRoomInfo(true,TypeSorting.BY_ARRIVAL_DATE);
-    //guestRoomHibernateDao.deleteEntity(1);
- //guestHibernateDao.deleteEntity(1);
-   //  guestServiceHibernateDao.deleteEntity(1);
-       // guestRoomHibernateDao.deleteEntity(guestRoomInfo);
-       // serviceHibernateDao.deleteEntity(serviceEntity1);
-       // roomHibernateDao.deleteEntity(room);
+        // guestServiceHibernateDao.addEntity(guestServiceInfo);
+        // guestRoomHibernateDao.addEntity(guestRoomInfo);
+        //   guestRoomHibernateDao.getCurrentGuestRoomInfo(true,TypeSorting.BY_ARRIVAL_DATE);
+        //guestRoomHibernateDao.deleteEntity(1);
+        //guestHibernateDao.deleteEntity(1);
+        //  guestServiceHibernateDao.deleteEntity(1);
+        // guestRoomHibernateDao.deleteEntity(guestRoomInfo);
+        // serviceHibernateDao.deleteEntity(serviceEntity1);
+        // roomHibernateDao.deleteEntity(room);
         //guestHibernateDao.deleteEntity(guest);
 
 
-
-
-           //   guestRoomHibernateDao.getGuestByStatus(RoomStatus.RESERVED,TypeSorting.BY_ARRIVAL_DATE);
-    //guestServiceHibernateDao.getAllGuestServices(guest,TypeSorting.BY_COST);
+        //   guestRoomHibernateDao.getGuestByStatus(RoomStatus.RESERVED,TypeSorting.BY_ARRIVAL_DATE);
+        //guestServiceHibernateDao.getAllGuestServices(guest,TypeSorting.BY_COST);
 
     }
 
-    }
+}
 

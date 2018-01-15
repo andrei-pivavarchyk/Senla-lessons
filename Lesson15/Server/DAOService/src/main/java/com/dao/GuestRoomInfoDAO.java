@@ -2,19 +2,20 @@ package com.dao;
 
 import com.dependencyService.DependencyService;
 import com.entity.*;
-import org.hibernate.Query;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRoomInfoDAO{
+public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRoomInfoDAO {
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
     private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
 
-public GuestRoomInfoDAO(){
-    super("GuestRoomInfo",GuestRoomInfoDAO.class);
-}
+    public GuestRoomInfoDAO() {
+        super("GuestRoomInfo", GuestRoomInfo.class);
+    }
 
     public void addGuest(GuestRoomInfo guestRoomInfo) {
         synchronized (this.guestDAO) {
@@ -30,114 +31,98 @@ public GuestRoomInfoDAO(){
 
     public void departureGuest(Guest guest) {
         super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery("from GuestRoomInfo where isStillLiving=true and guest=:param");
-        createQuery.setParameter("param", guest);
-        GuestRoomInfo guestRoomInfo=(GuestRoomInfo)createQuery.uniqueResult();
-        guestRoomInfo.setIsstillliving(false);
-        this.updateEntity(guestRoomInfo);
+        GuestRoomInfo object = (GuestRoomInfo) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("guest", guest)).uniqueResult();
+        object.setIsstillliving(false);
         super.getSession().getTransaction().commit();
+        this.updateEntity(object);
+
     }
 
-
-    public GuestRoomInfo getLastGuest(Room room){
-        Query createQuery = super.getSession().createQuery("from GuestRoomInfo where room=:param and isStillLiving=false and departuredate=(select max(departuredate)  from GuestRoomInfo)");
-        createQuery.setParameter("param", room);
-        GuestRoomInfo gr =(GuestRoomInfo) createQuery.uniqueResult();
-        super.getSession().getTransaction().commit();
-        return gr;
+    public GuestRoomInfo getLastGuest(Room room) {
+        Transaction transaction = getSession().beginTransaction();
+        List<GuestRoomInfo> object = (List<GuestRoomInfo>) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("room", room))
+                .add(Restrictions.eq("isstillliving", false))
+                .addOrder(Order.desc("departuredate"))
+                .list();
+        transaction.commit();
+        return object.get(object.size() - 1);
     }
 
     public List<GuestRoomInfo> getGuestRoomInfoByGuest(Guest guest) {
-        Query createQuery = super.getSession().createQuery("from GuestRoomInfo where guest=:param");
-        createQuery.setParameter("param", guest);
-        List<GuestRoomInfo> roomList = createQuery.list();
-        super.getSession().getTransaction().commit();
-        return roomList;
+        Transaction transaction = getSession().beginTransaction();
+        List<GuestRoomInfo> object = (List<GuestRoomInfo>) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("guest", guest))
+                .add(Restrictions.eq("isstillliving", true))
+                .list();
+        transaction.commit();
+        return object;
     }
 
     public List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving, TypeSorting sorting) {
-        Query createQuery = super.getSession().createQuery("from GuestRoomInfo where isStillLiving=:param");
-        createQuery.setParameter("param", isLiving);
-        List<GuestRoomInfo> guestRoomInfoList = createQuery.list();
-        super.getSession().getTransaction().commit();
-        return guestRoomInfoList;
+        Transaction transaction = getSession().beginTransaction();
+        List<GuestRoomInfo> object = (List<GuestRoomInfo>) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("isstillliving", true))
+                .list();
+        transaction.commit();
+        return object;
     }
 
     public void removeEntityByGuest(Guest guest) {
-
-        super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery(" delete GuestRoomInfo where guest =:param ");
-        createQuery.setParameter("param", guest);
-        createQuery.executeUpdate();
-        super.getSession().getTransaction().commit();
-
+        Transaction transaction = getSession().beginTransaction();
+        GuestRoomInfo object = (GuestRoomInfo) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("guest", guest))
+                .add(Restrictions.eq("isstillliving", true))
+                .uniqueResult();
+        getSession().delete(object);
+        transaction.commit();
     }
 
     public GuestRoomInfo getEntityByGuest(Guest guest) {
-        super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery(" from GuestRoomInfo where guest =:param ");
-        createQuery.setParameter("param", guest);
-        GuestRoomInfo gr= (GuestRoomInfo)createQuery.list().get(0);
-        super.getSession().getTransaction().commit();
-        return gr;
+        Transaction transaction = getSession().beginTransaction();
+        GuestRoomInfo object = (GuestRoomInfo) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("guest", guest))
+                .add(Restrictions.eq("isstillliving", true))
+                .uniqueResult();
+        transaction.commit();
+        return object;
     }
 
-    public void updateEntityStatus(Guest guest, RoomStatus status) {
-        super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery("update GuestRoomInfo set isStillLiving = :param");
-
-        if (status.equals(RoomStatus.FREE)) {
-            createQuery.setParameter("param", false);
-        } else {
-            createQuery.setParameter("param", true);
-        }
-
-        createQuery.executeUpdate();
-        super.getSession().getTransaction().commit();
-    }
 
     public Long getCountGuestsByStatus(RoomStatus status) {
-
-        super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery("select count(*) from GuestRoomInfo where isStillLiving =:param ");
-        if (status.equals(RoomStatus.FREE)) {
-            createQuery.setParameter("param", false);
-        } else {
-            createQuery.setParameter("param", true);
-        }
-        Long count = (Long) createQuery.uniqueResult();
-        super.getSession().getTransaction().commit();
+        Transaction transaction = getSession().beginTransaction();
+        Long count = (Long) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("isstillliving", true))
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
+        transaction.commit();
         return count;
-
     }
 
-    public List<Guest> getGuestByStatus(RoomStatus status,TypeSorting sorting) {
-        super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery("select guest from GuestRoomInfo where isStillLiving=:param ");
+    public List<Guest> getGuestByStatus(RoomStatus status, TypeSorting sorting) {
+        Boolean roomStatus;
         if (status.equals(RoomStatus.FREE)) {
-            createQuery.setParameter("param", false);
+            roomStatus = false;
         } else {
-            createQuery.setParameter("param", true);
+            roomStatus = true;
         }
-        if(sorting.getType()!=TypeSorting.NO_SORTING.getType()){
-            createQuery.getQueryString().concat(" order by" + sorting.getType());
-        }
-
-        createQuery.list();
-        super.getSession().getTransaction().commit();
-        return createQuery.list();
+        Transaction transaction = getSession().beginTransaction();
+        List<Guest> object = (List<Guest>) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("isstillliving", roomStatus))
+                .list();
+        transaction.commit();
+        return object;
     }
-
 
 
     public Long getCountOldGuestsByRoom(Room room) {
-        super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery("select count(*) from GuestRoomInfo where isStillLiving =false and room=:param ");
-        createQuery.setParameter("param", room);
-        Long count = (Long) createQuery.uniqueResult();
-        super.getSession().getTransaction().commit();
+        Transaction transaction = getSession().beginTransaction();
+        Long count = (Long) super.getSession().createCriteria(GuestRoomInfo.class)
+                .add(Restrictions.eq("isstillliving", false))
+                .add(Restrictions.eq("room", room))
+                .setProjection(Projections.rowCount()).uniqueResult();
+        transaction.commit();
         return count;
-
     }
-
 }

@@ -2,26 +2,27 @@ package com.dao;
 
 
 import com.entity.HotelEntity;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+
 import java.util.List;
 
 public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
     private SessionFactory factory = Factory.getSessionFactory();
     private Session session = factory.openSession();
     private Class<T> persistentClass;
-    public  String tableName;
+    public String tableName;
+
     public BaseDAO(String tableName, Class persistentClass) {
-        this.persistentClass=persistentClass;
-                this.tableName=tableName;
+        this.persistentClass = persistentClass;
+        this.tableName = tableName;
     }
 
     public Class getEntityClass() {
         return this.persistentClass;
     }
-    
+
     public void addEntity(T entity) {
         Transaction transaction = getSession().beginTransaction();
         session.save(entity);
@@ -36,39 +37,34 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
 
     public void deleteEntity(Integer id) {
         Transaction transaction = getSession().beginTransaction();
-        Query createQuery = getSession().createQuery(" delete "+getTableName()+" where id =:param ");
-        createQuery.setParameter("param", id);
-        createQuery.executeUpdate();
+
+        T object = (T) session.createCriteria(persistentClass)
+                .add(Restrictions.like("id", id)).uniqueResult();
+        System.out.println(object);
+        session.delete(object);
         transaction.commit();
     }
 
-    public List<T> getAllEntities( TypeSorting sorting) {
-
-        Transaction transaction = getSession().beginTransaction();
-        Query createQuery = getSession().createQuery(" from "+getTableName() );
-
-        if(sorting!=TypeSorting.NO_SORTING){
-            createQuery.getQueryString().concat(" order by :sorting");
-            createQuery.setParameter("sorting",sorting.getType());
+    public List<T> getAllEntities(TypeSorting sorting) {
+        Criteria criteria = session.createCriteria(persistentClass);
+        if (sorting != TypeSorting.NO_SORTING) {
+            criteria.addOrder(Order.desc(sorting.getType()));
         }
-        List <T> entityList=createQuery.list();
-        transaction.commit();
+        List<T> entityList = criteria.list();
         return entityList;
     }
 
-
     public T getEntityById(Integer id) {
         Transaction transaction = getSession().beginTransaction();
-        T entity = null;
-        entity = (T) getSession().load(getEntityClass(), id);
+        Criteria criteria = session.createCriteria(persistentClass)
+                .add(Restrictions.like("id", id));
         transaction.commit();
-        return entity;
+        return  (T)criteria.uniqueResult();
     }
 
     public Session getSession() {
         return session;
     }
-
     public String getTableName() {
         return tableName;
     }

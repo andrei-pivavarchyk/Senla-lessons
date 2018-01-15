@@ -13,7 +13,7 @@ public interface IGuestRoomInfoDAO extends IBaseDAO<GuestRoomInfo> {
     List<GuestRoomInfo> getGuestRoomInfoByGuest(Guest guest);
     List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving, TypeSorting sorting);
     void removeEntityByGuest(Guest guest);
-    void updateEntityStatus(Guest guest, RoomStatus status) ;
+
     Long getCountGuestsByStatus(RoomStatus status);
     List<Guest> getGuestByStatus(RoomStatus status,TypeSorting sorting);
     GuestRoomInfo getEntityByGuest(Guest guest);
