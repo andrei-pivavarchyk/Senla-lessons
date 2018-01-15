@@ -13,7 +13,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
     private IRoomDAO roomDAO = (IRoomDAO) DependencyService.getDI().getInstance(IRoomDAO.class);
 
 public GuestRoomInfoDAO(){
-    super("GuestRoomInfo");
+    super("GuestRoomInfo",GuestRoomInfoDAO.class);
 }
 
     public void addGuest(GuestRoomInfo guestRoomInfo) {

@@ -1,13 +1,13 @@
 import com.dao.*;
 import com.entity.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.*;
 
 
 public class Main {
     public static void main(String[] args){
-     /*
-*/
 
         ServiceDAO serviceHibernateDao=new ServiceDAO();
         GuestDAO guestHibernateDao=new GuestDAO();
@@ -21,9 +21,9 @@ public class Main {
         Guest guest=new Guest(2,"Bob","bob");
         Room room =new Room(77,34,4,1);
         Guest guest1=new Guest("Fd","fd");
-       guestHibernateDao.addEntity(guest);
         GuestRoomInfo guestRoomInfo=new GuestRoomInfo(1,guest,room,new Date(),departureDate,true);
         GuestServiceInfo guestServiceInfo=new GuestServiceInfo(1,guest,serviceEntity1,new Date());
+        guestHibernateDao.addEntity(guest);
         roomHibernateDao.addEntity(room);
       guestRoomHibernateDao.addEntity(guestRoomInfo);
 guestHibernateDao.getEntityById(2);

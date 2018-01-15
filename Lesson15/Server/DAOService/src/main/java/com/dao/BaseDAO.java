@@ -6,31 +6,22 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import java.lang.reflect.ParameterizedType;
-
 import java.util.List;
 
-
 public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
-
-
     private SessionFactory factory = Factory.getSessionFactory();
     private Session session = factory.openSession();
     private Class<T> persistentClass;
     public  String tableName;
-
-    public BaseDAO(String tableName) {
-        this.persistentClass = (Class<T>) ((ParameterizedType) getClass()
-                .getGenericSuperclass()).getActualTypeArguments()[0];
+    public BaseDAO(String tableName, Class persistentClass) {
+        this.persistentClass=persistentClass;
                 this.tableName=tableName;
     }
 
     public Class getEntityClass() {
         return this.persistentClass;
     }
-
-
+    
     public void addEntity(T entity) {
         Transaction transaction = getSession().beginTransaction();
         session.save(entity);

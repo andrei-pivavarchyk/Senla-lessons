@@ -4,7 +4,9 @@ import com.entity.Guest;
 
 
 public class GuestDAO extends BaseDAO<Guest> implements IGuestDAO{
-public GuestDAO(){
-    super("Guest");
+public GuestDAO()
+{
+    super("Guest",Guest.class);
+
 }
    }

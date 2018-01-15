@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
     public RoomDAO(){
-        super("Room");
+        super("Room",Room.class);
     }
 
     public List<Room> getAllEntitiesByStatus(RoomStatus status, TypeSorting sorting) {

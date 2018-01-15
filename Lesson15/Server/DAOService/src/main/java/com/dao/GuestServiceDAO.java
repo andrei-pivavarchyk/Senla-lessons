@@ -11,7 +11,7 @@ import java.util.List;
 
 public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuestServiceDAO {
     public GuestServiceDAO() {
-        super("GuestServiceInfo");
+        super("GuestServiceInfo",GuestServiceDAO.class);
     }
 
     public List<Service> getAllGuestServices(Guest guest, TypeSorting typeSorting) {
