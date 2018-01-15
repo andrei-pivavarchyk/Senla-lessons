@@ -2,6 +2,7 @@ package com.dao;
 
 import com.dependencyService.DependencyService;
 import com.entity.*;
+import org.apache.log4j.Logger;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
@@ -19,13 +20,12 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     public void addGuest(GuestRoomInfo guestRoomInfo) {
         synchronized (this.guestDAO) {
-            super.getSession().beginTransaction();
-            guestDAO.addEntity(guestRoomInfo.getGuest());
-            this.addEntity(guestRoomInfo);
+            Transaction transaction = getSession().beginTransaction();
+            getSession().save(guestRoomInfo.getGuest());
+            getSession().save(guestRoomInfo);
             guestRoomInfo.getRoom().setStatus(RoomStatus.RESERVED);
-            roomDAO.updateEntity(guestRoomInfo.getRoom());
-            this.addEntity(guestRoomInfo);
-            super.getSession().getTransaction().commit();
+            getSession().save(guestRoomInfo.getRoom());
+            transaction.commit();
         }
     }
 

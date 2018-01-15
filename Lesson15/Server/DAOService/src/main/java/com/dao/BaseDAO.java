@@ -2,6 +2,7 @@ package com.dao;
 
 
 import com.entity.HotelEntity;
+import org.apache.log4j.Logger;
 import org.hibernate.*;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -12,7 +13,7 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
     private SessionFactory factory = Factory.getSessionFactory();
     private Session session = factory.openSession();
     private Class<T> persistentClass;
-    public String tableName;
+    private String tableName;
 
     public BaseDAO(String tableName, Class persistentClass) {
         this.persistentClass = persistentClass;
@@ -37,20 +38,20 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
 
     public void deleteEntity(Integer id) {
         Transaction transaction = getSession().beginTransaction();
-
         T object = (T) session.createCriteria(persistentClass)
                 .add(Restrictions.like("id", id)).uniqueResult();
-        System.out.println(object);
         session.delete(object);
         transaction.commit();
     }
 
     public List<T> getAllEntities(TypeSorting sorting) {
+        Transaction transaction = getSession().beginTransaction();
         Criteria criteria = session.createCriteria(persistentClass);
         if (sorting != TypeSorting.NO_SORTING) {
             criteria.addOrder(Order.desc(sorting.getType()));
         }
         List<T> entityList = criteria.list();
+        transaction.commit();
         return entityList;
     }
 
@@ -59,12 +60,13 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
         Criteria criteria = session.createCriteria(persistentClass)
                 .add(Restrictions.like("id", id));
         transaction.commit();
-        return  (T)criteria.uniqueResult();
+        return (T) criteria.uniqueResult();
     }
 
     public Session getSession() {
         return session;
     }
+
     public String getTableName() {
         return tableName;
     }

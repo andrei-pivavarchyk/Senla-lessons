@@ -14,7 +14,6 @@ import java.util.List;
 @Entity
 @Table(name = "guest")
 public class Guest extends HotelEntity {
-
     private String name;
     private String surname;
     @JsonBackReference
@@ -37,15 +36,10 @@ public class Guest extends HotelEntity {
     public Guest() {
     }
 
-
     @Basic
     @Column(name = "name")
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Basic
@@ -54,22 +48,23 @@ public class Guest extends HotelEntity {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL,orphanRemoval = true)
-
+    @OneToMany
     public List<GuestRoomInfo> getGuestRoomInfoList() {
         return guestRoomInfoList;
     }
 
-    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL)
-
+    @OneToMany
     public List<GuestServiceInfo> getGuestServiceInfoList() {
         return guestServiceInfoList;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
     public void setGuestRoomInfoList(List<GuestRoomInfo> guestRoomInfoList) {
         this.guestRoomInfoList = guestRoomInfoList;
@@ -83,13 +78,10 @@ public class Guest extends HotelEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Guest that = (Guest) o;
-
         if (getId() != that.getId()) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
-
         return true;
     }
 

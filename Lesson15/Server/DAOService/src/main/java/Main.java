@@ -19,21 +19,21 @@ public class Main {
         Date departureDate = gregorianCalendar.getTime();
         Service serviceEntity1 = new Service(1, ServiceType.EAT, "hjjjjjfc", 1);
         Guest guest = new Guest(24, "Bob", "bob");
-        Room room = new Room(85,77, 34, 4, 1);
-        Guest guest1 = new Guest(3, "Fd", "fd");
+        Room room = new Room(8,77, 34, 4, 1);
+        Guest guest1 = new Guest(111, "Fd", "fd");
         GuestRoomInfo guestRoomInfo = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
         GuestRoomInfo guestRoomInfo1 = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
         GuestServiceInfo guestServiceInfo = new GuestServiceInfo(6, guest, serviceEntity1, new Date());
 
-        roomHibernateDao.addEntity(room);
+       // roomHibernateDao.addEntity(room);
 
-        guestHibernateDao.addEntity(guest);
-        guestHibernateDao.addEntity(guest);
-        guestHibernateDao.addEntity(guest);
-        guestHibernateDao.addEntity(guest);
-        guestRoomHibernateDao.addEntity(guestRoomInfo);
-        guestRoomHibernateDao.addEntity(guestRoomInfo);
-        guestRoomHibernateDao.addEntity(guestRoomInfo);
+      //  guestHibernateDao.addEntity(guest);
+      //  guestHibernateDao.addEntity(guest);
+       // guestHibernateDao.addEntity(guest);
+       // guestHibernateDao.addEntity(guest);
+       // guestRoomHibernateDao.addEntity(guestRoomInfo);
+       // guestRoomHibernateDao.addEntity(guestRoomInfo);
+       // guestRoomHibernateDao.addEntity(guestRoomInfo);
 /**
  Guest Hibernate test
  */
@@ -52,11 +52,11 @@ public class Main {
         // guestRoomHibernateDao.updateEntity(guestRoomInfo1);
         //  guestRoomHibernateDao.getEntityById(7);
        // guestRoomHibernateDao.departureGuest(guest);
-      guestRoomHibernateDao.getLastGuest(room);
-        guestRoomHibernateDao.getGuestRoomInfoByGuest(guest);
+      guestRoomHibernateDao.addGuest(guestRoomInfo);
 
 
-         System.out.print(guestRoomHibernateDao.getCountOldGuestsByRoom(room));
+
+      //   System.out.print(guestRoomHibernateDao.getCountOldGuestsByRoom(room));
 
         // serviceHibernateDao.addEntity(serviceEntity1);
 /*
