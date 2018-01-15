@@ -9,7 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/PProperty/PProperty.iml" filepath="$PROJECT_DIR$/PProperty/PProperty.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Server.iml" filepath="$PROJECT_DIR$/.idea/Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/entitylib/entitylib.iml" filepath="$PROJECT_DIR$/entitylib/entitylib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/resources/resources.iml" filepath="$PROJECT_DIR$/resources/resources.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servlet/servlet.iml" filepath="$PROJECT_DIR$/Servlet/servlet.iml" />
     </modules>
   </component>
