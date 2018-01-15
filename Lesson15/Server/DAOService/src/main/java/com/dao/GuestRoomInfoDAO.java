@@ -31,7 +31,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     public void departureGuest(Guest guest) {
         super.getSession().beginTransaction();
-        GuestRoomInfo object = (GuestRoomInfo) super.getSession().createCriteria(GuestRoomInfo.class)
+        GuestRoomInfo object = (GuestRoomInfo) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("guest", guest)).uniqueResult();
         object.setIsstillliving(false);
         super.getSession().getTransaction().commit();
@@ -41,7 +41,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     public GuestRoomInfo getLastGuest(Room room) {
         Transaction transaction = getSession().beginTransaction();
-        List<GuestRoomInfo> object = (List<GuestRoomInfo>) super.getSession().createCriteria(GuestRoomInfo.class)
+        List<GuestRoomInfo> object = (List<GuestRoomInfo>) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("room", room))
                 .add(Restrictions.eq("isstillliving", false))
                 .addOrder(Order.desc("departuredate"))
@@ -52,7 +52,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     public List<GuestRoomInfo> getGuestRoomInfoByGuest(Guest guest) {
         Transaction transaction = getSession().beginTransaction();
-        List<GuestRoomInfo> object = (List<GuestRoomInfo>) super.getSession().createCriteria(GuestRoomInfo.class)
+        List<GuestRoomInfo> object = (List<GuestRoomInfo>) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("guest", guest))
                 .add(Restrictions.eq("isstillliving", true))
                 .list();
@@ -62,7 +62,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     public List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving, TypeSorting sorting) {
         Transaction transaction = getSession().beginTransaction();
-        List<GuestRoomInfo> object = (List<GuestRoomInfo>) super.getSession().createCriteria(GuestRoomInfo.class)
+        List<GuestRoomInfo> object = (List<GuestRoomInfo>) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("isstillliving", true))
                 .list();
         transaction.commit();
@@ -71,7 +71,7 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     public void removeEntityByGuest(Guest guest) {
         Transaction transaction = getSession().beginTransaction();
-        GuestRoomInfo object = (GuestRoomInfo) super.getSession().createCriteria(GuestRoomInfo.class)
+        GuestRoomInfo object = (GuestRoomInfo) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("guest", guest))
                 .add(Restrictions.eq("isstillliving", true))
                 .uniqueResult();

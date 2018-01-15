@@ -2,50 +2,53 @@ package com.dao;
 
 import com.entity.Guest;
 
+import com.entity.GuestRoomInfo;
 import com.entity.GuestServiceInfo;
 import com.entity.Service;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuestServiceDAO {
     public GuestServiceDAO() {
-        super("GuestServiceInfo",GuestServiceDAO.class);
+        super("GuestServiceInfo", GuestServiceDAO.class);
     }
 
     public List<Service> getAllGuestServices(Guest guest, TypeSorting typeSorting) {
-        Query createQuery = super.getSession().createQuery(" from GuestServiceInfo where guest=:param");
-        createQuery.setParameter("param", guest);
-        if(typeSorting.getType()!=TypeSorting.NO_SORTING.getType()){
-            String query=createQuery.getQueryString();
-            query= query.concat(" order by :type");
-            createQuery.setParameter("type", typeSorting.getType());
-        }
 
-        List<GuestServiceInfo> guestServiceInfoList = createQuery.list();
-        List<Service> serviceList = new ArrayList<Service>();
-        for (GuestServiceInfo gs : guestServiceInfoList) {
-            serviceList.add(gs.getService());
+        Transaction transaction = getSession().beginTransaction();
+        Criteria criteria = getSession().createCriteria(GuestServiceInfo.class);
+        if (typeSorting != TypeSorting.NO_SORTING) {
+            criteria.addOrder(Order.desc(typeSorting.getType()));
         }
-        return serviceList;
+        List<Service> object = (List<Service>) criteria
+                .add(Restrictions.eq("guest", guest))
+                .list();
+        transaction.commit();
+        return object;
     }
 
     public List<GuestServiceInfo> getAllGuestServiceInfo(Guest guest, TypeSorting typeSorting) {
-        Query createQuery = super.getSession().createQuery(" from GuestServiceInfo where guest=:param");
-        createQuery.setParameter("param", guest);
-        if(typeSorting.getType()!=TypeSorting.NO_SORTING.getType()){
-            String query=createQuery.getQueryString();
-            query= query.concat(" order by :type");
-            createQuery.setParameter("type", typeSorting.getType());
+        Transaction transaction = getSession().beginTransaction();
+        Criteria criteria = getSession().createCriteria(GuestServiceInfo.class);
+        if (typeSorting != TypeSorting.NO_SORTING) {
+            criteria.addOrder(Order.desc(typeSorting.getType()));
         }
-        List<GuestServiceInfo> guestServiceInfoList = createQuery.list();
-        return guestServiceInfoList;
+        List<GuestServiceInfo> object = (List<GuestServiceInfo>) criteria
+                .add(Restrictions.eq("guest", guest))
+                .list();
+        transaction.commit();
+        return object;
     }
 
     public void deleteServicesByGuest(Guest guest) {
         super.getSession().beginTransaction();
-        Query createQuery = super.getSession().createQuery(" delete GuestServiceInfo where guest =:param ");
+        Query createQuery = getSession().createQuery(" delete GuestServiceInfo where guest =:param ");
         createQuery.setParameter("param", guest);
         createQuery.executeUpdate();
         super.getSession().getTransaction().commit();

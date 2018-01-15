@@ -29,7 +29,6 @@ public class GuestService implements IGuestService, Serializable {
         }
     }
 
-
     public Long getAllGuestsCount() {
         synchronized (this.guestRoomInfoDAO) {
             Long count = guestRoomInfoDAO.getCountGuestsByStatus(RoomStatus.RESERVED);
