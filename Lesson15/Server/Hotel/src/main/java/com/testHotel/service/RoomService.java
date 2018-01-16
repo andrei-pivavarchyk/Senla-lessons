@@ -12,6 +12,9 @@ import com.entity.GuestRoomInfo;
 import com.entity.Room;
 import com.entity.RoomStatus;
 import org.apache.log4j.Logger;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
 import java.util.*;
 
 public class RoomService implements IRoomService {
@@ -23,34 +26,18 @@ public class RoomService implements IRoomService {
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS)
     private Boolean chooseRoomStatus;
     public static final Logger log = Logger.getLogger(RoomService.class);
+
     public void addRoom(Room room) {
         this.roomDAO.addEntity(room);
     }
-    public List<Room> getAllRooms() {
+
+
+
+
+    public List<Room> getAllRooms(TypeSorting sorting,RoomStatus status) {
         synchronized (this.roomDAO) {
-            return this.roomDAO.getAllEntities(TypeSorting.NO_SORTING);
-        }
-    }
-
-    public List<Room> getRoomCostSorting() {
-        synchronized (this.roomDAO) {
-            return this.roomDAO.getAllEntities(TypeSorting.BY_COST);
-        }
-    }
-
-    public List<Room> getRoomCapacitySorting() {
-
-        synchronized (this.roomDAO) {
-            return this.roomDAO.getAllEntities(TypeSorting.BY_CAPACITY);
-
-        }
-
-    }
-
-    public List<Room> getRoomStarsSorting() {
-        synchronized (this.roomDAO) {
-            return this.roomDAO.getAllEntities(TypeSorting.BY_STARS);
-
+            List<Room> freeRooms = this.roomDAO.getAllEntitiesByStatus(status, sorting);
+            return freeRooms;
         }
     }
 
@@ -59,25 +46,27 @@ public class RoomService implements IRoomService {
             return this.roomDAO.getEntityByNumber(roomNumber);
         }
     }
-
+    public Room getRoomById(int roomNumber) {
+        synchronized (this.roomDAO) {
+            return this.roomDAO.getEntityById(roomNumber);
+        }
+    }
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
         synchronized (this.guestRoomInfoDAO) {
             Room room = this.getRoomByNumber(roomNumber);
-            if(room!=null){
-                Date arrivalDate=DateUtil.getDate(year,month,day);
-                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(guest,room,new Date(),arrivalDate,true);
+            if (room != null) {
+                Date arrivalDate = DateUtil.getDate(year, month, day);
+                GuestRoomInfo guestRoomInfo = new GuestRoomInfo(guest, room, new Date(), arrivalDate, true);
                 this.guestRoomInfoDAO.addEntity(guestRoomInfo);
             }
-
-            }
+        }
     }
 
     public Long getCountOldRoomGuests(Room room) {
         synchronized (this.guestRoomInfoDAO) {
-            return   guestRoomInfoDAO.getCountOldGuestsByRoom(room);
+            return guestRoomInfoDAO.getCountOldGuestsByRoom(room);
         }
-
     }
 
     public void departureGuest(Guest guest) {
@@ -86,12 +75,7 @@ public class RoomService implements IRoomService {
         }
     }
 
-    public List<Room> getFreeRooms() {
-        synchronized (this.roomDAO) {
-            List<Room> freeRooms = this.roomDAO.getAllEntitiesByStatus(RoomStatus.FREE, TypeSorting.NO_SORTING);
-            return freeRooms;
-        }
-    }
+
 
     public Integer getFreeRoomsCount() {
         synchronized (this.roomDAO) {
@@ -101,12 +85,11 @@ public class RoomService implements IRoomService {
     }
 
 
-
     public void setRoomCost(int roomNumber, int cost) {
         synchronized (this.roomDAO) {
-        Room room=this.roomDAO.getEntityById(roomNumber);
-        room.setCost(cost);
-        this.roomDAO.updateEntity(room);
+            Room room = this.roomDAO.getEntityById(roomNumber);
+            room.setCost(cost);
+            this.roomDAO.updateEntity(room);
         }
     }
 
@@ -118,8 +101,8 @@ public class RoomService implements IRoomService {
         }
     }
 
-    public void setRoomStatus(Room room,RoomStatus roomStatus) {
-        if(this.chooseRoomStatus){
+    public void setRoomStatus(Room room, RoomStatus roomStatus) {
+        if (this.chooseRoomStatus) {
             room.setStatus(roomStatus);
             this.roomDAO.updateEntity(room);
         }
@@ -128,6 +111,20 @@ public class RoomService implements IRoomService {
     public Integer getMaxCountOldGuests() {
         return maxCountOldGuests;
     }
+
+
+    public void addEntity(Room entity) {
+    this.roomDAO.addEntity(entity);
+    }
+
+    public void updateEntity(Room entity) {
+        this.roomDAO.updateEntity(entity);
+    }
+
+    public void deleteEntity(Integer id) {
+        this.roomDAO.deleteEntity(id);
+    }
+
 }
 
 

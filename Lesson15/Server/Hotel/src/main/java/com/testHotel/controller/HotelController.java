@@ -5,10 +5,7 @@ import com.configurator.*;
 
 import com.dao.TypeSorting;
 import com.dependencyService.DependencyService;
-import com.entity.Guest;
-import com.entity.GuestRoomInfo;
-import com.entity.Room;
-import com.entity.Service;
+import com.entity.*;
 import com.testHotel.service.*;
 import org.apache.log4j.Logger;
 
@@ -38,66 +35,64 @@ public class HotelController implements IHotelController {
         this.configurator.configure(this);
     }
 
+
+    /**
+     * guest service
+     */
     public void addGuest(Guest guest) {
         this.guestService.addGuest(guest);
     }
-
     public List<Guest> getAllGuests(TypeSorting sorting) {
         return this.guestService.getAllGuests(sorting);
     }
-
     public Integer getPayAmount(Guest guest) {
         return this.guestService.getPayAmount(guest);
     }
-
     public List<GuestRoomInfo> getCurrentGuestRoomInfo() {
         return this.guestService.getCurrentGuestRoomInfo();
     }
-
     public Long getAllGuestsCount() {
         return this.guestService.getAllGuestsCount();
     }
-
     public Guest getGuestById(Integer id) {
         return this.guestService.getGuestById(id);
     }
-
+    public void updateGuest(Guest guest) {
+        this.guestService.updateGuest(guest);
+    }
     public void removeGuest(Integer id) {
         Guest guest = this.guestService.getGuestById(id);
         guestService.removeGuest(id);
     }
-
-    public void updateGuest(Guest guest) {
-        this.guestService.updateGuest(guest);
+    /**
+     * room service
+     */
+    public Room getRoomByNumber(Integer number) {
+        return this.roomService.getRoomByNumber(number);
     }
+    public Room getRoomById(Integer id) {
+        return this.roomService.getRoomById(id);
+    }
+    public void addRoom(Room room) {
+        this.getRoomService().addRoom(room);
+    }
+    public void updateRoom(Room entity){
+        this.roomService.updateEntity(entity);
+    }
+    public void deleteRoom(Integer id) {
+        this.roomService.deleteEntity(id);
+    }
+
+    public List<Room> getAllRooms(TypeSorting sorting, RoomStatus status) {
+        return this.roomService.getAllRooms(sorting,status);
+    }
+
+
 
     public void addGuestToRoom(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
         this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
     }
 
-    public List<Room> getFreeRooms() {
-        return this.roomService.getFreeRooms();
-    }
-
-    public void setFileService(IFileService fileService) {
-        this.fileService = fileService;
-    }
-
-    public void setPrinterService(IPrinterService printerService) {
-        this.printerService = printerService;
-    }
-
-    public void setGuestService(IGuestService guestService) {
-        this.guestService = guestService;
-    }
-
-    public void setRoomService(IRoomService roomService) {
-        this.roomService = roomService;
-    }
-
-    public void setServiceService(IServiceService serviceService) {
-        this.serviceService = serviceService;
-    }
 
     public IPrinterService getPrinterService() {
         return printerService;
@@ -112,7 +107,7 @@ public class HotelController implements IHotelController {
         List<Room> roomList = null;
         try {
             roomList = this.fileService.readRooms(this.roomFilePath);
-            this.roomService.getAllRooms().addAll(roomList);
+            this.roomService.getAllRooms(TypeSorting.NO_SORTING,RoomStatus.FREE).addAll(roomList);
         } catch (Exception e) {
             log.error(e.toString());
         }
@@ -153,14 +148,6 @@ public class HotelController implements IHotelController {
         return null;
     }
 
-    public List<Room> getAllRooms() {
-        return this.roomService.getAllRooms();
-    }
-
-
-    public void addRoom(Room room) {
-        this.getRoomService().addRoom(room);
-    }
 
     public void importRoom(String path) throws Exception {
         List<Room> importRoomList = this.fileService.readRooms(path);
@@ -168,12 +155,8 @@ public class HotelController implements IHotelController {
     }
 
     public void exportRoom(String path) throws Exception {
-        List<Room> roomList = this.roomService.getAllRooms();
+        List<Room> roomList = this.roomService.getAllRooms(TypeSorting.NO_SORTING,RoomStatus.FREE);
         this.fileService.exportRoomsToFile(roomList, path);
-    }
-
-    public Room getRoomByNumber(Integer number) {
-        return this.roomService.getRoomByNumber(number);
     }
 
     public List<Service> getAllServices() {

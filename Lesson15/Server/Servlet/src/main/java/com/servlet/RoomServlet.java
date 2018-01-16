@@ -2,31 +2,33 @@ package com.servlet;
 
 import com.dao.GuestDAO;
 import com.dependencyService.DependencyService;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import com.entity.Guest;
+import com.entity.Room;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
 import org.apache.log4j.Logger;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
 
-public class GuestServlet extends HttpServlet {
-   private IHotelController hotelController = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
+public class RoomServlet extends HttpServlet {
+    private IHotelController hotelController = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
     private ObjectMapper objectMapper = new ObjectMapper();
     public static final Logger log = org.apache.log4j.Logger.getLogger(GuestServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("id") != null) {
             Integer id = parseInt(request.getParameter("id"));
-            Guest guest=hotelController.getGuestById(id);
-            String guestJson = ObjectConverterToJson.convertObject(guest);
+            Room room=hotelController.getRoomById(id);
+            String guestJson = ObjectConverterToJson.convertObject(room);
             PrintWriter pw = response.getWriter();
             pw.println(guestJson);
         }
@@ -43,8 +45,8 @@ public class GuestServlet extends HttpServlet {
         }
 
         try {
-            Guest guest = (Guest)  this.objectMapper.readValue(sb.toString(),Guest.class);
-            this.hotelController.updateGuest(guest);
+            Room room = (Room)  this.objectMapper.readValue(sb.toString(),Room.class);
+            this.hotelController.updateRoom(room);
             PrintWriter pw = response.getWriter();
             pw.println("succes");
         } catch (IOException e) {
@@ -63,24 +65,22 @@ public class GuestServlet extends HttpServlet {
         }
 
         try {
-            Guest guest = (Guest)  this.objectMapper.readValue(sb.toString(),  Guest.class);
-            this.hotelController.addGuest(guest);
+            Room room = (Room)  this.objectMapper.readValue(sb.toString(), Room.class);
+            this.hotelController.addRoom(room);
             PrintWriter pw = response.getWriter();
             pw.println(sb);
         } catch (IOException e) {
             log.error(e.toString());
         }
     }
-
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("id") != null) {
             Integer id = parseInt(request.getParameter("id"));
-           hotelController.removeGuest(id);
+            hotelController.deleteRoom(id);
             PrintWriter pw = response.getWriter();
             pw.println("succes");
         }
     }
-
 }

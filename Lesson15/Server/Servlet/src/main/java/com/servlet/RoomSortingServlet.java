@@ -1,12 +1,14 @@
 package com.servlet;
 
-import com.dao.GuestDAO;
 import com.dao.TypeSorting;
 import com.dependencyService.DependencyService;
 import com.entity.Guest;
+import com.entity.Room;
+import com.entity.RoomStatus;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.IHotelController;
 import org.apache.log4j.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +18,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class GuestSortingServlet extends HttpServlet {
+public class RoomSortingServlet extends HttpServlet {
 
     private IHotelController hotelController = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -26,26 +27,17 @@ public class GuestSortingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Guest> guestList = new ArrayList<Guest>();
-
-        if (request.getParameter("sorting") != null) {
-            TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
-            if (typeSorting != null) {
-                guestList = hotelController.getAllGuests(typeSorting);
-            }
+        List<Room> roomList = new ArrayList<Room>();
+        TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
+        RoomStatus roomStatus = this.getRoomStatus(request.getParameter("status"));
+        if (typeSorting != null && roomStatus != null) {
+            roomList = hotelController.getAllRooms(typeSorting, roomStatus);
         }
-        else {
-            guestList = hotelController.getAllGuests(TypeSorting.NO_SORTING);
-        }
-        String guestListJson = ObjectConverterToJson.convertObject(guestList);
+        String guestListJson = ObjectConverterToJson.convertObject(roomList);
         PrintWriter pw = response.getWriter();
         pw.println(guestListJson);
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 
     public TypeSorting getTypeSorting(String queryType) {
         TypeSorting typeSorting = null;
@@ -56,4 +48,15 @@ public class GuestSortingServlet extends HttpServlet {
         }
         return typeSorting;
     }
+
+    public RoomStatus getRoomStatus(String status) {
+        RoomStatus roomStatusQuery = null;
+        for (RoomStatus roomStatus : RoomStatus.values()) {
+            if (roomStatus.getStatus().equals(status)) {
+                roomStatusQuery = roomStatus;
+            }
+        }
+        return roomStatusQuery;
+    }
+
 }
