@@ -21,9 +21,7 @@ import java.util.List;
 public class RoomSortingServlet extends HttpServlet {
 
     private IHotelController hotelController = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
-    private ObjectMapper objectMapper = new ObjectMapper();
-    public static final Logger log = org.apache.log4j.Logger.getLogger(GuestServlet.class);
-
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,7 +35,6 @@ public class RoomSortingServlet extends HttpServlet {
         PrintWriter pw = response.getWriter();
         pw.println(guestListJson);
     }
-
 
     public TypeSorting getTypeSorting(String queryType) {
         TypeSorting typeSorting = null;
@@ -58,5 +55,4 @@ public class RoomSortingServlet extends HttpServlet {
         }
         return roomStatusQuery;
     }
-
 }

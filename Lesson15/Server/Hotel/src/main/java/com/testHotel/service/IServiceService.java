@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface IServiceService {
 
-    List<GuestServiceInfo> getAllGuestServicesInfo(Guest guest, TypeSorting sorting);
+
 
     void addService(Service service);
 
@@ -28,7 +28,8 @@ public interface IServiceService {
 
     // GuestService
 
-    List<GuestServiceInfo>  getAllGuestServiceInfo(Integer id,TypeSorting sorting);
+    List<GuestServiceInfo>  getAllGuestServiceInfo(TypeSorting sorting);
+    List<GuestServiceInfo> getAllGuestServicesInfoByGuest(Guest guest,TypeSorting sorting);
 
     void addGuestService(Integer guestId, Integer serviceId, int year, int month, int day);
 

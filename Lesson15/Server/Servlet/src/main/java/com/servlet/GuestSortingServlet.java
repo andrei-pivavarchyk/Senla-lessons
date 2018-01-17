@@ -20,7 +20,6 @@ public class GuestSortingServlet extends HttpServlet {
 
     private IHotelController hotelController = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
     private ObjectMapper objectMapper = new ObjectMapper();
-    public static final Logger log = org.apache.log4j.Logger.getLogger(GuestServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,11 +38,6 @@ public class GuestSortingServlet extends HttpServlet {
         String guestListJson = ObjectConverterToJson.convertObject(guestList);
         PrintWriter pw = response.getWriter();
         pw.println(guestListJson);
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
     }
 
     public TypeSorting getTypeSorting(String queryType) {

@@ -15,20 +15,10 @@ import java.util.*;
 
 public class ServiceService implements IServiceService {
 
-
     public static final Logger log = Logger.getLogger(GuestService.class);
     private IServiceDAO serviceDAO = (IServiceDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
     private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
     private IGuestServiceDAO guestServiceDAO = (IGuestServiceDAO) DependencyService.getDI().getInstance(IGuestServiceDAO.class);
-
-
-    public List<GuestServiceInfo> getAllGuestServicesInfo(Guest guest,TypeSorting sorting) {
-        synchronized (this.guestServiceDAO) {
-            List<GuestServiceInfo> allGuestServicesInfo = this.guestServiceDAO.getAllGuestServiceInfo(guest, sorting);
-            return allGuestServicesInfo;
-        }
-
-    }
 
     public void addService(Service service) {
         synchronized (this.serviceDAO) {
@@ -60,9 +50,15 @@ public class ServiceService implements IServiceService {
     }
 
     //GuestService
-    public List<GuestServiceInfo>  getAllGuestServiceInfo(Integer id,TypeSorting sorting) {
-        Guest guest=this.guestDAO.getEntityById(id);
-        return this.guestServiceDAO.getAllGuestServiceInfo(guest,sorting);
+    public List<GuestServiceInfo>  getAllGuestServiceInfo(TypeSorting sorting) {
+        return this.guestServiceDAO.getAllEntities(sorting);
+    }
+    public List<GuestServiceInfo> getAllGuestServicesInfoByGuest(Guest guest,TypeSorting sorting) {
+        synchronized (this.guestServiceDAO) {
+            List<GuestServiceInfo> allGuestServicesInfo = this.guestServiceDAO.getAllGuestServiceInfo(guest, sorting);
+            return allGuestServicesInfo;
+        }
+
     }
 
     public void addGuestService(Integer guestId, Integer serviceId, int year, int month, int day) {

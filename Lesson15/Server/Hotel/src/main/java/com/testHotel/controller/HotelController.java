@@ -110,11 +110,9 @@ public class HotelController implements IHotelController {
     /**
      * guestservice
      */
-    public List<GuestServiceInfo> getAllGuestServicesInfo(Integer id,TypeSorting sorting) {
-        Guest guest=this.guestService.getGuestById(id);
-        List<GuestServiceInfo> allGuestServicesInfo = this.serviceService.getAllGuestServicesInfo(guest,sorting);
+    public List<GuestServiceInfo> getAllGuestServicesInfo(TypeSorting sorting) {
+        List<GuestServiceInfo> allGuestServicesInfo = this.serviceService.getAllGuestServiceInfo(sorting);
         return allGuestServicesInfo;
-
     }
 
     public void addGuestServiceInfo(GuestServiceInfo guestRoomInfo) {
@@ -122,9 +120,9 @@ public class HotelController implements IHotelController {
     }
 
     public List<GuestServiceInfo> getGuestServiceByGuest(Integer id,TypeSorting sorting) {
-        return this.serviceService.getAllGuestServiceInfo(id,sorting);
+        Guest guest=this.guestService.getGuestById(id);
+        return this.serviceService.getAllGuestServicesInfoByGuest(guest,sorting);
     }
-
 
     public void removeGuestServiceInfoByGuest(Integer id) {
         this.serviceService.removeGuestServiceByGuest(id);

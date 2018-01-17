@@ -44,7 +44,7 @@ public class RoomServlet extends HttpServlet {
             sb.append(query);
         }
         try {
-            Room room = (Room)  this.objectMapper.readValue(sb.toString(),Room.class);
+            Room room = this.objectMapper.readValue(sb.toString(),Room.class);
             this.hotelController.updateRoom(room);
             PrintWriter pw = response.getWriter();
             pw.println("succes");
@@ -64,7 +64,7 @@ public class RoomServlet extends HttpServlet {
         }
 
         try {
-            Room room = (Room)  this.objectMapper.readValue(sb.toString(), Room.class);
+            Room room =this.objectMapper.readValue(sb.toString(), Room.class);
             this.hotelController.addRoom(room);
             PrintWriter pw = response.getWriter();
             pw.println(sb);

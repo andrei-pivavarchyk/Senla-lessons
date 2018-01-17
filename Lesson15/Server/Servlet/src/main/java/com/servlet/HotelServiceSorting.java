@@ -20,8 +20,6 @@ import java.util.List;
 public class HotelServiceSorting extends HttpServlet {
 
     private IHotelController hotelController = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
-    private ObjectMapper objectMapper = new ObjectMapper();
-    public static final Logger log = org.apache.log4j.Logger.getLogger(GuestServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,8 +31,7 @@ public class HotelServiceSorting extends HttpServlet {
             if (typeSorting != null) {
                 serviceList = hotelController.getAllHotelServices(typeSorting);
             }
-        }
-        else {
+        } else {
             serviceList = hotelController.getAllHotelServices(TypeSorting.NO_SORTING);
         }
         String guestListJson = ObjectConverterToJson.convertObject(serviceList);

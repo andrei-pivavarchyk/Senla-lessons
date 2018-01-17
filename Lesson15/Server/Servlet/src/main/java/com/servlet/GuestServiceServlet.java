@@ -27,6 +27,7 @@ public class GuestServiceServlet extends HttpServlet {
     private IHotelController hotelController = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
     private ObjectMapper objectMapper = new ObjectMapper();
     public static final Logger log = org.apache.log4j.Logger.getLogger(GuestServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,25 +35,24 @@ public class GuestServiceServlet extends HttpServlet {
         TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
         Integer id = Integer.parseInt(request.getParameter("id"));
         if (typeSorting != null && id != null) {
-            roomList = hotelController.getAllGuestServicesInfo(id,typeSorting);
+            roomList = hotelController.getGuestServiceByGuest(id, typeSorting);
         }
-        String guestListJson = ObjectConverterToJson.convertObject(roomList);
+        String guestServiceListJson = ObjectConverterToJson.convertObject(roomList);
         PrintWriter pw = response.getWriter();
-        pw.println(guestListJson);
+        pw.println(guestServiceListJson);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         StringBuffer sb = new StringBuffer();
-        String query=null;
+        String query = null;
         BufferedReader reader = request.getReader();
         while ((query = reader.readLine()) != null) {
             sb.append(query);
         }
-        TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
         try {
-            GuestServiceInfo guestServiceInfo = (GuestServiceInfo)  this.objectMapper.readValue(sb.toString(),GuestServiceInfo.class);
+            GuestServiceInfo guestServiceInfo = this.objectMapper.readValue(sb.toString(), GuestServiceInfo.class);
             this.hotelController.updateGuestServiceInfo(guestServiceInfo);
             PrintWriter pw = response.getWriter();
             pw.println("succes");
@@ -65,14 +65,13 @@ public class GuestServiceServlet extends HttpServlet {
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         StringBuffer sb = new StringBuffer();
-        String query=null;
+        String query = null;
         BufferedReader reader = request.getReader();
         while ((query = reader.readLine()) != null) {
             sb.append(query);
         }
-        TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
         try {
-            GuestServiceInfo guestServiceInfo = (GuestServiceInfo)  this.objectMapper.readValue(sb.toString(),GuestServiceInfo.class);
+            GuestServiceInfo guestServiceInfo = this.objectMapper.readValue(sb.toString(), GuestServiceInfo.class);
             this.hotelController.addGuestServiceInfo(guestServiceInfo);
             PrintWriter pw = response.getWriter();
             pw.println("succes");
@@ -92,6 +91,7 @@ public class GuestServiceServlet extends HttpServlet {
         }
 
     }
+
     public TypeSorting getTypeSorting(String queryType) {
         TypeSorting typeSorting = null;
         for (TypeSorting type : TypeSorting.values()) {
@@ -100,4 +100,5 @@ public class GuestServiceServlet extends HttpServlet {
             }
         }
         return typeSorting;
-    }}
+    }
+}

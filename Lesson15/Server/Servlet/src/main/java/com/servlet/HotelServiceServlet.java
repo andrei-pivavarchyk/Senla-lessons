@@ -45,7 +45,7 @@ public class HotelServiceServlet extends HttpServlet {
         }
 
         try {
-            Service service = (Service) this.objectMapper.readValue(sb.toString(), Service.class);
+            Service service = this.objectMapper.readValue(sb.toString(), Service.class);
             this.hotelController.updateService(service);
             PrintWriter pw = response.getWriter();
             pw.println("succes");
@@ -63,9 +63,8 @@ public class HotelServiceServlet extends HttpServlet {
         while ((query = reader.readLine()) != null) {
             sb.append(query);
         }
-
         try {
-            Service service = (Service) this.objectMapper.readValue(sb.toString(), Service.class);
+            Service service = this.objectMapper.readValue(sb.toString(), Service.class);
             this.hotelController.addHotelService(service);
             PrintWriter pw = response.getWriter();
             pw.println(sb);

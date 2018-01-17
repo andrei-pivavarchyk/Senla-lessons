@@ -58,7 +58,7 @@ public interface IHotelController {
 
     //GuestService
 
-    List<GuestServiceInfo> getAllGuestServicesInfo(Integer id, TypeSorting sorting);
+    List<GuestServiceInfo> getAllGuestServicesInfo(TypeSorting sorting) ;
 
     List<GuestServiceInfo> getGuestServiceByGuest(Integer id,TypeSorting sorting);
 
