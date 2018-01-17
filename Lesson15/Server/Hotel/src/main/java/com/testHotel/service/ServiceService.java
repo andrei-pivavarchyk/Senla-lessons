@@ -1,5 +1,6 @@
 package com.testHotel.service;
 
+import com.dao.IGuestDAO;
 import com.dao.TypeSorting;
 
 import com.dao.IGuestServiceDAO;
@@ -14,23 +15,16 @@ import java.util.*;
 
 public class ServiceService implements IServiceService {
 
-    private IGuestServiceDAO guestServiceDAO = (IGuestServiceDAO) DependencyService.getDI().getInstance(IGuestServiceDAO.class);
+
     public static final Logger log = Logger.getLogger(GuestService.class);
     private IServiceDAO serviceDAO = (IServiceDAO) DependencyService.getDI().getInstance(IServiceDAO.class);
+    private IGuestDAO guestDAO = (IGuestDAO) DependencyService.getDI().getInstance(IGuestDAO.class);
+    private IGuestServiceDAO guestServiceDAO = (IGuestServiceDAO) DependencyService.getDI().getInstance(IGuestServiceDAO.class);
 
-    public void addGuestService(Guest guest, Service service, int year, int month, int day) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
-        Date serviceDate = calendar.getTime();
-        GuestServiceInfo guestServiceInfo = new GuestServiceInfo( guest, service, serviceDate);
-        synchronized (this.guestServiceDAO) {
-            this.guestServiceDAO.addEntity(guestServiceInfo);
-        }
-    }
 
-    public List<GuestServiceInfo> getAllGuestServicesInfo(Guest guest) {
+    public List<GuestServiceInfo> getAllGuestServicesInfo(Guest guest,TypeSorting sorting) {
         synchronized (this.guestServiceDAO) {
-            List<GuestServiceInfo> allGuestServicesInfo = this.guestServiceDAO.getAllGuestServiceInfo(guest,TypeSorting.BY_COST);
+            List<GuestServiceInfo> allGuestServicesInfo = this.guestServiceDAO.getAllGuestServiceInfo(guest, sorting);
             return allGuestServicesInfo;
         }
 
@@ -42,27 +36,59 @@ public class ServiceService implements IServiceService {
         }
     }
 
-    public List<Service> getAllHotelServices() {
+    public List<Service> getAllHotelServices(TypeSorting sorting) {
         synchronized (this.serviceDAO) {
-            return this.serviceDAO.getAllEntities(TypeSorting.NO_SORTING);
+            return this.serviceDAO.getAllEntities(sorting);
         }
     }
 
-    public List<Service> getAllHotelServicesSortedByCost() {
-        synchronized (this.serviceDAO) {
-            return this.serviceDAO.getAllEntities(TypeSorting.BY_COST);
-        }
+
+    public Service getServiceById(Integer id) {
+        return this.serviceDAO.getEntityById(id);
     }
 
-    public List<GuestServiceInfo> getAllGuestServicesInfoSortedByCost(Guest guest) {
+    public void addHotelService(Service service) {
+        this.serviceDAO.addEntity(service);
+    }
+
+    public void updateService(Service service) {
+        this.serviceDAO.updateEntity(service);
+    }
+
+    public void deleteService(Integer id) {
+        this.serviceDAO.deleteEntity(id);
+    }
+
+    //GuestService
+    public List<GuestServiceInfo>  getAllGuestServiceInfo(Integer id,TypeSorting sorting) {
+        Guest guest=this.guestDAO.getEntityById(id);
+        return this.guestServiceDAO.getAllGuestServiceInfo(guest,sorting);
+    }
+
+    public void addGuestService(Integer guestId, Integer serviceId, int year, int month, int day) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+        Date serviceDate = calendar.getTime();
+        Guest guest=this.guestDAO.getEntityById(guestId);
+        Service service=this.serviceDAO.getEntityById(serviceId);
+        GuestServiceInfo guestServiceInfo = new GuestServiceInfo(guest, service, serviceDate);
         synchronized (this.guestServiceDAO) {
-            return this.guestServiceDAO.getAllGuestServiceInfo(guest, TypeSorting.BY_COST);
+            this.guestServiceDAO.addEntity(guestServiceInfo);
+        }
+    }
+    public void addGuestServiceInfo(GuestServiceInfo guestServiceInfo) {
+        synchronized (this.guestServiceDAO) {
+            this.guestServiceDAO.addEntity(guestServiceInfo);
         }
     }
 
-    public List<GuestServiceInfo> getAllGuestServicesInfoSortedByDate(Guest guest) {
-        synchronized (this.guestServiceDAO) {
-            return this.guestServiceDAO.getAllGuestServiceInfo(guest, TypeSorting.BY_DATE);
-        }
+    public void removeGuestServiceByGuest(Integer id) {
+        Guest guest=this.guestDAO.getEntityById(id);
+        this.guestServiceDAO.deleteServicesByGuest(guest);
     }
+
+    public void updateGuestService(GuestServiceInfo guestServiceInfo) {
+        this.guestServiceDAO.updateEntity(guestServiceInfo);
+    }
+
 }

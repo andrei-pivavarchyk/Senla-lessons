@@ -112,7 +112,6 @@ public class RoomService implements IRoomService {
         return maxCountOldGuests;
     }
 
-
     public void addEntity(Room entity) {
     this.roomDAO.addEntity(entity);
     }

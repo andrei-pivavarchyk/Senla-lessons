@@ -37,7 +37,7 @@ public class HotelController implements IHotelController {
 
 
     /**
-     * guest service
+     * guest
      */
     public void addGuest(Guest guest) {
         this.guestService.addGuest(guest);
@@ -65,7 +65,7 @@ public class HotelController implements IHotelController {
         guestService.removeGuest(id);
     }
     /**
-     * room service
+     * room
      */
     public Room getRoomByNumber(Integer number) {
         return this.roomService.getRoomByNumber(number);
@@ -87,20 +87,63 @@ public class HotelController implements IHotelController {
         return this.roomService.getAllRooms(sorting,status);
     }
 
+    /**
+     * service
+     */
+
+    public List<Service> getAllHotelServices(TypeSorting sorting) {
+        return this.serviceService.getAllHotelServices(sorting);
+    }
+    public Service getServiceById(Integer id) {
+        return this.serviceService.getServiceById(id);
+    }
+    public void addHotelService(Service service) {
+        this.serviceService.addHotelService(service);
+    }
+    public void updateService(Service service){
+        this.serviceService.updateService(service);
+    }
+    public void deleteService(Integer id) {
+        this.serviceService.deleteService(id);
+    }
+
+    /**
+     * guestservice
+     */
+    public List<GuestServiceInfo> getAllGuestServicesInfo(Integer id,TypeSorting sorting) {
+        Guest guest=this.guestService.getGuestById(id);
+        List<GuestServiceInfo> allGuestServicesInfo = this.serviceService.getAllGuestServicesInfo(guest,sorting);
+        return allGuestServicesInfo;
+
+    }
+
+    public void addGuestServiceInfo(GuestServiceInfo guestRoomInfo) {
+        this.serviceService.addGuestServiceInfo(guestRoomInfo);
+    }
+
+    public List<GuestServiceInfo> getGuestServiceByGuest(Integer id,TypeSorting sorting) {
+        return this.serviceService.getAllGuestServiceInfo(id,sorting);
+    }
 
 
+    public void removeGuestServiceInfoByGuest(Integer id) {
+        this.serviceService.removeGuestServiceByGuest(id);
+    }
+
+    public void updateGuestServiceInfo(GuestServiceInfo guestServiceInfo) {
+        this.serviceService.updateGuestService(guestServiceInfo);
+    }
+
+
+    /**
+     * guestRoomInfo
+     */
     public void addGuestToRoom(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
         this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
     }
 
-
     public IPrinterService getPrinterService() {
         return printerService;
-    }
-
-
-    public void addGuestService(Guest guest, Service service, Integer year, Integer month, Integer day) {
-        this.serviceService.addGuestService(guest, service, year, day, month);
     }
 
     public void readRoomsFromFile() {
@@ -121,9 +164,6 @@ public class HotelController implements IHotelController {
         return roomFilePath;
     }
 
-    public void addService(Service service) {
-        this.serviceService.addService(service);
-    }
 
     public IGuestService getGuestSerice() {
         return guestService;
@@ -137,17 +177,6 @@ public class HotelController implements IHotelController {
         return serviceService;
     }
 
-    public Room cloneRoom(Room room) {
-      /*  try {
-            Room cloneRoom = this.roomService.cloneRoom(room);
-            return cloneRoom;
-        } catch (CloneNotSupportedException e) {
-            this.printerService.printString("Cannot cloe object");
-        }
-*/
-        return null;
-    }
-
 
     public void importRoom(String path) throws Exception {
         List<Room> importRoomList = this.fileService.readRooms(path);
@@ -157,10 +186,6 @@ public class HotelController implements IHotelController {
     public void exportRoom(String path) throws Exception {
         List<Room> roomList = this.roomService.getAllRooms(TypeSorting.NO_SORTING,RoomStatus.FREE);
         this.fileService.exportRoomsToFile(roomList, path);
-    }
-
-    public List<Service> getAllServices() {
-        return this.serviceService.getAllHotelServices();
     }
 
     public void endHotel() {

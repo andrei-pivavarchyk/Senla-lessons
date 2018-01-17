@@ -1,6 +1,5 @@
 package com.servlet;
 
-import com.dao.GuestDAO;
 import com.dependencyService.DependencyService;
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -43,7 +43,6 @@ public class RoomServlet extends HttpServlet {
         while ((query = reader.readLine()) != null) {
             sb.append(query);
         }
-
         try {
             Room room = (Room)  this.objectMapper.readValue(sb.toString(),Room.class);
             this.hotelController.updateRoom(room);

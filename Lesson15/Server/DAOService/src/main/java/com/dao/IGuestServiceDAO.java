@@ -10,4 +10,5 @@ import java.util.List;
 public interface IGuestServiceDAO extends IBaseDAO<GuestServiceInfo> {
     List<Service> getAllGuestServices(Guest guest,TypeSorting typeSorting);
     List<GuestServiceInfo> getAllGuestServiceInfo(Guest guest, TypeSorting typeSorting);
+    void deleteServicesByGuest(Guest guest);
 }

@@ -1,6 +1,5 @@
 package com.servlet;
 
-import com.dao.GuestDAO;
 import com.dao.TypeSorting;
 import com.dependencyService.DependencyService;
 import com.entity.Guest;
