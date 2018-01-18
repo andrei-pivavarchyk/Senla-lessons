@@ -20,10 +20,6 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
         this.tableName = tableName;
     }
 
-    public Class getEntityClass() {
-        return this.persistentClass;
-    }
-
     public void addEntity(T entity) {
         Transaction transaction = getSession().beginTransaction();
         session.save(entity);
@@ -45,21 +41,17 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
     }
 
     public List<T> getAllEntities(TypeSorting sorting) {
-        Transaction transaction = getSession().beginTransaction();
         Criteria criteria = session.createCriteria(persistentClass);
         if (sorting != TypeSorting.NO_SORTING) {
             criteria.addOrder(Order.desc(sorting.getType()));
         }
         List<T> entityList = criteria.list();
-        transaction.commit();
         return entityList;
     }
 
     public T getEntityById(Integer id) {
-        Transaction transaction = getSession().beginTransaction();
         Criteria criteria = session.createCriteria(persistentClass)
                 .add(Restrictions.like("id", id));
-        transaction.commit();
         return (T) criteria.uniqueResult();
     }
 
@@ -69,5 +61,9 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
 
     public String getTableName() {
         return tableName;
+    }
+
+    public Class getEntityClass() {
+        return this.persistentClass;
     }
 }

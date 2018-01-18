@@ -20,7 +20,6 @@ import java.util.List;
 public class GuestSortingServlet extends HttpServlet {
 
     private IHotelController hotelController = (IHotelController) DependencyService.getDI().getInstance(IHotelController.class);
-    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

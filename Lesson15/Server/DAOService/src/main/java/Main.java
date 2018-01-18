@@ -47,16 +47,18 @@ public class Main {
  GuestRoomInfo
  */
 
-        // guestRoomHibernateDao.addEntity(guestRoomInfo);
+      // guestRoomHibernateDao.addEntity(guestRoomInfo);
         // guestRoomHibernateDao.deleteEntity(6);
         // guestRoomHibernateDao.updateEntity(guestRoomInfo1);
-        //  guestRoomHibernateDao.getEntityById(7);
+       //  guestRoomHibernateDao.getEntityById(8);
        // guestRoomHibernateDao.departureGuest(guest);
-      guestRoomHibernateDao.addGuest(guestRoomInfo);
+     // guestRoomHibernateDao.addGuest(guestRoomInfo);
 
 
 
-      //   System.out.print(guestRoomHibernateDao.getCountOldGuestsByRoom(room));
+     System.out.println( guestRoomHibernateDao.getEntityById(3).getGuest().getName());
+     System.out.println( guestRoomHibernateDao.getEntityById(3).getGuest().getName());
+     System.out.println( guestRoomHibernateDao.getEntityById(3).getGuest().getName());
 
         // serviceHibernateDao.addEntity(serviceEntity1);
 /*

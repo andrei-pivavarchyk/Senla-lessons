@@ -28,20 +28,16 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
 
 
     public Long getCountAllRoom(RoomStatus status) {
-        super.getSession().beginTransaction();
         Query createQuery = super.getSession().createQuery("select count(*) from Room where status =:param ");
         createQuery.setParameter("param",status);
         Long count = (Long)createQuery.uniqueResult();
-        super.getSession().getTransaction().commit();
         return count;
     }
 
     public Room getEntityByNumber(Integer number) {
-        super.getSession().beginTransaction();
         Query createQuery = super.getSession().createQuery(" from Room where number =:param ");
         createQuery.setParameter("param",number);
         List <Room> roomList=createQuery.list();
-        super.getSession().getTransaction().commit();
         return roomList.get(0);
     }
 

@@ -40,63 +40,51 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
     }
 
     public GuestRoomInfo getLastGuest(Room room) {
-        Transaction transaction = getSession().beginTransaction();
         List<GuestRoomInfo> object = (List<GuestRoomInfo>) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("room", room))
                 .add(Restrictions.eq("isstillliving", false))
                 .addOrder(Order.desc("departuredate"))
                 .list();
-        transaction.commit();
         return object.get(object.size() - 1);
     }
 
     public List<GuestRoomInfo> getGuestRoomInfoByGuest(Guest guest) {
-        Transaction transaction = getSession().beginTransaction();
         List<GuestRoomInfo> object = (List<GuestRoomInfo>) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("guest", guest))
                 .add(Restrictions.eq("isstillliving", true))
                 .list();
-        transaction.commit();
         return object;
     }
 
     public List<GuestRoomInfo> getCurrentGuestRoomInfo(Boolean isLiving, TypeSorting sorting) {
-        Transaction transaction = getSession().beginTransaction();
         List<GuestRoomInfo> object = (List<GuestRoomInfo>) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("isstillliving", true))
                 .list();
-        transaction.commit();
         return object;
     }
 
     public void removeEntityByGuest(Guest guest) {
-        Transaction transaction = getSession().beginTransaction();
         GuestRoomInfo object = (GuestRoomInfo) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("guest", guest))
                 .add(Restrictions.eq("isstillliving", true))
                 .uniqueResult();
         getSession().delete(object);
-        transaction.commit();
     }
 
     public GuestRoomInfo getEntityByGuest(Guest guest) {
-        Transaction transaction = getSession().beginTransaction();
         GuestRoomInfo object = (GuestRoomInfo) super.getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("guest", guest))
                 .add(Restrictions.eq("isstillliving", true))
                 .uniqueResult();
-        transaction.commit();
         return object;
     }
 
 
     public Long getCountGuestsByStatus(RoomStatus status) {
-        Transaction transaction = getSession().beginTransaction();
         Long count = (Long) super.getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("isstillliving", true))
                 .setProjection(Projections.rowCount())
                 .uniqueResult();
-        transaction.commit();
         return count;
     }
 
@@ -107,11 +95,9 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
         } else {
             roomStatus = true;
         }
-        Transaction transaction = getSession().beginTransaction();
         List<Guest> object = (List<Guest>) super.getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("isstillliving", roomStatus))
                 .list();
-        transaction.commit();
         return object;
     }
 

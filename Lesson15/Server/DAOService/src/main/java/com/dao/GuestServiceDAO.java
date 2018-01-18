@@ -21,7 +21,6 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
 
     public List<Service> getAllGuestServices(Guest guest, TypeSorting typeSorting) {
 
-        Transaction transaction = getSession().beginTransaction();
         Criteria criteria = getSession().createCriteria(GuestServiceInfo.class);
         if (typeSorting != TypeSorting.NO_SORTING) {
             criteria.addOrder(Order.desc(typeSorting.getType()));
@@ -29,12 +28,10 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
         List<Service> object = (List<Service>) criteria
                 .add(Restrictions.eq("guest", guest))
                 .list();
-        transaction.commit();
         return object;
     }
 
     public List<GuestServiceInfo> getAllGuestServiceInfo(Guest guest, TypeSorting typeSorting) {
-        Transaction transaction = getSession().beginTransaction();
         Criteria criteria = getSession().createCriteria(GuestServiceInfo.class);
         if (typeSorting != TypeSorting.NO_SORTING) {
             criteria.addOrder(Order.desc(typeSorting.getType()));
@@ -42,7 +39,6 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
         List<GuestServiceInfo> object = (List<GuestServiceInfo>) criteria
                 .add(Restrictions.eq("guest", guest))
                 .list();
-        transaction.commit();
         return object;
     }
 
