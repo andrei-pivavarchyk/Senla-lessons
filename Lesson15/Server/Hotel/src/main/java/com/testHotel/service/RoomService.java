@@ -32,9 +32,7 @@ public class RoomService implements IRoomService {
     }
 
 
-
-
-    public List<Room> getAllRooms(TypeSorting sorting,RoomStatus status) {
+    public List<Room> getAllRooms(TypeSorting sorting, RoomStatus status) {
         synchronized (this.roomDAO) {
             List<Room> freeRooms = this.roomDAO.getAllEntitiesByStatus(status, sorting);
             return freeRooms;
@@ -46,6 +44,7 @@ public class RoomService implements IRoomService {
             return this.roomDAO.getEntityByNumber(roomNumber);
         }
     }
+
     public Room getRoomById(int roomNumber) {
         synchronized (this.roomDAO) {
             return this.roomDAO.getEntityById(roomNumber);
@@ -63,6 +62,11 @@ public class RoomService implements IRoomService {
         }
     }
 
+    public void addGuestRoomInfo(GuestRoomInfo guestRoomInfo) {
+        this.guestRoomInfoDAO.addEntity(guestRoomInfo);
+    }
+
+
     public Long getCountOldRoomGuests(Room room) {
         synchronized (this.guestRoomInfoDAO) {
             return guestRoomInfoDAO.getCountOldGuestsByRoom(room);
@@ -74,7 +78,6 @@ public class RoomService implements IRoomService {
             this.guestRoomInfoDAO.departureGuest(guest);
         }
     }
-
 
 
     public Integer getFreeRoomsCount() {
@@ -107,13 +110,16 @@ public class RoomService implements IRoomService {
             this.roomDAO.updateEntity(room);
         }
     }
+    public List<GuestRoomInfo> getAllGuestRoomInfo(TypeSorting sorting){
+       return this.guestRoomInfoDAO.getAllEntities(sorting);
+    }
 
     public Integer getMaxCountOldGuests() {
         return maxCountOldGuests;
     }
 
     public void addEntity(Room entity) {
-    this.roomDAO.addEntity(entity);
+        this.roomDAO.addEntity(entity);
     }
 
     public void updateEntity(Room entity) {

@@ -10,15 +10,13 @@ import javax.persistence.*;
 import java.util.List;
 
 
-@Proxy(lazy = false)
+
 @Entity
 @Table(name = "guest")
 public class Guest extends HotelEntity {
     private String name;
     private String surname;
-    @JsonBackReference
     private List<GuestRoomInfo> guestRoomInfoList;
-    @JsonBackReference
     private List<GuestServiceInfo> guestServiceInfoList;
 
     public Guest(String name, String surName) {
@@ -49,11 +47,13 @@ public class Guest extends HotelEntity {
     }
 
     @OneToMany
+    @JsonBackReference
     public List<GuestRoomInfo> getGuestRoomInfoList() {
         return guestRoomInfoList;
     }
 
     @OneToMany
+    @JsonBackReference
     public List<GuestServiceInfo> getGuestServiceInfoList() {
         return guestServiceInfoList;
     }

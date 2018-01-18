@@ -139,7 +139,26 @@ public class HotelController implements IHotelController {
     public void addGuestToRoom(Integer roomNumber, Guest guest, Integer year, Integer month, Integer day) {
         this.roomService.addGuest(roomNumber, guest, year, month + 1, day);
     }
+    public void addGuestRoomInfo(GuestRoomInfo guestRoomInfo){
+        this.roomService.addGuestRoomInfo(guestRoomInfo);
+    }
 
+    public void departureGuest(Integer guestId) {
+        Guest guest=this.guestService.getGuestById(guestId);
+            this.roomService.departureGuest(guest);
+    }
+    public List<GuestRoomInfo> getAllGuestRoomInfo(TypeSorting sorting){
+        return this.roomService.getAllGuestRoomInfo(sorting);
+    }
+    /**
+     *
+     */
+
+
+
+   public Integer getFreeRoomsCount(){
+     return  this.roomService.getFreeRoomsCount();
+    }
     public IPrinterService getPrinterService() {
         return printerService;
     }

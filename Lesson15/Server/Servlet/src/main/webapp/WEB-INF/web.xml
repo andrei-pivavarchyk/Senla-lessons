@@ -38,6 +38,10 @@
         <servlet-name>AllGuestServiceInfo</servlet-name>
         <servlet-class>com.servlet.GuestServiceSortingServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GuestRoomInfo</servlet-name>
+        <servlet-class>com.servlet.GuestRoomServlet</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -71,5 +75,9 @@
     <servlet-mapping>
         <servlet-name>AllGuestServiceInfo</servlet-name>
         <url-pattern>/allguestserviceinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuestRoomInfo</servlet-name>
+        <url-pattern>/guestRoomInfo</url-pattern>
     </servlet-mapping>
 </web-app>

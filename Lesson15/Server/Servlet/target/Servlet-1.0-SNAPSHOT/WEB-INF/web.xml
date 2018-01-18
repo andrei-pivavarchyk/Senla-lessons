@@ -1,20 +1,47 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-   <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
 
     <servlet>
         <servlet-name>GuestServlet</servlet-name>
         <servlet-class>com.servlet.GuestServlet</servlet-class>
-     </servlet>
+    </servlet>
 
     <servlet>
         <servlet-name>AllGuests</servlet-name>
         <servlet-class>com.servlet.GuestSortingServlet</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>HotelService</servlet-name>
+        <servlet-class>com.servlet.HotelServiceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllHotelService</servlet-name>
+        <servlet-class>com.servlet.HotelServiceSorting</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Room</servlet-name>
+        <servlet-class>com.servlet.RoomServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllRooms</servlet-name>
+        <servlet-class>com.servlet.RoomSortingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllGuestServices</servlet-name>
+        <servlet-class>com.servlet.GuestServiceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllGuestServiceInfo</servlet-name>
+        <servlet-class>com.servlet.GuestServiceSortingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GuestRoomInfo</servlet-name>
+        <servlet-class>com.servlet.GuestRoomServlet</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -24,6 +51,33 @@
     <servlet-mapping>
         <servlet-name>AllGuests</servlet-name>
         <url-pattern>/allguests</url-pattern>
-     </servlet-mapping>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HotelService</servlet-name>
+        <url-pattern>/service</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllHotelService</servlet-name>
+        <url-pattern>/allservices</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Room</servlet-name>
+        <url-pattern>/room</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllRooms</servlet-name>
+        <url-pattern>/allrooms</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllGuestServices</servlet-name>
+        <url-pattern>/allguestservices</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllGuestServiceInfo</servlet-name>
+        <url-pattern>/allguestserviceinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuestRoomInfo</servlet-name>
+        <url-pattern>/guestRoomInfo</url-pattern>
+    </servlet-mapping>
 </web-app>

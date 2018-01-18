@@ -10,9 +10,8 @@ import java.util.Date;
 @Entity
 @Table(name = "guestroominfo")
 public class GuestRoomInfo extends HotelEntity {
-    @JsonManagedReference
+
     public Guest guest;
-    @JsonManagedReference
     public Room room;
     private Date arrivaldate;
     private Date departuredate;
@@ -62,13 +61,14 @@ public class GuestRoomInfo extends HotelEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest")
+    @JsonManagedReference
     public Guest getGuest() {
         return guest;
     }
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "room")
-
+    @JsonManagedReference
     public Room getRoom() {
         return room;
     }

@@ -2,6 +2,7 @@ package com.testHotel.service;
 
 import com.dao.TypeSorting;
 import com.entity.Guest;
+import com.entity.GuestRoomInfo;
 import com.entity.Room;
 import com.entity.RoomStatus;
 
@@ -16,7 +17,8 @@ public interface IRoomService {
     void addGuest(int roomNumber, Guest guest, int year, int month, int day);
 
     void departureGuest(Guest guest);
-
+    void addGuestRoomInfo(GuestRoomInfo guestRoomInfo);
+    List<GuestRoomInfo> getAllGuestRoomInfo(TypeSorting sorting);
 
     Integer getFreeRoomsCount();
 

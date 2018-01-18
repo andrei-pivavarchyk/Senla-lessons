@@ -58,9 +58,9 @@ public interface IHotelController {
 
     //GuestService
 
-    List<GuestServiceInfo> getAllGuestServicesInfo(TypeSorting sorting) ;
+    List<GuestServiceInfo> getAllGuestServicesInfo(TypeSorting sorting);
 
-    List<GuestServiceInfo> getGuestServiceByGuest(Integer id,TypeSorting sorting);
+    List<GuestServiceInfo> getGuestServiceByGuest(Integer id, TypeSorting sorting);
 
     void addGuestServiceInfo(GuestServiceInfo guestRoomInfo);
 
@@ -69,8 +69,15 @@ public interface IHotelController {
     void updateGuestServiceInfo(GuestServiceInfo guestServiceInfo);
 
 
-    //
+    //guestRoom
+    void addGuestRoomInfo(GuestRoomInfo guestRoomInfo);
 
+    Integer getFreeRoomsCount();
+
+    void departureGuest(Integer guestId);
+
+    List<GuestRoomInfo> getAllGuestRoomInfo(TypeSorting sorting);
+    //
 
     void readRoomsFromFile() throws Exception;
 
