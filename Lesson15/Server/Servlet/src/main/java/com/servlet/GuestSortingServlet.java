@@ -27,7 +27,7 @@ public class GuestSortingServlet extends HttpServlet {
         List<Guest> guestList = new ArrayList<Guest>();
 
         if (request.getParameter("sorting") != null) {
-            TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
+            TypeSorting typeSorting = TypeSorting.getTypeSorting(request.getParameter("sorting"));
             if (typeSorting != null) {
                 guestList = hotelController.getAllGuests(typeSorting);
             }
@@ -39,13 +39,4 @@ public class GuestSortingServlet extends HttpServlet {
         pw.println(guestListJson);
     }
 
-    public TypeSorting getTypeSorting(String queryType) {
-        TypeSorting typeSorting = null;
-        for (TypeSorting type : TypeSorting.values()) {
-            if (type.getType().equals(queryType)) {
-                typeSorting = type;
-            }
-        }
-        return typeSorting;
-    }
 }

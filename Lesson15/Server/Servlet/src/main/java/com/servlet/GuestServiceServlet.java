@@ -32,7 +32,7 @@ public class GuestServiceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<GuestServiceInfo> roomList = new ArrayList<GuestServiceInfo>();
-        TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
+        TypeSorting typeSorting = TypeSorting.getTypeSorting(request.getParameter("sorting"));
         Integer id = Integer.parseInt(request.getParameter("id"));
         if (typeSorting != null && id != null) {
             roomList = hotelController.getGuestServiceByGuest(id, typeSorting);
@@ -80,15 +80,5 @@ public class GuestServiceServlet extends HttpServlet {
             pw.println("succes");
         }
 
-    }
-
-    public TypeSorting getTypeSorting(String queryType) {
-        TypeSorting typeSorting = null;
-        for (TypeSorting type : TypeSorting.values()) {
-            if (type.getType().equals(queryType)) {
-                typeSorting = type;
-            }
-        }
-        return typeSorting;
     }
 }

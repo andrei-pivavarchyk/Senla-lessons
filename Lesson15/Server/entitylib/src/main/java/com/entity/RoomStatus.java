@@ -17,4 +17,14 @@ public enum RoomStatus {
     public String getStatus() {
         return status;
     }
+
+    public static RoomStatus getRoomStatus(String status) {
+        RoomStatus roomStatusQuery = null;
+        for (RoomStatus roomStatus : RoomStatus.values()) {
+            if (roomStatus.getStatus().equals(status)) {
+                roomStatusQuery = roomStatus;
+            }
+        }
+        return roomStatusQuery;
+    }
 }

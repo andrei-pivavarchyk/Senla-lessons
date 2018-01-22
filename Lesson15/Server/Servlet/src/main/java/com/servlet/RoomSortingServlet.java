@@ -22,33 +22,13 @@ public class RoomSortingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Room> roomList = new ArrayList<Room>();
-        TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
-        RoomStatus roomStatus = this.getRoomStatus(request.getParameter("status"));
+        TypeSorting typeSorting = TypeSorting.getTypeSorting(request.getParameter("sorting"));
+        RoomStatus roomStatus = RoomStatus.getRoomStatus(request.getParameter("status"));
         if (typeSorting != null && roomStatus != null) {
             roomList = hotelController.getAllRooms(typeSorting, roomStatus);
         }
         String guestListJson = ObjectConverterToJson.convertObject(roomList);
         PrintWriter pw = response.getWriter();
         pw.println(guestListJson);
-    }
-
-    public TypeSorting getTypeSorting(String queryType) {
-        TypeSorting typeSorting = null;
-        for (TypeSorting type : TypeSorting.values()) {
-            if (type.getType().equals(queryType)) {
-                typeSorting = type;
-            }
-        }
-        return typeSorting;
-    }
-
-    public RoomStatus getRoomStatus(String status) {
-        RoomStatus roomStatusQuery = null;
-        for (RoomStatus roomStatus : RoomStatus.values()) {
-            if (roomStatus.getStatus().equals(status)) {
-                roomStatusQuery = roomStatus;
-            }
-        }
-        return roomStatusQuery;
     }
 }

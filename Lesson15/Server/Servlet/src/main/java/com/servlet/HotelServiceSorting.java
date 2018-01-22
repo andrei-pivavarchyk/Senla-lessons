@@ -27,7 +27,7 @@ public class HotelServiceSorting extends HttpServlet {
         List<Service> serviceList = new ArrayList<Service>();
 
         if (request.getParameter("sorting") != null) {
-            TypeSorting typeSorting = this.getTypeSorting(request.getParameter("sorting"));
+            TypeSorting typeSorting = TypeSorting.getTypeSorting(request.getParameter("sorting"));
             if (typeSorting != null) {
                 serviceList = hotelController.getAllHotelServices(typeSorting);
             }
@@ -40,13 +40,4 @@ public class HotelServiceSorting extends HttpServlet {
     }
 
 
-    public TypeSorting getTypeSorting(String queryType) {
-        TypeSorting typeSorting = null;
-        for (TypeSorting type : TypeSorting.values()) {
-            if (type.getType().equals(queryType)) {
-                typeSorting = type;
-            }
-        }
-        return typeSorting;
-    }
 }

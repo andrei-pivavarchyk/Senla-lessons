@@ -52,10 +52,6 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
         return Factory.getSession();
     }
 
-    public String getTableName() {
-        return tableName;
-    }
-
     public Class getEntityClass() {
         return this.persistentClass;
     }

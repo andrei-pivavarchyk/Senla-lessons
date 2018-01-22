@@ -1,5 +1,6 @@
 import com.dao.*;
 import com.entity.*;
+import org.hibernate.Transaction;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -25,7 +26,9 @@ public class Main {
         GuestRoomInfo guestRoomInfo1 = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
         GuestServiceInfo guestServiceInfo = new GuestServiceInfo(6, guest, serviceEntity1, new Date());
 
-       // roomHibernateDao.addEntity(room);
+    //  Transaction tr=  Factory.getSession().beginTransaction();
+     //   roomHibernateDao.deleteEntity(7);
+     //   tr.commit();
 
       //  guestHibernateDao.addEntity(guest);
       //  guestHibernateDao.addEntity(guest);

@@ -2,6 +2,7 @@ package com.dao;
 
 public enum TypeSorting {
 
+
     BY_ARRIVAL_DATE("arrivaldate"),
     BY_DEPARTURE_DATE("departuredate"),
     BY_DATE("date"),
@@ -22,4 +23,15 @@ public enum TypeSorting {
     public String getType() {
         return type;
     }
+
+    public static TypeSorting getTypeSorting(String queryType) {
+        TypeSorting typeSorting = null;
+        for (TypeSorting type : TypeSorting.values()) {
+            if (type.getType().equals(queryType)) {
+                typeSorting = type;
+            }
+        }
+        return typeSorting;
+    }
+
 }
