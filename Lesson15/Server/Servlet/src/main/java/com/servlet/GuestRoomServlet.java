@@ -47,14 +47,9 @@ public class GuestRoomServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        StringBuffer sb = new StringBuffer();
-        String query = null;
-        BufferedReader reader = request.getReader();
-        while ((query = reader.readLine()) != null) {
-            sb.append(query);
-        }
+        String query = request.getReader().readLine();
         try {
-            GuestRoomInfo guestRoomInfo = this.objectMapper.readValue(sb.toString(), GuestRoomInfo.class);
+            GuestRoomInfo guestRoomInfo = this.objectMapper.readValue(query, GuestRoomInfo.class);
             this.hotelController.addGuestRoomInfo(guestRoomInfo);
             PrintWriter pw = response.getWriter();
             pw.println("succes");

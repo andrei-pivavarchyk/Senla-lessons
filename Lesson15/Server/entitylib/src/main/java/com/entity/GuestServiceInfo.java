@@ -1,5 +1,7 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -40,6 +42,7 @@ public class GuestServiceInfo extends HotelEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest")
+    //@JsonManagedReference
     public Guest getGuest() {
         return guest;
     }
@@ -51,6 +54,7 @@ public class GuestServiceInfo extends HotelEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "service")
+    //@JsonManagedReference
     public Service getService() {
         return service;
     }

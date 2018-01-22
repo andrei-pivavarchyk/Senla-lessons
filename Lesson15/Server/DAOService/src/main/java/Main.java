@@ -20,7 +20,7 @@ public class Main {
         Service serviceEntity1 = new Service(1, ServiceType.EAT, "hjjjjjfc", 1);
         Guest guest = new Guest(24, "Bob", "bob");
         Room room = new Room(8,77, 34, 4, 1);
-        Guest guest1 = new Guest(111, "Fd", "fd");
+        Guest guest1 = new Guest(8, "Fd", "fd");
         GuestRoomInfo guestRoomInfo = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
         GuestRoomInfo guestRoomInfo1 = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
         GuestServiceInfo guestServiceInfo = new GuestServiceInfo(6, guest, serviceEntity1, new Date());
@@ -38,8 +38,8 @@ public class Main {
  Guest Hibernate test
  */
 
-        // guestHibernateDao.addEntity(guest);
-        //  guestHibernateDao.updateEntity(guest1);
+     // guestHibernateDao.addEntity(guest);
+       // guestHibernateDao.updateEntity(guest1);
         //  guestHibernateDao.deleteEntity(4);
         //  guestHibernateDao.getEntityById(3);
 
@@ -47,18 +47,19 @@ public class Main {
  GuestRoomInfo
  */
 
-      // guestRoomHibernateDao.addEntity(guestRoomInfo);
+        // guestRoomHibernateDao.addEntity(guestRoomInfo);
         // guestRoomHibernateDao.deleteEntity(6);
         // guestRoomHibernateDao.updateEntity(guestRoomInfo1);
-       //  guestRoomHibernateDao.getEntityById(8);
-       // guestRoomHibernateDao.departureGuest(guest);
-     // guestRoomHibernateDao.addGuest(guestRoomInfo);
+        //  guestRoomHibernateDao.getEntityById(8);
+        // guestRoomHibernateDao.departureGuest(guest);
+        // guestRoomHibernateDao.addGuest(guestRoomInfo);
 
 
 
-     System.out.println( guestRoomHibernateDao.getEntityById(3).getGuest().getName());
-     System.out.println( guestRoomHibernateDao.getEntityById(3).getGuest().getName());
-     System.out.println( guestRoomHibernateDao.getEntityById(3).getGuest().getName());
+    // System.out.println( guestRoomHibernateDao.getEntityById(8).getGuest().getName());
+    // System.out.println( guestRoomHibernateDao.getEntityById(8).getGuest().getName());
+    // System.out.println( guestRoomHibernateDao.getEntityById(8).getGuest().getName());
+
 
         // serviceHibernateDao.addEntity(serviceEntity1);
 /*
@@ -81,11 +82,8 @@ public class Main {
         // serviceHibernateDao.deleteEntity(serviceEntity1);
         // roomHibernateDao.deleteEntity(room);
         //guestHibernateDao.deleteEntity(guest);
-
-
         //   guestRoomHibernateDao.getGuestByStatus(RoomStatus.RESERVED,TypeSorting.BY_ARRIVAL_DATE);
         //guestServiceHibernateDao.getAllGuestServices(guest,TypeSorting.BY_COST);
-
     }
 
 }

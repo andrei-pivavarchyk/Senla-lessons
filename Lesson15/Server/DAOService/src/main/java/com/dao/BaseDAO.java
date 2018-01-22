@@ -10,8 +10,6 @@ import org.hibernate.criterion.Restrictions;
 import java.util.List;
 
 public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
-    private SessionFactory factory = Factory.getSessionFactory();
-    private Session session = factory.openSession();
     private Class<T> persistentClass;
     private String tableName;
 
@@ -21,27 +19,21 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
     }
 
     public void addEntity(T entity) {
-        Transaction transaction = getSession().beginTransaction();
-        session.save(entity);
-        transaction.commit();
+        getSession().save(entity);
     }
 
     public void updateEntity(T entity) {
-        Transaction transaction = getSession().beginTransaction();
-        session.update(entity);
-        transaction.commit();
+        getSession().update(entity);
     }
 
     public void deleteEntity(Integer id) {
-        Transaction transaction = getSession().beginTransaction();
-        T object = (T) session.createCriteria(persistentClass)
+        T object = (T) getSession().createCriteria(persistentClass)
                 .add(Restrictions.like("id", id)).uniqueResult();
-        session.delete(object);
-        transaction.commit();
+        getSession().delete(object);
     }
 
     public List<T> getAllEntities(TypeSorting sorting) {
-        Criteria criteria = session.createCriteria(persistentClass);
+        Criteria criteria = getSession().createCriteria(persistentClass);
         if (sorting != TypeSorting.NO_SORTING) {
             criteria.addOrder(Order.desc(sorting.getType()));
         }
@@ -50,13 +42,14 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
     }
 
     public T getEntityById(Integer id) {
-        Criteria criteria = session.createCriteria(persistentClass)
+        Criteria criteria = getSession().createCriteria(persistentClass)
                 .add(Restrictions.like("id", id));
-        return (T) criteria.uniqueResult();
+        T object = (T) criteria.uniqueResult();
+        return object;
     }
 
     public Session getSession() {
-        return session;
+        return Factory.getSession();
     }
 
     public String getTableName() {
@@ -66,4 +59,6 @@ public class BaseDAO<T extends HotelEntity> implements IBaseDAO<T> {
     public Class getEntityClass() {
         return this.persistentClass;
     }
+
+
 }

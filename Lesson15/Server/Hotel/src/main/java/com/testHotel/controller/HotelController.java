@@ -181,7 +181,6 @@ public class HotelController implements IHotelController {
         return roomFilePath;
     }
 
-
     public IGuestService getGuestSerice() {
         return guestService;
     }

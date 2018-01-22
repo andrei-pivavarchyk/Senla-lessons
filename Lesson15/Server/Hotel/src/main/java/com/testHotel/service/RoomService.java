@@ -26,6 +26,7 @@ public class RoomService implements IRoomService {
     @ConfigProperty(configPath = PropertyFilePath.CONFIG_HOTEL_PROPERTIES, propertyName = PropertyName.CHOOSE_ROOM_STATUS)
     private Boolean chooseRoomStatus;
     public static final Logger log = Logger.getLogger(RoomService.class);
+    private Factory factory;
 
     public void addRoom(Room room) {
         this.roomDAO.addEntity(room);
@@ -34,55 +35,74 @@ public class RoomService implements IRoomService {
 
     public List<Room> getAllRooms(TypeSorting sorting, RoomStatus status) {
         synchronized (this.roomDAO) {
+            Transaction transaction = factory.getSession().beginTransaction();
             List<Room> freeRooms = this.roomDAO.getAllEntitiesByStatus(status, sorting);
+            transaction.commit();
             return freeRooms;
         }
     }
 
     public Room getRoomByNumber(int roomNumber) {
         synchronized (this.roomDAO) {
-            return this.roomDAO.getEntityByNumber(roomNumber);
+            Transaction transaction = factory.getSession().beginTransaction();
+            Room room = roomDAO.getEntityByNumber(roomNumber);
+            transaction.commit();
+            return room;
         }
     }
 
     public Room getRoomById(int roomNumber) {
         synchronized (this.roomDAO) {
-            return this.roomDAO.getEntityById(roomNumber);
+            Transaction transaction = factory.getSession().beginTransaction();
+            Room room = roomDAO.getEntityById(roomNumber);
+            transaction.commit();
+            return room;
         }
     }
 
     public void addGuest(int roomNumber, Guest guest, int year, int month, int day) {
         synchronized (this.guestRoomInfoDAO) {
+            Transaction transaction = factory.getSession().beginTransaction();
             Room room = this.getRoomByNumber(roomNumber);
             if (room != null) {
                 Date arrivalDate = DateUtil.getDate(year, month, day);
                 GuestRoomInfo guestRoomInfo = new GuestRoomInfo(guest, room, new Date(), arrivalDate, true);
                 this.guestRoomInfoDAO.addEntity(guestRoomInfo);
+                transaction.commit();
             }
         }
     }
 
     public void addGuestRoomInfo(GuestRoomInfo guestRoomInfo) {
+        Transaction transaction = factory.getSession().beginTransaction();
         this.guestRoomInfoDAO.addEntity(guestRoomInfo);
+        transaction.commit();
     }
 
 
     public Long getCountOldRoomGuests(Room room) {
         synchronized (this.guestRoomInfoDAO) {
-            return guestRoomInfoDAO.getCountOldGuestsByRoom(room);
+            Transaction transaction = factory.getSession().beginTransaction();
+            Long count = guestRoomInfoDAO.getCountOldGuestsByRoom(room);
+            transaction.commit();
+            return count;
         }
     }
 
     public void departureGuest(Guest guest) {
         synchronized (this.guestRoomInfoDAO) {
+            Transaction transaction = factory.getSession().beginTransaction();
             this.guestRoomInfoDAO.departureGuest(guest);
+            transaction.commit();
         }
     }
 
 
     public Integer getFreeRoomsCount() {
         synchronized (this.roomDAO) {
+            Transaction transaction = factory.getSession().beginTransaction();
             List<Room> freeRooms = this.roomDAO.getAllEntitiesByStatus(RoomStatus.FREE, TypeSorting.BY_COUNT);
+            transaction.commit();
             return freeRooms.size();
         }
     }
@@ -90,28 +110,38 @@ public class RoomService implements IRoomService {
 
     public void setRoomCost(int roomNumber, int cost) {
         synchronized (this.roomDAO) {
+            Transaction transaction = factory.getSession().beginTransaction();
             Room room = this.roomDAO.getEntityById(roomNumber);
             room.setCost(cost);
             this.roomDAO.updateEntity(room);
+            transaction.commit();
         }
     }
 
     public void importRooms(List<Room> importList) {
         synchronized (this.roomDAO) {
+            Transaction transaction = factory.getSession().beginTransaction();
             for (Room room : importList) {
                 this.roomDAO.addEntity(room);
             }
+            transaction.commit();
         }
     }
 
     public void setRoomStatus(Room room, RoomStatus roomStatus) {
         if (this.chooseRoomStatus) {
+            Transaction transaction = factory.getSession().beginTransaction();
             room.setStatus(roomStatus);
             this.roomDAO.updateEntity(room);
+            transaction.commit();
         }
     }
-    public List<GuestRoomInfo> getAllGuestRoomInfo(TypeSorting sorting){
-       return this.guestRoomInfoDAO.getAllEntities(sorting);
+
+    public List<GuestRoomInfo> getAllGuestRoomInfo(TypeSorting sorting) {
+        Transaction transaction = factory.getSession().beginTransaction();
+        List<GuestRoomInfo> list= this.guestRoomInfoDAO.getAllEntities(sorting);
+        transaction.commit();
+        return list;
     }
 
     public Integer getMaxCountOldGuests() {

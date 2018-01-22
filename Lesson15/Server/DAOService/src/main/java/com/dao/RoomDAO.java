@@ -13,7 +13,6 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
     }
 
     public List<Room> getAllEntitiesByStatus(RoomStatus status, TypeSorting sorting) {
-        super.getSession().beginTransaction();
         Query createQuery = super.getSession().createQuery(" from Room where status =:param ");
         if(sorting.getType()!=TypeSorting.NO_SORTING.getType()){
             String query=createQuery.getQueryString();
@@ -22,7 +21,6 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
         }
         createQuery.setParameter("param",status);
         List <Room> roomList=createQuery.list();
-        super.getSession().getTransaction().commit();
         return roomList;
     }
 
@@ -40,5 +38,4 @@ public class RoomDAO extends BaseDAO<Room> implements IRoomDAO{
         List <Room> roomList=createQuery.list();
         return roomList.get(0);
     }
-
 }

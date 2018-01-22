@@ -1,9 +1,6 @@
 package com.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -47,13 +44,13 @@ public class Guest extends HotelEntity {
     }
 
     @OneToMany
-    @JsonBackReference
+    @JsonIgnore
     public List<GuestRoomInfo> getGuestRoomInfoList() {
         return guestRoomInfoList;
     }
 
     @OneToMany
-    @JsonBackReference
+    @JsonIgnore
     public List<GuestServiceInfo> getGuestServiceInfoList() {
         return guestServiceInfoList;
     }

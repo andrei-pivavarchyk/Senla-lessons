@@ -61,14 +61,14 @@ public class GuestRoomInfo extends HotelEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest")
-    @JsonManagedReference
+    //@JsonManagedReference
     public Guest getGuest() {
         return guest;
     }
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "room")
-    @JsonManagedReference
+   //@JsonManagedReference
     public Room getRoom() {
         return room;
     }

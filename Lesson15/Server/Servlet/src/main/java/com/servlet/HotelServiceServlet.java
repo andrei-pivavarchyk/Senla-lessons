@@ -37,15 +37,10 @@ public class HotelServiceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        StringBuffer sb = new StringBuffer();
-        String query = null;
-        BufferedReader reader = request.getReader();
-        while ((query = reader.readLine()) != null) {
-            sb.append(query);
-        }
+        String query = request.getReader().readLine();
 
         try {
-            Service service = this.objectMapper.readValue(sb.toString(), Service.class);
+            Service service = this.objectMapper.readValue(query, Service.class);
             this.hotelController.updateService(service);
             PrintWriter pw = response.getWriter();
             pw.println("succes");
@@ -57,17 +52,12 @@ public class HotelServiceServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        StringBuffer sb = new StringBuffer();
-        String query = null;
-        BufferedReader reader = request.getReader();
-        while ((query = reader.readLine()) != null) {
-            sb.append(query);
-        }
+        String query = request.getReader().readLine();
         try {
-            Service service = this.objectMapper.readValue(sb.toString(), Service.class);
+            Service service = this.objectMapper.readValue(query, Service.class);
             this.hotelController.addHotelService(service);
             PrintWriter pw = response.getWriter();
-            pw.println(sb);
+            pw.println(query);
         } catch (IOException e) {
             log.error(e.toString());
         }

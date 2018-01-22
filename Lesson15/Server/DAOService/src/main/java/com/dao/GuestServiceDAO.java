@@ -43,11 +43,8 @@ public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuest
     }
 
     public void deleteServicesByGuest(Guest guest) {
-        super.getSession().beginTransaction();
         Query createQuery = getSession().createQuery(" delete GuestServiceInfo where guest =:param ");
         createQuery.setParameter("param", guest);
         createQuery.executeUpdate();
-        super.getSession().getTransaction().commit();
     }
-
 }

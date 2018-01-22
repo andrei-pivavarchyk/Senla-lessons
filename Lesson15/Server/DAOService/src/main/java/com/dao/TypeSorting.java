@@ -16,11 +16,9 @@ public enum TypeSorting {
     BY_COUNT("count");
 
     private String type;
-
-     TypeSorting(String type){
-        this.type=type;
+    TypeSorting(String type) {
+        this.type = type;
     }
-
     public String getType() {
         return type;
     }

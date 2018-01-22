@@ -1,6 +1,7 @@
 com\servlet\HotelServiceSorting.class
 com\servlet\ObjectConverterToJson.class
 com\servlet\GuestRoomServlet.class
+com\servlet\Main.class
 com\servlet\GuestSortingServlet.class
 com\servlet\GuestServiceSortingServlet.class
 com\servlet\GuestServiceServlet.class

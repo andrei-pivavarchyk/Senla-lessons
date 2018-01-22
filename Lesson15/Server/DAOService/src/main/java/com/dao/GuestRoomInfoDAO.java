@@ -20,21 +20,17 @@ public class GuestRoomInfoDAO extends BaseDAO<GuestRoomInfo> implements IGuestRo
 
     public void addGuest(GuestRoomInfo guestRoomInfo) {
         synchronized (this.guestDAO) {
-            Transaction transaction = getSession().beginTransaction();
             getSession().save(guestRoomInfo.getGuest());
             getSession().save(guestRoomInfo);
             guestRoomInfo.getRoom().setStatus(RoomStatus.RESERVED);
             getSession().save(guestRoomInfo.getRoom());
-            transaction.commit();
         }
     }
 
     public void departureGuest(Guest guest) {
-        super.getSession().beginTransaction();
         GuestRoomInfo object = (GuestRoomInfo) getSession().createCriteria(GuestRoomInfo.class)
                 .add(Restrictions.eq("guest", guest)).uniqueResult();
         object.setIsstillliving(false);
-        super.getSession().getTransaction().commit();
         this.updateEntity(object);
 
     }
