@@ -24,6 +24,7 @@ public class HotelServiceSorting extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("application/json");
         List<Service> serviceList = new ArrayList<Service>();
 
         if (request.getParameter("sorting") != null) {

@@ -25,6 +25,7 @@ public class GuestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("application/json");
         if (request.getParameter("id") != null) {
             Integer id = parseInt(request.getParameter("id"));
             Guest guest = hotelController.getGuestById(id);
