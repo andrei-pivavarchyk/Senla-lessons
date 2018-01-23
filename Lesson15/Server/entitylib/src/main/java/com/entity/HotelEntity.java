@@ -14,6 +14,10 @@ import java.io.Serializable;
         property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Room.class, name = "room"),
+        @JsonSubTypes.Type(value = Guest.class, name = "room"),
+        @JsonSubTypes.Type(value = Service.class, name = "room"),
+        @JsonSubTypes.Type(value = GuestServiceInfo.class, name = "room"),
+        @JsonSubTypes.Type(value = GuestRoomInfo.class, name = "room")
 })
 
 @MappedSuperclass

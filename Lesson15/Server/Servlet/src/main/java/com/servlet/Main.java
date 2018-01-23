@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args){
         String str="{\"type\":\"Guest\",\"id\":8,\"name\":\"Mar\",\"surname\":\"Mar\"}";
         ObjectMapper objectMapper = new ObjectMapper();
-        Guest guest = null;
+        Guest guest = new Guest(1,"fds","fds");
         try {
             guest = objectMapper.readValue(str, Guest.class);
         } catch (IOException e) {
@@ -18,6 +18,6 @@ public class Main {
         }
         System.out.print(ObjectConverterToJson.convertObject(guest));
         HotelController hotelController=new HotelController();
-        hotelController.updateGuest(guest);
+        hotelController.addGuest(guest);
     }
 }
