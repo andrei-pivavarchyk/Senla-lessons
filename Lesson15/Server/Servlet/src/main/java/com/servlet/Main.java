@@ -1,5 +1,6 @@
 package com.servlet;
 
+import com.dao.TypeSorting;
 import com.entity.Guest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testHotel.controller.HotelController;
@@ -19,5 +20,6 @@ public class Main {
         System.out.print(ObjectConverterToJson.convertObject(guest));
         HotelController hotelController=new HotelController();
         hotelController.addGuest(guest);
+        
     }
 }
