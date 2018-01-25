@@ -3,7 +3,10 @@ package com.testHotel.controller;
 
 import com.dao.TypeSorting;
 import com.entity.*;
-import com.testHotel.service.*;
+import com.testHotel.service.api.IGuestService;
+import com.testHotel.service.api.IPrinterService;
+import com.testHotel.service.api.IRoomService;
+import com.testHotel.service.api.IServiceService;
 
 import java.sql.SQLException;
 import java.util.List;

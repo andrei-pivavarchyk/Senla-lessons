@@ -3,9 +3,9 @@ package com.testHotel.service;
 
 import com.entity.*;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.testHotel.service.api.IPrinterService;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)

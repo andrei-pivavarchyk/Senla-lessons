@@ -30,4 +30,8 @@ public class Factory {
     public static Session getSession() {
         return sessionFactory.getCurrentSession();
     }
+
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 }

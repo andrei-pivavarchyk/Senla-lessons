@@ -1,6 +1,7 @@
 package com.dao;
 
 
+import com.dao.api.IRoomDAO;
 import com.entity.Room;
 import com.entity.RoomStatus;
 import org.hibernate.Query;

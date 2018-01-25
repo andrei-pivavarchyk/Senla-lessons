@@ -1,8 +1,10 @@
 package com.dao;
 
+import com.dao.api.IGuestDAO;
+import com.dao.api.IGuestRoomInfoDAO;
+import com.dao.api.IRoomDAO;
 import com.dependencyService.DependencyService;
 import com.entity.*;
-import org.apache.log4j.Logger;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;

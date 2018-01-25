@@ -1,17 +1,15 @@
 package com.dao;
 
+import com.dao.api.IGuestServiceDAO;
 import com.entity.Guest;
 
-import com.entity.GuestRoomInfo;
 import com.entity.GuestServiceInfo;
 import com.entity.Service;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuestServiceDAO extends BaseDAO<GuestServiceInfo> implements IGuestServiceDAO {

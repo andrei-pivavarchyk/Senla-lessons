@@ -1,15 +1,15 @@
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\IServiceDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\RoomDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\GuestDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\GuestRoomInfoDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\Main.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\IGuestServiceDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\ServiceDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\IGuestDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\IBaseDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\IRoomDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\GuestServiceDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\BaseDAO.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\Factory.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\TypeSorting.java
-D:\дизайнерские штуки\Senla\Sen\Lesson15\Server\DAOService\src\main\java\com\dao\IGuestRoomInfoDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\api\IGuestRoomInfoDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\api\IRoomDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\BaseDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\GuestDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\api\IServiceDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\Main.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\api\IBaseDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\RoomDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\ServiceDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\api\IGuestServiceDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\GuestServiceDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\TypeSorting.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\GuestRoomInfoDAO.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\Factory.java
+D:\web\Senn\Lesson15\Server\DAOService\src\main\java\com\dao\api\IGuestDAO.java

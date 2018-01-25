@@ -1,6 +1,9 @@
 import com.dao.*;
 import com.entity.*;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -20,15 +23,23 @@ public class Main {
         Date departureDate = gregorianCalendar.getTime();
         Service serviceEntity1 = new Service(1, ServiceType.EAT, "hjjjjjfc", 1);
         Guest guest = new Guest(24, "Bob", "bob");
-        Room room = new Room(8,77, 34, 4, 1);
+        Room room = new Room(2,77, 34, 4, 1);
         Guest guest1 = new Guest(8, "Fd", "fd");
         GuestRoomInfo guestRoomInfo = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
         GuestRoomInfo guestRoomInfo1 = new GuestRoomInfo(7, guest, room, new Date(), departureDate, false);
         GuestServiceInfo guestServiceInfo = new GuestServiceInfo(6, guest, serviceEntity1, new Date());
 
-    //  Transaction tr=  Factory.getSession().beginTransaction();
-     //   roomHibernateDao.deleteEntity(7);
-     //   tr.commit();
+
+      //  Session session =  Factory.getSession();
+
+      //  Transaction tr= session.beginTransaction();
+     //  Room room8 =  (Room) session.get(Room.class, 2);
+
+
+      //  Room object = (Room) criteria.uniqueResult();
+      //  tr.commit();
+
+
 
       //  guestHibernateDao.addEntity(guest);
       //  guestHibernateDao.addEntity(guest);

@@ -2,10 +2,14 @@ package com.testHotel.service;
 
 import com.dao.*;
 
+import com.dao.api.IGuestDAO;
+import com.dao.api.IGuestServiceDAO;
+import com.dao.api.IServiceDAO;
 import com.dependencyService.DependencyService;
 import com.entity.Guest;
 import com.entity.GuestServiceInfo;
 import com.entity.Service;
+import com.testHotel.service.api.IServiceService;
 import org.apache.log4j.Logger;
 import org.hibernate.Transaction;
 
