@@ -1,0 +1,9 @@
+nimbus-jose-jwt-*.jar
+TEST*
+*.class
+*~
+.classpath
+.pmd
+.project
+target
+*.iml
