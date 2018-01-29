@@ -1,1 +1,12 @@
-com\mkyong\common\controller\MovieController.class
+com\mkyong\common\controller\servlet\LoginServlet.class
+com\mkyong\common\controller\dao\IUserDAO.class
+com\mkyong\common\controller\servlet\UserDataServlet.class
+com\mkyong\common\controller\Entity.class
+com\mkyong\common\controller\Main.class
+com\mkyong\common\controller\dao\IBaseDAO.class
+com\mkyong\common\controller\servlet\FilterToken.class
+com\mkyong\common\controller\User.class
+com\mkyong\common\controller\TokenService.class
+com\mkyong\common\controller\dao\UserDAO.class
+com\mkyong\common\controller\dao\Factory.class
+com\mkyong\common\controller\dao\BaseDAO.class
