@@ -14,8 +14,8 @@
 	<property name="hbm2ddl.auto">validate</property>
 
 
-        <mapping class="com.mkyong.common.controller.Entity"/>
-        <mapping class="com.mkyong.common.controller.User"/>
+        <mapping class="com.entity.WebEntity"/>
+        <mapping class="com.entity.User"/>
 
     </session-factory>
 </hibernate-configuration>
