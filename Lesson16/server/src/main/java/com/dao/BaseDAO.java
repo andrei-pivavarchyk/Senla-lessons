@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.dao.api.IBaseDAO;
 import com.entity.WebEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

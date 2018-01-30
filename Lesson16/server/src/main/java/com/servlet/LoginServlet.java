@@ -23,7 +23,7 @@ public class LoginServlet {
 
     @RequestMapping(method = RequestMethod.POST)
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
+
         String query = request.getReader().readLine();
 
         User user = objectMapper.readValue(query, User.class);

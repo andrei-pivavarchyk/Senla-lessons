@@ -1,6 +1,8 @@
 package com.servlet;
 
 
+import com.service.TokenHandler;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.*;
@@ -20,21 +22,17 @@ public class FilterToken implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        //   Integer id = parseInt(request.getParameter("id"));
-        //  PrintWriter pw = response.getWriter();
+        HttpServletRequest req = (HttpServletRequest) request;
+        String token = req.getHeader("token");
 
-        HttpServletRequest request1 = (HttpServletRequest) request;
-        String str = request1.getHeader("token");
-        if (str != null) {
+        Boolean tokenValid = TokenHandler.getInstance().checkToken(token);
+        if (tokenValid) {
             chain.doFilter(request, response);
+        } else {
+            HttpServletResponse rs = (HttpServletResponse) response;
+            rs.sendError(404);
         }
 
-               /* System.out.println("doFilter is execute");
-                // Мы не можем вызвать response.sendRedirect("login.jsp") так как нам нужен httpResponse, а не ServletResponse.
-                HttpServletResponse httpResponse = (HttpServletResponse) response;
-                httpResponse.sendRedirect("login.jsp");
-                //chain.doFilter(request, response);  // вызываем следующий фильтр. В этом примере нам это не понадобится.
-       */
     }
 
     @Override

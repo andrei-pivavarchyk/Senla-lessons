@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.dao.api.IUserDAO;
 import com.entity.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
