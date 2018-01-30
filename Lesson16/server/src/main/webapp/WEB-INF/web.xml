@@ -26,7 +26,7 @@
 
     <filter>
         <filter-name>LoginFilter</filter-name>
-        <filter-class>com.mkyong.common.controller.servlet.FilterToken</filter-class>
+        <filter-class>com.servlet.FilterToken</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
