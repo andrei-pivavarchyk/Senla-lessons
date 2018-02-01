@@ -1,12 +1,12 @@
 com\Main.class
 com\service\TokenHandler.class
 com\servlet\FilterToken.class
+com\dao\api\IBaseDAO.class
 com\dao\UserDAO.class
 com\servlet\LoginServlet.class
 com\dao\Factory.class
 com\servlet\UserDataServlet.class
-com\dao\IUserDAO.class
-com\dao\IBaseDAO.class
+com\dao\api\IUserDAO.class
 com\entity\WebEntity.class
 com\service\ObjectConverterToJson.class
 com\entity\User.class

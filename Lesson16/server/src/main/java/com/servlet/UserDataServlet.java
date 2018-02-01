@@ -17,8 +17,11 @@ public class UserDataServlet {
     @RequestMapping(method = RequestMethod.GET)
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        PrintWriter pw = response.getWriter();
-        pw.print("userdata");
+        String userDataInformation="some information";
+        response.addHeader("userdata",userDataInformation);
+
+      //  PrintWriter pw = response.getWriter();
+       // pw.print("succes");
     }
 
 }

@@ -36,8 +36,6 @@ public class TokenHandler {
         random.nextBytes(sharedSecret);
 
         try {
-            log.error("Fdsfsfs");
-
             JWSSigner signer = new MACSigner(sharedSecret);
 
             JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()

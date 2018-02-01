@@ -9,9 +9,7 @@ import org.hibernate.Transaction;
 
 public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
-
-    private SessionFactory factory = Factory.getSessionFactory();
-    private Session session = factory.openSession();
+    private Factory factory ;
     private Class<T> persistentClass;
     public  String tableName;
 
@@ -26,16 +24,22 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
 
     public void addEntity(T entity) {
-        Transaction transaction = getSession().beginTransaction();
-        session.save(entity);
-        transaction.commit();
+        getSession().save(entity);
     }
 
     public void updateEntity(T entity) {
-        Transaction transaction = getSession().beginTransaction();
-        session.update(entity);
-        transaction.commit();
+        getSession().update(entity);
     }
+
+
+
+    public void deleteEntity(Integer id) {
+        T entity = null;
+        entity = (T) getSession().load(getEntityClass(), id);
+        getSession().delete(entity);
+    }
+
+
 /*
     public void deleteEntity(Integer id) {
         Transaction transaction = getSession().beginTransaction();
@@ -61,15 +65,13 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 */
 
     public T getEntityById(Integer id) {
-        Transaction transaction = getSession().beginTransaction();
         T entity = null;
         entity = (T) getSession().load(getEntityClass(), id);
-        transaction.commit();
         return entity;
     }
 
     public Session getSession() {
-        return session;
+        return Factory.getSession();
     }
 
 }

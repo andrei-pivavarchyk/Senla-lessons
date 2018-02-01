@@ -24,7 +24,7 @@ export class LoginFormComponent implements OnInit {
 
   }
 
-  private heroesUrl = 'api/heroes';
+  private heroesUrl = 'http://localhost:8080/SpringMVC/userdata';
   user: User;
 
   onSelect(user: User): void {

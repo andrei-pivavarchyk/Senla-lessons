@@ -11,7 +11,7 @@ import { UserDataComponent } from './user-data/user-data.component';
 //for two binding in forms
 import { FormsModule } from '@angular/forms';
 //for http
-import { HttpClientModule } from ' @angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 

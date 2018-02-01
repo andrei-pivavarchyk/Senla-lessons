@@ -30,4 +30,6 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
         }
         return false;
     }
+
+
 }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Proxy;
 import javax.persistence.*;
 
-@Proxy(lazy = false)
+
 @Entity
 @Table(name = "user_autifification")
 public class User extends WebEntity {
@@ -14,6 +14,7 @@ public class User extends WebEntity {
     private String password;
     // @JsonBackReference
 
+    @JsonCreator
     public User(@JsonProperty("login") String login,@JsonProperty("password") String password) {
         this.login = login;
         this.password = password;
@@ -30,14 +31,12 @@ public class User extends WebEntity {
     }
 
 
+
+
     @Basic
     @Column(name = "login")
     public String getLogin() {
         return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     @Basic
@@ -50,27 +49,34 @@ public class User extends WebEntity {
         this.password = password;
     }
 
+
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+
     /* @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL,orphanRemoval = true)
 
-     public List<GuestRoomInfo> getGuestRoomInfoList() {
-         return guestRoomInfoList;
-     }
+         public List<GuestRoomInfo> getGuestRoomInfoList() {
+             return guestRoomInfoList;
+         }
 
-     @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL)
+         @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL)
 
-     public List<GuestServiceInfo> getGuestServiceInfoList() {
-         return guestServiceInfoList;
-     }
+         public List<GuestServiceInfo> getGuestServiceInfoList() {
+             return guestServiceInfoList;
+         }
 
 
-     public void setGuestRoomInfoList(List<GuestRoomInfo> guestRoomInfoList) {
-         this.guestRoomInfoList = guestRoomInfoList;
-     }
+         public void setGuestRoomInfoList(List<GuestRoomInfo> guestRoomInfoList) {
+             this.guestRoomInfoList = guestRoomInfoList;
+         }
 
-     public void setGuestServiceInfoList(List<GuestServiceInfo> guestServiceInfoList) {
-         this.guestServiceInfoList = guestServiceInfoList;
-     }
- */
+         public void setGuestServiceInfoList(List<GuestServiceInfo> guestServiceInfoList) {
+             this.guestServiceInfoList = guestServiceInfoList;
+         }
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

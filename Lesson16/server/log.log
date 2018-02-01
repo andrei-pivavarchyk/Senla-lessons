@@ -60,3 +60,42 @@
 2018-01-30 14:59:23 ERROR TokenHandler:74 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
 2018-01-30 15:07:20 ERROR TokenHandler:39 - Fdsfsfs
 2018-01-30 15:07:20 ERROR TokenHandler:74 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 09:38:57 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 09:41:18 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 09:41:28 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 10:01:21 ERROR SqlExceptionHelper:144 - Field 'user' doesn't have a default value
+2018-02-01 10:12:36 ERROR SchemaExport:426 - HHH000389: Unsuccessful: alter table user_autifification drop foreign key FKF9FC7A15FB913511
+2018-02-01 10:12:36 ERROR SchemaExport:427 - Table 'webapp.user_autifification' doesn't exist
+2018-02-01 10:12:37 ERROR SqlExceptionHelper:144 - Data truncation: Data too long for column 'user' at row 1
+2018-02-01 10:13:59 ERROR SqlExceptionHelper:144 - Data truncation: Data too long for column 'user' at row 1
+2018-02-01 10:15:15 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 10:15:35 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 10:22:55 ERROR SqlExceptionHelper:144 - Data truncation: Data too long for column 'user' at row 1
+2018-02-01 10:23:35 ERROR SqlExceptionHelper:144 - Data truncation: Data too long for column 'user' at row 1
+2018-02-01 10:24:46 ERROR SqlExceptionHelper:144 - Data truncation: Data too long for column 'user' at row 1
+2018-02-01 10:25:19 ERROR SqlExceptionHelper:144 - Data truncation: Data too long for column 'user' at row 1
+2018-02-01 10:30:08 ERROR SchemaExport:426 - HHH000389: Unsuccessful: alter table user_data drop foreign key FK1435639EDF999838
+2018-02-01 10:30:08 ERROR SchemaExport:427 - Can't DROP 'FK1435639EDF999838'; check that column/key exists
+2018-02-01 10:30:11 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 10:34:21 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 10:34:39 ERROR SqlExceptionHelper:144 - Cannot delete or update a parent row: a foreign key constraint fails (`webapp`.`user_data`, CONSTRAINT `FK1435639EDF999838` FOREIGN KEY (`user_id`) REFERENCES `user_autifification` (`id`))
+2018-02-01 10:40:10 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 10:40:29 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 10:40:48 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 11:00:08 ERROR UserDAO:29 - org.hibernate.NonUniqueResultException: query did not return a unique result: 2
+2018-02-01 11:00:09 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 11:04:50 ERROR UserDAO:29 - org.hibernate.NonUniqueResultException: query did not return a unique result: 3
+2018-02-01 11:04:50 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 11:06:18 ERROR UserDAO:29 - org.hibernate.NonUniqueResultException: query did not return a unique result: 4
+2018-02-01 11:06:18 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 11:11:44 ERROR UserDAO:29 - org.hibernate.NonUniqueResultException: query did not return a unique result: 5
+2018-02-01 11:11:44 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 11:13:30 ERROR UserDAO:29 - org.hibernate.NonUniqueResultException: query did not return a unique result: 6
+2018-02-01 11:13:30 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 11:24:32 ERROR UserDAO:29 - org.hibernate.NonUniqueResultException: query did not return a unique result: 7
+2018-02-01 11:24:32 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 11:43:25 ERROR UserDAO:29 - org.hibernate.SessionException: Session is closed!
+2018-02-01 11:43:25 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 11:43:38 ERROR SqlExceptionHelper:144 - Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user_data`, CONSTRAINT `autifification_data` FOREIGN KEY (`user_id`) REFERENCES `user_autifification` (`id`) ON DELETE CASCADE)
+2018-02-01 11:48:42 ERROR UserDAO:29 - org.hibernate.HibernateException: createCriteria is not valid without active transaction
+2018-02-01 11:48:42 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters

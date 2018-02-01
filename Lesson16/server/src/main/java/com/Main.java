@@ -1,20 +1,41 @@
 package com;
 
 import com.dao.UserDAO;
+import com.dao.UserDataDAO;
+import com.dao.api.IUserDAO;
 import com.entity.User;
+import com.entity.UserData;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.service.ContextUtil;
 import com.service.ObjectConverterToJson;
 import com.service.TokenHandler;
+import com.service.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
 
 
-        UserDAO userDAO = new UserDAO();
-        User user = new User("vdxvbcx", "fafas");
+        IUserDAO userDAO =(IUserDAO)ContextUtil.getInstance().getContext().getBean("userDao");
+        UserDataDAO userDataDAO=new UserDataDAO();
+        UserService userService=new UserService();
+
+        User user = new User(1,"vdxvbcx", "fafas");
+        UserData userData=new UserData(user,"Bob","White","White",new Date());
+
+        userService.addUser(user);
+        userDataDAO.addEntity(userData);
+    // userDAO.deleteEntity(2);
+       // userDataDAO.addEntity(userData);
+
+
+
+
         System.out.println(ObjectConverterToJson.convertObject(user));
         System.out.println(userDAO.checkUser(user));
         // System.out.println(userDAO.getEntityById(1).getLogin());

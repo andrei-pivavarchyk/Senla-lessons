@@ -24,7 +24,6 @@ public class FilterToken implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) request;
         String token = req.getHeader("token");
-
         Boolean tokenValid = TokenHandler.getInstance().checkToken(token);
         if (tokenValid) {
             chain.doFilter(request, response);
