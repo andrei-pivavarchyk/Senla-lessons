@@ -39,7 +39,11 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
         getSession().delete(entity);
     }
 
-
+    public T getEntityById(Integer id) {
+        T entity = null;
+        entity = (T) getSession().load(getEntityClass(), id);
+        return entity;
+    }
 /*
     public void deleteEntity(Integer id) {
         Transaction transaction = getSession().beginTransaction();
@@ -64,11 +68,6 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
     }
 */
 
-    public T getEntityById(Integer id) {
-        T entity = null;
-        entity = (T) getSession().load(getEntityClass(), id);
-        return entity;
-    }
 
     public Session getSession() {
         return Factory.getSession();

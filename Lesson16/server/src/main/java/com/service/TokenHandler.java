@@ -28,7 +28,7 @@ public class TokenHandler {
         return instance;
     }
 
-    public String createToken(String user, String password) {
+    public String createToken(String login, String password) {
 
         // Generate random 256-bit (32-byte) shared secret
         SecureRandom random = new SecureRandom();
@@ -41,13 +41,13 @@ public class TokenHandler {
             JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                     .issuer("SuperWebApp")
                     .expirationTime(new Date(new Date().getTime() + 60 * 1000))
-                    .claim("user", user)
+                    .claim("login", login)
                     .claim("password", password)
                     .build();
 
             SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
             signedJWT.sign(signer);
-            String mapKey = new StringBuffer(user).append(password).toString();
+            String mapKey = new StringBuffer(login).append(password).toString();
             String token = signedJWT.serialize();
 
             synchronized (this.tokenList) {
@@ -65,9 +65,9 @@ public class TokenHandler {
 
         String mapKey = null;
         try {
-            String user = (String) SignedJWT.parse(token).getJWTClaimsSet().getClaim("user");
+            String login = (String) SignedJWT.parse(token).getJWTClaimsSet().getClaim("login");
             String password = (String) SignedJWT.parse(token).getJWTClaimsSet().getClaim("password");
-            mapKey = new StringBuffer(user).append(password).toString();
+            mapKey = new StringBuffer(login).append(password).toString();
         } catch (ParseException e) {
             log.error(e.toString());
         }

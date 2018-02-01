@@ -31,7 +31,6 @@ public class FilterToken implements Filter {
             HttpServletResponse rs = (HttpServletResponse) response;
             rs.sendError(404);
         }
-
     }
 
     @Override

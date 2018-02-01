@@ -103,3 +103,9 @@
 2018-02-01 12:02:27 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
 2018-02-01 12:08:54 ERROR UserDAO:29 - org.hibernate.HibernateException: createCriteria is not valid without active transaction
 2018-02-01 12:08:54 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 12:45:33 ERROR SqlExceptionHelper:144 - Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user_data`, CONSTRAINT `autifification_data` FOREIGN KEY (`user_id`) REFERENCES `user_autifification` (`id`) ON DELETE CASCADE)
+2018-02-01 12:46:49 ERROR SqlExceptionHelper:144 - Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user_data`, CONSTRAINT `autifification_data` FOREIGN KEY (`user_id`) REFERENCES `user_autifification` (`id`) ON DELETE CASCADE)
+2018-02-01 13:30:13 ERROR UserDAO:29 - org.hibernate.HibernateException: createCriteria is not valid without active transaction
+2018-02-01 13:30:14 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters
+2018-02-01 13:40:10 ERROR UserDAO:29 - org.hibernate.HibernateException: createCriteria is not valid without active transaction
+2018-02-01 13:40:10 ERROR TokenHandler:72 - java.text.ParseException: Invalid serialized unsecured/JWS/JWE object: Missing part delimiters

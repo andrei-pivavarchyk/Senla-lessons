@@ -31,5 +31,19 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
         return false;
     }
 
+public User getUserByLoginPassword(String login,String password){
 
+    try {
+        Criteria criteria = getSession().createCriteria(User.class)
+                .add(Restrictions.like("login", login))
+                .add(Restrictions.like("password", password));
+        User user = (User) criteria.uniqueResult();
+        return  user;
+
+    } catch (Exception e) {
+        log.error(e);
+        return null;
+    }
+
+}
 }

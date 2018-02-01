@@ -1,8 +1,10 @@
 package com.servlet;
 
 import com.dao.UserDAO;
+import com.dao.api.IUserDAO;
 import com.entity.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.service.ContextUtil;
 import com.service.TokenHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -19,7 +21,7 @@ import java.io.PrintWriter;
 public class LoginServlet {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
-    private UserDAO userDAO = new UserDAO();
+    private IUserDAO userDAO = (IUserDAO) ContextUtil.getInstance().getContext().getBean("userDao");
 
     @RequestMapping(method = RequestMethod.POST)
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {

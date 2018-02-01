@@ -24,11 +24,13 @@ public class Main {
         UserService userService=new UserService();
         UserDataService userDataService=new UserDataService();
 
-        User user = new User(1,"vdxvbcx", "fafas");
+        User user = new User(3,"vdxvbcx", "fafas");
         UserData userData=new UserData(user,"Bob","White","White",new Date());
 
         userService.addUser(user);
         userDataService.addUserData(userData);
+       UserData userData2= userDataService.getUserDataByUser(user);
+        System.out.println(userData2);
     // userDAO.deleteEntity(2);
        // userDataDAO.addEntity(userData);
 
