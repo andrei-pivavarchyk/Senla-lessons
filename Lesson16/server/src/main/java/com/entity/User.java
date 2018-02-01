@@ -15,17 +15,18 @@ public class User extends WebEntity {
     // @JsonBackReference
 
     @JsonCreator
-    public User(@JsonProperty("login") String login,@JsonProperty("password") String password) {
-        this.login = login;
-        this.password = password;
-    }
-
-    @JsonCreator
     public User(@JsonProperty("id") Integer id, @JsonProperty("login") String login, @JsonProperty("password") String password) {
         super(id);
         this.login = login;
         this.password = password;
     }
+
+    @JsonCreator
+    public User(@JsonProperty("login") String login,@JsonProperty("password") String password) {
+        this.login = login;
+        this.password = password;
+    }
+
 
     public User() {
     }

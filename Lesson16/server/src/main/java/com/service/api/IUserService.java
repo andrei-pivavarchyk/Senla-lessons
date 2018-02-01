@@ -10,4 +10,5 @@ public interface IUserService {
 
     public void updateUser(User entity);
     public Session getSession();
+    Boolean checkUser(User user);
 }

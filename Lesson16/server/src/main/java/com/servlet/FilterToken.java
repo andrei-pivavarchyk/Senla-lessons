@@ -29,7 +29,8 @@ public class FilterToken implements Filter {
             chain.doFilter(request, response);
         } else {
             HttpServletResponse rs = (HttpServletResponse) response;
-            rs.sendError(404);
+            rs.getWriter().write("filter bad");
+          //  rs.sendError(404);
         }
     }
 

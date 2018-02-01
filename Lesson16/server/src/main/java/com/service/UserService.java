@@ -45,7 +45,23 @@ public class UserService implements IUserService {
             log.error(e.toString());
             return null;
         }
+
     }
+
+
+    public Boolean checkUser(User user) {
+        try {
+            Transaction transaction = getSession().beginTransaction();
+           Boolean userExist=userDao.checkUser(user);
+           transaction.commit();
+            return userExist;
+        } catch (Exception e) {
+            log.error(e.toString());
+            return null;
+        }
+    }
+
+
 
     public Session getSession() {
         return Factory.getSession();

@@ -7,6 +7,7 @@ import com.entity.UserData;
 import com.nimbusds.jwt.SignedJWT;
 import com.service.ContextUtil;
 import com.service.ObjectConverterToJson;
+import com.service.UserDataService;
 import com.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -25,8 +26,8 @@ import java.text.ParseException;
 public class UserDataServlet {
     private static Logger log = Logger.getLogger(UserDataServlet.class);
 
-    private IUserDataDAO userDataDao = (IUserDataDAO) ContextUtil.getInstance().getContext().getBean("userDataDao");
-    IUserDAO userDao = (IUserDAO) ContextUtil.getInstance().getContext().getBean("userDao");
+    private UserService userService = new UserService();
+    private UserDataService userDataService=new UserDataService();
 
     @RequestMapping(method = RequestMethod.GET)
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -51,11 +52,9 @@ public class UserDataServlet {
             log.error(e.toString());
         }
 
-        User user = userDao.getUserByLoginPassword(login, password);
-        UserData userData = userDataDao.getDataByUser(user);
-
+        User user = userService.getUserByLoginPassword(login, password);
+        UserData userData = userDataService.getUserDataByUser(user);
         String userDataJson = ObjectConverterToJson.convertObject(userData);
-
         return userDataJson;
     }
 
