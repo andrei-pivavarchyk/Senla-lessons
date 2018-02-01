@@ -26,7 +26,6 @@ public class ContextUtil {
             context = new ClassPathXmlApplicationContext("applicationContext.xml");
             return this.context;
         }
-
     }
     public Object getBean(String beanId){
       return   getContext().getBean(beanId);
