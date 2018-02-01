@@ -8,7 +8,9 @@
     <bean id="userDao" class="com.dao.UserDAO">
 
     </bean>
+    <bean id="userDataDao" class="com.dao.UserDataDAO">
 
+    </bean>
 
 
 

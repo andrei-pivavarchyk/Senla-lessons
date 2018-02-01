@@ -6,10 +6,7 @@ import com.dao.api.IUserDAO;
 import com.entity.User;
 import com.entity.UserData;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.service.ContextUtil;
-import com.service.ObjectConverterToJson;
-import com.service.TokenHandler;
-import com.service.UserService;
+import com.service.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,13 +20,15 @@ public class Main {
 
         IUserDAO userDAO =(IUserDAO)ContextUtil.getInstance().getContext().getBean("userDao");
         UserDataDAO userDataDAO=new UserDataDAO();
+
         UserService userService=new UserService();
+        UserDataService userDataService=new UserDataService();
 
         User user = new User(1,"vdxvbcx", "fafas");
         UserData userData=new UserData(user,"Bob","White","White",new Date());
 
         userService.addUser(user);
-        userDataDAO.addEntity(userData);
+        userDataService.addUserData(userData);
     // userDAO.deleteEntity(2);
        // userDataDAO.addEntity(userData);
 

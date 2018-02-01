@@ -4,25 +4,25 @@ import com.dao.Factory;
 import com.dao.api.IUserDAO;
 import com.dao.api.IUserDataDAO;
 import com.entity.User;
-import com.service.api.IUserService;
+import com.entity.UserData;
+import com.service.api.IUserDataService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class UserService implements IUserService{
+public class UserDataService  implements IUserDataService{
 
-    IUserDAO userDao =(IUserDAO)ContextUtil.getInstance().getContext().getBean("userDao");
     private Factory factory ;
+    IUserDataDAO userDataDao =(IUserDataDAO)ContextUtil.getInstance().getContext().getBean("userDataDao");
 
-
-    public void addUser(User entity) {
+    public void addUserData(UserData entity) {
         Transaction transaction = factory.getSession().beginTransaction();
-        userDao.addEntity(entity);
+        userDataDao.addEntity(entity);
         transaction.commit();
     }
 
-    public void updateUser(User entity) {
+    public void updateUserData(UserData entity) {
         Transaction transaction = getSession().beginTransaction();
-        userDao.updateEntity(entity);
+        userDataDao.updateEntity(entity);
         transaction.commit();
     }
     public Session getSession() {
