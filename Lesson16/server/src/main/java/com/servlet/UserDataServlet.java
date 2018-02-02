@@ -1,11 +1,8 @@
 package com.servlet;
 
-import com.dao.api.IUserDAO;
-import com.dao.api.IUserDataDAO;
 import com.entity.User;
 import com.entity.UserData;
 import com.nimbusds.jwt.SignedJWT;
-import com.service.ContextUtil;
 import com.service.ObjectConverterToJson;
 import com.service.UserDataService;
 import com.service.UserService;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 
 

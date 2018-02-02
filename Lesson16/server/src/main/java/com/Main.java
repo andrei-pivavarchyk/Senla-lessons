@@ -1,5 +1,7 @@
 package com;
 
+import com.dao.BaseDAO;
+import com.dao.TestClass;
 import com.dao.UserDAO;
 import com.dao.UserDataDAO;
 import com.dao.api.IUserDAO;
@@ -19,8 +21,21 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
 
+        ApplicationContext context = new ClassPathXmlApplicationContext(
+                "applicationContext.xml");
 
-        IUserDAO userDAO = (IUserDAO) ContextUtil.getInstance().getContext().getBean("userDao");
+
+        TestService testService = (TestService) context.getBean("service");
+
+        System.out.println(testService.getTest().getName());
+
+      //  BaseDAO baseDAO=(BaseDAO)context.getBean("base");
+
+
+
+/*
+
+        IUserDAO userDAO = new UserDAO();
         UserDataDAO userDataDAO = new UserDataDAO();
 
         UserService userService = new UserService();
@@ -29,8 +44,8 @@ public class Main {
         User user = new User(3, "vdxvbcx", "fafas");
         UserData userData = new UserData(user, "Bob", "White", "White", new Date());
 
-
         userService.addUser(user);
+
         userDataService.addUserData(userData);
         UserData userData2 = userDataService.getUserDataByUser(user);
         System.out.println(userData2);
@@ -45,7 +60,6 @@ public class Main {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             User user2 = objectMapper.readValue(query, User.class);
-            System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssssssss");
             System.out.println(user2.getLogin());
             System.out.println(user2.getPassword());
             System.out.println(userService.checkUser(user2));
@@ -67,6 +81,6 @@ public class Main {
         System.out.println(checkFirstTime);
         // System.out.println(checkSecondTime);
 
-
+*/
     }
 }

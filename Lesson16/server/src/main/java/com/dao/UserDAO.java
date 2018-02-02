@@ -4,15 +4,21 @@ import com.dao.api.IUserDAO;
 import com.entity.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public class UserDAO extends BaseDAO<User> implements IUserDAO {
     public UserDAO() {
         super(User.class);
     }
 
     private static Logger log = Logger.getLogger(UserDAO.class);
+
+
+
 
     public Boolean checkUser(User user) {
         try {

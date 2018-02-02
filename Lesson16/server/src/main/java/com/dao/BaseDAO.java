@@ -5,18 +5,22 @@ import com.entity.WebEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
-    private Factory factory ;
-    private Class<T> persistentClass;
-    public  String tableName;
 
+    @Autowired
+    private SessionFactory sessionFactory;
+    private Class<T> persistentClass;
     public BaseDAO(Class clazz) {
         this.persistentClass = clazz;
-
     }
+
+    public BaseDAO(){}
+
 
     public Class getEntityClass() {
         return this.persistentClass;
@@ -24,7 +28,7 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
 
     public void addEntity(T entity) {
-        getSession().save(entity);
+        sessionFactory.getCurrentSession().save(entity);
     }
 
     public void updateEntity(T entity) {
@@ -44,7 +48,23 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
         entity = (T) getSession().load(getEntityClass(), id);
         return entity;
     }
-/*
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public Class<T> getPersistentClass() {
+        return persistentClass;
+    }
+
+    public void setPersistentClass(Class<T> persistentClass) {
+        this.persistentClass = persistentClass;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+    /*
     public void deleteEntity(Integer id) {
         Transaction transaction = getSession().beginTransaction();
         Query createQuery = getSession().createQuery(" delete "+getTableName()+" where id =:param ");

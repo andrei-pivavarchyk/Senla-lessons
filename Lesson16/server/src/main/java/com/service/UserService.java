@@ -8,21 +8,26 @@ import com.entity.User;
 import com.service.api.IUserService;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class UserService implements IUserService {
-
+    @Autowired
+    private SessionFactory sessionFactory;
     private static Logger log = Logger.getLogger(UserService.class);
     @Autowired
-   private IUserDAO userDao;
-  // private IUserDAO userDao = (IUserDAO) ContextUtil.getInstance().getContext().getBean("userDao");
+    private UserDAO userDao ;
+    @Autowired
     private Factory factory;
 
+    @Transactional
     public void addUser(User entity) {
-        Transaction transaction = factory.getSession().beginTransaction();
+        System.out.println(userDao);
         userDao.addEntity(entity);
-        transaction.commit();
     }
 
     public void updateUser(User entity) {
@@ -67,5 +72,13 @@ public class UserService implements IUserService {
 
     public Session getSession() {
         return Factory.getSession();
+    }
+
+    public void setUserDao(UserDAO userDao) {
+        this.userDao = userDao;
+    }
+
+    public UserDAO getUserDao() {
+        return userDao;
     }
 }

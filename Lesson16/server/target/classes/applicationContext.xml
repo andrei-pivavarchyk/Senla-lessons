@@ -1,15 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-    <bean id="userDao" class="com.dao.UserDAO">
+
+
+
+
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+    <bean id="dao"  class="com.dao.TestClass">
     </bean>
-    <bean id="userDataDao" class="com.dao.UserDataDAO">
-    </bean>
+
+    <bean id="service" class="com.service.TestService" > </bean>
+   <!-- <bean id="base" class="com.dao.BaseDAO" > </bean>-->
+
 
 
 </beans>
+
+
+
+
+
+
+
+
 
 
