@@ -9,12 +9,14 @@ import com.service.api.IUserService;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserService implements IUserService {
 
     private static Logger log = Logger.getLogger(UserService.class);
-
-    IUserDAO userDao = (IUserDAO) ContextUtil.getInstance().getContext().getBean("userDao");
+    @Autowired
+   private IUserDAO userDao;
+  // private IUserDAO userDao = (IUserDAO) ContextUtil.getInstance().getContext().getBean("userDao");
     private Factory factory;
 
     public void addUser(User entity) {

@@ -27,6 +27,7 @@ public class UserDataService implements IUserDataService {
             Transaction transaction = getSession().beginTransaction();
             userDataDao.updateEntity(entity);
             transaction.commit();
+
         } catch (Exception e) {
             log.error(e.toString());
         }

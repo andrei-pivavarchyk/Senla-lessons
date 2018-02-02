@@ -141,3 +141,4 @@
 2018-02-01 16:09:25 ERROR UserDAO:29 - org.hibernate.HibernateException: createCriteria is not valid without active transaction
 2018-02-01 16:11:55 ERROR UserDAO:29 - org.hibernate.HibernateException: createCriteria is not valid without active transaction
 2018-02-01 16:15:01 ERROR UserDAO:29 - org.hibernate.HibernateException: createCriteria is not valid without active transaction
+2018-02-02 23:28:13 ERROR UserDAO:29 - org.hibernate.HibernateException: createCriteria is not valid without active transaction

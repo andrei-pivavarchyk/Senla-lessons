@@ -29,6 +29,7 @@ public class Main {
         User user = new User(3, "vdxvbcx", "fafas");
         UserData userData = new UserData(user, "Bob", "White", "White", new Date());
 
+
         userService.addUser(user);
         userDataService.addUserData(userData);
         UserData userData2 = userDataService.getUserDataByUser(user);
