@@ -18,8 +18,6 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
     private static Logger log = Logger.getLogger(UserDAO.class);
 
 
-
-
     public Boolean checkUser(User user) {
         try {
             Criteria criteria = getSession().createCriteria(User.class)
@@ -37,19 +35,23 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
         return false;
     }
 
-public User getUserByLoginPassword(String login,String password){
+    public User getUserByLoginPassword(String login, String password) {
 
-    try {
-        Criteria criteria = getSession().createCriteria(User.class)
-                .add(Restrictions.like("login", login))
-                .add(Restrictions.like("password", password));
-        User user = (User) criteria.uniqueResult();
-        return  user;
+        try {
+            Criteria criteria = getSession().createCriteria(User.class)
+                    .add(Restrictions.like("login", login))
+                    .add(Restrictions.like("password", password));
+            User user = (User) criteria.uniqueResult();
+            return user;
 
-    } catch (Exception e) {
-        log.error(e);
-        return null;
+        } catch (Exception e) {
+            log.error(e);
+            return null;
+        }
+
     }
 
+
+
 }
-}
+

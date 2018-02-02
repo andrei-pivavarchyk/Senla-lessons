@@ -1,5 +1,5 @@
 package com.servlet;
-
+/*
 
 import com.service.TokenHandler;
 
@@ -38,4 +38,4 @@ public class FilterToken implements Filter {
     public void destroy() {
         this.filterConfig = null;
     }
-}
+}*/

@@ -1,5 +1,5 @@
 package com.servlet;
-
+/*
 import com.dao.UserDAO;
 import com.dao.api.IUserDAO;
 import com.entity.User;
@@ -38,4 +38,4 @@ public class LoginServlet {
             //response.sendError(404);
         }
     }
-}
+}*/

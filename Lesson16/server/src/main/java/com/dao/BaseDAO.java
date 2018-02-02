@@ -90,7 +90,7 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
 
     public Session getSession() {
-        return Factory.getSession();
+        return sessionFactory.getCurrentSession();
     }
 
 }

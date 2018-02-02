@@ -9,6 +9,5 @@ public interface IUserService {
     public void addUser(User entity);
 
     public void updateUser(User entity);
-    public Session getSession();
     Boolean checkUser(User user);
 }

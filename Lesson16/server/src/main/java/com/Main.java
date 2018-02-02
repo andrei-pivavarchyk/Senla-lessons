@@ -21,13 +21,11 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext.xml");
 
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        TestService testService = (TestService) context.getBean("service");
+        UserDAO personDAO = context.getBean(UserDAO.class);
 
-        System.out.println(testService.getTest().getName());
 
       //  BaseDAO baseDAO=(BaseDAO)context.getBean("base");
 

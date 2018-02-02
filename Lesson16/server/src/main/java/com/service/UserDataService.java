@@ -1,9 +1,6 @@
 package com.service;
 
-import com.dao.Factory;
 import com.dao.UserDataDAO;
-import com.dao.api.IUserDAO;
-import com.dao.api.IUserDataDAO;
 import com.entity.User;
 import com.entity.UserData;
 import com.service.api.IUserDataService;
@@ -19,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDataService implements IUserDataService {
     @Autowired
     private SessionFactory sessionFactory;
-    private Factory factory;
     private static Logger log = Logger.getLogger(UserDataService.class);
     @Autowired
     private UserDataDAO userDataDao ;
@@ -30,7 +26,7 @@ public class UserDataService implements IUserDataService {
         userDataDao.addEntity(entity);
         transaction.commit();
     }
-
+/*
     public void updateUserData(UserData entity) {
         try {
             Transaction transaction = getSession().beginTransaction();
@@ -54,8 +50,6 @@ public class UserDataService implements IUserDataService {
         }
     }
 
+*/
 
-    public Session getSession() {
-        return Factory.getSession();
-    }
 }

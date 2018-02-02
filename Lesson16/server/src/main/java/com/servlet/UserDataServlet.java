@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 
-
+/*
 @Controller
 @RequestMapping("/userdata")
 public class UserDataServlet {
@@ -54,4 +54,4 @@ public class UserDataServlet {
         return userDataJson;
     }
 
-}
+}*/
