@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -20,26 +21,27 @@ public class UserService {
     private SessionFactory sessionFactory;
     private static Logger log = Logger.getLogger(UserService.class);
 
-@Autowired
-    private UserDAO userDAO ;
+    @Autowired
+    private UserDAO userDAO;
 
-public UserService(){
+    public UserService() {
 
-}
+    }
+
     @Transactional
     public void addUser(User entity) {
         Session session = this.sessionFactory.getCurrentSession();
-
-       userDAO.addEntity(entity);
-
-
+        Transaction tr = session.beginTransaction();
+        userDAO.addEntity(entity);
+        tr.commit();
     }
-/*
+
     public void updateUser(User entity) {
         try {
-            Transaction transaction = getSession().beginTransaction();
-            userDao.updateEntity(entity);
-            transaction.commit();
+            Session session = this.sessionFactory.getCurrentSession();
+            Transaction tr = session.beginTransaction();
+            userDAO.updateEntity(entity);
+            tr.commit();
         } catch (Exception e) {
             log.error(e.toString());
 
@@ -49,9 +51,10 @@ public UserService(){
 
     public User getUserByLoginPassword(String login, String password) {
         try {
-            Transaction transaction = getSession().beginTransaction();
-            User user = userDao.getUserByLoginPassword(login, password);
-            transaction.commit();
+            Session session = this.sessionFactory.getCurrentSession();
+            Transaction tr = session.beginTransaction();
+            User user = userDAO.getUserByLoginPassword(login, password);
+            tr.commit();
             return user;
         } catch (Exception e) {
             log.error(e.toString());
@@ -63,9 +66,10 @@ public UserService(){
 
     public Boolean checkUser(User user) {
         try {
-            Transaction transaction = getSession().beginTransaction();
-           Boolean userExist=userDao.checkUser(user);
-           transaction.commit();
+            Session session = this.sessionFactory.getCurrentSession();
+            Transaction tr = session.beginTransaction();
+           Boolean userExist=userDAO.checkUser(user);
+           tr.commit();
             return userExist;
         } catch (Exception e) {
             log.error(e.toString());
@@ -75,12 +79,12 @@ public UserService(){
 
 
     public void setUserDao(UserDAO userDao) {
-        this.userDao = userDao;
+        this.userDAO = userDao;
     }
 
     public UserDAO getUserDao() {
-        return userDao;
-    }*/
+        return userDAO;
+    }
 
     public SessionFactory getSessionFactory() {
         return sessionFactory;

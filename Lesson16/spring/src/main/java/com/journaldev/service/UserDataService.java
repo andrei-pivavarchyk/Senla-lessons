@@ -1,9 +1,11 @@
 package com.journaldev.service;
 
 import com.journaldev.dao.UserDataDAO;
+import com.journaldev.model.User;
 import com.journaldev.model.UserData;
 import com.journaldev.service.api.IUserDataService;
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +22,18 @@ public class UserDataService implements IUserDataService {
 
     @Transactional
     public void addUserData(UserData entity) {
-        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+        Session session = this.sessionFactory.getCurrentSession();
+        Transaction tr = session.beginTransaction();
         userDataDao.addEntity(entity);
-        transaction.commit();
+        tr.commit();
     }
-/*
+
     public void updateUserData(UserData entity) {
         try {
-            Transaction transaction = getSession().beginTransaction();
+            Session session = this.sessionFactory.getCurrentSession();
+            Transaction tr = session.beginTransaction();
             userDataDao.updateEntity(entity);
-            transaction.commit();
+            tr.commit();
         } catch (Exception e) {
             log.error(e.toString());
         }
@@ -38,16 +42,15 @@ public class UserDataService implements IUserDataService {
 
     public UserData getUserDataByUser(User user) {
         try {
-            Transaction transaction = getSession().beginTransaction();
+            Session session = this.sessionFactory.getCurrentSession();
+            Transaction tr = session.beginTransaction();
             UserData userData = userDataDao.getDataByUser(user);
-            transaction.commit();
+            tr.commit();
             return userData;
         } catch (Exception e) {
             log.error(e.toString());
             return null;
         }
     }
-
-*/
 
 }

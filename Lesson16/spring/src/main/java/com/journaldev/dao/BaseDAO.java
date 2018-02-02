@@ -31,7 +31,7 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
         return this.persistentClass;
     }
 
-
+@Transactional
     public void addEntity(T entity) {
      this.sessionFactory.getCurrentSession().save(entity);
     }
