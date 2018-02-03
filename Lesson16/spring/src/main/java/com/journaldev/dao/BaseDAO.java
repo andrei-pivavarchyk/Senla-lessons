@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
@@ -19,6 +19,7 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
     @Autowired
     private SessionFactory sessionFactory;
+
     private Class<T> persistentClass;
     public BaseDAO(Class clazz) {
         this.persistentClass = clazz;
@@ -31,7 +32,7 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
         return this.persistentClass;
     }
 
-@Transactional
+
     public void addEntity(T entity) {
      this.sessionFactory.getCurrentSession().save(entity);
     }

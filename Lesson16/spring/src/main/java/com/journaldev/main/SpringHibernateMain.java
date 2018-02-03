@@ -15,28 +15,13 @@ public class SpringHibernateMain {
 
 	public static void main(String[] args) {
 
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring4.xml");
-		
-		PersonDAO personDAO = context.getBean(PersonDAO.class);
+UserDAO userDAO=new UserDAO();
 
-		UserService userService=context.getBean(UserService.class);
+		UserService userService=new UserService();
 		User user=new User("dsa","dsa");
-		userService.addUser(user);
+		userDAO.addEntity(user);
 
-		Person person = new Person();
-		person.setName("Pankaj"); person.setCountry("India");
-		
-		personDAO.save(person);
-		
-		System.out.println("Person::"+person);
-		
-		List<Person> list = personDAO.list();
-		
-		for(Person p : list){
-			System.out.println("Person List::"+p);
-		}
-		
-		context.close();
+
 		
 	}
 
