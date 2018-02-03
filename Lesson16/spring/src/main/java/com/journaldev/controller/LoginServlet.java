@@ -1,9 +1,12 @@
-package com.servlet;
+package com.journaldev.controller;
 
-
-import org.springframework.stereotype.Controller;
+import com.journaldev.service.TokenHandler;
 import org.springframework.web.bind.annotation.*;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.journaldev.dao.UserDAO;
+import com.journaldev.model.User;
+import com.journaldev.service.UserService;
+import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

@@ -1,14 +1,10 @@
-package com.servlet;
-/
-import com.service.TokenHandler;
+package com.journaldev.controller;
+import com.journaldev.service.TokenHandler;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import static java.lang.Integer.parseInt;
+import java.io.IOException;
 
 public class FilterToken implements Filter {
     private FilterConfig filterConfig;

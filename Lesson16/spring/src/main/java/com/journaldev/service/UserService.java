@@ -44,7 +44,6 @@ public class UserService {
             tr.commit();
         } catch (Exception e) {
             log.error(e.toString());
-
         }
     }
 
