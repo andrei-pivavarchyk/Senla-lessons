@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class TokenHandler {
 
-    private Map<Object, Object> tokenList = new HashMap<>();
+    private Map<Object, Object> tokenList = new HashMap<Object, Object>();
     private volatile static TokenHandler instance;
     private static Logger log = Logger.getLogger(TokenHandler.class);
 
