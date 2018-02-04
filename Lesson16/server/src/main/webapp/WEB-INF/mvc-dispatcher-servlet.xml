@@ -9,9 +9,10 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<context:component-scan base-package="com.mkyong.common.controller" />
-
-	<mvc:annotation-driven />
+	<context:component-scan base-package="com.servlet" />
+	<context:component-scan base-package="com.dao" />
+	<context:component-scan base-package="com.service" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 </beans>
 
 
