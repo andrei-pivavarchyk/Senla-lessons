@@ -2,8 +2,6 @@ package com.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -24,7 +22,7 @@ public class User extends WebEntity {
     }
 
     @JsonCreator
-    public User(@JsonProperty("login") String login,@JsonProperty("password") String password) {
+    public User(@JsonProperty("login") String login, @JsonProperty("password") String password) {
         this.login = login;
         this.password = password;
     }
@@ -33,13 +31,11 @@ public class User extends WebEntity {
     }
 
 
-    @Basic
     @Column(name = "login")
     public String getLogin() {
         return login;
     }
 
-    @Basic
     @Column(name = "password")
     public String getPassword() {
         return password;
@@ -57,13 +53,10 @@ public class User extends WebEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         User that = (User) o;
-
         if (getId() != that.getId()) return false;
         if (login != null ? !login.equals(that.login) : that.login != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
-
         return true;
     }
 

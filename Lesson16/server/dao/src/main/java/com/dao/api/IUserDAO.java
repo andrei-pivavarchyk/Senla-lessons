@@ -1,6 +1,5 @@
 package com.dao.api;
 
-
 import com.model.User;
 
 public interface IUserDAO extends IBaseDAO<User> {

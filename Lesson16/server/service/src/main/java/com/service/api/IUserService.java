@@ -4,10 +4,9 @@ import com.model.User;
 
 public interface IUserService {
 
+     void addUser(User entity);
 
-    public void addUser(User entity);
-
-    public void updateUser(User entity);
+     void updateUser(User entity);
 
     Long checkUser(String login,String password);
 }

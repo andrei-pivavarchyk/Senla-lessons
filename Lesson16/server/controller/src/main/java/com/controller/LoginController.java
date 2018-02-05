@@ -5,16 +5,16 @@ import com.service.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+
 import javax.servlet.http.HttpServletResponse;
 
-
 @Controller
-public class LoginServlet {
+public class LoginController {
 
     @Autowired
     IUserService userService;
 
-    public LoginServlet() {
+    public LoginController() {
     }
 
     @RequestMapping(
@@ -24,13 +24,11 @@ public class LoginServlet {
     public void login(@RequestHeader String login, @RequestHeader String password, HttpServletResponse response) {
 
         Long id = userService.checkUser(login, password);
-        if(userService!=null){
-
+        if (id != null) {
             String token = TokenHandler.getInstance().createToken(id);
             response.addHeader("token", token);
-        }
-       else{
-            response.setStatus(404);
+        } else {
+            response.setStatus(401);
         }
     }
 }

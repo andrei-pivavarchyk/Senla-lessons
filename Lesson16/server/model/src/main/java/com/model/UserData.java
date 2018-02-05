@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -54,30 +53,29 @@ public class UserData extends WebEntity {
     }
 
     @JsonIgnore
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public User getUser() {
         return user;
     }
 
-    @Basic
+
     @Column(name = "date_of_birth")
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    @Basic
+
     @Column(name = "name")
     public String getName() {
         return name;
     }
 
-    @Basic
+
     @Column(name = "surname")
     public String getPatronymic() {
         return patronymic;
     }
 
-    @Basic
     @Column(name = "patronymic")
     public String getSurname() {
         return surname;
@@ -107,14 +105,13 @@ public class UserData extends WebEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         UserData that = (UserData) o;
-
         if (getId() != that.getId()) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
         if (patronymic != null ? !patronymic.equals(that.patronymic) : that.patronymic != null) return false;
-
+        if (dateOfBirth != null ? !dateOfBirth.equals(that.dateOfBirth) : that.dateOfBirth != null) return false;
+        if (user != null ? !user.equals(that.user) : that.user != null) return false;
         return true;
     }
 

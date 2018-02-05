@@ -4,41 +4,35 @@ import com.dao.api.IBaseDAO;
 import com.model.WebEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import org.springframework.transaction.annotation.Transactional;
-
 @Repository
 public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
-
 
     @Autowired
     private SessionFactory sessionFactory;
 
     private Class<T> persistentClass;
+
     public BaseDAO(Class clazz) {
         this.persistentClass = clazz;
     }
 
-    public BaseDAO(){}
-
+    public BaseDAO() {
+    }
 
     public Class getEntityClass() {
         return this.persistentClass;
     }
 
-
     public void addEntity(T entity) {
-     this.sessionFactory.getCurrentSession().save(entity);
+        this.sessionFactory.getCurrentSession().save(entity);
     }
 
     public void updateEntity(T entity) {
         getSession().update(entity);
     }
-
-
 
     public void deleteEntity(Long id) {
         T entity = null;
@@ -51,23 +45,6 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
         entity = (T) getSession().load(getEntityClass(), id);
         return entity;
     }
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public Class<T> getPersistentClass() {
-        return persistentClass;
-    }
-
-    public void setPersistentClass(Class<T> persistentClass) {
-        this.persistentClass = persistentClass;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
 
     public Session getSession() {
         return sessionFactory.getCurrentSession();

@@ -10,17 +10,12 @@ import java.io.Serializable;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
-        property = "type")/*
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Room.class, name = "room"),
-})
-*/
+        property = "type")
 @MappedSuperclass
 public class WebEntity implements Serializable {
     private Long id;
 
-
-    protected WebEntity() {
+    public WebEntity() {
     }
 
     @JsonCreator
@@ -31,7 +26,6 @@ public class WebEntity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

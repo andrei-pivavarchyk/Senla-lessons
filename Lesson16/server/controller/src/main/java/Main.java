@@ -18,7 +18,12 @@ public class Main {
         IUserService userService = context.getBean(IUserService.class);
         IUserDataService userDataService = context.getBean(IUserDataService.class);
         IUserDAO userDao = context.getBean(IUserDAO.class);
-        userDataService.getUserDataByUserId(new Long(1));
-        System.out.print(userDataService.getUserDataByUserId(new Long(1)).getName());
+       // userDataService.getUserDataByUserId(new Long(1));
+        //System.out.print(userDataService.getUserDataByUserId(new Long(1)).getName());
+        User user=new User("cds","succes");
+        UserData userData=new UserData(user,"Fds","fds","fd",new Date());
+        userService.addUser(user);
+        userDataService.addUserData(userData);
+
     }
 }

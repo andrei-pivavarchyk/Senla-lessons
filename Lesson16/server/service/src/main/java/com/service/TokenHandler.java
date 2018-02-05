@@ -7,12 +7,8 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import org.apache.log4j.Logger;
 
-import java.security.SecureRandom;
-import java.sql.SQLSyntaxErrorException;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class TokenHandler {
 
@@ -29,11 +25,12 @@ public class TokenHandler {
         return instance;
     }
 
-    public  String createToken(Long id) {
+    public String createToken(Long id) {
         byte[] sharedSecret = new byte[32];
         try {
             JWSSigner signer = new MACSigner(sharedSecret);
             JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
+
                     .issuer("SuperWebApp")
                     .expirationTime(new Date(new Date().getTime() + 60 * 1000))
                     .claim("id", id)
@@ -44,7 +41,7 @@ public class TokenHandler {
             String token = signedJWT.serialize();
             return token;
         } catch (Exception e) {
-            log.error(e);
+            log.error(e.toString());
             return null;
         }
     }
@@ -54,12 +51,18 @@ public class TokenHandler {
             byte[] sharedSecret = new byte[32];
             SignedJWT signedJWT = SignedJWT.parse(token);
             JWSVerifier verifier = new MACVerifier(sharedSecret);
-            signedJWT.verify(verifier);
-            return true;
+           Boolean verify= signedJWT.verify(verifier);
+            Date date = (Date) signedJWT.getJWTClaimsSet().getExpirationTime();
+            if (date.after(new Date())&&verify.equals(true)) {
+                return true;
+            }
+
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         } catch (JOSEException e) {
-            e.printStackTrace();
+            log.error(e.toString());
+        } catch (Exception e) {
+            log.error(e.toString());
         }
         return false;
     }

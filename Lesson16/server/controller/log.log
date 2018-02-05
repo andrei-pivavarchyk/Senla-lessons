@@ -1,0 +1,8 @@
+2018-02-05 18:50:11 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E3D43702C (user_id), add constraint FK1435639E3D43702C foreign key (user_id) references user_autifification (id)
+2018-02-05 18:50:11 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
+2018-02-05 18:50:41 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E3D43702C (user_id), add constraint FK1435639E3D43702C foreign key (user_id) references user_autifification (id)
+2018-02-05 18:50:41 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
+2018-02-05 18:51:40 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E3D43702C (user_id), add constraint FK1435639E3D43702C foreign key (user_id) references user_autifification (id)
+2018-02-05 18:51:40 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
+2018-02-05 18:52:42 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E3D43702C (user_id), add constraint FK1435639E3D43702C foreign key (user_id) references user_autifification (id)
+2018-02-05 18:52:42 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
