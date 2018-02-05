@@ -28,15 +28,12 @@ public class FilterToken implements Filter {
         if (id != null) {
             try {
                 chain.doFilter(request, response);
-            } catch (IOException e) {
-                log.error(e.toString());
-            } catch (ServletException e) {
+            }
+            catch(Exception e){
                 log.error(e.toString());
             }
-        } else {
-            rs.setStatus(401);
         }
-
+            rs.setStatus(401);
     }
 
     @Override

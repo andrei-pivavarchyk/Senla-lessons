@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-
 public class UserDataController {
     @Autowired
     private IUserDataService userDataService;
