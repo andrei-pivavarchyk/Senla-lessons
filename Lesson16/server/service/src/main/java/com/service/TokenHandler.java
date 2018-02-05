@@ -2,11 +2,13 @@ package com.service;
 
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import org.apache.log4j.Logger;
 
 import java.security.SecureRandom;
+import java.sql.SQLSyntaxErrorException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,7 +16,6 @@ import java.util.Map;
 
 public class TokenHandler {
 
-    private Map<Object, Object> tokenList = new HashMap<Object, Object>();
     private volatile static TokenHandler instance;
     private static Logger log = Logger.getLogger(TokenHandler.class);
 
@@ -28,56 +29,53 @@ public class TokenHandler {
         return instance;
     }
 
-    public String createToken(String login, String password) {
-
-        // Generate random 256-bit (32-byte) shared secret
-        SecureRandom random = new SecureRandom();
+    public  String createToken(Integer id) {
         byte[] sharedSecret = new byte[32];
-        random.nextBytes(sharedSecret);
-
         try {
             JWSSigner signer = new MACSigner(sharedSecret);
-
             JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                     .issuer("SuperWebApp")
                     .expirationTime(new Date(new Date().getTime() + 60 * 1000))
-                    .claim("login", login)
-                    .claim("password", password)
+                    .claim("id", id)
                     .build();
 
             SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
             signedJWT.sign(signer);
-            String mapKey = new StringBuffer(login).append(password).toString();
             String token = signedJWT.serialize();
-
-            synchronized (this.tokenList) {
-                this.tokenList.put(mapKey, token);
-            }
             return token;
-
         } catch (Exception e) {
             log.error(e);
             return null;
         }
     }
 
-    public Boolean checkToken(String token) {
-
-        String mapKey = null;
+    private Boolean checkToken(String token) {
         try {
-            String login = (String) SignedJWT.parse(token).getJWTClaimsSet().getClaim("login");
-            String password = (String) SignedJWT.parse(token).getJWTClaimsSet().getClaim("password");
-            mapKey = new StringBuffer(login).append(password).toString();
+            byte[] sharedSecret = new byte[32];
+            SignedJWT signedJWT = SignedJWT.parse(token);
+            JWSVerifier verifier = new MACVerifier(sharedSecret);
+            signedJWT.verify(verifier);
+            return true;
         } catch (ParseException e) {
-            log.error(e.toString());
+            e.printStackTrace();
+        } catch (JOSEException e) {
+            e.printStackTrace();
         }
+        return false;
+    }
 
-        synchronized (this.tokenList) {
-            if (this.tokenList.get(mapKey) != null) {
-                return true;
-            } else {
-                return false;
+    public Long getUserIdByToken(String token) {
+        if (this.checkToken(token)) {
+            try {
+                SignedJWT signedJWT = SignedJWT.parse(token);
+                Long id = (Long) signedJWT.getJWTClaimsSet().getClaim("id");
+                return id;
+            } catch (ParseException e) {
+                log.error(e.toString());
+            } catch (Exception e) {
+                log.error(e.toString());
             }
         }
+        return null;
     }
 }

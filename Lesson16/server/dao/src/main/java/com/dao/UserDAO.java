@@ -2,6 +2,7 @@ package com.dao;
 
 import com.dao.api.IUserDAO;
 import com.model.User;
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -10,44 +11,32 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDAO extends BaseDAO<User> implements IUserDAO {
+
     public UserDAO() {
         super(User.class);
     }
 
-    public Boolean checkUser(User user) {
-        try {
+    private static Logger log = Logger.getLogger(UserDAO.class);
+
+    public Integer checkUser(String login,String password) throws Exception{
             Criteria criteria = getSession().createCriteria(User.class)
-                    .add(Restrictions.like("login", user.getLogin()))
-                    .add(Restrictions.like("password", user.getPassword()));
+                    .add(Restrictions.like("login",login))
+                    .add(Restrictions.like("password", password));
             User checkingUser = (User) criteria.uniqueResult();
             if (checkingUser != null) {
-                return true;
+                return checkingUser.getId();
             } else {
-                return false;
+                return null;
             }
-        } catch (Exception e) {
-
-        }
-        return false;
     }
 
-    public User getUserByLoginPassword(String login, String password) {
+    public User getUserByLoginPassword(String login, String password) throws Exception {
 
-        try {
             Criteria criteria = getSession().createCriteria(User.class)
                     .add(Restrictions.like("login", login))
                     .add(Restrictions.like("password", password));
             User user = (User) criteria.uniqueResult();
             return user;
-
-        } catch (Exception e) {
-
-            return null;
         }
-
-    }
-
-
-
 }
 

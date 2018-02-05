@@ -1,6 +1,8 @@
 package com.service;
 
 import com.dao.UserDataDAO;
+import com.dao.api.IUserDAO;
+import com.dao.api.IUserDataDAO;
 import com.model.User;
 import com.model.UserData;
 import com.service.api.IUserDataService;
@@ -18,7 +20,9 @@ public class UserDataService implements IUserDataService {
     private SessionFactory sessionFactory;
     private static Logger log = Logger.getLogger(UserDataService.class);
     @Autowired
-    private UserDataDAO userDataDao ;
+    private IUserDataDAO userDataDao ;
+    @Autowired
+    private IUserDAO userDao ;
 
     @Transactional
     public void addUserData(UserData entity) {
@@ -27,25 +31,21 @@ public class UserDataService implements IUserDataService {
         userDataDao.addEntity(entity);
         tr.commit();
     }
-
+    @Transactional
     public void updateUserData(UserData entity) {
         try {
-            Session session = this.sessionFactory.getCurrentSession();
-            Transaction tr = session.beginTransaction();
             userDataDao.updateEntity(entity);
-            tr.commit();
         } catch (Exception e) {
             log.error(e.toString());
         }
     }
 
-
-    public UserData getUserDataByUser(User user) {
+    @Transactional
+    public UserData getUserDataByUserId(Long id) {
         try {
-            Session session = this.sessionFactory.getCurrentSession();
-            Transaction tr = session.beginTransaction();
+userDao.getEntityById(id);
             UserData userData = userDataDao.getDataByUser(user);
-            tr.commit();
+
             return userData;
         } catch (Exception e) {
             log.error(e.toString());

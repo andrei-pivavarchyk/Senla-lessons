@@ -16,7 +16,7 @@
       <module name="controller" target="1.7" />
       <module name="dao" target="1.7" />
       <module name="model" target="1.7" />
-      <module name="service" target="1.5" />
+      <module name="service" target="1.7" />
       <module name="SpringMVC" target="1.7" />
     </bytecodeTargetLevel>
   </component>

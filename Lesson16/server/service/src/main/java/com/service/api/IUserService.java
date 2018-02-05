@@ -9,5 +9,5 @@ public interface IUserService {
 
     public void updateUser(User entity);
 
-    Boolean checkUser(User user);
+    Integer checkUser(String login,String password);
 }

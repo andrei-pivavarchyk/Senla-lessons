@@ -2,6 +2,8 @@ package com.controller;
 
 import com.dao.UserDAO;
 import com.model.User;
+import com.service.ObjectConverterToJson;
+import com.service.TokenHandler;
 import com.service.UserService;
 import com.service.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,21 +27,12 @@ public class LoginServlet {
 
     @RequestMapping(
             value = {"/login"},
-            method = {RequestMethod.GET}
-    )
-    public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user=new User("succes","succes");
-        userService.addUser(user);
-        response.getWriter().write("succes");
-    }
-
-    @RequestMapping(
-            value = {"/loginn"},
             method = {RequestMethod.POST}
     )
-    public void loginn(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user=new User("succes","succes");
-        userService.addUser(user);
-        response.getWriter().write("succes");
+    public void login(@RequestHeader String login, @RequestHeader String password, HttpServletResponse response) {
+
+        Integer id = userService.checkUser(login, password);
+        String token = TokenHandler.getInstance().createToken(id);
+        response.addHeader("token", token);
     }
 }

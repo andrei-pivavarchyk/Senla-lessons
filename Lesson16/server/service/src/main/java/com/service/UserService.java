@@ -1,6 +1,7 @@
 package com.service;
 
 import com.dao.UserDAO;
+import com.dao.api.IUserDAO;
 import com.model.User;
 import com.service.api.IUserService;
 import org.apache.log4j.Logger;
@@ -22,7 +23,7 @@ public class UserService implements IUserService {
     private static Logger log = Logger.getLogger(UserService.class);
 
     @Autowired
-    private UserDAO userDAO;
+    private IUserDAO userDAO;
 
     public UserService() {
 
@@ -55,22 +56,21 @@ public class UserService implements IUserService {
     }
 
 
-    public Boolean checkUser(User user) {
+    public Integer checkUser(String login, String password) {
         try {
-           Boolean userExist=userDAO.checkUser(user);
-            return userExist;
+            Integer userId = userDAO.checkUser(login, password);
+            return userId;
         } catch (Exception e) {
             log.error(e.toString());
             return null;
         }
     }
 
-
     public void setUserDao(UserDAO userDao) {
         this.userDAO = userDao;
     }
 
-    public UserDAO getUserDao() {
+    public IUserDAO getUserDao() {
         return userDAO;
     }
 
@@ -82,7 +82,7 @@ public class UserService implements IUserService {
         this.sessionFactory = sessionFactory;
     }
 
-    public UserDAO getUserDAO() {
+    public IUserDAO getUserDAO() {
         return userDAO;
     }
 
