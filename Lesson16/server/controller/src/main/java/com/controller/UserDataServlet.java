@@ -9,7 +9,9 @@ import com.service.ObjectConverterToJson;
 import com.service.TokenHandler;
 import com.service.UserDataService;
 import com.service.UserService;
+import com.service.api.IUserDataService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,11 +27,8 @@ import java.text.ParseException;
 @Controller
 
 public class UserDataServlet {
-    private static Logger log = Logger.getLogger(UserDataServlet.class);
-
-    private UserService userService = new UserService();
-    private UserDataService userDataService=new UserDataService();
-
+    @Autowired
+    private IUserDataService userDataService;
 
     @RequestMapping(
             value = {"api/profile"},
@@ -37,15 +36,14 @@ public class UserDataServlet {
     )
 
     @ResponseBody
-    private UserData getUserData(@RequestHeader String login) {
-
-Long id= TokenHandler.getInstance().getUserIdByToken(login);
-
-userDataService.getUserDataByUser()
-
-
-
-   return null;
+    private UserData getUserData(@RequestHeader String token, HttpServletResponse response) {
+        Long id = TokenHandler.getInstance().getUserIdByToken(token);
+        if (id != null) {
+            UserData userData = userDataService.getUserDataByUserId(id);
+            return userData;
+        } else {
+            response.setStatus(404);
+            return null;
+        }
     }
-
 }

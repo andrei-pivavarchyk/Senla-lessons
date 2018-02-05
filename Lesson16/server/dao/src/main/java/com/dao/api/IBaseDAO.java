@@ -6,7 +6,7 @@ import java.util.List;
 public interface IBaseDAO <T> {
     void addEntity(T entity);
     void updateEntity(T entity);
-    //void deleteEntity(Integer id);
+    //void deleteEntity(Long id);
    // List<T> getAllEntities( TypeSorting sorting);
-    T getEntityById(Integer id);
+    T getEntityById(Long id);
 }

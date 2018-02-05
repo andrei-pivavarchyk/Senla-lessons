@@ -20,17 +20,15 @@ public class UserDataService implements IUserDataService {
     private SessionFactory sessionFactory;
     private static Logger log = Logger.getLogger(UserDataService.class);
     @Autowired
-    private IUserDataDAO userDataDao ;
+    private IUserDataDAO userDataDao;
     @Autowired
-    private IUserDAO userDao ;
+    private IUserDAO userDao;
 
     @Transactional
     public void addUserData(UserData entity) {
-        Session session = this.sessionFactory.getCurrentSession();
-        Transaction tr = session.beginTransaction();
         userDataDao.addEntity(entity);
-        tr.commit();
     }
+
     @Transactional
     public void updateUserData(UserData entity) {
         try {
@@ -43,11 +41,11 @@ public class UserDataService implements IUserDataService {
     @Transactional
     public UserData getUserDataByUserId(Long id) {
         try {
-userDao.getEntityById(id);
+            User user = userDao.getEntityById(id);
             UserData userData = userDataDao.getDataByUser(user);
-
             return userData;
         } catch (Exception e) {
+            e.printStackTrace();
             log.error(e.toString());
             return null;
         }

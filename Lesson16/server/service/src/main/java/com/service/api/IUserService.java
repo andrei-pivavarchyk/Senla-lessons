@@ -9,5 +9,5 @@ public interface IUserService {
 
     public void updateUser(User entity);
 
-    Integer checkUser(String login,String password);
+    Long checkUser(String login,String password);
 }

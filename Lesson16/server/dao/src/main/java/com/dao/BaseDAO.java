@@ -40,13 +40,13 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
 
 
-    public void deleteEntity(Integer id) {
+    public void deleteEntity(Long id) {
         T entity = null;
         entity = (T) getSession().load(getEntityClass(), id);
         getSession().delete(entity);
     }
 
-    public T getEntityById(Integer id) {
+    public T getEntityById(Long id) {
         T entity = null;
         entity = (T) getSession().load(getEntityClass(), id);
         return entity;

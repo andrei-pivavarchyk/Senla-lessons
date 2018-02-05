@@ -29,7 +29,7 @@ public class TokenHandler {
         return instance;
     }
 
-    public  String createToken(Integer id) {
+    public  String createToken(Long id) {
         byte[] sharedSecret = new byte[32];
         try {
             JWSSigner signer = new MACSigner(sharedSecret);

@@ -61,7 +61,7 @@
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="false" />
-                <marker date="1517829952580" expanded="true" signature="1347:1594" ph="{...}" />
+                <marker date="1517830317111" expanded="true" signature="1346:1616" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -447,7 +447,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/model" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -909,12 +909,12 @@
       <workItem from="1517810311557" duration="13000" />
       <workItem from="1517810655854" duration="1799000" />
       <workItem from="1517814459699" duration="620000" />
-      <workItem from="1517824917325" duration="610000" />
+      <workItem from="1517824917325" duration="616000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19412000" />
+    <option name="totallyTimeSpent" value="19418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="5" y="361" width="1600" height="860" extended-state="0" />
@@ -1270,7 +1270,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
-            <marker date="1517829952580" expanded="true" signature="1347:1594" ph="{...}" />
+            <marker date="1517830317111" expanded="true" signature="1346:1616" ph="{...}" />
           </folding>
         </state>
       </provider>

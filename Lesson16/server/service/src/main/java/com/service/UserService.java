@@ -44,21 +44,10 @@ public class UserService implements IUserService {
     }
 
 
-    public User getUserByLoginPassword(String login, String password) {
+    @Transactional
+    public Long checkUser(String login, String password) {
         try {
-            User user = userDAO.getUserByLoginPassword(login, password);
-            return user;
-        } catch (Exception e) {
-            log.error(e.toString());
-            return null;
-        }
-
-    }
-
-
-    public Integer checkUser(String login, String password) {
-        try {
-            Integer userId = userDAO.checkUser(login, password);
+            Long userId = userDAO.checkUser(login, password);
             return userId;
         } catch (Exception e) {
             log.error(e.toString());

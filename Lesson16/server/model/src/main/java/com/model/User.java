@@ -17,7 +17,7 @@ public class User extends WebEntity {
     // @JsonBackReference
 
     @JsonCreator
-    public User(@JsonProperty("id") Integer id, @JsonProperty("login") String login, @JsonProperty("password") String password) {
+    public User(@JsonProperty("id") Long id, @JsonProperty("login") String login, @JsonProperty("password") String password) {
         super(id);
         this.login = login;
         this.password = password;
@@ -29,11 +29,8 @@ public class User extends WebEntity {
         this.password = password;
     }
 
-
     public User() {
     }
-
-
 
 
     @Basic
@@ -52,34 +49,10 @@ public class User extends WebEntity {
         this.password = password;
     }
 
-
-
     public void setLogin(String login) {
         this.login = login;
     }
 
-
-    /* @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL,orphanRemoval = true)
-
-         public List<GuestRoomInfo> getGuestRoomInfoList() {
-             return guestRoomInfoList;
-         }
-
-         @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL)
-
-         public List<GuestServiceInfo> getGuestServiceInfoList() {
-             return guestServiceInfoList;
-         }
-
-
-         public void setGuestRoomInfoList(List<GuestRoomInfo> guestRoomInfoList) {
-             this.guestRoomInfoList = guestRoomInfoList;
-         }
-
-         public void setGuestServiceInfoList(List<GuestServiceInfo> guestServiceInfoList) {
-             this.guestServiceInfoList = guestServiceInfoList;
-         }
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,7 +69,7 @@ public class User extends WebEntity {
 
     @Override
     public int hashCode() {
-        int result = (int) getId();
+        int result = 666;
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;

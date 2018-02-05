@@ -1,6 +1,7 @@
 package com.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -23,7 +24,7 @@ public class UserData extends WebEntity {
     @JsonCreator
     public UserData(
             @JsonProperty("user") User user,
-            @JsonProperty("id") Integer id,
+            @JsonProperty("id") Long id,
             @JsonProperty("name") String name,
             @JsonProperty("surname") String surname,
             @JsonProperty("patronymic") String patronymic,
@@ -52,7 +53,8 @@ public class UserData extends WebEntity {
         this.dateOfBirth = dateOfBirth;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToOne
     public User getUser() {
         return user;
     }
@@ -99,5 +101,29 @@ public class UserData extends WebEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserData that = (UserData) o;
+
+        if (getId() != that.getId()) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
+        if (patronymic != null ? !patronymic.equals(that.patronymic) : that.patronymic != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 666;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
+        return result;
     }
 }

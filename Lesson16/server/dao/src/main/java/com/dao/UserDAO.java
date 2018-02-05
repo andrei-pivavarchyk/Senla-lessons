@@ -18,7 +18,7 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
 
     private static Logger log = Logger.getLogger(UserDAO.class);
 
-    public Integer checkUser(String login,String password) throws Exception{
+    public Long checkUser(String login,String password) throws Exception{
             Criteria criteria = getSession().createCriteria(User.class)
                     .add(Restrictions.like("login",login))
                     .add(Restrictions.like("password", password));

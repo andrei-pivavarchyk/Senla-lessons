@@ -1,5 +1,7 @@
 package com.controller;
 
+
+import com.model.UserData;
 import com.service.TokenHandler;
 
 import javax.servlet.*;
@@ -16,18 +18,25 @@ public class FilterToken implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
 
         HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse rs = (HttpServletResponse) response;
         String token = req.getHeader("token");
-        Boolean tokenValid = TokenHandler.getInstance().checkToken(token);
-        if (tokenValid) {
-            chain.doFilter(request, response);
+        Long id = TokenHandler.getInstance().getUserIdByToken(token);
+        if (id != null) {
+            try {
+
+                chain.doFilter(request, response);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
         } else {
-            HttpServletResponse rs = (HttpServletResponse) response;
-            rs.getWriter().write("filter bad");
-          //  rs.sendError(404);
+            rs.setStatus(404);
         }
+
     }
 
     @Override

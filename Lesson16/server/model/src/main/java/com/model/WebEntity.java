@@ -17,18 +17,18 @@ import java.io.Serializable;
 */
 @MappedSuperclass
 public class WebEntity implements Serializable {
-    private Integer id;
+    private Long id;
 
 
     protected WebEntity() {
     }
 
     @JsonCreator
-    public WebEntity(@JsonProperty("id") Integer id) {
+    public WebEntity(@JsonProperty("id") Long id) {
         this.id = id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,7 +36,7 @@ public class WebEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 }
