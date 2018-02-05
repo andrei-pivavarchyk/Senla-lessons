@@ -1,0 +1,6 @@
+com\service\UserDataService.class
+com\service\api\IUserDataService.class
+com\service\api\IUserService.class
+com\service\TokenHandler.class
+com\service\ObjectConverterToJson.class
+com\service\UserService.class
