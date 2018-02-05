@@ -21,7 +21,7 @@ public class LoginController {
             value = {"/login"},
             method = {RequestMethod.POST}
     )
-    public void login(@RequestHeader String login, @RequestHeader String password, HttpServletResponse response) {
+    public void login(@RequestParam String login, @RequestParam String password, HttpServletResponse response) {
 
         Long id = userService.checkUser(login, password);
         if (id != null) {
