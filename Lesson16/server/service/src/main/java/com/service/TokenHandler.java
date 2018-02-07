@@ -5,25 +5,16 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import com.service.api.ITokenHandler;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.util.Date;
+@Component
+public class TokenHandler implements ITokenHandler{
 
-public class TokenHandler {
-
-    private volatile static TokenHandler instance;
     private static Logger log = Logger.getLogger(TokenHandler.class);
-
-    public static TokenHandler getInstance() {
-        if (instance == null) {
-            synchronized (TokenHandler.class) {
-                if (instance == null)
-                    instance = new TokenHandler();
-            }
-        }
-        return instance;
-    }
 
     public String createToken(Long id) {
         byte[] sharedSecret = new byte[32];

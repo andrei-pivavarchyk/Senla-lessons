@@ -2,6 +2,7 @@ import com.dao.api.IUserDAO;
 import com.model.User;
 import com.model.UserData;
 import com.service.TokenHandler;
+import com.service.api.ITokenHandler;
 import com.service.api.IUserDataService;
 import com.service.api.IUserService;
 import org.springframework.context.ApplicationContext;
@@ -18,12 +19,13 @@ public class Main {
         IUserService userService = context.getBean(IUserService.class);
         IUserDataService userDataService = context.getBean(IUserDataService.class);
         IUserDAO userDao = context.getBean(IUserDAO.class);
+
        // userDataService.getUserDataByUserId(new Long(1));
         //System.out.print(userDataService.getUserDataByUserId(new Long(1)).getName());
-        User user=new User("cds","succes");
-        UserData userData=new UserData(user,"Fds","fds","fd",new Date());
-        userService.addUser(user);
-        userDataService.addUserData(userData);
+      //  User user=new User("cds","succes");
+      //  UserData userData=new UserData(user,"Fds","fds","fd",new Date());
+       // userService.addUser(user);
+      //  userDataService.addUserData(userData);
 
     }
 }

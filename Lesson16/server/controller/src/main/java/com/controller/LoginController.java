@@ -1,11 +1,10 @@
 package com.controller;
 
-import com.service.TokenHandler;
+import com.service.api.ITokenHandler;
 import com.service.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
@@ -13,6 +12,8 @@ public class LoginController {
 
     @Autowired
     IUserService userService;
+    @Autowired
+    private ITokenHandler tokenHandler;
 
     public LoginController() {
     }
@@ -25,7 +26,7 @@ public class LoginController {
 
         Long id = userService.checkUser(login, password);
         if (id != null) {
-            String token = TokenHandler.getInstance().createToken(id);
+            String token = tokenHandler.createToken(id);
             response.addHeader("token", token);
         } else {
             response.setStatus(401);

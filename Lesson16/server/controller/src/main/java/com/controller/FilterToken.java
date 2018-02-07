@@ -1,16 +1,20 @@
 package com.controller;
 
-import com.service.TokenHandler;
+import com.service.api.ITokenHandler;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class FilterToken implements Filter {
 
     private FilterConfig filterConfig;
+
     private static Logger log = Logger.getLogger(FilterToken.class);
 
     @Override
@@ -24,16 +28,19 @@ public class FilterToken implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse rs = (HttpServletResponse) response;
         String token = req.getHeader("token");
-        Long id = TokenHandler.getInstance().getUserIdByToken(token);
+        ITokenHandler tokenHandler = WebApplicationContextUtils.
+                getRequiredWebApplicationContext(filterConfig.getServletContext()).
+                getBean( ITokenHandler.class);
+
+        Long id = tokenHandler.getUserIdByToken(token);
         if (id != null) {
             try {
                 chain.doFilter(request, response);
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 log.error(e.toString());
             }
         }
-            rs.setStatus(401);
+        rs.setStatus(401);
     }
 
     @Override
