@@ -3,12 +3,14 @@ package com.controller;
 import com.model.UserData;
 import com.service.api.ITokenHandler;
 import com.service.api.IUserDataService;
+import com.service.api.IUserHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
@@ -17,6 +19,8 @@ public class UserDataController {
     private IUserDataService userDataService;
     @Autowired
     private ITokenHandler tokenHandler;
+    @Autowired
+    private IUserHandler userHandler;
 
     @RequestMapping(
             value = {"api/profile"},
@@ -25,12 +29,10 @@ public class UserDataController {
 
     @ResponseBody
     private UserData getUserData(@RequestHeader String token, HttpServletResponse response) {
-        Long id = tokenHandler.getUserIdByToken(token);
-        if (id != null) {
-            UserData userData = userDataService.getUserDataByUserId(id);
-            if (userData != null) {
-                return userData;
-            }
+
+        UserData userData = userDataService.getUserDataByUserId(userHandler.getUserId());
+        if (userData != null) {
+            return userData;
         }
         response.setStatus(204);
         return new UserData();

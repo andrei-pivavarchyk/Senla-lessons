@@ -1,8 +1,7 @@
 package com.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.model.User;
-import com.service.api.IObjectConverter;
 import com.service.api.ITokenHandler;
 import com.service.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class LoginController {
             method = {RequestMethod.POST}
     )
     public void login(@RequestBody String string, HttpServletResponse response) {
-
+        //ResponseBody User - unsupported format???
         Long id = userService.checkUser(string);
         if (id != null) {
             String token = tokenHandler.createToken(id);
