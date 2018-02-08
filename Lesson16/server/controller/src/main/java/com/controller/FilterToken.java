@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 public class FilterToken implements Filter {
 
     private FilterConfig filterConfig;
-
     private static Logger log = Logger.getLogger(FilterToken.class);
 
     @Override
@@ -32,6 +31,7 @@ public class FilterToken implements Filter {
         ITokenHandler tokenHandler = WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
                 getBean( ITokenHandler.class);
+
         IUserHandler userHandler=WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
                 getBean( IUserHandler.class);

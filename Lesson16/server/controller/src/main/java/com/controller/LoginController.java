@@ -1,15 +1,12 @@
 package com.controller;
 
-
-import com.model.User;
 import com.service.api.ITokenHandler;
 import com.service.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
 
 @Controller
 public class LoginController {

@@ -6,7 +6,6 @@ import com.service.api.IUserDataService;
 import com.service.api.IUserHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,7 +27,7 @@ public class UserDataController {
     )
 
     @ResponseBody
-    private UserData getUserData(@RequestHeader String token, HttpServletResponse response) {
+    private UserData getUserData(HttpServletResponse response) {
 
         UserData userData = userDataService.getUserDataByUserId(userHandler.getUserId());
         if (userData != null) {

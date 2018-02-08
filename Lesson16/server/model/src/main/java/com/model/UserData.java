@@ -22,12 +22,12 @@ public class UserData extends WebEntity {
 
 
     public UserData(
-            @JsonProperty("user") User user,
-            @JsonProperty("id") Long id,
-            @JsonProperty("name") String name,
-            @JsonProperty("surname") String surname,
-            @JsonProperty("patronymic") String patronymic,
-            @JsonProperty("dateOfBirth") Date dateOfBirth) {
+            User user,
+            Long id,
+            String name,
+            String surname,
+            String patronymic,
+            Date dateOfBirth) {
 
         super(id);
         this.user = user;
@@ -38,11 +38,11 @@ public class UserData extends WebEntity {
     }
 
     public UserData(
-            @JsonProperty("user") User user,
-            @JsonProperty("name") String name,
-            @JsonProperty("surname") String surname,
-            @JsonProperty("patronymic") String patronymic,
-            @JsonProperty("dateOfBirth") Date dateOfBirth) {
+            User user,
+            String name,
+            String surname,
+            String patronymic,
+            Date dateOfBirth) {
 
         this.user = user;
         this.name = name;
