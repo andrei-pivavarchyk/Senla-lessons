@@ -8,5 +8,5 @@ public interface IUserService {
 
      void updateUser(User entity);
 
-    Long checkUser(String login,String password);
+    Long checkUser(String userString);
 }

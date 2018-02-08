@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.api.IUserDAO;
 import com.model.User;
+import com.service.api.IObjectConverter;
 import com.service.api.IUserService;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -17,7 +18,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private IUserDAO userDAO;
-
+    @Autowired
+    private IObjectConverter objectConverter;
     public UserService() {
     }
 
@@ -39,9 +41,10 @@ public class UserService implements IUserService {
     }
 
     @Transactional
-    public Long checkUser(String login, String password) {
+    public Long checkUser(String userString) {
+        User user = (User) objectConverter.convertJsonToObject(userString, User.class);
         try {
-            Long userId = userDAO.checkUser(login, password);
+            Long userId = userDAO.checkUser(user.getLogin(), user.getPassword());
             return userId;
         } catch (Exception e) {
             log.error(e.toString());

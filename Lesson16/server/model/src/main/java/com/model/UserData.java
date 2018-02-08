@@ -20,7 +20,7 @@ public class UserData extends WebEntity {
     public UserData() {
     }
 
-    @JsonCreator
+
     public UserData(
             @JsonProperty("user") User user,
             @JsonProperty("id") Long id,
@@ -37,7 +37,6 @@ public class UserData extends WebEntity {
         this.dateOfBirth = dateOfBirth;
     }
 
-    @JsonCreator
     public UserData(
             @JsonProperty("user") User user,
             @JsonProperty("name") String name,

@@ -18,8 +18,8 @@ public class WebEntity implements Serializable {
     public WebEntity() {
     }
 
-    @JsonCreator
-    public WebEntity(@JsonProperty("id") Long id) {
+
+    public WebEntity( Long id) {
         this.id = id;
     }
 
