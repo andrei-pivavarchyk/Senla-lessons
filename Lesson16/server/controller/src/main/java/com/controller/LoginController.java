@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     @Autowired
-    IUserService userService;
+    private IUserService userService;
     @Autowired
     private ITokenHandler tokenHandler;
 
