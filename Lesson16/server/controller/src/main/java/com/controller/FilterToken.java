@@ -1,16 +1,19 @@
 package com.controller;
 
-
-import com.model.UserData;
-import com.service.TokenHandler;
+import com.serviceAPI.ITokenHandler;
+import com.serviceAPI.IUserHandler;
+import org.apache.log4j.Logger;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class FilterToken implements Filter {
+
     private FilterConfig filterConfig;
+
+    private static Logger log = Logger.getLogger(FilterToken.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -23,20 +26,24 @@ public class FilterToken implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse rs = (HttpServletResponse) response;
         String token = req.getHeader("token");
-        Long id = TokenHandler.getInstance().getUserIdByToken(token);
+
+        ITokenHandler tokenHandler = WebApplicationContextUtils.
+                getRequiredWebApplicationContext(filterConfig.getServletContext()).
+                getBean( ITokenHandler.class);
+
+        IUserHandler userHandler=WebApplicationContextUtils.
+                getRequiredWebApplicationContext(filterConfig.getServletContext()).
+                getBean( IUserHandler.class);
+        Long id = tokenHandler.getUserIdByToken(token);
         if (id != null) {
             try {
-
+                userHandler.setUserId(id);
                 chain.doFilter(request, response);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ServletException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                log.error(e.toString());
             }
-        } else {
-            rs.setStatus(404);
         }
-
+        rs.setStatus(401);
     }
 
     @Override

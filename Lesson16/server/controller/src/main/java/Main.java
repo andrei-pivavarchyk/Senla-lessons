@@ -1,15 +1,10 @@
-import com.dao.api.IUserDAO;
-import com.model.User;
+
+
 import com.model.UserData;
-import com.service.TokenHandler;
-import com.service.api.IUserDataService;
-import com.service.api.IUserService;
+import com.serviceAPI.IUserDataService;
+import com.serviceAPI.IUserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,8 +12,16 @@ public class Main {
         ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring/root-context.xml");
         IUserService userService = context.getBean(IUserService.class);
         IUserDataService userDataService = context.getBean(IUserDataService.class);
-        IUserDAO userDao = context.getBean(IUserDAO.class);
-        userDataService.getUserDataByUserId(new Long(1));
-        System.out.print(userDataService.getUserDataByUserId(new Long(1)).getName());
+        //  IUserDAO userDao = context.getBean(IUserDAO.class);
+
+        // userDataService.getUserDataByUserId(new Long(1));
+        //System.out.print(userDataService.getUserDataByUserId(new Long(1)).getName());
+
+        //  UserData userData=new UserData(user,"Fds","fds","fd",new Date());
+        // userService.addUser(user);
+        //  userDataService.addUserData(userData);
+
+        UserData userData = userDataService.getUserDataByUserId(new Long(3));
+        System.out.println(userData.getName());
     }
 }
