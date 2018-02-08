@@ -27,7 +27,7 @@ public class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
     }
 
     public void addEntity(T entity) {
-        this.sessionFactory.getCurrentSession().save(entity);
+        getSession().save(entity);
     }
 
     public void updateEntity(T entity) {

@@ -28,6 +28,7 @@ public class FilterToken implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse rs = (HttpServletResponse) response;
         String token = req.getHeader("token");
+
         ITokenHandler tokenHandler = WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
                 getBean( ITokenHandler.class);

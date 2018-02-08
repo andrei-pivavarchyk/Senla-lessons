@@ -17,8 +17,6 @@ public class UserDataController {
     @Autowired
     private IUserDataService userDataService;
     @Autowired
-    private ITokenHandler tokenHandler;
-    @Autowired
     private IUserHandler userHandler;
 
     @RequestMapping(

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UserDataService implements IUserDataService {
     @Autowired
     private SessionFactory sessionFactory;
@@ -21,12 +22,12 @@ public class UserDataService implements IUserDataService {
     @Autowired
     private IUserDAO userDao;
 
-    @Transactional
+
     public void addUserData(UserData entity) {
         userDataDao.addEntity(entity);
     }
 
-    @Transactional
+
     public void updateUserData(UserData entity) {
         try {
             userDataDao.updateEntity(entity);
@@ -35,7 +36,7 @@ public class UserDataService implements IUserDataService {
         }
     }
 
-    @Transactional
+
     public UserData getUserDataByUserId(Long id) {
         try {
             User user = userDao.getEntityById(id);
