@@ -118,7 +118,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="160" />
     <option name="y" value="116" />
     <option name="width" value="1614" />
@@ -185,7 +185,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../service" />
     <property name="nodejs_interpreter_path" value="D:/_JAVA/Node/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="D:\_JAVA\Node\node.exe" />
@@ -622,7 +622,7 @@
     <option name="totallyTimeSpent" value="12266000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="160" y="116" width="1614" height="875" extended-state="1" />
+    <frame x="160" y="116" width="1614" height="875" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

@@ -41,8 +41,8 @@ public class UserService implements IUserService {
     }
 
     @Transactional
-    public Long checkUser(String userString) {
-        User user = (User) objectConverter.convertJsonToObject(userString, User.class);
+    public Long checkUser(User user) {
+
         try {
             Long userId = userDAO.checkUser(user.getLogin(), user.getPassword());
             return userId;

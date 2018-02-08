@@ -1,10 +1,12 @@
 package com.controller;
 
+import com.model.User;
 import com.service.api.ITokenHandler;
 import com.service.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -23,9 +25,8 @@ public class LoginController {
             value = {"/login"},
             method = {RequestMethod.POST}
     )
-    public void login(@RequestBody String string, HttpServletResponse response) {
-        //ResponseBody User - unsupported format???
-        Long id = userService.checkUser(string);
+    public void login(HttpServletResponse response, @RequestBody User user) {
+        Long id = userService.checkUser(user);
         if (id != null) {
             String token = tokenHandler.createToken(id);
             response.addHeader("token", token);
