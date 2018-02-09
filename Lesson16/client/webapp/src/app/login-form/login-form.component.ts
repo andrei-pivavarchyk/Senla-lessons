@@ -31,9 +31,4 @@ export class LoginFormComponent implements OnInit {
     this.user = user;
 
   }
-
-
-
-
-
 }

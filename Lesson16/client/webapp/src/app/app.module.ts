@@ -5,13 +5,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { UserComponent } from './user/user.component';
 import { UserDataComponent } from './user-data/user-data.component';
-
+import { UserComponent } from './user/user.component';
 //for two binding in forms
 import { FormsModule } from '@angular/forms';
 //for http
 import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -21,8 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     AppNavbarComponent,
     LoginFormComponent,
-    UserComponent,
-    UserDataComponent
+    UserDataComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

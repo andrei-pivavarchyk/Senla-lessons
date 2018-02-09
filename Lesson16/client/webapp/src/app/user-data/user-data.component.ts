@@ -15,8 +15,6 @@ export class UserDataComponent implements OnInit {
     login:"bob",
     password:"password"
   };
-
-
   ngOnInit() {
   }
 
