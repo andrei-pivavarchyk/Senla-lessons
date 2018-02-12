@@ -51,12 +51,12 @@ export class UserService {
       });
   }
   getUserData(){
-
     return this.http.get(this.userDataUrl,
       { observe: 'response' }
     )
       .subscribe(resp => {
         if (resp.body) {
+          console.log(localStorage.getItem('currentUser'));
          console.log(resp.body);
           return true;
         }

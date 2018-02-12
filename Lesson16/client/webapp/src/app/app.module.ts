@@ -14,7 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './service/user.service';
 //routing 
 import { AppRoutingModule }     from './app-routing.module';
-//
+//interceptor
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import{TokenInterceptor} from './interceptor/interceptor';
 
 
 
@@ -34,7 +36,14 @@ import { AppRoutingModule }     from './app-routing.module';
     AppRoutingModule
   
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
