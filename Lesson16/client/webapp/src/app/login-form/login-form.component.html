@@ -4,18 +4,18 @@
   <div class="col-sm-4"> <form>
     <div class="form-group">
       <label for="login">Login</label>
-      <input [(ngModel)]="defaultUser.login" type="login" class="form-control"  id="login"  placeholder="Login" name="login">
+      <input  type="login" class="form-control"  id="login"  placeholder="Login" name="login">
 
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input [(ngModel)]="defaultUser.password" type="password" class="form-control" id="password" placeholder="Password" name="password">
+      <input type="password" class="form-control" id="password" placeholder="Password" name="password">
     </div>
     <div class="form-group">
       <label for="user">User</label>
-      <input  class="form-control" id="user"  value="{{defaultUser.login}}">
+      <input  class="form-control" id="user" >
     </div>
-    <button type="submit" class="btn btn-primary" (click)="login(defaultUser)">Submit</button>
+    <button  class="btn btn-primary" (click)="loginUser()">Submit</button>
   </form>
   </div>
 

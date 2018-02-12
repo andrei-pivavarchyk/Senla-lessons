@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../entity/user';
-import{UserService}from'../service/user.service' 
+import{UserService}from'../service/user.service' ;
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -8,6 +8,7 @@ import{UserService}from'../service/user.service'
 })
 export class UserComponent implements OnInit {
   user:User={
+    type:'User',
     id:1,
     login:'login',
     password:'password'
@@ -16,9 +17,7 @@ export class UserComponent implements OnInit {
   constructor(private userService:UserService) { }
 
   ngOnInit() {
-    this.getString();
+   
   }
-getString():void{
-  this.str=this.userService.getString();
-}
+
 }

@@ -27,7 +27,7 @@ public class FilterToken implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse rs = (HttpServletResponse) response;
-        String token = req.getHeader("token");
+        String token = req.getHeader("Authorization");
 
         ITokenHandler tokenHandler = WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).

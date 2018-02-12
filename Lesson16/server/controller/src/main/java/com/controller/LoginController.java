@@ -29,7 +29,8 @@ public class LoginController {
         Long id = userService.checkUser(user);
         if (id != null) {
             String token = tokenHandler.createToken(id);
-            response.addHeader("token", token);
+            response.addHeader("Authorization",token);
+
         } else {
             response.setStatus(401);
         }
