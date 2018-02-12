@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by андрей on 12.02.2018.
+ * DELETE
  */
 @Controller
 public class TestController {
@@ -21,9 +21,9 @@ public class TestController {
     )
 
     @ResponseBody
-    private String getUserData() {
-
-        String str="some string";
+    private String getUserData(HttpServletResponse response) {
+        response.setContentType("application/json");
+        String str="{\"token\":\"sometoken\"}";
         return str;
     }
 }

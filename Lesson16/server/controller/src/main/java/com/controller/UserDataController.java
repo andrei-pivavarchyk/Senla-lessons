@@ -25,8 +25,8 @@ public class UserDataController {
     )
 
     @ResponseBody
-    private UserData getUserData(HttpServletResponse response) {
-
+    public UserData getUserData(HttpServletResponse response) {
+        response.setContentType("application/json");
         UserData userData = userDataService.getUserDataByUserId(userHandler.getUserId());
         if (userData != null) {
             return userData;

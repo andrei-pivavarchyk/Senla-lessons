@@ -22,30 +22,18 @@ export class LoginFormComponent implements OnInit {
 
   }
 
-  private user: User = { "type": "User", "id": null, "login": "s", "password": "s" };
+  private user: User = { "type": "User", "id": null, "login": null, "password": null };
   private load: boolean;
 
 
   loginUser(): void {
 
+ this.userService.login(this.user);
+ var token= localStorage.getItem('currentUser');
+  console.log(token);
 
-    this.load = false;
-    this.userService.login(this.user)
-    .subscribe(result => {
-      if (result === true) {
-          // login successful
-          this.router.navigate(['/']);
-          console.log('succes');
-      } else {
-          // login failed
-         
-          this.load = false;
-          console.log( this.load);
-      }
-  });
-   
   }
   someText(): void {
-    console.log('blabla');
-  }
-}
+  
+
+}}

@@ -10,6 +10,7 @@ const httpOptions = {
     'Content-Type': 'application/json',
     'Authorization': 'my-auth-token'
   })
+
 };
 
 
@@ -17,57 +18,53 @@ const httpOptions = {
 export class UserService {
 
   private loginURL = 'http://localhost:8080/controller-1.0-SNAPSHOT/login';
+  private userDataUrl = 'http://localhost:8080/controller-1.0-SNAPSHOT/api/profile';
   public token: string;
-  public res:Response;
+  public res: Response;
   constructor(
     private http: HttpClient
-  ) { 
-          // set token if saved in local storage
-          var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-          this.token = currentUser && currentUser.token;
+  ) {
+
   }
 
 
-login(user:User): Observable<boolean> {
-
-   return this.http.post(this.loginURL, JSON.stringify( { "type": "User","id": null, "login": user.login,  "password": user.password }),httpOptions)
-
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-              console.log('some action') ;
-          if (response) {
-                    // set token property
-                    
-                    this.token = response.headers.get('authorization');
- console.log(this.token);
-                    // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('authorization', this.token);
- 
-                    // return true to indicate successful login
-                    return true;
-                } else {
-                    // return false to indicate failed login
-                    return false;
-                }
-            });
+  logout(): void {
+    // clear token remove user from local storage to log user out
+    this.token = null;
+    localStorage.removeItem('currentUser');
+  }
 
 
+  login(user: User) {
+    return this.http.post(this.loginURL,
+      { "type": "User", "id": null, "login": user.login, "password": user.password }
+      ,
+      { observe: 'response' }
+    )
+      .subscribe(resp => {
+        if (resp.body['token']) {
+          localStorage.setItem('currentUser', resp.body['token']);
+          return true;
+        }
+        return false;
+
+      });
+  }
+  getUserData(){
+
+    return this.http.get(this.userDataUrl,
+      { observe: 'response' }
+    )
+      .subscribe(resp => {
+        if (resp.body) {
+         console.log(resp.body);
+          return true;
+        }
+        return false;
+
+      });
 
 
-
-}
-
-
-logout(): void {
-  // clear token remove user from local storage to log user out
-  this.token = null;
-  localStorage.removeItem('currentUser');
-}
-getString():void{
-  this.http.get('http://localhost:8080/controller-1.0-SNAPSHOT/data',httpOptions).subscribe(resp => {
-  console.log(777);
- });
-
-}
+  }
 
 }

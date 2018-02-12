@@ -25,14 +25,18 @@ public class LoginController {
             value = {"/login"},
             method = {RequestMethod.POST}
     )
-    public void login(HttpServletResponse response, @RequestBody User user) {
+    @ResponseBody
+    public Token login(HttpServletResponse response, @RequestBody User user) {
         Long id = userService.checkUser(user);
         if (id != null) {
             String token = tokenHandler.createToken(id);
             response.addHeader("Authorization",token);
-
+            Token userToken=new Token();
+            userToken.setToken(token);
+            return userToken;
         } else {
             response.setStatus(401);
+            return null;
         }
     }
 }
