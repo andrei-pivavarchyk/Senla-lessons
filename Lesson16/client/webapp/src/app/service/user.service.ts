@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../entity/user';
-import { HttpClient, HttpHeaders, HttpHeaderResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpHeaderResponse, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
@@ -30,23 +30,31 @@ export class UserService {
 
 login(user:User): Observable<boolean> {
 
-  return this.http.post(this.loginURL, JSON.stringify( { "type": "User","id": null, "login": user.login,  "password": user.password }),httpOptions)
-  .map((response: Response) => {
-      // login successful if there's a jwt token in the response
-      let token = response.headers.get('Authorization');
-      if (token) {
-          // set token property
-          this.token = token;
-          // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('token', this.token);
-          // return true to indicate successful login
-          return true;
-      } else {
-          // return false to indicate failed login
-          console.log(this.token);
-          return false;
-      }
-  }); 
+   return this.http.post(this.loginURL, JSON.stringify( { "type": "User","id": null, "login": user.login,  "password": user.password }),httpOptions)
+
+            .map((response: Response) => {
+                // login successful if there's a jwt token in the response
+              console.log('some action') ;
+          if (response) {
+                    // set token property
+                    
+                    this.token = response.headers.get('authorization');
+ console.log(this.token);
+                    // store username and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('authorization', this.token);
+ 
+                    // return true to indicate successful login
+                    return true;
+                } else {
+                    // return false to indicate failed login
+                    return false;
+                }
+            });
+
+
+
+
+
 }
 
 

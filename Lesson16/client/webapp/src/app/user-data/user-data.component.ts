@@ -9,12 +9,6 @@ export class UserDataComponent implements OnInit {
 
   constructor() { }
 
-
-  defaultUser:User={
-    id:1,
-    login:"bob",
-    password:"password"
-  };
   ngOnInit() {
   }
 

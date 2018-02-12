@@ -3,6 +3,7 @@ import { User } from '../entity/user';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { UserService } from '../service/user.service';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -10,27 +11,41 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 
 export class LoginFormComponent implements OnInit {
-aut:Boolean;
+  aut: Boolean;
   constructor(
     private http: HttpClient,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    
+
   }
- 
-  private user: User = { "type": "User","id": null, "login": "s",  "password": "s" };
-  private str:String;
+
+  private user: User = { "type": "User", "id": null, "login": "s", "password": "s" };
+  private load: boolean;
 
 
   loginUser(): void {
-this.userService.getString();
-this.userService.login(this.user).
-subscribe(data => this.aut=data);
-  console.log(this.aut);
+
+
+    this.load = false;
+    this.userService.login(this.user)
+    .subscribe(result => {
+      if (result === true) {
+          // login successful
+          this.router.navigate(['/']);
+          console.log('succes');
+      } else {
+          // login failed
+         
+          this.load = false;
+          console.log( this.load);
+      }
+  });
+   
   }
-  someText():void{
+  someText(): void {
     console.log('blabla');
   }
 }
