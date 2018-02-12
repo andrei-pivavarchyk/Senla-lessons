@@ -11,8 +11,10 @@ import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
 //for http
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { UserService } from './service/user.service';
+//routing 
+import { AppRoutingModule }     from './app-routing.module';
+//
 
 
 
@@ -28,10 +30,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule.forRoot()
-
+    NgbModule.forRoot(),
+    AppRoutingModule
+  
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
