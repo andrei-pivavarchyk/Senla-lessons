@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppNavbarComponent } from './app-navbar/app-navbar.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { UserDataComponent } from './user-data/user-data.component';
 import { UserComponent } from './user/user.component';
 //for two binding in forms
 import { FormsModule } from '@angular/forms';
@@ -25,13 +22,11 @@ import{TokenInterceptor} from './interceptor/interceptor';
     AppComponent,
     AppNavbarComponent,
     LoginFormComponent,
-    UserDataComponent,
     UserComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule,
+    HttpClientModule
     NgbModule.forRoot(),
     AppRoutingModule
   
@@ -39,8 +34,7 @@ import{TokenInterceptor} from './interceptor/interceptor';
   providers: [
     UserService,
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
+      provide: HTTP_INTERCEPTORS
       multi: true
     }
   ],
