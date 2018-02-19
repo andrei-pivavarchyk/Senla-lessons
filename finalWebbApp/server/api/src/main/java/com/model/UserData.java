@@ -11,15 +11,15 @@ import java.util.Date;
 @Table(name = "user_data")
 public class UserData extends WebEntity {
 
-
+    private User user;
     private String name;
     private String surname;
     private String patronymic;
     private Date dateOfBirth;
     private String email;
     private Role role;
-
-
+    private UserContact userContact;
+    private UserAddress address;
 
     public UserData() {
     }
@@ -33,14 +33,15 @@ public class UserData extends WebEntity {
                     Role role,
                     UserAddress address,
                     UserContact userContact) {
-
+        this.user = user;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.role = role;
-
+        this.address = address;
+        this.userContact = userContact;
     }
 
     public UserData(Long id,
@@ -54,16 +55,29 @@ public class UserData extends WebEntity {
                     UserAddress address,
                     UserContact userContact) {
         super(id);
-
+        this.user = user;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.role = role;
-
+        this.address = address;
+        this.userContact = userContact;
     }
 
+    public UserData(User user,UserContact userContact,UserAddress userAddress){
+        this.userContact=userContact;
+        this.address=userAddress;
+        this.user=user;
+    }
+
+    @JsonIgnore
+    @JoinColumn(name = "user_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    public User getUser() {
+        return user;
+    }
 
     @Column(name = "date_of_birth")
     public Date getDateOfBirth() {
@@ -96,9 +110,17 @@ public class UserData extends WebEntity {
         return role;
     }
 
+    @JoinColumn(name = "address")
+    @OneToOne
+    public UserAddress getAddress() {
+        return address;
+    }
 
-
-
+    @JoinColumn(name = "contact")
+    @OneToOne
+    public UserContact getContact() {
+        return userContact;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -116,6 +138,10 @@ public class UserData extends WebEntity {
         this.surname = surname;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -124,6 +150,13 @@ public class UserData extends WebEntity {
         this.role = role;
     }
 
+    public void setAddress(UserAddress address) {
+        this.address = address;
+    }
+
+    public void setContact(UserContact contact) {
+        this.userContact = contact;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -132,23 +165,20 @@ public class UserData extends WebEntity {
 
         UserData userData = (UserData) o;
 
+        if (user != null ? !user.equals(userData.user) : userData.user != null) return false;
         if (name != null ? !name.equals(userData.name) : userData.name != null) return false;
         if (surname != null ? !surname.equals(userData.surname) : userData.surname != null) return false;
         if (patronymic != null ? !patronymic.equals(userData.patronymic) : userData.patronymic != null) return false;
-        if (dateOfBirth != null ? !dateOfBirth.equals(userData.dateOfBirth) : userData.dateOfBirth != null)
-            return false;
-        if (email != null ? !email.equals(userData.email) : userData.email != null) return false;
-        return role == userData.role;
+        return dateOfBirth != null ? dateOfBirth.equals(userData.dateOfBirth) : userData.dateOfBirth == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = user != null ? user.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
         result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
 }

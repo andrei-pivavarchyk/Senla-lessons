@@ -58,37 +58,32 @@ export class UserService {
           }
       });
 
-
-
-
-
-
-
-
-
-
-
-
-
   }
+
   getUserData() {
     return this.http.get(this.userDataUrl,
       {
         observe: 'response',
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          'Authorization': 'my-auth-token'
+          'Authorization': localStorage.getItem('currentUser')
         })
       }
     )
-      .subscribe(Response => {
-        if (Response.body) {
-
-          return true;
+   
+    .map((response) => {
+        // login successful if there's a jwt token in the response
+        let userdata = response.body;
+        if (userdata) {
+            return true;
+        } else {
+            // return false to indicate failed login
+            return false;
         }
-        return false;
+    });
 
-      });
   }
+
+
 
 }

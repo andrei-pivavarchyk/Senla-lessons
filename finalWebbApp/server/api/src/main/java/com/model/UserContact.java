@@ -10,23 +10,19 @@ public class UserContact extends WebEntity{
 
     private String email;
     private Integer phone;
-    private UserAddress userAddress;
 
     public UserContact(){}
 
-    public UserContact(String email, Integer phone, UserAddress userAddress) {
+    public UserContact(String email, Integer phone) {
         this.email = email;
         this.phone = phone;
-        this.userAddress = userAddress;
     }
 
-    public UserContact(Long id, String email, Integer phone, UserAddress userAddress) {
+    public UserContact(Long id, String email, Integer phone) {
         super(id);
         this.email = email;
         this.phone = phone;
-        this.userAddress = userAddress;
     }
-
     @Column(name = "email")
     public String getEmail() {
         return email;
@@ -35,10 +31,6 @@ public class UserContact extends WebEntity{
     public Integer getPhone() {
         return phone;
     }
-    @Column(name = "user_address")
-    public UserAddress getUserAddress() {
-        return userAddress;
-    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -46,10 +38,6 @@ public class UserContact extends WebEntity{
 
     public void setPhone(Integer phone) {
         this.phone = phone;
-    }
-
-    public void setUserAddress(UserAddress userAddress) {
-        this.userAddress = userAddress;
     }
 
     @Override

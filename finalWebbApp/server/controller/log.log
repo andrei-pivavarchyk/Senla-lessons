@@ -43,34 +43,3 @@
 2018-02-19 17:13:05 ERROR SqlExceptionHelper:144 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'index, region, street) values (null, null, null, null, null)' at line 1
 2018-02-19 17:13:05 ERROR UserService:66 - org.hibernate.exception.SQLGrammarException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'index, region, street) values (null, null, null, null, null)' at line 1
 2018-02-19 17:13:05 ERROR AssertionFailure:43 - HHH000099: an assertion failure occured (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in com.model.UserAddress entry (don't flush the Session after an exception occurs)
-2018-02-19 15:25:15 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E52EA3363 (contact), add constraint FK1435639E52EA3363 foreign key (contact) references user_contact (id)
-2018-02-19 15:25:15 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
-2018-02-19 15:25:15 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E3D43702C (user_id), add constraint FK1435639E3D43702C foreign key (user_id) references user (id)
-2018-02-19 15:25:15 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
-2018-02-19 15:25:16 ERROR SqlExceptionHelper:144 - Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user`, CONSTRAINT `user_fk0` FOREIGN KEY (`id`) REFERENCES `user_data` (`id`))
-2018-02-19 15:25:16 ERROR UserService:62 - org.hibernate.exception.ConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user`, CONSTRAINT `user_fk0` FOREIGN KEY (`id`) REFERENCES `user_data` (`id`))
-2018-02-19 15:25:16 ERROR AssertionFailure:43 - HHH000099: an assertion failure occured (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in com.model.User entry (don't flush the Session after an exception occurs)
-2018-02-19 15:25:54 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E52EA3363 (contact), add constraint FK1435639E52EA3363 foreign key (contact) references user_contact (id)
-2018-02-19 15:25:54 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
-2018-02-19 15:25:54 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E3D43702C (user_id), add constraint FK1435639E3D43702C foreign key (user_id) references user (id)
-2018-02-19 15:25:54 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
-2018-02-19 15:31:37 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E52EA3363 (contact), add constraint FK1435639E52EA3363 foreign key (contact) references user_contact (id)
-2018-02-19 15:31:37 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
-2018-02-19 15:31:37 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E3D43702C (user_id), add constraint FK1435639E3D43702C foreign key (user_id) references user (id)
-2018-02-19 15:31:37 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
-2018-02-19 15:34:44 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E52EA3363 (contact), add constraint FK1435639E52EA3363 foreign key (contact) references user_contact (id)
-2018-02-19 15:34:44 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
-2018-02-19 15:34:44 ERROR SchemaUpdate:235 - HHH000388: Unsuccessful: alter table user_data add index FK1435639E3D43702C (user_id), add constraint FK1435639E3D43702C foreign key (user_id) references user (id)
-2018-02-19 15:34:44 ERROR SchemaUpdate:236 - Cannot add foreign key constraint
-2018-02-19 15:40:26 ERROR SqlExceptionHelper:144 - Column 'email' cannot be null
-2018-02-19 15:40:26 ERROR UserService:62 - org.hibernate.exception.ConstraintViolationException: Column 'email' cannot be null
-2018-02-19 15:40:26 ERROR AssertionFailure:43 - HHH000099: an assertion failure occured (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in com.model.UserContact entry (don't flush the Session after an exception occurs)
-2018-02-19 15:43:37 ERROR SqlExceptionHelper:144 - Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user_contact`, CONSTRAINT `user_contact_fk0` FOREIGN KEY (`id`) REFERENCES `user_data` (`id`))
-2018-02-19 15:43:37 ERROR UserService:62 - org.hibernate.exception.ConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user_contact`, CONSTRAINT `user_contact_fk0` FOREIGN KEY (`id`) REFERENCES `user_data` (`id`))
-2018-02-19 15:43:37 ERROR AssertionFailure:43 - HHH000099: an assertion failure occured (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in com.model.UserContact entry (don't flush the Session after an exception occurs)
-2018-02-19 15:46:19 ERROR SqlExceptionHelper:144 - Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user_address`, CONSTRAINT `user_address_fk0` FOREIGN KEY (`id`) REFERENCES `user_contact` (`id`))
-2018-02-19 15:46:19 ERROR UserService:64 - org.hibernate.exception.ConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`webapp`.`user_address`, CONSTRAINT `user_address_fk0` FOREIGN KEY (`id`) REFERENCES `user_contact` (`id`))
-2018-02-19 15:46:19 ERROR AssertionFailure:43 - HHH000099: an assertion failure occured (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in com.model.UserAddress entry (don't flush the Session after an exception occurs)
-2018-02-19 15:49:34 ERROR SqlExceptionHelper:144 - Column 'role' cannot be null
-2018-02-19 15:49:34 ERROR UserService:66 - org.hibernate.exception.ConstraintViolationException: Column 'role' cannot be null
-2018-02-19 15:49:34 ERROR AssertionFailure:43 - HHH000099: an assertion failure occured (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in com.model.UserData entry (don't flush the Session after an exception occurs)
