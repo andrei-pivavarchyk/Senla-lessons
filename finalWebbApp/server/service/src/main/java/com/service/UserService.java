@@ -50,13 +50,14 @@ public class UserService implements IUserService {
                 Session session = userDAO.getSession();
                 UserContact userContact = new UserContact();
                 UserAddress userAddress = new UserAddress();
+                UserData userData=new UserData();
 
                  session.save(user);
-                 session.save(userContact);
-                 session.save(userAddress);
+                session.save(userData);
+                session.save(userContact);
+                session.save(userAddress);
 
-             UserData userData=new UserData(user,userContact,userAddress);
-             session.save(userData);
+
             }
         } catch (Exception e) {
             log.error(e.toString());
@@ -86,8 +87,7 @@ public class UserService implements IUserService {
         try {
             UserData userData = this.userDataDAO.getDataByUser(user);
             Long userID = this.userDAO.checkUser(user.getLogin(), user.getPassword());
-            this.userContactDAO.deleteEntity(userData.getContact().getId());
-            this.userAddressDAO.deleteEntity(userData.getAddress().getId());
+
             this.userDataDAO.deleteEntity(userData.getId());
             this.userDAO.deleteEntity(userID);
 

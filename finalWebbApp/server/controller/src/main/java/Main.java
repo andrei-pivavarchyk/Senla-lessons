@@ -29,11 +29,11 @@ public class Main {
 
 
         User user = new User(new Long(1), "Andrei", "Hrumov");
-        UserAddress userAddress = new UserAddress(new Long(1), "Соломовой", "Гродно", "Гродненский", "Беоарусь", 240000);
-        UserContact userContact = new UserContact(new Long(1),"andreyatake666@mail.ru",2816940);
-        UserData userData = new UserData(user, "Bob", "White", "Black", calendar.getTime(), "email", role, userAddress,userContact);
+      //  UserAddress userAddress = new UserAddress(new Long(1), "Соломовой", "Гродно", "Гродненский", "Беоарусь", 240000);
+      //  UserContact userContact = new UserContact(new Long(1),"andreyatake666@mail.ru",2816940);
+      //  UserData userData = new UserData(user, "Bob", "White", "Black", calendar.getTime(), "email", role, userAddress,userContact);
 
-        userService.addUser(user);
+      userService.addUser(user);
 
         // userDataService.getUserDataByUserId(new Long(1));
         //System.out.print(userDataService.getUserDataByUserId(new Long(1)).getName());
