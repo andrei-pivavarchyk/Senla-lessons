@@ -1,18 +1,16 @@
 package com.controller;
 
 import com.model.User;
-import com.service.api.ITokenHandler;
-import com.service.api.IUserService;
+import com.serviceAPI.ITokenHandler;
+import com.serviceAPI.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletResponse;
 
-
 @Controller
 public class LoginController {
-
     @Autowired
     private IUserService userService;
     @Autowired

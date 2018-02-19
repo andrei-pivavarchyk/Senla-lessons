@@ -1,10 +1,19 @@
 package com.service;
 
-import com.dao.api.IUserDAO;
+
+import com.daoAPI.IUserAddressDAO;
+import com.daoAPI.IUserContactDAO;
+import com.daoAPI.IUserDAO;
+import com.daoAPI.IUserDataDAO;
 import com.model.User;
-import com.service.api.IObjectConverter;
-import com.service.api.IUserService;
+
+import com.model.UserAddress;
+import com.model.UserContact;
+import com.model.UserData;
+import com.serviceAPI.IObjectConverter;
+import com.serviceAPI.IUserService;
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +29,35 @@ public class UserService implements IUserService {
     @Autowired
     private IUserDAO userDAO;
     @Autowired
+    private IUserAddressDAO userAddressDAO;
+    @Autowired
+    private IUserContactDAO userContactDAO;
+    @Autowired
+    private IUserDataDAO userDataDAO;
+
+
+    @Autowired
     private IObjectConverter objectConverter;
+
     public UserService() {
     }
 
-    public void addUser(User entity) {
+    public void addUser(User user) {
+
         try {
-            userDAO.addEntity(entity);
+            Long userID = this.userDAO.checkUser(user.getLogin(), user.getPassword());
+            if (userID == null) {
+                Session session = userDAO.getSession();
+                UserContact userContact = new UserContact();
+                UserAddress userAddress = new UserAddress();
+
+                 session.save(user);
+                 session.save(userContact);
+                 session.save(userAddress);
+
+             UserData userData=new UserData(user,userContact,userAddress);
+             session.save(userData);
+            }
         } catch (Exception e) {
             log.error(e.toString());
         }
@@ -48,6 +79,20 @@ public class UserService implements IUserService {
         } catch (Exception e) {
             log.error(e.toString());
             return null;
+        }
+    }
+
+    public void removeUser(User user) {
+        try {
+            UserData userData = this.userDataDAO.getDataByUser(user);
+            Long userID = this.userDAO.checkUser(user.getLogin(), user.getPassword());
+            this.userContactDAO.deleteEntity(userData.getContact().getId());
+            this.userAddressDAO.deleteEntity(userData.getAddress().getId());
+            this.userDataDAO.deleteEntity(userData.getId());
+            this.userDAO.deleteEntity(userID);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

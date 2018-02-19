@@ -1,14 +1,18 @@
 package com.service;
 
-import com.service.api.IUserHandler;
+import com.serviceAPI.IUserHandler;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 @Component
+
 public class UserHandler implements IUserHandler {
+
+
     private Long userId;
 
-    public UserHandler() {
-    }
+    public UserHandler() {}
 
     public void setUserId(Long userId) {
         this.userId = userId;
@@ -17,4 +21,6 @@ public class UserHandler implements IUserHandler {
     public Long getUserId() {
         return userId;
     }
+
+
 }

@@ -1,9 +1,9 @@
 package com.controller;
 
 import com.model.UserData;
-import com.service.api.ITokenHandler;
-import com.service.api.IUserDataService;
-import com.service.api.IUserHandler;
+
+import com.serviceAPI.IUserDataService;
+import com.serviceAPI.IUserHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +27,7 @@ public class UserDataController {
     @ResponseBody
     public UserData getUserData(HttpServletResponse response) {
         response.setContentType("application/json");
-        UserData userData = userDataService.getUserDataByUserId(userHandler.getUserId());
+        UserData userData = new UserData();
         if (userData != null) {
             return userData;
         }

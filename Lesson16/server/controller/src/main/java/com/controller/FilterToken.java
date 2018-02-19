@@ -1,16 +1,15 @@
 package com.controller;
 
-import com.service.api.ITokenHandler;
-import com.service.api.IUserHandler;
+
+import com.serviceAPI.ITokenHandler;
+import com.serviceAPI.IUserHandler;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class FilterToken implements Filter {
 
@@ -31,7 +30,7 @@ public class FilterToken implements Filter {
 
         ITokenHandler tokenHandler = WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
-                getBean( ITokenHandler.class);
+                getBean(ITokenHandler.class);
 
         IUserHandler userHandler=WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
@@ -45,6 +44,7 @@ public class FilterToken implements Filter {
                 log.error(e.toString());
             }
         }
+
         rs.setStatus(401);
     }
 

@@ -1,10 +1,11 @@
 package com.service;
 
-import com.dao.api.IUserDAO;
-import com.dao.api.IUserDataDAO;
+
+import com.daoAPI.IUserDAO;
+import com.daoAPI.IUserDataDAO;
 import com.model.User;
 import com.model.UserData;
-import com.service.api.IUserDataService;
+import com.serviceAPI.IUserDataService;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,12 @@ public class UserDataService implements IUserDataService {
     @Autowired
     private IUserDAO userDao;
 
-
     public void addUserData(UserData entity) {
-        userDataDao.addEntity(entity);
+        try {
+            userDataDao.addEntity(entity);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
     }
 
 
@@ -47,5 +51,6 @@ public class UserDataService implements IUserDataService {
             return null;
         }
     }
+
 
 }

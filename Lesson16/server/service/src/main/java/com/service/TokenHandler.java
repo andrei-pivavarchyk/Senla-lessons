@@ -5,7 +5,7 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import com.service.api.ITokenHandler;
+import com.serviceAPI.ITokenHandler;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +17,7 @@ public class TokenHandler implements ITokenHandler{
     private static Logger log = Logger.getLogger(TokenHandler.class);
 
     public String createToken(Long id) {
+
         byte[] sharedSecret = new byte[32];
         try {
             JWSSigner signer = new MACSigner(sharedSecret);
@@ -59,7 +60,7 @@ public class TokenHandler implements ITokenHandler{
     }
 
     public Long getUserIdByToken(String token) {
-        if (this.checkToken(token)) {
+
             try {
                 SignedJWT signedJWT = SignedJWT.parse(token);
                 Long id = (Long) signedJWT.getJWTClaimsSet().getClaim("id");
@@ -69,7 +70,7 @@ public class TokenHandler implements ITokenHandler{
             } catch (Exception e) {
                 log.error(e.toString());
             }
-        }
+
         return null;
     }
 }

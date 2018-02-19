@@ -1,0 +1,8 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+   margin:10% auto;
+}
