@@ -68,6 +68,7 @@ CREATE TABLE `genre` (
 CREATE TABLE `recall` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`book` int NOT NULL,
+	`user_data_id` int NOT NULL,
 	`title` varchar(20) NOT NULL,
 	`recall` varchar(100) NOT NULL,
 	PRIMARY KEY (`id`)
@@ -130,6 +131,7 @@ ALTER TABLE `book` ADD CONSTRAINT `book_fk1` FOREIGN KEY (`author`) REFERENCES `
 ALTER TABLE `book` ADD CONSTRAINT `book_fk3` FOREIGN KEY (`book_description`) REFERENCES `book_description`(`id`);
 
 ALTER TABLE `recall` ADD CONSTRAINT `recall_fk0` FOREIGN KEY (`book`) REFERENCES `book`(`id`);
+ALTER TABLE `recall` ADD CONSTRAINT `recall_fk1` FOREIGN KEY (`user_data_id`) REFERENCES `user_data`(`id`);
 
 ALTER TABLE `shop_contact` ADD CONSTRAINT `shop_contact_fk0` FOREIGN KEY (`shop_address`) REFERENCES `shop_address`(`id`);
 
