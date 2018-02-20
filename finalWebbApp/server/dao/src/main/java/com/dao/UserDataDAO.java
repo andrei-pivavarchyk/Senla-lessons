@@ -2,9 +2,7 @@ package com.dao;
 
 import com.daoAPI.IUserDataDAO;
 import com.model.User;
-import com.model.UserContact;
 import com.model.UserData;
-import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 

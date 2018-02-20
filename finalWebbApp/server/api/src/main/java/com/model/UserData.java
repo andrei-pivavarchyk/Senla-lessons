@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_data")
@@ -16,10 +18,11 @@ public class UserData extends WebEntity {
     private String surname;
     private String patronymic;
     private Date dateOfBirth;
-    private String email;
     private Role role;
-    private UserContact userContact;
-    private UserAddress address;
+    private String email;
+    private Long phone;
+    private Address address;
+    private Set<Book> favorites;
 
     public UserData() {
     }
@@ -29,19 +32,21 @@ public class UserData extends WebEntity {
                     String surname,
                     String patronymic,
                     Date dateOfBirth,
-                    String email,
                     Role role,
-                    UserAddress address,
-                    UserContact userContact) {
+                    String email,
+                    Long phone,
+                    Address address
+                    ) {
         this.user = user;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
-        this.email = email;
         this.role = role;
+        this.email = email;
+        this.phone = phone;
         this.address = address;
-        this.userContact = userContact;
+        this.favorites = favorites;
     }
 
     public UserData(Long id,
@@ -50,31 +55,31 @@ public class UserData extends WebEntity {
                     String surname,
                     String patronymic,
                     Date dateOfBirth,
-                    String email,
                     Role role,
-                    UserAddress address,
-                    UserContact userContact) {
+                    String email,
+                    Long phone,
+                    Address address) {
         super(id);
         this.user = user;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
-        this.email = email;
         this.role = role;
+        this.email = email;
+        this.phone = phone;
         this.address = address;
-        this.userContact = userContact;
+        this.favorites = favorites;
     }
 
-    public UserData(User user,UserContact userContact,UserAddress userAddress){
-        this.userContact=userContact;
-        this.address=userAddress;
-        this.user=user;
+    public UserData(User user, Address address) {
+        this.address = address;
+        this.user = user;
     }
 
     @JsonIgnore
     @JoinColumn(name = "user_id")
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     public User getUser() {
         return user;
     }
@@ -105,21 +110,25 @@ public class UserData extends WebEntity {
     }
 
     @Enumerated
-    @Column(name = "role",columnDefinition = "smallint")
+    @Column(name = "role", columnDefinition = "smallint")
     public Role getRole() {
         return role;
     }
 
     @JoinColumn(name = "address")
     @OneToOne
-    public UserAddress getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    @JoinColumn(name = "contact")
-    @OneToOne
-    public UserContact getContact() {
-        return userContact;
+    @Column(name = "phone")
+    public Long getPhone() {
+        return phone;
+    }
+
+    @OneToMany
+    public Set<Book> getFavorites() {
+        return favorites;
     }
 
     public void setName(String name) {
@@ -150,13 +159,18 @@ public class UserData extends WebEntity {
         this.role = role;
     }
 
-    public void setAddress(UserAddress address) {
+    public void setFavorites(Set<Book> wantToBuy) {
+        this.favorites = wantToBuy;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public void setContact(UserContact contact) {
-        this.userContact = contact;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -169,7 +183,13 @@ public class UserData extends WebEntity {
         if (name != null ? !name.equals(userData.name) : userData.name != null) return false;
         if (surname != null ? !surname.equals(userData.surname) : userData.surname != null) return false;
         if (patronymic != null ? !patronymic.equals(userData.patronymic) : userData.patronymic != null) return false;
-        return dateOfBirth != null ? dateOfBirth.equals(userData.dateOfBirth) : userData.dateOfBirth == null;
+        if (dateOfBirth != null ? !dateOfBirth.equals(userData.dateOfBirth) : userData.dateOfBirth != null)
+            return false;
+        if (role != userData.role) return false;
+        if (email != null ? !email.equals(userData.email) : userData.email != null) return false;
+        if (phone != null ? !phone.equals(userData.phone) : userData.phone != null) return false;
+        if (address != null ? !address.equals(userData.address) : userData.address != null) return false;
+        return favorites != null ? favorites.equals(userData.favorites) : userData.favorites == null;
     }
 
     @Override
@@ -179,6 +199,11 @@ public class UserData extends WebEntity {
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
         result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (favorites != null ? favorites.hashCode() : 0);
         return result;
     }
 }

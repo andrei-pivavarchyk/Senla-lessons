@@ -2,41 +2,63 @@ package com.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "shop_data")
 public class ShopData extends WebEntity{
 
     private String name;
-    private ShopContact contact;
+    private List<ShopContact> listOfContacts;
 
     public ShopData(){}
 
-    public ShopData(String name, ShopContact contact) {
+    public ShopData(String name, List<ShopContact> listOfContacts) {
         this.name = name;
-        this.contact = contact;
+        this.listOfContacts = listOfContacts;
     }
 
-    public ShopData(Long id, String name, ShopContact contact) {
+    public ShopData(Long id, String name, List<ShopContact> listOfContacts) {
         super(id);
         this.name = name;
-        this.contact = contact;
+        this.listOfContacts = listOfContacts;
     }
-    @Column(name = "name")
+
+    @OneToMany
+    public List<ShopContact> getListOfContacts() {
+        return listOfContacts;
+    }
+
+    @Column(name = "shop_name")
     public String getName() {
         return name;
     }
-    @Column(name = "contact")
-    public ShopContact getContact() {
-        return contact;
+
+    public void setListOfContacts(List<ShopContact> listOfContacts) {
+        this.listOfContacts = listOfContacts;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setContact(ShopContact contact) {
-        this.contact = contact;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ShopData shopData = (ShopData) o;
+
+        if (name != null ? !name.equals(shopData.name) : shopData.name != null) return false;
+        return listOfContacts != null ? listOfContacts.equals(shopData.listOfContacts) : shopData.listOfContacts == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (listOfContacts != null ? listOfContacts.hashCode() : 0);
+        return result;
     }
 }

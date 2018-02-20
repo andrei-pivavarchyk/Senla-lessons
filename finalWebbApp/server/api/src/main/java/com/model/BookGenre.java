@@ -1,7 +1,27 @@
 package com.model;
 
-import javax.persistence.*;
+public enum BookGenre {
+    FANTASTIC,
+    NOVEL,
+    DETECTIVE,
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 @Entity
 @Table(name = "genre")
 public class BookGenre extends WebEntity{
@@ -26,4 +46,20 @@ public BookGenre(){}
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BookGenre bookGenre = (BookGenre) o;
+
+        return genre != null ? genre.equals(bookGenre.genre) : bookGenre.genre == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return genre != null ? genre.hashCode() : 0;
+    }
 }
+*/

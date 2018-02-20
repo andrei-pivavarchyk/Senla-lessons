@@ -1,14 +1,14 @@
 package com.dao;
 
-import com.daoAPI.IUserAddressDAO;
-import com.model.UserAddress;
+import com.daoAPI.IAddressDAO;
+import com.model.Address;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class UserAddressDAO extends BaseDAO<UserAddress> implements IUserAddressDAO {
+public class UserAddressDAO extends BaseDAO<Address> implements IAddressDAO {
 
     public UserAddressDAO(){
-        super(UserAddress.class);
+        super(Address.class);
     }
 }

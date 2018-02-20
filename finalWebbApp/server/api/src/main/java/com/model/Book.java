@@ -1,9 +1,6 @@
 package com.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "book")
@@ -13,7 +10,7 @@ public class Book extends WebEntity {
     private BookGenre genre;
     private Author author;
     private BookStatus bookStatus;
-    private BookDescription bookDescription;
+    private String bookDescription;
 
     public Book() {
     }
@@ -23,7 +20,7 @@ public class Book extends WebEntity {
                 BookGenre genre,
                 Author author,
                 BookStatus bookStatus,
-                BookDescription bookDescription) {
+                String bookDescription) {
         this.bookName = bookName;
         this.bookCost = bookCost;
         this.genre = genre;
@@ -38,7 +35,7 @@ public class Book extends WebEntity {
                 BookGenre genre,
                 Author author,
                 BookStatus bookStatus,
-                BookDescription bookDescription) {
+                String bookDescription) {
         super(id);
         this.bookName = bookName;
         this.bookCost = bookCost;
@@ -53,14 +50,14 @@ public class Book extends WebEntity {
         return bookName;
     }
 
-
-   // @Enumerated
-    @Column(name = "book_genre",columnDefinition = "smallint")
+    @Enumerated
+    @Column(name = "genre", columnDefinition = "smallint")
     public BookGenre getGenre() {
         return genre;
     }
 
-    @Column(name = "author")
+    @JoinColumn(name = "author")
+    @OneToOne
     public Author getAuthor() {
         return author;
     }
@@ -71,12 +68,12 @@ public class Book extends WebEntity {
     }
 
     @Column(name = "book_description")
-    public BookDescription getBookDescription() {
+    public String getBookDescription() {
         return bookDescription;
     }
 
     @Enumerated
-    @Column(name = "book_status",columnDefinition = "smallint")
+    @Column(name = "book_status", columnDefinition = "smallint")
     public BookStatus getBookStatus() {
         return bookStatus;
     }
@@ -101,7 +98,31 @@ public class Book extends WebEntity {
         this.bookStatus = bookStatus;
     }
 
-    public void setBookDescription(BookDescription bookDescription) {
+    public void setBookDescription(String bookDescription) {
         this.bookDescription = bookDescription;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        if (bookName != null ? !bookName.equals(book.bookName) : book.bookName != null) return false;
+        if (bookCost != null ? !bookCost.equals(book.bookCost) : book.bookCost != null) return false;
+        if (genre != null ? !genre.equals(book.genre) : book.genre != null) return false;
+        if (author != null ? !author.equals(book.author) : book.author != null) return false;
+        if (bookStatus != book.bookStatus) return false;
+        return bookDescription != null ? bookDescription.equals(book.bookDescription) : book.bookDescription == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = bookName != null ? bookName.hashCode() : 0;
+        result = 31 * result + (bookCost != null ? bookCost.hashCode() : 0);
+        result = 31 * result + (genre != null ? genre.hashCode() : 0);
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + (bookStatus != null ? bookStatus.hashCode() : 0);
+        result = 31 * result + (bookDescription != null ? bookDescription.hashCode() : 0);
+        return result;
     }
 }

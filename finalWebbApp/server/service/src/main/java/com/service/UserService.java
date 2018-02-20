@@ -1,14 +1,13 @@
 package com.service;
 
 
-import com.daoAPI.IUserAddressDAO;
-import com.daoAPI.IUserContactDAO;
+import com.daoAPI.IAddressDAO;
+
 import com.daoAPI.IUserDAO;
 import com.daoAPI.IUserDataDAO;
+import com.model.Address;
 import com.model.User;
 
-import com.model.UserAddress;
-import com.model.UserContact;
 import com.model.UserData;
 import com.serviceAPI.IObjectConverter;
 import com.serviceAPI.IUserService;
@@ -29,9 +28,8 @@ public class UserService implements IUserService {
     @Autowired
     private IUserDAO userDAO;
     @Autowired
-    private IUserAddressDAO userAddressDAO;
-    @Autowired
-    private IUserContactDAO userContactDAO;
+    private IAddressDAO userAddressDAO;
+
     @Autowired
     private IUserDataDAO userDataDAO;
 
@@ -48,14 +46,11 @@ public class UserService implements IUserService {
             Long userID = this.userDAO.checkUser(user.getLogin(), user.getPassword());
             if (userID == null) {
                 Session session = userDAO.getSession();
-                UserContact userContact = new UserContact();
-                UserAddress userAddress = new UserAddress();
-
+                Address userAddress = new Address();
                  session.save(user);
-                 session.save(userContact);
                  session.save(userAddress);
 
-             UserData userData=new UserData(user,userContact,userAddress);
+             UserData userData=new UserData(user,userAddress);
              session.save(userData);
             }
         } catch (Exception e) {
@@ -86,7 +81,6 @@ public class UserService implements IUserService {
         try {
             UserData userData = this.userDataDAO.getDataByUser(user);
             Long userID = this.userDAO.checkUser(user.getLogin(), user.getPassword());
-            this.userContactDAO.deleteEntity(userData.getContact().getId());
             this.userAddressDAO.deleteEntity(userData.getAddress().getId());
             this.userDataDAO.deleteEntity(userData.getId());
             this.userDAO.deleteEntity(userID);

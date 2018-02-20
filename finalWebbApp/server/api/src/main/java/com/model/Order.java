@@ -1,59 +1,47 @@
 package com.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "order")
+@Table(name = "user_order")
 public class Order extends WebEntity {
 
     public Order() {
     }
 
-    private User user;
-    private Book book;
-    private Integer bookCost;
+    private Integer orderCost;
     private OrderStatus orderStatus;
     private Date creationDate;
+    private UserData userData;
+    private Set<Book> listOrderBooks;
 
-
-    public Order(User user,
-                 Book book,
-                 Integer bookCost,
+    public Order(Integer orderCost,
                  OrderStatus orderStatus,
-                 Date creationDate) {
-        this.user = user;
-        this.book = book;
-        this.bookCost = bookCost;
+                 Date creationDate,
+                 UserData userData,
+                 Set<Book> listOrderBooks) {
+        this.orderCost = orderCost;
         this.orderStatus = orderStatus;
         this.creationDate = creationDate;
+        this.userData = userData;
+        this.listOrderBooks = listOrderBooks;
     }
 
     public Order(Long id,
-                 User user,
-                 Book book,
-                 Integer bookCost,
+                 Integer orderCost,
                  OrderStatus orderStatus,
-                 Date creationDate) {
+                 Date creationDate,
+                 UserData userData,
+                 Set<Book> listOrderBooks) {
         super(id);
-        this.user = user;
-        this.book = book;
-        this.bookCost = bookCost;
+        this.orderCost = orderCost;
         this.orderStatus = orderStatus;
         this.creationDate = creationDate;
-    }
-
-    @Column(name = "user_id")
-    public User getUser() {
-        return user;
-    }
-
-    @Column(name = "book_id")
-    public Book getBook() {
-        return book;
+        this.userData = userData;
+        this.listOrderBooks = listOrderBooks;
     }
 
     @Column(name = "creation_date")
@@ -61,9 +49,9 @@ public class Order extends WebEntity {
         return creationDate;
     }
 
-    @Column(name = "book_cost")
-    public Integer getBookCost() {
-        return bookCost;
+    @Column(name = "order_cost")
+    public Integer getOrderCost() {
+        return orderCost;
     }
 
     @Enumerated
@@ -72,16 +60,20 @@ public class Order extends WebEntity {
         return orderStatus;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    @JoinColumn(name = "user_data")
+    @OneToOne
+    public UserData getUserData() {
+        return userData;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    @OneToMany
+    public Set<Book> getListOrderBooks() {
+        return listOrderBooks;
     }
 
-    public void setBookCost(Integer bookCost) {
-        this.bookCost = bookCost;
+
+    public void setOrderCost(Integer orderCost) {
+        this.orderCost = orderCost;
     }
 
     public void setCreationDate(Date creationDate) {
@@ -90,5 +82,40 @@ public class Order extends WebEntity {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public void setUserData(UserData userData) {
+        this.userData = userData;
+    }
+
+    public void setListOrderBooks(Set<Book> listOrderBooks) {
+        this.listOrderBooks = listOrderBooks;
+    }
+
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        if (orderCost != null ? !orderCost.equals(order.orderCost) : order.orderCost != null) return false;
+        if (orderStatus != order.orderStatus) return false;
+        if (creationDate != null ? !creationDate.equals(order.creationDate) : order.creationDate != null) return false;
+        if (userData != null ? !userData.equals(order.userData) : order.userData != null) return false;
+        return listOrderBooks != null ? listOrderBooks.equals(order.listOrderBooks) : order.listOrderBooks == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = orderCost != null ? orderCost.hashCode() : 0;
+        result = 31 * result + (orderStatus != null ? orderStatus.hashCode() : 0);
+        result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
+        result = 31 * result + (userData != null ? userData.hashCode() : 0);
+        result = 31 * result + (listOrderBooks != null ? listOrderBooks.hashCode() : 0);
+        return result;
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_address")
-public class UserAddress extends WebEntity{
+public class Address extends WebEntity{
 
     private String street;
     private String city;
@@ -15,10 +15,10 @@ public class UserAddress extends WebEntity{
     private Integer index;
 
 
-    public UserAddress(){}
+    public Address(){}
 
 
-    public UserAddress(String street, String city, String region, String country, Integer index) {
+    public Address(String street, String city, String region, String country, Integer index) {
         this.street = street;
         this.city = city;
         this.region = region;
@@ -26,7 +26,7 @@ public class UserAddress extends WebEntity{
         this.index = index;
     }
 
-    public UserAddress(Long id, String street, String city, String region, String country, Integer index) {
+    public Address(Long id, String street, String city, String region, String country, Integer index) {
         super(id);
         this.street = street;
         this.city = city;
@@ -82,13 +82,13 @@ public class UserAddress extends WebEntity{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserAddress that = (UserAddress) o;
+        Address address = (Address) o;
 
-        if (street != null ? !street.equals(that.street) : that.street != null) return false;
-        if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (region != null ? !region.equals(that.region) : that.region != null) return false;
-        if (country != null ? !country.equals(that.country) : that.country != null) return false;
-        return index != null ? index.equals(that.index) : that.index == null;
+        if (street != null ? !street.equals(address.street) : address.street != null) return false;
+        if (city != null ? !city.equals(address.city) : address.city != null) return false;
+        if (region != null ? !region.equals(address.region) : address.region != null) return false;
+        if (country != null ? !country.equals(address.country) : address.country != null) return false;
+        return index != null ? index.equals(address.index) : address.index == null;
     }
 
     @Override
