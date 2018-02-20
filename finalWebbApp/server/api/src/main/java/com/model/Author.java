@@ -11,7 +11,6 @@ public class Author extends WebEntity {
 
     private String name;
     private String surname;
-    private Date dateOfBirth;
 
     public Author() {
     }
@@ -19,14 +18,14 @@ public class Author extends WebEntity {
     public Author(String name, String surname, Date dateOfBirth) {
         this.name = name;
         this.surname = surname;
-        this.dateOfBirth = dateOfBirth;
+
     }
 
     public Author(Long id, String name, String surname, Date dateOfBirth) {
         super(id);
         this.name = name;
         this.surname = surname;
-        this.dateOfBirth = dateOfBirth;
+
     }
 
     @Column(name = "name")
@@ -39,10 +38,7 @@ public class Author extends WebEntity {
         return surname;
     }
 
-    @Column(name = "date_of_birth")
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -52,9 +48,6 @@ public class Author extends WebEntity {
         this.surname = surname;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -64,15 +57,13 @@ public class Author extends WebEntity {
         Author author = (Author) o;
 
         if (name != null ? !name.equals(author.name) : author.name != null) return false;
-        if (surname != null ? !surname.equals(author.surname) : author.surname != null) return false;
-        return dateOfBirth != null ? dateOfBirth.equals(author.dateOfBirth) : author.dateOfBirth == null;
+        return surname != null ? surname.equals(author.surname) : author.surname == null;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
         return result;
     }
 }

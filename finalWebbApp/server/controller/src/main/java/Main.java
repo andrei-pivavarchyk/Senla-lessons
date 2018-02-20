@@ -28,9 +28,10 @@ public class Main {
         Role role = Role.ADMIN;
 
         User user = new User(new Long(1), "Andrei", "Hrumov");
+        Book book=new Book();
         Address userAddress = new Address(new Long(1), "Соломовой", "Гродно", "Гродненский", "Беоарусь", 240000);
         UserData userData = new UserData(user, "Bob", "White", "Black", calendar.getTime(),role, "email", 21474836647L, userAddress);
-
+        userData.getFavorites().add(book);
       //  userService.addUser(user);
 
         // userDataService.getUserDataByUserId(new Long(1));

@@ -17,7 +17,7 @@ public class UserData extends WebEntity {
     private String name;
     private String surname;
     private String patronymic;
-    private Date dateOfBirth;
+
     private Role role;
     private String email;
     private Long phone;
@@ -31,7 +31,7 @@ public class UserData extends WebEntity {
                     String name,
                     String surname,
                     String patronymic,
-                    Date dateOfBirth,
+
                     Role role,
                     String email,
                     Long phone,
@@ -41,7 +41,7 @@ public class UserData extends WebEntity {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
-        this.dateOfBirth = dateOfBirth;
+
         this.role = role;
         this.email = email;
         this.phone = phone;
@@ -64,7 +64,7 @@ public class UserData extends WebEntity {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
-        this.dateOfBirth = dateOfBirth;
+
         this.role = role;
         this.email = email;
         this.phone = phone;
@@ -84,10 +84,7 @@ public class UserData extends WebEntity {
         return user;
     }
 
-    @Column(name = "date_of_birth")
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
+
 
     @Column(name = "name")
     public String getName() {
@@ -135,9 +132,6 @@ public class UserData extends WebEntity {
         this.name = name;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
@@ -171,7 +165,6 @@ public class UserData extends WebEntity {
         this.address = address;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -183,8 +176,6 @@ public class UserData extends WebEntity {
         if (name != null ? !name.equals(userData.name) : userData.name != null) return false;
         if (surname != null ? !surname.equals(userData.surname) : userData.surname != null) return false;
         if (patronymic != null ? !patronymic.equals(userData.patronymic) : userData.patronymic != null) return false;
-        if (dateOfBirth != null ? !dateOfBirth.equals(userData.dateOfBirth) : userData.dateOfBirth != null)
-            return false;
         if (role != userData.role) return false;
         if (email != null ? !email.equals(userData.email) : userData.email != null) return false;
         if (phone != null ? !phone.equals(userData.phone) : userData.phone != null) return false;
@@ -198,7 +189,6 @@ public class UserData extends WebEntity {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
-        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);

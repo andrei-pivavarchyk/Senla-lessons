@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_address")
+@Table(name = "address")
 public class Address extends WebEntity{
 
     private String street;
