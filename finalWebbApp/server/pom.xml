@@ -33,7 +33,7 @@
                     <directory>src/main/resources</directory>
                 </resource>
             </resources>
-      
+
        </build>
     <dependencies>
         <dependency>
