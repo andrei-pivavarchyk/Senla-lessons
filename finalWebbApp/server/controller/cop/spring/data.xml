@@ -53,7 +53,6 @@
 		<property name="packagesToScan">
 			<list>
 				<value>com.model</value>
-
 			</list>
 		</property> 
 		<property name="hibernateProperties">
