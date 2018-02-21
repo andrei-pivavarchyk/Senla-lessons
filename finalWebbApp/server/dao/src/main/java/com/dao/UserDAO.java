@@ -20,10 +20,10 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
 
     @Override
     public void addEntity(User entity) throws Exception {
-            getSession().save(entity);
+        getSession().save(entity);
     }
 
-    public Long checkUser(String login, String password) throws Exception {
+    public Long checkUser(String login) throws Exception {
         Criteria criteria = getSession().createCriteria(User.class)
                 .add(Restrictions.like("login", login));
         User checkingUser = (User) criteria.uniqueResult();
@@ -39,6 +39,12 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
                 .add(Restrictions.like("password", password));
         User user = (User) criteria.uniqueResult();
         return user;
+    }
+
+    public void removeUser(User user) throws Exception {
+        User removableUser = this.getUserByLoginPassword(user.getLogin(), user.getPassword());
+        removableUser.setUser_active(false);
+        this.updateEntity(removableUser);
     }
 
     @Override

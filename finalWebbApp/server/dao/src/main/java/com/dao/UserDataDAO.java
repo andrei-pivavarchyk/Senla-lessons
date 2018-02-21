@@ -20,4 +20,6 @@ public class UserDataDAO extends BaseDAO<UserData> implements IUserDataDAO {
         return userData;
     }
 
+
+
 }

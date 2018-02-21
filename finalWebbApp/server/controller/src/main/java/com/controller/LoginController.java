@@ -18,7 +18,6 @@ public class LoginController {
 
     public LoginController() {
     }
-
     @RequestMapping(
             value = {"/login"},
             method = {RequestMethod.POST}

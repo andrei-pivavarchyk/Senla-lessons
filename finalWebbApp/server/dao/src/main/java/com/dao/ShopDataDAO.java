@@ -10,4 +10,5 @@ public class ShopDataDAO extends BaseDAO<ShopData> implements IShopDataDAO {
     public ShopDataDAO() {
         super(ShopData.class);
     }
+
 }

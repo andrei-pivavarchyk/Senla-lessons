@@ -6,6 +6,7 @@ import com.daoAPI.IAddressDAO;
 import com.daoAPI.IUserDAO;
 import com.daoAPI.IUserDataDAO;
 import com.model.Address;
+import com.model.Role;
 import com.model.User;
 
 import com.model.UserData;
@@ -27,12 +28,12 @@ public class UserService implements IUserService {
 
     @Autowired
     private IUserDAO userDAO;
+
     @Autowired
     private IAddressDAO userAddressDAO;
 
     @Autowired
     private IUserDataDAO userDataDAO;
-
 
     @Autowired
     private IObjectConverter objectConverter;
@@ -43,15 +44,15 @@ public class UserService implements IUserService {
     public void addUser(User user) {
 
         try {
-            Long userID = this.userDAO.checkUser(user.getLogin(), user.getPassword());
+            Long userID = this.userDAO.checkUser(user.getLogin());
             if (userID == null) {
                 Session session = userDAO.getSession();
                 Address userAddress = new Address();
-                 session.save(user);
-                 session.save(userAddress);
+                session.save(user);
+                session.save(userAddress);
 
-             UserData userData=new UserData(user,userAddress);
-             session.save(userData);
+                UserData userData = new UserData(user, userAddress);
+                session.save(userData);
             }
         } catch (Exception e) {
             log.error(e.toString());
@@ -69,8 +70,18 @@ public class UserService implements IUserService {
     public Long checkUser(User user) {
 
         try {
-            Long userId = userDAO.checkUser(user.getLogin(), user.getPassword());
+            Long userId = userDAO.checkUser(user.getLogin());
             return userId;
+        } catch (Exception e) {
+            log.error(e.toString());
+            return null;
+        }
+    }
+
+    public UserData getUserDataByUser(User user) {
+        try {
+            UserData userData = this.userDataDAO.getDataByUser(user);
+            return userData;
         } catch (Exception e) {
             log.error(e.toString());
             return null;
@@ -79,14 +90,24 @@ public class UserService implements IUserService {
 
     public void removeUser(User user) {
         try {
-            UserData userData = this.userDataDAO.getDataByUser(user);
-            Long userID = this.userDAO.checkUser(user.getLogin(), user.getPassword());
-            this.userAddressDAO.deleteEntity(userData.getAddress().getId());
-            this.userDataDAO.deleteEntity(userData.getId());
-            this.userDAO.deleteEntity(userID);
-
+            this.userDAO.removeUser(user);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public Role getRoleByUser(User user) {
+        Role role = this.getUserDataByUser(user).getRole();
+        return role;
+    }
+
+    public User getUserByID(Long id) {
+        try {
+            User user = this.userDAO.getEntityById(id);
+            return user;
+        } catch (Exception e) {
+            log.error(e.toString());
+            return null;
         }
     }
 }

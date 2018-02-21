@@ -11,20 +11,23 @@ public class User extends WebEntity {
 
     private String login;
     private String password;
+    private Boolean user_active;
 
     public User() {
     }
-    public User( Long id, String login, String password) {
+
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+        this.user_active = true;
+    }
+
+    public User(Long id, String login, String password) {
         super(id);
         this.login = login;
         this.password = password;
+        this.user_active = true;
     }
-
-    public User( String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
-
 
     @Column(name = "login")
     public String getLogin() {
@@ -36,12 +39,21 @@ public class User extends WebEntity {
         return password;
     }
 
+    @Column(name = "user_active")
+    public Boolean getUser_active() {
+        return user_active;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public void setUser_active(Boolean user_active) {
+        this.user_active = user_active;
     }
 
     @Override

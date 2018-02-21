@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +47,7 @@ public class UserData extends WebEntity {
         this.email = email;
         this.phone = phone;
         this.address = address;
-        this.favorites = favorites;
+        this.favorites = new HashSet<Book>();
     }
 
     public UserData(Long id,
@@ -54,7 +55,7 @@ public class UserData extends WebEntity {
                     String name,
                     String surname,
                     String patronymic,
-                    Date dateOfBirth,
+
                     Role role,
                     String email,
                     Long phone,
@@ -69,7 +70,7 @@ public class UserData extends WebEntity {
         this.email = email;
         this.phone = phone;
         this.address = address;
-        this.favorites = favorites;
+        this.favorites = new HashSet<Book>();
     }
 
     public UserData(User user, Address address) {
