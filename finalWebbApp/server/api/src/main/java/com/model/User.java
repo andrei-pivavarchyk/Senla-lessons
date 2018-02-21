@@ -38,7 +38,7 @@ public class User extends WebEntity {
     public String getPassword() {
         return password;
     }
-    
+
     @Column(name = "user_active", columnDefinition = "BIT")
     public Boolean getUser_active() {
         return user_active;

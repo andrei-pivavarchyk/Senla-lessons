@@ -27,13 +27,13 @@
             </plugin>
         </plugins>
 
-        <resources>
-            <resource>
-                <directory>resources</directory>
-                <filtering>false</filtering>
-                <targetPath>resources</targetPath>
-            </resource>
-        </resources>
+            <resources>
+                <resource>
+                    <filtering>true</filtering>
+                    <directory>src/main/resources</directory>
+                </resource>
+            </resources>
+      
        </build>
     <dependencies>
         <dependency>
