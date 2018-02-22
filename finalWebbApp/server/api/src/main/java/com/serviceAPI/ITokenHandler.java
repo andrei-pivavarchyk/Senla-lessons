@@ -1,7 +1,7 @@
 package com.serviceAPI;
 
 public interface ITokenHandler {
-    String createToken(Long id);
-    Long getUserIdByToken(String token);
+    String createToken(Integer id);
+    Integer getUserIdByToken(String token);
 
 }

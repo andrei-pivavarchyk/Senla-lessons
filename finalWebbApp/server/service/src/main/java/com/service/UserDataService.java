@@ -41,7 +41,7 @@ public class UserDataService implements IUserDataService {
     }
 
 
-    public UserData getUserDataByUserId(Long id) {
+    public UserData getUserDataByUserId(Integer id) {
         try {
             User user = userDao.getEntityById(id);
             UserData userData = userDataDao.getDataByUser(user);

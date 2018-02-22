@@ -30,7 +30,7 @@ public class Order extends WebEntity {
         this.listOrderBooks = listOrderBooks;
     }
 
-    public Order(Long id,
+    public Order(Integer id,
                  Integer orderCost,
                  OrderStatus orderStatus,
                  Date creationDate,

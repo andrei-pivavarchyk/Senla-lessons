@@ -18,7 +18,7 @@ public class ShopContact extends  WebEntity {
         this.shopFilialStatus = shopFilialStatus;
     }
 
-    public ShopContact(Long id, List<ShopPhone> phoneList, Address address, ShopFilialStatus shopFilialStatus) {
+    public ShopContact(Integer id, List<ShopPhone> phoneList, Address address, ShopFilialStatus shopFilialStatus) {
         super(id);
         this.phoneList = phoneList;
         this.address = address;

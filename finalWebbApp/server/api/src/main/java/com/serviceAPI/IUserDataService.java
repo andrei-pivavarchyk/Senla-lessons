@@ -6,7 +6,7 @@ public interface IUserDataService {
 
     void addUserData(UserData entity);
 
-    UserData getUserDataByUserId(Long id);
+    UserData getUserDataByUserId(Integer id);
 
     void updateUserData(UserData entity);
 }

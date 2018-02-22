@@ -59,11 +59,11 @@ public class TokenHandler implements ITokenHandler{
         return false;
     }
 
-    public Long getUserIdByToken(String token) {
+    public Integer getUserIdByToken(String token) {
 
             try {
                 SignedJWT signedJWT = SignedJWT.parse(token);
-                Long id = (Long) signedJWT.getJWTClaimsSet().getClaim("id");
+                Integer id = (Integer) signedJWT.getJWTClaimsSet().getClaim("id");
                 return id;
             } catch (ParseException e) {
                 log.error(e.toString());

@@ -29,7 +29,7 @@ public class Book extends WebEntity {
         this.bookDescription = bookDescription;
     }
 
-    public Book(Long id,
+    public Book(Integer id,
                 String bookName,
                 Integer bookCost,
                 BookGenre genre,

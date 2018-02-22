@@ -44,7 +44,7 @@ public class UserService implements IUserService {
     public void addUser(User user) {
 
         try {
-            Long userID = this.userDAO.checkUser(user.getLogin());
+            Integer userID = this.userDAO.checkUser(user.getLogin());
             if (userID == null) {
                 Session session = userDAO.getSession();
                 Address userAddress = new Address();
@@ -67,10 +67,10 @@ public class UserService implements IUserService {
         }
     }
 
-    public Long checkUser(User user) {
+    public Integer checkUser(User user) {
 
         try {
-            Long userId = userDAO.checkUser(user.getLogin());
+            Integer userId = userDAO.checkUser(user.getLogin());
             return userId;
         } catch (Exception e) {
             log.error(e.toString());
@@ -101,7 +101,7 @@ public class UserService implements IUserService {
         return role;
     }
 
-    public User getUserByID(Long id) {
+    public User getUserByID(Integer id) {
         try {
             User user = this.userDAO.getEntityById(id);
             return user;

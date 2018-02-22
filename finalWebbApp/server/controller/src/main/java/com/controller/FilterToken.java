@@ -40,7 +40,7 @@ public class FilterToken implements Filter {
         IUserHandler userHandler = WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
                 getBean(IUserHandler.class);
-        Long id = tokenHandler.getUserIdByToken(token);
+        Integer id = tokenHandler.getUserIdByToken(token);
         if (id != null) {
             try {
                 User user = this.userService.getUserByID(id);

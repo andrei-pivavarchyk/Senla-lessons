@@ -24,7 +24,7 @@ public class LoginController {
     )
     @ResponseBody
     public Token login(HttpServletResponse response, @RequestBody User user) {
-        Long id = userService.checkUser(user);
+        Integer id = userService.checkUser(user);
         if (id != null) {
             String token = tokenHandler.createToken(id);
             response.addHeader("Authorization",token);

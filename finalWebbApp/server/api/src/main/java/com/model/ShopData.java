@@ -20,7 +20,7 @@ public class ShopData extends WebEntity{
         this.listOfContacts = listOfContacts;
     }
 
-    public ShopData(Long id, String name, List<ShopContact> listOfContacts) {
+    public ShopData(Integer id, String name, List<ShopContact> listOfContacts) {
         super(id);
         this.name = name;
         this.listOfContacts = listOfContacts;

@@ -21,7 +21,7 @@ public class Author extends WebEntity {
 
     }
 
-    public Author(Long id, String name, String surname, Date dateOfBirth) {
+    public Author(Integer id, String name, String surname, Date dateOfBirth) {
         super(id);
         this.name = name;
         this.surname = surname;

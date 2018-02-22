@@ -12,22 +12,22 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class WebEntity implements Serializable {
 
-    private Long id;
+    private Integer id;
 
     public WebEntity() {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public WebEntity(Long id) {
+    public WebEntity(Integer id) {
         this.id = id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

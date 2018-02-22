@@ -50,7 +50,7 @@ public class UserData extends WebEntity {
         this.favorites = new HashSet<Book>();
     }
 
-    public UserData(Long id,
+    public UserData(Integer id,
                     User user,
                     String name,
                     String surname,

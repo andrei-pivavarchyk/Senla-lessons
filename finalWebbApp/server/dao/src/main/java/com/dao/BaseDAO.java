@@ -30,13 +30,13 @@ public abstract class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
         getSession().update(entity);
     }
 
-    public void deleteEntity(Long id) throws Exception{
+    public void deleteEntity(Integer id) throws Exception{
         T entity = null;
         entity = (T) getSession().load(getEntityClass(), id);
         getSession().delete(entity);
     }
 
-    public T getEntityById(Long id) throws Exception {
+    public T getEntityById(Integer id) throws Exception {
         T entity = null;
         entity = (T) getSession().load(getEntityClass(), id);
         return entity;

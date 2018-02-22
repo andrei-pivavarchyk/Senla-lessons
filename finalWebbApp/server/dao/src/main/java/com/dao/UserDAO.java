@@ -23,7 +23,7 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
         getSession().save(entity);
     }
 
-    public Long checkUser(String login) throws Exception {
+    public Integer checkUser(String login) throws Exception {
         Criteria criteria = getSession().createCriteria(User.class)
                 .add(Restrictions.like("login", login));
         User checkingUser = (User) criteria.uniqueResult();

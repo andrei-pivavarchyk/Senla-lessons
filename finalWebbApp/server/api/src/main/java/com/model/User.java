@@ -22,7 +22,7 @@ public class User extends WebEntity {
         this.user_active = true;
     }
 
-    public User(Long id, String login, String password) {
+    public User(Integer id, String login, String password) {
         super(id);
         this.login = login;
         this.password = password;

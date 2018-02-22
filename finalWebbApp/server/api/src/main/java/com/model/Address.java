@@ -26,7 +26,7 @@ public class Address extends WebEntity{
         this.index = index;
     }
 
-    public Address(Long id, String street, String city, String region, String country, Integer index) {
+    public Address(Integer id, String street, String city, String region, String country, Integer index) {
         super(id);
         this.street = street;
         this.city = city;

@@ -16,7 +16,7 @@ public class ShopPhone extends WebEntity {
         this.shopPhoneType = shopPhoneType;
     }
 
-    public ShopPhone(Long id, Integer phone, ShopPhoneType shopPhoneType) {
+    public ShopPhone(Integer id, Integer phone, ShopPhoneType shopPhoneType) {
         super(id);
         this.phone = phone;
         this.shopPhoneType = shopPhoneType;

@@ -10,13 +10,13 @@ public interface IUserService {
 
     void updateUser(User entity);
 
-    Long checkUser(User user);
+    Integer checkUser(User user);
 
     UserData getUserDataByUser(User user);
 
     void removeUser(User user);
 
     Role getRoleByUser(User user);
-    User getUserByID(Long id);
+    User getUserByID(Integer id);
 
 }
