@@ -19,7 +19,4 @@ public class UserDataDAO extends BaseDAO<UserData> implements IUserDataDAO {
                 .uniqueResult();
         return userData;
     }
-
-
-
 }

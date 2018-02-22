@@ -45,9 +45,11 @@ export class UserService {
 
       return this.http.post(this.loginURL,
         { "type": "User", "id": null, "login": user.login, "password": user.password },
+        {observe:'response'}
       )
-      .map((response: Response) => {
+      .map((response: HttpResponse<any>) => {
           // login successful if there's a jwt token in the response
+console.log(response.headers.get('authorization'));
           let token = response['token'];
           if (token) {
               localStorage.setItem('currentUser', token);

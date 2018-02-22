@@ -32,6 +32,7 @@ export class LoginFormComponent implements OnInit {
     this.userService.login(this.user)
         .subscribe(result => {
             if (result === true) {
+        
               this.router.navigate(['home']);
             } else {
                 // login failed

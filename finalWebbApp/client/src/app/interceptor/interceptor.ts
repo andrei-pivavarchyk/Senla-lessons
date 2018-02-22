@@ -3,7 +3,8 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpResponse
 } from '@angular/common/http';
 import { UserService } from '../service/user.service';
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +15,7 @@ export class TokenInterceptor implements HttpInterceptor {
   
   intercept(request: HttpRequest<any>, next: HttpHandler): 
   Observable<HttpEvent<any>> {
-    console.log('inter');
+  
    var token=localStorage.getItem('currentuser');
     if(token!=null){
       request = request.clone({

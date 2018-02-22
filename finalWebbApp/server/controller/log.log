@@ -692,3 +692,29 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown database 'web
 2018-02-20 17:00:51 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_order_book drop foreign key FK7CA27A2EC74814DC
 2018-02-20 17:00:51 ERROR SchemaExport:426 - Table 'webapp.user_order_book' doesn't exist
 2018-02-21 14:33:32 ERROR UserDataService:39 - org.hibernate.TransientObjectException: The given object has a null identifier: com.model.UserData
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table book drop foreign key FK2E3AE9701F8CE8
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.book' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_contact drop foreign key FK80C54FD758132856
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.shop_contact' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_contact_shop_phone drop foreign key FK1BD2744D3BFC6834
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.shop_contact_shop_phone' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_contact_shop_phone drop foreign key FK1BD2744D9D93483B
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.shop_contact_shop_phone' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_data_shop_contact drop foreign key FK328A41432CCF0C2A
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.shop_data_shop_contact' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_data_shop_contact drop foreign key FK328A4143C5118699
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.shop_data_shop_contact' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_data drop foreign key FK1435639E58132856
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.user_data' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_data drop foreign key FK1435639E3D43702C
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.user_data' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_data_book drop foreign key FK47B722EA6561253E
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.user_data_book' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_data_book drop foreign key FK47B722EADCA590C3
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.user_data_book' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_order drop foreign key FK731991DA3FE5F305
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.user_order' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_order_book drop foreign key FK7CA27A2E68CC417B
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.user_order_book' doesn't exist
+2018-02-22 18:41:15 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_order_book drop foreign key FK7CA27A2EC74814DC
+2018-02-22 18:41:15 ERROR SchemaExport:426 - Table 'webapp.user_order_book' doesn't exist
