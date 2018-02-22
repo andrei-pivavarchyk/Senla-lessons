@@ -140,36 +140,23 @@ CREATE UNIQUE INDEX `listOrderBooks_id` ON `user_order_book` (`listOrderBooks_id
 
 CREATE INDEX `FK2E3AE9701F8CE8` ON `webapp`.`book` (`author` ASC);
 CREATE INDEX `FK80C54FD758132856` ON `webapp`.`shop_contact` (`address` ASC);
-
 CREATE INDEX `FK1BD2744D3BFC6834` ON `webapp`.`shop_contact_shop_phone` (`phoneList_id` ASC);
 CREATE INDEX `FK1BD2744D9D93483B` ON `webapp`.`shop_contact_shop_phone` (`shop_contact_id` ASC);
-
 CREATE INDEX `FK328A41432CCF0C2A` ON  `shop_data_shop_contact` (`listOfContacts_id` ASC);
 CREATE INDEX `FK328A4143C5118699` ON  `shop_data_shop_contact` (`shop_data_id` ASC);
 CREATE INDEX `FK1435639E58132856` ON `user_data` (`address` ASC);
 CREATE INDEX `FK1435639E3D43702C` ON `user_data` (`user_id` ASC);
-
 CREATE INDEX `FK47B722EA6561253E` ON `webapp`.`user_data_book` (`favorites_id` ASC);
 CREATE INDEX `FK47B722EADCA590C3` ON `webapp`.`user_data_book` (`user_data_id` ASC);
 CREATE INDEX `FK731991DA3FE5F305` ON `webapp`.`user_order` (`user_data` ASC);
-
 CREATE INDEX `FK7CA27A2E68CC417B` ON `user_order_book` (`listOrderBooks_id` ASC);
 CREATE INDEX `FK7CA27A2EC74814DC` ON `user_order_book` (`user_order_id` ASC);
 
 
 ALTER TABLE `book` ADD CONSTRAINT `FK2E3AE9701F8CE8` FOREIGN KEY (`author`) REFERENCES `webapp`.`author` (`id`);
 ALTER TABLE `shop_contact` ADD CONSTRAINT `FK80C54FD758132856` FOREIGN KEY (`address`) REFERENCES  `webapp`.`address` (`id`);
-
-
-
-
 ALTER TABLE `shop_data_shop_contact` ADD CONSTRAINT `FK328A4143C5118699` FOREIGN KEY (`shop_data_id`) REFERENCES `webapp`.`shop_data` (`id`);
-
 ALTER TABLE `shop_data_shop_contact` ADD CONSTRAINT `FK328A41432CCF0C2A` FOREIGN KEY (`listOfContacts_id`) REFERENCES `webapp`.`shop_contact` (`id`);
-
-
-
-
 ALTER TABLE `user_data` ADD CONSTRAINT `FK1435639E3D43702C` FOREIGN KEY (`user_id`) REFERENCES  `webapp`.`user` (`id`);
 ALTER TABLE `user_data` ADD CONSTRAINT `FK1435639E58132856` FOREIGN KEY (`address`) REFERENCES  `webapp`.`address` (`id`);
 ALTER TABLE `user_data_book` ADD CONSTRAINT `FK47B722EA6561253E` FOREIGN KEY (`favorites_id`) REFERENCES `webapp`.`book` (`id`);
@@ -177,8 +164,6 @@ ALTER TABLE `user_data_book` ADD CONSTRAINT `FK47B722EADCA590C3` FOREIGN KEY (`u
 ALTER TABLE `user_order` ADD CONSTRAINT `FK731991DA3FE5F305` FOREIGN KEY (`user_data`) REFERENCES  `webapp`.`user_data` (`id`);
 ALTER TABLE `user_order_book` ADD CONSTRAINT `FK7CA27A2E68CC417B` FOREIGN KEY (`listOrderBooks_id`) REFERENCES  `webapp`.`book` (`id`);
 ALTER TABLE `user_order_book` ADD CONSTRAINT `FK7CA27A2EC74814DC` FOREIGN KEY (`user_order_id`) REFERENCES  `webapp`.`user_order` (`id`);
-
-
 ALTER TABLE `shop_contact_shop_phone` ADD CONSTRAINT `FK1BD2744D3BFC6834` FOREIGN KEY (`phoneList_id`) REFERENCES  `webapp`.`shop_phone` (`id`);
 ALTER TABLE `shop_contact_shop_phone` ADD CONSTRAINT `FK1BD2744D9D93483B` FOREIGN KEY (`shop_contact_id`) REFERENCES  `webapp`.`shop_contact` (`id`);
 
