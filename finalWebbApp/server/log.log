@@ -1,1 +1,0 @@
-2018-02-16 17:55:35 ERROR UserService:51 - org.hibernate.NonUniqueResultException: query did not return a unique result: 2
