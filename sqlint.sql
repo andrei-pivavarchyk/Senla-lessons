@@ -104,6 +104,30 @@ CREATE TABLE `user_data` (
   PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
+-- Table `webapp`.`feedback`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `feedback` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `feedback` VARCHAR(255) NULL DEFAULT NULL,
+  `title` VARCHAR(255) NULL DEFAULT NULL,
+  `book` INT(11) NULL DEFAULT NULL,
+  `user_data` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`));
+
+
+
+-- -----------------------------------------------------
+-- Table `webapp`.`user_data_feedback`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `user_data_feedback` (
+  `user_data_id` INT NOT NULL,
+  `feedbackList_id` INT NOT NULL,
+  PRIMARY KEY (`user_data_id`, `feedbackList_id`));
+
+
+
+
+-- -----------------------------------------------------
 -- Table `webapp`.`user_data_book`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `user_data_book` (
@@ -137,8 +161,10 @@ CREATE UNIQUE INDEX `phoneList_id` ON `shop_contact_shop_phone` (`phoneList_id` 
 CREATE UNIQUE INDEX `listOfContacts_id` ON `shop_data_shop_contact` (`listOfContacts_id` ASC);
 CREATE UNIQUE INDEX `favorites_id` ON `webapp`.`user_data_book` (`favorites_id` ASC);
 CREATE UNIQUE INDEX `listOrderBooks_id` ON `user_order_book` (`listOrderBooks_id` ASC);
+CREATE UNIQUE INDEX `feedbackList_id` ON `user_data_feedback` (`feedbackList_id` ASC);
 
-CREATE INDEX `FK2E3AE9701F8CE8` ON `webapp`.`book` (`author` ASC);
+
+CREATE INDEX `FK2E3AE9701F8CE8`   ON `webapp`.`book` (`author` ASC);
 CREATE INDEX `FK80C54FD758132856` ON `webapp`.`shop_contact` (`address` ASC);
 CREATE INDEX `FK1BD2744D3BFC6834` ON `webapp`.`shop_contact_shop_phone` (`phoneList_id` ASC);
 CREATE INDEX `FK1BD2744D9D93483B` ON `webapp`.`shop_contact_shop_phone` (`shop_contact_id` ASC);
@@ -151,6 +177,14 @@ CREATE INDEX `FK47B722EADCA590C3` ON `webapp`.`user_data_book` (`user_data_id` A
 CREATE INDEX `FK731991DA3FE5F305` ON `webapp`.`user_order` (`user_data` ASC);
 CREATE INDEX `FK7CA27A2E68CC417B` ON `user_order_book` (`listOrderBooks_id` ASC);
 CREATE INDEX `FK7CA27A2EC74814DC` ON `user_order_book` (`user_order_id` ASC);
+CREATE INDEX `FKF495EB85462E0C24` ON feedback (`book` ASC);
+CREATE INDEX  `FKF495EB853FE5F305`ON feedback (`user_data` ASC);
+CREATE INDEX  `FKFD78EB069100A20E`ON user_data_feedback (`feedbackList_id` ASC);
+CREATE INDEX  `FKFD78EB06DCA590C3`ON user_data_feedback (`user_data_id` ASC);
+
+
+
+
 
 
 ALTER TABLE `book` ADD CONSTRAINT `FK2E3AE9701F8CE8` FOREIGN KEY (`author`) REFERENCES `webapp`.`author` (`id`);
@@ -166,6 +200,10 @@ ALTER TABLE `user_order_book` ADD CONSTRAINT `FK7CA27A2E68CC417B` FOREIGN KEY (`
 ALTER TABLE `user_order_book` ADD CONSTRAINT `FK7CA27A2EC74814DC` FOREIGN KEY (`user_order_id`) REFERENCES  `webapp`.`user_order` (`id`);
 ALTER TABLE `shop_contact_shop_phone` ADD CONSTRAINT `FK1BD2744D3BFC6834` FOREIGN KEY (`phoneList_id`) REFERENCES  `webapp`.`shop_phone` (`id`);
 ALTER TABLE `shop_contact_shop_phone` ADD CONSTRAINT `FK1BD2744D9D93483B` FOREIGN KEY (`shop_contact_id`) REFERENCES  `webapp`.`shop_contact` (`id`);
+ALTER TABLE `feedback` ADD CONSTRAINT `FKF495EB853FE5F305` FOREIGN KEY (`user_data`) REFERENCES  `webapp`.`user_data` (`id`);
+ALTER TABLE `feedback` ADD CONSTRAINT `FKF495EB85462E0C24` FOREIGN KEY (`book`) REFERENCES  `webapp`.`book` (`id`);
+ALTER TABLE `user_data_feedback` ADD CONSTRAINT `FKFD78EB069100A20E` FOREIGN KEY (`feedbackList_id`) REFERENCES  `feedback` (`id`);
+ALTER TABLE `user_data_feedback` ADD CONSTRAINT `FKFD78EB06DCA590C3` FOREIGN KEY (`user_data_id`) REFERENCES  `user_data` (`id`);
 
 
 

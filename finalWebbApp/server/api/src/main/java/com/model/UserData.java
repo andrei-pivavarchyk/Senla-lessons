@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "user_data")
@@ -24,6 +21,7 @@ public class UserData extends WebEntity {
     private Long phone;
     private Address address;
     private Set<Book> favorites;
+    private List<Feedback> feedbackList;
 
     public UserData() {
     }
@@ -48,6 +46,7 @@ public class UserData extends WebEntity {
         this.phone = phone;
         this.address = address;
         this.favorites = new HashSet<Book>();
+        this.feedbackList=new ArrayList<>();
     }
 
     public UserData(Integer id,
@@ -71,6 +70,7 @@ public class UserData extends WebEntity {
         this.phone = phone;
         this.address = address;
         this.favorites = new HashSet<Book>();
+        this.feedbackList=new ArrayList<Feedback>();
     }
 
     public UserData(User user, Address address) {
@@ -129,6 +129,11 @@ public class UserData extends WebEntity {
         return favorites;
     }
 
+    @OneToMany
+    public List<Feedback> getFeedbackList() {
+        return feedbackList;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -164,6 +169,10 @@ public class UserData extends WebEntity {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public void setFeedbackList(List<Feedback> feedbackList) {
+        this.feedbackList = feedbackList;
     }
 
     @Override

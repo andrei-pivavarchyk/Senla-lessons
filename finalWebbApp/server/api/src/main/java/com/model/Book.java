@@ -1,6 +1,8 @@
 package com.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -11,6 +13,7 @@ public class Book extends WebEntity {
     private Author author;
     private BookStatus bookStatus;
     private String bookDescription;
+    private Set<Feedback> feedbackList;
 
     public Book() {
     }
@@ -27,6 +30,7 @@ public class Book extends WebEntity {
         this.author = author;
         this.bookStatus = bookStatus;
         this.bookDescription = bookDescription;
+        this.feedbackList=new HashSet<Feedback>();
     }
 
     public Book(Integer id,
@@ -43,6 +47,7 @@ public class Book extends WebEntity {
         this.author = author;
         this.bookStatus = bookStatus;
         this.bookDescription = bookDescription;
+        this.feedbackList=new HashSet<Feedback>();
     }
 
     @Column(name = "book_name")
@@ -78,6 +83,11 @@ public class Book extends WebEntity {
         return bookStatus;
     }
 
+    @OneToMany
+    public Set<Feedback> getFeedbackList() {
+        return feedbackList;
+    }
+
     public void setBookName(String bookName) {
         this.bookName = bookName;
     }
@@ -100,6 +110,10 @@ public class Book extends WebEntity {
 
     public void setBookDescription(String bookDescription) {
         this.bookDescription = bookDescription;
+    }
+
+    public void setFeedbackList(Set<Feedback> feedbackList) {
+        this.feedbackList = feedbackList;
     }
 
     @Override
