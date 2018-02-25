@@ -32,7 +32,7 @@ public class Main {
 
 
 
-/*
+
         User user = new User(1, "Andrei", "Hrumov");
 
         Book book = new Book(1, "bookname", 66, BookGenre.DETECTIVE, author, BookStatus.IN_STOCK, "Fds");
@@ -44,7 +44,7 @@ public class Main {
         UserData userData = new UserData(1,user, "Bob", "White", "Black", role, "email", 21474836647L, userAddress);
         userData.getFavorites().add(book);
         userService.addUser(user);
-        userDataService.updateUserData(userData);*/
+        userDataService.updateUserData(userData);
        // userService.addUser(user);
 
         //  userData.getFavorites().add(book);

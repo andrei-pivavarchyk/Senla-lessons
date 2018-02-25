@@ -29,7 +29,6 @@ public class LoginController {
     @ResponseBody
     public Token login(HttpServletResponse response, @RequestBody User user) {
 
-        try {
             Integer id = userService.checkUser(user);
             if (id != null) {
                 String token = tokenHandler.createToken(id);
@@ -42,9 +41,5 @@ public class LoginController {
                 return null;
             }
 
-        } catch (Exception e) {
-            log.error(e.toString());
-            return null;
-        }
     }
 }
