@@ -16,7 +16,7 @@
     </parent>
     <properties>
 
-        <org.slf4j-version>1.5.10</org.slf4j-version>
+
 
     </properties>
  
@@ -45,23 +45,23 @@
         </dependency>
 
 
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j-version}</version>
+            <version>1.5.10</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j-version}</version>
+            <version>1.5.10</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>${org.slf4j-version}</version>
+            <version>1.5.10</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 </project>
