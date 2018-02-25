@@ -32,7 +32,6 @@ export class LoginFormComponent implements OnInit {
     this.userService.login(this.user)
         .subscribe(result => {
             if (result === true) {
-        
               this.router.navigate(['home']);
             } else {
                 // login failed
@@ -42,6 +41,6 @@ export class LoginFormComponent implements OnInit {
           
         });
 
-        console.log(localStorage.getItem('currentUser'));
+      
   }
 }
