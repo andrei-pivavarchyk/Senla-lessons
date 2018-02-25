@@ -1,1 +1,6 @@
 2018-02-16 17:55:35 ERROR UserService:51 - org.hibernate.NonUniqueResultException: query did not return a unique result: 2
+2018-02-25 10:32:18 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table book_feedback drop foreign key FK4806181B9100A20E
+2018-02-25 10:32:18 ERROR SchemaExport:426 - Table 'webapp.book_feedback' doesn't exist
+2018-02-25 10:32:18 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table book_feedback drop foreign key FK4806181B49DAB36C
+2018-02-25 10:32:18 ERROR SchemaExport:426 - Table 'webapp.book_feedback' doesn't exist
+2018-02-25 15:14:31 ERROR TokenHandler:71 - java.lang.ClassCastException: java.lang.Long cannot be cast to java.lang.Integer

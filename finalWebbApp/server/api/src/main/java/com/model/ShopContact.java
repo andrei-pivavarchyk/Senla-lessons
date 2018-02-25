@@ -1,6 +1,7 @@
 package com.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,20 +10,29 @@ public class ShopContact extends  WebEntity {
     private List<ShopPhone> phoneList;
     private Address address;
     private ShopFilialStatus shopFilialStatus;
+    private ShopData shopData;
 
     public ShopContact(){}
 
-    public ShopContact(List<ShopPhone> phoneList, Address address, ShopFilialStatus shopFilialStatus) {
-        this.phoneList = phoneList;
+    public ShopContact(
+                       Address address,
+                       ShopFilialStatus shopFilialStatus,
+                       ShopData shopData) {
+        this.phoneList = new ArrayList<ShopPhone>();
         this.address = address;
         this.shopFilialStatus = shopFilialStatus;
+        this.shopData = shopData;
     }
 
-    public ShopContact(Integer id, List<ShopPhone> phoneList, Address address, ShopFilialStatus shopFilialStatus) {
+    public ShopContact(Integer id,
+                       Address address,
+                       ShopFilialStatus shopFilialStatus,
+                       ShopData shopData) {
         super(id);
-        this.phoneList = phoneList;
+        this.phoneList = new ArrayList<ShopPhone>();
         this.address = address;
         this.shopFilialStatus = shopFilialStatus;
+        this.shopData = shopData;
     }
 
     @JoinColumn(name = "address")
@@ -31,10 +41,16 @@ public class ShopContact extends  WebEntity {
         return address;
     }
 
-    @Column(name = "phone_list")
-    @OneToMany
+    @OneToMany(mappedBy="shopContact")
     public List<ShopPhone> getPhoneList() {
         return phoneList;
+    }
+
+
+    @ManyToOne
+    @JoinColumn(name = "shop_data")
+    public ShopData getShopData() {
+        return shopData;
     }
 
     @Enumerated
@@ -53,6 +69,10 @@ public class ShopContact extends  WebEntity {
 
     public void setShopFilialStatus(ShopFilialStatus shopFilialStatus) {
         this.shopFilialStatus = shopFilialStatus;
+    }
+
+    public void setShopData(ShopData shopData) {
+        this.shopData = shopData;
     }
 
     @Override

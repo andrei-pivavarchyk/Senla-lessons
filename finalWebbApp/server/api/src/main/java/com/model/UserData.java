@@ -129,7 +129,7 @@ public class UserData extends WebEntity {
         return favorites;
     }
 
-    @OneToMany
+    @OneToMany(mappedBy="userData")
     public List<Feedback> getFeedbackList() {
         return feedbackList;
     }
@@ -137,7 +137,6 @@ public class UserData extends WebEntity {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;

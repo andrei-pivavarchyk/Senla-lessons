@@ -7,12 +7,10 @@ import com.service.TokenHandler;
  */
 public class Main {
     public static void main(String[] args) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        User user = new User("fds", "Fds");
-        String str = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTdXBlcldlYkFwcCIsImlkIjoxLCJleHAiOjE1MTg3OTYxMjR9.YObeum6NOuAeZ2hQFvxd4CK7Oq8HUB7tfxYJdOHw_s4";
-        TokenHandler tokenHandler=new TokenHandler();
-        System.out.println( tokenHandler.createToken(new Long(1)));
-        System.out.println( tokenHandler.getUserIdByToken(str));
 
+TokenHandler tokenHandler=new TokenHandler();
+String token=tokenHandler.createToken(1);
+tokenHandler.getUserIdByToken(token);
+System.out.print(token);
     }
 }

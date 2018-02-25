@@ -1,6 +1,7 @@
 
 
 
+import com.controller.Token;
 import com.model.*;
 import com.service.TokenHandler;
 import com.serviceAPI.*;
@@ -18,8 +19,7 @@ public class Main {
         calendar.set(1992, 11, 4);
         Date date = new Date(calendar.getTime().getTime());
 
-
-        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring/root-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("/WEB-INF/spring/root-context.xml");
         IUserService userService = context.getBean(IUserService.class);
         IUserDataService userDataService = context.getBean(IUserDataService.class);
         IUserHandler г = context.getBean(IUserHandler.class);
@@ -29,6 +29,10 @@ public class Main {
         Role role = Role.USER;
         Author author = new Author();
 
+
+
+
+/*
         User user = new User(1, "Andrei", "Hrumov");
 
         Book book = new Book(1, "bookname", 66, BookGenre.DETECTIVE, author, BookStatus.IN_STOCK, "Fds");
@@ -40,7 +44,7 @@ public class Main {
         UserData userData = new UserData(1,user, "Bob", "White", "Black", role, "email", 21474836647L, userAddress);
         userData.getFavorites().add(book);
         userService.addUser(user);
-        userDataService.updateUserData(userData);
+        userDataService.updateUserData(userData);*/
        // userService.addUser(user);
 
         //  userData.getFavorites().add(book);

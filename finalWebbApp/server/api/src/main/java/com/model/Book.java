@@ -1,7 +1,9 @@
 package com.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,7 +15,7 @@ public class Book extends WebEntity {
     private Author author;
     private BookStatus bookStatus;
     private String bookDescription;
-    private Set<Feedback> feedbackList;
+    private List<Feedback> feedbackList;
 
     public Book() {
     }
@@ -30,7 +32,7 @@ public class Book extends WebEntity {
         this.author = author;
         this.bookStatus = bookStatus;
         this.bookDescription = bookDescription;
-        this.feedbackList=new HashSet<Feedback>();
+        this.feedbackList=new ArrayList<Feedback>();
     }
 
     public Book(Integer id,
@@ -47,7 +49,7 @@ public class Book extends WebEntity {
         this.author = author;
         this.bookStatus = bookStatus;
         this.bookDescription = bookDescription;
-        this.feedbackList=new HashSet<Feedback>();
+        this.feedbackList=new ArrayList<Feedback>();
     }
 
     @Column(name = "book_name")
@@ -83,8 +85,8 @@ public class Book extends WebEntity {
         return bookStatus;
     }
 
-    @OneToMany
-    public Set<Feedback> getFeedbackList() {
+    @OneToMany(mappedBy="book")
+    public List<Feedback> getFeedbackList() {
         return feedbackList;
     }
 
@@ -112,7 +114,7 @@ public class Book extends WebEntity {
         this.bookDescription = bookDescription;
     }
 
-    public void setFeedbackList(Set<Feedback> feedbackList) {
+    public void setFeedbackList(List<Feedback> feedbackList) {
         this.feedbackList = feedbackList;
     }
 

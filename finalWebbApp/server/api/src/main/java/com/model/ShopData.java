@@ -1,9 +1,7 @@
 package com.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,18 +13,18 @@ public class ShopData extends WebEntity{
 
     public ShopData(){}
 
-    public ShopData(String name, List<ShopContact> listOfContacts) {
+    public ShopData(String name) {
         this.name = name;
-        this.listOfContacts = listOfContacts;
+        this.listOfContacts = new ArrayList<ShopContact>();
     }
 
-    public ShopData(Integer id, String name, List<ShopContact> listOfContacts) {
+    public ShopData(Integer id, String name) {
         super(id);
         this.name = name;
-        this.listOfContacts = listOfContacts;
+        this.listOfContacts = new ArrayList<ShopContact>();
     }
 
-    @OneToMany
+    @OneToMany(mappedBy="shopData")
     public List<ShopContact> getListOfContacts() {
         return listOfContacts;
     }
@@ -39,6 +37,7 @@ public class ShopData extends WebEntity{
     public void setListOfContacts(List<ShopContact> listOfContacts) {
         this.listOfContacts = listOfContacts;
     }
+
 
     public void setName(String name) {
         this.name = name;

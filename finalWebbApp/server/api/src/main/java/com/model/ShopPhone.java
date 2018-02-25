@@ -1,26 +1,33 @@
 package com.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "shop_phone")
 public class ShopPhone extends WebEntity {
     private Integer phone;
     private ShopPhoneType shopPhoneType;
+    private ShopContact shopContact;
 
-    public ShopPhone(Integer phone, ShopPhoneType shopPhoneType) {
+    public ShopPhone(Integer phone, ShopPhoneType shopPhoneType, ShopContact shopContact) {
         this.phone = phone;
         this.shopPhoneType = shopPhoneType;
+        this.shopContact = shopContact;
     }
 
-    public ShopPhone(Integer id, Integer phone, ShopPhoneType shopPhoneType) {
+    public ShopPhone(Integer id, Integer phone, ShopPhoneType shopPhoneType, ShopContact shopContact) {
         super(id);
         this.phone = phone;
         this.shopPhoneType = shopPhoneType;
+        this.shopContact = shopContact;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "shop_contact")
+    public ShopContact getShopContact() {
+        return shopContact;
+    }
+
 
     @Column(name = "phone")
     public Integer getPhone() {
@@ -39,6 +46,10 @@ public class ShopPhone extends WebEntity {
 
     public void setShopPhoneType(ShopPhoneType shopPhoneType) {
         this.shopPhoneType = shopPhoneType;
+    }
+
+    public void setShopContact(ShopContact shopContact) {
+        this.shopContact = shopContact;
     }
 
     @Override

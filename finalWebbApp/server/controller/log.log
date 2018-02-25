@@ -973,3 +973,11 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown database 'web
 2018-02-23 15:37:36 ERROR SchemaExport:426 - Table 'webapp.user_order_book' doesn't exist
 2018-02-23 15:37:36 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table user_order_book drop foreign key FK7CA27A2EC74814DC
 2018-02-23 15:37:36 ERROR SchemaExport:426 - Table 'webapp.user_order_book' doesn't exist
+2018-02-25 12:33:06 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_contact_shop_phone drop foreign key FK1BD2744D3BFC6834
+2018-02-25 12:33:06 ERROR SchemaExport:426 - Table 'webapp.shop_contact_shop_phone' doesn't exist
+2018-02-25 12:33:06 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_contact_shop_phone drop foreign key FK1BD2744D9D93483B
+2018-02-25 12:33:06 ERROR SchemaExport:426 - Table 'webapp.shop_contact_shop_phone' doesn't exist
+2018-02-25 12:33:06 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_data_shop_contact drop foreign key FK328A41432CCF0C2A
+2018-02-25 12:33:06 ERROR SchemaExport:426 - Table 'webapp.shop_data_shop_contact' doesn't exist
+2018-02-25 12:33:06 ERROR SchemaExport:425 - HHH000389: Unsuccessful: alter table shop_data_shop_contact drop foreign key FK328A4143C5118699
+2018-02-25 12:33:06 ERROR SchemaExport:426 - Table 'webapp.shop_data_shop_contact' doesn't exist

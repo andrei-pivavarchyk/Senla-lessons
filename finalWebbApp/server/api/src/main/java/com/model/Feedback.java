@@ -32,16 +32,20 @@ public class Feedback extends WebEntity{
         this.feedback = feedback;
     }
 
-    @JoinColumn(name = "user_data")
-    @OneToOne
-    public UserData getUserData() {
-        return userData;
-    }
+
+
+    @ManyToOne
     @JoinColumn(name = "book")
-    @OneToOne
     public Book getBook() {
         return book;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "user_data")
+    public UserData getUserData() {
+        return userData;
+    }
+
     @Column(name = "title")
     public String getTitle() {
         return title;

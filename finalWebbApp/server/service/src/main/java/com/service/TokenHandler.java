@@ -16,7 +16,7 @@ public class TokenHandler implements ITokenHandler{
 
     private static Logger log = Logger.getLogger(TokenHandler.class);
 
-    public String createToken(Long id) {
+    public String createToken(Integer id) {
 
         byte[] sharedSecret = new byte[32];
         try {
@@ -63,7 +63,7 @@ public class TokenHandler implements ITokenHandler{
 
             try {
                 SignedJWT signedJWT = SignedJWT.parse(token);
-                Integer id = (Integer) signedJWT.getJWTClaimsSet().getClaim("id");
+                Integer id = (Integer) signedJWT.getJWTClaimsSet().getIntegerClaim("id");
                 return id;
             } catch (ParseException e) {
                 log.error(e.toString());

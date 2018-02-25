@@ -24,16 +24,22 @@ public class LoginController {
     )
     @ResponseBody
     public Token login(HttpServletResponse response, @RequestBody User user) {
-        Integer id = userService.checkUser(user);
-        if (id != null) {
-            String token = tokenHandler.createToken(id);
-            response.addHeader("Authorization",token);
-            Token userToken=new Token();
-            userToken.setToken(token);
-            return userToken;
-        } else {
-            response.setStatus(401);
-            return null;
-        }
+
+
+            Integer id = userService.checkUser(user);
+            if (id != null) {
+                String token = tokenHandler.createToken(id);
+                response.addHeader("Authorization", token);
+                Token userToken = new Token();
+                userToken.setToken(token);
+                return userToken;
+            } else {
+                response.setStatus(401);
+                return null;
+            }
+
+
     }
+
+
 }
