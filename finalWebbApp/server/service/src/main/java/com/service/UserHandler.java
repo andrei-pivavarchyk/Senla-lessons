@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 @Component
-@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserHandler implements IUserHandler {
 
     private User user;

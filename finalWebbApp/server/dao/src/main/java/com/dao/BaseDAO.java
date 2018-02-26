@@ -24,6 +24,7 @@ public abstract class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
     public void addEntity(T entity) throws Exception {
         getSession().save(entity);
+
     }
 
     public void updateEntity(T entity) throws Exception {

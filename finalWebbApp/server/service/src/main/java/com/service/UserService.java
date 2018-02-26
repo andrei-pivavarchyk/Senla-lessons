@@ -37,7 +37,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private IObjectConverter objectConverter;
-
+    @Autowired
+    private IAddressDAO addressDAO;
     public UserService() {
     }
 
@@ -46,13 +47,11 @@ public class UserService implements IUserService {
         try {
             Integer userID = this.userDAO.checkUser(user.getLogin());
             if (userID == null) {
-                Session session = userDAO.getSession();
+                userDAO.addEntity(user);
                 Address userAddress = new Address();
-                session.save(user);
-                session.save(userAddress);
-
+                addressDAO.addEntity(userAddress);
                 UserData userData = new UserData(user, userAddress);
-                session.save(userData);
+                userDataDAO.addEntity(userData);
             }
         } catch (Exception e) {
             log.error(e.toString());
@@ -98,7 +97,8 @@ public class UserService implements IUserService {
 
     public Role getRoleByUser(User user) {
         Role role = this.getUserDataByUser(user).getRole();
-        return role;
+        Role roleDTO=role;
+        return roleDTO;
     }
 
     public User getUserByID(Integer id) {

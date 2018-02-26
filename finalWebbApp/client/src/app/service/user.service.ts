@@ -50,8 +50,8 @@ export class UserService {
       .map((response: HttpResponse<any>) => {
           // login successful if there's a jwt token in the response
           
-console.log(response.headers.get('authorization'));
-          let token = response.body['token'];
+
+          let token =response.headers.get('authorization');
           if (token) {
               localStorage.setItem('currentUser', token);
               return true;

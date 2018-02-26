@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.model.Role;
 import com.model.User;
 import com.service.TokenHandler;
 
@@ -8,9 +9,7 @@ import com.service.TokenHandler;
 public class Main {
     public static void main(String[] args) {
 
-TokenHandler tokenHandler=new TokenHandler();
-String token=tokenHandler.createToken(1);
-tokenHandler.getUserIdByToken(token);
-System.out.print(token);
+
+System.out.print(Role.USER.toString());
     }
 }

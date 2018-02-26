@@ -1,9 +1,7 @@
 
 
 
-import com.controller.Token;
 import com.model.*;
-import com.service.TokenHandler;
 import com.serviceAPI.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,6 +25,8 @@ public class Main {
         ITokenHandler tokenHandler = context.getBean(ITokenHandler.class);
         IBookService bookService = context.getBean(IBookService.class);
         IAuthorService authorService = context.getBean(IAuthorService.class);
+        IAddressService addressService=context.getBean(IAddressService.class);
+        IUserDataDTOService userDataDTOService=context.getBean(IUserDataDTOService.class);
         Role role = Role.USER;
         Author author = new Author();
 
@@ -44,7 +45,11 @@ public class Main {
         UserData userData = new UserData(1,user, "Bob", "White", "Black", role, "email", 21474836647L, userAddress);
         userData.getFavorites().add(book);
         userService.addUser(user);
+        userData.setAddress(userAddress);
         userDataService.updateUserData(userData);
+        addressService.updateAddress(userAddress);
+        UserData userData1=userDataService.getFavorites(1);
+        System.out.print(userDataDTOService.getFavoriteBookList(userData1.getFavorites()).get(0).getBookCost());
        // userService.addUser(user);
 
         //  userData.getFavorites().add(book);

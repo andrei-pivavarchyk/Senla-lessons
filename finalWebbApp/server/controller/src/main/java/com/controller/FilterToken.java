@@ -4,6 +4,7 @@ package com.controller;
 import com.model.Role;
 import com.model.User;
 import com.serviceAPI.ITokenHandler;
+import com.serviceAPI.IUserDataDTOService;
 import com.serviceAPI.IUserHandler;
 import com.serviceAPI.IUserService;
 import org.apache.log4j.Logger;
@@ -18,8 +19,6 @@ public class FilterToken implements Filter {
 
     private FilterConfig filterConfig;
     private static Logger log = Logger.getLogger(FilterToken.class);
-    @Autowired
-    private IUserService userService;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -41,11 +40,15 @@ public class FilterToken implements Filter {
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
                 getBean(IUserHandler.class);
         Integer id = tokenHandler.getUserIdByToken(token);
+        IUserService userService=WebApplicationContextUtils.
+                getRequiredWebApplicationContext(filterConfig.getServletContext()).
+                getBean(IUserService.class);
+
         if (id != null) {
             try {
-                User user = this.userService.getUserByID(id);
+                User user = userService.getUserByID(id);
                 if (user != null) {
-                    Role role = this.userService.getRoleByUser(user);
+                    Role role = userService.getRoleByUser(user);
                     userHandler.setUser(user);
                     userHandler.setRole(role);
                     chain.doFilter(request, response);

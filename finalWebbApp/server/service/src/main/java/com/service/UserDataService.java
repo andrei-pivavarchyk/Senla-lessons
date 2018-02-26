@@ -3,6 +3,7 @@ package com.service;
 
 import com.daoAPI.IUserDAO;
 import com.daoAPI.IUserDataDAO;
+import com.model.Book;
 import com.model.User;
 import com.model.UserData;
 import com.serviceAPI.IUserDataService;
@@ -12,11 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class UserDataService implements IUserDataService {
-    @Autowired
-    private SessionFactory sessionFactory;
+
     private static Logger log = Logger.getLogger(UserDataService.class);
     @Autowired
     private IUserDataDAO userDataDao;
@@ -52,5 +54,16 @@ public class UserDataService implements IUserDataService {
         }
     }
 
+    public UserData getFavorites(Integer id) {
 
+        try {
+            User user = userDao.getEntityById(id);
+           UserData userData= userDataDao.getUserDatawithFavoritesBooks(user);
+
+            return userData;
+        } catch (Exception e) {
+            log.error(e.toString());
+            return null;
+        }
+    }
 }

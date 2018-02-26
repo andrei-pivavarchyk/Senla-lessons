@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 
@@ -35,6 +37,11 @@ public class BookService implements IBookService {
         } catch (Exception e) {
 
         }
+    }
+
+    public List<Book> getAllBooks() {
+        List<Book> bookList = this.bookDAO.getAllBooks();
+        return bookList;
     }
 
 }

@@ -20,7 +20,7 @@ public class UserData extends WebEntity {
     private String email;
     private Long phone;
     private Address address;
-    private Set<Book> favorites;
+    private List<Book> favorites;
     private List<Feedback> feedbackList;
 
     public UserData() {
@@ -45,7 +45,7 @@ public class UserData extends WebEntity {
         this.email = email;
         this.phone = phone;
         this.address = address;
-        this.favorites = new HashSet<Book>();
+        this.favorites = new ArrayList<>();
         this.feedbackList=new ArrayList<>();
     }
 
@@ -69,7 +69,7 @@ public class UserData extends WebEntity {
         this.email = email;
         this.phone = phone;
         this.address = address;
-        this.favorites = new HashSet<Book>();
+        this.favorites = new ArrayList<Book>();
         this.feedbackList=new ArrayList<Feedback>();
     }
 
@@ -125,7 +125,7 @@ public class UserData extends WebEntity {
     }
 
     @OneToMany
-    public Set<Book> getFavorites() {
+    public List<Book> getFavorites() {
         return favorites;
     }
 
@@ -158,7 +158,7 @@ public class UserData extends WebEntity {
         this.role = role;
     }
 
-    public void setFavorites(Set<Book> wantToBuy) {
+    public void setFavorites(List<Book> wantToBuy) {
         this.favorites = wantToBuy;
     }
 
