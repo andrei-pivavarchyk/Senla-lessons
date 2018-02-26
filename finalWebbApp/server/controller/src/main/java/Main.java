@@ -32,24 +32,20 @@ public class Main {
 
 
 
-
-
         User user = new User(1, "Andrei", "Hrumov");
-
         Book book = new Book(1, "bookname", 66, BookGenre.DETECTIVE, author, BookStatus.IN_STOCK, "Fds");
         Address userAddress = new Address(1, "Соломовой", "Гродно", "Гродненский", "Беоарусь", 240000);
 
-        authorService.addAuthor(author);
-        bookService.addBook(book);
+
 
         UserData userData = new UserData(1,user, "Bob", "White", "Black", role, "email", 21474836647L, userAddress);
-        userData.getFavorites().add(book);
-        userService.addUser(user);
-        userData.setAddress(userAddress);
-        userDataService.updateUserData(userData);
-        addressService.updateAddress(userAddress);
-        UserData userData1=userDataService.getFavorites(1);
-        System.out.print(userDataDTOService.getFavoriteBookList(userData1.getFavorites()).get(0).getBookCost());
+       // userData.getFavorites().add(book);
+        //userService.addUser(user);
+        //userData.setAddress(userAddress);
+       //userDataService.updateUserData(userData);
+       // addressService.updateAddress(userAddress);
+        //UserData userData1=userDataService.getFavorites(1);
+       // System.out.print(userDataDTOService.getFavoriteBookList(userData1.getFavorites()).get(0).getBookCost());
        // userService.addUser(user);
 
         //  userData.getFavorites().add(book);
