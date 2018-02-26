@@ -13,5 +13,5 @@ public interface IUserDataService {
 
     void updateUserData(UserData entity);
 
-    UserData getFavorites(Integer id);
+    UserData getUserDataWithFavorites(Integer id);
 }

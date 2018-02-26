@@ -54,7 +54,7 @@ public class UserDataService implements IUserDataService {
         }
     }
 
-    public UserData getFavorites(Integer id) {
+    public UserData getUserDataWithFavorites(Integer id) {
 
         try {
             User user = userDao.getEntityById(id);

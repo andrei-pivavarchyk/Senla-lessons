@@ -12,9 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by андрей on 26.02.2018.
- */
+
 @Service
 @Transactional
 public class UserDataDTOService implements IUserDataDTOService {
@@ -30,9 +28,10 @@ public class UserDataDTOService implements IUserDataDTOService {
 
 
     @Override
-    public UserData getUserDataDRO(UserData userData) {
+    public UserData getUserDataDTO(UserData userData) {
 
         UserData dto = new UserData();
+        dto.setId(userData.getId());
         String str = userData.getRole().toString();
         dto.setRole(Role.valueOf(str));
         dto.setName(userData.getName());
@@ -46,19 +45,20 @@ public class UserDataDTOService implements IUserDataDTOService {
         address.setCountry(userData.getAddress().getCountry());
         address.setIndex(userData.getAddress().getIndex());
         address.setRegion(userData.getAddress().getRegion());
-        address.setStreet(userData.getAddress().getStreet());
+        address.setLocalAddress(userData.getAddress().getLocalAddress());
 
         return dto;
     }
 
-    public List<Book> getFavoriteBookList(List<Book> bookList) {
+    public List<Book> getBookList(List<Book> bookList) {
         List<Book>userDataBookList=new ArrayList<>();
 
 
         for (Book book : bookList) {
 
             Book book2 = new Book();
-          // book2.setAuthor(book.getAuthor());
+            book2.setGenre(book.getGenre());
+          book2.setAuthor(book.getAuthor());
             book2.setBookCost(book.getBookCost());
             book2.setBookDescription(book.getBookDescription());
             book2.setBookName(book.getBookName());

@@ -1,15 +1,16 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.Role;
 import com.model.User;
+import com.service.ObjectConverter;
 import com.service.TokenHandler;
 
-/**
- * Created by андрей on 08.02.2018.
- */
+import javax.jws.soap.SOAPBinding;
+
+
 public class Main {
     public static void main(String[] args) {
 
-
-System.out.print(Role.USER.toString());
+        ObjectConverter objectConverter=new ObjectConverter();
+System.out.print(objectConverter.convertObject(new User()));
     }
 }

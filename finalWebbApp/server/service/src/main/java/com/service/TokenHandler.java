@@ -1,5 +1,6 @@
 package com.service;
 
+import com.model.Role;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;

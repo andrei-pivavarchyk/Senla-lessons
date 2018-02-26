@@ -2,6 +2,7 @@ package com.service;
 
 import com.daoAPI.IBookDAO;
 import com.daoAPI.IUserDataDAO;
+import com.model.Author;
 import com.model.Book;
 import com.serviceAPI.IBookService;
 import org.apache.log4j.Logger;
@@ -35,13 +36,23 @@ public class BookService implements IBookService {
         try {
             this.bookDAO.deleteEntity(book.getId());
         } catch (Exception e) {
-
+            log.error(e.toString());
         }
     }
 
     public List<Book> getAllBooks() {
         List<Book> bookList = this.bookDAO.getAllBooks();
         return bookList;
+    }
+
+    public List<Book> getBooksByAuthor(Author author) {
+        List<Book> bookList = this.bookDAO.getBooksByAuthor(author);
+        return bookList;
+    }
+
+    public Book getBookWithFeedbacks(Integer id) {
+       Book book= this.bookDAO.getBookWithFeedbacks(id);
+       return book;
     }
 
 }

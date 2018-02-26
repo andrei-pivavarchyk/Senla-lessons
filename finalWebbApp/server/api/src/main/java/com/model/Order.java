@@ -1,6 +1,7 @@
 package com.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -16,32 +17,31 @@ public class Order extends WebEntity {
     private OrderStatus orderStatus;
     private Date creationDate;
     private UserData userData;
-    private Set<Book> listOrderBooks;
+    private List<Book> listOrderBooks;
 
     public Order(Integer orderCost,
                  OrderStatus orderStatus,
                  Date creationDate,
-                 UserData userData,
-                 Set<Book> listOrderBooks) {
+                 UserData userData
+               ) {
         this.orderCost = orderCost;
         this.orderStatus = orderStatus;
         this.creationDate = creationDate;
         this.userData = userData;
-        this.listOrderBooks = listOrderBooks;
+        this.listOrderBooks = new ArrayList<>();
     }
 
     public Order(Integer id,
                  Integer orderCost,
                  OrderStatus orderStatus,
                  Date creationDate,
-                 UserData userData,
-                 Set<Book> listOrderBooks) {
+                 UserData userData) {
         super(id);
         this.orderCost = orderCost;
         this.orderStatus = orderStatus;
         this.creationDate = creationDate;
         this.userData = userData;
-        this.listOrderBooks = listOrderBooks;
+        this.listOrderBooks = new ArrayList<>();
     }
 
     @Column(name = "creation_date")
@@ -67,7 +67,7 @@ public class Order extends WebEntity {
     }
 
     @OneToMany
-    public Set<Book> getListOrderBooks() {
+    public List<Book> getListOrderBooks() {
         return listOrderBooks;
     }
 
@@ -88,7 +88,7 @@ public class Order extends WebEntity {
         this.userData = userData;
     }
 
-    public void setListOrderBooks(Set<Book> listOrderBooks) {
+    public void setListOrderBooks(List<Book> listOrderBooks) {
         this.listOrderBooks = listOrderBooks;
     }
 

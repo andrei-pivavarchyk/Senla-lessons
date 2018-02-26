@@ -1,7 +1,7 @@
 
 create database  webapp;
 use webapp;
-
+mysql_query('SET NAMES utf8');
 -- -----------------------------------------------------
 -- Table `webapp`.`address`
 -- -----------------------------------------------------
@@ -11,7 +11,7 @@ CREATE TABLE  `address` (
   `country` VARCHAR(50) ,
   `post_index` INT(20) ,
   `region` VARCHAR(50) ,
-  `street` VARCHAR(50) ,
+  `localAddress` VARCHAR(100) ,
   PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
@@ -174,18 +174,18 @@ INSERT INTO `webapp`.`user` (`id`, `login`, `password`, `user_active`) VALUES ('
 
 
 
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('1', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('2', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('3', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('4', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('5', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('6', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('7', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('8', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('9', '������', '��������', '240000', '�����������', '���� ��������');
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('10', '������', '��������', '240000', '�����������', '���� ��������');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('1', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('2', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('3', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('4', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('5', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('6', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('7', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('8', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('9', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('10', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
 
-INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `street`) VALUES ('11', '������', '��������', '240000', '�����������', '���� ��������');
+INSERT INTO `webapp`.`address` (`id`, `city`, `country`, `post_index`, `region`, `localAddress`) VALUES ('11', 'Гродно', 'Беларусь', '240000', 'Гродненский', 'ул. Индивидуальная дом№6');
 
 
 
@@ -237,20 +237,20 @@ INSERT INTO `webapp`.`author` (`id`, `name`, `surname`) VALUES ('13', 'Linkoln',
 
 
 
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('1', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('2', '100', '����� ����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('3', '100', '��� ����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('4', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('5', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('6', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('7', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('8', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('9', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('10', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('11', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('12', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('13', '100', '������� �����', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('14', '100', '������� �����', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('1', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('2', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('3', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('4', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('5', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('6', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('7', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('8', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('9', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('10', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('11', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('12', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('13', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('14', '100', 'Хорошая книга', 'name', '0', '0', '1');
 
 
 

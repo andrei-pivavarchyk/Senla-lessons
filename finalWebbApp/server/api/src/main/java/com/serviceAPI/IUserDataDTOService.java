@@ -9,6 +9,6 @@ import java.util.List;
  * Created by андрей on 26.02.2018.
  */
 public interface IUserDataDTOService {
-     UserData getUserDataDRO(UserData userData);
-     List<Book> getFavoriteBookList(List<Book> bookList);
+     UserData getUserDataDTO(UserData userData);
+     List<Book> getBookList(List<Book> bookList);
 }

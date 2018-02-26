@@ -47,9 +47,6 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
         this.updateEntity(removableUser);
     }
 
-    @Override
-    public Session getSession() {
-        return super.getSession();
-    }
+
 }
 

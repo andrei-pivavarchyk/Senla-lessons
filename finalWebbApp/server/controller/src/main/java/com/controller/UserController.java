@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +52,7 @@ public class UserController {
     @RequestMapping(
             value = {"/registration"},
             method = {RequestMethod.POST}
+
     )
     @ResponseBody
     public void registration(HttpServletResponse response, @RequestBody User user) {
@@ -76,7 +76,7 @@ public class UserController {
             UserData userData = this.userDataService.getUserDataByUserId(userHandler.getUser().getId());
             response.setContentType("application/json");
             if (userData != null) {
-                UserData dto=userDataDTOService.getUserDataDRO(userData);
+                UserData dto=userDataDTOService.getUserDataDTO(userData);
                 return dto;
             }
             else{
@@ -95,8 +95,8 @@ public class UserController {
     @ResponseBody
     public List<Book> getFavoriteBooks(HttpServletResponse response, HttpServletRequest request) {
 
-        UserData userData=this.userDataService.getFavorites(this.userHandler.getUser().getId());
-        List<Book> bookList = this.userDataDTOService.getFavoriteBookList(userData.getFavorites());
+        UserData userData=this.userDataService.getUserDataWithFavorites(this.userHandler.getUser().getId());
+        List<Book> bookList = this.userDataDTOService.getBookList(userData.getFavorites());
         if(bookList!=null) {
 
             response.setContentType("application/json");

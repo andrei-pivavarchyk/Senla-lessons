@@ -7,8 +7,7 @@ import 'rxjs/add/operator/map';
 import { Http, Headers, Response } from '@angular/http';
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'my-auth-token'
+    'Content-Type': 'application/json'
   })
 };
 const options =
