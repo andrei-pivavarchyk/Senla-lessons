@@ -10,10 +10,14 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 
 public class CorsFilter implements Filter {
+
+private static Logger log = Logger.getLogger(CorsFilter.class);
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
@@ -25,8 +29,13 @@ public class CorsFilter implements Filter {
         response.addHeader("Access-Control-Expose-Headers ", "authorization");
 
 
-        HttpServletRequest request = (HttpServletRequest) req;
 
+        HttpServletRequest request = (HttpServletRequest) req;
+        if (request.getMethod().equals("OPTIONS")) {
+            response.setStatus(HttpServletResponse.SC_ACCEPTED);
+            return;
+        }
+log.error(new String("cors"));
 
         chain.doFilter(req, res);
     }

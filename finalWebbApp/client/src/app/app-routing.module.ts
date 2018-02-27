@@ -4,15 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 //components
 import { LoginFormComponent } from './login-form/login-form.component';
-import { UserDataComponent } from './user-data/user-data.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { ProfileComponent } from './profile/profile.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { MainComponent } from './main/main.component';
+
 //
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent },
-  { path: 'userdata', component: UserDataComponent },
-  { path: 'home', component: MainComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'home', component: MainComponent },
+  { path: 'registration', component: RegistrationComponent }
 ];
 
 @NgModule({
@@ -20,3 +23,5 @@ const routes: Routes = [
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
+
+

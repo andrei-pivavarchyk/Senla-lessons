@@ -1,7 +1,7 @@
-
+﻿
 create database  webapp;
 use webapp;
-mysql_query('SET NAMES utf8');
+
 -- -----------------------------------------------------
 -- Table `webapp`.`address`
 -- -----------------------------------------------------
@@ -271,21 +271,21 @@ INSERT INTO `webapp`.`user_data_book` (`user_data_id`, `favorites_id`) VALUES ('
 
 
 
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('1', '����� ������', '���������', '1', '1');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('2', '����� ������', '���������', '1', '2');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('3', '����� ������', '���������', '1', '3');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('4', '����� ������', '���������', '1', '4');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('5', '����� ������', '���������', '1', '5');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('6', '����� ������', '���������', '1', '6');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('7', '����� ������', '���������', '1', '7');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('8', '����� ������', '���������', '1', '8');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('9', '����� ������', '���������', '1', '9');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('10', '����� ������', '���������', '1', '1');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('11', '����� ������', '���������', '1', '1');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('12', '����� ������', '���������', '1', '1');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('13', '����� ������', '���������', '1', '1');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('14', '����� ������', '���������', '1', '1');
-INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('15', '����� ������', '���������', '1', '1');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('1', 'отзыв', 'заголовок', '1', '1');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('2', 'отзыв', 'заголовок', '1', '2');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('3', 'отзыв', 'заголовок', '1', '3');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('4', 'отзыв', 'заголовок', '1', '4');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('5', 'отзыв', 'заголовок', '1', '5');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('6', 'отзыв', 'заголовок', '1', '6');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('7', 'отзыв', 'заголовок', '1', '7');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('8', 'отзыв', 'заголовок', '1', '8');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('9', 'отзыв', 'заголовок', '1', '9');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('10', 'отзыв', 'заголовок', '1', '1');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('11', 'отзыв', 'заголовок', '1', '1');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('12', 'отзыв', 'заголовок', '1', '1');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('13', 'отзыв', 'заголовок', '1', '1');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('14', 'отзыв', 'заголовок', '1', '1');
+INSERT INTO `webapp`.`feedback` (`id`, `feedback`, `title`, `book`, `user_data`) VALUES ('15', 'отзыв', 'заголовок', '1', '1');
 
 
 

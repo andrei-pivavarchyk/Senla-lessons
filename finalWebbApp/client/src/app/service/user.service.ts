@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
 import { Http, Headers, Response } from '@angular/http';
+import { UserData } from '../entity/userdata';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -23,16 +24,16 @@ const options =
 
 @Injectable()
 export class UserService {
-
-  private loginURL = 'http://localhost:8080/controller-1.0-SNAPSHOT/login';
-  private userDataUrl = 'http://localhost:8080/controller-1.0-SNAPSHOT/api/profile';
+private mainUrl='http://localhost:8080/controller-1.0-SNAPSHOT';
+  private loginURL = this.mainUrl+'/login';
+  private userDataUrl = this.mainUrl+'/api/profile';
+  private registrationUrl = this.mainUrl+'/registration';
   public res: Response;
   constructor(
     private http: HttpClient
   ) {
 
   }
-
 
   logout(): void {
   
@@ -44,12 +45,10 @@ export class UserService {
 
       return this.http.post(this.loginURL,
         { "type": "User", "id": null, "login": user.login, "password": user.password },
-        {observe:'response'}
+        {observe:'response' }
       )
       .map((response: HttpResponse<any>) => {
-          // login successful if there's a jwt token in the response
-          
-
+     
           let token =response.headers.get('authorization');
           if (token) {
               localStorage.setItem('currentUser', token);
@@ -61,31 +60,41 @@ export class UserService {
       });
 
   }
+  
+  registration(login:String,password:String) {
 
-  getUserData() {
-    return this.http.get(this.userDataUrl,
-      {
-        observe: 'response',
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('currentUser')
-        })
-      }
+    return this.http.post(this.registrationUrl,
+      { "type": "User", "id": null, "login": login, "password": password , user_active:true},
+      {observe:'response'}
     )
+    .map((response: HttpResponse<any>) => {
    
-    .map((response) => {
-        // login successful if there's a jwt token in the response
-        let userdata = response.body;
-        if (userdata) {
+        var status=response.status;
+        if (status) {
+          
             return true;
         } else {
-            // return false to indicate failed login
+        
             return false;
         }
     });
 
+}
+
+  getUserData() {
+    return this.http.get(this.userDataUrl,
+      {observe:'response'}
+    )
+    .map((response: HttpResponse<any>) => {
+   
+        var status=response.status;
+        if (status) {
+          
+            return true;
+        } else {
+        
+            return false;
+        }
+    });
   }
-
-
-
 }
