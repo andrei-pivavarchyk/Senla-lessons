@@ -14,54 +14,41 @@ export class UserDataComponent implements OnInit {
   constructor(
     private userService: UserService,
 
-  ) { }
+  ) { 
 
-  ngOnInit() {
+ 
   }
 
-  private user: UserData = 
- 
+  ngOnInit() { 
+this.getUserData();
+  }
+
+
+  private userData: UserData = 
     {
       "type": "UserData",
-      "id": 1,
-      "name": "Andrei",
-      "surname": "White",
-      "patronymic": "Hrumov",
-      "role": "USER",
-      "email": "andreyatake666@mailo.ru",
-      "phone": 292816940,
-      "address": null
+      "id": null,
+      "name": null,
+      "surname": null,
+      "patronymic": null,
+      "role": null,
+      "email": null,
+      "phone": null,
+      "address": {
+        "type": "Address",
+        "id": null,
+        "localAddress": null,
+        "city": null,
+        "region": null,
+        "country": null,
+        "index": null
+    }
   }
-  private address:Address=
-  {
-    "type": "Address",
-    "id": 1,
-    "localAddress": "ул. Индивидуальная дом№6",
-    "city": "Гродно",
-    "region": "Гродненский",
-    "country": "Беларусь",
-    "index": 240000
-}
 
   getUserData(): void {
-   
-  
     this.userService.getUserData()
-        .subscribe(result => {
-            if (result === true) {
-             console.log(true)
-            } else {
-                // login failed
-             //   this.error = 'Username or password is incorrect';
-             console.log(false)
-            }
-          
-        });
-
+        .subscribe(result => this.userData=  { ...result.body});
   }
 
 
-
-
-  
 }

@@ -34,13 +34,9 @@ private mainUrl='http://localhost:8080/controller-1.0-SNAPSHOT';
   ) {
 
   }
-
   logout(): void {
-  
     localStorage.removeItem('currentUser');
   }
-
-
   login(user: User) {
 
       return this.http.post(this.loginURL,
@@ -81,7 +77,7 @@ private mainUrl='http://localhost:8080/controller-1.0-SNAPSHOT';
 
 }
 
-  getUserData() {
+  getUserData():Observable<HttpResponse<UserData>> {
     return this.http.get(this.userDataUrl,
       {observe:'response'}
     )
@@ -89,11 +85,11 @@ private mainUrl='http://localhost:8080/controller-1.0-SNAPSHOT';
    
         var status=response.status;
         if (status) {
-          
-            return true;
+          console.log(response.body);
+            return response;
         } else {
         
-            return false;
+            return null;
         }
     });
   }

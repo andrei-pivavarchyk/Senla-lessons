@@ -1,26 +1,51 @@
 
 
-  <div class="row ">
+    <div class="col-sm-6col-lg-6 col-md-6">
+<form>
+  <div class="form-group " ng-init="getUserData()">
+    <label for="exampleFormControlInput1">Name</label>
+    <input  [(ngModel)]="userData.name" name="name" type="text" class="form-control"  placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Surname</label>
+    <input  [(ngModel)]="userData.surname" name="surname" type="text" class="form-control"  placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Patronymic</label>
+    <input  [(ngModel)]="userData.patronymic" name="patronymic" type="text" class="form-control"  placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email </label>
+    <input  [(ngModel)]="userData.email" name="email" type="email" class="form-control"  placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Phone</label>
+    <input  [(ngModel)]="userData.phone" name="phone" type="text" class="form-control"  placeholder="name@example.com">
+  </div>
 
-    <div class="col-sm-4 col-lg-3 col-md-3 vcenter">
-       <form>
-        <div class="form-group">
-          <label for="login">Registration</label>
-          <input  [(ngModel)]="login" type="login" class="form-control"  id="login"  placeholder="Login" name="login">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input [(ngModel)]="password" type="password" class="form-control" id="password" placeholder="Password" name="password">
-        </div>
-        <div class="form-group">
-          <label for="password">Repeat Password</label>
-          <input [(ngModel)]="repeatPassword" type="password" class="form-control" id="repeat_password" placeholder="Password" name="repeat_password">
-        </div>
-        <button type="submit" class="btn btn-primary" (click)="getUserData()">Registration</button>
-      </form>
+Address
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">LocalAddress</label>
+    <input  [(ngModel)]="userData.address.localAddress" name="address" type="email" class="form-control"  placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">City</label>
+    <input  [(ngModel)]="userData.address.city" name="city" type="text" class="form-control"  placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Region</label>
+    <input  [(ngModel)]="userData.address.region" name="region" type="text" class="form-control"  placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+      <label for="exampleFormControlInput1">Country</label>
+      <input  [(ngModel)]="userData.address.country" name="country" type="text" class="form-control"  placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Index</label>
+        <input  [(ngModel)]="userData.address.index" name="index" type="text" class="form-control"  placeholder="name@example.com">
       </div>
-    
-    
-
-
+  <button type="submit" class="btn btn-primary"  (click)="getUserData()">Registration</button>
+</form>
 </div>
+

@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -23,6 +26,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BookService } from './service/book.service';
 
 
 
@@ -50,10 +54,12 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   providers: [
     UserService,
+    BookService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true
+      multi: true,
+      
     }
   ],
   bootstrap: [AppComponent]
