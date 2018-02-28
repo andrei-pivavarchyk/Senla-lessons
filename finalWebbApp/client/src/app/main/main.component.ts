@@ -7,19 +7,7 @@ import { Book } from '../entity/book';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-   bookList:Book[]=[
-    {
-      id: null,
-      bookName: "name",
-      bookCost: 100,
-      genre: "FANTASTIC",
-      bookStatus: "IN_STOCK",
-      bookDescription: "Хорошая книга",
-      feedbackList: null,
-      author: null
-  }
-
-    ];
+   bookList:Book[]=[];
  books:string;
 
   constructor(
@@ -27,7 +15,7 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+this.getAllBooks();
 
   }
 
@@ -39,7 +27,7 @@ export class MainComponent implements OnInit {
 
   getAllBooks(): void {
     this.bookService.getAllBooks()
-        .subscribe(result => this.books=  { ...result.body});
+        .subscribe(result => this.bookList=result.body);
   }
 
 
