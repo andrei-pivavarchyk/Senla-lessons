@@ -18,6 +18,8 @@ public class OrderService implements IOrderService {
 
     @Autowired
     private IOrderDAO orderDAO;
+    @Autowired
+    private IUserDataDAO userDataDao;
 
     @Override
     public List<Order> getAllOrders() {
@@ -30,16 +32,7 @@ public class OrderService implements IOrderService {
         }
     }
 
-    @Override
-    public List<Order> getAllOrdersByUser(UserData userData) {
-        try {
-            List<Order> orderList = this.orderDAO.getAllOrdersByUser(userData);
-            return orderList;
-        } catch (Exception e) {
-            log.error(e.toString());
-            return null;
-        }
-    }
+
 
     @Override
     public void createOrder(UserData userData, List<Book> bookList) {
@@ -58,7 +51,7 @@ public class OrderService implements IOrderService {
             order.setOrderCost(this.getOrderCost(bookList));
             order.setOrderStatus(OrderStatus.DELIVERED);
             order.setUserData(userData);
-
+            order.setOrderCost(this.getOrderCost(bookList));
             try {
                 this.orderDAO.addEntity(order);
             } catch (Exception e) {
@@ -84,4 +77,18 @@ public class OrderService implements IOrderService {
             log.error(e.toString());
         }
     }
+
+    public List<Order> getAllUserOrders(User user) {
+
+        try {
+            UserData userData = this.userDataDao.getDataByUser(user);
+            List<Order> orderList = this.orderDAO.getAllOrdersByUser(userData);
+            return orderList;
+        } catch (Exception e) {
+            log.error(e.toString());
+            return null;
+        }
+    }
+
+
 }

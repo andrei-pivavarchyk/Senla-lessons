@@ -4,6 +4,7 @@ package com.service;
 import com.daoAPI.IUserDAO;
 import com.daoAPI.IUserDataDAO;
 import com.model.Book;
+import com.model.Order;
 import com.model.User;
 import com.model.UserData;
 import com.serviceAPI.IUserDataService;
@@ -33,7 +34,6 @@ public class UserDataService implements IUserDataService {
         }
     }
 
-
     public void updateUserData(UserData entity) {
         try {
             userDataDao.updateEntity(entity);
@@ -41,7 +41,6 @@ public class UserDataService implements IUserDataService {
             log.error(e.toString());
         }
     }
-
 
     public UserData getUserDataByUserId(Integer id) {
         try {
@@ -66,4 +65,16 @@ public class UserDataService implements IUserDataService {
             return null;
         }
     }
+
+    public List<UserData> getAllUserData(){
+        List<UserData> userDataList = null;
+        try {
+            userDataList = this.userDataDao.getAllEntities();
+        } catch (Exception e) {
+
+        }
+        return userDataList;
+    }
+
+
 }

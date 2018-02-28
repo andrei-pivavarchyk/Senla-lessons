@@ -4,6 +4,7 @@ import com.daoAPI.IBookDAO;
 import com.daoAPI.IUserDataDAO;
 import com.model.Author;
 import com.model.Book;
+import com.model.BookGenre;
 import com.serviceAPI.IBookService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,11 @@ public class BookService implements IBookService {
     public Book getBookWithFeedbacks(Integer id) {
        Book book= this.bookDAO.getBookWithFeedbacks(id);
        return book;
+    }
+
+    public List<Book> getAllBooksByGenre(BookGenre genre) {
+        List<Book> bookList = this.bookDAO.getBooksByGenre(genre);
+        return bookList;
     }
 
 }

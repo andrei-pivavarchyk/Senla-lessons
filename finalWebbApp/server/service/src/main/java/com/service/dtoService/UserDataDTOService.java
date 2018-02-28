@@ -50,21 +50,5 @@ public class UserDataDTOService implements IUserDataDTOService {
         return dto;
     }
 
-    public List<Book> getBookList(List<Book> bookList) {
-        List<Book>userDataBookList=new ArrayList<>();
 
-
-        for (Book book : bookList) {
-
-            Book book2 = new Book();
-            book2.setGenre(book.getGenre());
-          book2.setAuthor(book.getAuthor());
-            book2.setBookCost(book.getBookCost());
-            book2.setBookDescription(book.getBookDescription());
-            book2.setBookName(book.getBookName());
-            book2.setBookStatus(book.getBookStatus());
-            userDataBookList.add(book2);
-        }
-        return userDataBookList;
-    }
 }

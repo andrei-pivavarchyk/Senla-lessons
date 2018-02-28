@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.model.BookGenre;
 import com.model.Role;
 import com.model.User;
 import com.service.ObjectConverter;
@@ -11,6 +12,6 @@ public class Main {
     public static void main(String[] args) {
 
         ObjectConverter objectConverter=new ObjectConverter();
-System.out.print(objectConverter.convertObject(new User()));
+System.out.print(objectConverter.convertObject(BookGenre.FANTASTIC));
     }
 }

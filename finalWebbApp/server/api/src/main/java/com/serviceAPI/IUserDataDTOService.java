@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface IUserDataDTOService {
      UserData getUserDataDTO(UserData userData);
-     List<Book> getBookList(List<Book> bookList);
+
 }

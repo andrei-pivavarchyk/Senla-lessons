@@ -1,6 +1,7 @@
 package com.serviceAPI;
 
 import com.model.Book;
+import com.model.Order;
 import com.model.UserData;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface IUserDataService {
     void updateUserData(UserData entity);
 
     UserData getUserDataWithFavorites(Integer id);
+    List<UserData> getAllUserData();
+
 }

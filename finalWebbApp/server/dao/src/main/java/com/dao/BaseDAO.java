@@ -7,6 +7,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public abstract class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
@@ -41,6 +44,12 @@ public abstract class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
         T entity = null;
         entity = (T) getSession().load(getEntityClass(), id);
         return entity;
+    }
+
+    public List<T> getAllEntities()throws Exception {
+        List<T> entityList=new ArrayList<T>();
+        entityList= getSession().createCriteria(persistentClass).list();
+        return entityList;
     }
 
     public Class getEntityClass() {
