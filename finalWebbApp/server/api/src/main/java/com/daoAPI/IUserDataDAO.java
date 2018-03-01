@@ -11,4 +11,5 @@ public interface IUserDataDAO extends IBaseDAO<UserData> {
     UserData getDataByUser(User user) throws Exception;
 
     UserData getUserDatawithFavoritesBooks(User user) throws Exception;
+    UserData getUserDatawithAllDetails(User user) throws Exception;
 }

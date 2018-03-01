@@ -33,5 +33,13 @@ public class UserDataDAO extends BaseDAO<UserData> implements IUserDataDAO {
         return (UserData)criteria.uniqueResult();
     }
 
+    public UserData getUserDatawithAllDetails(User user) throws Exception{
+        Criteria criteria = getSession().createCriteria(UserData.class, "ud")
+                .add(Restrictions.eq("user", user))
+                .createAlias("ud.favorites", "favorites", JoinType.LEFT_OUTER_JOIN)
+                .createAlias("ud.feedbackList", "feedbackList", JoinType.RIGHT_OUTER_JOIN)
+                ;
+        return (UserData)criteria.uniqueResult();
+    }
 
 }

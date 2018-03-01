@@ -30,6 +30,8 @@ public class UserController {
     @Autowired
     private IAddressService addressService;
     @Autowired
+    IBookService bookService;
+    @Autowired
     IUserHandler userHandler;
 
     @Autowired
@@ -88,21 +90,18 @@ public class UserController {
         }
     }
 
+
     @RequestMapping(
             value = {"api/profile-update"},
             method = {RequestMethod.POST}
     )
-
     @ResponseBody
     public void updateUserData(HttpServletResponse response, @RequestBody UserData updateUserData) {
-        UserData userData = this.userDataService.getUserDataByUserId(userHandler.getUser().getId());
-        if (userData != null) {
-            this.addressService.updateAddress(updateUserData.getAddress());
-           this.userDataService.updateUserData(updateUserData);
-        } else {
-            response.setStatus(204);
-        }
+        this.addressService.updateAddress(updateUserData.getAddress());
+        this.userDataService.updateUserData(updateUserData);
+        response.setStatus(200);
     }
+
 
     @RequestMapping(
             value = {"api/books"},
@@ -129,6 +128,7 @@ public class UserController {
     @ResponseBody
     public void addBooksToShoppingCart(HttpServletResponse response, HttpServletRequest request, @RequestBody Book book) {
         UserData userData = this.userDataService.getUserDataWithFavorites(this.userHandler.getUser().getId());
+       // Book book1=this.bookService.get
         userData.getFavorites().add(book);
         this.userDataService.updateUserData(userData);
     }

@@ -36,6 +36,15 @@ public class UserDataService implements IUserDataService {
 
     public void updateUserData(UserData entity) {
         try {
+
+            UserData userData = this.userDataDao.getEntityById(entity.getId());
+            userData.setEmail(entity.getEmail());
+            userData.setName(entity.getName());
+            userData.setPatronymic(entity.getPatronymic());
+            userData.setPhone(entity.getPhone());
+            userData.setRole(entity.getRole());
+            userData.setSurname(entity.getSurname());
+
             userDataDao.updateEntity(entity);
         } catch (Exception e) {
             log.error(e.toString());
@@ -57,7 +66,7 @@ public class UserDataService implements IUserDataService {
 
         try {
             User user = userDao.getEntityById(id);
-           UserData userData= userDataDao.getUserDatawithFavoritesBooks(user);
+            UserData userData = userDataDao.getUserDatawithFavoritesBooks(user);
 
             return userData;
         } catch (Exception e) {
@@ -66,7 +75,7 @@ public class UserDataService implements IUserDataService {
         }
     }
 
-    public List<UserData> getAllUserData(){
+    public List<UserData> getAllUserData() {
         List<UserData> userDataList = null;
         try {
             userDataList = this.userDataDao.getAllEntities();

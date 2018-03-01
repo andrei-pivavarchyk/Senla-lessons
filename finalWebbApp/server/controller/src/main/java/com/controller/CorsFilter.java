@@ -35,7 +35,6 @@ private static Logger log = Logger.getLogger(CorsFilter.class);
             response.setStatus(HttpServletResponse.SC_ACCEPTED);
             return;
         }
-log.error(new String("cors"));
 
         chain.doFilter(req, res);
     }

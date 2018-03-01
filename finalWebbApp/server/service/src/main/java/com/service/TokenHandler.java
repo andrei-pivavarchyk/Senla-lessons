@@ -71,7 +71,6 @@ public class TokenHandler implements ITokenHandler{
             } catch (Exception e) {
                 log.error(e.toString());
             }
-
         return null;
     }
 }

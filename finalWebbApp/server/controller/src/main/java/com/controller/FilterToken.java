@@ -52,13 +52,14 @@ public class FilterToken implements Filter {
                     userHandler.setRole(role);
                     chain.doFilter(request, response);
                 }
-
             } catch (Exception e) {
                 log.error(e.toString());
             }
         }
+        else{
+            rs.setStatus(401);
+        }
 
-        rs.setStatus(401);
     }
 
     @Override

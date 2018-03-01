@@ -2,6 +2,7 @@
 
 
 import com.model.*;
+import com.service.ObjectConverter;
 import com.serviceAPI.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -35,6 +36,10 @@ public class Main {
         Book book = new Book(1, "bookname", 66, BookGenre.DETECTIVE, author, BookStatus.IN_STOCK, "Fds");
         Address userAddress = new Address(1, "Соломовой", "Гродно", "Гродненский", "Беоарусь", 240000);
         UserData userData = new UserData(1,user, "Bob", "White", "Black", role, "email", 21474836647L, userAddress);
-userService.addUser(user);
+
+        ObjectConverter objectConverter=new ObjectConverter();
+        System.out.print(objectConverter.convertObject(book));
+
+
     }
 }
