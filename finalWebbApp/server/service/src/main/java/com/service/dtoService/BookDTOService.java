@@ -4,10 +4,12 @@ import com.model.Author;
 import com.model.Book;
 import com.model.Feedback;
 import com.serviceAPI.IBookDTOService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class BookDTOService implements IBookDTOService{
 
     public Book getBookDTO(Book book) {

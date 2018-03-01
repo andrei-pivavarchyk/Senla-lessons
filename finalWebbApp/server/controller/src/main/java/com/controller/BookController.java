@@ -37,7 +37,6 @@ public class BookController {
 
     }
 
-
     @RequestMapping(
             value = {"books"},
             method = {RequestMethod.GET}

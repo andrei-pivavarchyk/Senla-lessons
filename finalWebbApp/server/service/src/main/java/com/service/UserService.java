@@ -39,6 +39,7 @@ public class UserService implements IUserService {
     private IObjectConverter objectConverter;
     @Autowired
     private IAddressDAO addressDAO;
+
     public UserService() {
     }
 

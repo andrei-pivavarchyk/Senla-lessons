@@ -28,6 +28,8 @@ public class UserController {
     @Autowired
     private IOrderService orderService;
     @Autowired
+    private IAddressService addressService;
+    @Autowired
     IUserHandler userHandler;
 
     @Autowired
@@ -49,24 +51,20 @@ public class UserController {
         if (id != null) {
             String token = tokenHandler.createToken(id);
             response.addHeader("Authorization", token);
-
         } else {
             response.setStatus(401);
         }
-
     }
 
     @RequestMapping(
             value = {"/registration"},
             method = {RequestMethod.POST}
-
     )
     @ResponseBody
     public void registration(HttpServletResponse response, @RequestBody User user) {
-
         Integer id = userService.checkUser(user);
-        if (id == null) {
-            userService.addUser(user);
+        if (id == null && user.getLogin() != null && user.getPassword() != null) {
+            this.userService.addUser(user);
         } else {
             response.setStatus(403);
         }
@@ -80,19 +78,31 @@ public class UserController {
     @ResponseBody
     public UserData getUserData(HttpServletResponse response, HttpServletRequest request) {
 
-            UserData userData = this.userDataService.getUserDataByUserId(userHandler.getUser().getId());
-            response.setContentType("application/json");
-            if (userData != null) {
-                UserData dto=userDataDTOService.getUserDataDTO(userData);
-                return dto;
-            }
-            else{
-                response.setStatus(204);
-                return new UserData();
-            }
+        UserData userData = this.userDataService.getUserDataByUserId(userHandler.getUser().getId());
+        if (userData != null) {
+            UserData dto = userDataDTOService.getUserDataDTO(userData);
+            return dto;
+        } else {
+            response.setStatus(204);
+            return new UserData();
+        }
     }
 
+    @RequestMapping(
+            value = {"api/profile-update"},
+            method = {RequestMethod.POST}
+    )
 
+    @ResponseBody
+    public void updateUserData(HttpServletResponse response, @RequestBody UserData updateUserData) {
+        UserData userData = this.userDataService.getUserDataByUserId(userHandler.getUser().getId());
+        if (userData != null) {
+            this.addressService.updateAddress(updateUserData.getAddress());
+           this.userDataService.updateUserData(updateUserData);
+        } else {
+            response.setStatus(204);
+        }
+    }
 
     @RequestMapping(
             value = {"api/books"},
@@ -100,13 +110,11 @@ public class UserController {
     )
 
     @ResponseBody
-    public List<Book> getBooksFromShoppingCart(HttpServletResponse response, HttpServletRequest request) {
+    public List<Book> getBooksFromShoppingCart(HttpServletResponse response) {
 
-        UserData userData=this.userDataService.getUserDataWithFavorites(this.userHandler.getUser().getId());
+        UserData userData = this.userDataService.getUserDataWithFavorites(this.userHandler.getUser().getId());
         List<Book> bookList = this.bookDTOService.getBookList(userData.getFavorites());
-        if(bookList!=null) {
-
-            response.setContentType("application/json");
+        if (bookList != null) {
             return bookList;
         }
         response.setStatus(204);
@@ -114,19 +122,16 @@ public class UserController {
     }
 
 
-
     @RequestMapping(
-            value = {"api/addtocart"},
+            value = {"api/add-to-cart"},
             method = {RequestMethod.POST}
     )
     @ResponseBody
-    public void addBooksToShoppingCart(HttpServletResponse response, HttpServletRequest request,@RequestBody List<Book> bookList) {
-      UserData userData= this.userDataService.getUserDataWithFavorites(this.userHandler.getUser().getId());
-      userData.getFavorites().addAll(bookList);
-      this.userDataService.updateUserData(userData);
+    public void addBooksToShoppingCart(HttpServletResponse response, HttpServletRequest request, @RequestBody Book book) {
+        UserData userData = this.userDataService.getUserDataWithFavorites(this.userHandler.getUser().getId());
+        userData.getFavorites().add(book);
+        this.userDataService.updateUserData(userData);
     }
-
-
 
     @RequestMapping(
             value = {"api/orders"},
@@ -135,14 +140,12 @@ public class UserController {
 
     @ResponseBody
     public List<Order> getOrdersByUser(HttpServletResponse response, HttpServletRequest request) {
-      User user=this.userHandler.getUser();
-        if(user!=null) {
-        List<Order> orderList= this.orderService.getAllUserOrders(user);
-            return orderList;
+        User user = this.userHandler.getUser();
+        List<Order> orderList = this.orderService.getAllUserOrders(user);
+        if (orderList.isEmpty()) {
+            response.setStatus(204);
+            return new ArrayList<>();
         }
-        response.setStatus(204);
-        return new ArrayList<>();
+        return orderList;
     }
-
-
 }

@@ -1,7 +1,7 @@
 package com.controller;
 
 
-import com.model.Book;
+
 import com.model.Order;
 import com.model.UserData;
 import com.serviceAPI.*;
@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +17,17 @@ import java.util.List;
 @Controller
 public class AdminController {
 
+    @Autowired
     private IUserDataService userDataService;
     @Autowired
     private IUserDataDTOService userDataDTOService;
     @Autowired
-    IUserHandler userHandler;
-
+    private IUserHandler userHandler;
     @Autowired
     private IOrderService orderService;
     @Autowired
     private IOrderDTOService orderDTOService;
+
     @RequestMapping(
             value = {"/api/admin/get-all-users"},
             method = {RequestMethod.POST}

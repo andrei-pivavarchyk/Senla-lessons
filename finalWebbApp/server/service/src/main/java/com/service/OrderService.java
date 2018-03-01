@@ -6,12 +6,14 @@ import com.model.*;
 import com.serviceAPI.IOrderService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
+@Service
+@Transactional
 public class OrderService implements IOrderService {
 
     private static Logger log = Logger.getLogger(OrderService.class);
@@ -20,6 +22,10 @@ public class OrderService implements IOrderService {
     private IOrderDAO orderDAO;
     @Autowired
     private IUserDataDAO userDataDao;
+
+
+    public OrderService() {
+    }
 
     @Override
     public List<Order> getAllOrders() {
@@ -31,8 +37,6 @@ public class OrderService implements IOrderService {
             return null;
         }
     }
-
-
 
     @Override
     public void createOrder(UserData userData, List<Book> bookList) {
@@ -89,6 +93,5 @@ public class OrderService implements IOrderService {
             return null;
         }
     }
-
 
 }

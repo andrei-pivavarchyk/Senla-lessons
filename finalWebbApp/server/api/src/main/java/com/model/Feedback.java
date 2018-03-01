@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "feedback")
 public class Feedback extends WebEntity{
@@ -31,8 +32,6 @@ public class Feedback extends WebEntity{
         this.title = title;
         this.feedback = feedback;
     }
-
-
 
     @ManyToOne
     @JoinColumn(name = "book")

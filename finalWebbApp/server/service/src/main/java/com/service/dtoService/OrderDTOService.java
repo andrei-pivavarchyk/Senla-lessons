@@ -2,7 +2,9 @@ package com.service.dtoService;
 
 import com.model.Order;
 import com.serviceAPI.IOrderDTOService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OrderDTOService implements IOrderDTOService {
 
 

@@ -19,20 +19,8 @@ this.getAllBooks();
 
   }
 
-
-
-
-
-
-
   getAllBooks(): void {
     this.bookService.getAllBooks()
         .subscribe(result => this.bookList=result.body);
   }
-
-
-
-
-
-
 }

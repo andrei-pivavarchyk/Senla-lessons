@@ -14,7 +14,6 @@ import java.util.List;
 
 
 @Service
-@Transactional
 public class UserDataDTOService implements IUserDataDTOService {
 
     @Autowired
@@ -22,10 +21,8 @@ public class UserDataDTOService implements IUserDataDTOService {
     @Autowired
     private IUserDAO userDao;
 
-
     public UserDataDTOService() {
     }
-
 
     @Override
     public UserData getUserDataDTO(UserData userData) {
