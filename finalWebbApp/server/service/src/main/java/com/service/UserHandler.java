@@ -14,8 +14,9 @@ public class UserHandler implements IUserHandler {
 
     private User user;
 
-
     private Role role;
+
+    private Integer userDataId;
 
     public UserHandler() {
     }
@@ -31,6 +32,14 @@ public class UserHandler implements IUserHandler {
 
     public User getUser() {
         return user;
+    }
+
+    public Integer getUserDataId() {
+        return userDataId;
+    }
+
+    public void setUserDataId(Integer userDataId) {
+        this.userDataId = userDataId;
     }
 
     public void setUser(User user) {

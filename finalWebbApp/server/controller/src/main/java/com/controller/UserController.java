@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.exception.NoSuchUserException;
+import com.exception.UserRegistrationException;
 import com.model.Book;
 import com.model.Order;
 import com.model.User;
@@ -13,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -47,14 +51,17 @@ public class UserController {
             method = {RequestMethod.POST}
     )
     @ResponseBody
-    public void login(HttpServletResponse response, @RequestBody User user) {
-
-        Integer id = userService.checkUser(user);
+    public Map login(HttpServletResponse response, @RequestBody User user) throws NoSuchUserException {
+        Integer id = userService.loginUser(user);
         if (id != null) {
             String token = tokenHandler.createToken(id);
             response.addHeader("Authorization", token);
+            Map result = new HashMap();
+            result.put("success", true);
+            result.put("message", "Success login");
+            return result;
         } else {
-            response.setStatus(401);
+            throw new NoSuchUserException("Invalid Password or Login");
         }
     }
 
@@ -63,20 +70,29 @@ public class UserController {
             method = {RequestMethod.POST}
     )
     @ResponseBody
-    public void registration(HttpServletResponse response, @RequestBody User user) {
-        Integer id = userService.checkUser(user);
-        if (id == null && user.getLogin() != null && user.getPassword() != null) {
-            this.userService.addUser(user);
-        } else {
-            response.setStatus(403);
+    public Map registration(@RequestBody User user) throws UserRegistrationException {
+
+
+        Map result = userService.registrationUser(user);
+
+
+     /*   Map result = null;
+
+        try {
+            result = userService.registrationUser(user);
+        } catch (UserRegistrationException e) {
+            throw new UserRegistrationException(e.getMessage());
         }
+        return result;
+*/
+        return result;
     }
+
 
     @RequestMapping(
             value = {"api/profile"},
             method = {RequestMethod.GET}
     )
-
     @ResponseBody
     public UserData getUserData(HttpServletResponse response, HttpServletRequest request) {
 
@@ -90,7 +106,6 @@ public class UserController {
         }
     }
 
-
     @RequestMapping(
             value = {"api/profile-update"},
             method = {RequestMethod.POST}
@@ -102,12 +117,10 @@ public class UserController {
         response.setStatus(200);
     }
 
-
     @RequestMapping(
             value = {"api/books"},
             method = {RequestMethod.GET}
     )
-
     @ResponseBody
     public List<Book> getBooksFromShoppingCart(HttpServletResponse response) {
 
@@ -119,7 +132,6 @@ public class UserController {
         response.setStatus(204);
         return new ArrayList<>();
     }
-
 
     @RequestMapping(
             value = {"api/add-to-cart"},
@@ -145,5 +157,24 @@ public class UserController {
             return new ArrayList<>();
         }
         return orderList;
+    }
+
+
+    @ResponseBody
+    @ExceptionHandler(NoSuchUserException.class)
+    public Map handleUserLoginException(NoSuchUserException ex) {
+        Map result = new HashMap();
+        result.put("success", false);
+        result.put("message", ex.getMessage());
+        return result;
+    }
+
+    @ResponseBody
+    @ExceptionHandler(UserRegistrationException.class)
+    public Map handleUserRegistration(UserRegistrationException ex) {
+        Map result = new HashMap();
+        result.put("success", false);
+        result.put("message", ex.getMessage());
+        return result;
     }
 }

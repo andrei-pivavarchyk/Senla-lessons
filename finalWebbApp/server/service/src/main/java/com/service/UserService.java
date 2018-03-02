@@ -5,6 +5,8 @@ import com.daoAPI.IAddressDAO;
 
 import com.daoAPI.IUserDAO;
 import com.daoAPI.IUserDataDAO;
+import com.exception.NoSuchUserException;
+import com.exception.UserRegistrationException;
 import com.model.Address;
 import com.model.Role;
 import com.model.User;
@@ -13,11 +15,15 @@ import com.model.UserData;
 import com.serviceAPI.IObjectConverter;
 import com.serviceAPI.IUserService;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -67,16 +73,40 @@ public class UserService implements IUserService {
         }
     }
 
-    public Integer checkUser(User user) {
+    public Integer loginUser(User user) {
 
         try {
-            Integer userId = userDAO.checkUser(user.getLogin());
+            Integer userId = userDAO.loginUser(user.getLogin(), user.getPassword());
             return userId;
         } catch (Exception e) {
             log.error(e.toString());
             return null;
         }
     }
+
+    public Map registrationUser(User user) throws UserRegistrationException {
+        Map result = new HashMap();
+
+        try {
+            Integer userId = userDAO.checkUser(user.getLogin());
+            Boolean userValid = this.userValidator(user);
+            if (userId != null) {
+                throw new UserRegistrationException("User already exist");
+            } else if (userValid.equals(false)) {
+                throw new UserRegistrationException("Invalid Login or Password");
+            } else {
+                this.userDAO.addEntity(user);
+                result.put("success", true);
+                result.put("message", "Registration success");
+                return result;
+            }
+
+        } catch (Exception e) {
+            log.error(e.toString());
+            throw new UserRegistrationException("Something wrong");
+        }
+    }
+
 
     public UserData getUserDataByUser(User user) {
         try {
@@ -92,13 +122,13 @@ public class UserService implements IUserService {
         try {
             this.userDAO.removeUser(user);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
     }
 
     public Role getRoleByUser(User user) {
         Role role = this.getUserDataByUser(user).getRole();
-        Role roleDTO=role;
+        Role roleDTO = role;
         return roleDTO;
     }
 
@@ -109,6 +139,31 @@ public class UserService implements IUserService {
         } catch (Exception e) {
             log.error(e.toString());
             return null;
+        }
+    }
+
+    private Boolean userValidator(User user) {
+        if (user.getLogin() != null
+                && user.getPassword() != null
+                && user.getLogin().length() < 20
+                && user.getPassword().length() < 20) {
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean checkUser(User user) {
+
+        Integer userId = null;
+        try {
+            userId = userDAO.checkUser(user.getLogin());
+            if (userId != null) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            log.error(e.toString());
+            return false;
         }
     }
 }

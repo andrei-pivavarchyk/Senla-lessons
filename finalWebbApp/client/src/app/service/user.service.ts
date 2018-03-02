@@ -24,10 +24,10 @@ const options =
 
 @Injectable()
 export class UserService {
-private mainUrl='http://localhost:8080/controller-1.0-SNAPSHOT';
-  private loginURL = this.mainUrl+'/login';
-  private userDataUrl = this.mainUrl+'/api/profile';
-  private registrationUrl = this.mainUrl+'/registration';
+  private mainUrl = 'http://localhost:8080/controller-1.0-SNAPSHOT';
+  private loginURL = this.mainUrl + '/login';
+  private userDataUrl = this.mainUrl + '/api/profile';
+  private registrationUrl = this.mainUrl + '/registration';
   public res: Response;
   constructor(
     private http: HttpClient
@@ -39,58 +39,55 @@ private mainUrl='http://localhost:8080/controller-1.0-SNAPSHOT';
   }
   login(user: User) {
 
-      return this.http.post(this.loginURL,
-        { "type": "User", "id": null, "login": user.login, "password": user.password },
-        {observe:'response' }
-      )
+    return this.http.post(this.loginURL,
+      { "type": "User", "id": null, "login": user.login, "password": user.password },
+      { observe: 'response' }
+    )
       .map((response: HttpResponse<any>) => {
-     
-          let token =response.headers.get('authorization');
-          if (token) {
-              localStorage.setItem('currentUser', token);
-              return true;
-          } else {
-              // return false to indicate failed login
-              return false;
-          }
+        var loginSucces = response.body['success'];
+        if (loginSucces == true) {
+          let token = response.headers.get('authorization');
+          localStorage.setItem('currentUser', token);
+          return true;
+        }
+        else {
+          console.log(response.body['message']);
+          return false;
+        }
       });
 
   }
-  
-  registration(login:String,password:String) {
 
+  registration(login: String, password: String) {
     return this.http.post(this.registrationUrl,
-      { "type": "User", "id": null, "login": login, "password": password , user_active:true},
-      {observe:'response'}
+      { "type": "User", "id": null, "login": login, "password": password, user_active: true },
+      { observe: 'response' }
     )
-    .map((response: HttpResponse<any>) => {
-   
-        var status=response.status;
-        if (status) {
-          
-            return true;
+      .map((response: HttpResponse<any>) => {
+        var succesRegistration = response.body['success'];
+        if (succesRegistration) {
+          return true;
         } else {
-        
-            return false;
+          return false;
         }
-    });
+      });
 
-}
+  }
 
-  getUserData():Observable<HttpResponse<UserData>> {
+  getUserData(): Observable<HttpResponse<UserData>> {
     return this.http.get(this.userDataUrl,
-      {observe:'response'}
+      { observe: 'response' }
     )
-    .map((response: HttpResponse<any>) => {
-   
-        var status=response.status;
+      .map((response: HttpResponse<any>) => {
+
+        var status = response.status;
         if (status) {
           console.log(response.body);
-            return response;
+          return response;
         } else {
-        
-            return null;
+
+          return null;
         }
-    });
+      });
   }
 }

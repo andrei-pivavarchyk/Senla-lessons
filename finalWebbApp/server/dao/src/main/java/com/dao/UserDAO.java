@@ -32,6 +32,16 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
         }
         return null;
     }
+    public Integer loginUser(String login,String password) throws Exception {
+        Criteria criteria = getSession().createCriteria(User.class)
+                .add(Restrictions.like("login", login))
+                .add(Restrictions.like("password", password));
+        User checkingUser = (User) criteria.uniqueResult();
+        if (checkingUser != null) {
+            return checkingUser.getId();
+        }
+        return null;
+    }
 
     public User getUserByLoginPassword(String login, String password) throws Exception {
         Criteria criteria = getSession().createCriteria(User.class)

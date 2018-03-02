@@ -11,31 +11,29 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router) { 
+    private router: Router) {
 
   }
 
   ngOnInit() {
 
   }
-  private password=null;
-  private repeatPassword=null;
-  private login=null;
+  private password = null;
+  private repeatPassword = null;
+  private login = null;
 
- 
-  registration(): void { 
 
-    this.userService.registration(this.login,this.password)
-        .subscribe(result => {
-            if (result === true) {
-              this.router.navigate(['home']);
-              console.log('registration succes')
-            } else {
-                // login failed
-             //   this.error = 'Username or password is incorrect';
-              console.log('registration fail')
-            }
-        });
+  registration(): void {
+
+    this.userService.registration(this.login, this.password)
+      .subscribe(result => {
+        if (result === true) {
+          this.router.navigate(['home']);
+          console.log('registration succes')
+        } else {
+          console.log('registration fail')
+        }
+      });
   }
 
 }

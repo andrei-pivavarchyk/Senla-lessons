@@ -3,10 +3,8 @@ package com.controller;
 
 import com.model.Role;
 import com.model.User;
-import com.serviceAPI.ITokenHandler;
-import com.serviceAPI.IUserDataDTOService;
-import com.serviceAPI.IUserHandler;
-import com.serviceAPI.IUserService;
+import com.model.UserData;
+import com.serviceAPI.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -31,6 +29,7 @@ public class FilterToken implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse rs = (HttpServletResponse) response;
         String token = req.getHeader("authorization");
+
         ITokenHandler tokenHandler = WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
                 getBean(ITokenHandler.class);
@@ -42,14 +41,19 @@ public class FilterToken implements Filter {
         IUserService userService=WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
                 getBean(IUserService.class);
+        IUserDataService userDataService=WebApplicationContextUtils.
+                getRequiredWebApplicationContext(filterConfig.getServletContext()).
+                getBean(IUserDataService.class);
 
         if (id != null) {
             try {
                 User user = userService.getUserByID(id);
                 if (user != null) {
                     Role role = userService.getRoleByUser(user);
+                    UserData userData=userDataService.getUserDataByUserId(id);
                     userHandler.setUser(user);
                     userHandler.setRole(role);
+                    userHandler.setUserDataId(userData.getId());
                     chain.doFilter(request, response);
                 }
             } catch (Exception e) {
