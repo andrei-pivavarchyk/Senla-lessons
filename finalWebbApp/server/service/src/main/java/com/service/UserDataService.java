@@ -1,6 +1,7 @@
 package com.service;
 
 
+import com.daoAPI.IBookDAO;
 import com.daoAPI.IUserDAO;
 import com.daoAPI.IUserDataDAO;
 import com.model.Book;
@@ -25,6 +26,8 @@ public class UserDataService implements IUserDataService {
     private IUserDataDAO userDataDao;
     @Autowired
     private IUserDAO userDao;
+    @Autowired
+    private IBookDAO bookDAO;
 
     public void addUserData(UserData entity) {
         try {
@@ -62,10 +65,10 @@ public class UserDataService implements IUserDataService {
         }
     }
 
-    public UserData getUserDataWithFavorites(Integer id) {
+    public UserData getUserDataWithFavorites(Integer userID) {
 
         try {
-            User user = userDao.getEntityById(id);
+            User user = userDao.getEntityById(userID);
             UserData userData = userDataDao.getUserDatawithFavoritesBooks(user);
 
             return userData;
@@ -73,6 +76,23 @@ public class UserDataService implements IUserDataService {
             log.error(e.toString());
             return null;
         }
+    }
+    public void addBookToCart(Integer userID,Book book){
+
+        try {
+            Book book2=this.bookDAO.getEntityById(book.getId());
+            User user = userDao.getEntityById(userID);
+            UserData userData = userDataDao.getDataByUser(user);
+            List<Book> bookList=userData.getFavorites();
+            if(!bookList.contains(book2)&&book2!=null){
+                userData.getFavorites().add(book2);
+                this.userDataDao.updateEntity(userData);
+            }
+
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+
     }
 
     public List<UserData> getAllUserData() {

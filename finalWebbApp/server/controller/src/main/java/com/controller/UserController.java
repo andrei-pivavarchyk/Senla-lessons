@@ -127,10 +127,8 @@ public class UserController {
     )
     @ResponseBody
     public void addBooksToShoppingCart(HttpServletResponse response, HttpServletRequest request, @RequestBody Book book) {
-        UserData userData = this.userDataService.getUserDataWithFavorites(this.userHandler.getUser().getId());
-       // Book book1=this.bookService.get
-        userData.getFavorites().add(book);
-        this.userDataService.updateUserData(userData);
+        this.userDataService.addBookToCart(this.userHandler.getUser().getId(), book);
+
     }
 
     @RequestMapping(

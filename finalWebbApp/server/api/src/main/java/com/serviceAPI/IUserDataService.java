@@ -16,5 +16,6 @@ public interface IUserDataService {
 
     UserData getUserDataWithFavorites(Integer id);
     List<UserData> getAllUserData();
+    void addBookToCart(Integer userID,Book book);
 
 }

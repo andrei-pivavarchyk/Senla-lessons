@@ -29,7 +29,7 @@ public class Main {
         IAddressService addressService=context.getBean(IAddressService.class);
         IUserDataDTOService userDataDTOService=context.getBean(IUserDataDTOService.class);
         Role role = Role.USER;
-        Author author = new Author();
+        Author author = new Author(1,"bob","bob",new Date());
 
 
         User user = new User(1, "Andrei", "Hrumov");
