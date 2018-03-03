@@ -86,25 +86,26 @@ public class UserService implements IUserService {
 
     public Map registrationUser(User user) throws UserRegistrationException {
         Map result = new HashMap();
-
-        try {
-            Integer userId = userDAO.checkUser(user.getLogin());
-            Boolean userValid = this.userValidator(user);
-            if (userId != null) {
-                throw new UserRegistrationException("User already exist");
-            } else if (userValid.equals(false)) {
-                throw new UserRegistrationException("Invalid Login or Password");
-            } else {
+        Boolean userExist = this.checkUser(user);
+        Boolean userValid = this.userValidator(user);
+        if (userExist.equals(true)) {
+            throw new UserRegistrationException("User already exist");
+        } else if (userValid.equals(false)) {
+            throw new UserRegistrationException("Invalid Login or Password");
+        } else {
+            try {
                 this.userDAO.addEntity(user);
-                result.put("success", true);
-                result.put("message", "Registration success");
+            } catch (Exception e) {
+                log.error(e.toString());
+                result.put("success", false);
+                result.put("message", "Exception during registration");
                 return result;
             }
-
-        } catch (Exception e) {
-            log.error(e.toString());
-            throw new UserRegistrationException("Something wrong");
+            result.put("success", true);
+            result.put("message", "Registration success");
+            return result;
         }
+
     }
 
 
@@ -166,6 +167,8 @@ public class UserService implements IUserService {
             return false;
         }
     }
+
+
 }
 
 

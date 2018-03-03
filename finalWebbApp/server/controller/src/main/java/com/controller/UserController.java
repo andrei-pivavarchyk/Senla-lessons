@@ -70,21 +70,8 @@ public class UserController {
             method = {RequestMethod.POST}
     )
     @ResponseBody
-    public Map registration(@RequestBody User user) throws UserRegistrationException {
-
-
+    public Map registration(HttpServletResponse response,@RequestBody User user) throws UserRegistrationException {
         Map result = userService.registrationUser(user);
-
-
-     /*   Map result = null;
-
-        try {
-            result = userService.registrationUser(user);
-        } catch (UserRegistrationException e) {
-            throw new UserRegistrationException(e.getMessage());
-        }
-        return result;
-*/
         return result;
     }
 
@@ -161,17 +148,18 @@ public class UserController {
 
 
     @ResponseBody
-    @ExceptionHandler(NoSuchUserException.class)
-    public Map handleUserLoginException(NoSuchUserException ex) {
+    @ExceptionHandler(UserRegistrationException.class)
+    public Map handleUserLoginException(UserRegistrationException ex) {
+        log.error(ex.toString());
         Map result = new HashMap();
         result.put("success", false);
         result.put("message", ex.getMessage());
         return result;
     }
-
     @ResponseBody
-    @ExceptionHandler(UserRegistrationException.class)
-    public Map handleUserRegistration(UserRegistrationException ex) {
+    @ExceptionHandler(NoSuchUserException.class)
+    public Map handleUserLoginException(NoSuchUserException ex) {
+        log.error(ex.toString());
         Map result = new HashMap();
         result.put("success", false);
         result.put("message", ex.getMessage());
