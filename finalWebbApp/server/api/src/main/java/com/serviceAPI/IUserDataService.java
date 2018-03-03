@@ -12,10 +12,12 @@ public interface IUserDataService {
 
     UserData getUserDataByUserId(Integer id);
 
-    void updateUserData(UserData entity);
+    UserData updateUserData(UserData entity);
 
     UserData getUserDataWithFavorites(Integer id);
+
     List<UserData> getAllUserData();
-    void addBookToCart(Integer userID,Book book);
+
+    void addBookToCart(Integer userID, Book book);
 
 }

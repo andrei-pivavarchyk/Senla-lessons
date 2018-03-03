@@ -41,19 +41,15 @@ public class FilterToken implements Filter {
         IUserService userService=WebApplicationContextUtils.
                 getRequiredWebApplicationContext(filterConfig.getServletContext()).
                 getBean(IUserService.class);
-        IUserDataService userDataService=WebApplicationContextUtils.
-                getRequiredWebApplicationContext(filterConfig.getServletContext()).
-                getBean(IUserDataService.class);
+
 
         if (id != null) {
             try {
                 User user = userService.getUserByID(id);
                 if (user != null) {
                     Role role = userService.getRoleByUser(user);
-                    UserData userData=userDataService.getUserDataByUserId(id);
                     userHandler.setUser(user);
                     userHandler.setRole(role);
-                    userHandler.setUserDataId(userData.getId());
                     chain.doFilter(request, response);
                 }
             } catch (Exception e) {

@@ -26,11 +26,9 @@ public class UserDataDTOService implements IUserDataDTOService {
 
     @Override
     public UserData getUserDataDTO(UserData userData) {
-
         UserData dto = new UserData();
         dto.setId(userData.getId());
-        String str = userData.getRole().toString();
-        dto.setRole(Role.valueOf(str));
+        dto.setRole(userData.getRole());
         dto.setName(userData.getName());
         dto.setSurname(userData.getSurname());
         dto.setPatronymic(userData.getPatronymic());
@@ -43,9 +41,6 @@ public class UserDataDTOService implements IUserDataDTOService {
         address.setIndex(userData.getAddress().getIndex());
         address.setRegion(userData.getAddress().getRegion());
         address.setLocalAddress(userData.getAddress().getLocalAddress());
-
         return dto;
     }
-
-
 }

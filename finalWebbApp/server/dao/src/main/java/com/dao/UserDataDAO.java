@@ -1,10 +1,7 @@
 package com.dao;
 
 import com.daoAPI.IUserDataDAO;
-import com.model.Book;
-import com.model.Order;
-import com.model.User;
-import com.model.UserData;
+import com.model.*;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
@@ -20,11 +17,13 @@ public class UserDataDAO extends BaseDAO<UserData> implements IUserDataDAO {
     }
 
     public UserData getDataByUser(User user)throws Exception {
-        UserData userData = (UserData) getSession().createCriteria(UserData.class)
+        UserData userData = (UserData) getSession().createCriteria(UserData.class, "ud")
                 .add(Restrictions.eq("user", user))
+                .createAlias("ud.address", "address", JoinType.LEFT_OUTER_JOIN)
                 .uniqueResult();
         return userData;
     }
+
 
     public UserData getUserDatawithFavoritesBooks(User user) throws Exception{
         Criteria criteria = getSession().createCriteria(UserData.class, "ud")

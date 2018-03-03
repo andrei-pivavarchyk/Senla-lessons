@@ -12,8 +12,5 @@ public interface IUserHandler {
 
     void setRole(Role role);
 
-    Integer getUserDataId();
-
-    void setUserDataId(Integer userDataId);
 
 }

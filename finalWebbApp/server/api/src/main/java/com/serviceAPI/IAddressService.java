@@ -8,4 +8,5 @@ import com.model.Address;
 public interface IAddressService {
     void updateAddress(Address address);
     void addAddress(Address address);
+
 }

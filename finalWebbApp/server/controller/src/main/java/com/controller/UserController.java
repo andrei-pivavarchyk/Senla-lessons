@@ -2,10 +2,7 @@ package com.controller;
 
 import com.exception.NoSuchUserException;
 import com.exception.UserRegistrationException;
-import com.model.Book;
-import com.model.Order;
-import com.model.User;
-import com.model.UserData;
+import com.model.*;
 import com.serviceAPI.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,11 +78,11 @@ public class UserController {
             method = {RequestMethod.GET}
     )
     @ResponseBody
-    public UserData getUserData(HttpServletResponse response, HttpServletRequest request) {
+    public UserData getUserData(HttpServletResponse response) {
 
-        UserData userData = this.userDataService.getUserDataByUserId(userHandler.getUser().getId());
+        UserData userData = this.userDataService.getUserDataByUserId(this.userHandler.getUser().getId());
         if (userData != null) {
-            UserData dto = userDataDTOService.getUserDataDTO(userData);
+           UserData dto = userDataDTOService.getUserDataDTO(userData);
             return dto;
         } else {
             response.setStatus(204);
@@ -98,11 +95,19 @@ public class UserController {
             method = {RequestMethod.POST}
     )
     @ResponseBody
-    public void updateUserData(HttpServletResponse response, @RequestBody UserData updateUserData) {
-        this.addressService.updateAddress(updateUserData.getAddress());
-        this.userDataService.updateUserData(updateUserData);
-        response.setStatus(200);
+    public UserData updateUserData(HttpServletResponse response, @RequestBody UserData updateUserData) {
+      UserData currentUserData=this.userDataService.updateUserData(updateUserData);
+        if (currentUserData != null) {
+            UserData dto = userDataDTOService.getUserDataDTO(currentUserData);
+           return dto;
+
+        } else {
+            response.setStatus(400);
+            return new UserData();
+        }
     }
+
+
 
     @RequestMapping(
             value = {"api/books"},
@@ -157,11 +162,9 @@ public class UserController {
     @ExceptionHandler(UserRegistrationException.class)
     public Map handleUserLoginException(UserRegistrationException ex) {
         log.error(ex.toString());
-
         return  this.setResult(ex);
     }
     private Map setResult(Exception ex){
-
         Map result = new HashMap();
         result.put("success", false);
         result.put("message", ex.getMessage());

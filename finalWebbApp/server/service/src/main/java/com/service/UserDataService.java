@@ -1,13 +1,11 @@
 package com.service;
 
 
+import com.daoAPI.IAddressDAO;
 import com.daoAPI.IBookDAO;
 import com.daoAPI.IUserDAO;
 import com.daoAPI.IUserDataDAO;
-import com.model.Book;
-import com.model.Order;
-import com.model.User;
-import com.model.UserData;
+import com.model.*;
 import com.serviceAPI.IUserDataService;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -28,6 +26,8 @@ public class UserDataService implements IUserDataService {
     private IUserDAO userDao;
     @Autowired
     private IBookDAO bookDAO;
+    @Autowired
+    IAddressDAO addressDAO;
 
     public void addUserData(UserData entity) {
         try {
@@ -37,7 +37,7 @@ public class UserDataService implements IUserDataService {
         }
     }
 
-    public void updateUserData(UserData entity) {
+    public UserData updateUserData(UserData entity) {
         try {
 
             UserData userData = this.userDataDao.getEntityById(entity.getId());
@@ -47,10 +47,13 @@ public class UserDataService implements IUserDataService {
             userData.setPhone(entity.getPhone());
             userData.setRole(entity.getRole());
             userData.setSurname(entity.getSurname());
-
-            userDataDao.updateEntity(entity);
+            this.userDataDao.updateEntity(userData);
+            Address address=entity.getAddress();
+            this.addressDAO.updateEntity(address);
+            return userData;
         } catch (Exception e) {
             log.error(e.toString());
+            return null;
         }
     }
 
@@ -65,6 +68,7 @@ public class UserDataService implements IUserDataService {
         }
     }
 
+
     public UserData getUserDataWithFavorites(Integer userID) {
 
         try {
@@ -77,14 +81,15 @@ public class UserDataService implements IUserDataService {
             return null;
         }
     }
-    public void addBookToCart(Integer userID,Book book){
+
+    public void addBookToCart(Integer userID, Book book) {
 
         try {
-            Book book2=this.bookDAO.getEntityById(book.getId());
+            Book book2 = this.bookDAO.getEntityById(book.getId());
             User user = userDao.getEntityById(userID);
             UserData userData = userDataDao.getDataByUser(user);
-            List<Book> bookList=userData.getFavorites();
-            if(!bookList.contains(book2)&&book2!=null){
+            List<Book> bookList = userData.getFavorites();
+            if (!bookList.contains(book2) && book2 != null) {
                 userData.getFavorites().add(book2);
                 this.userDataDao.updateEntity(userData);
             }
