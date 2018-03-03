@@ -97,9 +97,7 @@ public class UserService implements IUserService {
                 this.userDAO.addEntity(user);
             } catch (Exception e) {
                 log.error(e.toString());
-                result.put("success", false);
-                result.put("message", "Exception during registration");
-                return result;
+                throw new UserRegistrationException("Exception during registration");
             }
             result.put("success", true);
             result.put("message", "Registration success");
