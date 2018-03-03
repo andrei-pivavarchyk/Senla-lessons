@@ -151,14 +151,14 @@ public class UserController {
     @ExceptionHandler(NoSuchUserException.class)
     public Map handleUserLoginException(NoSuchUserException ex) {
         log.error(ex.toString());
-        return this.setResult(ex);
+       return this.setResult(ex);
     }
     @ResponseBody
     @ExceptionHandler(UserRegistrationException.class)
-    public Map handleUserRegistrationException(UserRegistrationException ex) {
+    public Map handleUserLoginException(UserRegistrationException ex) {
         log.error(ex.toString());
 
-        return this.setResult(ex);
+        return  this.setResult(ex);
     }
     private Map setResult(Exception ex){
 

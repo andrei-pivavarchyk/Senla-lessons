@@ -34,8 +34,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/src/main/java/com/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="150" column="47" lean-forward="false" selection-start-line="150" selection-start-column="47" selection-end-line="150" selection-end-column="47" />
+            <state relative-caret-position="729">
+              <caret line="153" column="13" lean-forward="false" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -44,9 +44,11 @@
       <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/src/main/java/com/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="99" column="69" lean-forward="false" selection-start-line="99" selection-start-column="69" selection-end-line="99" selection-end-column="69" />
-              <folding />
+            <state relative-caret-position="260">
+              <caret line="90" column="37" lean-forward="true" selection-start-line="90" selection-start-column="37" selection-end-line="91" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,6 +101,7 @@
       <find>user_data</find>
       <find>book_id</find>
       <find>order</find>
+      <find>NoSuchUserException</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -158,8 +161,8 @@
         <option value="$PROJECT_DIR$/api/src/main/java/com/exception/UserRegistrationException.java" />
         <option value="$PROJECT_DIR$/api/src/main/java/com/serviceAPI/IUserService.java" />
         <option value="$PROJECT_DIR$/service/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/service/src/main/java/com/service/UserService.java" />
         <option value="$PROJECT_DIR$/controller/src/main/java/com/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/service/src/main/java/com/service/UserService.java" />
       </list>
     </option>
   </component>
@@ -1228,7 +1231,7 @@
       <workItem from="1519908621026" duration="15175000" />
       <workItem from="1520011801464" duration="4046000" />
       <workItem from="1519999343844" duration="15432000" />
-      <workItem from="1520100787420" duration="6347000" />
+      <workItem from="1520100787420" duration="6780000" />
     </task>
     <servers />
   </component>
@@ -1244,7 +1247,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117063000" />
+    <option name="totallyTimeSpent" value="117496000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1653,16 +1656,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/src/main/java/com/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="99" column="69" lean-forward="false" selection-start-line="99" selection-start-column="69" selection-end-line="99" selection-end-column="69" />
-          <folding />
+        <state relative-caret-position="260">
+          <caret line="90" column="37" lean-forward="true" selection-start-line="90" selection-start-column="37" selection-end-line="91" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/src/main/java/com/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="150" column="47" lean-forward="false" selection-start-line="150" selection-start-column="47" selection-end-line="150" selection-end-column="47" />
+        <state relative-caret-position="729">
+          <caret line="153" column="13" lean-forward="false" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
           <folding />
         </state>
       </provider>
