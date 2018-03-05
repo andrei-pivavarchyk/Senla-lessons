@@ -42,11 +42,9 @@ public class BookDTOService implements IBookDTOService{
     }
     public List<Book> getBookList(List<Book> bookList) {
         List<Book>userDataBookList=new ArrayList<>();
-
-
         for (Book book : bookList) {
-
             Book book2 = new Book();
+            book2.setId(book.getId());
             book2.setGenre(book.getGenre());
             book2.setAuthor(book.getAuthor());
             book2.setBookCost(book.getBookCost());

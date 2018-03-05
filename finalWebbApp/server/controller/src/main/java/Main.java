@@ -29,12 +29,11 @@ public class Main {
         Author author = new Author(1,"bob","bob",new Date());
 
 
-       Map map=new HashMap<>();
-       map.put("first",1);
-       map.put("max",2);
+
+        UserData userData=userDataService.getUserDataByUserId(1);
         ObjectConverter objectConverter=new ObjectConverter();
 
-        System.out.print(objectConverter.convertObject(map));
+        System.out.print(userData.getFavorites());
 
 
     }

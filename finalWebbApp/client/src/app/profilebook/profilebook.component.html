@@ -1,0 +1,19 @@
+<ng-template ngFor let-book="$implicit" [ngForOf]="bookList">
+    <div  class="col-lg-4 col-md-6 mb-4">
+  <div class="card h-200">
+    <a href="#"><img class="card-img-top" src=" http://placeimg.com/700/600/tech" alt=""></a>
+    <div class="card-body">
+      <h4 class="card-title">
+        <a href="#">  {{book.bookName}}</a>
+      </h4>
+      <h5> $ {{book.bookCost}}</h5>
+      <p class="card-text" >   
+      {{book.bookDescription}}
+      </p>
+    </div>
+    <div class="card-footer text-center">
+        <button type="button" class="btn btn-info">Подробнее</button>
+    </div>
+  </div>
+</div>
+</ng-template>

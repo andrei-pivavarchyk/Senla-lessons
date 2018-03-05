@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,10 +46,12 @@ public class BookService implements IBookService {
         List<Book> bookList = null;
         try {
             bookList = this.bookDAO.getAllBooks(firstResult,maxResults);
+            return bookList;
         } catch (Exception e) {
             log.error(e.toString());
+            return new ArrayList<>();
         }
-        return bookList;
+
     }
 
     public List<Book> getBooksByAuthor(Author author) {

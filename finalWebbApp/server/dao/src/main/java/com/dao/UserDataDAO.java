@@ -23,7 +23,6 @@ public class UserDataDAO extends BaseDAO<UserData> implements IUserDataDAO {
         return userData;
     }
 
-
     public UserData getUserDatawithFavoritesBooks(User user) throws Exception{
         Criteria criteria = getSession().createCriteria(UserData.class, "ud")
                 .add(Restrictions.eq("user", user))

@@ -237,20 +237,20 @@ INSERT INTO `webapp`.`author` (`id`, `name`, `surname`) VALUES ('13', 'Linkoln',
 
 
 
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('1', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('2', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('3', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('4', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('5', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('6', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('7', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('8', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('9', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('10', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('11', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('12', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('13', '100', 'Хорошая книга', 'name', '0', '0', '1');
-INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('14', '100', 'Хорошая книга', 'name', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('1', '100', 'Хорошая книга', '1', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('2', '100', 'Хорошая книга', '2', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('3', '100', 'Хорошая книга', '3', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('4', '100', 'Хорошая книга', '4', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('5', '100', 'Хорошая книга', '5', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('6', '100', 'Хорошая книга', '6', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('7', '100', 'Хорошая книга', '7', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('8', '100', 'Хорошая книга', '8', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('9', '100', 'Хорошая книга', '9', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('10', '100', 'Хорошая книга', '10', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('11', '100', 'Хорошая книга', '11', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('12', '100', 'Хорошая книга', '12', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('13', '100', 'Хорошая книга', '13', '0', '0', '1');
+INSERT INTO `webapp`.`book` (`id`, `book_cost`, `book_description`, `book_name`, `book_status`, `genre`, `author`) VALUES ('14', '100', 'Хорошая книга', '14', '0', '0', '1');
 
 
 

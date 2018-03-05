@@ -125,6 +125,7 @@ public class UserData extends WebEntity {
     }
 
     @JsonIgnore
+    @Transient
     @OneToMany
     @JoinTable(
             name = "user_data_book",

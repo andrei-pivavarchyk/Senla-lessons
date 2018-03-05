@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 export class MainComponent implements OnInit {
   bookList: Book[] = [];
   currentPage = 1;
-  numberOfPages: number = 10;
+  numberOfPages: number = 4;
   maxResults: number = 6;
 
 
@@ -31,14 +31,14 @@ export class MainComponent implements OnInit {
       .subscribe(result => this.bookList = result.body);
   }
   pageForward() {
-    console.log(1);
-    this.currentPage + 1;
+  
+    this.currentPage=this.currentPage+1;
     this.getAllBooks();
-    console.log(this.bookList);
+  
   }
   pageBack() {
     if (this.currentPage >= 2) {
-      this.currentPage - 1;
+      this.currentPage=this.currentPage - 1;
       this.getAllBooks();
     }
 

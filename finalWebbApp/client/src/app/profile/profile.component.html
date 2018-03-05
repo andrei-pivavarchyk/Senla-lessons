@@ -1,20 +1,29 @@
+<div class="row">
 
 
-      <div class="row">
+  <div class="col-lg-3">
+    <app-category></app-category>
+    <h1>Profile</h1>
+    <div class="list-group">
+      <a routerLink="/profile/books" class="list-group-item">Orders</a>
+      <a routerLink="/profile/books" class="list-group-item">Cart</a>
+ 
+    </div>
+  </div>
 
 
-          <div class="col-lg-3">
-            <app-category></app-category>
-          </div>
-      
-          <!-- /.col-lg-3 -->
-  
-          <div class="col-lg-9 userdata">
-           <user-data></user-data>     
-            <!-- /.row -->
-          </div>
-          <!-- /.col-lg-9 -->  
-        </div>
+
+
+
+  <!-- /.col-lg-3 -->
+
+  <div class="col-lg-9 userdata">
+      <router-outlet></router-outlet>
+   <!-- <user-data></user-data> -->
+    <!-- /.row -->
+  </div>
+  <!-- /.col-lg-9 -->
+</div>
 
 
 <app-footer></app-footer>

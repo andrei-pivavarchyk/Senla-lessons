@@ -38,6 +38,7 @@ export class BookService {
    
         var status=response.status;
         if (status) {
+          console.log(response.body);
             return response;
         } else {
             return null;
