@@ -36,8 +36,18 @@ public class Main {
         Book book = new Book(1, "bookname", 66, BookGenre.DETECTIVE, author, BookStatus.IN_STOCK, "Fds");
         Address userAddress = new Address(1, "Соломовой", "Гродно", "Гродненский", "Беоарусь", 240000);
         UserData userData = new UserData(1,user, "Bob", "White", "Black", role, "email", 21474836647L, userAddress);
-
+addressService.updateAddress(userAddress);
         ObjectConverter objectConverter=new ObjectConverter();
+     Address address= (Address)  objectConverter.convertJsonToObject("{\n" +
+                "    \"type\": \"Address\",\n" +
+                "    \"id\": 1,\n" +
+                "    \"localAddress\": \"ул. Индивидуальная дом№6\",\n" +
+                "    \"city\": \"Гроднfо\",\n" +
+                "    \"region\": \"Гродненский\",\n" +
+                "    \"country\": \"Беларусь\",\n" +
+                "    \"index\": 240000\n" +
+                "}",Address.class);
+     addressService.updateAddress(address);
         System.out.print(objectConverter.convertObject(book));
 
 

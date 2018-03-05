@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -37,7 +39,7 @@ public class UserDataService implements IUserDataService {
         }
     }
 
-    public UserData updateUserData(UserData entity) {
+    public Map updateUserData(UserData entity) {
         try {
 
             UserData userData = this.userDataDao.getEntityById(entity.getId());
@@ -48,11 +50,13 @@ public class UserDataService implements IUserDataService {
             userData.setRole(entity.getRole());
             userData.setSurname(entity.getSurname());
             this.userDataDao.updateEntity(userData);
-            Address address=entity.getAddress();
-            this.addressDAO.updateEntity(address);
-            return userData;
+            Map result = new HashMap();
+            result.put("success", true);
+            result.put("message", "UserData update success");
+            return result;
         } catch (Exception e) {
             log.error(e.toString());
+
             return null;
         }
     }

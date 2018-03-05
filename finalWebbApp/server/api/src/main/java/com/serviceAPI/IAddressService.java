@@ -2,11 +2,12 @@ package com.serviceAPI;
 
 import com.model.Address;
 
-/**
- * Created by андрей on 26.02.2018.
- */
+import java.util.Map;
+
+
 public interface IAddressService {
-    void updateAddress(Address address);
+    Map updateAddress(Address address);
     void addAddress(Address address);
+    Address getAddressByID(Integer addressID);
 
 }

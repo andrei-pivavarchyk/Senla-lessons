@@ -42,7 +42,7 @@ public abstract class BaseDAO<T extends WebEntity> implements IBaseDAO<T> {
 
     public T getEntityById(Integer id) throws Exception {
         T entity = null;
-        entity = (T) getSession().load(getEntityClass(), id);
+        entity = (T) getSession().get(getEntityClass(), id);
         return entity;
     }
 

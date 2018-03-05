@@ -31,9 +31,9 @@ public class UserController {
     @Autowired
     private IAddressService addressService;
     @Autowired
-    IBookService bookService;
+    private  IBookService bookService;
     @Autowired
-    IUserHandler userHandler;
+    private IUserHandler userHandler;
 
     @Autowired
     private IBookDTOService bookDTOService;
@@ -67,8 +67,8 @@ public class UserController {
             method = {RequestMethod.POST}
     )
     @ResponseBody
-    public Map registration(HttpServletResponse response,@RequestBody User user) throws UserRegistrationException {
-        Map  result = userService.registrationUser(user);
+    public Map registration(HttpServletResponse response, @RequestBody User user) throws UserRegistrationException {
+        Map result = userService.registrationUser(user);
         return result;
     }
 
@@ -82,13 +82,30 @@ public class UserController {
 
         UserData userData = this.userDataService.getUserDataByUserId(this.userHandler.getUser().getId());
         if (userData != null) {
-           UserData dto = userDataDTOService.getUserDataDTO(userData);
+            UserData dto = userDataDTOService.getUserDataDTO(userData);
             return dto;
         } else {
             response.setStatus(204);
             return new UserData();
         }
     }
+    @RequestMapping(
+            value = {"api/address"},
+            method = {RequestMethod.GET}
+    )
+    @ResponseBody
+    public Address getAddress(HttpServletResponse response) {
+
+        UserData userData = this.userDataService.getUserDataByUserId(this.userHandler.getUser().getId());
+        if (userData != null) {
+            Address dto = userData.getAddress();
+            return dto;
+        } else {
+            response.setStatus(204);
+            return new Address();
+        }
+    }
+
 
     @RequestMapping(
             value = {"api/profile-update"},
@@ -96,18 +113,32 @@ public class UserController {
     )
     @ResponseBody
     public UserData updateUserData(HttpServletResponse response, @RequestBody UserData updateUserData) {
-      UserData currentUserData=this.userDataService.updateUserData(updateUserData);
-        if (currentUserData != null) {
-            UserData dto = userDataDTOService.getUserDataDTO(currentUserData);
-           return dto;
-
+        Map result = this.userDataService.updateUserData(updateUserData);
+        if (result.get("success").equals(true)) {
+            UserData userData = this.userDataService.getUserDataByUserId(this.userHandler.getUser().getId());
+            return this.userDataDTOService.getUserDataDTO(userData);
         } else {
             response.setStatus(400);
             return new UserData();
         }
     }
 
+    @RequestMapping(
+            value = {"api/address-update"},
+            method = {RequestMethod.POST}
+    )
+    @ResponseBody
+    public Address updateAddress(HttpServletResponse response,@RequestBody Address address) {
+        Map result = this.addressService.updateAddress(address);
+        if (result!=null&&result.get("success").equals(true)) {
+            Address currentAddress=addressService.getAddressByID(address.getId());
+            return  currentAddress;
+        } else {
+            response.setStatus(400);
+            return new Address();
+        }
 
+    }
 
     @RequestMapping(
             value = {"api/books"},
@@ -156,15 +187,17 @@ public class UserController {
     @ExceptionHandler(NoSuchUserException.class)
     public Map handleUserLoginException(NoSuchUserException ex) {
         log.error(ex.toString());
-       return this.setResult(ex);
+        return this.setResult(ex);
     }
+
     @ResponseBody
     @ExceptionHandler(UserRegistrationException.class)
     public Map handleUserLoginException(UserRegistrationException ex) {
         log.error(ex.toString());
-        return  this.setResult(ex);
+        return this.setResult(ex);
     }
-    private Map setResult(Exception ex){
+
+    private Map setResult(Exception ex) {
         Map result = new HashMap();
         result.put("success", false);
         result.put("message", ex.getMessage());

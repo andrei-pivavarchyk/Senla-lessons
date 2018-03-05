@@ -19,7 +19,6 @@ public class UserDataDAO extends BaseDAO<UserData> implements IUserDataDAO {
     public UserData getDataByUser(User user)throws Exception {
         UserData userData = (UserData) getSession().createCriteria(UserData.class, "ud")
                 .add(Restrictions.eq("user", user))
-                .createAlias("ud.address", "address", JoinType.LEFT_OUTER_JOIN)
                 .uniqueResult();
         return userData;
     }

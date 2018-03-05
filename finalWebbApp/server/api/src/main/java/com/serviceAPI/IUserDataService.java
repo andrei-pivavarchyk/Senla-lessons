@@ -5,6 +5,7 @@ import com.model.Order;
 import com.model.UserData;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IUserDataService {
 
@@ -12,7 +13,7 @@ public interface IUserDataService {
 
     UserData getUserDataByUserId(Integer id);
 
-    UserData updateUserData(UserData entity);
+    Map updateUserData(UserData entity);
 
     UserData getUserDataWithFavorites(Integer id);
 

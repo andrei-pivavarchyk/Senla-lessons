@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
+@Transactional
 public class UserDataDTOService implements IUserDataDTOService {
 
     @Autowired
@@ -34,13 +34,16 @@ public class UserDataDTOService implements IUserDataDTOService {
         dto.setPatronymic(userData.getPatronymic());
         dto.setEmail(userData.getEmail());
         dto.setPhone(userData.getPhone());
-        dto.setAddress(userData.getAddress());
-        Address address = dto.getAddress();
-        address.setCity(userData.getAddress().getCity());
-        address.setCountry(userData.getAddress().getCountry());
-        address.setIndex(userData.getAddress().getIndex());
-        address.setRegion(userData.getAddress().getRegion());
-        address.setLocalAddress(userData.getAddress().getLocalAddress());
+        return dto;
+    }
+    public Address getAddressDTO(Address address){
+        Address dto=new Address();
+        dto.setId(address.getId());
+        dto.setCity(address.getCity());
+        dto.setCountry(address.getCountry());
+        dto.setIndex(address.getIndex());
+        dto.setRegion(address.getRegion());
+        dto.setLocalAddress(address.getLocalAddress());
         return dto;
     }
 }
