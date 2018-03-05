@@ -3,6 +3,7 @@ package com.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.sql.Delete;
 
 import javax.persistence.*;
 import java.util.*;
@@ -35,7 +36,7 @@ public class UserData extends WebEntity {
                     String email,
                     Long phone,
                     Address address
-                    ) {
+    ) {
         this.user = user;
         this.name = name;
         this.surname = surname;
@@ -46,7 +47,7 @@ public class UserData extends WebEntity {
         this.phone = phone;
         this.address = address;
         this.favorites = new ArrayList<>();
-        this.feedbackList=new ArrayList<>();
+        this.feedbackList = new ArrayList<>();
     }
 
     public UserData(Integer id,
@@ -70,7 +71,7 @@ public class UserData extends WebEntity {
         this.phone = phone;
         this.address = address;
         this.favorites = new ArrayList<Book>();
-        this.feedbackList=new ArrayList<Feedback>();
+        this.feedbackList = new ArrayList<Feedback>();
     }
 
     public UserData(User user, Address address) {
@@ -79,12 +80,11 @@ public class UserData extends WebEntity {
     }
 
     @JsonIgnore
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", updatable = false)
     @OneToOne
     public User getUser() {
         return user;
     }
-
 
 
     @Column(name = "name")
@@ -124,12 +124,19 @@ public class UserData extends WebEntity {
         return phone;
     }
 
+    @JsonIgnore
     @OneToMany
+    @JoinTable(
+            name = "user_data_book",
+            joinColumns = @JoinColumn(name = "user_data_id"),
+            inverseJoinColumns = @JoinColumn(name = "favorites_id")
+    )
     public List<Book> getFavorites() {
         return favorites;
     }
 
-    @OneToMany(mappedBy="userData")
+    @JsonIgnore
+    @OneToMany(mappedBy = "userData")
     public List<Feedback> getFeedbackList() {
         return feedbackList;
     }

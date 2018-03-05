@@ -20,7 +20,7 @@ export class CatalogComponent implements OnInit {
 
 
   getAllBooks(): void {
-    this.bookService.getAllBooks()
+    this.bookService.getAllBooks(1,2)
         .subscribe(result => this.bookList=result.body);
   }
   

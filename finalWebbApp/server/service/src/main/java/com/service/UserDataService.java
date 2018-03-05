@@ -8,7 +8,6 @@ import com.daoAPI.IUserDataDAO;
 import com.model.*;
 import com.serviceAPI.IUserDataService;
 import org.apache.log4j.Logger;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,22 +40,15 @@ public class UserDataService implements IUserDataService {
 
     public Map updateUserData(UserData entity) {
         try {
+            this.userDataDao.updateEntity(entity);
+            this.addressDAO.updateEntity(entity.getAddress());
 
-            UserData userData = this.userDataDao.getEntityById(entity.getId());
-            userData.setEmail(entity.getEmail());
-            userData.setName(entity.getName());
-            userData.setPatronymic(entity.getPatronymic());
-            userData.setPhone(entity.getPhone());
-            userData.setRole(entity.getRole());
-            userData.setSurname(entity.getSurname());
-            this.userDataDao.updateEntity(userData);
             Map result = new HashMap();
             result.put("success", true);
             result.put("message", "UserData update success");
             return result;
         } catch (Exception e) {
             log.error(e.toString());
-
             return null;
         }
     }
@@ -113,6 +105,5 @@ public class UserDataService implements IUserDataService {
         }
         return userDataList;
     }
-
 
 }

@@ -50,5 +50,20 @@ this.getUserData();
         .subscribe(result => this.userData=  { ...result.body});
   }
 
+  updateUserData():void{
+    this.userService.updateUserData(this.userData)
+    .subscribe(result =>  { 
+    if(result!=null){
+      this.userData=result.body;
+      console.log("success")
+    }
+else{
+  console.log("error during update")
+}
+    
+    
+    });
+    
+  }
 
 }

@@ -1,8 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
-.userdata{
-  margin-top:  1.5rem !important;
 
+.pagination{
+    margin:5%;
 }
-
 

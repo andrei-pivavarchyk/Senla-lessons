@@ -7,7 +7,8 @@ import 'rxjs/add/operator/map';
 import { Http, Headers, Response } from '@angular/http';
 import { Book } from '../entity/book';
 import { catchError, map, tap } from 'rxjs/operators';
-
+import { RequestOptions } from '@angular/http';
+import { HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class BookService {
@@ -20,9 +21,18 @@ export class BookService {
    }
 
 
-   getAllBooks():Observable<HttpResponse<any>> {
-    return this.http.get(this.allBooksUrl,
-      {observe:'response'}
+   getAllBooks(first:number,max:number):Observable<HttpResponse<any>> {
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('appid', first.toString());
+    params.set('cnt', max.toString());
+    
+    return this.http.get(this.allBooksUrl,{
+        params: {
+          first: first.toString(),
+          max: max.toString()
+        },
+        observe: 'response'
+      }
     )
     .map((response: HttpResponse<any>) => {
    

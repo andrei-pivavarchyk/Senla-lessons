@@ -90,24 +90,6 @@ public class UserController {
         }
     }
     @RequestMapping(
-            value = {"api/address"},
-            method = {RequestMethod.GET}
-    )
-    @ResponseBody
-    public Address getAddress(HttpServletResponse response) {
-
-        UserData userData = this.userDataService.getUserDataByUserId(this.userHandler.getUser().getId());
-        if (userData != null) {
-            Address dto = userData.getAddress();
-            return dto;
-        } else {
-            response.setStatus(204);
-            return new Address();
-        }
-    }
-
-
-    @RequestMapping(
             value = {"api/profile-update"},
             method = {RequestMethod.POST}
     )
@@ -121,23 +103,6 @@ public class UserController {
             response.setStatus(400);
             return new UserData();
         }
-    }
-
-    @RequestMapping(
-            value = {"api/address-update"},
-            method = {RequestMethod.POST}
-    )
-    @ResponseBody
-    public Address updateAddress(HttpServletResponse response,@RequestBody Address address) {
-        Map result = this.addressService.updateAddress(address);
-        if (result!=null&&result.get("success").equals(true)) {
-            Address currentAddress=addressService.getAddressByID(address.getId());
-            return  currentAddress;
-        } else {
-            response.setStatus(400);
-            return new Address();
-        }
-
     }
 
     @RequestMapping(

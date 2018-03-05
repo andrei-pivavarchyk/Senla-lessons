@@ -34,16 +34,8 @@ public class UserDataDTOService implements IUserDataDTOService {
         dto.setPatronymic(userData.getPatronymic());
         dto.setEmail(userData.getEmail());
         dto.setPhone(userData.getPhone());
-        return dto;
-    }
-    public Address getAddressDTO(Address address){
-        Address dto=new Address();
-        dto.setId(address.getId());
-        dto.setCity(address.getCity());
-        dto.setCountry(address.getCountry());
-        dto.setIndex(address.getIndex());
-        dto.setRegion(address.getRegion());
-        dto.setLocalAddress(address.getLocalAddress());
+        dto.setUser(userData.getUser());
+        dto.setAddress(userData.getAddress());
         return dto;
     }
 }

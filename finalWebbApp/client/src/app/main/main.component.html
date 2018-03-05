@@ -25,9 +25,9 @@
                           <a href="#">  {{book.bookName}}</a>
                         </h4>
                         <h5> $ {{book.bookCost}}</h5>
-                        <p class="card-text">
+                        <p class="card-text" >
                           
-                            {{book.bookDescription}}
+                        {{book.bookDescription}}
                         
                         </p>
                       </div>
@@ -45,7 +45,13 @@
             <!-- /.row -->
           </div>
           <!-- /.col-lg-9 -->
-
+          <div id="pagination" class="row pagination">
+            <button class="pull-left btn btn-primary btn-sm" ng-disabled="firstPage()" (click)="pageBack()">Назад</button>
+            <span>{{currentPage}} из {{numberOfPages}}</span>
+            <button class="pull-right  btn btn-primary btn-sm" ng-disabled="lastPage()" (click)="pageForward()">Вперед</button>
+          </div>
+      
+      
         </div>
 
 

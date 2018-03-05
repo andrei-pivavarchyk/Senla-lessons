@@ -27,6 +27,7 @@ import { MainComponent } from './main/main.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BookService } from './service/book.service';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 
@@ -42,7 +43,8 @@ import { BookService } from './service/book.service';
     FooterComponent,
     MainComponent,
     RegistrationComponent,
-    ProfileComponent
+    ProfileComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,7 @@ export class UserService {
   private loginURL = this.mainUrl + '/login';
   private userDataUrl = this.mainUrl + '/api/profile';
   private registrationUrl = this.mainUrl + '/registration';
+  private updateUserDataUrl=this.mainUrl+'/api/profile-update';
   public res: Response;
   constructor(
     private http: HttpClient
@@ -83,6 +84,24 @@ export class UserService {
         var status = response.status;
         if (status) {
           console.log(response.body);
+          return response;
+        } else {
+
+          return null;
+        }
+      });
+  }
+
+  updateUserData(data:UserData): Observable<HttpResponse<UserData>> {
+    return this.http.post(this.updateUserDataUrl,
+      data,
+      { observe: 'response' }
+    )
+      .map((response: HttpResponse<any>) => {
+
+        var status = response.status;
+        if (status==200) {
+        
           return response;
         } else {
 

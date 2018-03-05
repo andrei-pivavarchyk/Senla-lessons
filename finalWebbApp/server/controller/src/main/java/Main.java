@@ -7,10 +7,7 @@ import com.serviceAPI.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,23 +29,12 @@ public class Main {
         Author author = new Author(1,"bob","bob",new Date());
 
 
-        User user = new User(1, "Andrei", "Hrumov");
-        Book book = new Book(1, "bookname", 66, BookGenre.DETECTIVE, author, BookStatus.IN_STOCK, "Fds");
-        Address userAddress = new Address(1, "Соломовой", "Гродно", "Гродненский", "Беоарусь", 240000);
-        UserData userData = new UserData(1,user, "Bob", "White", "Black", role, "email", 21474836647L, userAddress);
-addressService.updateAddress(userAddress);
+       Map map=new HashMap<>();
+       map.put("first",1);
+       map.put("max",2);
         ObjectConverter objectConverter=new ObjectConverter();
-     Address address= (Address)  objectConverter.convertJsonToObject("{\n" +
-                "    \"type\": \"Address\",\n" +
-                "    \"id\": 1,\n" +
-                "    \"localAddress\": \"ул. Индивидуальная дом№6\",\n" +
-                "    \"city\": \"Гроднfо\",\n" +
-                "    \"region\": \"Гродненский\",\n" +
-                "    \"country\": \"Беларусь\",\n" +
-                "    \"index\": 240000\n" +
-                "}",Address.class);
-     addressService.updateAddress(address);
-        System.out.print(objectConverter.convertObject(book));
+
+        System.out.print(objectConverter.convertObject(map));
 
 
     }

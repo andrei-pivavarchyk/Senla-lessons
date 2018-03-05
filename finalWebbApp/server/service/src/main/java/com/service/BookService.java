@@ -41,23 +41,43 @@ public class BookService implements IBookService {
         }
     }
 
-    public List<Book> getAllBooks() {
-        List<Book> bookList = this.bookDAO.getAllBooks();
+    public List<Book> getAllBooks(Integer firstResult,Integer maxResults) {
+        List<Book> bookList = null;
+        try {
+            bookList = this.bookDAO.getAllBooks(firstResult,maxResults);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
         return bookList;
     }
 
     public List<Book> getBooksByAuthor(Author author) {
-        List<Book> bookList = this.bookDAO.getBooksByAuthor(author);
+        List<Book> bookList = null;
+        try {
+            bookList = this.bookDAO.getBooksByAuthor(author);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
         return bookList;
     }
 
     public Book getBookWithFeedbacks(Integer id) {
-       Book book= this.bookDAO.getBookWithFeedbacks(id);
-       return book;
+        Book book= null;
+        try {
+            book = this.bookDAO.getBookWithFeedbacks(id);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return book;
     }
 
     public List<Book> getAllBooksByGenre(BookGenre genre) {
-        List<Book> bookList = this.bookDAO.getBooksByGenre(genre);
+        List<Book> bookList = null;
+        try {
+            bookList = this.bookDAO.getBooksByGenre(genre);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
         return bookList;
     }
 

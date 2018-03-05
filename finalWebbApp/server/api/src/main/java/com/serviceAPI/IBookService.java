@@ -9,7 +9,7 @@ import java.util.List;
 public interface IBookService {
     public void addBook(Book book);
     void removeBook(Book book);
-    List<Book> getAllBooks();
+    List<Book> getAllBooks(Integer firstResult,Integer maxResults);
     List<Book> getBooksByAuthor(Author author);
     Book getBookWithFeedbacks(Integer id);
     List<Book> getAllBooksByGenre(BookGenre genre);

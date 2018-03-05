@@ -1,6 +1,6 @@
 
 
-    <div class="col-sm-6col-lg-6 col-md-6">
+  <div class="col-sm-6">
 <form>
   <div class="form-group " ng-init="getUserData()">
     <label for="exampleFormControlInput1">Name</label>
@@ -23,9 +23,11 @@
     <input  [(ngModel)]="userData.phone" name="phone" type="text" class="form-control"  placeholder="name@example.com">
   </div>
 
+
+
 Address
 
-  <div class="form-group">
+  <div class="form-group address">
     <label for="exampleFormControlInput1">LocalAddress</label>
     <input  [(ngModel)]="userData.address.localAddress" name="address" type="email" class="form-control"  placeholder="name@example.com">
   </div>
@@ -45,7 +47,9 @@ Address
         <label for="exampleFormControlInput1">Index</label>
         <input  [(ngModel)]="userData.address.index" name="index" type="text" class="form-control"  placeholder="name@example.com">
       </div>
-  <button type="submit" class="btn btn-primary"  (click)="getUserData()">Registration</button>
+  <button type="submit" class="btn btn-primary"  (click)="updateUserData()">Update</button>
 </form>
-</div>
 
+
+
+</div>

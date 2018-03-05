@@ -6,9 +6,9 @@ import com.model.BookGenre;
 
 import java.util.List;
 
-public interface IBookDAO extends IBaseDAO<Book> {
-    List<Book> getAllBooks();
-    List<Book> getBooksByAuthor(Author author);
-    Book getBookWithFeedbacks(Integer id);
-    List<Book> getBooksByGenre(BookGenre genre);
+public interface IBookDAO extends IBaseDAO<Book>  {
+    List<Book> getAllBooks(Integer firstResult,Integer maxResults)throws Exception ;
+    List<Book> getBooksByAuthor(Author author)throws Exception ;
+    Book getBookWithFeedbacks(Integer id)throws Exception ;
+    List<Book> getBooksByGenre(BookGenre genre)throws Exception ;
 }

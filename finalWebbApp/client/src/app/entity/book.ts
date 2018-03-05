@@ -1,7 +1,7 @@
 import { Author } from "./author";
 
 export class Book{
-    "id": null;
+    "id": number;
     "bookName": "name";
     "bookCost": 100;
     "genre": "FANTASTIC";

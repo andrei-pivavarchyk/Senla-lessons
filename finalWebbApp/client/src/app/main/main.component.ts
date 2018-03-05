@@ -1,26 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../service/book.service';
 import { Book } from '../entity/book';
+import { ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-   bookList:Book[]=[];
- books:string;
+  bookList: Book[] = [];
+  currentPage = 1;
+  numberOfPages: number = 10;
+  maxResults: number = 6;
+
 
   constructor(
     private bookService: BookService
   ) { }
 
   ngOnInit() {
-this.getAllBooks();
+    this.getAllBooks();
+ 
 
   }
 
   getAllBooks(): void {
-    this.bookService.getAllBooks()
-        .subscribe(result => this.bookList=result.body);
+    var first = this.currentPage * this.maxResults - this.maxResults + 1;
+   
+    this.bookService.getAllBooks(first-1, this.maxResults)
+      .subscribe(result => this.bookList = result.body);
+  }
+  pageForward() {
+    console.log(1);
+    this.currentPage + 1;
+    this.getAllBooks();
+    console.log(this.bookList);
+  }
+  pageBack() {
+    if (this.currentPage >= 2) {
+      this.currentPage - 1;
+      this.getAllBooks();
+    }
+
+
   }
 }
